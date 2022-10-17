@@ -1,5 +1,5 @@
 """
-main script for Python Process Map(v2.0)
+main script for Python Process Map (v2.0)
 """
 import math
 import random
