@@ -1,6 +1,7 @@
 """
 main script for Python Process Map (v2.0)
 """
+import csv
 import math
 import random
 import sys
@@ -351,7 +352,17 @@ def reformat_output(endpoints: dict):
                 print(string, end=', ')
         print(')')
 
-
+def outputtoCSV(data : Node):
+    """outputs the contents of a Node onto the output .csv file
+    Args:
+        data (Node): stored data
+    """
+    # open the file
+    # create a csv writer object
+    # write the data to the file
+    # do the same for all the children
+    for child in data.children.items():
+        outputtoCSV(child[1])
 if __name__ == '__main__':
     print('Welcome to Process Map (Python) v1.1!\n')
     while True:
