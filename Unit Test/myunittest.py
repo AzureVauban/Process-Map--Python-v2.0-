@@ -5,7 +5,7 @@ Fixes #5
 """
 import unittest
 
-from main import Node  # pylint: disable=import-error
+from main import Node, write_to_csv  # pylint: disable=import-error
 
 
 class keygeneration(unittest.TestCase):
@@ -15,7 +15,8 @@ class keygeneration(unittest.TestCase):
 
     def testkey(self):  # status : passed
         """test key"""
-        testkey: str = Node.generate_treekey()
+        red : Node = Node()
+        testkey :str = red.generate_treekey() #pylint: disable=no-member
         self.assertTrue(isinstance(testkey, str))
 
     def testkeyuniqueness(self):  # status : passed
@@ -25,7 +26,7 @@ class keygeneration(unittest.TestCase):
         listofkeys: list = []
         # create some keys and append it to the list
         for red in range(10):
-            listofkeys.append(Node.generate_treekey())
+            listofkeys.append(Node.generate_treekey())  #pylint: disable=no-member
         # check for uniqueness within the list
         for index_red, red in enumerate(listofkeys):
             for index_blue, blue in enumerate(listofkeys):
@@ -33,10 +34,15 @@ class keygeneration(unittest.TestCase):
                     allkeysisunique = False
 
         self.assertTrue(allkeysisunique, 'The keys are not unique')
-class writetocsv(unittest.TestCase):
-    """write test tree onto CSV file
 
-    Args:
-        unittest (class): Python unit testing framework, based on Erich Gamma's JUnit and Kent Beck's Smalltalk testing framework (used with permission).
-    """
-    
+
+class testcsv(unittest.TestCase):
+    carbon: Node = Node('Carbon', None, 0, 1, 1)
+    coal: Node = Node('Coal', carbon, 0, 1, 10)
+    pixels: Node = Node('Pixels', coal, 0, 1, 20)
+    write_to_csv(carbon)
+
+    def testwrite(self):
+        """test write to csv"""
+        # check if the file is created
+        self.assertTrue(1 != 1)

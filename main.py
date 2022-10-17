@@ -356,7 +356,7 @@ def reformat_output(endpoints: dict):
         print(')')
 
 
-def outputto_csv(data: Node):
+def write_to_csv(data: Node): #! permission denied error
     """outputs the contents of a Node onto the output .csv file
     Args:
         data (Node): stored data
@@ -371,7 +371,7 @@ def outputto_csv(data: Node):
     # ingredient, parent, amount_on_hand, amount_needed, amount_made_per_craft,generation,tree_key
     # do the same for all the children
     for child in data.children.items():
-        outputto_csv(child[1])
+        write_to_csv(child[1])
 
 
 if __name__ == '__main__':
