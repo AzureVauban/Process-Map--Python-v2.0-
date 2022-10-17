@@ -77,8 +77,10 @@ class Node(NodeB):
         if self.parent is not None:
             self.generation = self.parent.generation + 1
             self.parent.children.update({self.instancekey: self})
+            self.treekey = self.parent.treekey
         else:
             self.generation = 0
+            self.treekey = self.generate_treekey()
         self.askmadepercraftquestion = green
         Node.instances += 1
         if __name__ == '__main__':
