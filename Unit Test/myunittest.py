@@ -42,25 +42,24 @@ class testcsv(unittest.TestCase):
     coal: Node = Node('Coal', carbon, 0, 1, 10)
     pixels: Node = Node('Pixels', coal, 0, 1, 20)
 
-    def tentativetraverse(self, node: Node):
-        """traverse the tree and write to the .csv file
-        """
-        parent_ingredient: str = 'None'
-        if node.parent is not None:
-            parent_ingredient = node.parent.ingredient
-        writetocsv.writerow([node.ingredient,
-                             parent_ingredient,
-                             node.amountonhand,
-                             node.amountmadepercraft,
-                             node.amountneeded,
-                             node.generation,
-                             node.treekey])
-        for child in node.children:
-            self.tentativetraverse(child)
-
     def testwrite(self):
         """output a mock .csv file in the same directionary as this unit test
         """
+        def tentativetraverse(self, node: Node):  # subfunction for testwrite
+            """traverse the tree and write to the .csv file
+            """
+            parent_ingredient: str = 'None'
+            if node.parent is not None:
+                parent_ingredient = node.parent.ingredient
+            writetocsv.writerow([node.ingredient,
+                                parent_ingredient,
+                                node.amountonhand,
+                                node.amountmadepercraft,
+                                node.amountneeded,
+                                node.generation,
+                                node.treekey])
+            for child in node.children:
+                self.tentativetraverse(child[1])
         header: list = ['Ingredient',
                         'Parent_Ingredient',
                         'Amount_On_Hand',
@@ -73,5 +72,6 @@ class testcsv(unittest.TestCase):
             # write the header
             writetocsv.writerow(header)
             # write data onto the .csv file
-            self.tentativetraverse(self.carbon)
+            tentativetraverse(self,self.carbon)
+            mock_tree.close()
         self.assertEqual(mock_tree.closed, True)
