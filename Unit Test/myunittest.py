@@ -53,10 +53,12 @@ class TestCSV(unittest.TestCase):
 
     # create a mock csv file and test the write to it
     def test_existance(self):
+        """test if the file exists in the current directory"""
         # test if the file exist in the current directory
         self.assertTrue(os.path.isfile(filename))
 
     def test_createmockfile(self):
+        """create a mock csv file"""
         # test if the file exists in the current folder of the directory
         ispresentindirectory: bool = os.path.isfile(filename)
         # if the file is not in the current directory create it
@@ -73,7 +75,8 @@ class TestCSV(unittest.TestCase):
                     'Generation',  # 1
                     'Tree Key'  # 74nry8keki
                 ]
-                
+                # write the header onto the csv file
+
         self.assertTrue(os.path.isfile(filename))
 
     def test_writetoCSV(self):
