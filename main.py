@@ -127,15 +127,16 @@ class Node(NodeB):
                 if not isinstance(child[1], Node):
                     raise TypeError('Child is not an instance of', Node)
                 child[1].clearamountresulted()
-    def generate_treekey(self)->str:
+    @classmethod
+    def generate_treekey(cls)->str:
         """
         randomly generates an alpha numeric string to be used as a unique identifier for the tree
         and all nodes linked to this instance
         """
-        self.treekey = ''
+        cls.treekey = ''
         for _ in range(0, 10):
-            self.treekey += str(math.floor(math.random() * 36))
-        return self.treekey
+            cls.treekey += random.choice('0123456789abcdefghijklmnopqrstuvwxyz')
+        return cls.treekey
 
 def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:
     """
