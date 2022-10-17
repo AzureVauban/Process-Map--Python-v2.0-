@@ -130,16 +130,19 @@ class Node(NodeB):
                 if not isinstance(child[1], Node):
                     raise TypeError('Child is not an instance of', Node)
                 child[1].clearamountresulted()
+
     @classmethod
-    def generate_treekey(cls)->str:
+    def generate_treekey(cls) -> str:
         """
         randomly generates an alpha numeric string to be used as a unique identifier for the tree
         and all nodes linked to this instance
         """
         cls.treekey = ''
         for _ in range(0, 10):
-            cls.treekey += random.choice('0123456789abcdefghijklmnopqrstuvwxyz')
+            cls.treekey += random.choice(
+                '0123456789abcdefghijklmnopqrstuvwxyz')
         return cls.treekey
+
 
 def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:
     """
@@ -352,17 +355,25 @@ def reformat_output(endpoints: dict):
                 print(string, end=', ')
         print(')')
 
-def outputtoCSV(data : Node):
+
+def outputto_csv(data: Node):
     """outputs the contents of a Node onto the output .csv file
     Args:
         data (Node): stored data
     """
     # open the file
-    # create a csv writer object
+    filepath = ('/Ingredient_Trees')
+    with open('/Ingredient_Trees', 'w', encoding='UTF8') as filepath:
+        # create a csv writer object
+        writetocsv = csv.writer(filepath, delimiter=',')
     # write the data to the file
+    # data should be written in the following format:
+    # ingredient, parent, amount_on_hand, amount_needed, amount_made_per_craft,generation,tree_key
     # do the same for all the children
     for child in data.children.items():
-        outputtoCSV(child[1])
+        outputto_csv(child[1])
+
+
 if __name__ == '__main__':
     print('Welcome to Process Map (Python) v1.1!\n')
     while True:

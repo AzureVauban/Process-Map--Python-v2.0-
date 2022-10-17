@@ -8,7 +8,7 @@ import unittest
 from main import Node  # pylint: disable=import-error
 
 
-class MyUnitTest(unittest.TestCase):
+class keygeneration(unittest.TestCase):
     """
     Unit Testing for Issue5
     """
@@ -33,3 +33,10 @@ class MyUnitTest(unittest.TestCase):
                     allkeysisunique = False
 
         self.assertTrue(allkeysisunique, 'The keys are not unique')
+class writetocsv(unittest.TestCase):
+    """write test tree onto CSV file
+
+    Args:
+        unittest (class): Python unit testing framework, based on Erich Gamma's JUnit and Kent Beck's Smalltalk testing framework (used with permission).
+    """
+    
