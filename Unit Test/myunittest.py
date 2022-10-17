@@ -4,8 +4,9 @@ Create a Tree Key alpha numeric string generator to make sure each tree in the .
 Fixes #5
 """
 import csv
-from io import TextIOWrapper
+import os
 import unittest
+
 
 from main import Node, write_to_csv  # pylint: disable=import-error
 
@@ -39,8 +40,21 @@ class keygeneration(unittest.TestCase):
         self.assertTrue(allkeysisunique, 'The keys are not unique')
 
 
-class testcsv(unittest.TestCase):
-    """create a mock csv file and test the write_to_csv"""
+class TestCSV(unittest.TestCase):
+    """
+    create a mock csv file and test the write_to_csv
+    """
+    # mock ingredient tree for carbon csv file
     carbon: Node = Node('Carbon', None, 0, 1, 1)
     coal: Node = Node('Coal', carbon, 0, 1, 10)
     pixels: Node = Node('Pixels', coal, 0, 1, 20)
+    
+    # create a mock csv file and test the write to it
+    def test_existance(self):
+        # test if the file exist in the current directory
+        self.assertTrue(os.path.isfile('carbon.csv'))
+    def test_writetoCSV(self):
+        # write header
+        wri
+        # itterate through the tree and write to csv
+        # check if the csv file is created
