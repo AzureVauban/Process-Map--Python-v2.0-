@@ -355,23 +355,16 @@ def reformat_output(endpoints: dict):
                 print(string, end=', ')
         print(')')
 
+# create a method that writes to the .csv file
 
-def write_to_csv(data: Node): #! permission denied error
-    """outputs the contents of a Node onto the output .csv file
+
+def createCSVfile(object: Node):
+    """creates a .csv file that contains the information of the Node instance tree, 
+    if the file is already present in the current directiory it will update it to include the current ingredient tree
+
     Args:
-        data (Node): stored data
+        node (Node): tentative description
     """
-    # open the file
-    filepath = ('/Ingredient_Trees')
-    with open('/Ingredient_Trees', 'w', encoding='UTF8') as filepath:
-        # create a csv writer object
-        writetocsv = csv.writer(filepath, delimiter=',')
-    # write the data to the file
-    # data should be written in the following format:
-    # ingredient, parent, amount_on_hand, amount_needed, amount_made_per_craft,generation,tree_key
-    # do the same for all the children
-    for child in data.children.items():
-        write_to_csv(child[1])
 
 
 if __name__ == '__main__':
