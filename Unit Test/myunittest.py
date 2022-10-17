@@ -4,6 +4,7 @@ Create a Tree Key alpha numeric string generator to make sure each tree in the .
 Fixes #5
 """
 import csv
+from io import TextIOWrapper
 import unittest
 
 from main import Node, write_to_csv  # pylint: disable=import-error
@@ -39,42 +40,7 @@ class keygeneration(unittest.TestCase):
 
 
 class testcsv(unittest.TestCase):
+    """create a mock csv file and test the write_to_csv"""
     carbon: Node = Node('Carbon', None, 0, 1, 1)
     coal: Node = Node('Coal', carbon, 0, 1, 10)
     pixels: Node = Node('Pixels', coal, 0, 1, 20)
-
-    @classmethod
-    def tentativetraverse(cls, node: Node):  # subfunction for testwrite
-        """traverse the tree and write to the .csv file
-        """
-        parent_ingredient: str = 'None'
-        if node.parent is not None:
-            parent_ingredient = node.parent.ingredient
-        writetocsv.writerow([node.ingredient,
-                            parent_ingredient,
-                            node.amountonhand,
-                            node.amountmadepercraft,
-                            node.amountneeded,
-                            node.generation,
-                            node.treekey])
-        for child in node.children:
-            cls.tentativetraverse(child[1])
-
-    def testwrite(self):
-        """output a mock .csv file in the same directionary as this unit test
-        """
-        header: list = ['Ingredient',
-                        'Parent_Ingredient',
-                        'Amount_On_Hand',
-                        'Amount_Made_Per_Craft',
-                        'Amount_Needed',
-                        'Generation',
-                        'Tree_Key']
-        with open('mock_tree.csv', 'w', encoding='UTF8') as mock_tree:
-            writetocsv = csv.writer(mock_tree)
-            # write the header
-            writetocsv.writerow(header)
-            # write data onto the .csv file
-            tentativetraverse(self, self.carbon)
-            mock_tree.close()
-        self.assertEqual(mock_tree.closed, True)
