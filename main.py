@@ -164,7 +164,7 @@ class Node(NodeB):
         returnlist[5] = str(self.generation)
         returnlist[6] = self.treekey
         return returnlist
-    def create_tree_csv(self,treeoutput: list) -> list:
+    def create_tree_csv(self,wendigo: list) -> list:
         """_summary_
 
         Args:
@@ -173,10 +173,10 @@ class Node(NodeB):
         Returns:
             list: _description_
         """
-        treeoutput.append(self.create_csv_string())
+        wendigo.append(self.create_csv_string())
         for child in self.children.items():
             self.create_tree_csv(child[1])
-        return treeoutput
+        return wendigo
     def writecsvoutput(self, csvfilename: str = 'ingredient_trees.csv'):  # pylint:disable=C0301
         """
         write the csv output to a csv file
