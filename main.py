@@ -130,7 +130,7 @@ class Node(NodeB):
                 if not isinstance(child[1], Node):
                     raise TypeError('Child is not an instance of', Node)
                 child[1].clearamountresulted()
-
+    # methods for creating and utilizing the .csv file
     @classmethod
     def generate_treekey(cls) -> str:
         """
@@ -141,7 +141,7 @@ class Node(NodeB):
         for _ in range(0, 10):
             cls.treekey += random.choice(
                 '0123456789abcdefghijklmnopqrstuvwxyz')
-        return cls.treekey
+        return cls.treekey +'\n'
 
     def csvoutput(self) -> list[str]:
         """
@@ -163,11 +163,12 @@ class Node(NodeB):
         returnlist[5] = str(self.generation)
         returnlist[6] = self.treekey
         return returnlist
-    def writecsvoutput(self): # pylint:disable=C0301
+
+    def writecsvoutput(self, csvfilename: str = 'ingredient_trees.csv'):  # pylint:disable=C0301
         """
         write the csv output to a csv file
         """
-        with open('output.csv', 'a', newline='') as csvfile:
+        with open(csvfilename, encoding='UTF-8', newline='') as csvfile:
             writer = csv.writer(csvfile, delimiter=',')
             writer.writerow(self.csvoutput())
         if len(self.children) > 0:
@@ -175,6 +176,7 @@ class Node(NodeB):
                 if not isinstance(child[1], Node):
                     raise TypeError('Child is not an instance of', Node)
                 child[1].writecsvoutput()
+
 
 def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:
     """
