@@ -163,7 +163,7 @@ class Node(NodeB):
         returnlist[5] = str(self.generation)
         returnlist[6] = self.treekey
         return returnlist
-
+    def writecsvoutput(self):
 
 def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:
     """
