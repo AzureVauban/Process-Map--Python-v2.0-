@@ -144,7 +144,12 @@ class Node(NodeB):
                 '0123456789abcdefghijklmnopqrstuvwxyz')
         return cls.treekey + '\n'
     # make a method to return a list with all the info needed on a line of the csv file
-    def create_info_csv
+    def create_info_csv(self) -> list:
+        """
+        creates a list of all the information needed to be stored in the .csv file
+        """
+        return [self.treekey, self.ingredient, self.amountonhand, self.amountneeded,
+                self.amountmadepercraft, self.amountresulted, self.generation, self.instancekey]
 def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:
     """
     look for endpoints connected to the tree at this node
