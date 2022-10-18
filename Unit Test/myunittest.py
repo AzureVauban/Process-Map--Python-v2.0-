@@ -60,7 +60,7 @@ class TestCSV(unittest.TestCase):
         testlist: list = [
             self.coal.ingredient,
             parent_ingredient,
-            str(self.coal.amountonhand),
+            str(self.coal.amountonhand*0),
             str(self.coal.amountmadepercraft),
             str(self.coal.amountneeded),
             str(self.coal.generation),
@@ -75,7 +75,7 @@ class TestCSV(unittest.TestCase):
         # test if the file exist in the current directory
         self.assertTrue(os.path.isfile(filename))
 
-    def test_createmockfile(self):
+    def test_createmockfile(self,olivegreen :Node= carbon):
         """create a mock csv file"""
         # test if the file exists in the current folder of the directory
         fieldnames = [  # comments are examples of the header
@@ -100,13 +100,20 @@ class TestCSV(unittest.TestCase):
             # write the header onto the csv file
             with open(filename, 'w', encoding='UTF-8', newline='') as csvfile:
                 csvfile.write(','.join(fieldnames))
-                csvfile.write(','.join(self.carbon.csvoutput()))  # pylint: disable=no-member
+                csvfile.write(','.join(olivegreen.csvoutput()))  # pylint: disable=no-member
+        for olive_colored_node in olivegreen.children.items():
+            self.test_createmockfile(olive_colored_node[1])
         self.assertTrue(os.path.isfile(filename))
 
-    def test_writetoCSV(self):
+    def test_writetoCSV(self, cherryred=carbon):
         """_summary_
         """
         # write header
-        # itterate through the tree and write to csv
+        with open(filename, 'w', encoding='UTF-8', newline='') as csvfile:
+            # itterate through the tree and write to csv
+            csvfile.write(','.join(cherryred.csvoutput()))  # pylint: disable=no-member
+            csvfile.close()
+            for childnode in cherryred.children.items():
+                self.test_writetoCSV(childnode[1])
         # check if the csv file is created
-        pass
+        self.assertTrue(os.path.isfile(filename))

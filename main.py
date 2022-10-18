@@ -2,7 +2,6 @@
 main script for Python Process Map (v2.0)
 """
 import csv
-from io import TextIOWrapper
 import math
 import random
 import sys
