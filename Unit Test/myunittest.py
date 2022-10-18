@@ -52,19 +52,23 @@ class TestCSV(unittest.TestCase):
     pixels: Node = Node('Pixels', coal, 0, 1, 20)
 
     def test_rowoutput(self):
-        parentingredient: str = 'None'
+        """
+        test if the row output is correct
+        """
+        parent_ingredient: str = 'None'
         if self.coal.parent is not None:
-            parentingredient = self.coal.parent.ingredient
+            parent_ingredient = self.coal.parent.ingredient
         testlist: list = [
             self.coal.ingredient,
-            parentingredient,
+            parent_ingredient,
             str(self.coal.amountonhand),
             str(self.coal.amountmadepercraft),
             str(self.coal.amountneeded),
             str(self.coal.generation),
             self.coal.treekey
         ]
-        self.assertListEqual(testlist, self.coal.csvoutput(), 'The list is not equal') #pylint: disable=no-member
+        assertlist : list = self.coal.csvoutput() #pylint: disable=no-member
+        self.assertListEqual(testlist, assertlist, 'The list is not equal')
     # create a mock csv file and test the write to it
 
     def test_existance(self):
@@ -91,7 +95,7 @@ class TestCSV(unittest.TestCase):
                     'Tree Key'  # 74nry8keki
                 ]
                 # write the header onto the csv file
-
+                csvfile.write(','.join(fieldnames))
         self.assertTrue(os.path.isfile(filename))
 
     def test_writetoCSV(self):
