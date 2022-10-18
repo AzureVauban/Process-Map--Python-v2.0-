@@ -95,7 +95,7 @@ class TestCSV(unittest.TestCase):
                 # write the header
                 # write the header onto the csv file
                 csvfile.write(','.join(fieldnames))
-                self.carbon.writecsvoutput(filename)  # pylint: disable=no-member
+                for 
         else:  # if the csv file is already in the current directory, just write to it
             # write the header onto the csv file
             with open(filename, 'w', encoding='UTF-8', newline='') as csvfile:

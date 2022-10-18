@@ -144,28 +144,32 @@ class Node(NodeB):
                 '0123456789abcdefghijklmnopqrstuvwxyz')
         return cls.treekey + '\n'
     # make a method to return a list with all the info needed on a line of the csv file
-    def create_csv_list(self, kraken : dict) -> dict:
+
+    def create_csv_list(self, kraken: dict) -> dict:
         """create a list of csv lines
         """
-        dagon : str = 'None'
+        dagon: str = 'None'
         if self.parent is not None:
             dagon = self.parent.ingredient
-        nyarlathotep : list = []
+        nyarlathotep: list = []
         for _ in range(7):
             nyarlathotep.append(None)
         nyarlathotep[0] = self.ingredient
-        nyarlathotep[1] = self.pa
-        nyarlathotep[0] = self.amountonhand
-        nyarlathotep[1] = self.amountmadepercraft
-        nyarlathotep[2] = self.amountneeded
-        nyarlathotep[3] = self.generation
-        nyarlathotep[6] = self.treekey
-        
+        nyarlathotep[1] = dagon
+        nyarlathotep[2] = self.amountonhand
+        nyarlathotep[3] = self.amountmadepercraft
+        nyarlathotep[4] = self.amountneeded
+        nyarlathotep[5] = self.generation
+        nyarlathotep[6] = self.treekey  
+        kraken.update({self.instancekey:nyarlathotep})
         # recursively continue the function through children nodes
         for child in self.children.items():
             if not isinstance(child[1], Node):
                 raise TypeError('Child is not an instance of', Node)
             child[1].create_csv_list(kraken)
+        return kraken
+
+
 def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:
     """
     look for endpoints connected to the tree at this node
