@@ -2,6 +2,7 @@
 main script for Python Process Map (v2.0)
 """
 import csv
+from io import TextIOWrapper
 import math
 import random
 import sys
@@ -131,6 +132,7 @@ class Node(NodeB):
                     raise TypeError('Child is not an instance of', Node)
                 child[1].clearamountresulted()
     # methods for creating and utilizing the .csv file
+
     @classmethod
     def generate_treekey(cls) -> str:
         """
@@ -141,7 +143,7 @@ class Node(NodeB):
         for _ in range(0, 10):
             cls.treekey += random.choice(
                 '0123456789abcdefghijklmnopqrstuvwxyz')
-        return cls.treekey +'\n'
+        return cls.treekey + '\n'
 
     def csvoutput(self) -> list[str]:
         """
@@ -392,13 +394,13 @@ def reformat_output(endpoints: dict):
 # create a method that writes to the .csv file
 
 
-def createCSVfile(object: Node):
-    """creates a .csv file that contains the information of the Node instance tree, 
-    if the file is already present in the current directiory it will update it to include the current ingredient tree
+def tentativemethod(node: Node):
+    """method that writes to the .csv file
 
     Args:
-        node (Node): tentative description
+        node (Node): stores information about the an ingredient
     """
+    print(node.ingredient)
 
 
 if __name__ == '__main__':
