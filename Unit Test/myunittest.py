@@ -9,7 +9,6 @@ import unittest
 
 from main import Node  # pylint: disable=import-error
 
-
 filename: str = 'ingredient_trees.csv'
 
 
