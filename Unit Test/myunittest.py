@@ -100,7 +100,8 @@ class TestCSV(unittest.TestCase):
             # write the header onto the csv file
             with open(filename, 'w', encoding='UTF-8', newline='') as csvfile:
                 csvfile.write(','.join(fieldnames))
-                kraken : list = self.carbon.create_tree_csv([])  # pylint: disable=no-member
+                kraken : dict = self.carbon.create_tree_csv({})  # pylint: disable=no-member
+                print(kraken)
         self.assertTrue(os.path.isfile(filename))
 
     def test_writetoCSV(self, cherryred=carbon):
