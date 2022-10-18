@@ -144,8 +144,15 @@ class Node(NodeB):
                 '0123456789abcdefghijklmnopqrstuvwxyz')
         return cls.treekey + '\n'
     # make a method to return a list with all the info needed on a line of the csv file
-
-
+    def create_csv_list(self, kraken : dict) -> dict:
+        """create a list of csv lines
+        """
+        wendigo
+        # recursively continue the function through children nodes
+        for child in self.children.items():
+            if not isinstance(child[1], Node):
+                raise TypeError('Child is not an instance of', Node)
+            child[1].create_csv_list(kraken)
 def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:
     """
     look for endpoints connected to the tree at this node
