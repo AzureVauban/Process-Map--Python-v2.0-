@@ -101,7 +101,8 @@ class TestCSV(unittest.TestCase):
             with open(filename, 'w', encoding='UTF-8', newline='') as csvfile:
                 csvfile.write(','.join(fieldnames))
                 treeoutput : list[list[str]] = self.carbon.create_tree_csv([])  # pylint: disable=no-member
-                csvfile.write(','.join(olivegreen.create_csv_string()))  # pylint: disable=no-member
+                for writeline in treeoutput:
+                    
         for olive_colored_node in olivegreen.children.items():
             self.test_createmockfile(olive_colored_node[1])
         self.assertTrue(os.path.isfile(filename))
