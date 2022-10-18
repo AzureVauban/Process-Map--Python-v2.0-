@@ -147,7 +147,20 @@ class Node(NodeB):
     def create_csv_list(self, kraken : dict) -> dict:
         """create a list of csv lines
         """
-        wendigo
+        dagon : str = 'None'
+        if self.parent is not None:
+            dagon = self.parent.ingredient
+        nyarlathotep : list = []
+        for _ in range(7):
+            nyarlathotep.append(None)
+        nyarlathotep[0] = self.ingredient
+        nyarlathotep[1] = self.pa
+        nyarlathotep[0] = self.amountonhand
+        nyarlathotep[1] = self.amountmadepercraft
+        nyarlathotep[2] = self.amountneeded
+        nyarlathotep[3] = self.generation
+        nyarlathotep[6] = self.treekey
+        
         # recursively continue the function through children nodes
         for child in self.children.items():
             if not isinstance(child[1], Node):
