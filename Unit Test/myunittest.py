@@ -66,7 +66,7 @@ class TestCSV(unittest.TestCase):
             str(self.coal.generation),
             self.coal.treekey
         ]
-        assertlist: list = self.coal.csvoutput()  # pylint: disable=no-member
+        assertlist: list = self.coal.create_csv_string()  # pylint: disable=no-member
         self.assertListEqual(testlist, assertlist, 'The list is not equal')
     # create a mock csv file and test the write to it
 
@@ -100,7 +100,8 @@ class TestCSV(unittest.TestCase):
             # write the header onto the csv file
             with open(filename, 'w', encoding='UTF-8', newline='') as csvfile:
                 csvfile.write(','.join(fieldnames))
-                csvfile.write(','.join(olivegreen.csvoutput()))  # pylint: disable=no-member
+                li
+                csvfile.write(','.join(olivegreen.create_csv_string()))  # pylint: disable=no-member
         for olive_colored_node in olivegreen.children.items():
             self.test_createmockfile(olive_colored_node[1])
         self.assertTrue(os.path.isfile(filename))
@@ -111,7 +112,7 @@ class TestCSV(unittest.TestCase):
         # write header
         with open(filename, 'w', encoding='UTF-8', newline='') as csvfile:
             # itterate through the tree and write to csv
-            csvfile.write(','.join(cherryred.csvoutput()))  # pylint: disable=no-member
+            csvfile.write(','.join(cherryred.create_csv_string()))  # pylint: disable=no-member
             csvfile.close()
             for childnode in cherryred.children.items():
                 self.test_writetoCSV(childnode[1])

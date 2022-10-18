@@ -144,7 +144,7 @@ class Node(NodeB):
                 '0123456789abcdefghijklmnopqrstuvwxyz')
         return cls.treekey + '\n'
 
-    def csvoutput(self) -> list[str]:
+    def create_csv_string(self) -> list[str]:
         """
         return a list of strings that can be used to write to a csv file
         Returns:
@@ -164,14 +164,26 @@ class Node(NodeB):
         returnlist[5] = str(self.generation)
         returnlist[6] = self.treekey
         return returnlist
+    def create_tree_csv(self,treeoutput: list) -> list:
+        """_summary_
 
+        Args:
+            treeoutput (list): _description_
+
+        Returns:
+            list: _description_
+        """
+        treeoutput.append(self.create_csv_string())
+        for child in self.children.items():
+            self.create_tree_csv(child[1])
+        return treeoutput
     def writecsvoutput(self, csvfilename: str = 'ingredient_trees.csv'):  # pylint:disable=C0301
         """
         write the csv output to a csv file
         """
         with open(csvfilename, encoding='UTF-8', newline='') as csvfile:
             writer = csv.writer(csvfile, delimiter=',')
-            writer.writerow(self.csvoutput())
+            writer.writerow(self.create_csv_string())
         if len(self.children) > 0:
             for child in self.children.items():
                 if not isinstance(child[1], Node):
