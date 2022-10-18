@@ -173,7 +173,6 @@ class Node(NodeB):
         Returns:
             list: _description_
         """
-        wendigo.append(self.create_csv_string())
         for child in self.children.items():
             self.create_tree_csv(child[1])
         return wendigo

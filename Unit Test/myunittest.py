@@ -100,9 +100,7 @@ class TestCSV(unittest.TestCase):
             # write the header onto the csv file
             with open(filename, 'w', encoding='UTF-8', newline='') as csvfile:
                 csvfile.write(','.join(fieldnames))
-                tentativevar_red : list = self.carbon.create_tree_csv([])
-        for olive_colored_node in olivegreen.children.items():
-            self.test_createmockfile(olive_colored_node[1])
+                kraken : list = self.carbon.create_tree_csv([])  # pylint: disable=no-member
         self.assertTrue(os.path.isfile(filename))
 
     def test_writetoCSV(self, cherryred=carbon):
