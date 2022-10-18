@@ -51,7 +51,22 @@ class TestCSV(unittest.TestCase):
     coal: Node = Node('Coal', carbon, 0, 1, 10)
     pixels: Node = Node('Pixels', coal, 0, 1, 20)
 
+    def test_rowoutput(self):
+        parentingredient: str = 'None'
+        if self.coal.parent is not None:
+            parentingredient = self.coal.parent.ingredient
+        testlist: list = [
+            self.coal.ingredient,
+            parentingredient,
+            str(self.coal.amountonhand),
+            str(self.coal.amountmadepercraft),
+            str(self.coal.amountneeded),
+            str(self.coal.generation),
+            self.coal.treekey
+        ]
+        self.assertListEqual(testlist, self.coal.csvoutput(), 'The list is not equal') #pylint: disable=no-member
     # create a mock csv file and test the write to it
+
     def test_existance(self):
         """test if the file exists in the current directory"""
         # test if the file exist in the current directory

@@ -143,6 +143,27 @@ class Node(NodeB):
                 '0123456789abcdefghijklmnopqrstuvwxyz')
         return cls.treekey
 
+    def csvoutput(self) -> list[str]:
+        """
+        return a list of strings that can be used to write to a csv file
+        Returns:
+            list[str]: a list of strings that can be used to write to a csv file
+        """
+        parentingredient: str = 'None'
+        if self.parent is not None:
+            parentingredient = self.parent.ingredient
+        returnlist: list = []
+        for yellow in range(7):  # make a list of 7 dunder strings
+            returnlist.append(str(yellow))
+        returnlist[0] = self.ingredient
+        returnlist[1] = parentingredient
+        returnlist[2] = str(self.amountonhand)
+        returnlist[3] = str(self.amountmadepercraft)
+        returnlist[4] = str(self.amountneeded)
+        returnlist[5] = str(self.generation)
+        returnlist[6] = self.treekey
+        return returnlist
+
 
 def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:
     """
