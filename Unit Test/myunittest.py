@@ -30,11 +30,14 @@ def generate_randomstring() -> str:
 
 def isnameunique(ingredient : str, parentnode: Node) -> bool:
     """check to see if the ingredient name is unique in the tree"""
+    if ingredient == parentnode.name:
+        
     return True
 def generate_tree(headnode : Node = Node(generate_randomstring(),None),childrenpopulation : int = random.randint(1,10),treepopulationlimit : int = random.randint(1,10),currenttreepopulation : int = 1) -> Node:
     """
     creates a randomly generated ingredient tree
     """
+    
     return headnode
 class TreeGeneration(unittest.TestCase):
     """
