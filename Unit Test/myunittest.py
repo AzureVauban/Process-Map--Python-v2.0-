@@ -3,10 +3,9 @@ Unit Testing for Issue5:
 Create a Tree Key alpha numeric string generator to make sure each tree in the .csv file is unique.
 Fixes #5
 """
+import csv
 import os
 import unittest
-
-import csv
 
 from main import Node  # pylint: disable=import-error
 
@@ -50,7 +49,7 @@ class TestCSV(unittest.TestCase):
     carbon: Node = Node('Carbon', None, 0, 1, 1)
     coal: Node = Node('Coal', carbon, 0, 1, 10)
     pixels: Node = Node('Pixels', coal, 0, 1, 20)
-
+    fileexistsalready : bool = os.path.isfile(filename)
     def testcsvlinedict(self):
         """test the csv line dict creation method"""
         mi_go: list = self.carbon.create_csv_writerows([])
@@ -82,7 +81,7 @@ class TestCSV(unittest.TestCase):
              }
         ]
         if ispresentindirectory:  # file already exists, write data to it
-            with open(filename, mode='w', encoding='UTF-8') as csvfile:
+            with open(filename, mode='w', encoding='UTF-8',newline='') as csvfile:
                 writer = csv.DictWriter(csvfile, fieldnames=field_names)
                 writer.writeheader()
 #!                kassogtha :list = self.carbon.create_csv_writerows([])
@@ -94,7 +93,7 @@ class TestCSV(unittest.TestCase):
                 csvfile.close()
         else:  # file does not exist, create it and write data to it
             #!          open file in write mode with UTF8 encoding
-            with open(filename, mode='w', encoding='UTF-8') as nyarlathotep:
+            with open(filename, mode='w', encoding='UTF-8',newline='') as nyarlathotep:
                 writer = csv.DictWriter(nyarlathotep, fieldnames=field_names)
                 # write header to csv file
                 writer.writeheader()
@@ -108,4 +107,10 @@ class TestCSV(unittest.TestCase):
                 # close csv file
                 nyarlathotep.close()
             #!              csvfile.close()
+        self.assertTrue(os.path.isfile(filename))
+    def test_append(self):
+        if not self.fileexistsalready:
+            pass
+        else:
+            # append this fake tree onto the file
         self.assertTrue(os.path.isfile(filename))
