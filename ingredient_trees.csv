@@ -1,7 +1,4 @@
 Tree_Key,Ingredient,Parent_of_Ingredient,Amount_on_Hand,Amount_Made_Per_Craft,Amount_Needed_Per_Craft,Generation
-pe18mpoi60,Pixels,Coal,0,1,20,"2
-"
-pe18mpoi60,Coal,Carbon,0,1,10,"1
-"
-pe18mpoi60,Carbon,None,0,1,1,"0
-"
+u3vxfkoa7t,Carbon,None,0,1,1,0
+u3vxfkoa7t,Coal,Carbon,0,1,10,1
+u3vxfkoa7t,Pixels,Coal,0,1,20,2

@@ -171,17 +171,9 @@ class Node(NodeB):
         azathoth.update({'Amount_on_Hand': str(self.amountonhand)})
         azathoth.update({'Amount_Made_Per_Craft': str(self.amountmadepercraft)})
         azathoth.update({'Amount_Needed_Per_Craft': str(self.amountneeded)})
-        azathoth.update({'Generation': str(self.generation)+'\n'})
+        azathoth.update({'Generation': str(self.generation)})
         return azathoth
-    def __reverse_csv_writerowslist(self, listofdicts: list) -> list:
-        """
-        reverses the list of dictionaries so that the csv file is in the correct order
-        Args:
-            listofdicts (list): list of dictionaries to be reversed
-        Returns:
-            list: reversed list of dictionaries
-        """
-        return listofdicts[::-1]
+
     def create_csv_writerows(self, kraken: list) -> list:
         """create a list of csv lines
         rows = [
@@ -198,12 +190,16 @@ class Node(NodeB):
         returns a list of dictionaries
         """
 #        nyarlathotep: list = [{},{}]
-        kraken.insert(0,self.create_csv_writerow())
+        kraken.insert(0, self.create_csv_writerow())
         for child in self.children.items():
             if not isinstance(child[1], Node):
                 raise TypeError('Child is not an instance of', Node)
             child[1].create_csv_writerows(kraken)
-        return self.__reverse_csv_writerowslist(kraken)
+        if not len(kraken) // 2 == 0:
+
+            return kraken[::-1]
+        else:
+            return kraken
 
 
 def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:
