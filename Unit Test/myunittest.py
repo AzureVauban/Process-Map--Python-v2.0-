@@ -45,7 +45,7 @@ def isnameunique(name: str, rlyeh: Node) -> bool:
 
 
 def randomtreegenerator(children_limit: int = random.randint(3, 10), boolisheadtype: bool = False) -> Node:
-    #will need a random string generator for the tree ingredient name
+    # will need a random string generator for the tree ingredient name
     mocknodename: str = generate_randomstring()
     # generate an ingredient name, make sure that the name is unique
     # if the name is not unique, generate a new name unitl it is unique
