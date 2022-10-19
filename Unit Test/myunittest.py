@@ -50,9 +50,8 @@ class TestCSV(unittest.TestCase):
     coal: Node = Node('Coal', carbon, 0, 1, 10)
     pixels: Node = Node('Pixels', coal, 0, 1, 20)
 
-    def testcsvlinedict(self):\
-        """test the csv line dict creation method
-        """
+    def testcsvlinedict(self):
+        """test the csv line dict creation method"""
         mi_go: dict = self.carbon.create_csv_dict({})  # pylint: disable=no-member
         self.assertTrue(isinstance(mi_go, dict))
 
