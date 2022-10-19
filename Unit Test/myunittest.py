@@ -82,7 +82,7 @@ class TestCSV(unittest.TestCase):
             }
         ]
         if ispresentindirectory:  # file already exists, write data to it
-            with open(filename, mode='w', encoding='UTF-8',newline='') as csvfile:
+            with open(filename, mode='w', encoding='UTF-8', newline='') as csvfile:
                 writer = csv.DictWriter(csvfile, fieldnames=field_names)
                 writer.writeheader()
 #!                kassogtha :list = self.carbon.create_csv_writerows([])
@@ -94,7 +94,7 @@ class TestCSV(unittest.TestCase):
                 csvfile.close()
         else:  # file does not exist, create it and write data to it
             #!          open file in write mode with UTF8 encoding
-            with open(filename, mode='w', encoding='UTF-8',newline='') as nyarlathotep:
+            with open(filename, mode='w', encoding='UTF-8', newline='') as nyarlathotep:
                 writer = csv.DictWriter(nyarlathotep, fieldnames=field_names)
                 # write header to csv file
                 writer.writeheader()
@@ -115,23 +115,23 @@ class TestCSV(unittest.TestCase):
         if not self.fileexistsalready:
             raise ValueError('The file does not exist in your current directory')
         else:
-            morphite          : Node = Node('Morphite', None, 0, 1, 1) # pylint: disable=invalid-name
-            irradiumbar       : Node = Node('Irradium Bar', morphite, 0, 1, 1) #pylint: disable=invalid-name
-            irradiumore       : Node = Node('Irradium Ore', irradiumbar, 0, 1, 2) #pylint: disable=invalid-name
-            pixels            : Node = Node('Pixels', irradiumore, 0, 1, 600)#pylint: disable=unused-variable
-            liquidprotocite   : Node = Node('Liquid Protocite', morphite, 0, 1, 1) #pylint: disable=invalid-name
-            liquidprotociteb  : Node = Node('Liquid Protocite B', liquidprotocite, 0, 2, 1)#pylint: disable=unused-variable
-            pus               : Node = Node('Pus', liquidprotocite, 0, 2, 1)#pylint: disable=invalid-name
-            blistersack       : Node = Node('Blister Sack', pus, 0, 1, 1)#pylint: disable=unused-variable
-            phasematter       : Node = Node('Phase Matter', morphite, 0, 1, 1)#pylint: disable=invalid-name
-            pixelsb           : Node = Node('Pixels B', phasematter, 0, 1, 150)#pylint: disable=unused-variable
-            sulphuricacid     : Node = Node('Sulphuric Acid', morphite, 0, 1, 2)#pylint: disable=invalid-name
-            whitespine        : Node = Node('Whitespine', sulphuricacid, 0, 2, 1) #pylint: disable=unused-variable
+            morphite          : Node = Node('Morphite', None, 0, 1,1)  # pylint: disable=invalid-name
+            irradiumbar       : Node = Node('Irradium Bar', morphite, 0, 1, 1)  # pylint: disable=invalid-name
+            irradiumore       : Node = Node('Irradium Ore', irradiumbar, 0, 1, 2)  # pylint: disable=invalid-name
+            pixels            : Node = Node('Pixels', irradiumore, 0, 1,600)  # pylint: disable=unused-variable
+            liquidprotocite   : Node = Node('Liquid Protocite', morphite, 0, 1, 1)  # pylint: disable=invalid-name
+            liquidprotociteb  : Node = Node('Liquid Protocite B', liquidprotocite, 0, 2, 1)  # pylint: disable=unused-variable
+            pus               : Node = Node('Pus', liquidprotocite, 0, 2,1)  # pylint: disable=invalid-name
+            blistersack       : Node = Node('Blister Sack', pus, 0, 1, 1)  # pylint: disable=unused-variable
+            phasematter       : Node = Node('Phase Matter', morphite, 0, 1, 1)  # pylint: disable=invalid-name
+            pixelsb           : Node = Node('Pixels B', phasematter,0, 1, 150)  # pylint: disable=unused-variable
+            sulphuricacid     : Node = Node('Sulphuric Acid', morphite, 0, 1, 2)  # pylint: disable=invalid-name
+            whitespine        : Node = Node('Whitespine', sulphuricacid, 0, 2, 1)  # pylint: disable=unused-variable
             # append this fake tree onto the file, not OVERWRITE it
-            with open(filename, mode='a', encoding='UTF-8',newline='') as yog_sothoth: #pylint: disable=invalid-name
+            with open(filename, mode='a', encoding='UTF-8', newline='') as yog_sothoth:  # pylint: disable=invalid-name
                 #? to append to the file, open in it mode='a'
-#!            aforgomon: list = morphite.create_csv_writerows([])
-#!                writer = csv.DictWriter(yog_sothoth, fieldnames=field_names).writerows(morphite.create_csv_writerows([])) #pylint: disable=line-too-long
+                #!            aforgomon: list = morphite.create_csv_writerows([])
+                #!                writer = csv.DictWriter(yog_sothoth, fieldnames=field_names).writerows(morphite.create_csv_writerows([])) #pylint: disable=line-too-long
                 writer = csv.DictWriter(yog_sothoth, fieldnames=field_names)
                 writer.writerows(morphite.create_csv_writerows([]))
 #!                if len(aforgomon) > 1:
