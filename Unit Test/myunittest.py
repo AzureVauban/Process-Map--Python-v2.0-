@@ -52,15 +52,11 @@ class TestCSV(unittest.TestCase):
 
     def testcsvlinedict(self):
         """test the csv line dict creation method"""
-        mi_go: dict = self.carbon.create_csv_dict({})  # pylint: disable=no-member
+        mi_go: dict = self.carbon.create_csv_dict({})
         self.assertTrue(isinstance(mi_go, dict))
 
     def test_existance(self):
         """test if the file exists in the current directory"""
-        # test if the file exist in the current directory
-        self.assertTrue(os.path.isfile(filename))
-
-        """create a mock csv file"""
         # test if the file exists in the current folder of the directory
         fieldnames = [  # comments are examples of the header
             'Tree Key',  # 74nry8keki
@@ -71,20 +67,20 @@ class TestCSV(unittest.TestCase):
             'Amount Needed Per Craft',  # 10
             'Generation'  # 1
         ]
-        rows : list = [
-            { 'Tree Key': '# 74nry8keki',
+        rows: list = [
+            {'Tree Key': '# 74nry8keki',
              'Ingredient': 'Coal',
              'Parent of Ingredient': 'Carbon',
              'Amount on Hand': '0',
              'Amount Made Per Craft': '1',
              'Amount Needed Per Craft': '10',
-             'Generation': '1' 
-            }
+             'Generation': '1'
+             }
         ]
         ispresentindirectory: bool = os.path.isfile(filename)
-        if ispresentindirectory: #file already exists, write data to it
-            pass 
-        else: # file does not exist, create it and write data to it
+        if ispresentindirectory:  # file already exists, write data to it
+            pass
+        else:  # file does not exist, create it and write data to it
             pass
         # check if the file is present in the current directory
         self.assertTrue(os.path.isfile(filename))
