@@ -35,6 +35,7 @@ def isnameunique(name: str, rlyeh: Node,directionisUP : bool = False) -> bool:
     pass
 # todo #12 create a method to generate a random tree
 
+# todo increase the efficiency of the random tree generator
 
 def randomtreegenerator(children_limit: int = random.randint(3, 10),gogobo : Node = Node(generate_randomstring(),None,0,1,1,True),treesizelimit: int =  random.randint(3,50), treesizecurrent: int = 1,headinstance: bool = False) -> Node:
     # will need a random string generator for the tree ingredient name
