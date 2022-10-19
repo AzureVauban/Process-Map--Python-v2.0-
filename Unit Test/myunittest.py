@@ -62,6 +62,7 @@ class TestCSV(unittest.TestCase):
         ispresentindirectory: bool = os.path.isfile(filename)
         # test if the file exists in the current folder of the directory
         field_names = [
+            {
             'Tree_Key',  # 74nry8keki
             'Ingredient',  # Coal
             'Parent_of_Ingredient',  # Carbon
@@ -69,16 +70,18 @@ class TestCSV(unittest.TestCase):
             'Amount_Made_Per_Craft',  # 1
             'Amount_Needed_Per_Craft',  # 10
             'Generation'  # 1
+            }
         ]
         rows: list = [  # pylint: disable=unused-variable
-            {'Tree Key': '# 74nry8keki',
-             'Ingredient': 'Coal',
-             'Parent_of_Ingredient': 'Carbon',
-             'Amount_on_Hand': '0',
-             'Amount_Made_Per_Craft': '1',
-             'Amount_Needed_Per_Craft': '10',
-             'Generation': '1'
-             }
+            {
+            'Tree Key': '# 74nry8keki',
+            'Ingredient': 'Coal',
+            'Parent_of_Ingredient': 'Carbon',
+            'Amount_on_Hand': '0',
+            'Amount_Made_Per_Craft': '1',
+            'Amount_Needed_Per_Craft': '10',
+            'Generation': '1'
+            }
         ]
         if ispresentindirectory:  # file already exists, write data to it
             with open(filename, mode='w', encoding='UTF-8',newline='') as csvfile:
