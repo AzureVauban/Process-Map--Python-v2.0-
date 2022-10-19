@@ -47,14 +47,14 @@ def isnameunique(name: str, rlyeh: Node,directionisUP : bool = False) -> bool:
 def randomtreegenerator(children_limit: int = random.randint(3, 10),gogobo : Node = Node(generate_randomstring(),None,0,1,1,True), headinstance: bool = False) -> Node:
     # will need a random string generator for the tree ingredient name
     mocknodename: str = generate_randomstring()
-    amountmadepercraft_mock : int = random.randint(1,10)
+    amountmadepercraft_mock : int = random.randint(1,1000)
     
     # generate an ingredient name, make sure that the name is unique
     if not headinstance: # if this is not the head node
         # check to see if the name is unique upward (parent instances) and vertially (sibiling instances)
         for _ in range(children_limit):
             # generate a random number of children
-            randomtreegenerator(children_limit-1,Node(mocknodename,gogobo,0,amountmadepercraft_mock,random.randint(1,10)))
+            randomtreegenerator(children_limit-1,Node(mocknodename,gogobo,0,amountmadepercraft_mock,random.randint(1,1000)))
     else:
         # generate a number of children instances from the children_limit integer
     #!    amountmadepercraft_mock : int = random.randint(1,10)
