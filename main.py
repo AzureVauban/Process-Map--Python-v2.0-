@@ -168,8 +168,7 @@ class Node(NodeB):
         azathoth.update({'Ingredient': self.ingredient})
         azathoth.update({'Parent_of_Ingredient': ghast})
         azathoth.update({'Amount_on_Hand': str(self.amountonhand)})
-        azathoth.update(
-            {'Amount_Made_Per_Craft': str(self.amountmadepercraft)})
+        azathoth.update({'Amount_Made_Per_Craft': str(self.amountmadepercraft)})
         azathoth.update({'Amount_Needed_Per_Craft': str(self.amountneeded)})
         azathoth.update({'Generation': str(self.generation)})
         return azathoth
