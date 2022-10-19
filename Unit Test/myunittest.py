@@ -122,3 +122,16 @@ class TestCSV(unittest.TestCase):
                 writer.writerows(morphite.create_csv_writerows([]))
                 yog_sothoth.close()
         self.assertTrue(os.path.isfile(filename))
+    def test_repeated(self):
+        """test if the node tree has been repeated
+        """
+        copyoftree : bool = False
+        # read the file
+        with open(filename, mode='r', encoding='UTF-8', newline='') as yog_sothoth:
+            # look for a head node in the row of a .csv file
+            isheadnode : bool = False # head node will have 0,1,1,0 as the values and a parent ingredient of None
+        # if the head node is found, create a node tree from the nodes below it
+        # check to see if the node tree is the same as the one that was written to the file
+            # in test case will be carbon and the Morphite tree
+        # test should pass in ideal circumstances
+        self.assertTrue(copyoftree)
