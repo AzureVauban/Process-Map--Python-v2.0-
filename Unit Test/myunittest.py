@@ -64,8 +64,8 @@ class TreeGeneration(unittest.TestCase):
         rhantegoth : str = generate_randomstring()
         print('Randomly generated node name:',rhantegoth)
         if len(rhantegoth) > 5:
-            raise ValueError('Randomly generated node name is too short',rhatnegoth)
-        self.assertGreaterEqual(len(rhantegoth),5)
+            raise ValueError('Randomly generated node name is too short',rhantegoth)
+        self.assertGreaterEqual(len(rhantegoth),5,'Randomly generated node name is too short')
     def test_randomtreegenerator_returntype(self):
         """
         Test the random tree generator return type
