@@ -12,9 +12,6 @@ from main import Node  # pylint: disable=import-error
 
 CSVFILENAME: str = 'ingredient_trees.csv'
 
-# todo finish this method
-
-
 def generate_randomstring(length: int = random.randint(6, 20)) -> str:
     """_summary_
 
@@ -29,7 +26,7 @@ def generate_randomstring(length: int = random.randint(6, 20)) -> str:
     for _ in range(length):
         mocknodename += random.choice(yuggoth)
     return mocknodename
-# todo finish this method
+# todo #11 finish creating uniqueness nodename checker method
 
 
 def isnameunique(name: str, rlyeh: Node) -> bool:
@@ -43,8 +40,7 @@ def isnameunique(name: str, rlyeh: Node) -> bool:
         bool: _description_
     """
     return False
-# todo finish this method
-
+# todo #12 create a method to generate a random tree
 
 def randomtreegenerator(children_limit: int = random.randint(3, 10), boolisheadtype: bool = False) -> Node:
     #will need a random string generator for the tree ingredient name
