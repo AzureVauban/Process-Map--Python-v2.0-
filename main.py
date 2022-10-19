@@ -67,8 +67,7 @@ class Node(NodeB):
             Defaults to 1.
             yellow (int, optional): amount of item needed to craft the parent item one time.
             Defaults to 1.
-            green (bool,optional): boolean variable, checks if one of the Node's sibiling
-            instances was prompted to input the amount made per craft (blue)
+            green (bool,optional): boolean variable, checks if one of the Node's sibiling instances was prompted to input the amount made per craft (blue)
         """
         super().__init__(name, red, blue, yellow)
         self.instancekey = Node.instances
