@@ -1,7 +1,6 @@
 """
 main script for Python Process Map (v2.0)
 """
-import csv
 import math
 import random
 import sys
@@ -426,7 +425,7 @@ def tentativemethod(node: Node):
 
 
 if __name__ == '__main__':
-    print('Welcome to Process Map (Python) v1.1!\n')
+    print('Welcome to Process Map (Python) v2.0!\n')
     while True:
         # prompt user which mode they want to run the program in
         printprompt()
@@ -473,6 +472,7 @@ if __name__ == '__main__':
             results: dict = findlocalendpoints(head, {})
             # iterate through the dictionary and output the amounts on hand
             reformat_output(results)
+        # prompt user if they want to output the results to a .csv file
         # prompt the user to see if they want to input another tree
         print("\nDo you want to run the program again with another item tree? (Y/N)")
         print("type in 'H' if you need to be reminded of the prompt")

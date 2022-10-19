@@ -1,28 +1,16 @@
 Tree_Key,Ingredient,Parent_of_Ingredient,Amount_on_Hand,Amount_Made_Per_Craft,Amount_Needed_Per_Craft,Generation
-ikxvqls888,Carbon,None,0,1,1,0
-ikxvqls888,Coal,Carbon,0,1,10,1
-ikxvqls888,Pixels,Coal,0,1,20,2
-01abgfeve0,Morphite,None,0,1,1,0
-01abgfeve0,Irradium Bar,Morphite,0,1,1,1
-01abgfeve0,Irradium Ore,Irradium Bar,0,1,2,2
-01abgfeve0,Pixels,Irradium Ore,0,1,600,3
-01abgfeve0,Liquid Protocite,Morphite,0,1,1,1
-01abgfeve0,Liquid Protocite B,Liquid Protocite,0,2,1,2
-01abgfeve0,Pus,Liquid Protocite,0,2,1,2
-01abgfeve0,Blister Sack,Pus,0,1,1,3
-01abgfeve0,Phase Matter,Morphite,0,1,1,1
-01abgfeve0,Pixels B,Phase Matter,0,1,150,2
-01abgfeve0,Sulphuric Acid,Morphite,0,1,2,1
-01abgfeve0,Whitespine,Sulphuric Acid,0,2,1,2
-rrdf8d26qn,Morphite,None,0,1,1,0
-rrdf8d26qn,Irradium Bar,Morphite,0,1,1,1
-rrdf8d26qn,Irradium Ore,Irradium Bar,0,1,2,2
-rrdf8d26qn,Pixels,Irradium Ore,0,1,600,3
-rrdf8d26qn,Liquid Protocite,Morphite,0,1,1,1
-rrdf8d26qn,Liquid Protocite B,Liquid Protocite,0,2,1,2
-rrdf8d26qn,Pus,Liquid Protocite,0,2,1,2
-rrdf8d26qn,Blister Sack,Pus,0,1,1,3
-rrdf8d26qn,Phase Matter,Morphite,0,1,1,1
-rrdf8d26qn,Pixels B,Phase Matter,0,1,150,2
-rrdf8d26qn,Sulphuric Acid,Morphite,0,1,2,1
-rrdf8d26qn,Whitespine,Sulphuric Acid,0,2,1,2
+pe2kmbzu4d,Carbon,None,0,1,1,0
+pe2kmbzu4d,Coal,Carbon,0,1,10,1
+pe2kmbzu4d,Pixels,Coal,0,1,20,2
+eb4k8k24ri,Morphite,None,0,1,1,0
+eb4k8k24ri,Irradium Bar,Morphite,0,1,1,1
+eb4k8k24ri,Irradium Ore,Irradium Bar,0,1,2,2
+eb4k8k24ri,Pixels,Irradium Ore,0,1,600,3
+eb4k8k24ri,Liquid Protocite,Morphite,0,1,1,1
+eb4k8k24ri,Liquid Protocite B,Liquid Protocite,0,2,1,2
+eb4k8k24ri,Pus,Liquid Protocite,0,2,1,2
+eb4k8k24ri,Blister Sack,Pus,0,1,1,3
+eb4k8k24ri,Phase Matter,Morphite,0,1,1,1
+eb4k8k24ri,Pixels B,Phase Matter,0,1,150,2
+eb4k8k24ri,Sulphuric Acid,Morphite,0,1,2,1
+eb4k8k24ri,Whitespine,Sulphuric Acid,0,2,1,2

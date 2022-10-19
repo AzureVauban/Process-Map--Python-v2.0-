@@ -12,7 +12,7 @@ from main import Node  # pylint: disable=import-error
 filename: str = 'ingredient_trees.csv'
 
 
-class keygeneration(unittest.TestCase):
+class keygeneration(unittest.TestCase): #pylint: disable=invalid-name
     """
     Unit Testing for Issue5
     """
@@ -110,8 +110,10 @@ class TestCSV(unittest.TestCase):
             #!              csvfile.close()
         self.assertTrue(os.path.isfile(filename))
     def test_append(self):
+        """test appending to the csv file when the file already exists
+        """
         if not self.fileexistsalready:
-            pass
+            raise ValueError('The file does not exist in your current directory')
         else:
             morphite          : Node = Node('Morphite', None, 0, 1, 1) # pylint: disable=invalid-name
             irradiumbar       : Node = Node('Irradium Bar', morphite, 0, 1, 1) #pylint: disable=invalid-name
@@ -129,7 +131,9 @@ class TestCSV(unittest.TestCase):
             with open(filename, mode='a', encoding='UTF-8',newline='') as yog_sothoth: #pylint: disable=invalid-name
                 #? to append to the file, open in it mode='a'
 #!            aforgomon: list = morphite.create_csv_writerows([])
-                writer = csv.DictWriter(yog_sothoth, fieldnames=field_names).writerows(morphite.create_csv_writerows([])) #pylint: disable=line-too-long
+#!                writer = csv.DictWriter(yog_sothoth, fieldnames=field_names).writerows(morphite.create_csv_writerows([])) #pylint: disable=line-too-long
+                writer = csv.DictWriter(yog_sothoth, fieldnames=field_names)
+                writer.writerows(morphite.create_csv_writerows([]))
 #!                if len(aforgomon) > 1:
 #!                    writer.writeheader()
                 yog_sothoth.close()
