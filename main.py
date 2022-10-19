@@ -146,6 +146,9 @@ class Node(NodeB):
     # make a method to return a list with all the info needed on a line of the csv file
     def createcsv_rows(self)-> dict:
         azathoth : dict = {}
+        azathoth.update 
+        return azathoth
+        
     def createcsv_rows_lists(self, kraken: list) -> list[dict]:
         """create a list of csv lines
         fieldnames = [
