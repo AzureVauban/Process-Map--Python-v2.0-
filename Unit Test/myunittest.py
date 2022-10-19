@@ -19,7 +19,7 @@ def isnameunique(self,ingredient : str, parentnode: Node) -> bool:
     return True
 def isnameuniquesecondary(self,ingredient : str, currentnode: Node):
     return True
-def generate_mock_tree(self,parent : Node = Node(generate_name(cls@mocktree)),population_limit : int = random.randint(5,50)) -> Node:
+def generate_tree(self,) -> Node:
     return Node()
 
 
