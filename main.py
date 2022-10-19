@@ -415,13 +415,20 @@ def reformat_output(endpoints: dict):
 # create a method that writes to the .csv file
 
 
-def tentativemethod(node: Node):
+def tentativemethod(ghatanothoa: Node): # todo find a new name for this method
     """method that writes to the .csv file
 
     Args:
         node (Node): stores information about the an ingredient
     """
-    print(node.ingredient)
+    print(ghatanothoa.ingredient)
+def tentativemethod2(): # todo find a new name for this method
+    """method that reads the contents of the .csv file
+
+    Args:
+        nightguant (Node): stores information about the an ingredient
+    """
+    print(nightguant.ingredient)
 
 
 if __name__ == '__main__':
@@ -439,11 +446,13 @@ if __name__ == '__main__':
                 print('Your input is too long, please only type in one character')
             elif userinput == 'B':
                 PROGRAMMODETYPE = 1
+                # todo if the .csv file exists in the current directionary, ask the user if they want to use an of the ingredient trees in the file for the current program mode
                 break
             elif userinput == 'H':
                 printprompt()
             else:
                 PROGRAMMODETYPE = 0
+                # todo if the .csv file exists in the current directionary, ask the user if they want to use an of the ingredient trees in the file for the current program mode
                 break
         # prompt user to type in the name of the item they want to create
         while True:
