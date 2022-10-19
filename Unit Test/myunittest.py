@@ -4,7 +4,6 @@ Create a Tree Key alpha numeric string generator to make sure each tree in the .
 Fixes #5
 """
 import csv
-from gzip import _OpenTextMode
 import os
 import unittest
 
@@ -57,7 +56,8 @@ class TestCSV(unittest.TestCase):
         self.assertTrue(isinstance(mi_go, dict))
 
     def test_existance(self):
-        """test if the file exists in the current directory"""
+        """test if the file exists in the current directory
+        """
         ispresentindirectory: bool = os.path.isfile(filename)
         # test if the file exists in the current folder of the directory
         fieldnames = [  # pylint: disable=unused-variable
@@ -82,14 +82,12 @@ class TestCSV(unittest.TestCase):
         if ispresentindirectory:  # file already exists, write data to it
             pass
         else:  # file does not exist, create it and write data to it
-            #open file in write mode with UTF8 encoding
-            with open(filename, 'w', encoding='UTF8') as csvfile:
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                #write header
-                writer.writeheader()
-#!                writer.writerows(rows)
-                #write rows using writedict method  
-                nyarlathotep: list = self.carbon.create_csv_rows({})
-                writer.writerows(nyarlathotep)
-        # check if the file is present in the current directory
+            #!          open file in write mode with UTF8 encoding
+            # write header to csv file
+            #!              writer.writerows(rows)
+            #!              nyarlathotep
+            # write rows to csv file
+            # close csv file
+            #!              csvfile.close()
+            pass
         self.assertTrue(os.path.isfile(filename))
