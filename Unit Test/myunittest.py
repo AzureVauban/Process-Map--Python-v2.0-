@@ -13,15 +13,6 @@ from main import Node, reversearithmetic  # pylint: disable=import-error
 
 CSVFILENAME: str = 'ingredient_trees.csv'
 
-def generate_name(cls,length : int = random.randint(5,10)) -> str:
-    return str(random.randint(0,9))
-def isnameunique(self,ingredient : str, parentnode: Node) -> bool:
-    return True
-def isnameuniquesecondary(self,ingredient : str, currentnode: Node):
-    return True
-def generate_tree(self,) -> Node:
-    return Node()
-
 
 class TreeGeneration(unittest.TestCase):
     """
