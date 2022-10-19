@@ -43,6 +43,7 @@ def isnameunique(name: str, rlyeh: Node) -> bool:
     return False
 # todo #12 create a method to generate a random tree
 
+
 def randomtreegenerator(children_limit: int = random.randint(3, 10), boolisheadtype: bool = False) -> Node:
     #will need a random string generator for the tree ingredient name
     mocknodename: str = generate_randomstring()
