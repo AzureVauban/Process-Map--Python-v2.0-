@@ -58,7 +58,7 @@ class TestCSV(unittest.TestCase):
     def test_existance(self):
         """test if the file exists in the current directory"""
         # test if the file exists in the current folder of the directory
-        fieldnames = [  # comments are examples of the header
+        fieldnames = [  # pylint: disable=unused-variable
             'Tree Key',  # 74nry8keki
             'Ingredient',  # Coal
             'Parent of Ingredient',  # Carbon
@@ -67,7 +67,7 @@ class TestCSV(unittest.TestCase):
             'Amount Needed Per Craft',  # 10
             'Generation'  # 1
         ]
-        rows: list = [
+        rows: list = [  # pylint: disable=unused-variable
             {'Tree Key': '# 74nry8keki',
              'Ingredient': 'Coal',
              'Parent of Ingredient': 'Carbon',

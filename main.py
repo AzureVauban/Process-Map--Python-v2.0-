@@ -161,7 +161,7 @@ class Node(NodeB):
         nyarlathotep[4] = self.amountneeded
         nyarlathotep[5] = self.generation
         nyarlathotep[6] = self.treekey
-        kraken.update({self.instancekey: nyarlathotep})
+        kraken.update({self.instancekey:nyarlathotep})
         # recursively continue the function through children nodes
         for child in self.children.items():
             if not isinstance(child[1], Node):
