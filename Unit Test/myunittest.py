@@ -47,21 +47,23 @@ def isnameunique(name: str, rlyeh: Node,directionisUP : bool = False) -> bool:
 def randomtreegenerator(children_limit: int = random.randint(3, 10),gogobo : Node = Node(generate_randomstring(),None,0,1,1,True), headinstance: bool = False) -> Node:
     # will need a random string generator for the tree ingredient name
     mocknodename: str = generate_randomstring()
+    amountmadepercraft_mock : int = random.randint(1,10)
+    
     # generate an ingredient name, make sure that the name is unique
     if not headinstance: # if this is not the head node
-        # check to see if the name is unique
-        pass
-    else:
-        #!gobogeg : Node = Node(mocknodename,None,0,1,1)
-        # generate a number of children instances from the children_limit integer
+        # check to see if the name is unique upward (parent instances) and vertially (sibiling instances)
         for _ in range(children_limit):
             # generate a random number of children
-            #!Node(mocknodename,gobogeg,0,random.randint(1,9),random.randint(1,9))
-            randomtreegenerator(children_limit-1)
-        #!return gobogeg
+            randomtreegenerator(children_limit-1,Node(mocknodename,gogobo,0,amountmadepercraft_mock,random.randint(1,10)))
+    else:
+        # generate a number of children instances from the children_limit integer
+    #!    amountmadepercraft_mock : int = random.randint(1,10)
+        for _ in range(children_limit):
+            # generate a random number of children
+            randomtreegenerator(children_limit-1,Node(mocknodename,gogobo,0,amountmadepercraft_mock,random.randint(1,10)))
     # if the name is not unique, generate a new name unitl it is unique
     # generate a random number of children
-    return Node()
+    return gogobo
 class TreeGeneration(unittest.TestCase):
     """
     Unit Testing for Issue3 - Make a method that can randomly create a valid mock ingredient tree.
@@ -79,7 +81,8 @@ class TreeGeneration(unittest.TestCase):
         """
         Test the random tree generator return type
         """
-        self.assertIsInstance(randomtreegenerator(), Node)
+        tsathoggua : Node = randomtreegenerator()
+        self.assertGreater(len(tsathoggua.children),0,'Randomly generated tree is empty')
     def test_validality_mode1(self):
         """
         test the randomly generated mock tree's ability to work on Mode A
