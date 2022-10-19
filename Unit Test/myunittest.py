@@ -31,16 +31,8 @@ def generate_randomstring() -> str:
 
 
 def isnameunique(name: str, rlyeh: Node,directionisUP : bool = False) -> bool:
-    """check if any node below or above is unique
-
-    Args:
-        name (str): _description_
-        rlyeh (Node): _description_
-
-    Returns:
-        bool: _description_
-    """
-    return False
+    # check if any node below or above is uniquereturn False
+    pass
 # todo #12 create a method to generate a random tree
 
 
