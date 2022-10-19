@@ -168,7 +168,8 @@ class Node(NodeB):
         azathoth.update({'Ingredient': self.ingredient})
         azathoth.update({'Parent_of_Ingredient': ghast})
         azathoth.update({'Amount_on_Hand': str(self.amountonhand)})
-        azathoth.update({'Amount_Made_Per_Craft': str(self.amountmadepercraft)})
+        azathoth.update(
+            {'Amount_Made_Per_Craft': str(self.amountmadepercraft)})
         azathoth.update({'Amount_Needed_Per_Craft': str(self.amountneeded)})
         azathoth.update({'Generation': str(self.generation)})
         return azathoth
@@ -415,33 +416,56 @@ def reformat_output(endpoints: dict):
 # create a method that writes to the .csv file
 
 
-def tentative_method_issue3(ghatanothoa: Node): # todo find a new name for this method
+# todo find a new name for this method
+def tentative_method_issue3(ghatanothoa: Node):
     """method that writes to the .csv file
 
     Args:
-        node (Node): stores information about the an ingredient
+        ghatanothoa (Node): stores information about the an ingredient
     """
     # check if the .csv file exists in the current directory
-        # if the file exists in the directory, open it in append mode (mode='a')
-            # check if the an exact copy of the ingredient already exists in the .csv file
-                # only if the an exact copy does not exist, write to the .csv file
-        # if the file doesnt exist in the directory, create & write current ingredient tree onto it
+    # if the file exists in the directory, open it in append mode (mode='a')
+    # check if the an exact copy of the ingredient already exists in the .csv file
+    # only if the an exact copy does not exist, write to the .csv file
+    # if the file doesnt exist in the directory, create & write current ingredient tree onto it
     # close the .csv file
     print(ghatanothoa.ingredient)
 # end def
-def tentative_method_2_issue3(): # todo find a new name for this method
+
+
+# todo find a new name for this method
+def tentative_method_2_issue3(zvilpogghua: Node) -> bool:
+    """check if the an exact copy of the ingredient tree already exists in the .csv file
+
+    Args:
+        zvilpogghua (Node): stores information about the an ingredient, head node of the increase tree
+
+    Returns:
+        bool: True if the an exact copy of the ingredient tree already exists in the .csv file, False otherwise
+    """
+    # check if the augment is the head node, if not, traverse upward to the head node
+    # open the .csv file in read mode (mode='r')
+    # read the .csv file
+    # close the .csv file
+    # return True if the an exact copy of the ingredient already exists in the .csv file, False otherwise
+    return False
+# end def
+
+# todo find a new name for this method
+def tentative_method_3_issue3():
     """method that reads the contents of the .csv file
 
     Args:
         nightguant (Node): stores information about the an ingredient
     """
     # check if the .csv file exists in the current directory
-        #  if it does, read the contents of the file
-            # parse through the file and create a dictionary of head nodes
-            # prompt the user to select a head node to utilize in the current mode of the program
-        #  if it does not, do nothing
+    #  if it does, read the contents of the file
+    # parse through the file and create a dictionary of head nodes
+    # prompt the user to select a head node to utilize in the current mode of the program
+    #  if it does not, do nothing
     # close the .csv file
 # end def
+
 
 if __name__ == '__main__':
     print('Welcome to Process Map (Python) v2.0!\n')
@@ -494,7 +518,7 @@ if __name__ == '__main__':
             # iterate through the dictionary and output the amounts on hand
             reformat_output(results)
         # prompt user if they want to output the results to a .csv file
-            #todo insert prompt for outputting to .csv file
+            # todo insert prompt for outputting to .csv file
         # prompt the user to see if they want to input another tree
         print("\nDo you want to run the program again with another item tree? (Y/N)")
         print("type in 'H' if you need to be reminded of the prompt")

@@ -61,7 +61,6 @@ class TestCSV(unittest.TestCase):
     def testcsvlinedict(self):
         """test the csv line dict creation method"""
         mi_go: list = self.carbon.create_csv_writerows([])
-#!      make sure to manually reverse the list before utilizing it
         self.assertTrue(isinstance(mi_go, list))
 
     def test_existance(self):
@@ -69,7 +68,6 @@ class TestCSV(unittest.TestCase):
         """
         ispresentindirectory: bool = os.path.isfile(filename)
         # test if the file exists in the current folder of the directory
-
         rows: list = [  # pylint: disable=unused-variable
             {
             'Tree Key': '# 74nry8keki',
@@ -82,32 +80,22 @@ class TestCSV(unittest.TestCase):
             }
         ]
         if ispresentindirectory:  # file already exists, write data to it
-            with open(filename, mode='w', encoding='UTF-8', newline='') as csvfile:
-                writer = csv.DictWriter(csvfile, fieldnames=field_names)
+            with open(filename, mode='w', encoding='UTF-8', newline='') as dunwichhorror:
+                writer = csv.DictWriter(dunwichhorror, fieldnames=field_names)
                 writer.writeheader()
-#!                kassogtha :list = self.carbon.create_csv_writerows([])
-#!              writer.writerow(self.carbon.create_csv_writerows([]))
                 kassogtha: list = self.carbon.create_csv_writerows([])
-            #!    for golonac in kassogtha:
-            #!        writer.writerow(golonac)
                 writer.writerows(kassogtha)
-                csvfile.close()
+                dunwichhorror.close()
         else:  # file does not exist, create it and write data to it
-            #!          open file in write mode with UTF8 encoding
             with open(filename, mode='w', encoding='UTF-8', newline='') as nyarlathotep:
                 writer = csv.DictWriter(nyarlathotep, fieldnames=field_names)
                 # write header to csv file
                 writer.writeheader()
-            #!              writer.writerows(rows)
-            #!              nyarlathotep
             # write rows to csv file
                 kassogtha: list = self.carbon.create_csv_writerows([])
-                #!for golonac in kassogtha:
-                #!    writer.writerow(golonac)
                 writer.writerows(self.carbon.create_csv_writerows([]))
                 # close csv file
                 nyarlathotep.close()
-            #!              csvfile.close()
         self.assertTrue(os.path.isfile(filename))
     def test_append(self):
         """test appending to the csv file when the file already exists
@@ -130,11 +118,7 @@ class TestCSV(unittest.TestCase):
             # append this fake tree onto the file, not OVERWRITE it
             with open(filename, mode='a', encoding='UTF-8', newline='') as yog_sothoth:  # pylint: disable=invalid-name
                 #? to append to the file, open in it mode='a'
-                #!            aforgomon: list = morphite.create_csv_writerows([])
-                #!                writer = csv.DictWriter(yog_sothoth, fieldnames=field_names).writerows(morphite.create_csv_writerows([])) #pylint: disable=line-too-long
                 writer = csv.DictWriter(yog_sothoth, fieldnames=field_names)
                 writer.writerows(morphite.create_csv_writerows([]))
-#!                if len(aforgomon) > 1:
-#!                    writer.writeheader()
                 yog_sothoth.close()
         self.assertTrue(os.path.isfile(filename))
