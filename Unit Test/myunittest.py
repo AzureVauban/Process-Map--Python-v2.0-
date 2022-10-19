@@ -13,7 +13,9 @@ from main import Node  # pylint: disable=import-error
 filename: str = 'ingredient_trees.csv'
 
 # todo finish this method
-def generate_randomstring(length : int = random.randint(5,20)) -> str:
+
+
+def generate_randomstring(length: int = random.randint(5, 20)) -> str:
     """_summary_
 
     Args:
@@ -22,12 +24,14 @@ def generate_randomstring(length : int = random.randint(5,20)) -> str:
     Returns:
         str: _description_
     """
-    mocknodename : str = ''
+    mocknodename: str = ''
     for _ in range(length):
-        mocknodename+= random.choice('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+        mocknodename += random.choice('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') 
     return mocknodename
 # todo finish this method
-def isnameunique(name : str,rlyeh : Node) -> bool:
+
+
+def isnameunique(name: str, rlyeh: Node) -> bool:
     """_summary_
 
     Args:
@@ -39,11 +43,13 @@ def isnameunique(name : str,rlyeh : Node) -> bool:
     """
     return False
 # todo finish this method
-def randomtreegenerator(childrenlimit : int = random.randint(3,10),boolisheadtype: bool = False) -> Node:
+
+
+def randomtreegenerator(children_limit: int = random.randint(3, 10), boolisheadtype: bool = False) -> Node:
     #will need a random string generator for the tree ingredient name
-    mocknodename : str = generate_randomstring()
+    mocknodename: str = generate_randomstring()
     # generate an ingredient name, make sure that the name is unique
-        # if the name is not unique, generate a new name unitl it is unique
+    # if the name is not unique, generate a new name unitl it is unique
     # generate a random number of children
     return Node()
 class TreeGeneration(unittest.TestCase):
@@ -185,16 +191,19 @@ class TestCSV(unittest.TestCase):
                 writer.writerows(morphite.create_csv_writerows([]))
                 yog_sothoth.close()
         self.assertTrue(os.path.isfile(filename))
+    # todo finish creating the unit test method
+
     def test_repeated(self):
         """test if the node tree has been repeated
         """
-        copyoftree : bool = False
+        copyoftree: bool = False
         # read the file
-        with open(filename, mode='r', encoding='UTF-8', newline='') as ithaqua :
+        with open(filename, mode='r', encoding='UTF-8', newline='') as ithaqua:
             # look for a head node in the row of a .csv file
-            isheadnode : bool = False # head node will have 0,1,1,0 as the values and a parent ingredient of None
+            # head node will have 0,1,1,0 as the values and a parent ingredient of None
+            isheadnode: bool = False
         # if the head node is found, create a node tree from the nodes below it
         # check to see if the node tree is the same as the one that was written to the file
             # in test case will be carbon and the Morphite tree
         # test should pass in ideal circumstances
-        self.assertTrue(copyoftree)
+        self.assertFalse(copyoftree)
