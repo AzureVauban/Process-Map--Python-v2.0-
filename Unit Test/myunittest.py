@@ -12,6 +12,7 @@ from main import Node  # pylint: disable=import-error
 
 CSVFILENAME: str = 'ingredient_trees.csv'
 
+
 def generate_randomstring(length: int = random.randint(6, 20)) -> str:
     """_summary_
 
