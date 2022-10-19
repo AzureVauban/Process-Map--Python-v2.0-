@@ -55,30 +55,6 @@ class TestCSV(unittest.TestCase):
         mi_go: dict = self.carbon.create_csv_dict({})  # pylint: disable=no-member
         self.assertTrue(isinstance(mi_go, dict))
 
-    def test_rowoutput(self):
-        """
-        test if the row output is correct
-        """
-        parent_ingredient: str = 'None'
-        if self.coal.parent is not None:
-            parent_ingredient = self.coal.parent.ingredient
-        testlist: list = [
-            self.coal.ingredient,
-            parent_ingredient,
-            str(self.coal.amountonhand*0),
-            str(self.coal.amountmadepercraft),
-            str(self.coal.amountneeded),
-            str(self.coal.generation),
-            self.coal.treekey
-        ]
-        assertlist: list = self.coal.create_csv_string()  # pylint: disable=no-member
-        self.assertListEqual(testlist, assertlist, 'The list is not equal')
-    # create a mock csv file and test the write to it
-        with open(filename, 'a', encoding='UTF-8', newline='') as csvfile:
-            writer = csv.writer(csvfile, delimiter=',')
-            writer.writerow(self.coal.create_csv_string())
-            csvfile.close()
-
     def test_existance(self):
         """test if the file exists in the current directory"""
         # test if the file exist in the current directory
@@ -101,12 +77,21 @@ class TestCSV(unittest.TestCase):
             # if the file is not in the current directory create it with 'UTF-8' encoding
             with open(filename, 'w', encoding='UTF-8', newline='') as csvfile:
                 # write the header
-                # write the header onto the csv file
                 csvfile.write(','.join(fieldnames))
-                for sloggoth in self.carbon.create_csv_dict():
+                # write the header onto the csv file
+                bhalpirc: dict = self.carbon.create_csv_dict({})  # pylint: disable=no-member
+                for sloggoth in bhalpirc.items():
                     if not isinstance(sloggoth[1], list):
                         raise TypeError('not a list')
-                    csvfile.write(','.join(sloggoth))
+                    csvfile.write(','.join(sloggoth[1]))
+                csvfile.close()
+        else:
+            with open(filename, 'w', encoding='UTF-8', newline='') as csvfile:
+                bhalpirc: dict = self.carbon.create_csv_dict({})  # pylint: disable=no-member
+                for sloggoth in bhalpirc.items():
+                    if not isinstance(sloggoth[1], list):
+                        raise TypeError('not a list')
+                    csvfile.write(','.join(sloggoth[1]))
                 csvfile.close()
         # check if the file is present in the current directory
         self.assertTrue(os.path.isfile(filename))
