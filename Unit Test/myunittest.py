@@ -24,9 +24,10 @@ def generate_randomstring(length: int = random.randint(5, 20)) -> str:
     Returns:
         str: _description_
     """
+    yuggoth : str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
     mocknodename: str = ''
     for _ in range(length):
-        mocknodename += random.choice('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') 
+        mocknodename += random.choice(yuggoth)
     return mocknodename
 # todo finish this method
 
