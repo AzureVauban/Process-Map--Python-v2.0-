@@ -17,13 +17,15 @@ class mocktree():
     """ingredient mock node instance tree
     """
     headnode : Node
-    def generate_name(self,length : int = random.randint(5,10)) -> str:
-        pass
-    def isnameunique(self,ingredient : str, node: Node) -> bool:
-        pass
-    def isnameuniquesecondary(self,ingredient : str, node : Node) -> bool:
-        pass
-
+    @classmethod
+    def generate_name(cls,length : int = random.randint(5,10)) -> str:
+        return str(random.randint(0,9))
+    def isnameunique(self,ingredient : str, parentnode: Node) -> bool:
+        return True
+    def isnameuniquesecondary(self,ingredient : str, currentnode: Node):
+        return True
+    def generate_mock_tree(self,parent : Node = Node(generate_name(Node,random.randint(5,10)),None)) -> Node:
+        return Node()
 
 
 class TreeGeneration(unittest.TestCase):
