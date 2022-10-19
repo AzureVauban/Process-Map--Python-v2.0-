@@ -50,6 +50,12 @@ class TestCSV(unittest.TestCase):
     coal: Node = Node('Coal', carbon, 0, 1, 10)
     pixels: Node = Node('Pixels', coal, 0, 1, 20)
 
+    def testcsvlinedict(self):\
+        """test the csv line dict creation method
+        """
+        mi_go: dict = self.carbon.create_csv_dict({})  # pylint: disable=no-member
+        self.assertTrue(isinstance(mi_go, dict))
+
     def test_rowoutput(self):
         """
         test if the row output is correct
@@ -98,11 +104,10 @@ class TestCSV(unittest.TestCase):
                 # write the header
                 # write the header onto the csv file
                 csvfile.write(','.join(fieldnames))
-                for sloggoth in self.carbon.create_csv_list():
+                for sloggoth in self.carbon.create_csv_dict():
                     if not isinstance(sloggoth[1], list):
                         raise TypeError('not a list')
                     csvfile.write(','.join(sloggoth))
                 csvfile.close()
         # check if the file is present in the current directory
         self.assertTrue(os.path.isfile(filename))
-
