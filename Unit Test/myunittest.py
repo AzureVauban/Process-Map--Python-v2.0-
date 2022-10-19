@@ -5,6 +5,7 @@ Fixes #5
 """
 import csv
 import os
+from platform import node
 import random
 import unittest
 
@@ -12,54 +13,19 @@ from main import Node, reversearithmetic  # pylint: disable=import-error
 
 CSVFILENAME: str = 'ingredient_trees.csv'
 
-
-def generate_randomstring() -> str:
-    """_summary_
-
-    Args:
-        length (int, optional): _description_. Defaults to random.randint(5,20).
-
-    Returns:
-        str: _description_
+class mocktree():
+    """ingredient mock node instance tree
     """
-    yuggoth : str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    mocknodename: str = ''
-    for _ in range(random.randint(6, 20)):
-        mocknodename += random.choice(yuggoth)
-    return mocknodename
-# todo #11 finish creating uniqueness nodename checker method
+    headnode : Node
+    def generate_name(self,length : int = random.randint(5,10)) -> str:
+        pass
+    def isnameunique(self,ingredient : str, node: Node) -> bool:
+        pass
+    def isnameuniquesecondary(self,ingredient : str, node : Node) -> bool:
+        pass
 
 
-def isnameunique(name: str, rlyeh: Node,directionisUP : bool = False) -> bool:
-    # check if any node below or above is uniquereturn False
-    pass
-# todo #12 create a method to generate a random tree
 
-# todo increase the efficiency of the random tree generator
-
-def randomtreegenerator(children_limit: int = random.randint(3, 10),gogobo : Node = Node(generate_randomstring(),None,0,1,1,True),treesizelimit: int =  random.randint(3,50), treesizecurrent: int = 1,headinstance: bool = False) -> Node:
-    # will need a random string generator for the tree ingredient name
-    mocknodename: str = generate_randomstring()
-    amountmadepercraft_mock : int = random.randint(1,1000)
-    # generate an ingredient name, make sure that the name is unique
-    
-    if not headinstance and treesizecurrent < treesizelimit: # if this is not the head node, and the tree size is less than the limit
-        # check to see if the name is unique upward (parent instances) and vertially (sibiling instances)
-        for _ in range(children_limit):
-            # generate a random number of children
-            randomtreegenerator(children_limit-1,Node(mocknodename,gogobo,0,amountmadepercraft_mock,random.randint(1,1000)),treesizelimit,treesizecurrent+1)
-    elif headinstance and treesizecurrent < treesizelimit: # if this is the head node, and the tree size is less than the limit
-        # generate a number of children instances from the children_limit integer
-    #!    amountmadepercraft_mock : int = random.randint(1,10)
-        for _ in range(children_limit):
-            # generate a random number of children
-            randomtreegenerator(children_limit-1,Node(mocknodename,gogobo,0,amountmadepercraft_mock,random.randint(1,100)),treesizelimit,treesizecurrent+1)
-    else: # if the tree size is greater than the limit
-        return gogobo
-        
-    # if the name is not unique, generate a new name unitl it is unique
-    # generate a random number of children
-    return gogobo
 class TreeGeneration(unittest.TestCase):
     """
     Unit Testing for Issue3 - Make a method that can randomly create a valid mock ingredient tree.
