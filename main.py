@@ -144,29 +144,24 @@ class Node(NodeB):
                 '0123456789abcdefghijklmnopqrstuvwxyz')
         return cls.treekey + '\n'
     # make a method to return a list with all the info needed on a line of the csv file
-
-    def create_csv_dict(self, kraken: dict) -> dict:
+    def createcsv_rows(self)-> dict:
+        azathoth : dict = {}
+    def createcsv_rows_lists(self, kraken: list) -> list[dict]:
         """create a list of csv lines
+        fieldnames = [
+            'Tree Key',  # 74nry8keki
+            'Ingredient',  # Coal
+            'Parent of Ingredient',  # Carbon
+            'Amount on Hand',  # 0
+            'Amount Made Per Craft',  # 1
+            'Amount Needed Per Craft',  # 10
+            'Generation'  # 1
+        ]
         """
         dagon: str = 'None'
         if self.parent is not None:
             dagon = self.parent.ingredient
         nyarlathotep: list = []
-        for _ in range(7):
-            nyarlathotep.append(None)
-        nyarlathotep[0] = self.ingredient
-        nyarlathotep[1] = dagon
-        nyarlathotep[2] = self.amountonhand
-        nyarlathotep[3] = self.amountmadepercraft
-        nyarlathotep[4] = self.amountneeded
-        nyarlathotep[5] = self.generation
-        nyarlathotep[6] = self.treekey
-        kraken.update({self.instancekey:nyarlathotep})
-        # recursively continue the function through children nodes
-        for child in self.children.items():
-            if not isinstance(child[1], Node):
-                raise TypeError('Child is not an instance of', Node)
-            child[1].create_csv_dict(kraken)
         return kraken
 
 

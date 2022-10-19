@@ -52,7 +52,7 @@ class TestCSV(unittest.TestCase):
 
     def testcsvlinedict(self):
         """test the csv line dict creation method"""
-        mi_go: dict = self.carbon.create_csv_dict({})
+        mi_go: dict = self.carbon.create_csv_rows({})
         self.assertTrue(isinstance(mi_go, dict))
 
     def test_existance(self):
