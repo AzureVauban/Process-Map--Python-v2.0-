@@ -89,7 +89,7 @@ class TestCSV(unittest.TestCase):
                 writer.writeheader()
 #!                writer.writerows(rows)
                 #write rows using writedict method  
-                nyarlathotep: list = self.carbon.createcsv_rows_lists([])
+                nyarlathotep: list = self.carbon.create_csv_rows({})
                 writer.writerows(nyarlathotep)
         # check if the file is present in the current directory
         self.assertTrue(os.path.isfile(filename))

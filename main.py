@@ -171,7 +171,7 @@ class Node(NodeB):
         azathoth.update({'Generation':self.generation})
         return azathoth
     
-    def createcsv_rows_lists(self, kraken: list) -> list[dict]:
+    def createcsv_rows_lists(self, kraken: list) -> list:
         """create a list of csv lines
         fieldnames = [
             'Tree Key',  # 74nry8keki
