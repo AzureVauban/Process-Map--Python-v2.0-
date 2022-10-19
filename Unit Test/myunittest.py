@@ -82,6 +82,7 @@ class TreeGeneration(unittest.TestCase):
         """
         test the randomly generated mock tree's ability to work on Mode A
         """
+        asser
         self.assertIsInstance(randomtreegenerator(), Node)
     def test_validality_mode2(self):
         """
