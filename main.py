@@ -451,10 +451,29 @@ def tentative_method_2_issue3(zvilpogghua: Node) -> bool:
     # return True if the an exact copy of the ingredient already exists in the .csv file, False otherwise
     return False
 # end def
+
+
 # todo find a new name for this method
 
-
 def tentative_method_3_issue3():
+    """creates a tree from a head node in the .csv file once its detected,
+    recursively links children nodes to their parent nodes
+
+    Args:
+        None
+    """
+    # open the .csv file in read mode (mode='r')
+    # read the .csv file
+    # close the .csv file
+    # create a head node
+    # recursively link children nodes to their parent nodes
+    # return the head node
+    return None
+# end def
+
+
+# todo find a new name for this method
+def tentative_method_4_issue3():
     """method that reads the contents of the .csv file
 
     Args:
