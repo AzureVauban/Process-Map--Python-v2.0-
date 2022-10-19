@@ -415,21 +415,33 @@ def reformat_output(endpoints: dict):
 # create a method that writes to the .csv file
 
 
-def tentativemethod(ghatanothoa: Node): # todo find a new name for this method
+def tentative_method_issue3(ghatanothoa: Node): # todo find a new name for this method
     """method that writes to the .csv file
 
     Args:
         node (Node): stores information about the an ingredient
     """
+    # check if the .csv file exists in the current directory
+        # if the file exists in the directory, open it in append mode (mode='a')
+            # check if the an exact copy of the ingredient already exists in the .csv file
+                # only if the an exact copy does not exist, write to the .csv file
+        # if the file doesnt exist in the directory, create & write current ingredient tree onto it
+    # close the .csv file
     print(ghatanothoa.ingredient)
-def tentativemethod2(): # todo find a new name for this method
+# end def
+def tentative_method_2_issue3(): # todo find a new name for this method
     """method that reads the contents of the .csv file
 
     Args:
         nightguant (Node): stores information about the an ingredient
     """
-    print(nightguant.ingredient)
-
+    # check if the .csv file exists in the current directory
+        #  if it does, read the contents of the file
+            # parse through the file and create a dictionary of head nodes
+            # prompt the user to select a head node to utilize in the current mode of the program
+        #  if it does not, do nothing
+    # close the .csv file
+# end def
 
 if __name__ == '__main__':
     print('Welcome to Process Map (Python) v2.0!\n')
