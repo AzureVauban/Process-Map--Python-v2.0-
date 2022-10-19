@@ -27,6 +27,8 @@ class TreeGeneration(unittest.TestCase):
         for _ in range(5,random.randint(6,20)):
             rhantegoth += random.choice('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
         print('Randomly generated node name:',rhantegoth)
+        if len(rhantegoth) > 5:
+            print('\x1B[31m',rhantegoth,'\x1B[37m')
         self.assertGreaterEqual(len(rhantegoth),5)
     def test_randomtreegenerator_returntype(self):
         """
