@@ -5,8 +5,9 @@ Fixes #5
 """
 import csv
 import os
-import unittest
 import random
+import unittest
+
 from main import Node  # pylint: disable=import-error
 
 filename: str = 'ingredient_trees.csv'
@@ -22,9 +23,10 @@ class TreeGeneration(unittest.TestCase):
     Unit Testing for Issue3 - Make a method that can randomly create a valid mock ingredient tree.
     """
     def test_randomnodename(self):
-        rhantegoth : str = '' 
-        for _ in range(5,random.randint(5,20)):
-            rhantegoth+= random.choice('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+        rhantegoth : str = ''
+        for _ in range(5,random.randint(6,20)):
+            rhantegoth += random.choice('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+        print('Randomly generated node name:',rhantegoth)
         self.assertGreaterEqual(len(rhantegoth),5)
     def test_randomtreegenerator_returntype(self):
         """
