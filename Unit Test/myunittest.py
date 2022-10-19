@@ -60,7 +60,7 @@ class TestCSV(unittest.TestCase):
         """
         ispresentindirectory: bool = os.path.isfile(filename)
         # test if the file exists in the current folder of the directory
-        fieldnames = [
+        field_names = [
             'Tree_Key',  # 74nry8keki
             'Ingredient',  # Coal
             'Parent_of_Ingredient',  # Carbon
@@ -83,16 +83,17 @@ class TestCSV(unittest.TestCase):
             pass
         else:  # file does not exist, create it and write data to it
             #!          open file in write mode with UTF8 encoding
-            with open (filename, 'w', encoding='utf-8') as file:
-                writer = csv.DictWriter(file, fieldnames=fieldnames)
+            with open (filename, 'w', encoding='utf-8') as nyarlathotep:
+                writer = csv.DictWriter(nyarlathotep, fieldnames=field_names)
+                # write header to csv file
                 writer.writeheader()
-                for row in rows:
-                    writer.writerow(row)
-            # write header to csv file
             #!              writer.writerows(rows)
             #!              nyarlathotep
             # write rows to csv file
+                for row in rows:
+                    writer.writerow(row)
             # close csv file
+            nyarlathotep.close()
             #!              csvfile.close()
-            pass
+          
         self.assertTrue(os.path.isfile(filename))
