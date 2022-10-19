@@ -142,7 +142,7 @@ class Node(NodeB):
         for _ in range(0, 10):
             cls.treekey += random.choice(
                 '0123456789abcdefghijklmnopqrstuvwxyz')
-        return cls.treekey + '\n'
+        return cls.treekey
     # make a method to return a list with all the info needed on a line of the csv file
 
     def create_csv_writerow(self) -> dict:
@@ -188,7 +188,7 @@ class Node(NodeB):
         returns a list of dictionaries
         """
 #        nyarlathotep: list = [{},{}]
-        kraken.append(self.create_csv_writerow())
+        kraken.insert(-1,self.create_csv_writerow())
         for child in self.children.items():
             if not isinstance(child[1], Node):
                 raise TypeError('Child is not an instance of', Node)
