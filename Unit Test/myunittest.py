@@ -128,6 +128,11 @@ class TestCSV(unittest.TestCase):
             pixelsb           : Node = Node('Pixels B', phasematter, 0, 1, 150)#pylint: disable=unused-variable
             sulphuricacid     : Node = Node('Sulphuric Acid', morphite, 0, 1, 2)#pylint: disable=invalid-name
             whitespine        : Node = Node('Whitespine', sulphuricacid, 0, 2, 1) #pylint: disable=unused-variable
-            with open(filename, mode='w', encoding='UTF-8',newline='') as nyarlathotep:
-                writer = csv.DictWriter(nyarlathotep, fieldnames=field_names)
+            with open(filename, mode='w', encoding='UTF-8',newline='') as yog_sothoth:
+                aforgomon: list = morphite.create_csv_writerows([])
+                writer = csv.DictWriter(yog_sothoth, fieldnames=aforgomon[0])
+                if len(aforgomon) > 1:
+                    writer.writeheader()
+                    writer.writerows(aforgomon[1:])
+                yog_sothoth.close()
         self.assertTrue(os.path.isfile(filename))
