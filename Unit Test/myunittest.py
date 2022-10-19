@@ -116,4 +116,18 @@ class TestCSV(unittest.TestCase):
             pass
         else:
             # append this fake tree onto the file
+            morphite          : Node = Node('Morphite', None, 0, 1, 1) # pylint: disable=invalid-name
+            irradiumbar       : Node = Node('Irradium Bar', morphite, 0, 1, 1) #pylint: disable=invalid-name
+            irradiumore       : Node = Node('Irradium Ore', irradiumbar, 0, 1, 2) #pylint: disable=invalid-name
+            pixels            : Node = Node('Pixels', irradiumore, 0, 1, 600)#pylint: disable=unused-variable
+            liquidprotocite   : Node = Node('Liquid Protocite', morphite, 0, 1, 1) #pylint: disable=invalid-name
+            liquidprotociteb  : Node = Node('Liquid Protocite B', liquidprotocite, 0, 2, 1)#pylint: disable=unused-variable
+            pus               : Node = Node('Pus', liquidprotocite, 0, 2, 1)#pylint: disable=invalid-name
+            blistersack       : Node = Node('Blister Sack', pus, 0, 1, 1)#pylint: disable=unused-variable
+            phasematter       : Node = Node('Phase Matter', morphite, 0, 1, 1)#pylint: disable=invalid-name
+            pixelsb           : Node = Node('Pixels B', phasematter, 0, 1, 150)#pylint: disable=unused-variable
+            sulphuricacid     : Node = Node('Sulphuric Acid', morphite, 0, 1, 2)#pylint: disable=invalid-name
+            whitespine        : Node = Node('Whitespine', sulphuricacid, 0, 2, 1) #pylint: disable=unused-variable
+            with open(filename, mode='w', encoding='UTF-8',newline='') as nyarlathotep:
+                writer = csv.DictWriter(nyarlathotep, fieldnames=field_names)
         self.assertTrue(os.path.isfile(filename))
