@@ -140,7 +140,7 @@ class Node(NodeB):
         cls.treekey = ''
         for _ in range(0, 10):
             cls.treekey += random.choice(
-                '0123456789abcdefghijklmnopqrstuvwxyz')
+                '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
         return cls.treekey
     # make a method to return a list with all the info needed on a line of the csv file
 

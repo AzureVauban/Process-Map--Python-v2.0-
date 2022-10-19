@@ -6,13 +6,42 @@ Fixes #5
 import csv
 import os
 import unittest
-
+import random
 from main import Node  # pylint: disable=import-error
 
 filename: str = 'ingredient_trees.csv'
 
-
-class keygeneration(unittest.TestCase): #pylint: disable=invalid-name
+def randomtreegenerator(childrenlimit : int = random.randint(3,10),boolisheadtype: bool = False) -> Node:
+    #will need a random string generator for the tree ingredient name
+    mocknodename : str = '' 
+    for _ in range(5,random.randint(5,20)):
+        mocknodename+= random.choice('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+    return Node()
+class TreeGeneration(unittest.TestCase):
+    """
+    Unit Testing for Issue3 - Make a method that can randomly create a valid mock ingredient tree.
+    """
+    def test_randomnodename(self):
+        rhantegoth : str = '' 
+        for _ in range(5,random.randint(5,20)):
+            rhantegoth+= random.choice('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+        self.assertGreaterEqual(len(rhantegoth),5)
+    def test_randomtreegenerator_returntype(self):
+        """
+        Test the random tree generator return type
+        """
+        self.assertIsInstance(randomtreegenerator(), Node)
+    def test_validality_mode1(self):
+        """
+        test the randomly generated mock tree's ability to work on Mode A
+        """
+        self.assertIsInstance(randomtreegenerator(), Node)
+    def test_validality_mode2(self):
+        """
+        test the randomly generated mock tree's ability to work on Mode B
+        """
+        self.assertIsInstance(randomtreegenerator(), Node)
+class KeyGeneration(unittest.TestCase):
     """
     Unit Testing for Issue5
     """
@@ -97,6 +126,7 @@ class TestCSV(unittest.TestCase):
                 # close csv file
                 nyarlathotep.close()
         self.assertTrue(os.path.isfile(filename))
+    
     def test_append(self):
         """test appending to the csv file when the file already exists
         """
@@ -127,7 +157,7 @@ class TestCSV(unittest.TestCase):
         """
         copyoftree : bool = False
         # read the file
-        with open(filename, mode='r', encoding='UTF-8', newline='') as yog_sothoth:
+        with open(filename, mode='r', encoding='UTF-8', newline='') as ithaqua :
             # look for a head node in the row of a .csv file
             isheadnode : bool = False # head node will have 0,1,1,0 as the values and a parent ingredient of None
         # if the head node is found, create a node tree from the nodes below it
