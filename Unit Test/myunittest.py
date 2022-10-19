@@ -58,6 +58,7 @@ class TestCSV(unittest.TestCase):
 
     def test_existance(self):
         """test if the file exists in the current directory"""
+        ispresentindirectory: bool = os.path.isfile(filename)
         # test if the file exists in the current folder of the directory
         fieldnames = [  # pylint: disable=unused-variable
             'Tree_Key',  # 74nry8keki
@@ -78,12 +79,11 @@ class TestCSV(unittest.TestCase):
              'Generation': '1'
              }
         ]
-        ispresentindirectory: bool = os.path.isfile(filename)
         if ispresentindirectory:  # file already exists, write data to it
             pass
         else:  # file does not exist, create it and write data to it
             #open file in write mode with UTF8 encoding
-            with open(filename, 'w', encoding='utf-8') as csvfile:
+            with open(filename, 'w', encoding='UTF8') as csvfile:
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
                 #write header
                 writer.writeheader()
