@@ -29,8 +29,18 @@ def generate_randomstring() -> str:
     return mocknodename
 
 def isnameunique(ingredient : str, parentnode: Node) -> bool:
-    """check to see if the ingredient name is unique in the tree"""
-    if ingredient == parentnode.name:
+    """
+    check to see if the ingredient name is unique in the tree
+    method red:
+    -   go to head node
+    -   traverse through the entire tree, while making a list of all ingredient names
+    -   parese through the list linearily (one by one) and check to see if the ingredient name is
+        the same as the ingredient
+    method green:
+    -   go to head node
+    -   traverse downward through the entire tree
+    -   only stop traversing if the ingredient name is the same as the ingredient
+    """
         
     return True
 def generate_tree(headnode : Node = Node(generate_randomstring(),None),childrenpopulation : int = random.randint(1,10),treepopulationlimit : int = random.randint(1,10),currenttreepopulation : int = 1) -> Node:
