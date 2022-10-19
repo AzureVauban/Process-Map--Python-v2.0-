@@ -13,7 +13,8 @@ Tree_Key,Ingredient,Parent_of_Ingredient,Amount_on_Hand,Amount_Made_Per_Craft,Am
 9Ta5tnR3qa,Phase Matter,Morphite,0,1,1,1
 9Ta5tnR3qa,Pixels B,Phase Matter,0,1,150,2
 9Ta5tnR3qa,Sulphuric Acid,Morphite,0,1,2,1
-9Ta5tnR3qa,Whitespine,Sulphuric Acid,0,2,1,28N5H1YRoRZ,Morphite,None,0,1,1,0
+9Ta5tnR3qa,Whitespine,Sulphuric Acid,0,2,1,
+28N5H1YRoRZ,Morphite,None,0,1,1,0
 8N5H1YRoRZ,Irradium Bar,Morphite,0,1,1,1
 8N5H1YRoRZ,Irradium Ore,Irradium Bar,0,1,2,2
 8N5H1YRoRZ,Pixels,Irradium Ore,0,1,600,3
