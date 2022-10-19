@@ -69,12 +69,15 @@ class TestCSV(unittest.TestCase):
         assertlist: list = self.coal.create_csv_string()  # pylint: disable=no-member
         self.assertListEqual(testlist, assertlist, 'The list is not equal')
     # create a mock csv file and test the write to it
+        with open(filename, 'a', encoding='UTF-8', newline='') as csvfile:
+            writer = csv.writer(csvfile, delimiter=',')
+            writer.writerow(self.coal.create_csv_string())
+            csvfile.close()
 
     def test_existance(self):
         """test if the file exists in the current directory"""
         # test if the file exist in the current directory
         self.assertTrue(os.path.isfile(filename))
-
 
         """create a mock csv file"""
         # test if the file exists in the current folder of the directory
@@ -95,24 +98,11 @@ class TestCSV(unittest.TestCase):
                 # write the header
                 # write the header onto the csv file
                 csvfile.write(','.join(fieldnames))
-                for 
-        else:  # if the csv file is already in the current directory, just write to it
-            # write the header onto the csv file
-            with open(filename, 'w', encoding='UTF-8', newline='') as csvfile:
-                csvfile.write(','.join(fieldnames))
-                kraken : dict = self.carbon.create_tree_csv({})  # pylint: disable=no-member
-                print(kraken)
+                for sloggoth in self.carbon.create_csv_list():
+                    if not isinstance(sloggoth[1], list):
+                        raise TypeError('not a list')
+                    csvfile.write(','.join(sloggoth))
+                csvfile.close()
+        # check if the file is present in the current directory
         self.assertTrue(os.path.isfile(filename))
 
-    def test_writetoCSV(self, cherryred=carbon):
-        """_summary_
-        """
-        # write header
-        with open(filename, 'w', encoding='UTF-8', newline='') as csvfile:
-            # itterate through the tree and write to csv
-            csvfile.write(','.join(cherryred.create_csv_string()))  # pylint: disable=no-member
-            csvfile.close()
-            for childnode in cherryred.children.items():
-                self.test_writetoCSV(childnode[1])
-        # check if the csv file is created
-        self.assertTrue(os.path.isfile(filename))
