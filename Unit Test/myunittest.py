@@ -90,8 +90,7 @@ class TestCSV(unittest.TestCase):
             #!              writer.writerows(rows)
             #!              nyarlathotep
             # write rows to csv file
-                for row in rows:
-                    writer.writerow(row)
+            writer.writerows(self.carbon.createcsv_rows_lists([]))
             # close csv file
             nyarlathotep.close()
             #!              csvfile.close()
