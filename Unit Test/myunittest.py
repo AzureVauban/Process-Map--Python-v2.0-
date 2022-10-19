@@ -44,22 +44,26 @@ def isnameunique(name: str, rlyeh: Node,directionisUP : bool = False) -> bool:
 # todo #12 create a method to generate a random tree
 
 
-def randomtreegenerator(children_limit: int = random.randint(3, 10),gogobo : Node = Node(generate_randomstring(),None,0,1,1,True), headinstance: bool = False) -> Node:
+def randomtreegenerator(children_limit: int = random.randint(3, 10),gogobo : Node = Node(generate_randomstring(),None,0,1,1,True),treesizelimit: int =  random.randint(3,50), treesizecurrent: int = 1,headinstance: bool = False) -> Node:
     # will need a random string generator for the tree ingredient name
     mocknodename: str = generate_randomstring()
     amountmadepercraft_mock : int = random.randint(1,1000)
     # generate an ingredient name, make sure that the name is unique
-    if not headinstance: # if this is not the head node
+    
+    if not headinstance and treesizecurrent < treesizelimit: # if this is not the head node, and the tree size is less than the limit
         # check to see if the name is unique upward (parent instances) and vertially (sibiling instances)
         for _ in range(children_limit):
             # generate a random number of children
-            randomtreegenerator(children_limit-1,Node(mocknodename,gogobo,0,amountmadepercraft_mock,random.randint(1,1000)))
-    else:
+            randomtreegenerator(children_limit-1,Node(mocknodename,gogobo,0,amountmadepercraft_mock,random.randint(1,1000)),treesizelimit,treesizecurrent+1)
+    elif headinstance and treesizecurrent < treesizelimit: # if this is the head node, and the tree size is less than the limit
         # generate a number of children instances from the children_limit integer
     #!    amountmadepercraft_mock : int = random.randint(1,10)
         for _ in range(children_limit):
             # generate a random number of children
-            randomtreegenerator(children_limit-1,Node(mocknodename,gogobo,0,amountmadepercraft_mock,random.randint(1,10)))
+            randomtreegenerator(children_limit-1,Node(mocknodename,gogobo,0,amountmadepercraft_mock,random.randint(1,100)),treesizelimit,treesizecurrent+1)
+    else: # if the tree size is greater than the limit
+        return gogobo
+        
     # if the name is not unique, generate a new name unitl it is unique
     # generate a random number of children
     return gogobo
@@ -199,7 +203,7 @@ class TestCSV(unittest.TestCase):
             with open(CSVFILENAME, mode='a', encoding='UTF-8', newline='') as yog_sothoth:  # pylint: disable=invalid-name
                 #? to append to the file, open in it mode='a'
                 writer = csv.DictWriter(yog_sothoth, fieldnames=field_names)
-                writer.writerows(morphite.create_csv_writerows([]))
+                #!writer.writerows(morphite.create_csv_writerows([]))
                 writer.writerows(randomtreegenerator().create_csv_writerows([]))
                 yog_sothoth.close()
         self.assertTrue(os.path.isfile(CSVFILENAME))
