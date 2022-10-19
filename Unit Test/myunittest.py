@@ -199,6 +199,7 @@ class TestCSV(unittest.TestCase):
                 writer = csv.DictWriter(yog_sothoth, fieldnames=field_names)
                 #!writer.writerows(morphite.create_csv_writerows([]))
                 vhurerc : Node = randomtreegenerator()
+                reversearithmetic(vhurerc,random.randint(17,2001))
                 writer.writerows(vhurerc.create_csv_writerows([]))
                 yog_sothoth.close()
         self.assertTrue(os.path.isfile(CSVFILENAME))
