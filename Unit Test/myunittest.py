@@ -4,6 +4,7 @@ Create a Tree Key alpha numeric string generator to make sure each tree in the .
 Fixes #5
 """
 import csv
+from gzip import _OpenTextMode
 import os
 import unittest
 
@@ -59,10 +60,10 @@ class TestCSV(unittest.TestCase):
         """test if the file exists in the current directory"""
         # test if the file exists in the current folder of the directory
         fieldnames = [  # pylint: disable=unused-variable
-            'Tree Key',  # 74nry8keki
+            'Tree_Key',  # 74nry8keki
             'Ingredient',  # Coal
-            'Parent of Ingredient',  # Carbon
-            'Amount on Hand',  # 0
+            'Parent_of_Ingredient',  # Carbon
+            'Amount_on_Hand',  # 0
             'Amount Made Per Craft',  # 1
             'Amount Needed Per Craft',  # 10
             'Generation'  # 1
@@ -70,10 +71,10 @@ class TestCSV(unittest.TestCase):
         rows: list = [  # pylint: disable=unused-variable
             {'Tree Key': '# 74nry8keki',
              'Ingredient': 'Coal',
-             'Parent of Ingredient': 'Carbon',
-             'Amount on Hand': '0',
-             'Amount Made Per Craft': '1',
-             'Amount Needed Per Craft': '10',
+             'Parent_of_Ingredient': 'Carbon',
+             'Amount_on_Hand': '0',
+             'Amount_Made_Per_Craft': '1',
+             'Amount_Needed_Per_Craft': '10',
              'Generation': '1'
              }
         ]
@@ -81,6 +82,14 @@ class TestCSV(unittest.TestCase):
         if ispresentindirectory:  # file already exists, write data to it
             pass
         else:  # file does not exist, create it and write data to it
-            pass
+            #open file in write mode with UTF8 encoding
+            with open(filename, 'w', encoding='utf-8') as csvfile:
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                #write header
+                writer.writeheader()
+#!                writer.writerows(rows)
+                #write rows using writedict method  
+                nyarlathotep: list = self.carbon.createcsv_rows_lists([])
+                writer.writerows(nyarlathotep)
         # check if the file is present in the current directory
         self.assertTrue(os.path.isfile(filename))

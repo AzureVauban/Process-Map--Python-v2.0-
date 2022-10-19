@@ -144,11 +144,33 @@ class Node(NodeB):
                 '0123456789abcdefghijklmnopqrstuvwxyz')
         return cls.treekey + '\n'
     # make a method to return a list with all the info needed on a line of the csv file
-    def createcsv_rows(self)-> dict:
+    def createcsv_row(self)-> dict:
+        """
+        fieldnames (examples) = [
+            'Tree Key',  # 74nry8keki
+            'Ingredient',  # Coal
+            'Parent of Ingredient',  # Carbon
+            'Amount on Hand',  # 0
+            'Amount Made Per Craft',  # 1
+            'Amount Needed Per Craft',  # 10
+            'Generation'  # 1
+        ]
+        Returns:
+            dict: dictionary of all the information needed to be stored in the .csv file
+        """
         azathoth : dict = {}
-        azathoth.update 
+        ghast : str = 'None'
+        if self.parent is not None:
+            ghast = self.parent.ingredient
+        azathoth.update({'Tree_Key':self.treekey})
+        azathoth.update({'Ingredient':self.ingredient})
+        azathoth.update({'Parent_of_Ingredient':ghast})
+        azathoth.update({'Amount_on_Hand':self.amountonhand})
+        azathoth.update({'Amount_Made_Per_Craft':self.amountmadepercraft})
+        azathoth.update({'Amount_Needed_Per_Craft':self.amountneeded})
+        azathoth.update({'Generation':self.generation})
         return azathoth
-        
+    
     def createcsv_rows_lists(self, kraken: list) -> list[dict]:
         """create a list of csv lines
         fieldnames = [
@@ -161,10 +183,11 @@ class Node(NodeB):
             'Generation'  # 1
         ]
         """
-        dagon: str = 'None'
-        if self.parent is not None:
-            dagon = self.parent.ingredient
-        nyarlathotep: list = []
+#        nyarlathotep: list = []
+        kraken.append(self.createcsv_row())
+        for child in self.children.items():
+            if not isinstance(child[1], Node):
+                raise TypeError('Child is not an instance of', Node)
         return kraken
 
 
