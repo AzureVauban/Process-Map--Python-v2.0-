@@ -173,7 +173,15 @@ class Node(NodeB):
         azathoth.update({'Amount_Needed_Per_Craft': str(self.amountneeded)})
         azathoth.update({'Generation': str(self.generation)+'\n'})
         return azathoth
-
+    def __reverse_csv_writerowslist(self, listofdicts: list) -> list:
+        """
+        reverses the list of dictionaries so that the csv file is in the correct order
+        Args:
+            listofdicts (list): list of dictionaries to be reversed
+        Returns:
+            list: reversed list of dictionaries
+        """
+        return listofdicts[::-1]
     def create_csv_writerows(self, kraken: list) -> list:
         """create a list of csv lines
         rows = [
@@ -195,7 +203,7 @@ class Node(NodeB):
             if not isinstance(child[1], Node):
                 raise TypeError('Child is not an instance of', Node)
             child[1].create_csv_writerows(kraken)
-        return kraken
+        return self.__reverse_csv_writerowslist(kraken)
 
 
 def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:

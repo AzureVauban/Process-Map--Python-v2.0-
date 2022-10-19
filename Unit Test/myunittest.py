@@ -54,19 +54,7 @@ class TestCSV(unittest.TestCase):
     def testcsvlinedict(self):
         """test the csv line dict creation method"""
         mi_go: list = self.carbon.create_csv_writerows([])
-
-        print('Unreversed:')
-        for ruby in mi_go:
-            print(ruby)
 #!      make sure to manually reverse the list before utilizing it
-        for red,ruby in enumerate(mi_go):
-            for green, emerald in enumerate(mi_go):
-                # swap elements of red and green
-                if red != green:
-                    mi_go[red], mi_go[green] = mi_go[green], mi_go[red]
-        print('Reversed:')
-        for ruby in mi_go:
-            print(ruby)
         self.assertTrue(isinstance(mi_go, list))
 
     def test_existance(self):
