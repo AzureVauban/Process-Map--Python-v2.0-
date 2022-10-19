@@ -12,20 +12,49 @@ from main import Node  # pylint: disable=import-error
 
 filename: str = 'ingredient_trees.csv'
 
+# todo finish this method
+def generate_randomstring(length : int = random.randint(5,20)) -> str:
+    """_summary_
+
+    Args:
+        length (int, optional): _description_. Defaults to random.randint(5,20).
+
+    Returns:
+        str: _description_
+    """
+    mocknodename : str = ''
+    for _ in range(length):
+        mocknodename+= random.choice('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+    return mocknodename
+# todo finish this method
+def isnameunique(name : str,rlyeh : Node) -> bool:
+    """_summary_
+
+    Args:
+        name (str): _description_
+        rlyeh (Node): _description_
+
+    Returns:
+        bool: _description_
+    """
+    return False
+# todo finish this method
 def randomtreegenerator(childrenlimit : int = random.randint(3,10),boolisheadtype: bool = False) -> Node:
     #will need a random string generator for the tree ingredient name
-    mocknodename : str = '' 
-    for _ in range(5,random.randint(5,20)):
-        mocknodename+= random.choice('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+    mocknodename : str = generate_randomstring()
+    # generate an ingredient name, make sure that the name is unique
+        # if the name is not unique, generate a new name unitl it is unique
+    # generate a random number of children
     return Node()
 class TreeGeneration(unittest.TestCase):
     """
     Unit Testing for Issue3 - Make a method that can randomly create a valid mock ingredient tree.
     """
     def test_randomnodename(self):
-        rhantegoth : str = ''
-        for _ in range(5,random.randint(6,20)):
-            rhantegoth += random.choice('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+        """
+        Test random node name generator
+        """
+        rhantegoth : str = generate_randomstring()
         print('Randomly generated node name:',rhantegoth)
         if len(rhantegoth) > 5:
             print('\x1B[31m',rhantegoth,'\x1B[37m')
