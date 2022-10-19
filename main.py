@@ -415,8 +415,9 @@ def reformat_output(endpoints: dict):
 
 # create a method that writes to the .csv file
 
-
 # todo find a new name for this method
+
+
 def tentative_method_issue3(ghatanothoa: Node):
     """method that writes to the .csv file
 
@@ -431,9 +432,9 @@ def tentative_method_issue3(ghatanothoa: Node):
     # close the .csv file
     print(ghatanothoa.ingredient)
 # end def
-
-
 # todo find a new name for this method
+
+
 def tentative_method_2_issue3(zvilpogghua: Node) -> bool:
     """check if the an exact copy of the ingredient tree already exists in the .csv file
 
@@ -450,8 +451,9 @@ def tentative_method_2_issue3(zvilpogghua: Node) -> bool:
     # return True if the an exact copy of the ingredient already exists in the .csv file, False otherwise
     return False
 # end def
-
 # todo find a new name for this method
+
+
 def tentative_method_3_issue3():
     """method that reads the contents of the .csv file
 
