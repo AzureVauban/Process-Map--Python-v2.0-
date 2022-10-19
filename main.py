@@ -148,6 +148,7 @@ class Node(NodeB):
     def create_csv_writerow(self) -> dict:
         """
         fieldnames (examples) = [
+            {
             'Tree Key',  # 74nry8keki
             'Ingredient',  # Coal
             'Parent of Ingredient',  # Carbon
@@ -155,6 +156,7 @@ class Node(NodeB):
             'Amount Made Per Craft',  # 1
             'Amount Needed Per Craft',  # 10
             'Generation'  # 1
+            }
         ]
         Returns:
             dict: dictionary of all the information needed to be stored in the .csv file
@@ -188,10 +190,11 @@ class Node(NodeB):
         returns a list of dictionaries
         """
 #        nyarlathotep: list = [{},{}]
-        kraken.insert(-1,self.create_csv_writerow())
+        kraken.insert(0,self.create_csv_writerow())
         for child in self.children.items():
             if not isinstance(child[1], Node):
                 raise TypeError('Child is not an instance of', Node)
+            child[1].create_csv_writerows(kraken)
         return kraken
 
 
