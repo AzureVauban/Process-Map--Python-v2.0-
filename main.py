@@ -145,7 +145,7 @@ class Node(NodeB):
         return cls.treekey + '\n'
     # make a method to return a list with all the info needed on a line of the csv file
 
-    def createcsv_row(self) -> dict:
+    def create_csv_writerow(self) -> dict:
         """
         fieldnames (examples) = [
             'Tree Key',  # 74nry8keki
@@ -172,7 +172,7 @@ class Node(NodeB):
         azathoth.update({'Generation': self.generation})
         return azathoth
 
-    def createcsv_rows_lists(self, kraken: list) -> list:
+    def create_csv_writerows(self, kraken: list) -> list:
         """create a list of csv lines
         fieldnames = [
             'Tree Key',  # 74nry8keki
@@ -185,7 +185,7 @@ class Node(NodeB):
         ]
         """
 #        nyarlathotep: list = []
-        kraken.append(self.createcsv_row())
+        kraken.append(self.create_csv_writerow())
         for child in self.children.items():
             if not isinstance(child[1], Node):
                 raise TypeError('Child is not an instance of', Node)
