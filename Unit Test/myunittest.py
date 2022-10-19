@@ -3,7 +3,7 @@ Unit Testing for Issue5:
 Create a Tree Key alpha numeric string generator to make sure each tree in the .csv file is unique.
 Fixes #5
 """
-import csv
+import pandas
 import os
 import unittest
 
@@ -81,7 +81,7 @@ class TestCSV(unittest.TestCase):
         ]
         if ispresentindirectory:  # file already exists, write data to it
             with open(filename, mode='w', encoding='UTF-8') as csvfile:
-                writer = csv.DictWriter(csvfile, fieldnames=field_names)
+                writer = pandas.csv.DictWriter(csvfile, fieldnames=field_names)
                 writer.writeheader()
 #!                kassogtha :list = self.carbon.create_csv_writerows([])
 #!              writer.writerow(self.carbon.create_csv_writerows([]))
@@ -92,7 +92,7 @@ class TestCSV(unittest.TestCase):
         else:  # file does not exist, create it and write data to it
             #!          open file in write mode with UTF8 encoding
             with open(filename, mode='w', encoding='UTF-8') as nyarlathotep:
-                writer = csv.DictWriter(nyarlathotep, fieldnames=field_names)
+                writer = pandas.csv.DictWriter(nyarlathotep, fieldnames=field_names)
                 # write header to csv file
                 writer.writeheader()
             #!              writer.writerows(rows)
