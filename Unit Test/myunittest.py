@@ -40,7 +40,15 @@ class keygeneration(unittest.TestCase):
 
         self.assertTrue(allkeysisunique, 'The keys are not unique')
 
-
+field_names = [
+            'Tree_Key',  # 74nry8keki
+            'Ingredient',  # Coal
+            'Parent_of_Ingredient',  # Carbon
+            'Amount_on_Hand',  # 0
+            'Amount_Made_Per_Craft',  # 1
+            'Amount_Needed_Per_Craft',  # 10
+            'Generation'  # 1
+        ]
 class TestCSV(unittest.TestCase):
     """
     create a mock csv file and test the write_to_csv
@@ -61,17 +69,7 @@ class TestCSV(unittest.TestCase):
         """
         ispresentindirectory: bool = os.path.isfile(filename)
         # test if the file exists in the current folder of the directory
-        field_names = [
-            {
-            'Tree_Key',  # 74nry8keki
-            'Ingredient',  # Coal
-            'Parent_of_Ingredient',  # Carbon
-            'Amount_on_Hand',  # 0
-            'Amount_Made_Per_Craft',  # 1
-            'Amount_Needed_Per_Craft',  # 10
-            'Generation'  # 1
-            }
-        ]
+
         rows: list = [  # pylint: disable=unused-variable
             {
             'Tree Key': '# 74nry8keki',
@@ -129,10 +127,10 @@ class TestCSV(unittest.TestCase):
             sulphuricacid     : Node = Node('Sulphuric Acid', morphite, 0, 1, 2)#pylint: disable=invalid-name
             whitespine        : Node = Node('Whitespine', sulphuricacid, 0, 2, 1) #pylint: disable=unused-variable
             with open(filename, mode='w', encoding='UTF-8',newline='') as yog_sothoth:
-                aforgomon: list = morphite.create_csv_writerows([])
-                writer = csv.DictWriter(yog_sothoth, fieldnames=aforgomon[0])
-                if len(aforgomon) > 1:
-                    writer.writeheader()
-                    writer.writerows(aforgomon[1:])
+#!            aforgomon: list = morphite.create_csv_writerows([])
+                writer = csv.DictWriter(yog_sothoth, fieldnames=field_names)
+#!                if len(aforgomon) > 1:
+#!                    writer.writeheader()
+                writer.writerows(morphite.create_csv_writerows([]))
                 yog_sothoth.close()
         self.assertTrue(os.path.isfile(filename))
