@@ -13,7 +13,7 @@ from main import Node  # pylint: disable=import-error
 CSVFILENAME: str = 'ingredient_trees.csv'
 
 
-def generate_randomstring(length: int = random.randint(6, 20)) -> str:
+def generate_randomstring() -> str:
     """_summary_
 
     Args:
@@ -24,7 +24,7 @@ def generate_randomstring(length: int = random.randint(6, 20)) -> str:
     """
     yuggoth : str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
     mocknodename: str = ''
-    for _ in range(length):
+    for _ in range(random.randint(6, 20)):
         mocknodename += random.choice(yuggoth)
     return mocknodename
 # todo #11 finish creating uniqueness nodename checker method
@@ -48,7 +48,6 @@ def randomtreegenerator(children_limit: int = random.randint(3, 10),gogobo : Nod
     # will need a random string generator for the tree ingredient name
     mocknodename: str = generate_randomstring()
     amountmadepercraft_mock : int = random.randint(1,1000)
-    
     # generate an ingredient name, make sure that the name is unique
     if not headinstance: # if this is not the head node
         # check to see if the name is unique upward (parent instances) and vertially (sibiling instances)
