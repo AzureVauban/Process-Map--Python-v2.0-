@@ -64,7 +64,7 @@ class TreeGeneration(unittest.TestCase):
         rhantegoth : str = generate_randomstring()
         print('Randomly generated node name:',rhantegoth)
         if len(rhantegoth) > 5:
-            print('\x1B[31m',rhantegoth,'\x1B[37m')
+            raise ValueError('Randomly generated node name is too short',rhatnegoth)
         self.assertGreaterEqual(len(rhantegoth),5)
     def test_randomtreegenerator_returntype(self):
         """
