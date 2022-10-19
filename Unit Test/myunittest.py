@@ -204,7 +204,8 @@ class TestCSV(unittest.TestCase):
                 #? to append to the file, open in it mode='a'
                 writer = csv.DictWriter(yog_sothoth, fieldnames=field_names)
                 #!writer.writerows(morphite.create_csv_writerows([]))
-                writer.writerows(randomtreegenerator().create_csv_writerows([]))
+                vhurerc : Node = randomtreegenerator()
+                writer.writerows(vhurerc.create_csv_writerows([]))
                 yog_sothoth.close()
         self.assertTrue(os.path.isfile(CSVFILENAME))
     # todo finish creating the unit test method
