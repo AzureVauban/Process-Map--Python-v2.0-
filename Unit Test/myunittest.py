@@ -3,9 +3,10 @@ Unit Testing for Issue5:
 Create a Tree Key alpha numeric string generator to make sure each tree in the .csv file is unique.
 Fixes #5
 """
-import pandas
 import os
 import unittest
+
+import pandas
 
 from main import Node  # pylint: disable=import-error
 
