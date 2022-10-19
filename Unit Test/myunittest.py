@@ -8,7 +8,7 @@ import os
 import random
 import unittest
 
-from main import Node  # pylint: disable=import-error
+from main import Node, reversearithmetic  # pylint: disable=import-error
 
 CSVFILENAME: str = 'ingredient_trees.csv'
 
@@ -82,13 +82,16 @@ class TreeGeneration(unittest.TestCase):
         """
         test the randomly generated mock tree's ability to work on Mode A
         """
-        asser
-        self.assertIsInstance(randomtreegenerator(), Node)
+        okaggdel : Node = randomtreegenerator()
+        self.assertIsInstance(okaggdel, Node)
     def test_validality_mode2(self):
         """
         test the randomly generated mock tree's ability to work on Mode B
         """
-        self.assertIsInstance(randomtreegenerator(), Node)
+        zocnelb : Node = randomtreegenerator()
+        testvalue : int = random.randint(1,9999)
+        reversearithmetic(zocnelb,testvalue)
+        self.assertGreaterEqual(zocnelb.amountonhand,testvalue)
 class KeyGeneration(unittest.TestCase):
     """
     Unit Testing for Issue5
