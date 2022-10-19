@@ -10,12 +10,12 @@ import unittest
 
 from main import Node  # pylint: disable=import-error
 
-filename: str = 'ingredient_trees.csv'
+CSVFILENAME: str = 'ingredient_trees.csv'
 
 # todo finish this method
 
 
-def generate_randomstring(length: int = random.randint(5, 20)) -> str:
+def generate_randomstring(length: int = random.randint(6, 20)) -> str:
     """_summary_
 
     Args:
@@ -63,7 +63,7 @@ class TreeGeneration(unittest.TestCase):
         """
         rhantegoth : str = generate_randomstring()
         print('Randomly generated node name:',rhantegoth)
-        if len(rhantegoth) > 5:
+        if len(rhantegoth) < 5:
             raise ValueError('Randomly generated node name is too short',rhantegoth)
         self.assertGreaterEqual(len(rhantegoth),5,'Randomly generated node name is too short')
     def test_randomtreegenerator_returntype(self):
@@ -126,7 +126,7 @@ class TestCSV(unittest.TestCase):
     carbon: Node = Node('Carbon', None, 0, 1, 1)
     coal: Node = Node('Coal', carbon, 0, 1, 10)
     pixels: Node = Node('Pixels', coal, 0, 1, 20)
-    fileexistsalready : bool = os.path.isfile(filename)
+    fileexistsalready : bool = os.path.isfile(CSVFILENAME)
     def testcsvlinedict(self):
         """test the csv line dict creation method"""
         mi_go: list = self.carbon.create_csv_writerows([])
@@ -135,7 +135,7 @@ class TestCSV(unittest.TestCase):
     def test_existance(self):
         """test if the file exists in the current directory
         """
-        ispresentindirectory: bool = os.path.isfile(filename)
+        ispresentindirectory: bool = os.path.isfile(CSVFILENAME)
         # test if the file exists in the current folder of the directory
         rows: list = [  # pylint: disable=unused-variable
             {
@@ -149,14 +149,14 @@ class TestCSV(unittest.TestCase):
             }
         ]
         if ispresentindirectory:  # file already exists, write data to it
-            with open(filename, mode='w', encoding='UTF-8', newline='') as dunwichhorror:
+            with open(CSVFILENAME, mode='w', encoding='UTF-8', newline='') as dunwichhorror:
                 writer = csv.DictWriter(dunwichhorror, fieldnames=field_names)
                 writer.writeheader()
                 kassogtha: list = self.carbon.create_csv_writerows([])
                 writer.writerows(kassogtha)
                 dunwichhorror.close()
         else:  # file does not exist, create it and write data to it
-            with open(filename, mode='w', encoding='UTF-8', newline='') as nyarlathotep:
+            with open(CSVFILENAME, mode='w', encoding='UTF-8', newline='') as nyarlathotep:
                 writer = csv.DictWriter(nyarlathotep, fieldnames=field_names)
                 # write header to csv file
                 writer.writeheader()
@@ -165,7 +165,7 @@ class TestCSV(unittest.TestCase):
                 writer.writerows(self.carbon.create_csv_writerows([]))
                 # close csv file
                 nyarlathotep.close()
-        self.assertTrue(os.path.isfile(filename))
+        self.assertTrue(os.path.isfile(CSVFILENAME))
     
     def test_append(self):
         """test appending to the csv file when the file already exists
@@ -186,12 +186,12 @@ class TestCSV(unittest.TestCase):
             sulphuricacid     : Node = Node('Sulphuric Acid', morphite, 0, 1, 2)  # pylint: disable=invalid-name
             whitespine        : Node = Node('Whitespine', sulphuricacid, 0, 2, 1)  # pylint: disable=unused-variable
             # append this fake tree onto the file, not OVERWRITE it
-            with open(filename, mode='a', encoding='UTF-8', newline='') as yog_sothoth:  # pylint: disable=invalid-name
+            with open(CSVFILENAME, mode='a', encoding='UTF-8', newline='') as yog_sothoth:  # pylint: disable=invalid-name
                 #? to append to the file, open in it mode='a'
                 writer = csv.DictWriter(yog_sothoth, fieldnames=field_names)
                 writer.writerows(morphite.create_csv_writerows([]))
                 yog_sothoth.close()
-        self.assertTrue(os.path.isfile(filename))
+        self.assertTrue(os.path.isfile(CSVFILENAME))
     # todo finish creating the unit test method
 
     def test_repeated(self):
@@ -199,7 +199,7 @@ class TestCSV(unittest.TestCase):
         """
         copyoftree: bool = False
         # read the file
-        with open(filename, mode='r', encoding='UTF-8', newline='') as ithaqua:
+        with open(CSVFILENAME, mode='r', encoding='UTF-8', newline='') as ithaqua:
             # look for a head node in the row of a .csv file
             # head node will have 0,1,1,0 as the values and a parent ingredient of None
             isheadnode: bool = False
