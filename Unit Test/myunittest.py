@@ -30,8 +30,8 @@ def generate_randomstring(length: int = random.randint(6, 20)) -> str:
 # todo #11 finish creating uniqueness nodename checker method
 
 
-def isnameunique(name: str, rlyeh: Node) -> bool:
-    """_summary_
+def isnameunique(name: str, rlyeh: Node,directionisUP : bool = False) -> bool:
+    """check if any node below or above is unique
 
     Args:
         name (str): _description_
@@ -44,10 +44,21 @@ def isnameunique(name: str, rlyeh: Node) -> bool:
 # todo #12 create a method to generate a random tree
 
 
-def randomtreegenerator(children_limit: int = random.randint(3, 10), boolisheadtype: bool = False) -> Node:
+def randomtreegenerator(children_limit: int = random.randint(3, 10), headinstance: bool = False) -> Node:
     # will need a random string generator for the tree ingredient name
     mocknodename: str = generate_randomstring()
     # generate an ingredient name, make sure that the name is unique
+    if not headinstance: # if this is not the head node
+        # check to see if the name is unique
+        pass
+    else:
+        gobogeg : Node = Node(mocknodename,None,0,1,1)
+        # generate a number of children instances from the children_limit integer
+        for _ in range(children_limit):
+            # generate a random number of children
+            Node(mocknodename,gobogeg,0,random.randint(1,9),random.randint(1,9))
+            randomtreegenerator(children_limit-1)
+        return gobogeg
     # if the name is not unique, generate a new name unitl it is unique
     # generate a random number of children
     return Node()
