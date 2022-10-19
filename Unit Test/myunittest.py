@@ -63,35 +63,28 @@ class TestCSV(unittest.TestCase):
         """create a mock csv file"""
         # test if the file exists in the current folder of the directory
         fieldnames = [  # comments are examples of the header
+            'Tree Key',  # 74nry8keki
             'Ingredient',  # Coal
             'Parent of Ingredient',  # Carbon
             'Amount on Hand',  # 0
             'Amount Made Per Craft',  # 1
             'Amount Needed Per Craft',  # 10
-            'Generation',  # 1
-            'Tree Key\n'  # 74nry8keki
+            'Generation'  # 1
+        ]
+        rows : list = [
+            { 'Tree Key': '# 74nry8keki',
+             'Ingredient': 'Coal',
+             'Parent of Ingredient': 'Carbon',
+             'Amount on Hand': '0',
+             'Amount Made Per Craft': '1',
+             'Amount Needed Per Craft': '10',
+             'Generation': '1' 
+            }
         ]
         ispresentindirectory: bool = os.path.isfile(filename)
-        # if the file is not in the current directory create it
-        if not ispresentindirectory:
-            # if the file is not in the current directory create it with 'UTF-8' encoding
-            with open(filename, 'w', encoding='UTF-8', newline='') as csvfile:
-                # write the header
-                csvfile.write(','.join(fieldnames))
-                # write the header onto the csv file
-                bhalpirc: dict = self.carbon.create_csv_dict({})  # pylint: disable=no-member
-                for sloggoth in bhalpirc.items():
-                    if not isinstance(sloggoth[1], list):
-                        raise TypeError('not a list')
-                    csvfile.write(','.join(sloggoth[1]))
-                csvfile.close()
-        else:
-            with open(filename, 'w', encoding='UTF-8', newline='') as csvfile:
-                bhalpirc: dict = self.carbon.create_csv_dict({})  # pylint: disable=no-member
-                for sloggoth in bhalpirc.items():
-                    if not isinstance(sloggoth[1], list):
-                        raise TypeError('not a list')
-                    csvfile.write(','.join(sloggoth[1]))
-                csvfile.close()
+        if ispresentindirectory: #file already exists, write data to it
+            pass 
+        else: # file does not exist, create it and write data to it
+            pass
         # check if the file is present in the current directory
         self.assertTrue(os.path.isfile(filename))
