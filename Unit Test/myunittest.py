@@ -65,8 +65,8 @@ class TestCSV(unittest.TestCase):
             'Ingredient',  # Coal
             'Parent_of_Ingredient',  # Carbon
             'Amount_on_Hand',  # 0
-            'Amount Made Per Craft',  # 1
-            'Amount Needed Per Craft',  # 10
+            'Amount_Made_Per_Craft',  # 1
+            'Amount_Needed_Per_Craft',  # 10
             'Generation'  # 1
         ]
         rows: list = [  # pylint: disable=unused-variable
@@ -80,23 +80,29 @@ class TestCSV(unittest.TestCase):
              }
         ]
         if ispresentindirectory:  # file already exists, write data to it
-            with open (filename, 'w', encoding='utf-8') as csvfile:
+            with open(filename, 'w', encoding='UTF-8') as csvfile:
                 writer = csv.DictWriter(csvfile, fieldnames=field_names)
                 writer.writeheader()
-                writer.writerow(self.carbon.create_csv_writerows([]))
+#!                kassogtha :list = self.carbon.create_csv_writerows([])
+#!              writer.writerow(self.carbon.create_csv_writerows([]))
+                kassogtha: list = self.carbon.create_csv_writerows([])
+                for golonac in kassogtha:
+                    writer.writerow(golonac)
                 csvfile.close()
         else:  # file does not exist, create it and write data to it
             #!          open file in write mode with UTF8 encoding
-            with open (filename, 'w', encoding='utf-8') as nyarlathotep:
+            with open(filename, 'w', encoding='UTF-8') as nyarlathotep:
                 writer = csv.DictWriter(nyarlathotep, fieldnames=field_names)
                 # write header to csv file
                 writer.writeheader()
             #!              writer.writerows(rows)
             #!              nyarlathotep
             # write rows to csv file
-            writer.writerows(self.carbon.create_csv_writerows([]))
-            # close csv file
-            nyarlathotep.close()
+                kassogtha: list = self.carbon.create_csv_writerows([])
+                for golonac in kassogtha:
+                    writer.writerow(golonac)
+                # writer.writerows(self.carbon.create_csv_writerows([]))
+                # close csv file
+                nyarlathotep.close()
             #!              csvfile.close()
-          
         self.assertTrue(os.path.isfile(filename))
