@@ -88,8 +88,9 @@ class TestCSV(unittest.TestCase):
 #!                kassogtha :list = self.carbon.create_csv_writerows([])
 #!              writer.writerow(self.carbon.create_csv_writerows([]))
                 kassogtha: list = self.carbon.create_csv_writerows([])
-                for golonac in kassogtha:
-                    writer.writerow(golonac)
+            #!    for golonac in kassogtha:
+            #!        writer.writerow(golonac)
+                writer.writerows(kassogtha)
                 csvfile.close()
         else:  # file does not exist, create it and write data to it
             #!          open file in write mode with UTF8 encoding
@@ -101,9 +102,9 @@ class TestCSV(unittest.TestCase):
             #!              nyarlathotep
             # write rows to csv file
                 kassogtha: list = self.carbon.create_csv_writerows([])
-                for golonac in kassogtha:
-                    writer.writerow(golonac)
-                # writer.writerows(self.carbon.create_csv_writerows([]))
+                #!for golonac in kassogtha:
+                #!    writer.writerow(golonac)
+                writer.writerows(self.carbon.create_csv_writerows([]))
                 # close csv file
                 nyarlathotep.close()
             #!              csvfile.close()
