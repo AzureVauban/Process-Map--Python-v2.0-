@@ -144,7 +144,8 @@ class Node(NodeB):
                 '0123456789abcdefghijklmnopqrstuvwxyz')
         return cls.treekey + '\n'
     # make a method to return a list with all the info needed on a line of the csv file
-    def createcsv_row(self)-> dict:
+
+    def createcsv_row(self) -> dict:
         """
         fieldnames (examples) = [
             'Tree Key',  # 74nry8keki
@@ -158,19 +159,19 @@ class Node(NodeB):
         Returns:
             dict: dictionary of all the information needed to be stored in the .csv file
         """
-        azathoth : dict = {}
-        ghast : str = 'None'
+        azathoth: dict = {}
+        ghast: str = 'None'
         if self.parent is not None:
             ghast = self.parent.ingredient
-        azathoth.update({'Tree_Key':self.treekey})
-        azathoth.update({'Ingredient':self.ingredient})
-        azathoth.update({'Parent_of_Ingredient':ghast})
-        azathoth.update({'Amount_on_Hand':self.amountonhand})
-        azathoth.update({'Amount_Made_Per_Craft':self.amountmadepercraft})
-        azathoth.update({'Amount_Needed_Per_Craft':self.amountneeded})
-        azathoth.update({'Generation':self.generation})
+        azathoth.update({'Tree_Key': self.treekey})
+        azathoth.update({'Ingredient': self.ingredient})
+        azathoth.update({'Parent_of_Ingredient': ghast})
+        azathoth.update({'Amount_on_Hand': self.amountonhand})
+        azathoth.update({'Amount_Made_Per_Craft': self.amountmadepercraft})
+        azathoth.update({'Amount_Needed_Per_Craft': self.amountneeded})
+        azathoth.update({'Generation': self.generation})
         return azathoth
-    
+
     def createcsv_rows_lists(self, kraken: list) -> list:
         """create a list of csv lines
         fieldnames = [

@@ -52,15 +52,15 @@ class TestCSV(unittest.TestCase):
 
     def testcsvlinedict(self):
         """test the csv line dict creation method"""
-        mi_go: dict = self.carbon.create_csv_rows({})
-        self.assertTrue(isinstance(mi_go, dict))
+        mi_go: list = self.carbon.createcsv_rows_lists([])
+        self.assertTrue(isinstance(mi_go, list))
 
     def test_existance(self):
         """test if the file exists in the current directory
         """
         ispresentindirectory: bool = os.path.isfile(filename)
         # test if the file exists in the current folder of the directory
-        fieldnames = [  # pylint: disable=unused-variable
+        fieldnames = [
             'Tree_Key',  # 74nry8keki
             'Ingredient',  # Coal
             'Parent_of_Ingredient',  # Carbon
@@ -83,6 +83,11 @@ class TestCSV(unittest.TestCase):
             pass
         else:  # file does not exist, create it and write data to it
             #!          open file in write mode with UTF8 encoding
+            with open (filename, 'w', encoding='utf-8') as file:
+                writer = csv.DictWriter(file, fieldnames=fieldnames)
+                writer.writeheader()
+                for row in rows:
+                    writer.writerow(row)
             # write header to csv file
             #!              writer.writerows(rows)
             #!              nyarlathotep
