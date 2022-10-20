@@ -21,14 +21,19 @@ class tentative_class_name():  # todo find a better name for this class of fake 
     # return the number of nodes generated in the tree
     tentative_name_intobject: int = 1
 
-    def generate_name(self) -> str:
+    def generate_name(self,lengthlimit: int = random.randint(10, 20)) -> str:
         """_summary_
 
         Returns:
             str: _description_
         """
         # create a random name as a string
-        return str(random.randint(0, 10))
+        yuggoth: str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        mocknodename: str = ''
+        for _ in range(random.randint(6, lengthlimit)):
+            mocknodename += random.choice(yuggoth)
+        return mocknodename
+        
 
     # todo find a better name for this
     def __verifyuniqueness(self, tentativename_stringobject: str, tentativename_nodeobject2: Node) -> bool:
