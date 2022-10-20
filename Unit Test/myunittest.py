@@ -60,7 +60,7 @@ class NodeTree():
         """
         childrenpopulation: int = 0
         if cur.parent is None:
-            childrenpopulation: int = populationlimit - 1
+            childrenpopulation: int = random.randint(1,round(populationlimit/2))
         else:
             childrenpopulation : int = len(cur.children)-1
         for _ in range(childrenpopulation):
