@@ -26,17 +26,17 @@ def generatename(lengthlimit: int = random.randint(10, 20)) -> str:
         mocknodename += random.choice(yuggoth)
     return mocknodename
 
-class nodetree():
-    """_summary_
+class NodeTree():
+    """
+    class for creating a mock ingredient tree of nodes for testing
     """
     canopynode : Node = Node()
-    # return the number of nodes generated in the tree
     population: int = 1
     def __verifyuniqueness(self, tentativename_stringobject: str, tentativename_nodeobject2: Node) -> bool:
-        """_summary_
+        """checks to see if the name is unique in the tree
 
         Returns:
-            bool: _description_
+            bool: returns true if the name is unique
         """
         # verify that the string generated is unique
         if tentativename_stringobject == tentativename_nodeobject2.ingredient:
@@ -46,40 +46,57 @@ class nodetree():
                 self.__verifyuniqueness(tentativename_stringobject, childnode[1])
         return True
 
-    def createtree(self,treepopulationlimit: int = random.randint(2, 50), headnode: Node = Node(generatename(), None)) -> Node:
-        """
-        creates a randomly generated ingredient tree
+    def createtree(self, treepopulationlimit: int = random.randint(2, 50), cur: Node = Node(generatename(), None)) -> Node:
+        """creates an ingredient tree with a population limit
+
+        Args:
+            treepopulationlimit (int, optional): the limit on how many nodes can be generated within the tree. Defaults to random.randint(2, 50).
+            cur (Node, optional): parent instance that gets populated with children instances. Defaults to Node(generatename(), None).
+
+        Returns:
+            Node: stores the starting instance of the tree
         """
         childrenpopulation: int = treepopulationlimit-1
         for _ in range(childrenpopulation):
             generated_random_name: str = generatename()
-            while not self.__verifyuniqueness(generated_random_name, headnode):
+            while not self.__verifyuniqueness(generated_random_name, cur):
                 generated_random_name: str = generatename()
-                self.__verifyuniqueness(generated_random_name, headnode)
-            Node(generatename(), headnode, 0,
+                self.__verifyuniqueness(generated_random_name, cur)
+            Node(generatename(), cur, 0,
                 random.randint(1, 1000), random.randint(1, 1000))
             self.population += 1
             if self.population > treepopulationlimit:
-                return headnode
-        for child in headnode.children.items():
+                return cur
+        for child in cur.children.items():
             self.createtree(treepopulationlimit-1, child[1])
-        return headnode
+        return cur
 
     def returningredients(self,cur: Node, storednames: list) -> list:
+        """create a list of all the ingredients in the tree through recursion
+
+        Args:
+            cur (Node): the current node instance
+            storednames (list): the list of ingredients
+
+        Returns:
+            list: the list of ingredients in the tree
+        """
         storednames.append(cur.ingredient)
         for child in cur.children.items():
             self.returningredients(child[1], storednames)
         return storednames
 
     def returngenerationleafletscount(self,node : Node,depth: int = 1,cur_counter : int = 0) -> int:
-        """_summary_
+        """returns the number of nodes at a given depth
 
         Args:
-            depth (int, optional): _description_. Defaults to 1.
+            node (Node): current node instance being used to traverse the tree
+            depth (int, optional): how far into the tree a given tree is. Defaults to 1.
+            cur_counter (int, optional): how much nodes have be found at a given depth. Defaults to 0.
 
         Returns:
-            int: _description_
-        """
+            int: how many nodes exist at a given depth within an instance of an ingredient tree
+        """        
         # returns the number of all the nodes at a given depth in the tree
         if node.generation == depth:
             cur_counter+=1
@@ -89,6 +106,11 @@ class nodetree():
         return cur_counter
 
     def __init__(self, max_population_size: int = random.randint(5,50)) -> None:
+        """constructor for the ingredient tree class
+
+        Args:
+            max_population_size (int, optional): max number of nodes to generate in the ingredient tree. Defaults to random.randint(5,50).
+        """
         self.canopynode = self.createtree(max_population_size)
 
 
@@ -98,7 +120,7 @@ class TreeGeneration(unittest.TestCase):
     Unit Testing for Issue3 - Make a method that can randomly create a valid mock ingredient tree.
     """
     testsize : int = random.randint(5, 50)
-    ugiorvoh : nodetree = nodetree()
+    ugiorvoh : NodeTree = NodeTree()
     def test_duplicatespresent(self):
         nameisunique : bool = True
         for redindex, red in enumerate(self.ugiorvoh.returningredients(self.ugiorvoh.canopynode, [])):
@@ -228,7 +250,7 @@ class TestwritingtoCSV(unittest.TestCase):
                 # ? to append to the file, open in it mode='a'
                 writer = csv.DictWriter(yog_sothoth, fieldnames=field_names)
                 # writer.writerows(morphite.create_csv_writerows([]))
-                vhurerc: Node = nodetree().canopynode
+                vhurerc: Node = NodeTree().canopynode
                 reversearithmetic(vhurerc, random.randint(17, 2001))
                 writer.writerows(vhurerc.create_csv_writerows([]))
                 yog_sothoth.close()
