@@ -32,31 +32,31 @@ class NodeTree():
     """
     canopynode : Node = Node()
     population: int = 1
-    def __verifyuniqueness(self, tentativename_stringobject: str, tentativename_nodeobject2: Node) -> bool:
+    def __verifyuniqueness(self, nodename: str, cur: Node) -> bool:
         """checks to see if the name is unique in the tree
 
         Returns:
             bool: returns true if the name is unique
         """
         # verify that the string generated is unique
-        if tentativename_stringobject == tentativename_nodeobject2.ingredient:
+        if nodename == cur.ingredient:
             return False
         else:
             for childnode in self.canopynode.children.items():
-                self.__verifyuniqueness(tentativename_stringobject, childnode[1])
+                self.__verifyuniqueness(nodename, childnode[1])
         return True
 
-    def createtree(self, treepopulationlimit: int = random.randint(2, 50), cur: Node = Node(generatename(), None)) -> Node:
+    def createtree(self, populationlimit: int = random.randint(2, 50), cur: Node = Node(generatename(), None)) -> Node:
         """creates an ingredient tree with a population limit
 
         Args:
-            treepopulationlimit (int, optional): the limit on how many nodes can be generated within the tree. Defaults to random.randint(2, 50).
+            populationlimit (int, optional): the limit on how many nodes can be generated within the tree. Defaults to random.randint(2, 50).
             cur (Node, optional): parent instance that gets populated with children instances. Defaults to Node(generatename(), None).
 
         Returns:
             Node: stores the starting instance of the tree
         """
-        childrenpopulation: int = treepopulationlimit-1
+        childrenpopulation: int = populationlimit-1
         for _ in range(childrenpopulation):
             generated_random_name: str = generatename()
             while not self.__verifyuniqueness(generated_random_name, cur):
@@ -65,10 +65,10 @@ class NodeTree():
             Node(generatename(), cur, 0,
                 random.randint(1, 1000), random.randint(1, 1000))
             self.population += 1
-            if self.population > treepopulationlimit:
+            if self.population > populationlimit:
                 return cur
         for child in cur.children.items():
-            self.createtree(treepopulationlimit-1, child[1])
+            self.createtree(populationlimit-1, child[1])
         return cur
 
     def returningredients(self,cur: Node, storednames: list) -> list:
@@ -122,12 +122,15 @@ class TreeGeneration(unittest.TestCase):
     testsize : int = random.randint(5, 50)
     ugiorvoh : NodeTree = NodeTree()
     def test_duplicatespresent(self):
+        """test that the ingredient names are all unique
+        """
         nameisunique : bool = True
         for redindex, red in enumerate(self.ugiorvoh.returningredients(self.ugiorvoh.canopynode, [])):
             for blueindex, blue in enumerate(self.ugiorvoh.returningredients(self.ugiorvoh.canopynode, [])):
                 if blue == red and redindex != blueindex:
                     nameisunique = False
-        self.assertTrue(nameisunique, "The generated tree contains duplicate names")
+        self.assertTrue(nameisunique)
+
     def test_generate_tree_population(self):
         """test that the size of the generated tree is equal to or greater than the population
         limit augment passed into the method
