@@ -6,6 +6,7 @@ Fixes #5
 import csv
 import os
 import random
+from time import sleep
 import unittest
 
 from main import Node, reversearithmetic  # pylint: disable=import-error
@@ -70,6 +71,7 @@ class TreeGeneration(unittest.TestCase):
         for _ in range(1000):
             assertstrings.append(generate_randomstring())
         for string in assertstrings:
+            #! print(string)
             self.assertGreaterEqual(len(string), 6)
 class KeyGeneration(unittest.TestCase):
     """
