@@ -12,7 +12,7 @@ from main import Node, reversearithmetic  # pylint: disable=import-error
 
 CSVFILENAME: str = 'ingredient_trees.csv'
 
-def generate_randomstring(length :int = random.randint(6,20)) -> str:
+def generate_randomstring(lengthlimit :int = random.randint(10,20)) -> str:
     """_summary_
 
     Args:
@@ -23,7 +23,7 @@ def generate_randomstring(length :int = random.randint(6,20)) -> str:
     """
     yuggoth : str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
     mocknodename: str = ''
-    for _ in range(length):
+    for _ in range(random.randint(6,lengthlimit)):
         mocknodename += random.choice(yuggoth)
     return mocknodename
 
@@ -52,10 +52,11 @@ def isnameunique(ingredient : str, nodeobject: Node,foundhead : bool = False) ->
                 isnameunique(ingredient,child,True)
     return True
 
-def generate_tree(treepopulationlimit : int = random.randint(2,50),headnode : Node = Node(generate_randomstring(),None),childrenpopulation : int = random.randint(1,10),currenttreepopulation : int = 1) -> Node:
+def generate_tree(treepopulationlimit : int = random.randint(2,50),headnode : Node = Node(generate_randomstring(),None),currenttreepopulation : int = 1) -> Node:
     """
     creates a randomly generated ingredient tree
     """
+    childrenpopulation : int = treepopulationlimit-1
     for _ in range(childrenpopulation):
         generated_random_name : str = generate_randomstring()
         while not isnameunique(generated_random_name,headnode):
@@ -66,8 +67,7 @@ def generate_tree(treepopulationlimit : int = random.randint(2,50),headnode : No
         if currenttreepopulation > treepopulationlimit:
             return headnode
     for child in headnode.children.items():
-#!        generate_tree(child[1],childrenpopulation-1,treepopulationlimit,currenttreepopulation)
-        generate_tree(treepopulationlimit,child[1],childrenpopulation-1,currenttreepopulation)
+        generate_tree(treepopulationlimit,child[1],currenttreepopulation)
     return headnode
 def count_population(nodeobject : Node, population : int = 0) -> int:
     """
