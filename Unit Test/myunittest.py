@@ -51,7 +51,7 @@ class tentative_class_name():  # todo find a better name for this class of fake 
                 self.__verifyuniqueness(tentativename_stringobject, childnode[1])
         return True
 
-    def createtree(self,treepopulationlimit: int = random.randint(2, 50), headnode: Node = Node(generatename(), None), currenttreepopulation: int = 1) -> Node:
+    def createtree(self,treepopulationlimit: int = random.randint(2, 50), headnode: Node = Node(generatename(), None)) -> Node:
         """
         creates a randomly generated ingredient tree
         """
@@ -63,11 +63,11 @@ class tentative_class_name():  # todo find a better name for this class of fake 
                 self.__verifyuniqueness(generated_random_name, headnode)
             Node(generatename(), headnode, 0,
                 random.randint(1, 1000), random.randint(1, 1000))
-            currenttreepopulation += 1
-            if currenttreepopulation > treepopulationlimit:
+            self.tentative_name_intobject += 1
+            if self.tentative_name_intobject > treepopulationlimit:
                 return headnode
         for child in headnode.children.items():
-            generate_tree(treepopulationlimit, child[1], currenttreepopulation)
+            generate_tree(treepopulationlimit, child[1], self.tentative_name_intobject)
         return headnode
 
     def returningredients(self) -> list[str]:
