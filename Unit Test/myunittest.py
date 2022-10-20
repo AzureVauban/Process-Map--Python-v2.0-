@@ -74,7 +74,7 @@ class NodeTree():
             if self.population > populationlimit:
                 return cur
         for child in cur.children.items():
-            self.createtree(populationlimit-1, child[1])
+            self.createtree(childrenpopulation, child[1])
         return cur
 
     def returningredients(self,cur: Node, storednames: list) -> list:
