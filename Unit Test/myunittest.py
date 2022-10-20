@@ -104,9 +104,9 @@ class TreeGeneration(unittest.TestCase):
         populationsize : int = random.randint(2,50)
         testnodetree : Node = generate_tree(treepopulationlimit=populationsize)
         debug_listofingredients : list = recursive_treeparse_listnames(testnodetree,[]) #pylint: disable=unused-variable
-        for red in debug_listofingredients:
-            for blue in debug_listofingredients:
-                if red == blue:
+        for redindex,red in enumerate(debug_listofingredients):
+            for blueindex,blue in enumerate(debug_listofingredients):
+                if red == blue and blueindex != redindex:
                     raise ValueError('duplicate ingredient name found')
         self.assertGreaterEqual(count_population(testnodetree,0),populationsize)
 class KeyGeneration(unittest.TestCase):
