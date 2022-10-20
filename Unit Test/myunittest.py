@@ -50,8 +50,10 @@ class NodeTree():
         """creates an ingredient tree with a population limit
 
         Args:
-            populationlimit (int, optional): the limit on how many nodes can be generated within the tree. Defaults to random.randint(2, 50).
-            cur (Node, optional): parent instance that gets populated with children instances. Defaults to Node(generatename(), None).
+            populationlimit (int, optional): the limit on how many nodes can be generated within the
+            tree. Defaults to random.randint(2, 50).
+            cur (Node, optional): parent instance that gets populated with children instances.
+            Defaults to Node(generatename(), None).
 
         Returns:
             Node: stores the starting instance of the tree
@@ -92,11 +94,12 @@ class NodeTree():
         Args:
             node (Node): current node instance being used to traverse the tree
             depth (int, optional): how far into the tree a given tree is. Defaults to 1.
-            cur_counter (int, optional): how much nodes have be found at a given depth. Defaults to 0.
+            cur_counter (int, optional): how much nodes have be found at a given depth.
+            Defaults to 0.
 
         Returns:
             int: how many nodes exist at a given depth within an instance of an ingredient tree
-        """        
+        """
         # returns the number of all the nodes at a given depth in the tree
         if node.generation == depth:
             cur_counter+=1
@@ -109,7 +112,8 @@ class NodeTree():
         """constructor for the ingredient tree class
 
         Args:
-            max_population_size (int, optional): max number of nodes to generate in the ingredient tree. Defaults to random.randint(5,50).
+            max_population_size (int, optional): max number of nodes to generate in the ingredient
+            tree. Defaults to random.randint(5,50).
         """
         self.canopynode = self.createtree(max_population_size)
 
