@@ -26,17 +26,12 @@ def generatename(lengthlimit: int = random.randint(10, 20)) -> str:
         mocknodename += random.choice(yuggoth)
     return mocknodename
 
-class tentative_class_name():  # todo find a better name for this class of fake ingredient nodes, name must be relating to plants
-    # todo make all test methods into a class
+class tentative_class_name():  
     """_summary_
     """
-    tentative_name_nodeobject: Node  # todo find a better name for this
+    tentative_name_nodeobject: Node  
     # return the number of nodes generated in the tree
     tentative_name_intobject: int = 1
-
-        
-
-    # todo find a better name for this
     def __verifyuniqueness(self, tentativename_stringobject: str, tentativename_nodeobject2: Node) -> bool:
         """_summary_
 
@@ -58,7 +53,7 @@ class tentative_class_name():  # todo find a better name for this class of fake 
         childrenpopulation: int = treepopulationlimit-1
         for _ in range(childrenpopulation):
             generated_random_name: str = generatename()
-            while not isnameunique(generated_random_name, headnode):
+            while not self.__verifyuniqueness(generated_random_name, headnode):
                 generated_random_name: str = generatename()
                 self.__verifyuniqueness(generated_random_name, headnode)
             Node(generatename(), headnode, 0,
@@ -67,19 +62,16 @@ class tentative_class_name():  # todo find a better name for this class of fake 
             if self.tentative_name_intobject > treepopulationlimit:
                 return headnode
         for child in headnode.children.items():
-            generate_tree(treepopulationlimit, child[1], self.tentative_name_intobject)
+            self.createtree(treepopulationlimit-1, child[1])
         return headnode
 
-    def returningredients(self) -> list[str]:
-        """_summary_
+    def returningredients(self,nodeobject: Node, storednames: list) -> list:
+        storednames.append(nodeobject.ingredient)
+        for child in nodeobject.children.items():
+            self.returningredients(child[1], storednames)
+        return storednames
 
-        Returns:
-            list[str]: _description_
-        """
-        # return the name of all the nodes as a list of strings
-        return [str(random.randint(0, 10))]
-
-    def returngenerationleafletscount(self, depth: int = 1) -> int:
+    def returngenerationleafletscount(self,startingnode : Node,depth: int = 1,cur_counter : int = 0) -> int:
         """_summary_
 
         Args:
@@ -89,76 +81,13 @@ class tentative_class_name():  # todo find a better name for this class of fake 
             int: _description_
         """
         # returns the number of all the nodes at a given depth in the tree
-        return 0
+        if startingnode.generation == depth:
+            cur_counter+=1
+        return cur_counter
 
-    # todo find constructor and find a name relating to the tree theme of the class for the augment variable
-    def __init__(self, max_population_size: int = 50) -> None:
-        self.tentative_name_head = self.createtree()
+    def __init__(self, max_population_size: int =random.randint(5,50)) -> None:
+        self.tentative_name_head = self.createtree(max_population_size)
 
-
-
-
-def isnameunique(ingredient: str, nodeobject: Node, foundhead: bool = False) -> bool:  # todo test this out
-    """
-    check to see if the ingredient name is unique in the tree
-    method red:
-    -   go to head node
-    -   traverse through the entire tree, while making a list of all ingredient names
-    -   parse through the list linearily (one by one) and check to see if the ingredient name is
-        the same as the ingredient.
-
-    method green:
-    -   go to head node
-    -   traverse downward through the entire tree
-    -   only stop traversing if the ingredient name is the same as the ingredient
-    """
-    if nodeobject.ingredient == ingredient:
-        return False
-    else:
-        if not foundhead:
-            while nodeobject.parent is not None:
-                nodeobject = nodeobject.parent
-        else:
-            for child in nodeobject.children:
-                isnameunique(ingredient, child, True)
-    return True
-
-
-def generate_tree(treepopulationlimit: int = random.randint(2, 50), headnode: Node = Node(generatename(), None), currenttreepopulation: int = 1) -> Node:
-    """
-    creates a randomly generated ingredient tree
-    """
-    childrenpopulation: int = treepopulationlimit-1
-    for _ in range(childrenpopulation):
-        generated_random_name: str = generate_randomstring()
-        while not isnameunique(generated_random_name, headnode):
-            generated_random_name: str = generate_randomstring()
-            isnameunique(generated_random_name, headnode)
-        Node(generate_randomstring(), headnode, 0,
-             random.randint(1, 1000), random.randint(1, 1000))
-        currenttreepopulation += 1
-        if currenttreepopulation > treepopulationlimit:
-            return headnode
-    for child in headnode.children.items():
-        generate_tree(treepopulationlimit, child[1], currenttreepopulation)
-    return headnode
-
-
-def count_population(nodeobject: Node, population: int = 0) -> int:
-    """
-    counts the number of nodes in a tree
-    """
-    population += 1
-    for child in nodeobject.children.items():
-        population = count_population(child[1], population)
-    return population
-
-
-def recursive_treeparse_listnames(nodeobject: Node, storednames: list) -> list:
-    storednames.append(nodeobject.ingredient)
-    for child in nodeobject.children.items():
-        recursive_treeparse_listnames(child[1], storednames)
-    return storednames
 
 
 class TreeGeneration(unittest.TestCase):
