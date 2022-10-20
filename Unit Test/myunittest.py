@@ -12,7 +12,7 @@ from main import Node, reversearithmetic  # pylint: disable=import-error
 
 CSVFILENAME: str = 'ingredient_trees.csv'
 
-def generate_randomstring() -> str:
+def generate_randomstring(length :int = random.randint(6,20)) -> str:
     """_summary_
 
     Args:
@@ -23,7 +23,7 @@ def generate_randomstring() -> str:
     """
     yuggoth : str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
     mocknodename: str = ''
-    for _ in range(random.randint(6, 20)):
+    for _ in range(length):
         mocknodename += random.choice(yuggoth)
     return mocknodename
 
@@ -66,19 +66,19 @@ class TreeGeneration(unittest.TestCase):
         """
         test to see if the random string generator is working
         """
-        self.assertGreaterEqual(len(generate_randomstring()), 6)
+        assertstring : str = generate_randomstring()
+        self.assertGreaterEqual(len(assertstring), 6)
 class KeyGeneration(unittest.TestCase):
     """
     Unit Testing for Issue5
-    """
-
-    def testkey(self):  # status : passed
+    """ 
+    def skiptestkey(self):  # status : passed
         """test key"""
         red: Node = Node()
         testkey: str = red.generate_treekey()  # pylint: disable=no-member
         self.assertTrue(isinstance(testkey, str))
 
-    def testkeyuniqueness(self):  # status : passed
+    def skiptestkeyuniqueness(self):  # status : passed
         """test the uniqueness of the key
         """
         allkeysisunique: bool = True
