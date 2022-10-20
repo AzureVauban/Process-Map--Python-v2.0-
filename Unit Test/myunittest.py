@@ -149,7 +149,7 @@ field_names = [
             'Amount_Needed_Per_Craft',  # 10
             'Generation'  # 1
         ]
-class TestCSV(unittest.TestCase):
+class TestwritingtoCSV(unittest.TestCase):
     """
     create a mock csv file and test the write_to_csv
     """
@@ -241,3 +241,6 @@ class TestCSV(unittest.TestCase):
             # in test case will be carbon and the Morphite tree
         # test should pass in ideal circumstances
         self.assertFalse(copyoftree)
+
+class TestreadingtoCSV(unittest.TestCase):
+    pass
