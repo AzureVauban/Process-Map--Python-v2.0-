@@ -96,19 +96,24 @@ class TreeGeneration(unittest.TestCase):
             assertstrings.append(generate_randomstring())
         for string in assertstrings:
             #! print(string)
-            self.assertGreaterEqual(len(string), 6)
-            
+            self.assertGreaterEqual(len(string), 6)            
     #!  def test_generate_tree(self):
         #!  self.assertreturn(generate_tree(),Node)
     def test_generate_tree_population(self):
+        """test that the size of the generated tree is equal to or greater than the population limit augment passed into the method
+
+        Raises:
+            ValueError: duplicate ingredient name on the same index has been found
+        """
         populationsize : int = random.randint(2,50)
         testnodetree : Node = generate_tree(treepopulationlimit=populationsize)
         debug_listofingredients : list = recursive_treeparse_listnames(testnodetree,[]) #pylint: disable=unused-variable
+        asserttreesize : int = count_population(testnodetree,0)
         for redindex,red in enumerate(debug_listofingredients):
             for blueindex,blue in enumerate(debug_listofingredients):
                 if red == blue and blueindex != redindex:
-                    raise ValueError('duplicate ingredient name found')
-        self.assertGreaterEqual(count_population(testnodetree,0),populationsize)
+                    raise ValueError('duplicate ingredient name on the same index has been found')
+        self.assertGreaterEqual(asserttreesize,populationsize)
 class KeyGeneration(unittest.TestCase):
     """
     Unit Testing for Issue5
