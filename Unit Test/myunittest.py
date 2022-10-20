@@ -47,8 +47,8 @@ class NodeTree():
                 self.__verifyuniqueness(nodename, childnode[1])
         return True
 
-    def createtree(self, populationlimit: int = random.randint(2, 100), cur: Node = Node(generatename(), None)) -> Node:
-        """creates an ingredient tree with a population limit
+    def createtree(self, populationlimit: int = random.randint(2, 100), cur: Node = Node(generatename(), None)) -> Node: #todo debug, all nodes are generation 1
+        """creates an ingredient tree with a population limit:
 
         Args:
             populationlimit (int, optional): the limit on how many nodes can be generated within the
