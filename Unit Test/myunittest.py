@@ -29,7 +29,7 @@ def generatename(lengthlimit: int = random.randint(10, 20)) -> str:
 class nodetree():
     """_summary_
     """
-    canopynode: Node
+    canopynode : Node = Node()
     # return the number of nodes generated in the tree
     population: int = 1
     def __verifyuniqueness(self, tentativename_stringobject: str, tentativename_nodeobject2: Node) -> bool:
@@ -88,8 +88,8 @@ class nodetree():
                 self.returngenerationleafletscount(childnode[1],depth,cur_counter)
         return cur_counter
 
-    def __init__(self, max_population_size: int =random.randint(5,50)) -> None:
-        self.tentative_name_head = self.createtree(max_population_size)
+    def __init__(self, max_population_size: int = random.randint(5,50)) -> None:
+        self.canopynode = self.createtree(max_population_size)
 
 
 
@@ -97,14 +97,21 @@ class TreeGeneration(unittest.TestCase):
     """
     Unit Testing for Issue3 - Make a method that can randomly create a valid mock ingredient tree.
     """
+    testsize : int = random.randint(5, 50)
+    ugiorvoh : nodetree = nodetree()
+    def test_duplicatespresent(self):
+        nameisunique : bool = True
+        for redindex, red in enumerate(self.ugiorvoh.returningredients(self.ugiorvoh.canopynode, [])):
+            for blueindex, blue in enumerate(self.ugiorvoh.returningredients(self.ugiorvoh.canopynode, [])):
+                if blue == red and redindex != blueindex:
+                    nameisunique = False
+        self.assertTrue(nameisunique, "The generated tree contains duplicate names")
     def test_generate_tree_population(self):
-        """test that the size of the generated tree is equal to or greater than the population 
+        """test that the size of the generated tree is equal to or greater than the population
         limit augment passed into the method
         """
-        testsize : int = random.randint(5, 50)
-        ugiorvoh : nodetree = nodetree(testsize)
-        assertvaluetest : int = ugiorvoh.population
-        self.assertGreaterEqual(assertvaluetest, testsize, "The size of the generated tree is less than the population limit augment passed into the method")
+        assertvaluetest : int = self.ugiorvoh.population
+        self.assertGreaterEqual(assertvaluetest, self.testsize, "The size of the generated tree is less than the population limit augment passed into the method")
 
 
 class KeyGeneration(unittest.TestCase):
@@ -204,36 +211,24 @@ class TestwritingtoCSV(unittest.TestCase):
             raise ValueError(
                 'The file does not exist in your current directory')
         else:
-            morphite: Node = Node('Morphite', None, 0, 1,
-                                  1)  # pylint: disable=invalid-name
-            irradiumbar: Node = Node(
-                'Irradium Bar', morphite, 0, 1, 1)  # pylint: disable=invalid-name
-            irradiumore: Node = Node(
-                'Irradium Ore', irradiumbar, 0, 1, 2)  # pylint: disable=invalid-name
-            pixels: Node = Node('Pixels', irradiumore, 0, 1,
-                                600)  # pylint: disable=unused-variable
-            liquidprotocite: Node = Node(
-                'Liquid Protocite', morphite, 0, 1, 1)  # pylint: disable=invalid-name
-            liquidprotociteb: Node = Node(
-                'Liquid Protocite B', liquidprotocite, 0, 2, 1)  # pylint: disable=unused-variable
-            pus: Node = Node('Pus', liquidprotocite, 0, 2,
-                             1)  # pylint: disable=invalid-name
-            blistersack: Node = Node(
-                'Blister Sack', pus, 0, 1, 1)  # pylint: disable=unused-variable
-            phasematter: Node = Node(
-                'Phase Matter', morphite, 0, 1, 1)  # pylint: disable=invalid-name
-            pixelsb: Node = Node('Pixels B', phasematter,
-                                 0, 1, 150)  # pylint: disable=unused-variable
-            sulphuricacid: Node = Node(
-                'Sulphuric Acid', morphite, 0, 1, 2)  # pylint: disable=invalid-name
-            whitespine: Node = Node(
-                'Whitespine', sulphuricacid, 0, 2, 1)  # pylint: disable=unused-variable
+            morphite: Node = Node('Morphite', None, 0, 1,1)  # pylint: disable=invalid-name
+            irradiumbar: Node = Node('Irradium Bar', morphite, 0, 1, 1)  # pylint: disable=invalid-name
+            irradiumore: Node = Node('Irradium Ore', irradiumbar, 0, 1, 2)  # pylint: disable=invalid-name
+            pixels: Node = Node('Pixels', irradiumore, 0, 1,600)  # pylint: disable=unused-variable
+            liquidprotocite: Node = Node('Liquid Protocite', morphite, 0, 1, 1)  # pylint: disable=invalid-name
+            liquidprotociteb: Node = Node('Liquid Protocite B', liquidprotocite, 0, 2, 1)  # pylint: disable=unused-variable
+            pus: Node = Node('Pus', liquidprotocite, 0, 2,1)  # pylint: disable=invalid-name
+            blistersack: Node = Node('Blister Sack', pus, 0, 1, 1)  # pylint: disable=unused-variable
+            phasematter: Node = Node('Phase Matter', morphite, 0, 1, 1)  # pylint: disable=invalid-name
+            pixelsb: Node = Node('Pixels B', phasematter,0, 1, 150)  # pylint: disable=unused-variable
+            sulphuricacid: Node = Node('Sulphuric Acid', morphite, 0, 1, 2)  # pylint: disable=invalid-name
+            whitespine: Node = Node('Whitespine', sulphuricacid, 0, 2, 1)  # pylint: disable=unused-variable
             # append this fake tree onto the file, not OVERWRITE it
             with open(CSVFILENAME, mode='a', encoding='UTF-8', newline='') as yog_sothoth:  # pylint: disable=invalid-name
                 # ? to append to the file, open in it mode='a'
                 writer = csv.DictWriter(yog_sothoth, fieldnames=field_names)
                 # writer.writerows(morphite.create_csv_writerows([]))
-                vhurerc: Node = 
+                vhurerc: Node = nodetree().canopynode
                 reversearithmetic(vhurerc, random.randint(17, 2001))
                 writer.writerows(vhurerc.create_csv_writerows([]))
                 yog_sothoth.close()

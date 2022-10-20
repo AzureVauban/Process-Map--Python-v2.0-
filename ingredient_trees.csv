@@ -1,1 +1,4 @@
 Tree_Key,Ingredient,Parent_of_Ingredient,Amount_on_Hand,Amount_Made_Per_Craft,Amount_Needed_Per_Craft,Generation
+Xn3lbfUp3n,Carbon,None,0,1,1,0
+Xn3lbfUp3n,Coal,Carbon,0,1,10,1
+Xn3lbfUp3n,Pixels,Coal,0,1,20,2
