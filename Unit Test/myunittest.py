@@ -78,6 +78,8 @@ def count_population(nodeobject : Node, population : int = 0) -> int:
     for child in nodeobject.children.items():
         population = count_population(child[1],population)
     return population
+def recursive_treeparse_listnames(nodeobject : Node,storednames : list) -> list:
+    pass
 class TreeGeneration(unittest.TestCase):
     """
     Unit Testing for Issue3 - Make a method that can randomly create a valid mock ingredient tree.
