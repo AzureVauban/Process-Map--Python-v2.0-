@@ -13,7 +13,7 @@ from main import Node, reversearithmetic  # pylint: disable=import-error
 CSVFILENAME: str = 'ingredient_trees.csv'
 
 
-class test_ingredienttree():  # todo find a better name for this class of fake ingredient nodes, name must be relating to plants
+class tentative_class_name():  # todo find a better name for this class of fake ingredient nodes, name must be relating to plants
     # todo make all test methods into a class
     """_summary_
     """
@@ -55,7 +55,7 @@ class test_ingredienttree():  # todo find a better name for this class of fake i
         # return the number of nodes generated in the tree
         return 0
 
-    def returnlistofngredients(self) -> list[str]:
+    def returningredients(self) -> list[str]:
         """_summary_
 
         Returns:
@@ -77,7 +77,7 @@ class test_ingredienttree():  # todo find a better name for this class of fake i
         return 0
 
     def __init__(self, max_population_size: int = 50) -> None: # todo find constructor and find a name relating to the tree theme of the class for the augment variable
-        self.canopynode = self.createtree()
+        self.tentative_name_head = self.createtree()
 
 def generate_randomstring(lengthlimit :int = random.randint(10,20)) -> str:
     """_summary_
