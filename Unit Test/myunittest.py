@@ -26,12 +26,12 @@ def generatename(lengthlimit: int = random.randint(10, 20)) -> str:
         mocknodename += random.choice(yuggoth)
     return mocknodename
 
-class tentative_class_name():  
+class nodetree():
     """_summary_
     """
-    tentative_name_nodeobject: Node  
+    canopynode: Node
     # return the number of nodes generated in the tree
-    tentative_name_intobject: int = 1
+    population: int = 1
     def __verifyuniqueness(self, tentativename_stringobject: str, tentativename_nodeobject2: Node) -> bool:
         """_summary_
 
@@ -42,7 +42,7 @@ class tentative_class_name():
         if tentativename_stringobject == tentativename_nodeobject2.ingredient:
             return False
         else:
-            for childnode in self.tentative_name_nodeobject.children.items():
+            for childnode in self.canopynode.children.items():
                 self.__verifyuniqueness(tentativename_stringobject, childnode[1])
         return True
 
@@ -58,20 +58,20 @@ class tentative_class_name():
                 self.__verifyuniqueness(generated_random_name, headnode)
             Node(generatename(), headnode, 0,
                 random.randint(1, 1000), random.randint(1, 1000))
-            self.tentative_name_intobject += 1
-            if self.tentative_name_intobject > treepopulationlimit:
+            self.population += 1
+            if self.population > treepopulationlimit:
                 return headnode
         for child in headnode.children.items():
             self.createtree(treepopulationlimit-1, child[1])
         return headnode
 
-    def returningredients(self,nodeobject: Node, storednames: list) -> list:
-        storednames.append(nodeobject.ingredient)
-        for child in nodeobject.children.items():
+    def returningredients(self,cur: Node, storednames: list) -> list:
+        storednames.append(cur.ingredient)
+        for child in cur.children.items():
             self.returningredients(child[1], storednames)
         return storednames
 
-    def returngenerationleafletscount(self,startingnode : Node,depth: int = 1,cur_counter : int = 0) -> int:
+    def returngenerationleafletscount(self,node : Node,depth: int = 1,cur_counter : int = 0) -> int:
         """_summary_
 
         Args:
@@ -81,8 +81,11 @@ class tentative_class_name():
             int: _description_
         """
         # returns the number of all the nodes at a given depth in the tree
-        if startingnode.generation == depth:
+        if node.generation == depth:
             cur_counter+=1
+        else:
+            for childnode in node.children.items():
+                self.returngenerationleafletscount(childnode[1],depth,cur_counter)
         return cur_counter
 
     def __init__(self, max_population_size: int =random.randint(5,50)) -> None:
@@ -94,35 +97,14 @@ class TreeGeneration(unittest.TestCase):
     """
     Unit Testing for Issue3 - Make a method that can randomly create a valid mock ingredient tree.
     """
-
-    def test_generate_randomstring(self):
-        """
-        test to see if the random string generator is working
-        """
-        assertstrings: list = []
-        for _ in range(1000):
-            assertstrings.append(generate_randomstring())
-        for string in assertstrings:
-
-            self.assertGreaterEqual(len(string), 6)
-
     def test_generate_tree_population(self):
-        """test that the size of the generated tree is equal to or greater than the population limit augment passed into the method
-
-        Raises:
-            ValueError: duplicate ingredient name on the same index has been found
+        """test that the size of the generated tree is equal to or greater than the population 
+        limit augment passed into the method
         """
-        populationsize: int = random.randint(2, 50)
-        testnodetree: Node = generate_tree(treepopulationlimit=populationsize)
-        debug_listofingredients: list = recursive_treeparse_listnames(
-            testnodetree, [])  # pylint: disable=unused-variable
-        asserttreesize: int = count_population(testnodetree, 0)
-        for redindex, red in enumerate(debug_listofingredients):
-            for blueindex, blue in enumerate(debug_listofingredients):
-                if red == blue and blueindex != redindex:
-                    raise ValueError(
-                        'duplicate ingredient name on the same index has been found')
-        self.assertGreaterEqual(asserttreesize, populationsize)
+        testsize : int = random.randint(5, 50)
+        ugiorvoh : nodetree = nodetree(testsize)
+        assertvaluetest : int = ugiorvoh.population
+        self.assertGreaterEqual(assertvaluetest, testsize, "The size of the generated tree is less than the population limit augment passed into the method")
 
 
 class KeyGeneration(unittest.TestCase):
@@ -251,7 +233,7 @@ class TestwritingtoCSV(unittest.TestCase):
                 # ? to append to the file, open in it mode='a'
                 writer = csv.DictWriter(yog_sothoth, fieldnames=field_names)
                 # writer.writerows(morphite.create_csv_writerows([]))
-                vhurerc: Node = generate_tree()
+                vhurerc: Node = 
                 reversearithmetic(vhurerc, random.randint(17, 2001))
                 writer.writerows(vhurerc.create_csv_writerows([]))
                 yog_sothoth.close()
