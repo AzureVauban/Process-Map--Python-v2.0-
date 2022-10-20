@@ -56,8 +56,17 @@ def generate_tree(headnode : Node = Node(generate_randomstring(),None),childrenp
     """
     creates a randomly generated ingredient tree
     """
-    for num in range(childrenpopulation):
-        pass
+    for _ in range(childrenpopulation):
+        generated_random_name : str = generate_randomstring()
+        while not isnameunique(generated_random_name,headnode):
+            generated_random_name : str = generate_randomstring()
+            isnameunique(generated_random_name,headnode)
+        Node(generate_randomstring(),headnode,0,random.randint(1,1000),random.randint(1,1000))
+        currenttreepopulation+=1
+        if currenttreepopulation > treepopulationlimit:
+            return headnode
+    for child in headnode.children:
+        generate_tree(child[1],childrenpopulation-1,treepopulationlimit,currenttreepopulation)
     return headnode
 class TreeGeneration(unittest.TestCase):
     """
