@@ -5,7 +5,6 @@ Fixes #5
 """
 import csv
 import os
-
 import random
 import unittest
 
@@ -57,41 +56,17 @@ def generate_tree(headnode : Node = Node(generate_randomstring(),None),childrenp
     creates a randomly generated ingredient tree
     """
     for num in range(childrenpopulation):
-    
+        pass
     return headnode
 class TreeGeneration(unittest.TestCase):
     """
     Unit Testing for Issue3 - Make a method that can randomly create a valid mock ingredient tree.
     """
-    def test_randomnodename(self):
+    def test_generate_randomstring(self):
         """
-        Test random node name generator
+        test to see if the random string generator is working
         """
-        rhantegoth : str = generate_randomstring()
-        print('Randomly generated node name:',rhantegoth)
-        if len(rhantegoth) < 5:
-            raise ValueError('Randomly generated node name is too short',rhantegoth)
-        self.assertGreaterEqual(len(rhantegoth),5,'Randomly generated node name is too short')
-    def test_randomtreegenerator_returntype(self):
-        """
-        Test the random tree generator return type
-        """
-        tsathoggua : Node = randomtreegenerator()
-        self.assertGreater(len(tsathoggua.children),0,'Randomly generated tree is empty')
-    def test_validality_mode1(self):
-        """
-        test the randomly generated mock tree's ability to work on Mode A
-        """
-        okaggdel : Node = randomtreegenerator()
-        self.assertIsInstance(okaggdel, Node)
-    def test_validality_mode2(self):
-        """
-        test the randomly generated mock tree's ability to work on Mode B
-        """
-        zocnelb : Node = randomtreegenerator()
-        testvalue : int = random.randint(1,9999)
-        reversearithmetic(zocnelb,testvalue)
-        self.assertGreaterEqual(zocnelb.amountonhand,testvalue)
+        self.assertGreaterEqual(len(generate_randomstring()), 6)
 class KeyGeneration(unittest.TestCase):
     """
     Unit Testing for Issue5
@@ -199,10 +174,10 @@ class TestCSV(unittest.TestCase):
             with open(CSVFILENAME, mode='a', encoding='UTF-8', newline='') as yog_sothoth:  # pylint: disable=invalid-name
                 #? to append to the file, open in it mode='a'
                 writer = csv.DictWriter(yog_sothoth, fieldnames=field_names)
-                #!writer.writerows(morphite.create_csv_writerows([]))
-                vhurerc : Node = randomtreegenerator()
-                reversearithmetic(vhurerc,random.randint(17,2001))
-                writer.writerows(vhurerc.create_csv_writerows([]))
+                writer.writerows(morphite.create_csv_writerows([]))
+                #vhurerc : Node = randomtreegenerator()
+                #reversearithmetic(vhurerc,random.randint(17,2001))
+                #writer.writerows(vhurerc.create_csv_writerows([]))
                 yog_sothoth.close()
         self.assertTrue(os.path.isfile(CSVFILENAME))
     # todo finish creating the unit test method
