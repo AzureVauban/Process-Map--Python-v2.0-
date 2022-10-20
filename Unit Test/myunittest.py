@@ -6,10 +6,9 @@ Fixes #5
 import csv
 import os
 import random
-from time import sleep
 import unittest
 
-from main import Node, reversearithmetic  # pylint: disable=import-error
+from main import Node  # pylint: disable=import-error
 
 CSVFILENAME: str = 'ingredient_trees.csv'
 
