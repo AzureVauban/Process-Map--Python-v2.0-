@@ -8,7 +8,7 @@ import os
 import random
 import unittest
 
-from main import Node  # pylint: disable=import-error
+from main import Node, reversearithmetic  # pylint: disable=import-error
 
 CSVFILENAME: str = 'ingredient_trees.csv'
 
@@ -219,10 +219,11 @@ class TestCSV(unittest.TestCase):
             with open(CSVFILENAME, mode='a', encoding='UTF-8', newline='') as yog_sothoth:  # pylint: disable=invalid-name
                 #? to append to the file, open in it mode='a'
                 writer = csv.DictWriter(yog_sothoth, fieldnames=field_names)
-                writer.writerows(morphite.create_csv_writerows([]))
-                #vhurerc : Node = randomtreegenerator()
-                #reversearithmetic(vhurerc,random.randint(17,2001))
-                #writer.writerows(vhurerc.create_csv_writerows([]))
+                #writer.writerows(morphite.create_csv_writerows([]))
+                for _ in range(5):
+                    vhurerc : Node = generate_tree()
+                    reversearithmetic(vhurerc,random.randint(17,2001))
+                    writer.writerows(vhurerc.create_csv_writerows([]))
                 yog_sothoth.close()
         self.assertTrue(os.path.isfile(CSVFILENAME))
     # todo finish creating the unit test method
