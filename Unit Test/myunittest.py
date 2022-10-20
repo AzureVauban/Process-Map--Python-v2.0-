@@ -13,6 +13,19 @@ from main import Node, reversearithmetic  # pylint: disable=import-error
 CSVFILENAME: str = 'ingredient_trees.csv'
 
 
+def generatename(lengthlimit: int = random.randint(10, 20)) -> str:
+    """_summary_
+
+    Returns:
+        str: _description_
+    """
+    # create a random name as a string
+    yuggoth: str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    mocknodename: str = ''
+    for _ in range(random.randint(6, lengthlimit)):
+        mocknodename += random.choice(yuggoth)
+    return mocknodename
+
 class tentative_class_name():  # todo find a better name for this class of fake ingredient nodes, name must be relating to plants
     # todo make all test methods into a class
     """_summary_
@@ -21,18 +34,6 @@ class tentative_class_name():  # todo find a better name for this class of fake 
     # return the number of nodes generated in the tree
     tentative_name_intobject: int = 1
 
-    def generate_name(self,lengthlimit: int = random.randint(10, 20)) -> str:
-        """_summary_
-
-        Returns:
-            str: _description_
-        """
-        # create a random name as a string
-        yuggoth: str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-        mocknodename: str = ''
-        for _ in range(random.randint(6, lengthlimit)):
-            mocknodename += random.choice(yuggoth)
-        return mocknodename
         
 
     # todo find a better name for this
@@ -50,14 +51,24 @@ class tentative_class_name():  # todo find a better name for this class of fake 
                 self.__verifyuniqueness(tentativename_stringobject, childnode[1])
         return True
 
-    def createtree(self) -> Node:
-        """_summary_
-
-        Returns:
-            Node: _description_
+    def createtree(self,treepopulationlimit: int = random.randint(2, 50), headnode: Node = Node(generatename(), None), currenttreepopulation: int = 1) -> Node:
         """
-        # create a tree of nodes
-        return Node(self.generate_name())
+        creates a randomly generated ingredient tree
+        """
+        childrenpopulation: int = treepopulationlimit-1
+        for _ in range(childrenpopulation):
+            generated_random_name: str = generatename()
+            while not isnameunique(generated_random_name, headnode):
+                generated_random_name: str = generatename()
+                self.__verifyuniqueness(generated_random_name, headnode)
+            Node(generatename(), headnode, 0,
+                random.randint(1, 1000), random.randint(1, 1000))
+            currenttreepopulation += 1
+            if currenttreepopulation > treepopulationlimit:
+                return headnode
+        for child in headnode.children.items():
+            generate_tree(treepopulationlimit, child[1], currenttreepopulation)
+        return headnode
 
     def returningredients(self) -> list[str]:
         """_summary_
@@ -85,20 +96,6 @@ class tentative_class_name():  # todo find a better name for this class of fake 
         self.tentative_name_head = self.createtree()
 
 
-def generate_randomstring(lengthlimit: int = random.randint(10, 20)) -> str:
-    """_summary_
-
-    Args:
-        length (int, optional): _description_. Defaults to random.randint(5,20).
-
-    Returns:
-        str: _description_
-    """
-    yuggoth: str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    mocknodename: str = ''
-    for _ in range(random.randint(6, lengthlimit)):
-        mocknodename += random.choice(yuggoth)
-    return mocknodename
 
 
 def isnameunique(ingredient: str, nodeobject: Node, foundhead: bool = False) -> bool:  # todo test this out
@@ -127,7 +124,7 @@ def isnameunique(ingredient: str, nodeobject: Node, foundhead: bool = False) -> 
     return True
 
 
-def generate_tree(treepopulationlimit: int = random.randint(2, 50), headnode: Node = Node(generate_randomstring(), None), currenttreepopulation: int = 1) -> Node:
+def generate_tree(treepopulationlimit: int = random.randint(2, 50), headnode: Node = Node(generatename(), None), currenttreepopulation: int = 1) -> Node:
     """
     creates a randomly generated ingredient tree
     """
