@@ -42,14 +42,15 @@ def isnameunique(ingredient : str, nodeobject: Node,foundhead : bool = False) ->
     -   traverse downward through the entire tree
     -   only stop traversing if the ingredient name is the same as the ingredient
     """
-    if not foundhead:
-        while nodeobject.parent is not None:
-            nodeobject = nodeobject.parent
     if nodeobject.ingredient == ingredient:
         return False
     else:
-        for child in nodeobject.children:
-            isnameunique(ingredient,child[1],True)
+        if not foundhead:
+            while nodeobject.parent is not None:
+                nodeobject = nodeobject.parent
+        else:
+            for child in nodeobject.children:
+                isnameunique(ingredient,child,True)
     return True
 
 def generate_tree(treepopulationlimit : int = random.randint(2,50),headnode : Node = Node(generate_randomstring(),None),childrenpopulation : int = random.randint(1,10),currenttreepopulation : int = 1) -> Node:
@@ -74,7 +75,7 @@ def count_population(nodeobject : Node, population : int = 0) -> int:
     counts the number of nodes in a tree
     """
     population += 1
-    for child in nodeobject.children:
+    for child in nodeobject.children.items():
         population = count_population(child[1],population)
     return population
 class TreeGeneration(unittest.TestCase):
