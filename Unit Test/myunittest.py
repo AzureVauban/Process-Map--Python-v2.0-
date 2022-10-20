@@ -82,6 +82,14 @@ class TreeGeneration(unittest.TestCase):
         for string in assertstrings:
             #! print(string)
             self.assertGreaterEqual(len(string), 6)
+            
+    def test_generate_tree(self):
+        self.assertIsInstance(generate_tree(),Node)
+        
+    def test_generate_tree_population(self):
+        populationsize : int = random.randint(2,50)
+        generate_tree(treepopulationlimit=populationsize)
+        self.
 class KeyGeneration(unittest.TestCase):
     """
     Unit Testing for Issue5
