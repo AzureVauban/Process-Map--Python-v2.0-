@@ -12,6 +12,58 @@ from main import Node, reversearithmetic  # pylint: disable=import-error
 
 CSVFILENAME: str = 'ingredient_trees.csv'
 
+class testtree():
+    """_summary_
+    """
+    def generate_name(self) -> str:
+        """_summary_
+
+        Returns:
+            str: _description_
+        """
+        return str(random.randint(0,10))
+    def __verifyunique(self) ->bool:
+        """_summary_
+
+        Returns:
+            bool: _description_
+        """
+        return True
+    def createtree(self) -> Node:
+        """_summary_
+
+        Returns:
+            Node: _description_
+        """
+        return Node(self.generate_name())
+    def returnleafletscount(self) -> int:
+        """_summary_
+
+        Returns:
+            int: _description_
+        """
+        #return the number of nodes generated in the tree
+        return 0
+    def returnlistofngredients(self) -> list[str]:
+        """_summary_
+
+        Returns:
+            list[str]: _description_
+        """
+        # return the name of all the nodes as a list of strings
+        return [str(random.randint(0,10))]
+    def returngenerationleafletscount(self,depth : int = 1) -> int:
+        """_summary_
+
+        Args:
+            depth (int, optional): _description_. Defaults to 1.
+
+        Returns:
+            int: _description_
+        """
+        # returns the number of all the nodes at a given depth in the tree
+        return 0
+    
 def generate_randomstring(lengthlimit :int = random.randint(10,20)) -> str:
     """_summary_
 
@@ -94,10 +146,9 @@ class TreeGeneration(unittest.TestCase):
         for _ in range(1000):
             assertstrings.append(generate_randomstring())
         for string in assertstrings:
-            #! print(string)
+            
             self.assertGreaterEqual(len(string), 6)            
-    #!  def test_generate_tree(self):
-        #!  self.assertreturn(generate_tree(),Node)
+ 
     def test_generate_tree_population(self):
         """test that the size of the generated tree is equal to or greater than the population limit augment passed into the method
 
