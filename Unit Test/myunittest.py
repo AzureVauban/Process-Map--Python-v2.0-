@@ -4,6 +4,7 @@ Create a Tree Key alpha numeric string generator to make sure each tree in the .
 Fixes #5
 """
 import csv
+import math
 import os
 import random
 import unittest
@@ -46,7 +47,7 @@ class NodeTree():
                 self.__verifyuniqueness(nodename, childnode[1])
         return True
 
-    def createtree(self, populationlimit: int = random.randint(2, 50), cur: Node = Node(generatename(), None)) -> Node:
+    def createtree(self, populationlimit: int = random.randint(2, 100), cur: Node = Node(generatename(), None)) -> Node:
         """creates an ingredient tree with a population limit
 
         Args:
@@ -60,7 +61,7 @@ class NodeTree():
         """
         childrenpopulation: int = 0
         if cur.parent is None:
-            childrenpopulation: int = random.randint(1,round(populationlimit/2))
+            childrenpopulation: int = random.randint(1,10)
         else:
             childrenpopulation : int = len(cur.children)-1
         for _ in range(childrenpopulation):
@@ -74,7 +75,7 @@ class NodeTree():
             if self.population > populationlimit:
                 return cur
         for child in cur.children.items():
-            self.createtree(childrenpopulation, child[1])
+            self.createtree(math.floor(childrenpopulation/2), child[1])
         return cur
 
     def returningredients(self,cur: Node, storednames: list) -> list:
