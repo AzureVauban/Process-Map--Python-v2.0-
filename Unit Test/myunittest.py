@@ -58,7 +58,11 @@ class NodeTree():
         Returns:
             Node: stores the starting instance of the tree
         """
-        childrenpopulation: int = populationlimit-1
+        childrenpopulation: int = 0
+        if cur.parent is None:
+            childrenpopulation: int = populationlimit - 1
+        else:
+            childrenpopulation : int = len(cur.children)-1
         for _ in range(childrenpopulation):
             generated_random_name: str = generatename()
             while not self.__verifyuniqueness(generated_random_name, cur):
