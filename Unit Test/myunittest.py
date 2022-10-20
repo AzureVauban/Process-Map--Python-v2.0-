@@ -52,7 +52,7 @@ def isnameunique(ingredient : str, nodeobject: Node,foundhead : bool = False) ->
             isnameunique(ingredient,child[1],True)
     return True
 
-def generate_tree(headnode : Node = Node(generate_randomstring(),None),childrenpopulation : int = random.randint(1,10),treepopulationlimit : int = random.randint(2,50),currenttreepopulation : int = 1) -> Node:
+def generate_tree(treepopulationlimit : int = random.randint(2,50),headnode : Node = Node(generate_randomstring(),None),childrenpopulation : int = random.randint(1,10),currenttreepopulation : int = 1) -> Node:
     """
     creates a randomly generated ingredient tree
     """
@@ -65,9 +65,18 @@ def generate_tree(headnode : Node = Node(generate_randomstring(),None),childrenp
         currenttreepopulation+=1
         if currenttreepopulation > treepopulationlimit:
             return headnode
-    for child in headnode.children:
-        generate_tree(child[1],childrenpopulation-1,treepopulationlimit,currenttreepopulation)
+    for child in headnode.children.items():
+#!        generate_tree(child[1],childrenpopulation-1,treepopulationlimit,currenttreepopulation)
+        generate_tree(treepopulationlimit,child[1],childrenpopulation-1,currenttreepopulation)
     return headnode
+def count_population(nodeobject : Node, population : int = 0) -> int:
+    """
+    counts the number of nodes in a tree
+    """
+    population += 1
+    for child in nodeobject.children:
+        population = count_population(child[1],population)
+    return population
 class TreeGeneration(unittest.TestCase):
     """
     Unit Testing for Issue3 - Make a method that can randomly create a valid mock ingredient tree.
@@ -83,13 +92,12 @@ class TreeGeneration(unittest.TestCase):
             #! print(string)
             self.assertGreaterEqual(len(string), 6)
             
-    def test_generate_tree(self):
-        self.assertIsInstance(generate_tree(),Node)
-        
+    #!  def test_generate_tree(self):
+        #!  self.assertreturn(generate_tree(),Node)
     def test_generate_tree_population(self):
         populationsize : int = random.randint(2,50)
-        generate_tree(treepopulationlimit=populationsize)
-        self.
+        testnodetree : Node = generate_tree(treepopulationlimit=populationsize)
+        self.assertGreaterEqual(count_population(testnodetree,0),populationsize)
 class KeyGeneration(unittest.TestCase):
     """
     Unit Testing for Issue5
