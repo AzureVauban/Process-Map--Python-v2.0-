@@ -66,8 +66,11 @@ class TreeGeneration(unittest.TestCase):
         """
         test to see if the random string generator is working
         """
-        assertstring : str = generate_randomstring()
-        self.assertGreaterEqual(len(assertstring), 6)
+        assertstrings : list = []
+        for _ in range(1000):
+            assertstrings.append(generate_randomstring())
+        for string in assertstrings:
+            self.assertGreaterEqual(len(string), 6)
 class KeyGeneration(unittest.TestCase):
     """
     Unit Testing for Issue5
