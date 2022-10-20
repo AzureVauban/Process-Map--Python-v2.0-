@@ -12,38 +12,49 @@ from main import Node, reversearithmetic  # pylint: disable=import-error
 
 CSVFILENAME: str = 'ingredient_trees.csv'
 
-class testtree():
+
+class test_ingredienttree():  # todo find a better name for this class of fake ingredient nodes, name must be relating to plants
+    # todo make all test methods into a class
     """_summary_
     """
+    tentative_name_nodeobject: Node # todo find a better name for this 
+
     def generate_name(self) -> str:
         """_summary_
 
         Returns:
             str: _description_
         """
-        return str(random.randint(0,10))
-    def __verifyunique(self) ->bool:
+        # create a random name as a string
+        return str(random.randint(0, 10))
+
+    def __verifyuniqueness(self,tentativename_stringobject : str) -> bool:  # todo find a better name for this
         """_summary_
 
         Returns:
             bool: _description_
         """
+        # verify that the string generated is unique
         return True
+
     def createtree(self) -> Node:
         """_summary_
 
         Returns:
             Node: _description_
         """
+        # create a tree of nodes
         return Node(self.generate_name())
-    def returnleafletscount(self) -> int:
+
+    def returnleafletscount(self, tentativename_integerobject: int) -> int: # todo find a better name for this
         """_summary_
 
         Returns:
             int: _description_
         """
-        #return the number of nodes generated in the tree
+        # return the number of nodes generated in the tree
         return 0
+
     def returnlistofngredients(self) -> list[str]:
         """_summary_
 
@@ -51,8 +62,9 @@ class testtree():
             list[str]: _description_
         """
         # return the name of all the nodes as a list of strings
-        return [str(random.randint(0,10))]
-    def returngenerationleafletscount(self,depth : int = 1) -> int:
+        return [str(random.randint(0, 10))]
+
+    def returngenerationleafletscount(self, depth: int = 1) -> int:
         """_summary_
 
         Args:
@@ -63,7 +75,10 @@ class testtree():
         """
         # returns the number of all the nodes at a given depth in the tree
         return 0
-    
+
+    def __init__(self, max_population_size: int = 50) -> None: # todo find constructor and find a name relating to the tree theme of the class for the augment variable
+        self.canopynode = self.createtree()
+
 def generate_randomstring(lengthlimit :int = random.randint(10,20)) -> str:
     """_summary_
 
