@@ -79,7 +79,10 @@ def count_population(nodeobject : Node, population : int = 0) -> int:
         population = count_population(child[1],population)
     return population
 def recursive_treeparse_listnames(nodeobject : Node,storednames : list) -> list:
-    pass
+    storednames.append(nodeobject.ingredient)
+    for child in nodeobject.children.items():
+        recursive_treeparse_listnames(child[1],storednames)
+    return storednames
 class TreeGeneration(unittest.TestCase):
     """
     Unit Testing for Issue3 - Make a method that can randomly create a valid mock ingredient tree.
@@ -100,6 +103,11 @@ class TreeGeneration(unittest.TestCase):
     def test_generate_tree_population(self):
         populationsize : int = random.randint(2,50)
         testnodetree : Node = generate_tree(treepopulationlimit=populationsize)
+        debug_listofingredients : list = recursive_treeparse_listnames(testnodetree,[]) #pylint: disable=unused-variable
+        for red in debug_listofingredients:
+            for blue in debug_listofingredients:
+                if red == blue:
+                    raise ValueError('duplicate ingredient name found')
         self.assertGreaterEqual(count_population(testnodetree,0),populationsize)
 class KeyGeneration(unittest.TestCase):
     """
