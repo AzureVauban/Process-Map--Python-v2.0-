@@ -28,24 +28,35 @@ def generate_randomstring() -> str:
         mocknodename += random.choice(yuggoth)
     return mocknodename
 
-def isnameunique(ingredient : str, parentnode: Node) -> bool:
+def isnameunique(ingredient : str, nodeobject: Node,foundhead : bool = False) -> bool: #todo test this out
     """
     check to see if the ingredient name is unique in the tree
-method red:
+    method red:
     -   go to head node
     -   traverse through the entire tree, while making a list of all ingredient names
     -   parse through the list linearily (one by one) and check to see if the ingredient name is
         the same as the ingredient.
-method green:
+
+    method green:
     -   go to head node
     -   traverse downward through the entire tree
     -   only stop traversing if the ingredient name is the same as the ingredient
     """
+    if not foundhead:
+        while nodeobject.parent is not None:
+            nodeobject = nodeobject.parent
+    if nodeobject.ingredient == ingredient:
+        return False
+    else:
+        for child in nodeobject.children:
+            isnameunique(ingredient,child[1],True)
     return True
-def generate_tree(headnode : Node = Node(generate_randomstring(),None),childrenpopulation : int = random.randint(1,10),treepopulationlimit : int = random.randint(1,10),currenttreepopulation : int = 1) -> Node:
+
+def generate_tree(headnode : Node = Node(generate_randomstring(),None),childrenpopulation : int = random.randint(1,10),treepopulationlimit : int = random.randint(2,50),currenttreepopulation : int = 1) -> Node:
     """
     creates a randomly generated ingredient tree
     """
+    for num in range(childrenpopulation):
     
     return headnode
 class TreeGeneration(unittest.TestCase):
