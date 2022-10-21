@@ -69,8 +69,7 @@ class NodeTree():
             while not self.__verifyuniqueness(generated_random_name, cur):
                 generated_random_name: str = generatename()
                 self.__verifyuniqueness(generated_random_name, cur)
-            Node(generatename(), cur, 0,
-                random.randint(1, 1000), random.randint(1, 1000))
+            Node(generatename(), cur, 0,random.randint(1, 1000), random.randint(1, 1000))
             self.population += 1
             if self.population > populationlimit:
                 return cur
