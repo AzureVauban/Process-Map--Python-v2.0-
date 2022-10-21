@@ -65,6 +65,7 @@ class NodeTree():
         else:
             childrenpopulation : int = len(cur.children)-1
         for _ in range(childrenpopulation):
+            # create a string for the name of the node
             generated_random_name: str = generatename()
             while not self.__verifyuniqueness(generated_random_name, cur):
                 generated_random_name: str = generatename()
