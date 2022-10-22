@@ -46,11 +46,37 @@ class NodeTree():
             node = node.parent
         return node
 
-    def generatetree(self, head: Node = Node(generatename())) -> Node:
+    def __countpopulation(self, node: Node, currentcount: int = 0) -> int:
+        """counts the number of nodes in the tree
+
+        Args:
+            node (Node): the instance of the node to count
+            currentcount (int, optional): the current amount of nodes found in the tree.
+            Defaults to 1.
+
+        Returns:
+            int: the amount of nodes found in the tree
+        """
+        currentcount += 1
+        for hotnode in node.children.items():
+            self.__countpopulation(hotnode[1], currentcount)
+        return currentcount
+
+    def generatetree(self, limit: int = random.randint(1, 10), head: Node = Node(generatename())) -> Node:
+        # check to see if the current population of the tree is less than the limit
+        while self.__countpopulation(self.__findhead(head)) < limit:
+            # if the limit has not been met, chose a random number between the quotient of the different between current population and the population parameter and 2
+            # this will ensure that the tree will not grow too large
+            for _ in range(random.randint(1, (limit - self.__countpopulation(self.__findhead(head))) // 2)):
+                # create a new node with a random name
+                
         return head
 
     def __init__(self, population: int = random.randint(1, 10)):
-        self.canopynode = self.__findhead(self.canopynode)
+        #generate the tree
+        self.generatetree(population)
+        # set the population of the tree
+        self.population = self.__countpopulation(self.canopynode)
         print('creating a new tree at object', self)
 
 class TreeGeneration(unittest.TestCase):
