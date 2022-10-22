@@ -33,11 +33,23 @@ class NodeTree():
     """
     canopynode : Node = Node()
     population: int = 1
+    def countpopulation(self, leaf : Node, count : int = 1) -> int:
+        """
+        count the number of nodes in a tree
+        """
+        for leaves in leaf.children.items():
+            count += self.countpopulation(leaves[1])
+        return count
     def generatetree(self,population : int = random.randint(1,10),head : Node = Node(generatename(),None,0,1,1)) -> Node:
         """
         generate a tree of nodes
         """
-        
+        temp: Node = head
+        while temp.parent is not None:
+            temp = temp.parent
+        if self.countpopulation(temp) < population:
+            for _ in range(random.randint(1,10)):
+                self.generatetree(population,Node(generatename(),head,0,1,1))
         return head
         
 class TreeGeneration(unittest.TestCase):
