@@ -68,7 +68,7 @@ class NodeTree():
         while currentpopulation < limit:
             # if the limit has not been met, chose a random number between the quotient of the different between current population and the population parameter and 2
             # this will ensure that the tree will not grow too large
-            for _ in range(random.randint(1, currentpopulation // 2)):
+            for _ in range(1,random.randint(1, currentpopulation // 2)):
                 # create a new node with a random name
                 self.generatetree(limit, Node(generatename(), head))
         return head
