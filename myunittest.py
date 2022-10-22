@@ -70,7 +70,14 @@ class NodeTree():
         else:
             pass
         return head
-
+    @classmethod
+    def generateforest(cls,numberoftrees : int = random.randint(1,10)) -> dict:
+        forestdict : dict = {}
+        i : int = 0
+        while i < numberoftrees:
+            forestdict.update({i:cls().generatetree()})
+            i+=1
+        return forestdict
     def __init__(self, population: int = random.randint(1, 10)):
         #generate the tree
         self.generatetree(population)
