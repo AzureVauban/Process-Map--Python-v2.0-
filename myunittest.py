@@ -4,7 +4,6 @@ Create a Tree Key alpha numeric string generator to make sure each tree in the .
 Fixes #5
 """
 import csv
-import math
 import os
 import random
 import unittest
@@ -33,6 +32,10 @@ class NodeTree():
     """
     canopynode : Node = Node()
     population: int = 1
+    def __findhead(self, node : Node) -> Node:
+        while node.parent is not None:
+            node = node.parent
+        return node
     def countpopulation(self, leaf : Node, count : int = 1) -> int:
         """
         count the number of nodes in a tree
@@ -45,13 +48,10 @@ class NodeTree():
         """
         generate a tree of nodes
         """
-        temp: Node = head
-        while temp.parent is not None:
-            temp = temp.parent
-        if self.countpopulation(temp) < population:
+        if self.countpopulation(self.__findhead(head)) < population:
             for _ in range(random.randint(1, 10)):
                 self.generatetree(population, Node(generatename(), head, 0, 1, 1))
-                if self.countpopulation(temp) < population:
+                if self.countpopulation(self.__findhead(head)) < population:
                     break
         return head
     def __init__(self,population : int = random.randint(1,10)) -> None:
