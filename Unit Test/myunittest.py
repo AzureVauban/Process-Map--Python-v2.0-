@@ -40,7 +40,8 @@ class NodeTree():
         for leaves in leaf.children.items():
             count += self.countpopulation(leaves[1])
         return count
-    def generatetree(self,population : int = random.randint(1,10),head : Node = Node(generatename(),None,0,1,1)) -> Node:
+
+    def generatetree(self, population: int = random.randint(1, 10), head: Node = Node(generatename(), None, 0, 1, 1)) -> Node:
         """
         generate a tree of nodes
         """
@@ -48,15 +49,22 @@ class NodeTree():
         while temp.parent is not None:
             temp = temp.parent
         if self.countpopulation(temp) < population:
-            for _ in range(random.randint(1,10)):
-                self.generatetree(population,Node(generatename(),head,0,1,1))
+            for _ in range(random.randint(1, 10)):
+                self.generatetree(population, Node(generatename(), head, 0, 1, 1))
+                if self.countpopulation(temp) < population:
+                    break
         return head
-        
+    def __init__(self,population : int = random.randint(1,10)) -> None:
+        self.canopynode = self.generatetree(population)
+        self.population = self.countpopulation(self.canopynode)
+
 class TreeGeneration(unittest.TestCase):
     """
     Unit Testing for Issue3 - Make a method that can randomly create a valid mock ingredient tree.
     """
-    
+    def testpopulation(self):
+        testtree : NodeTree = NodeTree(5)
+        self.assertEqual(testtree.population, 5, "The population of the tree should be 5")
 
 class KeyGeneration(unittest.TestCase):
     """
