@@ -85,6 +85,7 @@ class TreeGeneration(unittest.TestCase):
     Unit Testing for Issue3 - Make a method that can randomly create a valid mock ingredient tree.
     """
     def testpopulation(self):
+        """test to see if the population of the tree is correct"""
         testtree : NodeTree = NodeTree(5)
         self.assertEqual(testtree.population, 5, "The population of the tree should be 5")
 
