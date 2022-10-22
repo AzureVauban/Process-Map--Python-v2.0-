@@ -64,12 +64,13 @@ class NodeTree():
 
     def generatetree(self, limit: int = random.randint(1, 10), head: Node = Node(generatename())) -> Node:
         # check to see if the current population of the tree is less than the limit
-        while self.__countpopulation(self.__findhead(head)) < limit:
+        currentpopulation : int = self.__countpopulation(self.__findhead(head))
+        while currentpopulation < limit:
             # if the limit has not been met, chose a random number between the quotient of the different between current population and the population parameter and 2
             # this will ensure that the tree will not grow too large
-            for _ in range(random.randint(1, (limit - self.__countpopulation(self.__findhead(head))) // 2)):
+            for _ in range(random.randint(1, currentpopulation // 2)):
                 # create a new node with a random name
-                
+                self.generatetree(limit, Node(generatename(), head))
         return head
 
     def __init__(self, population: int = random.randint(1, 10)):
