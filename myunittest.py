@@ -63,7 +63,7 @@ class NodeTree():
         return currentcount
 
     def generatetree(self, limit: int = random.randint(1, 10), head: Node = Node(generatename())) -> Node:
-        #check if the current population is less than the limit
+        # check if the current population is less than the limit
         islessthanlimit : bool = self.__countpopulation(self.__findhead(head)) > limit
         if islessthanlimit:
             return head
