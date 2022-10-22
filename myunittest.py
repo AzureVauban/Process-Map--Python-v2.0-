@@ -36,27 +36,9 @@ class NodeTree():
         while node.parent is not None:
             node = node.parent
         return node
-    def countpopulation(self, leaf : Node, count : int = 1) -> int:
-        """
-        count the number of nodes in a tree
-        """
-        for leaves in leaf.children.items():
-            count += self.countpopulation(leaves[1])
-        return count
-
-    def generatetree(self, population: int = random.randint(1, 10), head: Node = Node(generatename(), None, 0, 1, 1)) -> Node:
-        """
-        generate a tree of nodes
-        """
-        if self.countpopulation(self.__findhead(head)) < population:
-            for _ in range(random.randint(1, 10)):
-                self.generatetree(population, Node(generatename(), head, 0, 1, 1))
-                if self.countpopulation(self.__findhead(head)) < population:
-                    break
-        return head
-    def __init__(self,population : int = random.randint(1,10)) -> None:
-        self.canopynode = self.generatetree(population)
-        self.population = self.countpopulation(self.canopynode)
+    def __init__(self,population : int = random.randint(1,10)):
+        self.canopynode = self.__findhead(self.canopynode)
+        print('creating a new tree at object',self)
 
 class TreeGeneration(unittest.TestCase):
     """
