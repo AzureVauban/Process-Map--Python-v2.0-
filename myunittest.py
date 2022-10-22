@@ -32,13 +32,26 @@ class NodeTree():
     """
     canopynode : Node = Node()
     population: int = 1
-    def __findhead(self, node : Node) -> Node:
+
+    def __findhead(self, node: Node) -> Node:
+        """traverses to the head of the node
+
+        Args:
+            node (Node): current postion in a linked list
+
+        Returns:
+            Node: the headmost node of the current node
+        """
         while node.parent is not None:
             node = node.parent
         return node
-    def __init__(self,population : int = random.randint(1,10)):
+
+    def generatetree(self, head: Node = Node(generatename())) -> Node:
+        return head
+
+    def __init__(self, population: int = random.randint(1, 10)):
         self.canopynode = self.__findhead(self.canopynode)
-        print('creating a new tree at object',self)
+        print('creating a new tree at object', self)
 
 class TreeGeneration(unittest.TestCase):
     """
