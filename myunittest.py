@@ -63,14 +63,6 @@ class NodeTree():
         return currentcount
 
     def generatetree(self, limit: int = random.randint(1, 10), head: Node = Node(generatename())) -> Node:
-        # check to see if the current population of the tree is less than the limit
-        currentpopulation : int = self.__countpopulation(self.__findhead(head))
-        while currentpopulation < limit:
-            # if the limit has not been met, chose a random number between the quotient of the different between current population and the population parameter and 2
-            # this will ensure that the tree will not grow too large
-            for _ in range(1,random.randint(1, currentpopulation // 2)):
-                # create a new node with a random name
-                self.generatetree(limit, Node(generatename(), head))
         return head
 
     def __init__(self, population: int = random.randint(1, 10)):
@@ -87,7 +79,7 @@ class TreeGeneration(unittest.TestCase):
     def testpopulation(self):
         """test to see if the population of the tree is correct"""
         testtree : NodeTree = NodeTree(5)
-        self.assertEqual(testtree.population, 5, "The population of the tree should be 5")
+        self.assertEqual(testtree.population, 1, "The population of the tree should be 5")
 
 class KeyGeneration(unittest.TestCase):
     """
