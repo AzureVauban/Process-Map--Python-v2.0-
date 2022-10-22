@@ -84,8 +84,9 @@ class TreeGeneration(unittest.TestCase):
     """
     def testpopulation(self):
         """test to see if the population of the tree is correct"""
-        testtree : NodeTree = NodeTree(5)
-        self.assertEqual(testtree.population, 1, "The population of the tree should be 5")
+        testvalue: int = random.randint(2,10)
+        testtree : NodeTree = NodeTree(testvalue)
+        self.assertEqual(testtree.population, testvalue, "The population of the tree should be " + str(testvalue))
 
 class KeyGeneration(unittest.TestCase):
     """
