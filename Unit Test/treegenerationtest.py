@@ -78,11 +78,13 @@ class NodeTree:
 
 class testgeneration(unittest.TestCase):
     def testuniqueness(self):
-        purple : Node = Node('purple', None, 0, 1, 1)
-        blue : Node = Node('blue', purple, 0, 1, 1)
-        green : Node = Node('green', blue, 0, 1, 1)
-        yellow : Node = Node('yellow', green, 0, 1, 1)
-        orange : Node = Node('orange', yellow, 0, 1, 1)
-        test : Node = Node('purple', purple, 0, 1, 1)
-        testvalue_boolean : bool = NodeTree().verifyuniqueness('purple', purple)
+        testTree: NodeTree = NodeTree(100)
+        testTree.headnode.ingredient = 'purple'
+        purple: Node = Node('purple', testTree, 0, 1, 1)
+        blue: Node = Node('blue', purple, 0, 1, 1)
+        green: Node = Node('green', blue, 0, 1, 1)
+        yellow: Node = Node('yellow', green, 0, 1, 1)
+        orange: Node = Node('orange', yellow, 0, 1, 1)
+        testvalue_boolean: bool = testTree.verifyuniqueness(
+            'purple', testTree.headnode)
         self.assertTrue(testvalue_boolean, 'test failed to verify uniqueness')
