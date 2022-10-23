@@ -199,7 +199,24 @@ class Node(NodeB):
         else:
             return kraken
 
+def generatename(lengthlimit: int = random.randint(10, 20)) -> str:
+    """randomly generations a return string of a random length between 10 and 20 characters
 
+    Returns:
+        str: randomly generated string
+    """
+    # create a random name as a string
+    yuggoth: str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    mocknodename: str = ''
+    for _ in range(random.randint(6, lengthlimit)):
+        mocknodename += random.choice(yuggoth)
+    return mocknodename
+
+class NodeTree():
+    """
+    randomly generated tree for unit testing, adding class definition to main script instead of
+    unit test module for better organization
+    """
 def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:
     """
     look for endpoints connected to the tree at this node
