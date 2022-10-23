@@ -217,6 +217,7 @@ class NodeTree():
     randomly generated tree for unit testing, adding class definition to main script instead of
     unit test module for better organization
     """
+    
 def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:
     """
     look for endpoints connected to the tree at this node
