@@ -7,7 +7,8 @@ import sys
 import time
 
 PROGRAMMODETYPE: int = 0
-CSVFILENAME : str = 'ingredient_tree.csv'
+CSVFILENAME: str = 'ingredient_tree.csv'
+
 
 class NodeB:
     """
@@ -167,7 +168,8 @@ class Node(NodeB):
         azathoth.update({'Ingredient': self.ingredient})
         azathoth.update({'Parent_of_Ingredient': ghast})
         azathoth.update({'Amount_on_Hand': str(self.amountonhand)})
-        azathoth.update({'Amount_Made_Per_Craft': str(self.amountmadepercraft)})
+        azathoth.update(
+            {'Amount_Made_Per_Craft': str(self.amountmadepercraft)})
         azathoth.update({'Amount_Needed_Per_Craft': str(self.amountneeded)})
         azathoth.update({'Generation': str(self.generation)})
         return azathoth
@@ -199,6 +201,7 @@ class Node(NodeB):
         else:
             return kraken
 
+
 def generatename(lengthlimit: int = random.randint(10, 20)) -> str:
     """randomly generations a return string of a random length between 10 and 20 characters
 
@@ -212,21 +215,24 @@ def generatename(lengthlimit: int = random.randint(10, 20)) -> str:
         mocknodename += random.choice(yuggoth)
     return mocknodename
 
+
 class NodeTree():
     """
     randomly generated tree for unit testing, adding class definition to main script instead of
     unit test module for better organization
     """
-    headnode : Node
-    population : int = 0
-    def __traversetohead(self,node : Node) -> Node:
+    headnode: Node
+    population: int = 0
+
+    def __traversetohead(self, node: Node) -> Node:
         """
         traverse the tree to the head node
         """
         while node.parent is not None:
             node = node.parent
         return node
-    def __isnameunique(self,name : str, node : Node) -> bool:
+
+    def __isnameunique(self, name: str, node: Node) -> bool:
         """
         check if any nodes in the tree have the same name as the name argument
 
@@ -241,9 +247,10 @@ class NodeTree():
             return False
         else:
             for childnode in node.children.items():
-                self.__isnameunique(name,childnode[1])
+                self.__isnameunique(name, childnode[1])
             return True
-    def countleafs(self, head : Node,currentcount : int = 1) -> int:
+
+    def countleafs(self, leaf: Node, currentcount: int = 1) -> int:
         """
         counts how many leaf nodes were created in the tree
 
@@ -254,22 +261,29 @@ class NodeTree():
         Returns:
             int: how many leaf nodes were created in the tree
         """
+        for cell in leaf.children.items():
+            self.countleafs(cell[1], currentcount + 1)
         return currentcount
-    def generateTree(self,population: int = random.randint(1,10), headnode : Node = Node(generatename())) -> Node:
-        """generates a number of leaf nodes to create a tree of nodes
+
+    def generateTree(self, population: int = random.randint(1, 10), headnode: Node = Node(generatename())) -> Node:
+        """
+        generates a number of leaf nodes to create a tree of nodes
 
         Args:
-            population (int, optional): the desired amount of nodes to generated. Defaults to random.randint(1,10).
-            headnode (Node, optional): parent of randomly generated nodes. Defaults to Node(generatename()).
+            population (int, optional): the desired amount of nodes to generated.
+            Defaults to random.randint(1,10).
+            headnode (Node, optional): parent of randomly generated nodes.
+            Defaults to Node(generatename()).
 
         Returns:
-            Node: the headnode which contains all the randomly generated nodes 
+            Node: the headnode which contains all the randomly generated nodes
         """
         return self.__traversetohead(headnode)
 
-    def __init__(self,population : int = random.randint(1,10)) -> None:
-        self.headnode : Node = self.generateTree(population)
+    def __init__(self, population: int = random.randint(1, 10)) -> None:
+        self.headnode: Node = self.generateTree(population)
         self.population = self.countleafs(self.headnode)
+
 
 def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:
     """
