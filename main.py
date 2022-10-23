@@ -260,7 +260,7 @@ class NodeTree():
         """
         return self.__traversetohead(headnode)
 
-    def __init__(self,population : int = 0) -> None:
+    def __init__(self,population : int = random.randint(1,10)) -> None:
         self.headnode : Node = self.generateTree(population)
         self.population = self.countleafs(self.headnode)
 
