@@ -219,10 +219,10 @@ class NodeTree():
     """
     headnode : Node
     population : int = 0
-    def generateTree(self,population: int = random.randint(1,10), headNode : Node = Node(generatename())) -> Node:
-        return headNode
+    def generateTree(self,population: int = random.randint(1,10), headnode : Node = Node(generatename())) -> Node:
+        return headnode
     def __init__(self,population : int = 0) -> None:
-        headnode : Node = self.generateTree(population)
+        self.headnode : Node = self.generateTree(population)
 def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:
     """
     look for endpoints connected to the tree at this node
