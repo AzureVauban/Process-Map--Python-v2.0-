@@ -9,89 +9,11 @@ import random
 import unittest
 
 from main import Node, reversearithmetic  # pylint: disable=import-error
+from main import NodeTree  # pylint: disable=import-error
 
 CSVFILENAME: str = 'ingredient_trees.csv'
 
 
-def generatename(lengthlimit: int = random.randint(10, 20)) -> str:
-    """_summary_
-
-    Returns:
-        str: _description_
-    """
-    # create a random name as a string
-    yuggoth: str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    mocknodename: str = ''
-    for _ in range(random.randint(6, lengthlimit)):
-        mocknodename += random.choice(yuggoth)
-    return mocknodename
-
-class NodeTree():
-    """
-    class for creating a mock ingredient tree of nodes for testing
-    """
-    canopynode : Node = Node()
-    population: int = 1
-
-    def __findhead(self, node: Node) -> Node:
-        """traverses to the head of the node
-
-        Args:
-            node (Node): current postion in a linked list
-
-        Returns:
-            Node: the headmost node of the current node
-        """
-        while node.parent is not None:
-            node = node.parent
-        return node
-
-    def __countpopulation(self, node: Node, currentcount: int = 0) -> int:
-        """counts the number of nodes in the tree
-
-        Args:
-            node (Node): the instance of the node to count
-            currentcount (int, optional): the current amount of nodes found in the tree.
-            Defaults to 1.
-
-        Returns:
-            int: the amount of nodes found in the tree
-        """
-        currentcount += 1
-        for hotnode in node.children.items():
-            self.__countpopulation(hotnode[1], currentcount)
-        return currentcount
-
-    def generatetree(self, limit: int = random.randint(1, 10), head: Node = Node(generatename())) -> Node:
-        # check if the current population is less than the limit
-        islessthanlimit : bool = self.__countpopulation(self.__findhead(head)) > limit
-        if islessthanlimit:
-            return head
-        else:
-            pass
-        return head
-    @classmethod
-    def generateforest(cls,numberoftrees : int = random.randint(1,10)) -> dict:
-        """_summary_
-
-        Args:
-            numberoftrees (int, optional): _description_. Defaults to random.randint(1,10).
-
-        Returns:
-            dict: _description_
-        """
-        forestdict : dict = {}
-        i : int = 0
-        while i < numberoftrees:
-            forestdict.update({i:cls().generatetree()})
-            i+=1
-        return forestdict
-    def __init__(self, population: int = random.randint(1, 10)):
-        #generate the tree
-        self.generatetree(population)
-        # set the population of the tree
-        self.population = self.__countpopulation(self.canopynode)
-        print('creating a new tree at object', self)
 
 class TreeGeneration(unittest.TestCase):
     """
