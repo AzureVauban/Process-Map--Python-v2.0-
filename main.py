@@ -219,13 +219,17 @@ class NodeTree():
     """
     headnode : Node
     population : int = 0
+    def __isnameunique(self,name : str, node : Node) -> bool:
+        return True
     def countleafs(self, head : Node,currentcount : int = 1) -> int:
         return currentcount
     def generateTree(self,population: int = random.randint(1,10), headnode : Node = Node(generatename())) -> Node:
         return headnode
-    
+    def 
     def __init__(self,population : int = 0) -> None:
         self.headnode : Node = self.generateTree(population)
+        self.population = self.countleafs(self.headnode)
+
 def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:
     """
     look for endpoints connected to the tree at this node
