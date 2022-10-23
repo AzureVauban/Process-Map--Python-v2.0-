@@ -402,6 +402,39 @@ def reversearithmetic(cur: Node, desiredamount: int = 0) -> int:
                 raise TypeError('child is not an instance of', Node)
             reversearithmetic(childnode[1], cur.amountonhand)
     return cur.amountonhand
+# todo create methods for searching and cloning Node instances utilized in the __main__ populate method
+
+
+def createclone(basenode: Node) -> Node:
+    """
+    creates a clone of the argument Node instance to be utilized in the populate method
+
+    Args:
+        basenode (Node): stoes information about an ingredient, node to be cloned
+
+    Returns:
+        Node: returns a clone of the node with the same values except for the instancekey and the
+        address pointer
+    """
+    # clone must have a differing pointer address and instancekey
+    return basenode
+# end def
+
+
+def iscircularilylinked(node: Node) -> bool:
+    """
+    checks to see if there is a circularily linked connection in the nodes
+    using the tortoise and the hare method
+    Args:
+        node (Node): stores information about an ingredient
+
+    Returns:
+        bool: returns true if there is a circularily linked connection
+    """
+    hare: Node = node  # ? faster pointer
+    tortoise: Node = node  # ? slower pointer
+    return hare is tortoise
+# end def
 
 
 def populate(cur: Node):
