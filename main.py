@@ -79,7 +79,7 @@ class Node(NodeB):
             self.generation = self.parent.generation + 1
             self.parent.children.update({self.instancekey: self})
             self.treekey = self.parent.treekey
-            self.ismain_promptinputbool = self.parent.promptinput
+            self.ismain_promptinputbool = self.parent.ismain_promptinputbool
         else:
             self.generation = 0
             self.treekey = self.generate_treekey()
