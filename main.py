@@ -54,6 +54,7 @@ class Node(NodeB):
     askmadepercraftquestion: bool = False
     # this is unique identifer for an ingredient tree when its outputted into a csv file
     treekey: str = ''
+    runinputnumberics : bool = True
 
     def __init__(self, name: str = '', par=None, red: int = 0, blue: int = 1, yellow: int = 1, green: bool = False) -> None:  # pylint:disable=C0301
         """
@@ -265,7 +266,7 @@ class NodeTree():
             self.countleafs(cell[1], currentcount + 1)
         return currentcount
 
-    def generateTree(self, population: int = random.randint(1, 10), headnode: Node = Node(generatename())) -> Node:
+    def generateTree(self, population: int = random.randint(1, 10), canopynode: Node = Node(generatename())) -> Node:
         """
         generates a number of leaf nodes to create a tree of nodes
 
@@ -278,7 +279,14 @@ class NodeTree():
         Returns:
             Node: the headnode which contains all the randomly generated nodes
         """
-        return self.__traversetohead(headnode)
+        # check to see if the current population of the generated tree is less than the population
+        # argument value
+        while (self.countleafs(self.__traversetohead(canopynode))) < population:
+            # generate a random name for the new node
+            for _ in range(random.randint(1, population//2)):
+                # create a new node with a random name
+                pass
+        return self.__traversetohead(canopynode)
 
     def __init__(self, population: int = random.randint(1, 10)) -> None:
         self.headnode: Node = self.generateTree(population)
