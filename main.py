@@ -54,9 +54,10 @@ class Node(NodeB):
     askmadepercraftquestion: bool = False
     # this is unique identifer for an ingredient tree when its outputted into a csv file
     treekey: str = ''
-    ismain_promptinputbool : bool = True
-    globalnodes: dict = {}  #? class variable
-    def __init__(self, name: str = '', par=None, red: int = 0, blue: int = 1, yellow: int = 1, green: bool = False,orange : bool = __name__ == '__main__') -> None:  # pylint:disable=C0301
+    ismain_promptinputbool: bool = True
+    globalnodes: dict = {}  # ? class variable
+
+    def __init__(self, name: str = '', par=None, red: int = 0, blue: int = 1, yellow: int = 1, green: bool = False, orange: bool = __name__ == '__main__') -> None:  # pylint:disable=C0301
         """
         default constructor for Node instance, stores identifying features of an item's
         information
@@ -146,11 +147,13 @@ class Node(NodeB):
                 '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
         return cls.treekey
     # make a method to return a list with all the info needed on a line of the csv file
+
     @classmethod
     def updateglobaldictionary(cls):
         """
         update the global node dictionary with a new entry
         """
+
     def create_csv_writerow(self) -> dict:
         """
         fieldnames (examples) = [
@@ -272,7 +275,7 @@ class NodeTree():
             self.countleafs(cell[1], currentcount + 1)
         return currentcount
 
-    def generateTree(self, population: int = random.randint(1, 10), canopynode: Node = Node(generatename(),None,0,1,1,False,False)) -> Node:
+    def generateTree(self, population: int = random.randint(1, 10), canopynode: Node = Node(generatename(), None, 0, 1, 1, False, False)) -> Node:
         """
         generates a number of leaf nodes to create a tree of nodes
 
@@ -291,11 +294,12 @@ class NodeTree():
             # generate a random name for the new node
             for _ in range(random.randint(1, population//2)):
                 # create a new node with a random name, keep generating a new name until it is unique
-                newnodename : str = generatename()
+                newnodename: str = generatename()
                 while self.__isnameunique(newnodename, self.__traversetohead(canopynode)):
                     newnodename = generatename()
                 # create a new node with the unique name and randomized amountmaderpecraft and amountneeded
-                Node(newnodename, canopynode, 0, random.randint(1,100), random.randint(1,100), False)
+                Node(newnodename, canopynode, 0, random.randint(
+                    1, 100), random.randint(1, 100), False)
                 # check once again if the population is less than the population argument value
                 if self.countleafs(self.__traversetohead(canopynode)) < population:
                     break
@@ -410,7 +414,7 @@ def reversearithmetic(cur: Node, desiredamount: int = 0) -> int:
 # todo create methods for searching and cloning Node instances utilized in the __main__ populate method
 
 
-def createclone(basenode: Node,cloneatparent : bool = True) -> Node:
+def createclone(basenode: Node, cloneatparent: bool = True) -> Node:
     """
     creates a clone of the argument Node instance to be utilized in the populate method
 
@@ -425,16 +429,18 @@ def createclone(basenode: Node,cloneatparent : bool = True) -> Node:
     #! parent will be manually set later
     clonednode = None
     if cloneatparent:
-        clonednode = Node(basenode.ingredient,basenode,basenode.amountonhand,basenode.amountmadepercraft,basenode.amountneeded)
-    else:    
-        clonednode = Node(basenode.ingredient,None,basenode.amountonhand,basenode.amountmadepercraft,basenode.amountneeded)
-    if not isinstance(clonednode,Node):
-        raise TypeError('clonednode is not an instance of',Node)
+        clonednode = Node(basenode.ingredient, basenode, basenode.amountonhand,
+                          basenode.amountmadepercraft, basenode.amountneeded)
+    else:
+        clonednode = Node(basenode.ingredient, None, basenode.amountonhand,
+                          basenode.amountmadepercraft, basenode.amountneeded)
+    if not isinstance(clonednode, Node):
+        raise TypeError('clonednode is not an instance of', Node)
     # create a clone of its children subnodes if there are any
     if len(basenode.children) > 0:
         for child in basenode.children.items():
             # if cloneatparent is true, link the clone to the parent of the clonednode
-            createclone(child[1],False)
+            createclone(child[1], False)
     return clonednode
 # end def
 
@@ -453,21 +459,25 @@ def iscircularilylinked(node: Node) -> bool:
     tortoise: Node = node  # ? slower pointer
     return hare is tortoise
 # end def
-def searchnodequery(ingredient : str, globalnodesdict : dict) -> dict:
+
+
+def searchnodequery(ingredient: str, globalnodesdict: dict) -> dict:
     # if no nodes were found, return {-1:None}, else return the found nodes in the dictionary
-    foundqueries : dict = {}
+    foundqueries: dict = {}
     # type check that all the entries in the globalnodesdict are Node instances
     # key value pair (instancekey, : Node)
-    for index,node in enumerate(globalnodesdict.items()):
-        if not isinstance(node[1],Node) or not isinstance(node[0],int):
-            raise TypeError('searching failure at index',index,'of the global nodes dictionary')
+    for index, node in enumerate(globalnodesdict.items()):
+        if not isinstance(node[1], Node) or not isinstance(node[0], int):
+            raise TypeError('searching failure at index', index,
+                            'of the global nodes dictionary')
     # check to see the ingredient is in any item[1] of the globalnodesdict
-    ingredientcanbefound : bool = ingredient in globalnodesdict.values()
+    ingredientcanbefound: bool = ingredient in globalnodesdict.values()
     #! add a logpoint here to see if this boolean can correctly evaluate  itself
     for node in globalnodesdict.items():
         # if the ingredient is found in the node, add it to the foundqueries dictionary
         pass
     return foundqueries
+
 
 def populate(cur: Node):
     """
