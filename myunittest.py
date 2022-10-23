@@ -8,8 +8,8 @@ import os
 import random
 import unittest
 
-from main import Node, reversearithmetic  # pylint: disable=import-error
 from main import NodeTree  # pylint: disable=import-error
+from main import Node, reversearithmetic  # pylint: disable=import-error
 
 CSVFILENAME: str = 'ingredient_trees.csv'
 

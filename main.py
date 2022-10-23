@@ -73,6 +73,7 @@ class Node(NodeB):
         super().__init__(name, red, blue, yellow)
         self.instancekey = Node.instances
         self.children = {}
+        self.ismain_promptinputbool = orange
         self.parent = par
         if self.parent is not None:
             self.generation = self.parent.generation + 1
@@ -80,7 +81,6 @@ class Node(NodeB):
             self.treekey = self.parent.treekey
             self.ismain_promptinputbool = self.parent.promptinput
         else:
-            self.ismain_promptinputbool = orange
             self.generation = 0
             self.treekey = self.generate_treekey()
         self.askmadepercraftquestion = green
