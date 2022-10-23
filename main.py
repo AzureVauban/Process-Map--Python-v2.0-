@@ -455,11 +455,10 @@ def searchnodequery(ingredient: str) -> dict:
             raise TypeError('searching failure at index', index,
                             'of the global nodes dictionary')
     # check to see the ingredient is in any item[1] of the GLOBALNODEDICT
-    ingredientcanbefound: bool = ingredient in GLOBALNODEDICT.values()
-    #! add a logpoint here to see if this boolean can correctly evaluate  itself
     for node in GLOBALNODEDICT.items():
         # if the ingredient is found in the node, add it to the foundqueries dictionary
-        pass
+        if node[1].ingredient == ingredient:
+            foundqueries.update({node[0]: node[1]})
     return foundqueries
 
 
