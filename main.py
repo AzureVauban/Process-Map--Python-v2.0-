@@ -226,13 +226,39 @@ class NodeTree():
         while node.parent is not None:
             node = node.parent
         return node
-    
     def __isnameunique(self,name : str, node : Node) -> bool:
+        """check if any nodes in the tree have the same name as the name argument
+
+        Args:
+            name (str): ingredient name to check
+            node (Node): node to check
+
+        Returns:
+            bool: returns true if the current node is the same as the name argument
+        """
         return True
     def countleafs(self, head : Node,currentcount : int = 1) -> int:
+        """counts how many leaf nodes were created in the tree
+
+        Args:
+            head (Node): node of a tree to count leaf nodes from
+            currentcount (int, optional): how much nodes have been counted so far. Defaults to 1.
+
+        Returns:
+            int: how many leaf nodes were created in the tree
+        """
         return currentcount
     def generateTree(self,population: int = random.randint(1,10), headnode : Node = Node(generatename())) -> Node:
-        return headnode
+        """generates a number of leaf nodes to create a tree of nodes
+
+        Args:
+            population (int, optional): the desired amount of nodes to generated. Defaults to random.randint(1,10).
+            headnode (Node, optional): parent of randomly generated nodes. Defaults to Node(generatename()).
+
+        Returns:
+            Node: the headnode which contains all the randomly generated nodes 
+        """
+        return self.__traversetohead(headnode)
 
     def __init__(self,population : int = 0) -> None:
         self.headnode : Node = self.generateTree(population)
