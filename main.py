@@ -219,13 +219,21 @@ class NodeTree():
     """
     headnode : Node
     population : int = 0
+    def __traversetohead(self,node : Node) -> Node:
+        """
+        traverse the tree to the head node
+        """
+        while node.parent is not None:
+            node = node.parent
+        return node
+    
     def __isnameunique(self,name : str, node : Node) -> bool:
         return True
     def countleafs(self, head : Node,currentcount : int = 1) -> int:
         return currentcount
     def generateTree(self,population: int = random.randint(1,10), headnode : Node = Node(generatename())) -> Node:
         return headnode
-    def 
+
     def __init__(self,population : int = 0) -> None:
         self.headnode : Node = self.generateTree(population)
         self.population = self.countleafs(self.headnode)
