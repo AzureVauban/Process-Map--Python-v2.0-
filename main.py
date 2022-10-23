@@ -8,8 +8,7 @@ import time
 
 PROGRAMMODETYPE: int = 0
 CSVFILENAME: str = 'ingredient_tree.csv'
-
-
+GLOBALNODEDICT : dict = {} # {instancekey: Node}
 class NodeB:
     """
     class for storing simple data about an item such as its name and how much is needed to create
@@ -55,7 +54,6 @@ class Node(NodeB):
     # this is unique identifer for an ingredient tree when its outputted into a csv file
     treekey: str = ''
     ismain_promptinputbool: bool = True
-    globalnodes: dict = {}  # ? class variable
 
     def __init__(self, name: str = '', par=None, red: int = 0, blue: int = 1, yellow: int = 1, green: bool = False, orange: bool = __name__ == '__main__') -> None:  # pylint:disable=C0301
         """
@@ -147,12 +145,6 @@ class Node(NodeB):
                 '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
         return cls.treekey
     # make a method to return a list with all the info needed on a line of the csv file
-
-    @classmethod
-    def updateglobaldictionary(cls):
-        """
-        update the global node dictionary with a new entry
-        """
 
     def create_csv_writerow(self) -> dict:
         """
@@ -461,19 +453,19 @@ def iscircularilylinked(node: Node) -> bool:
 # end def
 
 
-def searchnodequery(ingredient: str, globalnodesdict: dict) -> dict:
+def searchnodequery(ingredient: str) -> dict:
     # if no nodes were found, return {-1:None}, else return the found nodes in the dictionary
     foundqueries: dict = {}
-    # type check that all the entries in the globalnodesdict are Node instances
+    # type check that all the entries in the GLOBALNODEDICT are Node instances
     # key value pair (instancekey, : Node)
-    for index, node in enumerate(globalnodesdict.items()):
+    for index, node in enumerate(GLOBALNODEDICT.items()):
         if not isinstance(node[1], Node) or not isinstance(node[0], int):
             raise TypeError('searching failure at index', index,
                             'of the global nodes dictionary')
-    # check to see the ingredient is in any item[1] of the globalnodesdict
-    ingredientcanbefound: bool = ingredient in globalnodesdict.values()
+    # check to see the ingredient is in any item[1] of the GLOBALNODEDICT
+    ingredientcanbefound: bool = ingredient in GLOBALNODEDICT.values()
     #! add a logpoint here to see if this boolean can correctly evaluate  itself
-    for node in globalnodesdict.items():
+    for node in GLOBALNODEDICT.items():
         # if the ingredient is found in the node, add it to the foundqueries dictionary
         pass
     return foundqueries
