@@ -45,7 +45,6 @@ class TestwritingtoCSV(unittest.TestCase):
 
     def testcsvlinedict(self):
         """test the csv line dict creation method"""
-<<<<<<< HEAD
         mi_go: list = self.carbon.create_csv_writerows([]) #pylint:disable=no-member
         self.assertTrue(isinstance(mi_go, list))
 
@@ -84,11 +83,6 @@ class TestwritingtoCSV(unittest.TestCase):
                 nyarlathotep.close()
         self.assertTrue(os.path.isfile(CSVFILENAME))
 
-=======
-        mi_go: list = self.carbon.create_csv_writerows([])
-        self.assertTrue(isinstance(mi_go, list))
-        
->>>>>>> 9f352ef (Oct 23, 2022, 3:20 PM)
     def test_append(self):
         """test appending to the csv file when the file already exists
         """
