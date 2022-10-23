@@ -45,7 +45,7 @@ class TestwritingtoCSV(unittest.TestCase):
 
     def testcsvlinedict(self):
         """test the csv line dict creation method"""
-        mi_go: list = self.carbon.create_csv_writerows([])
+        mi_go: list = self.carbon.create_csv_writerows([]) #pylint:disable=no-member
         self.assertTrue(isinstance(mi_go, list))
 
     def test_existance(self):
@@ -68,7 +68,7 @@ class TestwritingtoCSV(unittest.TestCase):
             with open(CSVFILENAME, mode='w', encoding='UTF-8', newline='') as dunwichhorror:
                 writer = csv.DictWriter(dunwichhorror, fieldnames=field_names)
                 writer.writeheader()
-                kassogtha: list = self.carbon.create_csv_writerows([])
+                kassogtha: list = self.carbon.create_csv_writerows([])#pylint:disable=no-member
                 writer.writerows(kassogtha)
                 dunwichhorror.close()
         else:  # file does not exist, create it and write data to it
@@ -77,8 +77,8 @@ class TestwritingtoCSV(unittest.TestCase):
                 # write header to csv file
                 writer.writeheader()
             # write rows to csv file
-                kassogtha: list = self.carbon.create_csv_writerows([])
-                writer.writerows(self.carbon.create_csv_writerows([]))
+                kassogtha: list = self.carbon.create_csv_writerows([])#pylint:disable=no-member
+                writer.writerows(self.carbon.create_csv_writerows([]))#pylint:disable=no-member
                 # close csv file
                 nyarlathotep.close()
         self.assertTrue(os.path.isfile(CSVFILENAME))
