@@ -54,9 +54,8 @@ class Node(NodeB):
     askmadepercraftquestion: bool = False
     # this is unique identifer for an ingredient tree when its outputted into a csv file
     treekey: str = ''
-    runinputnumberics : bool = True
-
-    def __init__(self, name: str = '', par=None, red: int = 0, blue: int = 1, yellow: int = 1, green: bool = False) -> None:  # pylint:disable=C0301
+    ismain_promptinputbool : bool = True
+    def __init__(self, name: str = '', par=None, red: int = 0, blue: int = 1, yellow: int = 1, green: bool = False,orange : bool = __name__ == '__main__') -> None:  # pylint:disable=C0301
         """
         default constructor for Node instance, stores identifying features of an item's
         information
@@ -79,12 +78,14 @@ class Node(NodeB):
             self.generation = self.parent.generation + 1
             self.parent.children.update({self.instancekey: self})
             self.treekey = self.parent.treekey
+            self.ismain_promptinputbool = self.parent.promptinput
         else:
+            self.ismain_promptinputbool = orange
             self.generation = 0
             self.treekey = self.generate_treekey()
         self.askmadepercraftquestion = green
         Node.instances += 1
-        if __name__ == '__main__':
+        if self.ismain_promptinputbool:
             self.__inputnumerics()
 
     def __inputnumerics(self):
@@ -266,7 +267,7 @@ class NodeTree():
             self.countleafs(cell[1], currentcount + 1)
         return currentcount
 
-    def generateTree(self, population: int = random.randint(1, 10), canopynode: Node = Node(generatename())) -> Node:
+    def generateTree(self, population: int = random.randint(1, 10), canopynode: Node = Node(generatename(),)) -> Node:
         """
         generates a number of leaf nodes to create a tree of nodes
 
