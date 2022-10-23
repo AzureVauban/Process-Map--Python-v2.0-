@@ -55,6 +55,7 @@ class Node(NodeB):
     # this is unique identifer for an ingredient tree when its outputted into a csv file
     treekey: str = ''
     ismain_promptinputbool : bool = True
+    globalnodes: dict = {}  #? class variable
     def __init__(self, name: str = '', par=None, red: int = 0, blue: int = 1, yellow: int = 1, green: bool = False,orange : bool = __name__ == '__main__') -> None:  # pylint:disable=C0301
         """
         default constructor for Node instance, stores identifying features of an item's
@@ -145,7 +146,11 @@ class Node(NodeB):
                 '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
         return cls.treekey
     # make a method to return a list with all the info needed on a line of the csv file
-
+    @classmethod
+    def updateglobaldictionary(cls):
+        """
+        update the global node dictionary with a new entry
+        """
     def create_csv_writerow(self) -> dict:
         """
         fieldnames (examples) = [
