@@ -410,7 +410,7 @@ def reversearithmetic(cur: Node, desiredamount: int = 0) -> int:
 # todo create methods for searching and cloning Node instances utilized in the __main__ populate method
 
 
-def createclone(basenode: Node) -> Node:
+def createclone(basenode: Node,cloneatparent : bool = ) -> Node:
     """
     creates a clone of the argument Node instance to be utilized in the populate method
 
@@ -422,7 +422,12 @@ def createclone(basenode: Node) -> Node:
         address pointer
     """
     # clone must have a differing pointer address and instancekey
-    return basenode
+    #! parent will be manually set later
+    clonednode : Node = Node(basenode.ingredient,None,basenode.amountonhand,basenode.amountmadepercraft,basenode.amountneeded)
+    # create a clone of its children subnodes if there are any
+    if len(basenode.children) > 0:
+        for child in basenode.children.items():
+    return clonednode
 # end def
 
 
