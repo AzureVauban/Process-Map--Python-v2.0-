@@ -418,7 +418,14 @@ def createclone(node: Node) -> Node:
         address pointer
     """
     # clone must have a differing pointer address and instancekey
-    newnode : Node = Node(node.name,None,node.amountonhand,node.amountneeded,node.amountmadepercraft)
+    newnode : Node = Node(node.ingredient,None,node.amountonhand,
+                          node.amountneeded,node.amountmadepercraft,False,False)
+    newnode.treekey = node.treekey
+    for childnode in node.children.items():
+        newchildnode: Node = Node(childnode[1].ingredient, newnode, # pylint: disable=unused-variable
+                                  childnode[1].amountonhand, childnode[1].amountneeded,  # pylint: disable=unused-variable
+                                  childnode[1].amountmadepercraft, False, False)  # pylint: disable=unused-variable
+    return newnode
 # end def
 
 
