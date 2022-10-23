@@ -267,7 +267,7 @@ class NodeTree():
             self.countleafs(cell[1], currentcount + 1)
         return currentcount
 
-    def generateTree(self, population: int = random.randint(1, 10), canopynode: Node = Node(generatename(),)) -> Node:
+    def generateTree(self, population: int = random.randint(1, 10), canopynode: Node = Node(generatename(),None,0,1,1,False,False)) -> Node:
         """
         generates a number of leaf nodes to create a tree of nodes
 
