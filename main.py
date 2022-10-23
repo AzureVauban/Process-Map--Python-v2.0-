@@ -406,34 +406,19 @@ def reversearithmetic(cur: Node, desiredamount: int = 0) -> int:
 # todo create methods for searching and cloning Node instances utilized in the __main__ populate method
 
 
-def createclone(basenode: Node, cloneatparent: bool = True) -> Node:
+def createclone(node: Node) -> Node:
     """
     creates a clone of the argument Node instance to be utilized in the populate method
 
     Args:
-        basenode (Node): stoes information about an ingredient, node to be cloned
+        node (Node): stoes information about an ingredient, node to be cloned
 
     Returns:
         Node: returns a clone of the node with the same values except for the instancekey and the
         address pointer
     """
     # clone must have a differing pointer address and instancekey
-    #! parent will be manually set later
-    clonednode = None
-    if cloneatparent:
-        clonednode = Node(basenode.ingredient, basenode, basenode.amountonhand,
-                          basenode.amountmadepercraft, basenode.amountneeded)
-    else:
-        clonednode = Node(basenode.ingredient, None, basenode.amountonhand,
-                          basenode.amountmadepercraft, basenode.amountneeded)
-    if not isinstance(clonednode, Node):
-        raise TypeError('clonednode is not an instance of', Node)
-    # create a clone of its children subnodes if there are any
-    if len(basenode.children) > 0:
-        for child in basenode.children.items():
-            # if cloneatparent is true, link the clone to the parent of the clonednode
-            createclone(child[1], False)
-    return clonednode
+    newnode : Node = Node(node.name,None,node.amountonhand,node.amountneeded,node.amountmadepercraft)
 # end def
 
 
