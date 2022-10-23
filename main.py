@@ -221,6 +221,7 @@ class NodeTree():
     population : int = 0
     def generateTree(self,population: int = random.randint(1,10), headnode : Node = Node(generatename())) -> Node:
         return headnode
+    
     def __init__(self,population : int = 0) -> None:
         self.headnode : Node = self.generateTree(population)
 def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:
