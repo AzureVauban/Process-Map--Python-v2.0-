@@ -282,11 +282,21 @@ class NodeTree():
         """
         # check to see if the current population of the generated tree is less than the population
         # argument value
-        while (self.countleafs(self.__traversetohead(canopynode))) < population:
+        if (self.countleafs(self.__traversetohead(canopynode))) < population:
             # generate a random name for the new node
             for _ in range(random.randint(1, population//2)):
-                # create a new node with a random name
-                pass
+                # create a new node with a random name, keep generating a new name until it is unique
+                newnodename : str = generatename()
+                while self.__isnameunique(newnodename, self.__traversetohead(canopynode)):
+                    newnodename = generatename()
+                # create a new node with the unique name and randomized amountmaderpecraft and amountneeded
+                Node(newnodename, canopynode, 0, random.randint(1,100), random.randint(1,100), False)
+                # check once again if the population is less than the population argument value
+                if self.countleafs(self.__traversetohead(canopynode)) < population:
+                    break
+        # call method recurisvely to generate more child subnodes
+        for leafnode in canopynode.children.items():
+            self.generateTree(population, leafnode[1])
         return self.__traversetohead(canopynode)
 
     def __init__(self, population: int = random.randint(1, 10)) -> None:
