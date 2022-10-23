@@ -410,7 +410,7 @@ def reversearithmetic(cur: Node, desiredamount: int = 0) -> int:
 # todo create methods for searching and cloning Node instances utilized in the __main__ populate method
 
 
-def createclone(basenode: Node,cloneatparent : bool = ) -> Node:
+def createclone(basenode: Node,cloneatparent : bool = True) -> Node:
     """
     creates a clone of the argument Node instance to be utilized in the populate method
 
@@ -423,10 +423,18 @@ def createclone(basenode: Node,cloneatparent : bool = ) -> Node:
     """
     # clone must have a differing pointer address and instancekey
     #! parent will be manually set later
-    clonednode : Node = Node(basenode.ingredient,None,basenode.amountonhand,basenode.amountmadepercraft,basenode.amountneeded)
+    clonednode = None
+    if cloneatparent:
+        clonednode = Node(basenode.ingredient,basenode,basenode.amountonhand,basenode.amountmadepercraft,basenode.amountneeded)
+    else:    
+        clonednode = Node(basenode.ingredient,None,basenode.amountonhand,basenode.amountmadepercraft,basenode.amountneeded)
+    if not isinstance(clonednode,Node):
+        raise TypeError('clonednode is not an instance of',Node)
     # create a clone of its children subnodes if there are any
     if len(basenode.children) > 0:
         for child in basenode.children.items():
+            # if cloneatparent is true, link the clone to the parent of the clonednode
+            createclone(child[1],False)
     return clonednode
 # end def
 
@@ -445,7 +453,21 @@ def iscircularilylinked(node: Node) -> bool:
     tortoise: Node = node  # ? slower pointer
     return hare is tortoise
 # end def
-
+def searchnodequery(ingredient : str, globalnodesdict : dict) -> dict:
+    # if no nodes were found, return {-1:None}, else return the found nodes in the dictionary
+    foundqueries : dict = {}
+    # type check that all the entries in the globalnodesdict are Node instances
+    # key value pair (instancekey, : Node)
+    for index,node in enumerate(globalnodesdict.items()):
+        if not isinstance(node[1],Node) or not isinstance(node[0],int):
+            raise TypeError('searching failure at index',index,'of the global nodes dictionary')
+    # check to see the ingredient is in any item[1] of the globalnodesdict
+    ingredientcanbefound : bool = ingredient in globalnodesdict.values()
+    #! add a logpoint here to see if this boolean can correctly evaluate  itself
+    for node in globalnodesdict.items():
+        # if the ingredient is found in the node, add it to the foundqueries dictionary
+        pass
+    return foundqueries
 
 def populate(cur: Node):
     """
