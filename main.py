@@ -7,7 +7,7 @@ import sys
 import time
 
 PROGRAMMODETYPE: int = 0
-
+CSVFILENAME : str = 'ingredient_tree.csv'
 
 class NodeB:
     """
