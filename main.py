@@ -219,6 +219,8 @@ class NodeTree():
     """
     headnode : Node
     population : int = 0
+    def countleafs(self, head : Node,currentcount : int = 1) -> int:
+        return currentcount
     def generateTree(self,population: int = random.randint(1,10), headnode : Node = Node(generatename())) -> Node:
         return headnode
     
