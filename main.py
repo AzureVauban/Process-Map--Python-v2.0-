@@ -217,7 +217,12 @@ class NodeTree():
     randomly generated tree for unit testing, adding class definition to main script instead of
     unit test module for better organization
     """
-    
+    headnode : Node
+    population : int = 0
+    def generateTree(self,population: int = random.randint(1,10), headNode : Node = Node(generatename())) -> Node:
+        return headNode
+    def __init__(self,population : int = 0) -> None:
+        headnode : Node = self.generateTree(population)
 def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:
     """
     look for endpoints connected to the tree at this node
