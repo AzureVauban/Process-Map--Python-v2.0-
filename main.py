@@ -454,11 +454,13 @@ def searchnodequery(ingredient: str) -> dict:
         ingredient (str): the name of the ingredient we will parse through the dictionary to find
 
     Raises:
-        TypeError: in the search dictionary, the key is not an interger and the value is not an instance of Node
+        TypeError: in the search dictionary, the key is not an interger and the value is not an
+        instance of Node
 
     Returns:
         dict: dictionary of found Node instances that match the ingredient argument
     """
+    
     # if no nodes were found, return {-1:None}, else return the found nodes in the dictionary
     foundqueries: dict = {}
     # type check that all the entries in the GLOBALNODEDICT are Node instances
