@@ -8,7 +8,9 @@ import time
 
 PROGRAMMODETYPE: int = 0
 CSVFILENAME: str = 'ingredient_tree.csv'
-GLOBALNODEDICT : dict = {} # {instancekey: Node}
+GLOBALNODEDICT: dict = {}  # {instancekey: Node}
+
+
 class NodeB:
     """
     class for storing simple data about an item such as its name and how much is needed to create
@@ -418,11 +420,11 @@ def createclone(node: Node) -> Node:
         address pointer
     """
     # clone must have a differing pointer address and instancekey
-    newnode : Node = Node(node.ingredient,None,node.amountonhand,
-                          node.amountneeded,node.amountmadepercraft,False,False)
+    newnode: Node = Node(node.ingredient, None, node.amountonhand,
+                         node.amountneeded, node.amountmadepercraft, False, False)
     newnode.treekey = node.treekey
     for childnode in node.children.items():
-        newchildnode: Node = Node(childnode[1].ingredient, newnode, # pylint: disable=unused-variable
+        newchildnode: Node = Node(childnode[1].ingredient, newnode,  # pylint: disable=unused-variable
                                   childnode[1].amountonhand, childnode[1].amountneeded,  # pylint: disable=unused-variable
                                   childnode[1].amountmadepercraft, False, False)  # pylint: disable=unused-variable
     return newnode
@@ -470,6 +472,8 @@ def searchnodequery(ingredient: str) -> dict:
         # if the ingredient is found in the node, add it to the foundqueries dictionary
         if node[1].ingredient == ingredient:
             foundqueries.update({node[0]: node[1]})
+    if len(foundqueries) == 0:
+        return {-1: None}
     return foundqueries
 
 
