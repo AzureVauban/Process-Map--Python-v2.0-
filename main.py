@@ -227,7 +227,8 @@ class NodeTree():
             node = node.parent
         return node
     def __isnameunique(self,name : str, node : Node) -> bool:
-        """check if any nodes in the tree have the same name as the name argument
+        """
+        check if any nodes in the tree have the same name as the name argument
 
         Args:
             name (str): ingredient name to check
@@ -236,9 +237,15 @@ class NodeTree():
         Returns:
             bool: returns true if the current node is the same as the name argument
         """
-        return True
+        if node.ingredient == name:
+            return False
+        else:
+            for childnode in node.children.items():
+                self.__isnameunique(name,childnode[1])
+            return True
     def countleafs(self, head : Node,currentcount : int = 1) -> int:
-        """counts how many leaf nodes were created in the tree
+        """
+        counts how many leaf nodes were created in the tree
 
         Args:
             head (Node): node of a tree to count leaf nodes from
