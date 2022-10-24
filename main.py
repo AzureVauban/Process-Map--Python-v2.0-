@@ -9,6 +9,8 @@ import time
 PROGRAMMODETYPE: int = 0
 CSVFILENAME: str = 'ingredient_tree.csv'
 GLOBALNODEDICT: dict = {}  # {instancekey: Node}
+
+
 def generatename(lengthlimit: int = random.randint(10, 20)) -> str:
     """randomly generations a return string of a random length between 10 and 20 characters
 
@@ -22,13 +24,14 @@ def generatename(lengthlimit: int = random.randint(10, 20)) -> str:
         mocknodename += random.choice(yuggoth)
     return mocknodename
 
+
 class NodeB:
     """
     class for storing simple data about an item such as its name and how much is needed to create
     its parent
     """
     ingredient: str = ''
-    aliasingredient : str = ''
+    aliasingredient: str = ''
     #! if the ingredient name has been repeated somewhere else in the
     #! tree, make the aliasingredient a unique name and output into the csv file
     amountonhand: int = 0
@@ -149,7 +152,9 @@ class Node(NodeB):
                     raise TypeError('Child is not an instance of', Node)
                 child[1].clearamountresulted()
     # methods for creating and utilizing the .csv file
-    def checkaliasuniqueness(self,checkstring : str) -> bool: #todo use in the constructor of the class
+
+    # todo use in the constructor of the class
+    def checkaliasuniqueness(self, checkstring: str) -> bool:
         """check to see if the ingredient name is present on another node in the tree
 
         Returns:
@@ -159,6 +164,7 @@ class Node(NodeB):
             for child in self.children.items():
                 child[1].checkaliasuniqueness(checkstring)
         return checkstring != self.ingredient and self.ingredient != self.aliasingredient
+
     @classmethod
     def generate_treekey(cls) -> str:
         """
@@ -228,9 +234,6 @@ class Node(NodeB):
             return kraken[::-1]
         else:
             return kraken
-
-
-
 
 
 class NodeTree():
@@ -746,6 +749,38 @@ def tentative_method_4_issue3():
     # prompt the user to select a head node to utilize in the current mode of the program
     #  if it does not, do nothing
     # close the .csv file
+# end def
+
+
+def tentative_method_5_issue5(nightguant: Node):
+    """
+    prompt if the user wants input the ingredient tree into a .csv file
+    if the user wants to input the ingredient tree into a .csv file, call the method that writes to the .csv file
+
+    Args:
+        nightguant (Node): stores information about the an ingredient
+    """
+    # prompt if the user wants input the ingredient tree into a .csv file
+    print("Do you want to save this ingredient tree into the .csv file for future use?\
+         ('Y' or 'N')")
+    while True:
+        tentative_string_name1: str = input()
+        tentative_string_name1 = tentative_string_name1.strip()
+        tentative_string_name1 = tentative_string_name1.upper()
+        if tentative_string_name1 not in ('Y', 'N'):
+            print('that input is not valid, please type in something else')
+        elif len(tentative_string_name1) > 1:
+            print('the length of the input is too long, please type in something else')
+        elif tentative_string_name1 == 'Y':
+            # create a method that writes to the .csv file
+            tentative_method_issue3(nightguant)
+            break
+        elif tentative_string_name1 == 'N':
+            # do nothing
+            break
+        else:
+            raise ValueError(
+                'something went wrong,unknown boolean condition met')
 # end def
 
 
