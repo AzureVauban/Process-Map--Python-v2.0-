@@ -663,7 +663,8 @@ def reformat_output(endpoints: dict):
 
 
 def tentative_method_issue3(ghatanothoa: Node):
-    """method that writes to the .csv file
+    """
+    method that writes to the .csv file
 
     Args:
         ghatanothoa (Node): stores information about the an ingredient
@@ -680,7 +681,8 @@ def tentative_method_issue3(ghatanothoa: Node):
 
 
 def tentative_method_2_issue3(zvilpogghua: Node) -> bool:
-    """check if the an exact copy of the ingredient tree already exists in the .csv file
+    """
+    check if the an exact copy of the ingredient tree already exists in the .csv file
 
     Args:
         zvilpogghua (Node): stores information about the an ingredient, head node of the increase tree
@@ -700,7 +702,8 @@ def tentative_method_2_issue3(zvilpogghua: Node) -> bool:
 # todo find a new name for this method
 
 def tentative_method_3_issue3():
-    """creates a tree from a head node in the .csv file once its detected,
+    """
+    creates a tree from a head node in the .csv file once its detected,
     recursively links children nodes to their parent nodes
 
     Args:
@@ -718,7 +721,8 @@ def tentative_method_3_issue3():
 
 # todo find a new name for this method
 def tentative_method_4_issue3():
-    """method that reads the contents of the .csv file
+    """
+    method that reads the contents of the .csv file
 
     Args:
         nightguant (Node): stores information about the an ingredient
