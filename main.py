@@ -507,7 +507,7 @@ def tentative_method_1_issue1(ingredient : str ,parent : Node,promptamounts : bo
             if len(displaylist[index][1].children) > 0:
                 print("children:",end=' ')
                 for child in displaylist[index][1].children.items():
-                    print(child[1].ingredient,end=', ')  
+                    print(child[1].ingredient,end=', ')
             print('')
         # get the user input
         while True:
@@ -578,11 +578,11 @@ def populate(cur: Node):
             # create new node
         # prompt if the user wants to copy an existing node if the search query returns a dictionary
         # that deosn't have a key of -1 and a value of None
-        tentative_method_1_issue1(newnodename[1],cur,tempbool)
+        tentative_method_1_issue1(newnodename[1],cur,tempbool) # todo have someone test out the code
+        tempbool = False
 #!        searchquery: dict = searchnodequery(newnodename[1])
 #!        if searchquery == {-1: None}:
 #!            Node(newnodename[1], cur, 0, 1, 1, tempbool)
-#!            tempbool = False
 #!        else: #! search did not return {-1: None}
 #!            print("What do you want to copy any of these nodes (Type in any of the numbers, type in\
 #!                  an invalid number to create a completely new node):")
