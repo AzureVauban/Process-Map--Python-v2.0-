@@ -487,9 +487,9 @@ def tentative_method_1_issue1(searchquerydict: dict,parent : Node) -> Node:
         searchquerydict (dict): the search query node
 
     Returns:
-        Node: the created clone node
+        Node: resulting node from search inquiry
     """
-    
+    return parent
 def populate(cur: Node):
     """
     creates new child instances during script runtime
