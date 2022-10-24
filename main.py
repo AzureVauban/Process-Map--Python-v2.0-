@@ -690,6 +690,19 @@ def tentative_method_issue3(ghatanothoa: Node):
     """
     outputcsvlines: dict = ghatanothoa.create_csv_writerow()
     # open the .csv file in write mode
+    #write the field names onto the file
+    field_names = [
+    'Tree_Key',  # 74nry8keki
+    'Ingredient',  # Coal
+    'Ingredient_Alias',  # Coal_[UNIQUE_ID APPENDED] 
+    #? if the ingredient name is not unique, append a unique string to the end of the ingredient name
+    'Parent_of_Ingredient',  # Carbon
+    'Amount_on_Hand',  # 0
+    'Amount_Made_Per_Craft',  # 1
+    'Amount_Needed_Per_Craft',  # 10
+    'Generation'  # 1
+]
+
     print(ghatanothoa.ingredient)
 # end def
 # todo find a new name for this method
