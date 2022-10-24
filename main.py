@@ -454,8 +454,9 @@ def createclone(node: Node) -> Node:
     newnode.treekey = node.treekey
     for childnode in node.children.items():
         newchildnode: Node = Node(childnode[1].ingredient, newnode,  # pylint: disable=unused-variable
-                                  childnode[1].amountonhand, childnode[1].amountneeded,  # pylint: disable=unused-variable
-                                  childnode[1].amountmadepercraft, False, False)  # pylint: disable=unused-variable
+                                  childnode[1].amountonhand,
+                                  childnode[1].amountneeded,
+                                  childnode[1].amountmadepercraft, False, False)
     return newnode
 # end def
 
@@ -512,6 +513,17 @@ def tentative_method_1_issue1(ingredient: str, parent: Node, promptamounts: bool
     """
     submethod for the populate method, only run this method for creating a new node if the search
     query does not return a dictionary of {-1:None}
+
+    Args:
+        ingredient (str): name of the ingredient
+        parent (Node): parent instance of the node to be created
+        promptamounts (bool, optional): boolean to determine if the constructor of the Node should prompt the input amounts method. Defaults to False.
+
+    Raises:
+        TypeError: search query failed because of invalid values in the search dictionary
+
+    Returns:
+        Node: created subnode
     """
     foundnodes: dict = searchnodequery(ingredient)
     # ! search did not find the ingredient in the global dictionary
