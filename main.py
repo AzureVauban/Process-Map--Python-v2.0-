@@ -478,7 +478,7 @@ def searchnodequery(ingredient: str) -> dict:
         return {-1: None}
     return foundqueries
 
-
+def submethodofpopulate()
 def populate(cur: Node):
     """
     creates new child instances during script runtime
@@ -530,8 +530,22 @@ def populate(cur: Node):
     # create new child instances
     tempbool: bool = True
     for newnodename in inputqueue.items():
-        Node(newnodename[1], cur, 0, 1, 1, tempbool)
-        tempbool = False
+        # if search method doesn't return a dictionary with a key of -1 and a value of None
+            # prompt for copy
+        # else
+            # create new node
+        # prompt if the user wants to copy an existing node if the search query returns a dictionary that deosn't have a key of -1 and a value of None
+        searchquery: dict = searchnodequery(newnodename[1])
+        if searchquery == {-1: None}:
+            Node(newnodename[1], cur, 0, 1, 1, tempbool)
+            tempbool = False
+        else: #! search did not return {-1: None}
+            print("What do you want to copy any of these nodes (Type in any of the numbers, type in an invalid number to create a completely new node):")
+            # create a dictionary of the found nodes, and print them out
+            # if the user doesn't input a valid number choice for any node they want to copy,
+            # assume default behavior, the else branch of this for-loop
+    # input current argument node into the global dictionary
+    GLOBALNODEDICT.update({cur.instancekey: cur})
     # continue method runtime
     for child in cur.children.items():
         if isinstance(child[1], Node):
