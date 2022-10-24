@@ -685,12 +685,7 @@ def tentative_method_issue3(ghatanothoa: Node):
     Args:
         ghatanothoa (Node): stores information about the an ingredient
     """
-    # check if the .csv file exists in the current directory
-    # if the file exists in the directory, open it in append mode (mode='a')
-    # check if the an exact copy of the ingredient already exists in the .csv file
-    # only if the an exact copy does not exist, write to the .csv file
-    # if the file doesnt exist in the directory, create & write current ingredient tree onto it
-    # close the .csv file
+    
     print(ghatanothoa.ingredient)
 # end def
 # todo find a new name for this method
@@ -772,7 +767,7 @@ def tentative_method_5_issue5(nightguant: Node):
         elif len(tentative_string_name1) > 1:
             print('the length of the input is too long, please type in something else')
         elif tentative_string_name1 == 'Y':
-            # create a method that writes to the .csv file
+            # call method that writes to the .csv file
             tentative_method_issue3(nightguant)
             break
         elif tentative_string_name1 == 'N':
@@ -835,7 +830,8 @@ if __name__ == '__main__':
             # iterate through the dictionary and output the amounts on hand
             reformat_output(results)
         # prompt user if they want to output the results to a .csv file
-            # todo insert prompt for outputting to .csv file
+        # todo insert prompt for outputting to .csv file
+        tentative_method_5_issue5(head)
         # prompt the user to see if they want to input another tree
         print("\nDo you want to run the program again with another item tree? (Y/N)")
         print("type in 'H' if you need to be reminded of the prompt")
