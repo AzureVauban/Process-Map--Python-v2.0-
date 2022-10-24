@@ -706,7 +706,8 @@ def tentative_method_issue3(ghatanothoa: Node):
             'Tree_Key',  # 74nry8keki
             'Ingredient',  # Coal
             'Ingredient_Alias',  # Coal_[UNIQUE_ID APPENDED]
-            # ? if the ingredient name is not unique, append a unique string to the end of the ingredient name
+            # ? if the ingredient name is not unique, append a unique string to the end of the
+            # ? ingredient name
             'Parent_of_Ingredient',  # Carbon
             'Amount_on_Hand',  # 0
             'Amount_Made_Per_Craft',  # 1
@@ -723,7 +724,7 @@ def tentative_method_issue3(ghatanothoa: Node):
 # todo find a new name for this method
 
 
-def tentative_method_2_issue3(zvilpogghua: Node) -> bool:
+def tentative_method_2_issue3() -> bool:
     """
     check if the an exact copy of the ingredient tree already exists in the .csv file
 
@@ -735,10 +736,18 @@ def tentative_method_2_issue3(zvilpogghua: Node) -> bool:
     """
     # check if the augment is the head node, if not, traverse upward to the head node
     # open the .csv file in read mode (mode='r')
-    # read the .csv file
-    # close the .csv file
+    # parse the tree for the head node instances
+    foundheadnodes: dict = {} #pylint:disable=unused-variable
+    with open(CSVFILENAME, 'r', encoding='UTF-8', newline='') as csvfile:
+        # create a csv reader object
+        reader = csv.DictReader(csvfile) #pylint:disable=unused-variable
+        # iterate over each row in the csv file and check if the row is a head node
+
+        # close the .csv file
+        csvfile.close()
     # return True if the an exact copy of the ingredient already exists in the .csv file, False otherwise
     return False
+#! potential unintended behavior, if the user inputs an ingredient name with the same name, the alias name will not be the same and the program will not detect an exact copy of the tree
 # end def
 
 
@@ -782,7 +791,8 @@ def tentative_method_4_issue3():
 def tentative_method_5_issue5(nightguant: Node):
     """
     prompt if the user wants input the ingredient tree into a .csv file
-    if the user wants to input the ingredient tree into a .csv file, call the method that writes to the .csv file
+    if the user wants to input the ingredient tree into a .csv file, call the method that writes to
+    the .csv file
 
     Args:
         nightguant (Node): stores information about the an ingredient
@@ -798,9 +808,12 @@ def tentative_method_5_issue5(nightguant: Node):
             print('that input is not valid, please type in something else')
         elif len(tentative_string_name1) > 1:
             print('the length of the input is too long, please type in something else')
-        elif tentative_string_name1 == 'Y':
+        elif tentative_string_name1 == 'Y' and not tentative_method_2_issue3(): #! must be false, if returns true it means that the tree was already inputted onto the csv file
             # call method that writes to the .csv file
             tentative_method_issue3(nightguant)
+            break
+        elif tentative_string_name1 == 'Y' and tentative_method_2_issue3(): #! must be true, if returns false it means that the tree was not already inputted onto the csv file
+            print('the tree was already inputted onto the .csv file')
             break
         elif tentative_string_name1 == 'N':
             # do nothing
@@ -865,7 +878,8 @@ if __name__ == '__main__':
         # todo insert prompt for outputting to .csv file
         tentative_method_5_issue5(head)
         # prompt the user to see if they want to input another tree
-        print("\nDo you want to run the program again with another item tree? (Y/N)")
+        print("\nDo you want to run the program again with another item tree?\
+            ('Y' or 'N')")
         print("type in 'H' if you need to be reminded of the prompt")
         while True:
             userinput = (input(''))
