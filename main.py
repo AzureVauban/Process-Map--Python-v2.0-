@@ -552,7 +552,8 @@ def populate(cur: Node):
             Node(newnodename[1], cur, 0, 1, 1, tempbool)
             tempbool = False
         else: #! search did not return {-1: None}
-            print("What do you want to copy any of these nodes (Type in any of the numbers, type in an invalid number to create a completely new node):")
+            print("What do you want to copy any of these nodes (Type in any of the numbers, type in\
+                  an invalid number to create a completely new node):")
             # create a dictionary of the found nodes, and print them out
             # if the user doesn't input a valid number choice for any node they want to copy,
             # assume default behavior, the else branch of this for-loop
