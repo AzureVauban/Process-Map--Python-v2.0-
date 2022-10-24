@@ -753,7 +753,7 @@ def tentative_method_2_issue3() -> bool:
 
 # todo find a new name for this method
 
-def tentative_method_3_issue3():
+def tentative_method_3_issue3(csvnode: Node):
     """
     creates a tree from a head node in the .csv file once its detected,
     recursively links children nodes to their parent nodes
@@ -879,14 +879,15 @@ if __name__ == '__main__':
         tentative_method_5_issue5(head)
         # prompt the user to see if they want to input another tree
         print("\nDo you want to run the program again with another item tree?\
-            ('Y' or 'N')")
+             ('Y' or 'N')")
         print("type in 'H' if you need to be reminded of the prompt")
         while True:
             userinput = (input(''))
             userinput = userinput.strip()
             userinput = userinput.upper()
             if userinput not in ('Y', 'N', 'H'):
-                print("That input is not valid, please type in 'Y' or 'N'")
+                print("That input is not valid, please type in\
+                     ('Y' or 'N')")
             elif len(userinput) > 1:
                 print('Your input is too long, please only type in one character')
             elif userinput == 'N' or userinput == 'Y':
