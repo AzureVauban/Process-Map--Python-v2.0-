@@ -478,7 +478,18 @@ def searchnodequery(ingredient: str) -> dict:
         return {-1: None}
     return foundqueries
 
-def submethodofpopulate()
+def tentative_method_1_issue1(searchquerydict: dict,parent : Node) -> Node:
+    """
+    submethod for the populate method, only run this method for creating a new node if the search
+    query does not return a dictionary of {-1:None}
+
+    Args:
+        searchquerydict (dict): the search query node
+
+    Returns:
+        Node: the created clone node
+    """
+    
 def populate(cur: Node):
     """
     creates new child instances during script runtime
@@ -534,7 +545,8 @@ def populate(cur: Node):
             # prompt for copy
         # else
             # create new node
-        # prompt if the user wants to copy an existing node if the search query returns a dictionary that deosn't have a key of -1 and a value of None
+        # prompt if the user wants to copy an existing node if the search query returns a dictionary
+        # that deosn't have a key of -1 and a value of None
         searchquery: dict = searchnodequery(newnodename[1])
         if searchquery == {-1: None}:
             Node(newnodename[1], cur, 0, 1, 1, tempbool)
