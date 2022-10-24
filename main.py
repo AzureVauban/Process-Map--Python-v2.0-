@@ -209,7 +209,8 @@ class Node(NodeB):
         return azathoth
 
     def create_csv_writerows(self, kraken: list) -> list:
-        """create a list of csv lines
+        """
+        create a list dictionaries of all the information needed to be stored in the .csv file for an ingredient tree
         rows = [
             {
             'Tree Key',  # 74nry8keki
@@ -229,6 +230,7 @@ class Node(NodeB):
             if not isinstance(child[1], Node):
                 raise TypeError('Child is not an instance of', Node)
             child[1].create_csv_writerows(kraken)
+        #! dict needs to be reorganized to be in the correct order base for output
         if not len(kraken) // 2 == 0:
 
             return kraken[::-1]
@@ -686,7 +688,8 @@ def tentative_method_issue3(ghatanothoa: Node):
     Args:
         ghatanothoa (Node): stores information about the an ingredient
     """
-    
+    outputcsvlines: dict = ghatanothoa.create_csv_writerow()
+    # open the .csv file in write mode
     print(ghatanothoa.ingredient)
 # end def
 # todo find a new name for this method
