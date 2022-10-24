@@ -522,7 +522,7 @@ def tentative_method_1_issue1(ingredient : str ,parent : Node,promptamounts : bo
                 pass
             else:
                 # create a regular node
-                tentative_method_1_issue1(generatename()+generatename()+generatename(),parent,promptamounts)
+                return tentative_method_1_issue1(generatename()+generatename()+generatename(),parent,promptamounts)
     return parent
 def populate(cur: Node):
     """
