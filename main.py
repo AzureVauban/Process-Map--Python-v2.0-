@@ -742,7 +742,9 @@ def tentative_method_2_issue3() -> bool:
         # create a csv reader object
         reader = csv.DictReader(csvfile) #pylint:disable=unused-variable
         # iterate over each row in the csv file and check if the row is a head node
-
+    #! call method here
+        csvnode: Node = Node()  # todo remove this line when finishing this method
+        tentative_method_3_issue3(csvnode)  # todo remove this line when finishing this method
         # close the .csv file
         csvfile.close()
     # return True if the an exact copy of the ingredient already exists in the .csv file, False otherwise
@@ -783,8 +785,8 @@ def tentative_method_4_issue3():
     #  if it does, read the contents of the file
     # parse through the file and create a dictionary of head nodes
     # prompt the user to select a head node to utilize in the current mode of the program
-    #  if it does not, do nothing
     # close the .csv file
+    #  if it does not, do nothing
 # end def
 
 
@@ -840,12 +842,14 @@ if __name__ == '__main__':
             elif userinput == 'B':
                 PROGRAMMODETYPE = 1
                 # todo if the .csv file exists in the current directionary, ask the user if they want to use an of the ingredient trees in the file for the current program mode
+                tentative_method_4_issue3()
                 break
             elif userinput == 'H':
                 printprompt()
             else:
                 PROGRAMMODETYPE = 0
                 # todo if the .csv file exists in the current directionary, ask the user if they want to use an of the ingredient trees in the file for the current program mode
+                tentative_method_4_issue3()
                 break
         # prompt user to type in the name of the item they want to create
         while True:
