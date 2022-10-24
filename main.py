@@ -4,13 +4,13 @@ Changes from v1.0:
 - outputting data to a .csv file for later use
 - inputting data to a .csv file for utilization
 - search for a node in the tree and copy it instead of retyping all your data
+- inputting basic arithmetic symbols when prompted to input numeric data (not added yet)
 """
 import csv
 import math
 import random
 import sys
 import time
-
 
 PROGRAMMODETYPE: int = 0
 CSVFILENAME: str = 'ingredient_tree_TENTATIVENAME.csv'
