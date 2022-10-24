@@ -1,7 +1,9 @@
 """
 main script for Python Process Map (v2.0)
 """
+from curses.ascii import isdigit
 import math
+from operator import ge
 import random
 import sys
 import time
@@ -478,17 +480,49 @@ def searchnodequery(ingredient: str) -> dict:
         return {-1: None}
     return foundqueries
 
-def tentative_method_1_issue1(searchquerydict: dict,parent : Node) -> Node:
+def tentative_method_1_issue1(ingredient : str ,parent : Node,promptamounts : bool = False) -> Node:
     """
     submethod for the populate method, only run this method for creating a new node if the search
     query does not return a dictionary of {-1:None}
-
-    Args:
-        searchquerydict (dict): the search query node
-
-    Returns:
-        Node: resulting node from search inquiry
     """
+    foundnodes : dict = searchnodequery(ingredient)
+    if foundnodes == {-1:None}: #! search did not find the ingredient in the global dictionary
+        return Node(ingredient, parent, 0, 1, 1, promptamounts)
+    else:
+        displaylist : list = []
+        print("What do you want to copy any of these nodes (Type in any of the numbers, type in\
+                  an invalid number to create a completely new node):")
+        # for all the found choices, reorganize the found choices into a list of tuples
+        for index,node in enumerate(foundnodes.items()):
+            # make sure you type check the dictionary
+            if not isinstance(node[1],Node) or not isinstance(node[0],int):
+                raise TypeError('searching failure at index',index,'of the global nodes dictionary')
+            # create a list of tuples
+            if node not in displaylist:
+                displaylist.append({index:node})
+        # display the list of tuples
+        for index,node in enumerate(displaylist):
+            print(displaylist[index],end='. ')
+            print(displaylist[index][1].ingredient,end=' ')
+            # if the node has children, display the first three children of the node at the current
+            # index of the list of tuples
+            if len(displaylist[index][1].children) > 0:
+                print("children:",end=' ')
+                for child in displaylist[index][1].children.items():
+                    print(child[1].ingredient,end=', ')  
+            print('')
+        # get the user input
+        while True:
+            mymethodinput : str = input() #todo find a better name for this variable
+            if not mymethodinput.isdigit():
+                print('Invalid input, please enter a number between',1,'and',len(displaylist))
+            #check if the input from the user is a valid number between 1 and the length of the list
+            elif mymethodinput.isdigit() and int(mymethodinput) > 0 and int(mymethodinput) <= len(displaylist):
+                # create a clone of the node at the index position - 1 of the list of tuples
+                pass
+            else:
+                # create a regular node
+                tentative_method_1_issue1(generatename()+generatename()+generatename(),parent,promptamounts)
     return parent
 def populate(cur: Node):
     """
@@ -547,13 +581,14 @@ def populate(cur: Node):
             # create new node
         # prompt if the user wants to copy an existing node if the search query returns a dictionary
         # that deosn't have a key of -1 and a value of None
-        searchquery: dict = searchnodequery(newnodename[1])
-        if searchquery == {-1: None}:
-            Node(newnodename[1], cur, 0, 1, 1, tempbool)
-            tempbool = False
-        else: #! search did not return {-1: None}
-            print("What do you want to copy any of these nodes (Type in any of the numbers, type in\
-                  an invalid number to create a completely new node):")
+        tentative_method_1_issue1(newnodename[1],cur,tempbool)
+#!        searchquery: dict = searchnodequery(newnodename[1])
+#!        if searchquery == {-1: None}:
+#!            Node(newnodename[1], cur, 0, 1, 1, tempbool)
+#!            tempbool = False
+#!        else: #! search did not return {-1: None}
+#!            print("What do you want to copy any of these nodes (Type in any of the numbers, type in\
+#!                  an invalid number to create a completely new node):")
             # create a dictionary of the found nodes, and print them out
             # if the user doesn't input a valid number choice for any node they want to copy,
             # assume default behavior, the else branch of this for-loop
