@@ -390,7 +390,8 @@ def recursivearithmetic(cur: Node) -> int:
 
 
 def reversearithmetic(cur: Node, desiredamount: int = 0) -> int:
-    """find how much of a material you will need get a particular amount of an item you want
+    """
+    find how much of a material you will need get a particular amount of an item you want
 
     Args:
         cur (Node): stores information about an ingredient
