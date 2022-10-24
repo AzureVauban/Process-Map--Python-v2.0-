@@ -700,7 +700,7 @@ def tentative_method_issue3(ghatanothoa: Node):
     """
     #!outputcsvlines: dict = ghatanothoa.create_csv_writerow()
     # open the .csv file in write mode
-    with open(CSVFILENAME,'a',encoding='UTF-8',newline='') as csvfile:
+    with open(CSVFILENAME, 'a', encoding='UTF-8', newline='') as csvfile:
         # write the field names onto the file
         field_names = [
             'Tree_Key',  # 74nry8keki
