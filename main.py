@@ -5,9 +5,13 @@ import math
 import random
 import sys
 import time
+import csv
+
+from matplotlib.pyplot import close
 
 PROGRAMMODETYPE: int = 0
-CSVFILENAME: str = 'ingredient_tree.csv'
+CSVFILENAME: str = 'ingredient_tree_TENTATIVENAME.csv'
+#! revert this modification of the filename when finished utilizing it for testing
 GLOBALNODEDICT: dict = {}  # {instancekey: Node}
 
 
@@ -103,6 +107,8 @@ class Node(NodeB):
         else:
             self.generation = 0
             self.treekey = self.generate_treekey()
+        if not self.checkaliasuniqueness(self.aliasingredient):
+            self.aliasingredient = self.aliasingredient + '__' + generatename()
         self.askmadepercraftquestion = green
         Node.instances += 1
         if self.ismain_promptinputbool:
@@ -200,6 +206,7 @@ class Node(NodeB):
             ghast = self.parent.ingredient
         azathoth.update({'Tree_Key': self.treekey})
         azathoth.update({'Ingredient': self.ingredient})
+        azathoth.update({'Ingredient_Alias': self.aliasingredient})
         azathoth.update({'Parent_of_Ingredient': ghast})
         azathoth.update({'Amount_on_Hand': str(self.amountonhand)})
         azathoth.update(
@@ -688,22 +695,27 @@ def tentative_method_issue3(ghatanothoa: Node):
     Args:
         ghatanothoa (Node): stores information about the an ingredient
     """
-    outputcsvlines: dict = ghatanothoa.create_csv_writerow()
+    #!outputcsvlines: dict = ghatanothoa.create_csv_writerow()
     # open the .csv file in write mode
-    #write the field names onto the file
-    field_names = [
-    'Tree_Key',  # 74nry8keki
-    'Ingredient',  # Coal
-    'Ingredient_Alias',  # Coal_[UNIQUE_ID APPENDED] 
-    #? if the ingredient name is not unique, append a unique string to the end of the ingredient name
-    'Parent_of_Ingredient',  # Carbon
-    'Amount_on_Hand',  # 0
-    'Amount_Made_Per_Craft',  # 1
-    'Amount_Needed_Per_Craft',  # 10
-    'Generation'  # 1
-]
-
-    print(ghatanothoa.ingredient)
+    with open(CSVFILENAME, 'w', newline='') as csvfile:
+        # write the field names onto the file
+        field_names = [
+            'Tree_Key',  # 74nry8keki
+            'Ingredient',  # Coal
+            'Ingredient_Alias',  # Coal_[UNIQUE_ID APPENDED]
+            # ? if the ingredient name is not unique, append a unique string to the end of the ingredient name
+            'Parent_of_Ingredient',  # Carbon
+            'Amount_on_Hand',  # 0
+            'Amount_Made_Per_Craft',  # 1
+            'Amount_Needed_Per_Craft',  # 10
+            'Generation'  # 1
+        ]
+        writer = csv.DictWriter(csvfile, fieldnames=field_names)
+        writer.writeheader()
+        # write the data onto the file
+        writer.writerows(ghatanothoa.create_csv_writerows([]))
+        csvfile.close()
+    print('Successfully wrote to the .csv file called', CSVFILENAME)
 # end def
 # todo find a new name for this method
 
