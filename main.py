@@ -9,7 +9,18 @@ import time
 PROGRAMMODETYPE: int = 0
 CSVFILENAME: str = 'ingredient_tree.csv'
 GLOBALNODEDICT: dict = {}  # {instancekey: Node}
+def generatename(lengthlimit: int = random.randint(10, 20)) -> str:
+    """randomly generations a return string of a random length between 10 and 20 characters
 
+    Returns:
+        str: randomly generated string
+    """
+    # create a random name as a string
+    yuggoth: str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    mocknodename: str = ''
+    for _ in range(random.randint(6, lengthlimit)):
+        mocknodename += random.choice(yuggoth)
+    return mocknodename
 
 class NodeB:
     """
@@ -41,6 +52,7 @@ class NodeB:
         self.amountneeded = yellow
         self.queueamountresulted = {}
         self.ingredient = name
+        self.aliasingredient = self.ingredient
         self.amountresulted = 0
 
 
@@ -137,7 +149,16 @@ class Node(NodeB):
                     raise TypeError('Child is not an instance of', Node)
                 child[1].clearamountresulted()
     # methods for creating and utilizing the .csv file
+    def checkaliasuniqueness(self,checkstring : str) -> bool: #todo use in the constructor of the class
+        """check to see if the ingredient name is present on another node in the tree
 
+        Returns:
+            bool: return true if the ingredient name is present on another node of the tree
+        """
+        if checkstring != self.ingredient and self.ingredient != self.aliasingredient:
+            for child in self.children.items():
+                child[1].checkaliasuniqueness(checkstring)
+        return checkstring != self.ingredient and self.ingredient != self.aliasingredient
     @classmethod
     def generate_treekey(cls) -> str:
         """
@@ -209,18 +230,7 @@ class Node(NodeB):
             return kraken
 
 
-def generatename(lengthlimit: int = random.randint(10, 20)) -> str:
-    """randomly generations a return string of a random length between 10 and 20 characters
 
-    Returns:
-        str: randomly generated string
-    """
-    # create a random name as a string
-    yuggoth: str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    mocknodename: str = ''
-    for _ in range(random.randint(6, lengthlimit)):
-        mocknodename += random.choice(yuggoth)
-    return mocknodename
 
 
 class NodeTree():
