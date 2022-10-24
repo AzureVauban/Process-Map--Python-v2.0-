@@ -615,7 +615,7 @@ def populate(cur: Node):
         # prompt if the user wants to copy an existing node if the search query returns a dictionary
         # that deosn't have a key of -1 and a value of None
         # todo have someone test out the code
-        tentative_method_1_issue1(newnodename[1], cur, tempbool)
+        _ = tentative_method_1_issue1(newnodename[1], cur, tempbool)
         tempbool = False
 #!        searchquery: dict = searchnodequery(newnodename[1])
 #!        if searchquery == {-1: None}:
