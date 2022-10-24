@@ -448,17 +448,17 @@ def iscircularilylinked(node: Node) -> bool:
 
 
 def searchnodequery(ingredient: str) -> dict:
-    """_summary_
+    """
+    search through a dictionary of Nodes to find a Node with the same ingredient name
 
     Args:
-        ingredient (str): the name of the ingredient we will parse through the dictionary to find
+        ingredient (str): the name of the ingredient to search for
 
     Raises:
-        TypeError: in the search dictionary, the key is not an interger and the value is not an
-        instance of Node
+        TypeError: the key is not an integer and the value is not an instance of Node
 
     Returns:
-        dict: dictionary of found Node instances that match the ingredient argument
+        dict: all nodes found to have the same ingredient name as the search parameter, will returns {-1: None} if no nodes are found to have the same ingredient name
     """
 
     # if no nodes were found, return {-1:None}, else return the found nodes in the dictionary
