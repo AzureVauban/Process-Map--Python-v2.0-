@@ -17,6 +17,9 @@ class NodeB:
     its parent
     """
     ingredient: str = ''
+    aliasingredient : str = ''
+    #! if the ingredient name has been repeated somewhere else in the
+    #! tree, make the aliasingredient a unique name and output into the csv file
     amountonhand: int = 0
     amountneeded: int = 0
     amountmadepercraft: int = 0
