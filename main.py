@@ -460,7 +460,7 @@ def searchnodequery(ingredient: str) -> dict:
     Returns:
         dict: dictionary of found Node instances that match the ingredient argument
     """
-    
+
     # if no nodes were found, return {-1:None}, else return the found nodes in the dictionary
     foundqueries: dict = {}
     # type check that all the entries in the GLOBALNODEDICT are Node instances
