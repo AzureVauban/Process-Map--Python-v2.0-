@@ -518,7 +518,7 @@ def tentative_method_1_issue1(ingredient: str, parent: Node, promptamounts: bool
             if not mymethodinput.isdigit():
                 print('Invalid input, please enter a number between',
                       1, 'and', len(displaylist))
-            #check if the input from the user is a valid number between 1 and the length of the list
+            # check if the input from the user is a valid number between 1 and the length of the list
             elif mymethodinput.isdigit() and int(mymethodinput) > 0 and int(mymethodinput) <= len(displaylist):
                 # create a clone of the node at the index position - 1 of the list of tuples
                 return createclone(displaylist[int(mymethodinput) - 1][1])
