@@ -1,9 +1,7 @@
 """
 main script for Python Process Map (v2.0)
 """
-from curses.ascii import isdigit
 import math
-from operator import ge
 import random
 import sys
 import time
@@ -513,17 +511,16 @@ def tentative_method_1_issue1(ingredient : str ,parent : Node,promptamounts : bo
             print('')
         # get the user input
         while True:
-            mymethodinput : str = input() #todo find a better name for this variable
+            mymethodinput : str = input() # todo find a better name for this variable
             if not mymethodinput.isdigit():
                 print('Invalid input, please enter a number between',1,'and',len(displaylist))
             #check if the input from the user is a valid number between 1 and the length of the list
             elif mymethodinput.isdigit() and int(mymethodinput) > 0 and int(mymethodinput) <= len(displaylist):
                 # create a clone of the node at the index position - 1 of the list of tuples
-                pass
+                return createclone(displaylist[int(mymethodinput) - 1][1])
             else:
                 # create a regular node
                 return tentative_method_1_issue1(generatename()+generatename()+generatename(),parent,promptamounts)
-    return parent
 def populate(cur: Node):
     """
     creates new child instances during script runtime
