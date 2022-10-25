@@ -808,23 +808,17 @@ def tentative_method_4_issue3() -> dict:
                     iscsvheadnode: bool = item[0] == 'Generation' and item[1] == '0'
                     if iscsvheadnode:
                         # if true, update the dictionary with the tree key and a head node instance
-                        csvheadnodes.update({row['Tree_Key']: Node(row['Ingredient'],
-                                                               None,
-                                                               0,
-                                                               #int(row['Amount_Made_Per_Craft'])
-                                                               # int(row['Amount_Needed_Per_Craft']),
-                                                               # int(row['Generation'])
-                                                               1,
-                                                               1,
-                                                               
-                                    )})
+                        csvheadnodes.update({row['Tree_Key']: Node(row['Ingredient'],None,0,1,1)})
+                        # int (row['Amount_Made_Per_Craft'])
+                        # int (row['Amount_on_Hand'])
+                        # int (row['Amount_Needed_Per_Craft']),
+                        # int (row['Generation'])
     # parse through the file and create a dictionary of head nodes
-    # prompt the user to select a head node to utilize in the current mode of the program
         csvfile.close()  # close the .csv file
         return csvheadnodes
     else:
-    #  if it does not, return {-1:None} to indicate that the .csv file does not exist or lacks any head node instances
         return {-1:None}
+    # prompt the user to select a head node to utilize in the current mode of the program
 # end def
 
 
