@@ -788,7 +788,7 @@ def tentative_method_3_issue3(csvnode: Node):
 
 
 # todo find a new name for this method
-def tentative_method_4_issue3():
+def tentative_method_4_issue3() -> dict:
     """
     method that reads the contents of the .csv file
 
@@ -796,24 +796,28 @@ def tentative_method_4_issue3():
         nightguant (Node): stores information about the an ingredient
     """
     # check if the .csv file exists in the current directory
+    csvheadnodes: dict = {}
     if os.path.exists(CSVFILENAME):
-    #  if it does, read the contents of the file
-        with open (CSVFILENAME, 'r', encoding='UTF-8', newline='') as csvfile:
+        #  if it does, read the contents of the file
+        with open(CSVFILENAME, 'r', encoding='UTF-8', newline='') as csvfile:
             # create a csv reader object
             reader = csv.DictReader(csvfile)
             # iterate over each row in the csv file and check if the row is a head node
             for row in reader:
-                iscsvheadnode : bool = 'Generation' in row.values()
                 for item in row.items():
-                    print('\x1B[31m',item,'\x1B[37m')
-                    if item[0] == 'Generation':
-                        print('\x1B[33m',item[0],'\x1B[37m')
-                for value in row.values():
-                    print('\x1B[32m',value,'\x1B[37m')
+                    iscsvheadnode: bool = item[0] == 'Generation' and item[1] == '0'
+                    if iscsvheadnode:
+                        # if true, update the dictionary with the tree key and a head node instance
+                        csvheadnodes.update({row['Tree_Key']: Node(row['Ingredient'], None,
+                                                               int(row['Amount_on_Hand']),
+                                                               int(row['Amount_Made_Per_Craft'],
+                                                               int(row['Amount_Needed_Per_Craft'],
+                                                               int(row['Generation']))))          })
     # parse through the file and create a dictionary of head nodes
     # prompt the user to select a head node to utilize in the current mode of the program
     # close the .csv file
-    #  if it does not, do nothing
+    #  if it does not, return {-1:None} to indicate that the .csv file does not exist or lacks any head node instances
+    return csvheadnodes
 # end def
 
 
