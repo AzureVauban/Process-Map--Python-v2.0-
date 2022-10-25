@@ -8,9 +8,9 @@ Changes from v1.0:
 """
 import csv
 import math
+import os
 import random
 import sys
-import os
 import time
 
 PROGRAMMODETYPE: int = 0
@@ -808,7 +808,8 @@ def tentative_method_4_issue3() -> dict:
                     iscsvheadnode: bool = item[0] == 'Generation' and item[1] == '0'
                     if iscsvheadnode:
                         # if true, update the dictionary with the tree key and a head node instance
-                        csvheadnodes.update({row['Tree_Key']: Node(row['Ingredient'],None,0,1,1)})
+                        csvheadnodes.update(
+                            {row['Tree_Key']: Node(row['Ingredient'], None, 0, 1, 1)})
                         # int (row['Amount_Made_Per_Craft'])
                         # int (row['Amount_on_Hand'])
                         # int (row['Amount_Needed_Per_Craft']),
@@ -817,7 +818,7 @@ def tentative_method_4_issue3() -> dict:
         csvfile.close()  # close the .csv file
         return csvheadnodes
     else:
-        return {-1:None}
+        return {-1: None}
     # prompt the user to select a head node to utilize in the current mode of the program
 # end def
 
@@ -835,9 +836,9 @@ def tentative_method_5_issue5(nightguant: Node):
     print("Do you want to save this ingredient tree into the .csv file for future use?\
          ('Y' or 'N')")
     while True:
-        tentative_string_name1: str=input()
-        tentative_string_name1=tentative_string_name1.strip()
-        tentative_string_name1=tentative_string_name1.upper()
+        tentative_string_name1: str = input()
+        tentative_string_name1 = tentative_string_name1.strip()
+        tentative_string_name1 = tentative_string_name1.upper()
         if tentative_string_name1 not in ('Y', 'N'):
             print('that input is not valid, please type in something else')
         elif len(tentative_string_name1) > 1:
@@ -866,24 +867,34 @@ if __name__ == '__main__':
         # prompt user which mode they want to run the program in
         printprompt()
         while True:
-            userinput=(input(''))
-            userinput=userinput.strip()
-            userinput=userinput.upper()
+            userinput = (input(''))
+            userinput = userinput.strip()
+            userinput = userinput.upper()
             if userinput not in ('A', 'B', 'H'):
                 print("That input is not valid, please type in 'A' or 'B'")
             elif len(userinput) > 1:
                 print('Your input is too long, please only type in one character')
             elif userinput == 'B':
-                PROGRAMMODETYPE=1
+                PROGRAMMODETYPE = 1
                 # todo if the .csv file exists in the current directionary, ask the user if they want to use an of the ingredient trees in the file for the current program mode
-                tentative_method_4_issue3()
+                nodesfromcsv: dict = tentative_method_4_issue3()
+                print("Do you want to chose any of these ingredient trees to modify from the .csv file?\
+                      ('Y' or 'N')")
+                if nodesfromcsv != {-1:None}:
+                    for index,item in enumerate(nodesfromcsv.items()):
+                        print(f'{index+1}. {item[1].ingredient}')
                 break
             elif userinput == 'H':
                 printprompt()
             else:
                 PROGRAMMODETYPE=0
                 # todo if the .csv file exists in the current directionary, ask the user if they want to use an of the ingredient trees in the file for the current program mode
-                tentative_method_4_issue3()
+#!                nodesfromcsv : dict = tentative_method_4_issue3()
+#!                print("Do you want to chose any of these ingredient trees to modify from the .csv file?\
+#!                      ('Y' or 'N')")
+#!                if nodesfromcsv != {-1:None}:
+#!                    for index,item in enumerate(nodesfromcsv.items()):
+#!                        print(f'{index+1}. {item[1].ingredient}')
                 break
         # prompt user to type in the name of the item they want to create
         while True:
