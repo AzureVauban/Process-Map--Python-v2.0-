@@ -808,16 +808,20 @@ def tentative_method_4_issue3() -> dict:
                     iscsvheadnode: bool = item[0] == 'Generation' and item[1] == '0'
                     if iscsvheadnode:
                         # if true, update the dictionary with the tree key and a head node instance
-                        csvheadnodes.update({row['Tree_Key']: Node(row['Ingredient'], None,
-                                                               int(row['Amount_on_Hand']),
-                                                               int(row['Amount_Made_Per_Craft'],
-                                                               int(row['Amount_Needed_Per_Craft'],
-                                                               int(row['Generation']))))          })
+                        csvheadnodes.update({row['Tree_Key']: Node(row['Ingredient'],
+                                                               None,
+                                                               0,
+                                                               int(row['Amount_Made_Per_Craft'])
+                                                               # int(row['Amount_Needed_Per_Craft']),
+                                                               # int(row['Generation'])
+                                    )})
     # parse through the file and create a dictionary of head nodes
     # prompt the user to select a head node to utilize in the current mode of the program
-    # close the .csv file
+        csvfile.close()  # close the .csv file
+        return csvheadnodes
+    else:
     #  if it does not, return {-1:None} to indicate that the .csv file does not exist or lacks any head node instances
-    return csvheadnodes
+        return {-1:None}
 # end def
 
 
@@ -834,9 +838,9 @@ def tentative_method_5_issue5(nightguant: Node):
     print("Do you want to save this ingredient tree into the .csv file for future use?\
          ('Y' or 'N')")
     while True:
-        tentative_string_name1: str = input()
-        tentative_string_name1 = tentative_string_name1.strip()
-        tentative_string_name1 = tentative_string_name1.upper()
+        tentative_string_name1: str=input()
+        tentative_string_name1=tentative_string_name1.strip()
+        tentative_string_name1=tentative_string_name1.upper()
         if tentative_string_name1 not in ('Y', 'N'):
             print('that input is not valid, please type in something else')
         elif len(tentative_string_name1) > 1:
@@ -865,35 +869,35 @@ if __name__ == '__main__':
         # prompt user which mode they want to run the program in
         printprompt()
         while True:
-            userinput = (input(''))
-            userinput = userinput.strip()
-            userinput = userinput.upper()
+            userinput=(input(''))
+            userinput=userinput.strip()
+            userinput=userinput.upper()
             if userinput not in ('A', 'B', 'H'):
                 print("That input is not valid, please type in 'A' or 'B'")
             elif len(userinput) > 1:
                 print('Your input is too long, please only type in one character')
             elif userinput == 'B':
-                PROGRAMMODETYPE = 1
+                PROGRAMMODETYPE=1
                 # todo if the .csv file exists in the current directionary, ask the user if they want to use an of the ingredient trees in the file for the current program mode
                 tentative_method_4_issue3()
                 break
             elif userinput == 'H':
                 printprompt()
             else:
-                PROGRAMMODETYPE = 0
+                PROGRAMMODETYPE=0
                 # todo if the .csv file exists in the current directionary, ask the user if they want to use an of the ingredient trees in the file for the current program mode
                 tentative_method_4_issue3()
                 break
         # prompt user to type in the name of the item they want to create
         while True:
-            itemname = input(
+            itemname=input(
                 'What is the name of the item you want to create: ')
-            itemname = itemname.strip()
+            itemname=itemname.strip()
             if len(itemname) == 0:
                 print('You must type something in')
             else:
                 break
-        head = Node(itemname, None)
+        head=Node(itemname, None)
         if PROGRAMMODETYPE == 0:  # ? normal program mode
             populate(head)
             for subnode in findlocalendpoints(head, {}).items():
@@ -902,13 +906,13 @@ if __name__ == '__main__':
                   end=str(head.amountresulted)+'\n')
         else:  # ? Mode B
             print('How much', head.ingredient, 'do you want to create:')
-            desirednumber: int = promptint()
+            desirednumber: int=promptint()
             populate(head)
             reversearithmetic(head, desirednumber)
             # output the results
             print('To get', str(str(desirednumber)+'x'),
                   head.ingredient, 'you need the following:')
-            results: dict = findlocalendpoints(head, {})
+            results: dict=findlocalendpoints(head, {})
             # iterate through the dictionary and output the amounts on hand
             reformat_output(results)
         # prompt user if they want to output the results to a .csv file
@@ -919,9 +923,9 @@ if __name__ == '__main__':
              ('Y' or 'N')")
         print("type in 'H' if you need to be reminded of the prompt")
         while True:
-            userinput = (input(''))
-            userinput = userinput.strip()
-            userinput = userinput.upper()
+            userinput=(input(''))
+            userinput=userinput.strip()
+            userinput=userinput.upper()
             if userinput not in ('Y', 'N', 'H'):
                 print("That input is not valid, please type in\
                      ('Y' or 'N')")
@@ -935,7 +939,7 @@ if __name__ == '__main__':
     # terminate the program
     print('terminating process in 10 seconds')
     # close program in 10 seconds
-    NANI = 10
+    NANI=10
     while NANI > 0:
         time.sleep(1)
         NANI -= 1
