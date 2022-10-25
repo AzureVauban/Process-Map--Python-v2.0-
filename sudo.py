@@ -16,4 +16,16 @@ suedocode for rrestructuring main.py
     # check name uniqueness method (private,returns true or false)
     # traverse to head node method (private,returns a node)
     # count population of tree method (returns an integer)
-    
+    # generate tree of class B instances (returns a node)    
+# find endpoints of tree method (returns a dictionary of nodes)
+# prompt integer input method (returns an integer)
+# method to perform arithmetic operations on class B instances (returns an int (amount resulted))
+# prompt populate method 
+# method to perform the inverse arithmetic operations on class B instances (returns an int (amount on hand))
+# method to create a clone of a Node (returns a instance of class B)
+# check if the tree is circular method (returns a boolean)
+# search method, returns a dict of Nodes that match the search argument (returns a dictionary of class B instances)
+# method for returning an instance of class B from the search method (returns an instance of class B)
+# print program prompt method
+# reformat output method
+# write tree to csv method
