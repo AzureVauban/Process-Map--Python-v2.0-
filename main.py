@@ -803,9 +803,13 @@ def tentative_method_4_issue3():
             reader = csv.DictReader(csvfile)
             # iterate over each row in the csv file and check if the row is a head node
             for row in reader:
-                iscsvheadnode : bool = row[7].generation == 0
+                iscsvheadnode : bool = 'Generation' in row.values()
                 for item in row.items():
-                    print(item)
+                    print('\x1B[31m',item,'\x1B[37m')
+                    if item[0] == 'Generation':
+                        print('\x1B[33m',item[0],'\x1B[37m')
+                for value in row.values():
+                    print('\x1B[32m',value,'\x1B[37m')
     # parse through the file and create a dictionary of head nodes
     # prompt the user to select a head node to utilize in the current mode of the program
     # close the .csv file
