@@ -10,6 +10,7 @@ import csv
 import math
 import random
 import sys
+import os
 import time
 
 PROGRAMMODETYPE: int = 0
@@ -795,7 +796,16 @@ def tentative_method_4_issue3():
         nightguant (Node): stores information about the an ingredient
     """
     # check if the .csv file exists in the current directory
+    if os.path.exists(CSVFILENAME):
     #  if it does, read the contents of the file
+        with open (CSVFILENAME, 'r', encoding='UTF-8', newline='') as csvfile:
+            # create a csv reader object
+            reader = csv.DictReader(csvfile)
+            # iterate over each row in the csv file and check if the row is a head node
+            for row in reader:
+                iscsvheadnode : bool = row[7].generation == 0
+                for item in row.items():
+                    print(item)
     # parse through the file and create a dictionary of head nodes
     # prompt the user to select a head node to utilize in the current mode of the program
     # close the .csv file
