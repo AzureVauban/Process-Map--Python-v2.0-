@@ -811,9 +811,11 @@ def tentative_method_4_issue3() -> dict:
                         csvheadnodes.update({row['Tree_Key']: Node(row['Ingredient'],
                                                                None,
                                                                0,
-                                                               int(row['Amount_Made_Per_Craft'])
+                                                               #int(row['Amount_Made_Per_Craft'])
                                                                # int(row['Amount_Needed_Per_Craft']),
                                                                # int(row['Generation'])
+                                                               1,
+                                                               1
                                     )})
     # parse through the file and create a dictionary of head nodes
     # prompt the user to select a head node to utilize in the current mode of the program
