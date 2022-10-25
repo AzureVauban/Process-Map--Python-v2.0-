@@ -749,14 +749,15 @@ def tentative_method_2_issue3() -> bool:
     # check if the augment is the head node, if not, traverse upward to the head node
     # open the .csv file in read mode (mode='r')
     # parse the tree for the head node instances
-    foundheadnodes: dict = {} #pylint:disable=unused-variable
+    foundheadnodes: dict = {}  # pylint:disable=unused-variable
     with open(CSVFILENAME, 'r', encoding='UTF-8', newline='') as csvfile:
         # create a csv reader object
-        reader = csv.DictReader(csvfile) #pylint:disable=unused-variable
+        reader = csv.DictReader(csvfile)  # pylint:disable=unused-variable
         # iterate over each row in the csv file and check if the row is a head node
     #! call method here
         csvnode: Node = Node()  # todo remove this line when finishing this method
-        tentative_method_3_issue3(csvnode)  # todo remove this line when finishing this method
+        # todo remove this line when finishing this method
+        tentative_method_3_issue3(csvnode)
         # close the .csv file
         csvfile.close()
     # return True if the an exact copy of the ingredient already exists in the .csv file, False otherwise
@@ -822,11 +823,13 @@ def tentative_method_5_issue5(nightguant: Node):
             print('that input is not valid, please type in something else')
         elif len(tentative_string_name1) > 1:
             print('the length of the input is too long, please type in something else')
-        elif tentative_string_name1 == 'Y' and not tentative_method_2_issue3(): #! must be false, if returns true it means that the tree was already inputted onto the csv file
+        # ! must be false, if returns true it means that the tree was already inputted onto the csv file
+        elif tentative_string_name1 == 'Y' and not tentative_method_2_issue3():
             # call method that writes to the .csv file
             tentative_method_issue3(nightguant)
             break
-        elif tentative_string_name1 == 'Y' and tentative_method_2_issue3(): #! must be true, if returns false it means that the tree was not already inputted onto the csv file
+        # ! must be true, if returns false it means that the tree was not already inputted onto the csv file
+        elif tentative_string_name1 == 'Y' and tentative_method_2_issue3():
             print('the tree was already inputted onto the .csv file')
             break
         elif tentative_string_name1 == 'N':
