@@ -63,15 +63,44 @@ class basicNode():
         self.amountneeded = amountneeded
 
 
-class Node():
+class Node(basicNode):
     parent = None
-    children : dict = {}
-    instancekey : int = 0
-    instances : int = 0 
-    generation : int = 0
-    def __init__(self) -> None:
-        pass
+    children: dict = {}
+    instancekey: int = 0
+    instances: int = 0
+    generation: int = 0
+
+    def __init__(self, ingredient: str = '', parent=None, amountonhand: int = 0, amountmadepercraft: int = 1, amountneeded: int = 1) -> None:
+        """_summary_
+
+        Args:
+            ingredient (str, optional): _description_. Defaults to ''.
+            parent (_type_, optional): _description_. Defaults to None.
+            amountonhand (int, optional): _description_. Defaults to 0.
+            amountmadepercraft (int, optional): _description_. Defaults to 1.
+            amountneeded (int, optional): _description_. Defaults to 1.
+        """
+        super().__init__(ingredient, amountonhand, amountmadepercraft, amountneeded)
+        self.parent = parent
+
+
+def head(node: Node) -> Node:
+    while node.parent is not None:
+        node = node.parent
+    return node
+
+
+def populate(node: Node):
+    """_summary_
+
+    Args:
+        node (Node): _description_
+
+    Returns:
+        _type_: _description_
+    """
+    return head(node)
 
 
 if __name__ == '__main__':
-    print(generatename())  # test generatename function
+    pass
