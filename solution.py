@@ -65,10 +65,12 @@ class basicNode():
 
 class Node():
     parent = None
+    children : dict = {}
     instancekey : int = 0
     instances : int = 0 
     generation : int = 0
-    
+    def __init__(self) -> None:
+        pass
 
 
 if __name__ == '__main__':
