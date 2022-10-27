@@ -82,21 +82,19 @@ class Node(basicNode):
         """
         super().__init__(ingredient, amountonhand, amountmadepercraft, amountneeded)
         Node.instancekey = Node.instances
+        self.choldren = {}
         Node.instances += 1
         self.parent = parent
         if self.parent is not None and isinstance(self.parent, Node):
             self.generation = self.parent.generation + 1
+            self.children.update({self.parent.instancekey: self.parent})
+            self.parent.children.update({self.instancekey: self})
         elif self.parent is None and not isinstance(self.parent, Node):
             self.generation = 0
         else:
             raise TypeError('parent must be of type Node or None')
         
 
-
-def head(node: Node) -> Node:
-    while node.parent is not None:
-        node = node.parent
-    return node
 
 
 def populate(node: Node):
@@ -109,7 +107,7 @@ def populate(node: Node):
         Node: head of tree
     """
     print('What do you need to create', node.ingredient, end='?\n')
-    return head(node)
+    return node 
 
 
 if __name__ == '__main__':
