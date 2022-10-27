@@ -82,7 +82,7 @@ class Node(basicNode):
         """
         super().__init__(ingredient, amountonhand, amountmadepercraft, amountneeded)
         Node.instancekey = Node.instances
-        self.choldren = {}
+        self.children = {}
         Node.instances += 1
         self.parent = parent
         if self.parent is not None and isinstance(self.parent, Node):
