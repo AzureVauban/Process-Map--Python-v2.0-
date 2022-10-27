@@ -82,6 +82,8 @@ class Node(basicNode):
         """
         super().__init__(ingredient, amountonhand, amountmadepercraft, amountneeded)
         self.parent = parent
+        Node.instancekey = Node.instances
+        Node.instances += 1
 
 
 def head(node: Node) -> Node:
@@ -99,11 +101,12 @@ def populate(node: Node):
     Returns:
         _type_: _description_
     """
+    print('What do you need to create',node.ingredient,end='?\n')
     return head(node)
 
 
 if __name__ == '__main__':
     print('What is the name of the item you want to create')
-    
+    testvalue : Node = populate(Node(input()))  #! add debug point to see structure of the tree
     print('terminating process')
 # end main
