@@ -4,18 +4,19 @@ Rework for Python 3.11.0
 - save working stabe backup of solution.py before merging into development branches into the Stable branch
 """
 import random
-FIELDNAMES: list = [ # list of field names for the csv output file
-    'Tree_Key',
-    'Ingredient',
-    'Ingredient_Alias',
-    'Parent_of_Ingredient',
-    'Amount_on_Hand',
-    'Amount_Made_Per_Craft',
-    'Amount_Needed_Per_Craft',
-    'Generation'
+FIELDNAMES: list = [  # list of field names for the csv output file
+    'Tree_Key',  # 74nry8keki',
+    'Ingredient',  # Copper Wire
+    'Ingredient_Alias',  # Copper_Wire__ZpgMzAwQdfRu
+    'Parent_of_Ingredient',  # Silicon Board
+    'Amount_on_Hand',  # 0
+    'Amount_Made_Per_Craft',  # 9
+    'Amount_Needed_Per_Craft',  # 0
+    'Generation'  # 1
 ]
-CSVFILENAME : str = 'output.csv' # output of  csv file name
-GLOBALNODEDICT : dict = {} # use for searching for nodes in populate method
+CSVFILENAME: str = 'output.csv'  # output of  csv file name
+GLOBALNODEDICT: dict = {}  # use for searching for nodes in populate method
+
 
 def generatename(lengthlimit: int = random.randint(10, 20)) -> str:
     """randomly generations a return string of a random length between 10 and 20 characters
@@ -29,6 +30,8 @@ def generatename(lengthlimit: int = random.randint(10, 20)) -> str:
     for _ in range(random.randint(6, lengthlimit)):
         mocknodename += random.choice(yuggoth)
     return mocknodename
+
+
 class basicNode():
     """
     class for storing simple data about an item such as its name and how much is needed to create
@@ -42,13 +45,31 @@ class basicNode():
     amountneeded: int = 0
     amountmadepercraft: int = 0
     amountresulted: int = 0
-    queueamountresulted: dict = {} # key, ingredient, value integer amount of resulted number from previous Node
-    def __init__(self,ingredient : str = '',amountonhand : int = 0,amountmadepercraft : int = 0, amountneeded : int = 0) -> None:
+    # key, ingredient, value integer amount of resulted number from previous Node
+    queueamountresulted: dict = {}
+
+    def __init__(self, ingredient: str = '', amountonhand: int = 0, amountmadepercraft: int = 0, amountneeded: int = 0) -> None:
+        """_summary_
+
+        Args:
+            ingredient (str, optional): _description_. Defaults to ''.
+            amountonhand (int, optional): _description_. Defaults to 0.
+            amountmadepercraft (int, optional): _description_. Defaults to 0.
+            amountneeded (int, optional): _description_. Defaults to 0.
+        """
         self.ingredient = ingredient
         self.amountonhand = amountonhand
         self.amountmadepercraft = amountmadepercraft
         self.amountneeded = amountneeded
+
+
 class Node():
-    pass
+    parent = None
+    instancekey : int = 0
+    instances : int = 0 
+    generation : int = 0
+    
+
+
 if __name__ == '__main__':
-    print(generatename()) # test generatename function
+    print(generatename())  # test generatename function

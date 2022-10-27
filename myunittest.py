@@ -54,8 +54,8 @@ class TestwritingtoCSV(unittest.TestCase):
         ispresentindirectory: bool = os.path.isfile(CSVFILENAME)
         # test if the file exists in the current folder of the directory
         rows: list = [  # pylint: disable=unused-variable
-            {
-                'Tree Key': '# 74nry8keki',
+            { 
+                'Tree Key': '# 74nry8keki', 
                 'Ingredient': 'Coal',
                 'Parent_of_Ingredient': 'Carbon',
                 'Amount_on_Hand': '0',
