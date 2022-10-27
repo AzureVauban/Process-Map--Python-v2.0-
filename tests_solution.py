@@ -24,5 +24,5 @@ class NodeCreationTests(unittest.TestCase):
         """test that the head of the ingredient tree is returned
         """
         test : Node = Node(generatename())
-        assertNode : Node = self.create_trail(test,10)
-        self.assertEqual(test,assertNode)
+        assertNode : Node = self.returnhead(self.create_trail(test,10))
+        self.assertIs(test,assertNode)
