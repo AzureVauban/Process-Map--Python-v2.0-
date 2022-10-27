@@ -81,9 +81,15 @@ class Node(basicNode):
             amountneeded (int, optional): _description_. Defaults to 1.
         """
         super().__init__(ingredient, amountonhand, amountmadepercraft, amountneeded)
-        self.parent = parent
         Node.instancekey = Node.instances
         Node.instances += 1
+        self.parent = parent
+        if self.parent is not None and isinstance(self.parent, Node):
+            self.generation = self.parent.generation + 1
+        elif self.parent is None and not isinstance(self.parent, Node):
+            self.generation = 0
+            
+        
 
 
 def head(node: Node) -> Node:
@@ -106,8 +112,8 @@ def populate(node: Node):
 
 
 if __name__ == '__main__':
+    # prompt ingredient tree
     print('What is the name of the item you want to create')
-    # ! add debug point to see structure of the tree
     testvalue: Node = populate(Node(input()))
     print('terminating process')
 # end main
