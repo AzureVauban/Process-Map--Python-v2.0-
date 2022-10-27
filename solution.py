@@ -88,7 +88,8 @@ class Node(basicNode):
             self.generation = self.parent.generation + 1
         elif self.parent is None and not isinstance(self.parent, Node):
             self.generation = 0
-            
+        else:
+            raise TypeError('parent must be of type Node or None')
         
 
 
