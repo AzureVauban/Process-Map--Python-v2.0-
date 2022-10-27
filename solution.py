@@ -103,4 +103,7 @@ def populate(node: Node):
 
 
 if __name__ == '__main__':
-    pass
+    print('What is the name of the item you want to create')
+    
+    print('terminating process')
+# end main
