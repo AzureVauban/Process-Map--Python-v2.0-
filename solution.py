@@ -96,17 +96,18 @@ def populate(node: Node):
     """_summary_
 
     Args:
-        node (Node): _description_
+        node (Node): current endpount node of the ingredient tree
 
     Returns:
-        _type_: _description_
+        Node: head of tree
     """
-    print('What do you need to create',node.ingredient,end='?\n')
+    print('What do you need to create', node.ingredient, end='?\n')
     return head(node)
 
 
 if __name__ == '__main__':
     print('What is the name of the item you want to create')
-    testvalue : Node = populate(Node(input()))  #! add debug point to see structure of the tree
+    # ! add debug point to see structure of the tree
+    testvalue: Node = populate(Node(input()))
     print('terminating process')
 # end main
