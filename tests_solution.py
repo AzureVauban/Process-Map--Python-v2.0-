@@ -44,8 +44,17 @@ class NodeCreationTests(unittest.TestCase):
         else:
             return self.findhead(self.create_trail(Node(generatename(), node), depth-1))
 
-    def create_test_tree(self, node: Node = Node(generatename()), population: int = 0, limit: int = 0) -> Node:
-        
+    def create_test_tree(self, node: Node = Node(generatename())) -> Node:
+        """_summary_
+
+        Args:
+            node (Node, optional): _description_. Defaults to Node(generatename()).
+            population (int, optional): _description_. Defaults to 0.
+            limit (int, optional): _description_. Defaults to 0.
+
+        Returns:
+            Node: _description_
+        """
         return self.findhead(node)
 
     def test_leader(self):
