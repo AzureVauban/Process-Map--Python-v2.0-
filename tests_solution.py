@@ -4,6 +4,7 @@ Unit Tests for the solution.py module
 import os
 import unittest
 import random
+import pandas
 from solution import Node, generatename, createclone,reversearithmetic
 from solution import FIELDNAMES
 TESTFILENAME: str = "tests_solution.csv"
@@ -89,7 +90,7 @@ class CSVsutilization(unittest.TestCase):
         """
         if not os.path.exists(TESTFILENAME):
             # create the file
-            
+            df = pandas.DataFrame(FIELDNAMES)
             # write preset mock ingredient tree onto it
             industrial_battery    : Node = Node('industrial battery', None)
             protocite_bar         : Node = Node('protocite bar', industrial_battery,0,1,5)
@@ -102,9 +103,11 @@ class CSVsutilization(unittest.TestCase):
             thorium_rod           : Node = Node('thorium rod', battery,0,1,5)
             thorium_ore           : Node = Node('thorium ore', thorium_rod,0,1,2)
             reversearithmetic(industrial_battery,random.randint(1,10)) # reverse the arithmetic of the tree
+        else:
             
         # TODO: implement your test here
-        self.skipTest(exep_msg.testnotadded())
+        #self.skipTest(exep_msg.testnotadded())
+        self.assertTrue(os.path.exists(TESTFILENAME))
 
     def test_pandascsvread(self):
         """
