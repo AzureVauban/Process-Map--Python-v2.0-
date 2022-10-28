@@ -127,10 +127,12 @@ class CSVsutilization(unittest.TestCase):
         if file does not exist, raise an error
         if the file already exists, open it in read mode and read the data
         """
-#!        if not os.path.exists(TESTFILENAME):
+        if not os.path.exists(TESTFILENAME):
 #!            raise FileNotFoundError(exep_msg.csvnotexist())
+            self.skipTest(exep_msg.csvnotexist())  # skip the test
         # TODO: implement your test here
-        self.skipTest(exep_msg.testnotadded())
+        else:
+            self.assertEqual(1, 1)  # assert that the file exists
 
     def test_findheadnodes(self):
         """

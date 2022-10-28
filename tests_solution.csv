@@ -1,0 +1,11 @@
+Tree_Key,Ingredient,Ingredient_Alias,Parent_of_Ingredient,Amount_on_Hand,Amount_Made_Per_Craft,Amount_Needed_Per_Craft,Generation
+h7GMBBG7eaihot,industrial battery,industrial_battery__9CtrY0EYZNjv3jD,None,5,1,1,0
+h7GMBBG7eaihot,protocite bar,protocite_bar__BcQfRwsvYMoWHwa,industrial battery,25,1,5,1
+h7GMBBG7eaihot,protocite,protocite__sYyrCFR,protocite bar,50,1,2,2
+h7GMBBG7eaihot,battery,battery__UdGnSpKqjlrxHSl8q,industrial battery,10,1,2,1
+h7GMBBG7eaihot,pixels,pixels__HfUO643FKn4TK,battery,25000,1,2500,2
+h7GMBBG7eaihot,quantum processor,quantum_processor__o7F1OmCPkT6iH5U,battery,10,1,1,2
+h7GMBBG7eaihot,silicon board,silicon_board__oqUaX7,quantum processor,40,1,4,3
+h7GMBBG7eaihot,protocite bar,protocite_bar__HvdkG1fLhc,silicon board,80,1,2,4
+h7GMBBG7eaihot,thorium rod,thorium_rod__dKXU4duxaa,battery,50,1,5,2
+h7GMBBG7eaihot,thorium ore,thorium_ore__nZCCevJuyB3LJeVom,thorium rod,100,1,2,3
