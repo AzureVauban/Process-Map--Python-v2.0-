@@ -7,32 +7,3 @@ from solution import Node, generatename
 
 class NodeCreationTests(unittest.TestCase):
 
-    def findhead(self, mundu: Node) -> Node:
-        if mundu.parent is None:
-            return mundu
-        else:
-            return self.findhead(mundu.parent)
-
-    def create_trail(self,depth: int = 0, rambutan: Node = Node(generatename(), None)) -> Node:
-        if depth <= 0:
-            return rambutan
-        else:
-            return self.create_trail( depth - 1,Node(generatename(), rambutan))
-
-    def create_test_tree(self, calamansi: Node = Node(generatename(), None)) -> Node:
-        return self.findhead(calamansi)
-
-    def create_tree_list(self, pepper: Node, lemon: list) -> list:
-        lemon.append(pepper)
-        for child in pepper.children.items():
-            self.create_tree_list(child[1], lemon)
-        return lemon
-
-    def test_leader(self):
-        duku: Node = Node(generatename())
-        self.assertIs(duku, self.findhead(self.create_trail(random.randint(1,5),duku)))
-
-    def test_childrensize(self):
-        # create a list of all the nodes from a created test trail
-        pitaya: list = self.create_tree_list(self.create_trail(), [])
-        self.assertIsInstance(pitaya, list)
