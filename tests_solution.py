@@ -27,22 +27,28 @@ class exep_msg():
     @classmethod
     def testnotadded(cls):
         return "Test not implemented"
+
     @classmethod
     def headisNone(cls):
         return "head of the tree is None"
-class NodeTree:
-        """
-        auto generated a tree of nodes
-        """
-        headnode: Node
-        population: int = 1
 
-        def generateTree(self, populationlimt: int = 1, head: Node = Node('head', None)) -> Node:
-            if head is None:
-                raise ValueError(exep_msg.headisNone())
-            return head
-        def __init__(self, population: int = 1):
-            self.generateTree(population)
+
+class NodeTree:
+    """
+    auto generated a tree of nodes
+    """
+    headnode: Node
+    population: int = 1
+
+    def generateTree(self, populationlimt: int = 1, head: Node = Node('head', None)) -> Node:
+        if head is None:
+            raise ValueError(exep_msg.headisNone())
+        return head
+
+    def __init__(self, population: int = 1):
+        self.generateTree(population)
+
+
 class NodeCreationTests(unittest.TestCase):
 
     def testcheckclone(self):
@@ -55,7 +61,7 @@ class NodeCreationTests(unittest.TestCase):
 
 
 class internalsearch(unittest.TestCase):
-    
+
     def test_search(self):
         """
         assert that return dict from the search method is {-1:None}
@@ -84,7 +90,14 @@ class CSVsutilization(unittest.TestCase):
         if not os.path.exists(TESTFILENAME):
             # create the file
             # write preset mock ingredient tree onto it
-            pass
+            industrial_battery : Node = Node('industrial_battery', None)  # create the head node
+            protocite_bar : Node = Node('protocite_bar', industrial_battery,0,1,5)
+            protocite : Node = Node('protocite', protocite_bar,0,1,2)  # create the head node
+            battery : Node = Node('battery', industrial_battery,0,1,2)  # create the head node  
+            pixels : Node = Node('pixels', battery,0,1,2500)  # create the head node
+            quantum_processor : Node = Node('quantum_processor', battery,0,1,1)  # create the head node
+            thorium_rod : Node = Node('thorium_rod', battery,0,1,5)  # create the head node
+            thorium_ore : Node = Node('thorium_ore', thorium_rod,0,1,2)  # create the head node
         # TODO: implement your test here
         self.skipTest(exep_msg.testnotadded())
 

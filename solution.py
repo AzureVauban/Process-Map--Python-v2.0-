@@ -58,7 +58,7 @@ class NodeB:
     amountresulted: int = 0
     queueamountresulted: dict = {}
 
-    def __init__(self, name: str = '', red: int = 0, blue: int = 1, yellow: int = 1) -> None:
+    def __init__(self, ingredient: str = '', amountonhand: int = 0, amountmadepercraft: int = 1, amountneeded: int = 1) -> None:
         """
         Args:
             name (str, optional): name of the item. Defaults to ''.
@@ -68,11 +68,11 @@ class NodeB:
             yellow (int, optional): amount of item needed to craft the parent item one time.
             Defaults to 1.
         """
-        self.amountonhand = red
-        self.amountmadepercraft = blue
-        self.amountneeded = yellow
+        self.amountonhand = amountonhand
+        self.amountmadepercraft = amountmadepercraft
+        self.amountneeded = amountneeded
         self.queueamountresulted = {}
-        self.ingredient = name
+        self.ingredient = ingredient
         self.aliasingredient = self.ingredient
         self.amountresulted = 0
 
@@ -93,7 +93,7 @@ class Node(NodeB):
     treekey: str = ''
     ismain_promptinputbool: bool = True
 
-    def __init__(self, name: str = '', par=None, red: int = 0, blue: int = 1, yellow: int = 1, green: bool = False, orange: bool = __name__ == '__main__') -> None:  # pylint:disable=C0301
+    def __init__(self, ingredient: str = '', parent=None, amountonhand: int = 0, amountmadepercraft: int = 1, amountneeded: int = 1, green: bool = False, orange: bool = __name__ == '__main__') -> None:  # pylint:disable=C0301
         """
         default constructor for Node instance, stores identifying features of an item's
         information
@@ -108,11 +108,11 @@ class Node(NodeB):
             Defaults to 1.
             green (bool,optional): boolean variable, checks if one of the Node's sibiling instances was prompted to input the amount made per craft (blue)
         """
-        super().__init__(name, red, blue, yellow)
+        super().__init__(ingredient, amountonhand, amountmadepercraft, amountneeded)
         self.instancekey = Node.instances
         self.children = {}
         self.ismain_promptinputbool = orange
-        self.parent = par
+        self.parent = parent
         if self.parent is not None:
             self.generation = self.parent.generation + 1
             self.parent.children.update({self.instancekey: self})
@@ -200,31 +200,38 @@ class Node(NodeB):
 
     def create_csv_writerow(self) -> dict:
         """
-        fieldnames (examples) = [
-            {
-            'Tree Key',  # 74nry8keki
-            'Ingredient',  # Coal
-            'Parent of Ingredient',  # Carbon
-            'Amount on Hand',  # 0
-            'Amount Made Per Craft',  # 1
-            'Amount Needed Per Craft',  # 10
-            'Generation'  # 1
-            }
+        FIELDNAMES: list = [  # list of field names for the csv output file
+            'Tree_Key': 74nry8keki',
+            
+            'Ingredient': Copper Wire
+            
+            'Ingredient_Alias': Copper Wire__ZpgMzAwQdfRu
+            
+            'Parent_of_Ingredient': Silicon Board
+            
+            'Amount_on_Hand': 0
+        
+            'Amount_Made_Per_Craft': 9
+            
+            'Amount_Needed_Per_Craft': 0
+            
+            'Generation': 1
         ]
         Returns:
             dict: dictionary of all the information needed to be stored in the .csv file
         """
         azathoth: dict = {}
         ghast: str = 'None'
+        # if the parent is not None, set the parent ingredient to the ingredient of the parent
         if self.parent is not None:
             ghast = self.parent.ingredient
+        # input data into the dictionary 
         azathoth.update({'Tree_Key': self.treekey})
         azathoth.update({'Ingredient': self.ingredient})
         azathoth.update({'Ingredient_Alias': self.aliasingredient})
         azathoth.update({'Parent_of_Ingredient': ghast})
         azathoth.update({'Amount_on_Hand': str(self.amountonhand)})
-        azathoth.update(
-            {'Amount_Made_Per_Craft': str(self.amountmadepercraft)})
+        azathoth.update({'Amount_Made_Per_Craft': str(self.amountmadepercraft)})
         azathoth.update({'Amount_Needed_Per_Craft': str(self.amountneeded)})
         azathoth.update({'Generation': str(self.generation)})
         return azathoth
