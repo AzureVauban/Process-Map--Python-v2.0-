@@ -49,11 +49,10 @@ class NodeCreationTests(unittest.TestCase):
 
         Args:
             node (Node, optional): _description_. Defaults to Node(generatename()).
-            population (int, optional): _description_. Defaults to 0.
-            limit (int, optional): _description_. Defaults to 0.
+            population (int, optional): population of tree cannot exceed this integer.. Defaults to 10.
 
         Returns:
-            Node: _description_
+            Node: return the head of the tree
         """
         return self.findhead(node)
 
