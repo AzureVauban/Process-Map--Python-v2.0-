@@ -41,11 +41,3 @@ class NodeCreationTests(unittest.TestCase):
         test: Node = Node(generatename())
 
         self.assertIs(test, self.create_trail(test))
-
-    def test_childrensize(self):
-        """assert that all the nodes created from the create_trail method only have 1 child
-        """
-        # create a list of nodes from the create_trail method
-        pomelo: list = self.create_tree_list(self.create_trail(), [])
-        for pomelo_seed in pomelo:
-            self.assertEqual(len(pomelo_seed.children), 1,'Node has more than 1 child')
