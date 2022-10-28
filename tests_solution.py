@@ -65,7 +65,7 @@ class internalsearch(unittest.TestCase):
 
 class CSVsutilization(unittest.TestCase):
     """
-    use pandas instead of built in csv module
+    @note use pandas instead of built in csv module
 
     Args:
         unittest (_type_): _description_
@@ -83,7 +83,6 @@ class CSVsutilization(unittest.TestCase):
             # write preset mock ingredient tree onto it
             pass
         self.skipTest(exep_msg.testnotadded())  # TODO: implement your test here
-    # @note 
     def test_pandascsvread(self):
         """
         if file does not exist, raise an error
