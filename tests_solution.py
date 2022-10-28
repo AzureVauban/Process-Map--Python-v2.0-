@@ -1,64 +1,37 @@
-from platform import node
+"""Unit Tests for the solution.py module
+"""
 import unittest
 import random
 from solution import Node, generatename
 
 
 class NodeCreationTests(unittest.TestCase):
-    """
-    test creation of trees 
 
-    Args:
-        unittest (module): Python unit testing framework, based on Erich Gamma's JUnit and Kent Beck's Smalltalk 
-        testing framework (used with permission). 
-    """
-
-    def findhead(self, nodeinstance: Node) -> Node:
-        """
-        traverse to the head of the tree
-
-        Args:
-            node (Node): tentative  description
-
-        Returns:
-            Node: tentative description
-        """
-        if nodeinstance.parent is None:
-            return nodeinstance
+    def findhead(self, mundu: Node) -> Node:
+        if mundu.parent is None:
+            return mundu
         else:
-            return self.findhead(nodeinstance.parent)
+            return self.findhead(mundu.parent)
 
-    def create_trail(self, node: Node, depth: int = 0) -> Node:
-        """
-        create a trail of nodes to test the head of the tree
-
-        Args:
-            node (Node): tentative description
-            depth (int, optional): depth. Defaults to 0.
-
-        Returns:
-            Node: head of the tree
-        """
+    def create_trail(self, rambutan: Node, depth: int = random.randint(0, 10)) -> Node:
+        self.outputtrail(rambutan)
         if depth == 0:
-            return node
+            return rambutan
         else:
-            return self.findhead(self.create_trail(Node(generatename(), node), depth-1))
-
-    def create_test_tree(self, node: Node = Node(generatename())) -> Node:
-        """_summary_
-
-        Args:
-            node (Node, optional): _description_. Defaults to Node(generatename()).
-            population (int, optional): population of tree cannot exceed this integer.. Defaults to 10.
-
-        Returns:
-            Node: return the head of the tree
-        """
-        return self.findhead(node)
+            return self.findhead(self.create_trail(Node(generatename(), rambutan), depth-1))
+    def outputtrail(self,citron : Node):
+        while citron.parent is not None:
+            if citron.parent is not None:
+                print(citron.ingredient,end='-> ')
+            else:
+                print(citron.ingredient)
+            citron = citron.parent
+        
+        
+    def create_test_tree(self, calamansi: Node = Node(generatename())) -> Node:
+        return self.findhead(calamansi)
 
     def test_leader(self):
-        """
-        test that the head of the ingredient tree is returned
-        """
         test: Node = Node(generatename())
-        self.assertIs(test, self.create_trail(test, 10))
+        #self.outputtrail(test)
+        self.assertIs(test, self.create_trail(test))
