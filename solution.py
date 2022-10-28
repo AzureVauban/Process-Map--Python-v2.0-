@@ -97,7 +97,7 @@ class Node(basicNode):
 
 
 
-def populate(node: Node):
+def populate(node: Node) -> Node:
     """_summary_
 
     Args:
