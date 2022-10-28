@@ -83,6 +83,15 @@ class CSVsutilization(unittest.TestCase):
     # @audit-info use df.columns to read the column names
     # @audit-info use df.iterrows to iterate through the rows of the dataframe (dataframe referred to as df and the csvfile)
 
+    def testsubstringmethod(self):
+        # reformat a string to have all of its whitespace turn into an underscore
+        teststring: str = 'this is a test string'  # test string
+        teststring = teststring.strip()
+        # replace all whitespace with underscores
+        teststring = teststring.replace(' ', '_')
+#!        self.assertEqual(teststring, 'this_is_a_test_string')  # assert that the string is formatted correctly
+        self.skipTest('Test is not needed anymore')  # skip the test
+
     def test_pandascsvwrite(self):
         """
         if file does not exist in the SAME directory as the solution module, create it and write to it
@@ -90,8 +99,7 @@ class CSVsutilization(unittest.TestCase):
         """
         if not os.path.exists(TESTFILENAME):
             # create the file
-            pandas.DataFrame(columns=FIELDNAMES).to_csv(
-                TESTFILENAME, index=False)  # create the file
+            pandas.DataFrame(columns=FIELDNAMES).to_csv(TESTFILENAME, index=False)
             # write preset mock ingredient tree onto it
             industrial_battery    : Node = Node('industrial battery', None)
             protocite_bar         : Node = Node('protocite bar', industrial_battery, 0, 1, 5)

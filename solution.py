@@ -227,9 +227,9 @@ class Node(NodeB):
             ghast = self.parent.ingredient
         # input data into the dictionary 
         azathoth.update({'Tree_Key': self.treekey})
-        azathoth.update({'Ingredient': self.ingredient})
-        azathoth.update({'Ingredient_Alias': self.aliasingredient})
-        azathoth.update({'Parent_of_Ingredient': ghast})
+        azathoth.update({'Ingredient': self.ingredient.replace(' ', '_')})
+        azathoth.update({'Ingredient_Alias': self.aliasingredient.replace(' ', '_')})
+        azathoth.update({'Parent_of_Ingredient': ghast.replace(' ', '_')})
         azathoth.update({'Amount_on_Hand': str(self.amountonhand)})
         azathoth.update({'Amount_Made_Per_Craft': str(self.amountmadepercraft)})
         azathoth.update({'Amount_Needed_Per_Craft': str(self.amountneeded)})
