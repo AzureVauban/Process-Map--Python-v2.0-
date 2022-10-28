@@ -27,7 +27,16 @@ class exep_msg():
     def testnotadded(cls):
         return "Test not implemented"
 
-
+def converttexttocsv(filename : str):
+    """
+    Convert the text file to csv file
+    """
+    with open(filename, "r") as f:
+        lines = f.readlines()
+    with open(filename + '.txt', "w") as f:
+        f.write(",".join(FIELDNAMES) + "")
+        for line in lines:
+            f.write(line)
 class NodeCreationTests(unittest.TestCase):
     
    def testcheckclone(self):
@@ -81,3 +90,6 @@ class CSVsutilization(unittest.TestCase):
         """
         # TODO: implement your test here
         self.skipTest(exep_msg.testnotadded())
+
+if __name__ == '__main__':
+    converttexttocsv('test_trees.csv')
