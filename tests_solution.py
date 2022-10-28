@@ -89,6 +89,7 @@ class CSVsutilization(unittest.TestCase):
         """
         if not os.path.exists(TESTFILENAME):
             # create the file
+            with
             # write preset mock ingredient tree onto it
             industrial_battery : Node = Node('industrial_battery', None)
             protocite_bar : Node = Node('protocite_bar', industrial_battery,0,1,5)
