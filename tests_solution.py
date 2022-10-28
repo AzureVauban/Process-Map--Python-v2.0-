@@ -18,7 +18,7 @@ class NodeCreationTests(unittest.TestCase):
         if depth == 0:
             return rambutan
         else:
-            return self.findhead(self.create_trail(Node(generatename(), rambutan), depth-1))
+            return self.create_trail(Node(generatename(), rambutan), depth-1)
 
     def outputtrail(self, citron: Node):
         while citron.parent is not None:
@@ -38,6 +38,5 @@ class NodeCreationTests(unittest.TestCase):
         return lemon
 
     def test_leader(self):
-        test: Node = Node(generatename())
-
-        self.assertIs(test, self.create_trail(test))
+        duku: Node = Node(generatename())
+        self.assertIs(duku, self.findhead(self.create_trail(duku)))
