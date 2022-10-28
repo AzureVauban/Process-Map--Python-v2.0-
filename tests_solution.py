@@ -106,11 +106,9 @@ class CSVsutilization(unittest.TestCase):
             # reverse the arithmetic of the tree
             reversearithmetic(industrial_battery, random.randint(1, 10))
             # write the tree to the csv file using pandas
-            rows: list[dict] = industrial_battery.create_csv_writerows([])
             # ! add a logpoint here to evaluate the values of the rows variable
-            for line in rows:
-                pandas.DataFrame(line, index=[0]).to_csv(
-                    TESTFILENAME, mode='a', header=False, index=False)  # write to the file
+            for line in industrial_battery.create_csv_writerows([]):
+                pandas.DataFrame(line, index=[0]).to_csv(TESTFILENAME, mode='a', header=False, index=False)  
             print('test')
         else:
             pass
