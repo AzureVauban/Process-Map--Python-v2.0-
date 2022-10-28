@@ -132,7 +132,11 @@ class CSVsutilization(unittest.TestCase):
             self.skipTest(exep_msg.csvnotexist())  # skip the test
         # TODO: implement your test here
         else:
-            self.assertEqual(1, 1)  # assert that the file exists
+            foundheadpoints : dict = {} # value is the treekey and the item is the headnode translated from the csv file
+            # read the csv file and find the head nodes
+            df = pandas.read_csv(TESTFILENAME)  # read the csv file
+            # assert that the file has found at least one node, the dictionary cannot be empty for the test to pass
+            self.assertGreaterEqual(len(foundheadpoints), 1)  # assert that the file has found at least one node
 
     def test_findheadnodes(self):
         """
