@@ -5,7 +5,7 @@ import os
 import unittest
 import random
 import pandas
-from solution import Node, generatename, createclone,reversearithmetic
+from solution import Node, generatename, createclone, reversearithmetic
 from solution import FIELDNAMES
 TESTFILENAME: str = "tests_solution.csv"
 
@@ -90,26 +90,34 @@ class CSVsutilization(unittest.TestCase):
         """
         if not os.path.exists(TESTFILENAME):
             # create the file
-            pandas.DataFrame(columns=FIELDNAMES).to_csv(TESTFILENAME, index=False)  # create the file
+            pandas.DataFrame(columns=FIELDNAMES).to_csv(
+                TESTFILENAME, index=False)  # create the file
             # write preset mock ingredient tree onto it
             industrial_battery    : Node = Node('industrial battery', None)
-            protocite_bar         : Node = Node('protocite bar', industrial_battery,0,1,5)
-            protocite             : Node = Node('protocite', protocite_bar,0,1,2)
-            battery               : Node = Node('battery', industrial_battery,0,1,2)
-            pixels                : Node = Node('pixels', battery,0,1,2500)
-            quantum_processor     : Node = Node('quantum processor', battery,0,1,1)
-            silicon_board         : Node = Node('silicon board', quantum_processor,0,1,4)
-            protocite_bar2        : Node = Node('protocite bar', silicon_board,0,1,2)
-            thorium_rod           : Node = Node('thorium rod', battery,0,1,5)
-            thorium_ore           : Node = Node('thorium ore', thorium_rod,0,1,2)
-            reversearithmetic(industrial_battery,random.randint(1,10)) # reverse the arithmetic of the tree
+            protocite_bar         : Node = Node('protocite bar', industrial_battery, 0, 1, 5)
+            protocite             : Node = Node('protocite', protocite_bar, 0, 1, 2)
+            battery               : Node = Node('battery', industrial_battery, 0, 1, 2)
+            pixels                : Node = Node('pixels', battery, 0, 1, 2500)
+            quantum_processor     : Node = Node('quantum processor', battery, 0, 1, 1)
+            silicon_board         : Node = Node('silicon board', quantum_processor, 0, 1, 4)
+            protocite_bar2        : Node = Node('protocite bar', silicon_board, 0, 1, 2)
+            thorium_rod           : Node = Node('thorium rod', battery, 0, 1, 5)
+            thorium_ore           : Node = Node('thorium ore', thorium_rod, 0, 1, 2)
+            # reverse the arithmetic of the tree
+            reversearithmetic(industrial_battery, random.randint(1, 10))
             # write the tree to the csv file using pandas
-            
+            rows: list[dict] = industrial_battery.create_csv_writerows([])
+            # ! add a logpoint here to evaluate the values of the rows variable
+            for line in rows:
+                pandas.DataFrame(line, index=[0]).to_csv(
+                    TESTFILENAME, mode='a', header=False, index=False)  # write to the file
+            print('test')
         else:
-            pass    
+            pass
         # TODO: implement your test here
-        #self.skipTest(exep_msg.testnotadded())
-        self.assertTrue(os.path.exists(TESTFILENAME)) # test that the file exists
+        # self.skipTest(exep_msg.testnotadded())
+        # test that the file exists
+        self.assertTrue(os.path.exists(TESTFILENAME))
 
     def test_pandascsvread(self):
         """
