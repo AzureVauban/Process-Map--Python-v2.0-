@@ -97,29 +97,26 @@ class CSVsutilization(unittest.TestCase):
         if file does not exist in the SAME directory as the solution module, create it and write to it
         if the file already exists, open it in append mode and append written data to it
         """
+        # prepared mock ingredient append data
+        industrial_battery    : Node = Node('industrial battery', None)
+        protocite_bar         : Node = Node('protocite bar', industrial_battery, 0, 1, 5)
+        protocite             : Node = Node('protocite', protocite_bar, 0, 1, 2)
+        battery               : Node = Node('battery', industrial_battery, 0, 1, 2)
+        pixels                : Node = Node('pixels', battery, 0, 1, 2500)
+        quantum_processor     : Node = Node('quantum processor', battery, 0, 1, 1)
+        silicon_board         : Node = Node('silicon board', quantum_processor, 0, 1, 4)
+        protocite_bar2        : Node = Node('protocite bar', silicon_board, 0, 1, 2)
+        thorium_rod           : Node = Node('thorium rod', battery, 0, 1, 5)
+        thorium_ore           : Node = Node('thorium ore', thorium_rod, 0, 1, 2)
+        reversearithmetic(industrial_battery, random.randint(1, 10))
         if not os.path.exists(TESTFILENAME):
             # create the file
             pandas.DataFrame(columns=FIELDNAMES).to_csv(TESTFILENAME, index=False)
-            # write preset mock ingredient tree onto it
-            industrial_battery    : Node = Node('industrial battery', None)
-            protocite_bar         : Node = Node('protocite bar', industrial_battery, 0, 1, 5)
-            protocite             : Node = Node('protocite', protocite_bar, 0, 1, 2)
-            battery               : Node = Node('battery', industrial_battery, 0, 1, 2)
-            pixels                : Node = Node('pixels', battery, 0, 1, 2500)
-            quantum_processor     : Node = Node('quantum processor', battery, 0, 1, 1)
-            silicon_board         : Node = Node('silicon board', quantum_processor, 0, 1, 4)
-            protocite_bar2        : Node = Node('protocite bar', silicon_board, 0, 1, 2)
-            thorium_rod           : Node = Node('thorium rod', battery, 0, 1, 5)
-            thorium_ore           : Node = Node('thorium ore', thorium_rod, 0, 1, 2)
-            # reverse the arithmetic of the tree
-            reversearithmetic(industrial_battery, random.randint(1, 10))
-            # write the tree to the csv file using pandas
-            # ! add a logpoint here to evaluate the values of the rows variable
-            for line in industrial_battery.create_csv_writerows([]):
-                pandas.DataFrame(line, index=[0]).to_csv(TESTFILENAME, mode='a', header=False, index=False)  
-            print('test')
+            self.test_pandascsvwrite()  # call the function again to write to the file
         else:
-            pass
+            # write preset mock ingredient tree onto it
+            for line in industrial_battery.create_csv_writerows([]):
+                pandas.DataFrame(line, index=[0]).to_csv(TESTFILENAME, mode='a', header=False, index=False)
         # TODO: implement your test here
         # self.skipTest(exep_msg.testnotadded())
         # test that the file exists
@@ -130,8 +127,8 @@ class CSVsutilization(unittest.TestCase):
         if file does not exist, raise an error
         if the file already exists, open it in read mode and read the data
         """
-        if not os.path.exists(TESTFILENAME):
-            raise FileNotFoundError(exep_msg.csvnotexist())
+#!        if not os.path.exists(TESTFILENAME):
+#!            raise FileNotFoundError(exep_msg.csvnotexist())
         # TODO: implement your test here
         self.skipTest(exep_msg.testnotadded())
 
