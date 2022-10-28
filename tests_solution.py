@@ -128,16 +128,15 @@ class CSVsutilization(unittest.TestCase):
         if the file already exists, open it in read mode and read the data
         """
         if not os.path.exists(TESTFILENAME):
-#!            raise FileNotFoundError(exep_msg.csvnotexist())
+            #!            raise FileNotFoundError(exep_msg.csvnotexist())
             self.skipTest(exep_msg.csvnotexist())  # skip the test
         # TODO: implement your test here
         else:
-            foundheadpoints : dict = {} # value is the treekey and the item is the headnode translated from the csv file
-            # read all rows of the csv file
-            # turn a row of the csv file into a dictionary of the row's data
+            # value is the treekey and the item is the headnode translated from the csv file
+            foundheadpoints: dict = {}
+            # turn a row of the csv data into a dictionary
             
-            # assert that the file has found at least one node, the dictionary cannot be empty for the test to pass
-            self.assertGreaterEqual(len(foundheadpoints), 1)  # assert that the file has found at least one node
+            self.assertGreaterEqual(len(foundheadpoints), 1)
 
     def test_findheadnodes(self):
         """
