@@ -99,17 +99,84 @@ class Node(basicNode):
 
 
 
-def populate(node: Node) -> Node:
-    """_summary_
+def populate(cur: Node):
+    """
+    creates new child instances during script runtime
 
     Args:
-        node (Node): current endpount node of the ingredient tree
+        cur (Node): parent instance, creates children instances for this node
 
-    Returns:
-        Node: head of tree
+    Raises:
+        TypeError: this method continues recursively, if the child is not an instance
+        of the same class as the augment, this is unintended behavior and will raise an error
+        to catch it
     """
-    print('What do you need to create', node.ingredient, end='?\n')
-    return node 
+    inputqueue: dict = {}
+    checkstring: str = cur.ingredient
+    # output ingredient trail
+    if cur.parent is not None:
+        tempinstance: Node = cur
+        print('TRAIL: ', end='')
+        while True:
+            if tempinstance.parent is not None:
+                print(tempinstance.ingredient, '-> ', end='')
+                tempinstance = tempinstance.parent
+            else:
+                print(tempinstance.ingredient)
+                break
+        checkstring = tempinstance.ingredient
+    # prompt user to input ingredients
+    print('What ingredients do you need to create', cur.ingredient, end=':\n')
+    while True:
+        myinput = input('')
+        myinput = myinput.strip()
+        # input validation
+        duplicated: bool = False
+        if len(inputqueue) > 0:
+            for word in inputqueue.items():
+                duplicated = word[1] == checkstring
+                if duplicated:
+                    break
+        if duplicated:
+            print('You already typed that in')
+        elif myinput == checkstring:
+            print('Invalid input, we are trying to make that item!')
+        elif myinput == cur.ingredient:
+            print('You cannot type that in')
+        elif len(myinput) == 0:
+            break
+        else:
+            inputqueue.update({len(inputqueue): myinput})
+    # create new child instances
+    tempbool: bool = True
+    for newnodename in inputqueue.items():
+        # if search method doesn't return a dictionary with a key of -1 and a value of None
+        # prompt for copy
+        # else
+        # create new node
+        # prompt if the user wants to copy an existing node if the search query returns a dictionary
+        # that deosn't have a key of -1 and a value of None
+        # todo have someone test out the code
+        _ = tentative_method_1_issue1(newnodename[1], cur, tempbool)
+        tempbool = False
+#!        searchquery: dict = searchnodequery(newnodename[1])
+#!        if searchquery == {-1: None}:
+#!            Node(newnodename[1], cur, 0, 1, 1, tempbool)
+#!        else: #! search did not return {-1: None}
+#!            print("What do you want to copy any of these nodes (Type in any of the numbers, type in\
+#!                  an invalid number to create a completely new node):")
+        # create a dictionary of the found nodes, and print them out
+        # if the user doesn't input a valid number choice for any node they want to copy,
+        # assume default behavior, the else branch of this for-loop
+    # input current argument node into the global dictionary
+    GLOBALNODEDICT.update({cur.instancekey: cur})
+    # continue method runtime
+    for child in cur.children.items():
+        if isinstance(child[1], Node):
+            populate(child[1])
+        else:
+            raise TypeError('child is not an instance of', Node)
+
 
 
 
