@@ -13,11 +13,11 @@ class NodeCreationTests(unittest.TestCase):
         else:
             return self.findhead(mundu.parent)
 
-    def create_trail(self, rambutan: Node = Node(generatename(), None), depth: int = random.randint(0, 10)) -> Node:
-        if depth == 0:
+    def create_trail(self,depth: int = 0, rambutan: Node = Node(generatename(), None)) -> Node:
+        if depth <= 0:
             return rambutan
         else:
-            return self.create_trail(Node(generatename(), rambutan), depth - 1)
+            return self.create_trail( depth - 1,Node(generatename(), rambutan))
 
     def create_test_tree(self, calamansi: Node = Node(generatename(), None)) -> Node:
         return self.findhead(calamansi)
@@ -30,7 +30,7 @@ class NodeCreationTests(unittest.TestCase):
 
     def test_leader(self):
         duku: Node = Node(generatename())
-        self.assertIs(duku, self.findhead(self.create_trail(duku)))
+        self.assertIs(duku, self.findhead(self.create_trail(random.randint(1,5),duku)))
 
     def test_childrensize(self):
         # create a list of all the nodes from a created test trail
