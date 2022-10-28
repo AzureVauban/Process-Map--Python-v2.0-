@@ -133,8 +133,9 @@ class CSVsutilization(unittest.TestCase):
         # TODO: implement your test here
         else:
             foundheadpoints : dict = {} # value is the treekey and the item is the headnode translated from the csv file
-            # read the csv file and find the head nodes
-            df = pandas.read_csv(TESTFILENAME)  # read the csv file
+            # read all rows of the csv file
+            # turn a row of the csv file into a dictionary of the row's data
+            
             # assert that the file has found at least one node, the dictionary cannot be empty for the test to pass
             self.assertGreaterEqual(len(foundheadpoints), 1)  # assert that the file has found at least one node
 
