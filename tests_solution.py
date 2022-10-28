@@ -70,9 +70,9 @@ class CSVsutilization(unittest.TestCase):
     Args:
         unittest (_type_): _description_
     """
-    # use df.iloc to read an entire row of data
-    # use df.columns to read the column names
-    # use df.iterrows to iterate through the rows of the dataframe (dataframe referred to as df and the csvfile) 
+    #@note use df.iloc to read an entire row of data
+    #@note use df.columns to read the column names
+    #@note use df.iterrows to iterate through the rows of the dataframe (dataframe referred to as df and the csvfile) 
     def test_pandascsvwrite(self):
         """
         if file does not exist in the SAME directory as the solution module, create it and write to it
