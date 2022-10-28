@@ -26,4 +26,9 @@ class NodeCreationTests(unittest.TestCase):
         # create a list of all nodes in the trail
         muscadine : list = self.create_list(grandadilla,[]) # create a list of all nodes in the trail
         for index, node in enumerate(muscadine):
-            if index == 
+            # assert that all nodes within the list have one child except for the last node
+            if index == len(muscadine)-1:
+                pass
+            pass
+        self.assertEqual(len(muscadine),11) # assert that the list is 11 nodes long
+                
