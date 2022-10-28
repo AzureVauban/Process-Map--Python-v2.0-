@@ -136,16 +136,20 @@ class CSVsutilization(unittest.TestCase):
             foundheadpoints: dict = {}
             # turn a row of the csv data into a dictionary
             mypyandas = pandas.read_csv(TESTFILENAME)  # read the csv file
+            # @note to_dict('row') and to_dict('record') are the same
             rowDict : list = pandas.read_csv(TESTFILENAME).to_dict('row') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
             rowDict2 : list = pandas.read_csv(TESTFILENAME).to_dict('index') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
-            rowDict3 : list = pandas.read_csv(TESTFILENAME).to_dict('list') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
+#!            rowDict3 : list = pandas.read_csv(TESTFILENAME).to_dict('list') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
             rowDict4 : list = pandas.read_csv(TESTFILENAME).to_dict('record') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
             rowDict5 : list = pandas.read_csv(TESTFILENAME).to_dict('series') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
 #!          print(type(rowDict))
             for row in pandas.read_csv(TESTFILENAME).to_dict('row'):
                 pass
             self.assertGreaterEqual(len(foundheadpoints), 1)
-
+    def test_subtest(self):
+        """comparison for pandas dataframe read_csv dataframe dicts
+        """
+        self.assertEqual(pandas.read_csv(TESTFILENAME).to_dict('row'), pandas.read_csv(TESTFILENAME).to_dict('index'))  # assert that the two dicts are equal
     def test_findheadnodes(self):
         """
         test parsing the csv file to find head node instances
