@@ -4,7 +4,7 @@ Unit Tests for the solution.py module
 import os
 import unittest
 import random
-from solution import Node, generatename, createclone
+from solution import Node, generatename, createclone,reversearithmetic
 from solution import FIELDNAMES
 TESTFILENAME: str = "tests_solution.csv"
 
@@ -89,18 +89,20 @@ class CSVsutilization(unittest.TestCase):
         """
         if not os.path.exists(TESTFILENAME):
             # create the file
-            with
+            
             # write preset mock ingredient tree onto it
-            industrial_battery : Node = Node('industrial_battery', None)
-            protocite_bar : Node = Node('protocite_bar', industrial_battery,0,1,5)
-            protocite : Node = Node('protocite', protocite_bar,0,1,2)
-            battery : Node = Node('battery', industrial_battery,0,1,2)  
-            pixels : Node = Node('pixels', battery,0,1,2500)
-            quantum_processor : Node = Node('quantum_processor', battery,0,1,1)
-            silicon_board : Node = Node('silicon_board', quantum_processor,0,1,4)
-            protocite_bar2 : Node = Node('protocite_bar', silicon_board,0,1,2)
-            thorium_rod : Node = Node('thorium_rod', battery,0,1,5)
-            thorium_ore : Node = Node('thorium_ore', thorium_rod,0,1,2)
+            industrial_battery    : Node = Node('industrial_battery', None)
+            protocite_bar         : Node = Node('protocite_bar', industrial_battery,0,1,5)
+            protocite             : Node = Node('protocite', protocite_bar,0,1,2)
+            battery               : Node = Node('battery', industrial_battery,0,1,2)
+            pixels                : Node = Node('pixels', battery,0,1,2500)
+            quantum_processor     : Node = Node('quantum_processor', battery,0,1,1)
+            silicon_board         : Node = Node('silicon_board', quantum_processor,0,1,4)
+            protocite_bar2        : Node = Node('protocite_bar', silicon_board,0,1,2)
+            thorium_rod           : Node = Node('thorium_rod', battery,0,1,5)
+            thorium_ore           : Node = Node('thorium_ore', thorium_rod,0,1,2)
+            reversearithmetic(industrial_battery,random.randint(1,10)) # reverse the arithmetic of the tree
+            
         # TODO: implement your test here
         self.skipTest(exep_msg.testnotadded())
 
