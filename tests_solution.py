@@ -137,8 +137,11 @@ class CSVsutilization(unittest.TestCase):
             # turn a row of the csv data into a dictionary
             mypyandas = pandas.read_csv(TESTFILENAME)  # read the csv file
             rowDict : list = pandas.read_csv(TESTFILENAME).to_dict('row') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
-            rowDict2 : list = pandas.read_csv(TESTFILENAME).to_dict('') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
-            print(type(rowDict))
+            rowDict2 : list = pandas.read_csv(TESTFILENAME).to_dict('index') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
+            rowDict3 : list = pandas.read_csv(TESTFILENAME).to_dict('list') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
+            rowDict4 : list = pandas.read_csv(TESTFILENAME).to_dict('record') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
+            rowDict5 : list = pandas.read_csv(TESTFILENAME).to_dict('series') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
+#!          print(type(rowDict))
             for row in pandas.read_csv(TESTFILENAME).to_dict('row'):
                 pass
             self.assertGreaterEqual(len(foundheadpoints), 1)
