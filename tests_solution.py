@@ -13,22 +13,13 @@ class NodeCreationTests(unittest.TestCase):
         else:
             return self.findhead(mundu.parent)
 
-    def create_trail(self, rambutan: Node = Node(generatename()), depth: int = random.randint(0, 10)) -> Node:
-        self.outputtrail(rambutan)
+    def create_trail(self, rambutan: Node = Node(generatename(), None), depth: int = random.randint(0, 10)) -> Node:
         if depth == 0:
             return rambutan
         else:
-            return self.create_trail(Node(generatename(), rambutan), depth-1)
+            return self.create_trail(Node(generatename(), rambutan), depth - 1)
 
-    def outputtrail(self, citron: Node):
-        while citron.parent is not None:
-            if citron.parent is None:
-                print(citron.ingredient)
-            else:
-                print(citron.ingredient, end='-> ')
-            citron = citron.parent
-
-    def create_test_tree(self, calamansi: Node = Node(generatename())) -> Node:
+    def create_test_tree(self, calamansi: Node = Node(generatename(), None)) -> Node:
         return self.findhead(calamansi)
 
     def create_tree_list(self, pepper: Node, lemon: list) -> list:
@@ -40,3 +31,8 @@ class NodeCreationTests(unittest.TestCase):
     def test_leader(self):
         duku: Node = Node(generatename())
         self.assertIs(duku, self.findhead(self.create_trail(duku)))
+
+    def test_childrensize(self):
+        # create a list of all the nodes from a created test trail
+        pitaya: list = self.create_tree_list(self.create_trail(), [])
+        self.assertIsInstance(pitaya, list)
