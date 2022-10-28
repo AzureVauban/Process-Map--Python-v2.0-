@@ -4,7 +4,7 @@ import os
 import unittest
 import random
 from solution import Node, generatename
-from solution import col
+from solution import FIELDNAMES
 TESTFILENAME: str = "tests_solution.csv"
 
 
@@ -83,7 +83,7 @@ class CSVsutilization(unittest.TestCase):
             # write preset mock ingredient tree onto it
             pass
         self.skipTest(exep_msg.testnotadded())  # TODO: implement your test here
-
+    # @note 
     def test_pandascsvread(self):
         """
         if file does not exist, raise an error

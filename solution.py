@@ -15,8 +15,15 @@ import time
 
 PROGRAMMODETYPE: int = 0
 CSVFILENAME: str = 'ingredient_tree_TENTATIVENAME.csv'
-CSVFIELDNAMES : list = [
-    
+FIELDNAMES: list = [  # list of field names for the csv output file
+    'Tree_Key',  # 74nry8keki',
+    'Ingredient',  # Copper Wire
+    'Ingredient_Alias',  # Copper_Wire__ZpgMzAwQdfRu
+    'Parent_of_Ingredient',  # Silicon Board
+    'Amount_on_Hand',  # 0
+    'Amount_Made_Per_Craft',  # 9
+    'Amount_Needed_Per_Craft',  # 0
+    'Generation'  # 1
 ]
 #! revert this modification of the filename when finished utilizing it for testing
 GLOBALNODEDICT: dict = {}  # {instancekey: Node}
