@@ -31,6 +31,9 @@ class exep_msg():
 class NodeCreationTests(unittest.TestCase):
     
    def testcheckclone(self):
+       """
+       test that the clone is created correctly
+       """
        tomato : Node = Node('tomato') 
        tomahto =createclone(tomato)
        self.assertIsNot(tomato,tomahto,'Clone is not at a unique location')
@@ -46,9 +49,9 @@ class CSVsutilization(unittest.TestCase):
     Args:
         unittest (_type_): _description_
     """
-    # @audit-info use df.iloc to read an entire row of data
-    # @audit-info use df.columns to read the column names
-    # @audit-info use df.iterrows to iterate through the rows of the dataframe (dataframe referred to as df and the csvfile)
+    #@audit-info use df.iloc to read an entire row of data
+    #@audit-info use df.columns to read the column names
+    #@audit-info use df.iterrows to iterate through the rows of the dataframe (dataframe referred to as df and the csvfile)
 
     def test_pandascsvwrite(self):
         """
