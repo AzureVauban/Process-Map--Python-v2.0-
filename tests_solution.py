@@ -56,7 +56,8 @@ class NodeCreationTests(unittest.TestCase):
                 pass
             pass
         # assert that the list is 11 nodes long
-        self.skipTest(exep_msg.testnotadded())  # TODO: implement your test here
+        # TODO: implement your test here
+        self.skipTest(exep_msg.testnotadded())
 
 
 class internalsearch(unittest.TestCase):
@@ -70,9 +71,10 @@ class CSVsutilization(unittest.TestCase):
     Args:
         unittest (_type_): _description_
     """
-    #@note use df.iloc to read an entire row of data
-    #@note use df.columns to read the column names
-    #@note use df.iterrows to iterate through the rows of the dataframe (dataframe referred to as df and the csvfile) 
+    # @audit-info use df.iloc to read an entire row of data
+    # @audit-info use df.columns to read the column names
+    # @audit-info use df.iterrows to iterate through the rows of the dataframe (dataframe referred to as df and the csvfile)
+
     def test_pandascsvwrite(self):
         """
         if file does not exist in the SAME directory as the solution module, create it and write to it
@@ -82,7 +84,9 @@ class CSVsutilization(unittest.TestCase):
             # create the file
             # write preset mock ingredient tree onto it
             pass
-        self.skipTest(exep_msg.testnotadded())  # TODO: implement your test here
+        # TODO: implement your test here
+        self.skipTest(exep_msg.testnotadded())
+
     def test_pandascsvread(self):
         """
         if file does not exist, raise an error
@@ -90,10 +94,12 @@ class CSVsutilization(unittest.TestCase):
         """
         if not os.path.exists(TESTFILENAME):
             raise FileNotFoundError(exep_msg.csvnotexist())
-        self.skipTest(exep_msg.testnotadded())  # TODO: implement your test here
+        # TODO: implement your test here
+        self.skipTest(exep_msg.testnotadded())
 
     def test_findheadnodes(self):
         """
         test parsing the csv file to find head node instances
         """
-        self.skipTest(exep_msg.testnotadded())  # TODO: implement your test here
+        # TODO: implement your test here
+        self.skipTest(exep_msg.testnotadded())
