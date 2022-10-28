@@ -13,7 +13,7 @@ class NodeCreationTests(unittest.TestCase):
         testing framework (used with permission). 
     """
 
-    def findhead(self, node: Node) -> Node:
+    def findhead(self, nodeinstance: Node) -> Node:
         """
         traverse to the head of the tree
 
@@ -23,10 +23,10 @@ class NodeCreationTests(unittest.TestCase):
         Returns:
             Node: tentative description
         """
-        if node.parent is None:
-            return node
+        if nodeinstance.parent is None:
+            return nodeinstance
         else:
-            return self.findhead(node.parent)
+            return self.findhead(nodeinstance.parent)
 
     def create_trail(self, node: Node, depth: int = 0) -> Node:
         """
