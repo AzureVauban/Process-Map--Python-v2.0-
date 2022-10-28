@@ -186,13 +186,13 @@ class Node(NodeB):
         return checkstring != self.ingredient and self.ingredient != self.aliasingredient
 
     @classmethod
-    def generate_treekey(cls) -> str:
+    def generate_treekey(cls, length : int = random.randint(5,20)) -> str:
         """
         randomly generates an alpha numeric string to be used as a unique identifier for the tree
         and all nodes linked to this instance
         """
         cls.treekey = ''
-        for _ in range(0, 10):
+        for _ in range(0, length):
             cls.treekey += random.choice(
                 '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
         return cls.treekey
