@@ -90,7 +90,7 @@ class CSVsutilization(unittest.TestCase):
         """
         if not os.path.exists(TESTFILENAME):
             # create the file
-            df = pandas.DataFrame(FIELDNAMES)
+            pandas.DataFrame(columns=FIELDNAMES).to_csv(TESTFILENAME, index=False)  # create the file
             # write preset mock ingredient tree onto it
             industrial_battery    : Node = Node('industrial battery', None)
             protocite_bar         : Node = Node('protocite bar', industrial_battery,0,1,5)
@@ -103,11 +103,13 @@ class CSVsutilization(unittest.TestCase):
             thorium_rod           : Node = Node('thorium rod', battery,0,1,5)
             thorium_ore           : Node = Node('thorium ore', thorium_rod,0,1,2)
             reversearithmetic(industrial_battery,random.randint(1,10)) # reverse the arithmetic of the tree
-        else:
+            # write the tree to the csv file using pandas
             
+        else:
+            pass    
         # TODO: implement your test here
         #self.skipTest(exep_msg.testnotadded())
-        self.assertTrue(os.path.exists(TESTFILENAME))
+        self.assertTrue(os.path.exists(TESTFILENAME)) # test that the file exists
 
     def test_pandascsvread(self):
         """
