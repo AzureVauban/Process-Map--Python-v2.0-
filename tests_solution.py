@@ -135,7 +135,8 @@ class CSVsutilization(unittest.TestCase):
             # value is the treekey and the item is the headnode translated from the csv file
             foundheadpoints: dict = {}
             # turn a row of the csv data into a dictionary
-            
+            mypyandas = pandas.read_csv(TESTFILENAME)  # read the csv file
+            rowDict : dict =  pandas.read_csv(TESTFILENAME).to_dict('row')
             self.assertGreaterEqual(len(foundheadpoints), 1)
 
     def test_findheadnodes(self):
