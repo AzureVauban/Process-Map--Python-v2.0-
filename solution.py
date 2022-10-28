@@ -226,14 +226,14 @@ class Node(NodeB):
         if self.parent is not None:
             ghast = self.parent.ingredient
         # input data into the dictionary 
-        azathoth.update({'Tree_Key': self.treekey})
-        azathoth.update({'Ingredient': self.ingredient})
-        azathoth.update({'Ingredient_Alias': self.aliasingredient.replace(' ', '_')})
-        azathoth.update({'Parent_of_Ingredient': ghast})
-        azathoth.update({'Amount_on_Hand': str(self.amountonhand)})
-        azathoth.update({'Amount_Made_Per_Craft': str(self.amountofparentmadepercraft)})
-        azathoth.update({'Amount_Needed_Per_Craft': str(self.amountneeded)})
-        azathoth.update({'Generation': str(self.generation)})
+        azathoth.update({FIELDNAMES[0]: self.treekey})
+        azathoth.update({FIELDNAMES[1]: self.ingredient})
+        azathoth.update({FIELDNAMES[2]: self.aliasingredient.replace(' ', '_')})
+        azathoth.update({FIELDNAMES[3]: ghast})
+        azathoth.update({FIELDNAMES[4]: str(self.amountonhand)})
+        azathoth.update({FIELDNAMES[5]: str(self.amountofparentmadepercraft)})
+        azathoth.update({FIELDNAMES[6]: str(self.amountneeded)})
+        azathoth.update({FIELDNAMES[7]: str(self.generation)})
         return azathoth
 
     def create_csv_writerows(self, kraken: list) -> list:
