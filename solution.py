@@ -21,7 +21,7 @@ FIELDNAMES: list = [  # list of field names for the csv output file
     'Ingredient_Alias',  # Copper_Wire__ZpgMzAwQdfRu
     'Parent_of_Ingredient',  # Silicon Board
     'Amount_on_Hand',  # 0
-    'Amount_Made_Per_Craft',  # 9
+    'Amount_Of_Parent_Made_Per_Craft',  # 9
     'Amount_Needed_Per_Craft',  # 0
     'Generation'  # 1
 ]
@@ -54,11 +54,11 @@ class NodeB:
     #! tree, make the aliasingredient a unique name and output into the csv file
     amountonhand: int = 0
     amountneeded: int = 0
-    amountmadepercraft: int = 0
+    amountofparentmadepercraft: int = 0
     amountresulted: int = 0
     queueamountresulted: dict = {}
 
-    def __init__(self, ingredient: str = '', amountonhand: int = 0, amountmadepercraft: int = 1, amountneeded: int = 1) -> None:
+    def __init__(self, ingredient: str = '', amountonhand: int = 0, amountofparentmadepercraft: int = 1, amountneeded: int = 1) -> None:
         """
         Args:
             name (str, optional): name of the item. Defaults to ''.
@@ -69,7 +69,7 @@ class NodeB:
             Defaults to 1.
         """
         self.amountonhand = amountonhand
-        self.amountmadepercraft = amountmadepercraft
+        self.amountofparentmadepercraft = amountofparentmadepercraft
         self.amountneeded = amountneeded
         self.queueamountresulted = {}
         self.ingredient = ingredient
@@ -93,7 +93,7 @@ class Node(NodeB):
     treekey: str = ''
     ismain_promptinputbool: bool = True
 
-    def __init__(self, ingredient: str = '', parent=None, amountonhand: int = 0, amountmadepercraft: int = 1, amountneeded: int = 1, green: bool = False, orange: bool = __name__ == '__main__') -> None:  # pylint:disable=C0301
+    def __init__(self, ingredient: str = '', parent=None, amountonhand: int = 0, amountofparentmadepercraft: int = 1, amountneeded: int = 1, green: bool = False, orange: bool = __name__ == '__main__') -> None:  # pylint:disable=C0301
         """
         default constructor for Node instance, stores identifying features of an item's
         information
@@ -108,7 +108,7 @@ class Node(NodeB):
             Defaults to 1.
             green (bool,optional): boolean variable, checks if one of the Node's sibiling instances was prompted to input the amount made per craft (blue)
         """
-        super().__init__(ingredient, amountonhand, amountmadepercraft, amountneeded)
+        super().__init__(ingredient, amountonhand, amountofparentmadepercraft, amountneeded)
         self.instancekey = Node.instances
         self.children = {}
         self.ismain_promptinputbool = orange
@@ -146,8 +146,8 @@ class Node(NodeB):
             while True and self.askmadepercraftquestion:
                 print('How much', self.parent.ingredient,
                       'do you create each time you craft it: ')
-                self.amountmadepercraft = promptint()
-                if self.amountmadepercraft < 1:
+                self.amountofparentmadepercraft = promptint()
+                if self.amountofparentmadepercraft < 1:
                     print('That number is not valid')
                 else:
                     self.askmadepercraftquestion = False
@@ -231,7 +231,7 @@ class Node(NodeB):
         azathoth.update({'Ingredient_Alias': self.aliasingredient.replace(' ', '_')})
         azathoth.update({'Parent_of_Ingredient': ghast})
         azathoth.update({'Amount_on_Hand': str(self.amountonhand)})
-        azathoth.update({'Amount_Made_Per_Craft': str(self.amountmadepercraft)})
+        azathoth.update({'Amount_Made_Per_Craft': str(self.amountofparentmadepercraft)})
         azathoth.update({'Amount_Needed_Per_Craft': str(self.amountneeded)})
         azathoth.update({'Generation': str(self.generation)})
         return azathoth
@@ -407,7 +407,7 @@ def recursivearithmetic(cur: Node) -> int:
         for myinteger in cur.queueamountresulted.items():
             if myinteger[1] < tentativeinteger:
                 tentativeinteger = myinteger[1]
-    red = (cur.amountmadepercraft / cur.amountneeded)
+    red = (cur.amountofparentmadepercraft / cur.amountneeded)
     blue = (red*cur.amountonhand) + (red*tentativeinteger)
     blue = round(math.floor(blue))
     cur.amountresulted = blue
@@ -435,7 +435,7 @@ def reversearithmetic(cur: Node, desiredamount: int = 0) -> int:
         int: the amount on hand of the current Node's item needed to get the desired amount
     """
     cur.amountresulted = desiredamount
-    red: float = ((cur.amountmadepercraft/cur.amountneeded)
+    red: float = ((cur.amountofparentmadepercraft/cur.amountneeded)
                   ** -1)*cur.amountresulted
     green: float = round(math.ceil(red))
     cur.amountonhand = int(max(red, green))
@@ -468,7 +468,7 @@ def createclone(node: Node) -> Node:
     """
     # clone must have a differing pointer address and instancekey
     newnode: Node = Node(node.ingredient, None, node.amountonhand,
-                         node.amountneeded, node.amountmadepercraft, False, False)
+                         node.amountneeded, node.amountofparentmadepercraft, False, False)
     newnode.treekey = node.treekey
     for childnode in node.children.items():
         newchildnode: Node = Node(childnode[1].ingredient, newnode,  # pylint: disable=unused-variable
