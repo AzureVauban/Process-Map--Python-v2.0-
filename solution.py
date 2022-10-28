@@ -4,6 +4,8 @@ Rework for Python 3.11.0
 - save working stabe backup of solution.py before merging into development branches into the Stable branch
 """
 import random
+import sys
+import math
 FIELDNAMES: list = [  # list of field names for the csv output file
     'Tree_Key',  # 74nry8keki',
     'Ingredient',  # Copper Wire
@@ -109,6 +111,106 @@ def populate(node: Node) -> Node:
     print('What do you need to create', node.ingredient, end='?\n')
     return node 
 
+
+
+def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:
+    """
+    look for endpoints connected to the tree at this node
+    after this method is finished running, please clear its utilized dictionaryy
+    """
+    if foundendpoints is None:
+        myendpoints: dict = {}
+    else:
+        myendpoints: dict = foundendpoints
+    if len(cur.children) > 0:
+        for child in cur.children.items():
+            if isinstance(child[1], Node):
+                findlocalendpoints(child[1], myendpoints)
+    else:
+        myendpoints.update({cur.instancekey: cur})
+    returndict: dict = myendpoints
+    return returndict
+
+
+def promptint() -> int:
+    """
+    prompt the user to input a returnable integer
+
+    Returns:
+        int: an integer that is used to set the amountneeded, amount on hand, and
+        the amount made per craft for a Node instance
+    """
+    mynum: int = 0
+    while True:
+        myinput = input('')
+        if not myinput.isdigit():
+            print('you can only type in a positive integer')
+        else:
+            mynum = int(myinput)
+            break
+    return mynum
+
+
+def recursivearithmetic(cur: Node) -> int:
+    """
+    figure out the amount resulted of the augment Node instance,
+    math function used: D = (B/C)A + (B/C)(min(Dqueue))
+    - If there is no values in the queue it will default to 0
+    Returns:
+        int: returns the amount resulted of augment Node instance
+    """
+    # check and set minimum resulted if queue is not empty
+    tentativeinteger: int = sys.maxsize
+    if len(cur.queueamountresulted) == 0:
+        tentativeinteger = 0
+    else:
+        for myinteger in cur.queueamountresulted.items():
+            if myinteger[1] < tentativeinteger:
+                tentativeinteger = myinteger[1]
+    red = (cur.amountmadepercraft / cur.amountneeded)
+    blue = (red*cur.amountonhand) + (red*tentativeinteger)
+    blue = round(math.floor(blue))
+    cur.amountresulted = blue
+    # recursively call the method
+    if cur.parent is not None:
+        cur.parent.queueamountresulted.update(
+            {cur.ingredient: cur.amountresulted})
+        recursivearithmetic(cur.parent)
+    return cur.amountresulted
+
+
+def reversearithmetic(cur: Node, desiredamount: int = 0) -> int:
+    """
+    find how much of a material you will need get a particular amount of an item you want
+
+    Args:
+        cur (Node): stores information about an ingredient
+        desiredamount (int, optional): what the amount resulted should be given the
+        returned value of this method. Defaults to 0.
+
+    Raises:
+        TypeError: child is not an instance of Node
+
+    Returns:
+        int: the amount on hand of the current Node's item needed to get the desired amount
+    """
+    cur.amountresulted = desiredamount
+    red: float = ((cur.amountmadepercraft/cur.amountneeded)** -1)*cur.amountresulted
+    green: float = round(math.ceil(red))
+    cur.amountonhand = int(max(red, green))
+    traceback: bool = green > red
+    if traceback:  # go back through the higher up nodes and increase the amount on hand by 1
+        temp: Node = cur
+        while temp.parent is not None:
+            temp = temp.parent
+            temp.amountonhand += 1
+    # continue method recursively
+    if len(cur.children) > 0:
+        for childnode in cur.children.items():
+            if not isinstance(childnode[1], Node):
+                raise TypeError('child is not an instance of', Node)
+            reversearithmetic(childnode[1], cur.amountonhand)
+    return cur.amountonhand
 
 if __name__ == '__main__':
     # prompt ingredient tree
