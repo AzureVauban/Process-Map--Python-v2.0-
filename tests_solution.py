@@ -1,9 +1,10 @@
-"""Unit Tests for the solution.py module
+"""
+Unit Tests for the solution.py module
 """
 import os
 import unittest
 import random
-from solution import Node, generatename,createclone
+from solution import Node, generatename, createclone
 from solution import FIELDNAMES
 TESTFILENAME: str = "tests_solution.csv"
 
@@ -26,29 +27,42 @@ class exep_msg():
     @classmethod
     def testnotadded(cls):
         return "Test not implemented"
+    @classmethod
+    def headisNone(cls):
+        return "head of the tree is None"
+class NodeTree:
+        """
+        auto generated a tree of nodes
+        """
+        headnode: Node
+        population: int = 1
 
-def converttexttocsv(filename : str):
-    """
-    Convert the text file to csv file
-    """
-    with open(filename, "r") as f:
-        lines = f.readlines()
-    with open(filename + '.txt', "w") as f:
-        f.write(",".join(FIELDNAMES) + "")
-        for line in lines:
-            f.write(line)
+        def generateTree(self, populationlimt: int = 1, head: Node = Node('head', None)) -> Node:
+            if head is None:
+                raise ValueError(exep_msg.headisNone())
+            return head
+        def __init__(self, population: int = 1):
+            self.generateTree(population)
 class NodeCreationTests(unittest.TestCase):
-    
-   def testcheckclone(self):
-       """
-       test that the clone is created correctly
-       """
-       tomato : Node = Node('tomato') 
-       tomahto =createclone(tomato)
-       self.assertIsNot(tomato,tomahto,'Clone is not at a unique location')
+
+    def testcheckclone(self):
+        """
+        test that the clone is created correctly
+        """
+        tomato: Node = Node('tomato')
+        tomahto = createclone(tomato)
+        self.assertIsNot(tomato, tomahto, 'Clone is not at a unique location')
+
 
 class internalsearch(unittest.TestCase):
-    pass
+    
+    def test_search(self):
+        """
+        assert that return dict from the search method is {-1:None}
+        """
+        ingredientname: str = generatename()
+        nodetree = Node()   # create a node tree
+        self.skipTest(exep_msg.testnotadded())  # skip the test
 
 
 class CSVsutilization(unittest.TestCase):
@@ -58,9 +72,9 @@ class CSVsutilization(unittest.TestCase):
     Args:
         unittest (_type_): _description_
     """
-    #@audit-info use df.iloc to read an entire row of data
-    #@audit-info use df.columns to read the column names
-    #@audit-info use df.iterrows to iterate through the rows of the dataframe (dataframe referred to as df and the csvfile)
+    # @audit-info use df.iloc to read an entire row of data
+    # @audit-info use df.columns to read the column names
+    # @audit-info use df.iterrows to iterate through the rows of the dataframe (dataframe referred to as df and the csvfile)
 
     def test_pandascsvwrite(self):
         """
@@ -91,5 +105,6 @@ class CSVsutilization(unittest.TestCase):
         # TODO: implement your test here
         self.skipTest(exep_msg.testnotadded())
 
+
 if __name__ == '__main__':
-    converttexttocsv('test_trees.csv')
+    unittest.main()
