@@ -128,11 +128,12 @@ class Node(NodeB):
             self.generation = 0
         # set tree key of this instance
         if self.parent is not None:
+            self.treekey = self.parent.treekey
+        elif self.parent is None and __name__ == '__main__':
             self.treekey = self.generate_treekey()
-        elif self.parent is None and treekey != 'NanKey':
-            self.treekey = treekey
         else:
-            self.
+            self.treekey = treekey
+        
         if not self.checkaliasuniqueness(self.aliasingredient):
             self.aliasingredient = self.aliasingredient + '__' + generatename()
         self.askmadepercraftquestion = green

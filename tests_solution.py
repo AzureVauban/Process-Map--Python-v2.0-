@@ -146,7 +146,7 @@ class CSVsutilization(unittest.TestCase):
                 # @note isheadinstance: bool = green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7] == 0
                 if green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7]== 0:  # if the conditions are met for it to mock a head node
                     # create a node from the row's data
-                    foundheadpoints.update({green[0]: Node(green[1], None, green[4], green[5], green[6],False,False)})  # add the node to the dictionary of head nodes
+                    foundheadpoints.update({green[0]: Node(green[1], None, green[4], green[5], green[6],False,False,green[0])})  # add the node to the dictionary of head nodes
                 # @note when this is turned into a function, if the returned dictionary is empty, return {-1:None} instead of an empty dictionary
             self.assertGreaterEqual(len(foundheadpoints), 1, 'No headnodes found')  # assert that the headnodes are found
             return foundheadpoints  # return the headnodes
