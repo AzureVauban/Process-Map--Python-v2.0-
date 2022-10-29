@@ -168,7 +168,9 @@ class CSVsutilization(unittest.TestCase):
             # when you need to create a new node from the csv file
             # create a function that takes in a dictionary that stores the row of data and the head node instace,
                 # the function should search through all the subnodes of the node parameter instance and figure out where to link the node instance created from the csv
-                # the conditon for if the node should be linked or not is determined by if the emplaced node instances treekey is equal to the treekey is the same as the head node instance's treekey and the 
+                # these are the following conditon for the found nodes: (red is the found node, blue is the node being emplaced)
+                    # red and blue's node treekeys are the same
+                    # red
         # TODO: implement your test here
         self.skipTest(exep_msg.testnotadded())
 
