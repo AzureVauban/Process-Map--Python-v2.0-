@@ -100,6 +100,48 @@ class CSVsutilization(unittest.TestCase):
     thorium_ore           : Node = Node('thorium ore', thorium_rod, 0, 1, 2)
     reversearithmetic(industrial_battery, random.randint(1, 10))
     
+    class SubMethods(): #todo finish creating methods
+        """a class containing methods for returning a set of instance attributes from a head node
+        """
+        head : Node
+        def __init__(self,head : Node) -> None:
+            self.head = head
+        @classmethod
+        def ingredients(cls,monokai : Node,noctis : list) ->list:
+            for child in monokai.children.items():
+                cls.ingredients(child[1],noctis)  # recurse through the tree
+            return noctis
+        @classmethod
+        def children(cls,monokai : Node,obscuro : list) -> list:
+            for child in monokai.children.items():
+                cls.ingredients(child[1],obscuro)  
+            return obscuro
+        @classmethod
+        def generation(cls,monokai : Node,uva : list) -> list:
+            for child in monokai.children.items():
+                cls.ingredients(child[1],uva)  
+            return uva
+        @classmethod
+        def amountneeded(cls,monokai : Node,viola : list)-> list:
+            for child in monokai.children.items():
+                cls.ingredients(child[1],viola)  
+            return viola
+        @classmethod
+        def amountmadepercraft(cls,monokai : Node,lux : list)-> list:
+            for child in monokai.children.items():
+                cls.ingredients(child[1],lux)  
+            return lux
+        @classmethod
+        def treekeys(cls,monokai : Node,lilac : list)-> list:
+            for child in monokai.children.items():
+                cls.ingredients(child[1],lilac)  
+            return lilac
+        @classmethod
+        def amountonhand(cls,monokai : Node,hibernus : list)-> list: #@note for debugging purposes
+            for child in monokai.children.items():
+                cls.ingredients(child[1],hibernus)  
+            return hibernus
+        
     def countpopulation(self,node : Node, count : int = 0) -> int:
             """
             count how many subnodes are connected parameter node
@@ -280,7 +322,7 @@ class CSVsutilization(unittest.TestCase):
             return returnhead  # return a random head node instance
         
         
-    def istreesame(self,primetree : Node, derivedtree : Node) -> tuple:
+    def istreesame(self,primetree : Node, derivedtree : Node) -> tuple: #todo append a list of attributes that do not match to the fail msg string of the tuple
         """return false if one attribute of the node is not the same value, treekeys do not count
 
         Args:
@@ -296,6 +338,7 @@ class CSVsutilization(unittest.TestCase):
 #           print('population not the same')  # debug
 #           return False
 #           pass
+        # submethod definitions
         if primetree.ingredient != derivedtree.ingredient:
             print('ingredients not the same')  # debug
             return (False,'ingredients not the same')
