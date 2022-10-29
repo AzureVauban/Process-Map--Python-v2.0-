@@ -280,7 +280,7 @@ class CSVsutilization(unittest.TestCase):
             bool: returns true if any attribute value of any of the compared nodes are not the same in their respective ingredient trees
         """
         # check if the children dicts have the same amount of keys
-        if len(red.children) != len(green.children):
+        if len(red.children) != len(green.children) or self.countpopulation(red) != self.countpopulation(green):  # if the children dicts have the same amount of keys
             return False
         else:
             """ redlist : list = list(red.children.items())  # convert the children dictionary to a list
