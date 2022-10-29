@@ -126,8 +126,13 @@ class Node(NodeB):
             self.ismain_promptinputbool = self.parent.ismain_promptinputbool
         else:
             self.generation = 0
-        if self.parent is not None and treekey == 'NanKey':
+        # set tree key of this instance
+        if self.parent is not None:
             self.treekey = self.generate_treekey()
+        elif self.parent is None and treekey != 'NanKey':
+            self.treekey = treekey
+        else:
+            self.
         if not self.checkaliasuniqueness(self.aliasingredient):
             self.aliasingredient = self.aliasingredient + '__' + generatename()
         self.askmadepercraftquestion = green
