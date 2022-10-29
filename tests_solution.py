@@ -168,7 +168,6 @@ class CSVsutilization(unittest.TestCase):
                 if green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7]== 0:  # if the conditions are met for it to mock a head node
                     # create a node from the row's data
                     foundheadpoints.update({green[0]: Node(green[1], None, green[4], green[5], green[6],False,False,green[0])})  # add the node to the dictionary of head nodes
-                    print('found a node!')  #!delete this later
                 # @note when this is turned into a function, if the returned dictionary is empty, return {-1:None} instead of an empty dictionary
             #check that the key of the dictionary and the treekey of the node are the same, if they are not, raise an exception
             for key, value in foundheadpoints.items():
@@ -269,7 +268,7 @@ class CSVsutilization(unittest.TestCase):
             nodecount : int = self.countpopulation(returnhead)
             self.assertEqual(nodecount,10)  # assert that the population of the tree is equal to the population of the mock tree 
             return returnhead  # return a random head node instance
-    def istreesame(self,red : Node, green : Node) -> bool:
+    def istreesame(self,presetingredienttree : Node, csvsourcedtree : Node) -> bool:
         """return false if one attribute of the node is not the same value, treekeys do not count
 
         Args:
@@ -280,23 +279,23 @@ class CSVsutilization(unittest.TestCase):
             bool: returns true if any attribute value of any of the compared nodes are not the same in their respective ingredient trees
         """
         # check if the children dicts have the same amount of keys
-        print(red.ingredient,green.ingredient)  # debug
-        if self.countpopulation(red) != self.countpopulation(green):
+        print(presetingredienttree.ingredient,csvsourcedtree.ingredient)  # debug
+        if self.countpopulation(presetingredienttree) != self.countpopulation(csvsourcedtree):
             print('population not the same')  # debug
             return False
-        elif red.ingredient != green.ingredient:
+        elif presetingredienttree.ingredient != csvsourcedtree.ingredient:
             print('ingredients not the same')  # debug
             return False
-        elif red.generation != green.generation:
+        elif presetingredienttree.generation != csvsourcedtree.generation:
             print('generations not the same')
             return False
-        elif red.amountofparentmadepercraft != green.amountofparentmadepercraft:
+        elif presetingredienttree.amountofparentmadepercraft != csvsourcedtree.amountofparentmadepercraft:
             print('amounts not the same')  # debug
             return False
-        elif red.amountneeded != green.amountneeded:
+        elif presetingredienttree.amountneeded != csvsourcedtree.amountneeded:
             print('amounts not the same')  # debug
             return False
-        elif red.treekey == green.treekey:
+        elif presetingredienttree.treekey == csvsourcedtree.treekey:
             print('treekeys are the same')
             return False
         else:
@@ -306,8 +305,8 @@ class CSVsutilization(unittest.TestCase):
             greenlist: list = list(green.children.items())  # convert the children dictionary to a list
             for index,value in enumerate(greenlist):  # iterate through the list
                 greenlist[index] = value[1]  # convert the tuple to a node instance """
-            for index,node in enumerate(red.children.items()):
-                return self.istreesame(list(red.children.items())[index][1],list(green.children.items())[index][1])  # print the name of the node
+            for index,node in enumerate(presetingredienttree.children.items()):
+                return self.istreesame(list(presetingredienttree.children.items())[index][1],list(csvsourcedtree.children.items())[index][1])  # print the name of the node
             return True  # if the function has not returned false by now, the trees are the same
     def test_createdtreeissame(self):
         #mock tree
