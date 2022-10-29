@@ -269,8 +269,40 @@ class CSVsutilization(unittest.TestCase):
             nodecount : int = self.countpopulation(returnhead)
             self.assertEqual(nodecount,10)  # assert that the population of the tree is equal to the population of the mock tree 
             return returnhead  # return a random head node instance
+    def istreesame(self,red : Node, green : Node) -> bool:
+        """return false if one attribute of the node is not the same value, treekeys do not count
+
+        Args:
+            red (Node): ingredient tree A
+            blue (Node): ingredient tree B
+
+        Returns:
+            bool: returns true if any attribute value of any of the compared nodes are not the same in their respective ingredient trees
+        """
+        # check if the children dicts have the same amount of keys
+        if len(red.children) != len(green.children):
+            return False
+        else:
+            redlist : list = list(red.children.items())  # convert the children dictionary to a list
+            greenlist: list = list(green.children.items())  # convert the children dictionary to a list
+            return True
     def test_createdtreeissame(self):
-        self.skipTest('Not implemented yet')  # skip the test if the csv file does not exist
+        #mock tree
+        industrial_battery    : Node = Node('industrial battery', None)
+        protocite_bar         : Node = Node('protocite bar', industrial_battery, 0, 1, 5)
+        protocite             : Node = Node('protocite', protocite_bar, 0, 1, 2)
+        battery               : Node = Node('battery', industrial_battery, 0, 1, 2)
+        pixels                : Node = Node('pixels', battery, 0, 1, 2500)
+        quantum_processor     : Node = Node('quantum processor', battery, 0, 1, 1)
+        silicon_board         : Node = Node('silicon board', quantum_processor, 0, 1, 4)
+        protocite_bar2        : Node = Node('protocite bar', silicon_board, 0, 1, 2)
+        thorium_rod           : Node = Node('thorium rod', battery, 0, 1, 5)
+        thorium_ore           : Node = Node('thorium ore', thorium_rod, 0, 1, 2)
+        #head node of test tree
+        testhead : Node = self.test_headnodecreation()  # get the head node of the test tree
+        #@note assert that the tree created from the csv file is the same as the tree created from the mock tree
+        #! self.skipTest('Not implemented yet')  # skip the test if the csv file does not exist
+        self.assertTrue(self.istreesame(industrial_battery,testhead),'the test tree created from the csv does not share attributes to the mock ingredient tree)  # assert that the tree created from the csv file is the same as the tree created from the mock tree')
 
 
 if __name__ == '__main__':
