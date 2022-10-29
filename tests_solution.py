@@ -160,7 +160,8 @@ class CSVsutilization(unittest.TestCase):
         # if it returns {-1:None} or the file is not in the directory, skip the test
         # else, open the file in read mode and check for nodes in the csv that match the value of the head node's key in the dictionary,
             # is not a head node instance (avoid duplicating the same nodes as dictionized nodes) and emplace nodes into the head node's tree
-        if self.test_pandacsvparsesearch() == {-1: None} or not os.path.exists(path=TESTFILENAME):
+        foundheadnodes : dict = self.test_pandacsvparsesearch()
+        if foundheadnodes == {-1:None} or not os.path.exists(path=TESTFILENAME):
             self.skipTest(exep_msg.csvnotexist())
         else:
             pass
