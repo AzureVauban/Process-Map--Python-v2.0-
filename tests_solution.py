@@ -138,12 +138,12 @@ class CSVsutilization(unittest.TestCase):
             mypyandas = pandas.read_csv(TESTFILENAME)  # read the csv file
             rowDict2 : dict = pandas.read_csv(TESTFILENAME).to_dict('index')
             # @audit-info convert row into a list, use a boolean to detect if the nesscary values are present in the proper positions of the list to match a head node of the tree, and if it does input it the dictionary of head nodes
-            # @audit-info headinstance condition is met if list[index=3] is None,list[index=4] is 0, list[index=5] = 1, and list[index=6] = 1
+            # @audit-info headinstance condition is met if list[index=3] is None, list[index=5] = 1, list[index=6] = 1, adn list[index=7] = 0
             for purple in pandas.read_csv(TESTFILENAME).to_dict('index').items():  # iterate through the rows of the dataframe
                 blue = purple[1].values()
                 green : list = list(purple[1].values())  # convert the values of the dictionary to a list
-                # @note conversion syntax: yellow : Node = Node(green[1],None,green[4],green[5],green[6])  # create a node from the list
-                isheadinstance : bool = green[3] is None and green[4] == 0 and green[5] == 1 and green[6] == 1  # check if the node is a head node
+                # @note conversion syntax: yellow : Node = Node(green[1],None,green[5],green[6],green[6])  # create a node from the list
+                isheadinstance : bool = green[3] is 'None' and green[5] == 1 and green[6] == 1 and green[7]== 0 # check if the node is a head node
                 if isheadinstance:  # add the head node to the dictionary of head nodes
                     foundheadpoints.update({green[0]: Node(green[1], None, green[4], green[5], green[6])})  
             self.assertGreaterEqual(len(foundheadpoints), 1, 'No headnodes found')  # assert that the headnodes are found
