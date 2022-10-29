@@ -243,20 +243,21 @@ class CSVsutilization(unittest.TestCase):
                 # these are the following condition for the found nodes: (red is the found node, blue is the node being emplaced)
                     # red and blue's node treekeys are the same
                     # red's parent ingredient is the same as blue's ingredient
-            tentativetest = random.choice(list(foundheadnodes.items()))  # get a random head node from the dictionary of head nodes
+            returnhead = random.choice(list(foundheadnodes.items()))[1]  # get a random head node from the dictionary of head nodes
             # @audit-info assert that the population of the tree is equal to the population of the mock tree
-            returendnodepopulation : int = self.countpopulation(tentativetest[1])
+            returendnodepopulation : int = self.countpopulation(returnhead[1])
             #! call the function that figures out where to link the node and emplace it into the tree
             # open the file and read the rows
+            sublist : list = []  #? list of rows that match the head node's tree key
             for purple in pandas.read_csv(TESTFILENAME).to_dict('index').items():  # iterate through the rows of the dataframe
                 green : list = list(purple[1].values())  # convert the values of the dictionary to a list
                 #todo format ingredient alias to match the ingredient (rowlist[3] == rowlist[1])
                 green[3] = green[1]
                 # for each row, check if the it meets the conditions to be a child node of the head node
-                self.locate_emplace_spot(tentativetest[1],green)
+                self.locate_emplace_spot(returnhead[1],green)
                 # if it does not, check to see if any of the children meet the condition 
             self.assertEqual(returendnodepopulation,10)  # assert that the population of the tree is equal to the population of the mock tree 
-            return tentativetest[1]  # return a random head node instance
+            return returnhead[1]  # return a random head node instance
         
 
 
