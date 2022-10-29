@@ -1,1 +1,20 @@
 Tree_Key,Ingredient,Ingredient_Alias,Parent_of_Ingredient,Amount_on_Hand,Amount_Of_Parent_Made_Per_Craft,Amount_Needed_Per_Craft,Generation
+hCqQduj,industrial battery,industrial_battery__JRwtu6aA4cMyz,None,7,1,1,0
+hCqQduj,protocite bar,protocite_bar__H22u7h2CQV,industrial battery,35,1,5,1
+hCqQduj,protocite,protocite__hXqBZghucXbgWw,protocite bar,70,1,2,2
+hCqQduj,battery,battery__tVJc9ZYqf,industrial battery,14,1,2,1
+hCqQduj,pixels,pixels__8M9I36cYqs,battery,35000,1,2500,2
+hCqQduj,quantum processor,quantum_processor__1HpY1nIAFbuvTm6cdu,battery,14,1,1,2
+hCqQduj,silicon board,silicon_board__YXNntEyQ,quantum processor,56,1,4,3
+hCqQduj,protocite bar,protocite_bar__kbzaIQzhKojXH8Ey,silicon board,112,1,2,4
+hCqQduj,thorium rod,thorium_rod__4Fn3O0BalGA,battery,70,1,5,2
+vGJ9O3tWztIkZ9ML2fuV,industrial battery,industrial_battery__7MpKqa,None,10,1,1,0
+vGJ9O3tWztIkZ9ML2fuV,protocite bar,protocite_bar__ZQz6fe7K1DmU,industrial battery,50,1,5,1
+vGJ9O3tWztIkZ9ML2fuV,protocite,protocite__qi7WCNejpUj,protocite bar,100,1,2,2
+vGJ9O3tWztIkZ9ML2fuV,battery,battery__Gw977fhojD,industrial battery,20,1,2,1
+vGJ9O3tWztIkZ9ML2fuV,pixels,pixels__dySLziu6,battery,50000,1,2500,2
+vGJ9O3tWztIkZ9ML2fuV,quantum processor,quantum_processor__FofEZWkYgwG,battery,20,1,1,2
+vGJ9O3tWztIkZ9ML2fuV,silicon board,silicon_board__ksbPsNWIG,quantum processor,80,1,4,3
+vGJ9O3tWztIkZ9ML2fuV,protocite bar,protocite_bar__UcunaREkJ2,silicon board,160,1,2,4
+vGJ9O3tWztIkZ9ML2fuV,thorium rod,thorium_rod__l7mVVK6BSk,battery,100,1,5,2
+vGJ9O3tWztIkZ9ML2fuV,thorium ore,thorium_ore__FE3gypWe,thorium rod,200,1,2,3

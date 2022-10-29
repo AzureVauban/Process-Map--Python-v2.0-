@@ -134,12 +134,6 @@ class CSVsutilization(unittest.TestCase):
             self.test_pandascsvwrite()  # call the function again to write to the file
         else:
             # write preset mock ingredient tree onto it
-            #@note get the write rows from the head node then resort the list have its instancekeys in order from least to greatest
-            write_rows : list = industrial_battery.create_csv_writerows([])  # get the write rows from the head node
-            for red in write_rows:
-                for blue in write_rows:
-                    if red.instancekey > blue.instancekey:
-                        write_rows[write_rows.index(red)], write_rows[write_rows.index(blue)] = write_rows[write_rows.index(blue)], write_rows[write_rows.index(red)]
             for line in industrial_battery.create_csv_writerows([]):
                 pandas.DataFrame(line, index=[0]).to_csv(TESTFILENAME, mode='a', header=False, index=False)
         # TODO: implement your test here
@@ -226,11 +220,15 @@ class CSVsutilization(unittest.TestCase):
             return True
         else:
             return False
+        
+        
     def locate_emplace_spot(self,parent : Node,row : list):
         spotfound : bool = self.emplacelink(parent,row)  # try to emplace the node into the parent node's children dictionary
         if not spotfound:
             for child in parent.children.items():
                 self.locate_emplace_spot(child[1],row)
+        else:
+            print('emplaced',row[1],'into',parent.ingredient)
    
     
     
