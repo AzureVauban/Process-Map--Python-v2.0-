@@ -140,8 +140,8 @@ class CSVsutilization(unittest.TestCase):
             rowDict = pandas.read_csv(TESTFILENAME).to_dict('row') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
             rowDict2  = pandas.read_csv(TESTFILENAME).to_dict('index') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
 #!            rowDict3 : list = pandas.read_csv(TESTFILENAME).to_dict('list') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
-            rowDict4 = pandas.read_csv(TESTFILENAME).to_dict('record') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
-            rowDict5 = pandas.read_csv(TESTFILENAME).to_dict('series') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
+#!            rowDict4 = pandas.read_csv(TESTFILENAME).to_dict('record') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
+#!            rowDict5 = pandas.read_csv(TESTFILENAME).to_dict('series') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
 #!          print(type(rowDict))
 #?            for row in pandas.read_csv(TESTFILENAME).to_dict('row'):
 #?                pass
