@@ -152,7 +152,7 @@ class CSVsutilization(unittest.TestCase):
             return foundheadpoints  # return the headnodes
             
             
-    def test_headnodecreation(self):
+    def test_headnodecreation()->Node:
         """
         test that the head node is created correctly
         """
@@ -162,6 +162,7 @@ class CSVsutilization(unittest.TestCase):
             # is not a head node instance (avoid duplicating the same nodes as dictionized nodes) and emplace nodes into the head node's tree
         foundheadnodes : dict = self.test_pandacsvparsesearch()
         if foundheadnodes == {-1:None} or not os.path.exists(path=TESTFILENAME):
+            # @audit-info in the solution module the user would input an integer to the function to specify which head node to create and return, for this test return a random one
             self.skipTest(exep_msg.csvnotexist())
         else:
             # open the file in read mode and check for nodes in the csv that match the value of the head node's key in the dictionary,
@@ -171,8 +172,9 @@ class CSVsutilization(unittest.TestCase):
                 # these are the following conditon for the found nodes: (red is the found node, blue is the node being emplaced)
                     # red and blue's node treekeys are the same
                     # red's parent ingredient is the same as blue's ingredient
+            self.skipTest(exep_msg.testnotadded())
+            return random.choice(list(foundheadnodes.items()))  # return a random head node instance
         # TODO: implement your test here
-        self.skipTest(exep_msg.testnotadded())
 
 if __name__ == '__main__':
     blue = CSVsutilization()  # create an instance of the class
