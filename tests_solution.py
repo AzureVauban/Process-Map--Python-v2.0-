@@ -321,7 +321,7 @@ class CSVsutilization(unittest.TestCase):
         
     def test_createdtreeissame(self):
         #! fake node, comment in and out when needed
-        uraniumrod            : Node = Node('uranium rod', self.pixels, 0, 500, 1)  # create a node instance with the name pixels and the parent node battery
+        #uraniumrod            : Node = Node('uranium rod', self.pixels, 0, 500, 1)  # create a node instance with the name pixels and the parent node battery
         #head node of test tree
         testhead : Node = self.test_headnodecreation()  # get the head node of the test tree
         #@note assert that the tree created from the csv file is the same as the tree created from the mock tree
