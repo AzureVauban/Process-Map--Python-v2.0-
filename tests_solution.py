@@ -4,6 +4,7 @@ Unit Tests for the solution.py module
 import os
 import unittest
 import random
+from numpy import minimum
 import pandas
 from solution import Node, generatename, createclone, reversearithmetic
 from solution import FIELDNAMES
@@ -219,7 +220,8 @@ class CSVsutilization(unittest.TestCase):
         #! keep add conditon checks as progress on this test is made
         if parent.treekey == csvrow[0] and csvrow[3] != 'None' and csvrow[3] == parent.ingredient and csvrow[7] > 0 and parent is not None:
             #@audit somewhere in the project it needs to be determined if the user will allow the amount on hands from the csv file to be used or if the user will input the amount on hand themselves
-            child : Node = Node(csvrow[1],parent,csvrow[5],csvrow[6],csvrow[6],False,False,csvrow[0])  # create a node from the list
+            #!child : Node = Node(csvrow[1],parent,csvrow[5],csvrow[6],csvrow[6],False,False,csvrow[0])  # create a node from the list
+            Node(csvrow[1],parent=parent,amountneeded=csvrow[6],amountofparentmadepercraft=csvrow[5],amountonhand=csvrow[4],treekey=csvrow[0])  # create a node from the list
             return True
         else:
             return False
@@ -317,7 +319,15 @@ class CSVsutilization(unittest.TestCase):
                 return self.istreesame(list(primetree.children.items())[index][1],list(derivedtree.children.items())[index][1])  # print the name of the node
             return (True,'trees are the same')        
     
+    def returnlist(self,noctis : Node, minimus : list)-> list[tuple[int,int]]:
+        """
+        return a list of tuples (int,int):
         
+            [0] is the amount of parent made per craft of the node
+            [1] is the amount needed to create the parent ingredient once
+        """
+        minimus.append((noctis.amountofparentmadepercraft,noctis.amountneeded))
+        return minimus
     def test_createdtreeissame(self):
         #! fake node, comment in and out when needed
         #uraniumrod            : Node = Node('uranium rod', self.pixels, 0, 500, 1)  # create a node instance with the name pixels and the parent node battery
@@ -325,7 +335,12 @@ class CSVsutilization(unittest.TestCase):
         #@note assert that the tree created from the csv file is the same as the tree created from the mock tree
         assertvalue : tuple = self.istreesame(self.industrial_battery,testhead)
         self.assertTrue(assertvalue[0],assertvalue[1])  # assert that the tree created from the csv file is the same as the tree created from the mock tree
-
+    
+    def test_comparelist(self):
+        bordolist : list = self.returnlist(self.industrial_battery,[]) 
+        azureus :list = self.returnlist(self.test_headnodecreation(),[])  # get the head node of the test tree
+        self.assertListEqual(azureus,bordolist)
+        
 
 if __name__ == '__main__':
     blue = CSVsutilization()  # create an instance of the class
