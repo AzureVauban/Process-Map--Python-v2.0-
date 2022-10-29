@@ -288,11 +288,11 @@ class CSVsutilization(unittest.TestCase):
         """
         #@audit-info the trees created from the csv file are not correclty created in order if they duplicate ingredient names
         # check if the children dicts have the same amount of keys
-        print('\x1B[35m',presetingredienttree.ingredient+'\x1B[37m','\x1B[31m'+csvsourcedtree.ingredient+'\x1B[37m')  # debug
-        if self.countpopulation(presetingredienttree) != self.countpopulation(csvsourcedtree):
-            print('population not the same')  # debug
-            return False
-        elif presetingredienttree.ingredient != csvsourcedtree.ingredient: #@note comparsion fails
+#       if self.countpopulation(presetingredienttree) != self.countpopulation(csvsourcedtree):
+#           print('population not the same')  # debug
+#           return False
+#           pass
+        if presetingredienttree.ingredient != csvsourcedtree.ingredient: #@note comparsion fails
             print('ingredients not the same')  # debug
             return False
         elif presetingredienttree.generation != csvsourcedtree.generation:
@@ -307,21 +307,27 @@ class CSVsutilization(unittest.TestCase):
         elif presetingredienttree.treekey == csvsourcedtree.treekey:
             print('treekeys are the same')
             return False
+        elif len(presetingredienttree.children) != len(csvsourcedtree.children):
+            print('children not the same')
+            return False
         else:
             
             for index,node in enumerate(presetingredienttree.children.items()):
                 return self.istreesame(list(presetingredienttree.children.items())[index][1],list(csvsourcedtree.children.items())[index][1])  # print the name of the node
             return True  # if the function has not returned false by now, the trees are the same
-    def checkallinstances(self, black : Node, white : Node) -> list:
+    def checkallinstances(self, nodeobject : Node,bin : list) -> list:
         """ return a list of nodes from two trees for debugging purposes
         Returns:
             list: list of nodes from tree A and tree B
         """
-        return []
+        bin.append(nodeobject)
+        for node in nodeobject.children.items():
+            self.checkallinstances(node[1],bin)
+        return bin
         
     def test_createdtreeissame(self):
         #! fake node, comment in and out when needed
-        #? uraniumrod            : Node = Node('uranium rod', pixels, 0, 500, 1)  # create a node instance with the name pixels and the parent node battery
+        uraniumrod            : Node = Node('uranium rod', self.pixels, 0, 500, 1)  # create a node instance with the name pixels and the parent node battery
         #head node of test tree
         testhead : Node = self.test_headnodecreation()  # get the head node of the test tree
         #@note assert that the tree created from the csv file is the same as the tree created from the mock tree
