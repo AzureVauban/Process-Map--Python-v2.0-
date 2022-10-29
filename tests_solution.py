@@ -39,7 +39,20 @@ class exep_msg():
 
 
 
-
+def convertdepreciatedcsv(nameofoldcsv: str) -> dict:
+    """
+    Convert depreciated csv file to pandas DataFrame
+    return a dictionary of ingredient trees from the old csv file
+    """
+    panda : dict = {} # dictionary of new nodes
+    # read the csv file
+    df = pandas.read_csv(nameofoldcsv, names=FIELDNAMES)
+    # convert the depreciated csv file to pandas DataFrame
+    # ignore its treekey and generation
+    if len(panda) == 0:
+       return {-1:None}
+    else:
+        return panda
 class NodeCreationTests(unittest.TestCase):
 
     def testcheckclone(self):
