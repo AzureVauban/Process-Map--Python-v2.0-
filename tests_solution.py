@@ -279,20 +279,6 @@ class CSVsutilization(unittest.TestCase):
         Returns:
             bool: returns true if any attribute value of any of the compared nodes are not the same in their respective ingredient trees
         """
-        def tentativemethod2(self,apple : list[Node],pear: list[Node]): #todo change the name of the subfunction
-            print('list A',apple)
-            print('list B',pear)
-            for appleseed in apple:
-                if not isinstance(appleseed,Node):
-                    raise TypeError('an item of the list is not an instance if',Node)  # raise a type error
-
-            for pearseed in pear:
-                if not isinstance(pearseed,Node):
-                    raise TypeError('an item of the list is not an instance if',Node)  # raise a type error
-            if len(apple) != len(pear) :
-                raise ValueError('the two lists are not the same length')  # raise a value error
-            for index,node in enumerate(apple):
-                self.istreesame(node,pear[index])  # call the function recursively to check the subnodes of the nodes
         # check if the children dicts have the same amount of keys
         if len(red.children) != len(green.children):
             return False
@@ -304,9 +290,15 @@ class CSVsutilization(unittest.TestCase):
             for index,value in enumerate(greenlist):  # iterate through the list
                 greenlist[index] = value[1]  # convert the tuple to a node instance
             #!return self.istreesame.tentativemethod2(redlist,greenlist)  # call the subfunction to check the subnodes of the nodes
-            for index,node in enumerate(redlist):
-                self.istreesame(node,greenlist[index])  # call the function recursively to check the subnodes of the nodes
-        
+#!            for index,node in enumerate(redlist):
+#!                return self.istreesame(node,greenlist[index])  # call the function recursively to check the subnodes of the nodes
+#?            for index,node in enumerate(redlist):
+#?                if not self.istreesame(node,greenlist[index]):
+#?                    return False
+#?            return True  # return true if the nodes are the same
+            for index,node in enumerate(red.children.items()):
+                self.istreesame(list(red.children.items())[index][1],list(green.children.items())[index][1])  # print the name of the node
+            return True
     def test_createdtreeissame(self):
         #mock tree
         industrial_battery    : Node = Node('industrial battery', None)
