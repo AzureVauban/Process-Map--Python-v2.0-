@@ -8,4 +8,15 @@ qXdcUIo8AGdX,quantum processor,quantum_processor__HOpzKLEWTsAfJIqTj7,industrial 
 qXdcUIo8AGdX,silicon board,silicon_board__NvsXW77catBFX0FOSp0,quantum processor,28,1,4,2
 qXdcUIo8AGdX,protocite bar,protocite_bar__0JRUYh,quantum processor,14,1,2,2
 qXdcUIo8AGdX,thorium rod,thorium_rod__4yRwRZo8Eharbunwv,industrial battery,35,1,5,1
-qXdcUIo8AGdX,thorium ore,thorium_ore__gaQBu97CsowbH10jjUc,thorium rod,70,1,2,2
+qXdcUIo8AGdX,thorium ore,thorium_ore__gaQBu97CsowbH10jjUc,thorium rod,70,1,2,2UFAapL
+UFAapL,protocite bar,protocite_bar__VPiO10xMdm,industrial battery,5,1,5,1
+UFAapL,protocite,protocite__aGCGvOf,protocite bar,10,1,2,2
+UFAapL,battery,battery__r2BXas5zau,industrial battery,2,1,2,1
+UFAapL,pixels,pixels__1q2PufK6c,battery,5000,1,2500,2
+UFAapL,uranium rod,uranium_rod__iIOgC48,pixels,0,500,1,3
+UFAapL,uranium rod,uranium_rod__I5z1XMao2vt,pixels,0,500,1,3
+UFAapL,quantum processor,quantum_processor__I9l6G0LP,industrial battery,1,1,1,1
+UFAapL,silicon board,silicon_board__uTsnkCFVyeo,quantum processor,4,1,4,2
+UFAapL,protocite bar,protocite_bar__LOHSCzZh,quantum processor,2,1,2,2
+UFAapL,thorium rod,thorium_rod__BjpvYQ6,industrial battery,5,1,5,1
+UFAapL,thorium ore,thorium_ore__9loiiLGNmB3,thorium rod,10,1,2,2
