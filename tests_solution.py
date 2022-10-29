@@ -167,6 +167,7 @@ class CSVsutilization(unittest.TestCase):
             for child in node.children:
                 count = self.countpopulation(child,count)
         return count
+    
     def test_headnodecreation(self):
         """
         test that the head node is created correctly
@@ -190,7 +191,6 @@ class CSVsutilization(unittest.TestCase):
                     # red's parent ingredient is the same as blue's ingredient
             tentativetest = random.choice(list(foundheadnodes.items()))  # get a random head node from the dictionary of head nodes
             # @audit-info assert that the population of the tree is equal to the population of the mock tree
-            #! self.skipTest(exep_msg.testnotadded())
             returendnodepopulation : int = self.countpopulation(tentativetest[1])
             self.assertEqual(returendnodepopulation,10)  # assert that the population of the tree is equal to the population of the mock tree 
             return tentativetest[1]  # return a random head node instance
