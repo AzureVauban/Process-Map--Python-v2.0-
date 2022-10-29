@@ -164,7 +164,10 @@ class CSVsutilization(unittest.TestCase):
         if foundheadnodes == {-1:None} or not os.path.exists(path=TESTFILENAME):
             self.skipTest(exep_msg.csvnotexist())
         else:
-            pass
+            # open the file in read mode and check for nodes in the csv that match the value of the head node's key in the dictionary,
+            # when you need to create a new node from the csv file
+            # create a function that takes in a dictionary that stores the row of data and the head node instace,
+                # make sure
         # TODO: implement your test here
         self.skipTest(exep_msg.testnotadded())
 
