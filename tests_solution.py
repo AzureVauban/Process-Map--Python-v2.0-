@@ -129,29 +129,20 @@ class CSVsutilization(unittest.TestCase):
         if the file already exists, open it in append mode and append written data to it
         """
         # prepared mock ingredient append data
-        industrial_battery    : Node = Node('industrial battery', None,treekey=Node.generate_treekey())
-        protocite_bar         : Node = Node('protocite bar', industrial_battery, 0, 1, 5)
-        protocite             : Node = Node('protocite', protocite_bar, 0, 1, 2)
-        battery               : Node = Node('battery', industrial_battery, 0, 1, 2)
-        pixels                : Node = Node('pixels', battery, 0, 1, 2500)
-        quantum_processor     : Node = Node('quantum processor', industrial_battery, 0, 1, 1)
-        silicon_board         : Node = Node('silicon board', quantum_processor, 0, 1, 4)
-        protocite_bar2        : Node = Node('protocite bar', silicon_board, 0, 1, 2)
-        thorium_rod           : Node = Node('thorium rod', industrial_battery, 0, 1, 5)
-        thorium_ore           : Node = Node('thorium ore', thorium_rod, 0, 1, 2)
-        reversearithmetic(industrial_battery, random.randint(1, 10))
+       
         if not os.path.exists(TESTFILENAME):
             # create the file
             pandas.DataFrame(columns=FIELDNAMES).to_csv(TESTFILENAME, index=False)
             self.test_pandascsvwrite()  # call the function again to write to the file
         else:
             # write preset mock ingredient tree onto it
-            for line in industrial_battery.create_csv_writerows([]):
+            for line in self.industrial_battery.create_csv_writerows([]):
                 pandas.DataFrame(line, index=[0]).to_csv(TESTFILENAME, mode='a', header=False, index=False)
         # TODO: implement your test here
         # self.skipTest(exep_msg.testnotadded())
         # test that the file exists
-        self.assertTrue(os.path.exists(TESTFILENAME))
+        #! skip test self.assertTrue(os.path.exists(TESTFILENAME))
+        self.skipTest('Test is not needed anymore')  # skip the test
 
     def test_pandacsvparsesearch(self)->dict: # todo turn this into a function in the solution module when this unit test passes 
         """
@@ -240,7 +231,8 @@ class CSVsutilization(unittest.TestCase):
             for child in parent.children.items():
                 self.locate_emplace_spot(child[1],row)
         else:
-            print('emplaced',row[1],'into',parent.ingredient)
+            if parent is not  None:
+                pass
    
     
     
@@ -328,22 +320,12 @@ class CSVsutilization(unittest.TestCase):
         return []
         
     def test_createdtreeissame(self):
-        #mock tree
-        industrial_battery    : Node = Node('industrial battery', None)
-        protocite_bar         : Node = Node('protocite bar', industrial_battery, 0, 1, 5)
-        protocite             : Node = Node('protocite', protocite_bar, 0, 1, 2)
-        battery               : Node = Node('battery', industrial_battery, 0, 1, 2)
-        pixels                : Node = Node('pixels', battery, 0, 1, 2500)
-        quantum_processor     : Node = Node('quantum processor', battery, 0, 1, 1)
-        silicon_board         : Node = Node('silicon board', quantum_processor, 0, 1, 4)
-        protocite_bar2        : Node = Node('protocite bar', silicon_board, 0, 1, 2)
-        thorium_rod           : Node = Node('thorium0 rod', battery, 0, 1, 5)
-        thorium_ore           : Node = Node('thorium ore', thorium_rod, 0, 1, 2)
+        #! fake node, comment in and out when needed
         #? uraniumrod            : Node = Node('uranium rod', pixels, 0, 500, 1)  # create a node instance with the name pixels and the parent node battery
         #head node of test tree
         testhead : Node = self.test_headnodecreation()  # get the head node of the test tree
         #@note assert that the tree created from the csv file is the same as the tree created from the mock tree
-        self.assertTrue(self.istreesame(industrial_battery,testhead),'the ingredent trees are not the same')
+        self.assertTrue(self.istreesame(self.industrial_battery,testhead),'the ingredent trees are not the same')
 
 
 if __name__ == '__main__':
