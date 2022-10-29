@@ -345,6 +345,16 @@ class CSVsutilization(unittest.TestCase):
         self.assertTrue(assertvalue[0], assertvalue[1])
 
     def test_comparelist(self):
+        """
+        compares a list of tuples 3 attributes between two trees, tree A being from the preset one and tree B being from the csv file
+        the tuple contains the following attributes:
+        
+        [0] is the amount of parent made per craft of the node
+        
+        [1] is the amount needed to create the parent ingredient once
+        
+        [2] the generation of the Node
+        """
         #uraniumrod            : Node = Node('uranium rod', self.pixels, 0, 500, 1)  # create a node instance with the name pixels and the parent node battery
         bordo: list = self.returnlist(self.industrial_battery, [])
         # get the head node of the test tree
@@ -352,7 +362,24 @@ class CSVsutilization(unittest.TestCase):
         # assert that the tree created from the csv file is the same as the tree created from the mock tree
         self.assertListEqual(
             azureus, bordo, '\nthe lists are not the same:\n\tList A: '+str(bordo)+'\n\tList B: '+str(azureus))
-
+    def test_checkforduplicatetrees(self):
+        """
+        test that there are exact copies of an ingredient tree written into csv file
+        """
+        # check if the file is in the current directory, if is not, skip the test
+        if not os.path.isfile(TESTFILENAME):
+            self.skipTest('test.csv not found')
+        else:
+            pass
+        # if the file exists in the current directory read it and parse for head nodes
+            # if it has only one head node, skip the test
+            # close the file
+        # if more than one head node, run the test
+            # open the file and parse it for head nodes
+            # if head nodes have matching ingredient names, create an ingredient tree and then compare the trees using the istreesame method
+            # assert true if the trees are the same, assert false if the trees are not the same
+            # close the file
+        self.skipTest('test not implemented')  # skip the test
 
 if __name__ == '__main__':
     blue = CSVsutilization()  # create an instance of the class
