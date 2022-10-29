@@ -151,7 +151,22 @@ class CSVsutilization(unittest.TestCase):
             self.assertGreaterEqual(len(foundheadpoints), 1, 'No headnodes found')  # assert that the headnodes are found
             return foundheadpoints  # return the headnodes
             
-            
+    def countpopulation(self,node : Node, count : int = 0) -> int:
+        """
+        count how many subnodes are connected parameter node
+        @audit-info use a recursive function to count the population of the tree, start off with the head node!
+        Args:
+            node (Node): node to count the subnodes of
+            count (int, optional): integer number of counted nodes. Defaults to 0.
+
+        Returns:
+            int: population of the node's tree
+        """
+        count +=1
+        if len(node.children) > 0:
+            for child in node.children:
+                count = self.countpopulation(child,count)
+        return count
     def test_headnodecreation(self):
         """
         test that the head node is created correctly
