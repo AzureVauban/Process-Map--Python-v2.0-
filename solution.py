@@ -119,22 +119,21 @@ class Node(NodeB):
         self.children = {}
         self.ismain_promptinputbool = orange
         self.parent = parent
-        if self.parent is not None:
+        if self.parent is not None and isinstance(self.parent, Node):
             self.generation = self.parent.generation + 1
             self.parent.children.update({self.instancekey: self})
             self.treekey = self.parent.treekey
             self.ismain_promptinputbool = self.parent.ismain_promptinputbool
+            self.treekey = self.parent.treekey
         else:
             self.generation = 0
-        # set tree key of this instance
-        if self.parent is not None:
-            self.treekey = self.parent.treekey
-        elif self.parent is None:
-            self.treekey = self.generate_treekey()
-        elif not __name__ == '__main__' and self.parent is not None:
+            self.treekey = self.generate_treekey()  # generate a unique tree key
+        if not __name__ == '__main__' and parent is None:
+            pass
+        elif __name__ == '__main__' and parent is None:
             self.treekey = treekey
-        else:
-            self.treekey = self.generate_treekey()
+        # set tree key of this instance
+      
         
         if not self.checkaliasuniqueness(self.aliasingredient):
             self.aliasingredient = self.aliasingredient + '__' + generatename()
