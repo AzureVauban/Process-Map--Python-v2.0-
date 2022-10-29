@@ -279,7 +279,7 @@ class CSVsutilization(unittest.TestCase):
             bool: returns true if any attribute value of any of the compared nodes are not the same in their respective ingredient trees
         """
         # check if the children dicts have the same amount of keys
-        print(presetingredienttree.ingredient,csvsourcedtree.ingredient)  # debug
+        print('\x1B[35m',presetingredienttree.ingredient+'\x1B[37m','\x1B[31m'+csvsourcedtree.ingredient+'\x1B[37m')  # debug
         if self.countpopulation(presetingredienttree) != self.countpopulation(csvsourcedtree):
             print('population not the same')  # debug
             return False
