@@ -278,6 +278,7 @@ class CSVsutilization(unittest.TestCase):
         Returns:
             bool: returns true if any attribute value of any of the compared nodes are not the same in their respective ingredient trees
         """
+        #@audit-info the trees created from the csv file are not correclty created in order if they duplicate ingredient names
         # check if the children dicts have the same amount of keys
         print('\x1B[35m',presetingredienttree.ingredient+'\x1B[37m','\x1B[31m'+csvsourcedtree.ingredient+'\x1B[37m')  # debug
         if self.countpopulation(presetingredienttree) != self.countpopulation(csvsourcedtree):
@@ -299,12 +300,7 @@ class CSVsutilization(unittest.TestCase):
             print('treekeys are the same')
             return False
         else:
-            """ redlist : list = list(red.children.items())  # convert the children dictionary to a list
-            for index,value in enumerate(redlist):  # iterate through the list
-                redlist[index] = value[1]  # convert the tuple to a node instance
-            greenlist: list = list(green.children.items())  # convert the children dictionary to a list
-            for index,value in enumerate(greenlist):  # iterate through the list
-                greenlist[index] = value[1]  # convert the tuple to a node instance """
+            
             for index,node in enumerate(presetingredienttree.children.items()):
                 return self.istreesame(list(presetingredienttree.children.items())[index][1],list(csvsourcedtree.children.items())[index][1])  # print the name of the node
             return True  # if the function has not returned false by now, the trees are the same
