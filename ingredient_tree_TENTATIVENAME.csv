@@ -1,7 +1,0 @@
-Tree_Key,Ingredient,Ingredient_Alias,Parent_of_Ingredient,Amount_on_Hand,Amount_Made_Per_Craft,Amount_Needed_Per_Craft,Generation
-edRVCJcY5T,block of emerald,block of emerald__ZpgMzAwQdfRu,None,1000,1,1,0
-edRVCJcY5T,emerald,emerald__FCSaJ2,block of emerald,9000,1,9,1
-edRVCJcY5T,stick,stick__vJ3i5l,emerald,288000,1,32,2
-0MxNLryNTB,Carbon,Carbon,None,0,1,1,0
-0MxNLryNTB,Coal,Coal,Carbon,0,1,10,1
-0MxNLryNTB,Pixels,Pixels,Coal,0,1,20,2
