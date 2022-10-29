@@ -98,6 +98,7 @@ class CSVsutilization(unittest.TestCase):
     thorium_rod           : Node = Node('thorium rod', industrial_battery, 0, 1, 5)
     thorium_ore           : Node = Node('thorium ore', thorium_rod, 0, 1, 2)
     reversearithmetic(industrial_battery, random.randint(1, 10))
+    
     def countpopulation(self,node : Node, count : int = 0) -> int:
             """
             count how many subnodes are connected parameter node
