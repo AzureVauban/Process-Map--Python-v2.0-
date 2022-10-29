@@ -319,6 +319,7 @@ class CSVsutilization(unittest.TestCase):
                 # if it does not, check to see if any of the children meet the condition 
             nodecount : int = self.countpopulation(returnhead)
             self.assertEqual(nodecount,10)  # assert that the population of the tree is equal to the population of the mock tree 
+            print('the returned tree is for',returnhead.ingredient)  # print the head node
             return returnhead  # return a random head node instance
         
         
@@ -429,4 +430,3 @@ if __name__ == '__main__':
     for red in blue.test_pandacsvparsesearch().items():
         print(red[0],':',red[1],':',red[1].ingredient)
     yellow : Node = blue.test_headnodecreation()
-    print('\nNode:',yellow,'('+yellow.treekey+')')  # call the function to test the csv parsing and search method
