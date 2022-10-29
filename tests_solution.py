@@ -136,19 +136,14 @@ class CSVsutilization(unittest.TestCase):
             foundheadpoints: dict = {}
             # turn a row of the csv data into a dictionary
             mypyandas = pandas.read_csv(TESTFILENAME)  # read the csv file
-            # @note to_dict('row') and to_dict('record') are the same
-            rowDict = pandas.read_csv(TESTFILENAME).to_dict('row') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
-            rowDict2  = pandas.read_csv(TESTFILENAME).to_dict('index') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
-#!            rowDict3 : list = pandas.read_csv(TESTFILENAME).to_dict('list') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
-#!            rowDict4 = pandas.read_csv(TESTFILENAME).to_dict('record') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
-#!            rowDict5 = pandas.read_csv(TESTFILENAME).to_dict('series') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
-#!          print(type(rowDict))
-            for foo in pandas.read_csv(TESTFILENAME).to_dict('row'):
-                bar : dict = foo
-                
-                print(bar)  # print the dictionary
-            pass
-            #self.assertGreaterEqual(len(foundheadpoints), 1)
+            rowDict2 : dict = pandas.read_csv(TESTFILENAME).to_dict('index')
+            print(type(rowDict2))  # print the type of the dictionary
+            for purple in rowDict2.items():  # iterate through the rows of the dataframe
+                blue = purple[1].values()
+                for green in list(blue):
+                    print(blue,'=> ',green)
+            self.assertGreaterEqual(len(foundheadpoints), 1, 'No headnodes found')  # assert that the headnodes are found
+
             
     def test_findheadnodes(self):
         """
