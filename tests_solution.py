@@ -141,6 +141,7 @@ class CSVsutilization(unittest.TestCase):
             for purple in rowDict2.items():  # iterate through the rows of the dataframe
                 blue = purple[1].values()
                 for green in list(blue):
+                    yellow : Node = Node(green[1])  
                     print(blue,' => ',green)
             self.assertGreaterEqual(len(foundheadpoints), 1, 'No headnodes found')  # assert that the headnodes are found
 
