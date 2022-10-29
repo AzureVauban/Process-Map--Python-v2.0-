@@ -131,8 +131,8 @@ class Node(NodeB):
             self.treekey = self.parent.treekey
         elif self.parent is None:
             self.treekey = self.generate_treekey()
-        elif not __name__ == '__main__':
-            
+        elif not __name__ == '__main__' and self.parent is not None:
+            self.treekey = treekey
         else:
             self.treekey = self.generate_treekey()
         
