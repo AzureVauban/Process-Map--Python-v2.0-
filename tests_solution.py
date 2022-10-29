@@ -298,7 +298,7 @@ class CSVsutilization(unittest.TestCase):
     def test_createdtreeissame(self):
         #mock tree
         industrial_battery    : Node = Node('industrial battery', None)
-        protocite_bar         : Node = Node('protocite bar', industrial_battery, 0, 1, 5)
+        protocite_bar         : Node = Node('protocit3e bar', industrial_battery, 0, 1, 5)
         protocite             : Node = Node('protocite', protocite_bar, 0, 1, 2)
         battery               : Node = Node('battery', industrial_battery, 0, 1, 2)
         pixels                : Node = Node('pixels', battery, 0, 1, 2500)
