@@ -152,8 +152,9 @@ class CSVsutilization(unittest.TestCase):
             
     def test_headnodecreation(self):
         """
-        test parsing the csv file to find head node instances
+        test that the head node is created correctly
         """
+        # call csv parse method 
         # TODO: implement your test here
         self.skipTest(exep_msg.testnotadded())
 
