@@ -282,9 +282,15 @@ class CSVsutilization(unittest.TestCase):
         # check if the children dicts have the same amount of keys
         print(red.ingredient,green.ingredient)  # debug
         if self.countpopulation(red) != self.countpopulation(green):
+            print('population not the same')  # debug
             return False
-        if red.ingredient != green.ingredient:
+        elif red.ingredient != green.ingredient:
+            print('ingredients not the same')  # debug
             return False
+        elif red.generation != green.generation:
+            print('generations not the same')
+            return False
+        
         else:
             """ redlist : list = list(red.children.items())  # convert the children dictionary to a list
             for index,value in enumerate(redlist):  # iterate through the list
@@ -294,11 +300,11 @@ class CSVsutilization(unittest.TestCase):
                 greenlist[index] = value[1]  # convert the tuple to a node instance """
             for index,node in enumerate(red.children.items()):
                 return self.istreesame(list(red.children.items())[index][1],list(green.children.items())[index][1])  # print the name of the node
-        
+            return True  # if the function has not returned false by now, the trees are the same
     def test_createdtreeissame(self):
         #mock tree
         industrial_battery    : Node = Node('industrial battery', None)
-        protocite_bar         : Node = Node('protocit3e bar', industrial_battery, 0, 1, 5)
+        protocite_bar         : Node = Node('protocite bar', industrial_battery, 0, 1, 5)
         protocite             : Node = Node('protocite', protocite_bar, 0, 1, 2)
         battery               : Node = Node('battery', industrial_battery, 0, 1, 2)
         pixels                : Node = Node('pixels', battery, 0, 1, 2500)
