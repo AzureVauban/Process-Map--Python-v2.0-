@@ -276,6 +276,8 @@ class CSVsutilization(unittest.TestCase):
             nodecount : int = self.countpopulation(returnhead)
             self.assertEqual(nodecount,10)  # assert that the population of the tree is equal to the population of the mock tree 
             return returnhead  # return a random head node instance
+        
+        
     def istreesame(self,presetingredienttree : Node, csvsourcedtree : Node) -> bool:
         """return false if one attribute of the node is not the same value, treekeys do not count
 
@@ -295,7 +297,7 @@ class CSVsutilization(unittest.TestCase):
         if presetingredienttree.ingredient != csvsourcedtree.ingredient: #@note comparsion fails
             print('ingredients not the same')  # debug
             return False
-        elif len(presetingredienttree.children) != len(csvsourcedtree.children):
+        elif len(presetingredienttree.children) is not len(csvsourcedtree.children):
             print('children not the same')
             return False
         elif presetingredienttree.generation != csvsourcedtree.generation:
@@ -315,16 +317,7 @@ class CSVsutilization(unittest.TestCase):
                 return self.istreesame(list(presetingredienttree.children.items())[index][1],list(csvsourcedtree.children.items())[index][1])  # print the name of the node
             return True  # if the function has not returned false by now, the trees are the same
         
-        
-    def checkallinstances(self, nodeobject : Node,bin : list) -> list:
-        """ return a list of nodes from two trees for debugging purposes
-        Returns:
-            list: list of nodes from tree A and tree B
-        """
-        bin.append(nodeobject)
-        for node in nodeobject.children.items():
-            self.checkallinstances(node[1],bin)
-        return bin
+    
         
     def test_createdtreeissame(self):
         #! fake node, comment in and out when needed
