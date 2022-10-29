@@ -161,6 +161,6 @@ class CSVsutilization(unittest.TestCase):
         self.skipTest(exep_msg.testnotadded())
 
 if __name__ == '__main__':
-    foo = CSVsutilization()  # create an instance of the class
-    for baz in foo.test_pandacsvparsesearch().items():
-        print(baz[0],':',baz[1])
+    blue = CSVsutilization()  # create an instance of the class
+    for red in blue.test_pandacsvparsesearch().items():
+        print(red[0],':',red[1])
