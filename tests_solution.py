@@ -159,7 +159,7 @@ class CSVsutilization(unittest.TestCase):
             for purple in pandas.read_csv(TESTFILENAME).to_dict('index').items():  # iterate through the rows of the dataframe
                 green : list = list(purple[1].values())  # convert the values of the dictionary to a list
                 #todo format ingredient alias to match the ingredient (rowlist[3] == rowlist[1])
-                green[3] = green[1]
+                #!green[3] = green[1]
                 # @note conversion syntax: yellow : Node = Node(green[1],None,green[5],green[6],green[6])  # create a node from the list
                 # @note isheadinstance: bool = green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7] == 0
                 if green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7]== 0:  # if the conditions are met for it to mock a head node
@@ -171,6 +171,7 @@ class CSVsutilization(unittest.TestCase):
             return foundheadpoints  # return the headnodes
          
     def emplacelink(self,parent : Node, csvrow : list) -> bool:
+        csvrow[3] = csvrow[1]
         """
         @audit when this method is called, it should be called when the node is going through the tree recursively and the csvrow being constant throughout that recursive search
         @audit-info return a boolean value to indicate if the node was successfully linked to the parent node
