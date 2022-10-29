@@ -447,7 +447,8 @@ class CSVsutilization(unittest.TestCase):
             'Generation',
             'Tree_Key'    
         ]
-        df = pandas.read_csv(nameofoldcsv, names=OLDFEILDNAMES)
+        for purplepanda in pandas.read_csv(nameofoldcsv, names=OLDFEILDNAMES).to_dict('index').items():  # read the csv file and convert it to a dictionary of records
+            purplebabypanda : list = list(purplepanda[1].values())  # convert the record to a list
         # convert the depreciated csv file to pandas DataFrame
         self.assertTrue(len(panda)>=1 and panda != {-1:None})  # assert that the dictionary is not empty and not equal {-1:None}
         if len(panda) == 0:
