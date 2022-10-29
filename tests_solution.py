@@ -278,7 +278,7 @@ class CSVsutilization(unittest.TestCase):
             return returnhead  # return a random head node instance
         
         
-    def istreesame(self,presetingredienttree : Node, csvsourcedtree : Node) -> bool:
+    def istreesame(self,redtree : Node, bluetree : Node) -> tuple:
         """return false if one attribute of the node is not the same value, treekeys do not count
 
         Args:
@@ -294,29 +294,28 @@ class CSVsutilization(unittest.TestCase):
 #           print('population not the same')  # debug
 #           return False
 #           pass
-        if presetingredienttree.ingredient != csvsourcedtree.ingredient: #@note comparsion fails
+        if redtree.ingredient != bluetree.ingredient:
             print('ingredients not the same')  # debug
-            return False
-        elif len(presetingredienttree.children) is not len(csvsourcedtree.children):
+            return (False,'ingredients not the same')
+        elif len(redtree.children) is not len(bluetree.children):
             print('children not the same')
-            return False
-        elif presetingredienttree.generation != csvsourcedtree.generation:
+            return (False,'children not the same')
+        elif redtree.generation != bluetree.generation:
             print('generations not the same')
-            return False
-        elif presetingredienttree.amountofparentmadepercraft != csvsourcedtree.amountofparentmadepercraft:
+            return (False,'generations not the same')
+        elif redtree.amountofparentmadepercraft != bluetree.amountofparentmadepercraft:
+#            print('amounts not the same')  # debug
+            pass
+            return (False,'amount of',redtree.ingredient,'made per craft (',redtree.amountofparentmadepercraft,')is not the same as',bluetree.ingredient,'(',bluetree.amountofparentmadepercraft,')in the csv file')  # debug
+        elif redtree.amountneeded != bluetree.amountneeded:
             print('amounts not the same')  # debug
-            return False
-        elif presetingredienttree.amountneeded != csvsourcedtree.amountneeded:
-            print('amounts not the same')  # debug
-            return False
-        elif presetingredienttree.treekey == csvsourcedtree.treekey:
-            print('treekeys are the same')
-            return False
+            return (False, 'amount needed to create the parent ingredient once is not the same')
+        elif redtree.treekey == bluetree.treekey:
+            return (False, 'the keys of the tree are not the same')
         else:
-            for index,node in enumerate(presetingredienttree.children.items()):
-                return self.istreesame(list(presetingredienttree.children.items())[index][1],list(csvsourcedtree.children.items())[index][1])  # print the name of the node
-            return True  # if the function has not returned false by now, the trees are the same
-        
+            for index,node in enumerate(redtree.children.items()):
+                return self.istreesame(list(redtree.children.items())[index][1],list(bluetree.children.items())[index][1])  # print the name of the node
+            return (True,'trees are the same')        
     
         
     def test_createdtreeissame(self):
@@ -325,7 +324,8 @@ class CSVsutilization(unittest.TestCase):
         #head node of test tree
         testhead : Node = self.test_headnodecreation()  # get the head node of the test tree
         #@note assert that the tree created from the csv file is the same as the tree created from the mock tree
-        self.assertTrue(self.istreesame(self.industrial_battery,testhead),'the ingredent trees are not the same')
+        assertvalue : tuple = self.istreesame(testhead,self.industrial_battery)
+        self.assertTrue(assertvalue[0],assertvalue[1])  # assert that the tree created from the csv file is the same as the tree created from the mock tree
 
 
 if __name__ == '__main__':
