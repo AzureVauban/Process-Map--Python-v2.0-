@@ -152,7 +152,7 @@ class CSVsutilization(unittest.TestCase):
             return foundheadpoints  # return the headnodes
             
             
-    def test_headnodecreation()->Node:
+    def test_headnodecreation(self):
         """
         test that the head node is created correctly
         """
@@ -163,20 +163,24 @@ class CSVsutilization(unittest.TestCase):
         foundheadnodes : dict = self.test_pandacsvparsesearch()
         if foundheadnodes == {-1:None} or not os.path.exists(path=TESTFILENAME):
             # @audit-info in the solution module the user would input an integer to the function to specify which head node to create and return, for this test return a random one
+            return None
             self.skipTest(exep_msg.csvnotexist())
         else:
             # open the file in read mode and check for nodes in the csv that match the value of the head node's key in the dictionary,
             # when you need to create a new node from the csv file
             # create a function that takes in a dictionary that stores the row of data and the head node instace,
                 # the function should search through all the subnodes of the node parameter instance and figure out where to link the node instance created from the csv
-                # these are the following conditon for the found nodes: (red is the found node, blue is the node being emplaced)
+                # these are the following condition for the found nodes: (red is the found node, blue is the node being emplaced)
                     # red and blue's node treekeys are the same
                     # red's parent ingredient is the same as blue's ingredient
+            tentativetest = random.choice(list(foundheadnodes.items()))  # get a random head node from the dictionary of head nodes
+            return tentativetest[1]  # return a random head node instance
             self.skipTest(exep_msg.testnotadded())
-            return random.choice(list(foundheadnodes.items()))  # return a random head node instance
+        
         # TODO: implement your test here
 
 if __name__ == '__main__':
     blue = CSVsutilization()  # create an instance of the class
     for red in blue.test_pandacsvparsesearch().items():
         print(red[0],':',red[1],':',red[1].ingredient)
+    print('Node:',blue.test_headnodecreation())  # call the function to test the csv parsing and search method
