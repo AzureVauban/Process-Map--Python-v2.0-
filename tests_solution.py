@@ -153,9 +153,33 @@ class CSVsutilization(unittest.TestCase):
          
     def figureoutwheretolink(self,parent : Node, csvrow : list):
         """
-        # @note conversion syntax: yellow : Node = Node(green[1],None,green[5],green[6],green[6])  # create a node from the list
+        csvrow : [
+            @note example row for a head node instance
+            'Tree_Key'                          [0]: 'cE1NXAKBXatn'
+            'Ingredient'                        [1]: 'industrial battery'
+            'Ingredient_Alias'                  [2]: 'industrial_battery__AW56kRjDyD'
+            'Parent_of_Ingredient'              [3]: 'None'
+            'Amount_on_Hand'                    [4]: 7
+            'Amount_Of_Parent_Made_Per_Craft'   [5]: 1
+            'Amount_Needed_Per_Craft'           [6]: 1
+            'Generation'                        [7]: 0
+        ]
+        csvrow : [
+            @note example row for a subnode (child) instance
+            'Tree_Key'                          [0]: 'cE1NXAKBXatn'
+            'Ingredient'                        [1]: 'industrial battery'
+            'Ingredient_Alias'                  [2]: 'industrial_battery__AW56kRjDyD'
+            'Parent_of_Ingredient'              [3]: 'None'
+            'Amount_on_Hand'                    [4]: 7
+            'Amount_Of_Parent_Made_Per_Craft'   [5]: 1
+            'Amount_Needed_Per_Craft'           [6]: 1
+            'Generation'                        [7]: 0
+        ]
+        # @note conversion syntax: child : Node = Node(csvrow[1],None,csvrow[5],csvrow[6],csvrow[6])  # create a node from the list
+
         """
-        # treekey  of csvrow MUST match parent for a Node to be created from it
+        # treekey of csvrow MUST match parent for a Node to be created from it
+        # 'Parent_of_Ingredient' must not be None and must the ingredient of Parent
         
     
     
