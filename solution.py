@@ -58,7 +58,7 @@ class NodeB:
     amountresulted: int = 0
     queueamountresulted: dict = {}
 
-    def __init__(self, ingredient: str = '', amountonhand: int = 0, amountofparentmadepercraft: int = 1, amountneeded: int = 1) -> None:
+    def __init__(self, ingredient: str = '', amountonhand: int = -1, amountofparentmadepercraft: int = -1, amountneeded: int = -1) -> None:
         """
         Args:
             name (str, optional): name of the item. Defaults to ''.
