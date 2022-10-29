@@ -157,31 +157,33 @@ class CSVsutilization(unittest.TestCase):
             @note example row for a head node instance
             'Tree_Key'                          [0]: 'cE1NXAKBXatn'
             'Ingredient'                        [1]: 'industrial battery'
-            'Ingredient_Alias'                  [2]: 'industrial_battery__AW56kRjDyD'
+            'Ingredient_Alias'                  [2]: 'industrial_battery'
             'Parent_of_Ingredient'              [3]: 'None'
-            'Amount_on_Hand'                    [4]: 7
+            'Amount_on_Hand'                    [4]: 7 #? can be any integer value
             'Amount_Of_Parent_Made_Per_Craft'   [5]: 1
             'Amount_Needed_Per_Craft'           [6]: 1
             'Generation'                        [7]: 0
         ]
         csvrow : [
-            @note example row for a subnode (child) instance
+            @note example row for a child instance
             'Tree_Key'                          [0]: 'cE1NXAKBXatn'
-            'Ingredient'                        [1]: 'industrial battery'
-            'Ingredient_Alias'                  [2]: 'industrial_battery__AW56kRjDyD'
-            'Parent_of_Ingredient'              [3]: 'None'
-            'Amount_on_Hand'                    [4]: 7
+            'Ingredient'                        [1]: 'protocite bar'
+            'Ingredient_Alias'                  [2]: 'protocite_bar__RQ1skwPB7PsdymWjQ' #? will have something like '__RQ1skwPB7PsdymWjQ' if there is a repeat of that ingredient name in the tree
+            'Parent_of_Ingredient'              [3]: 'industrial battery' #? must not be 'None'
+            'Amount_on_Hand'                    [4]: 35 #? can be any integer value
             'Amount_Of_Parent_Made_Per_Craft'   [5]: 1
-            'Amount_Needed_Per_Craft'           [6]: 1
-            'Generation'                        [7]: 0
+            'Amount_Needed_Per_Craft'           [6]: 5
+            'Generation'                        [7]: 1 #? must be 1 or greater to be a child
         ]
         # @note conversion syntax: child : Node = Node(csvrow[1],None,csvrow[5],csvrow[6],csvrow[6])  # create a node from the list
 
         """
-        # treekey of csvrow MUST match parent for a Node to be created from it
-        # 'Parent_of_Ingredient' must not be None and must the ingredient of Parent
-        
-    
+        # @note conditons to be met to create and emplace the child node into the parent node's children dictionary:
+            # treekey of csvrow MUST match parent for a Node to be created from it
+            # 'Parent_of_Ingredient' must not be None and must the ingredient of Parent
+            # 'Ingredient_Alias' must not be 'In' any Node with in the tiems of the parent's children dictionary
+            # also an exact copy of this node cannot be already linked to the parent!
+        def shouldemplacechild(red : Node = parent, green : Node = Node)
     
     def countpopulation(self,node : Node, count : int = 0) -> int:
         """
