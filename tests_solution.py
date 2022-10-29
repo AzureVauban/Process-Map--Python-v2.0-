@@ -283,12 +283,12 @@ class CSVsutilization(unittest.TestCase):
         if len(red.children) != len(green.children):
             return False
         else:
-            redlist : list = list(red.children.items())  # convert the children dictionary to a list
+            """ redlist : list = list(red.children.items())  # convert the children dictionary to a list
             for index,value in enumerate(redlist):  # iterate through the list
                 redlist[index] = value[1]  # convert the tuple to a node instance
             greenlist: list = list(green.children.items())  # convert the children dictionary to a list
             for index,value in enumerate(greenlist):  # iterate through the list
-                greenlist[index] = value[1]  # convert the tuple to a node instance
+                greenlist[index] = value[1]  # convert the tuple to a node instance """
             for index,node in enumerate(red.children.items()):
                 self.istreesame(list(red.children.items())[index][1],list(green.children.items())[index][1])  # print the name of the node
             return True
