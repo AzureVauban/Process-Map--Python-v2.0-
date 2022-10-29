@@ -290,7 +290,15 @@ class CSVsutilization(unittest.TestCase):
         elif red.generation != green.generation:
             print('generations not the same')
             return False
-        
+        elif red.amountofparentmadepercraft != green.amountofparentmadepercraft:
+            print('amounts not the same')  # debug
+            return False
+        elif red.amountneeded != green.amountneeded:
+            print('amounts not the same')  # debug
+            return False
+        elif red.treekey == green.treekey:
+            print('treekeys are the same')
+            return False
         else:
             """ redlist : list = list(red.children.items())  # convert the children dictionary to a list
             for index,value in enumerate(redlist):  # iterate through the list
