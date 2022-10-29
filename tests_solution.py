@@ -130,7 +130,6 @@ class CSVsutilization(unittest.TestCase):
         if not os.path.exists(TESTFILENAME):
             #!            raise FileNotFoundError(exep_msg.csvnotexist())
             self.skipTest(exep_msg.csvnotexist())  # skip the test
-        # TODO: implement your test here
         else:
             # value is the treekey and the item is the headnode translated from the csv file
             foundheadpoints: dict = {}
@@ -140,11 +139,11 @@ class CSVsutilization(unittest.TestCase):
             # @audit-info convert row into a list, use a boolean to detect if the nesscary values are present in the proper positions of the list to match a head node of the tree, and if it does input it the dictionary of head nodes
             # @audit-info headinstance condition is met if list[index=3] is None, list[index=5] = 1, list[index=6] = 1, adn list[index=7] = 0
             for purple in pandas.read_csv(TESTFILENAME).to_dict('index').items():  # iterate through the rows of the dataframe
-                blue = purple[1].values()
                 green : list = list(purple[1].values())  # convert the values of the dictionary to a list
                 # @note conversion syntax: yellow : Node = Node(green[1],None,green[5],green[6],green[6])  # create a node from the list
-                isheadinstance : bool = green[3] is 'None' and green[5] == 1 and green[6] == 1 and green[7]== 0 # check if the node is a head node
-                if green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7]== 0:  # add the head node to the dictionary of head nodes
+                isheadinstance : bool = green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7]== 0
+                if green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7]== 0:  # if the conditions are met for it to mock a head node
+                    # create a node from the row's data
                     foundheadpoints.update({green[0]: Node(green[1], None, green[4], green[5], green[6])})  
             self.assertGreaterEqual(len(foundheadpoints), 1, 'No headnodes found')  # assert that the headnodes are found
 
