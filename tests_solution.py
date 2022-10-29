@@ -289,13 +289,6 @@ class CSVsutilization(unittest.TestCase):
             greenlist: list = list(green.children.items())  # convert the children dictionary to a list
             for index,value in enumerate(greenlist):  # iterate through the list
                 greenlist[index] = value[1]  # convert the tuple to a node instance
-            #!return self.istreesame.tentativemethod2(redlist,greenlist)  # call the subfunction to check the subnodes of the nodes
-#!            for index,node in enumerate(redlist):
-#!                return self.istreesame(node,greenlist[index])  # call the function recursively to check the subnodes of the nodes
-#?            for index,node in enumerate(redlist):
-#?                if not self.istreesame(node,greenlist[index]):
-#?                    return False
-#?            return True  # return true if the nodes are the same
             for index,node in enumerate(red.children.items()):
                 self.istreesame(list(red.children.items())[index][1],list(green.children.items())[index][1])  # print the name of the node
             return True
@@ -311,6 +304,7 @@ class CSVsutilization(unittest.TestCase):
         protocite_bar2        : Node = Node('protocite bar', silicon_board, 0, 1, 2)
         thorium_rod           : Node = Node('thorium rod', battery, 0, 1, 5)
         thorium_ore           : Node = Node('thorium ore', thorium_rod, 0, 1, 2)
+        uraniumrod : Node = Node('uranium rod', pixels, 0, 500, 1)  # create a node instance with the name pixels and the parent node battery
         #head node of test tree
         testhead : Node = self.test_headnodecreation()  # get the head node of the test tree
         #@note assert that the tree created from the csv file is the same as the tree created from the mock tree
