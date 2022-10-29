@@ -141,7 +141,7 @@ class CSVsutilization(unittest.TestCase):
             for purple in pandas.read_csv(TESTFILENAME).to_dict('index').items():  # iterate through the rows of the dataframe
                 green : list = list(purple[1].values())  # convert the values of the dictionary to a list
                 # @note conversion syntax: yellow : Node = Node(green[1],None,green[5],green[6],green[6])  # create a node from the list
-                isheadinstance : bool = green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7]== 0
+                # @note isheadinstance: bool = green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7] == 0
                 if green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7]== 0:  # if the conditions are met for it to mock a head node
                     # create a node from the row's data
                     foundheadpoints.update({green[0]: Node(green[1], None, green[4], green[5], green[6])})  
