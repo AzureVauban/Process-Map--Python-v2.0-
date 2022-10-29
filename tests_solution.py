@@ -284,6 +284,12 @@ class CSVsutilization(unittest.TestCase):
         if len(red.children) != len(green.children):
             print('the length of the children dicts are not the same')  # debug
             return False
+        elif red.ingredient != green.ingredient:
+            print('the ingredients are not the same')  # debug
+            return False
+        elif red.generation != green.generation:
+            print('nodes are at different depths')  # debug
+            return False
 #*        elif self.countpopulation(red) != self.countpopulation(green):  # if the children dicts have the same amount of keys
 #*            print('the population of the trees are not the same')  # debug
 #*            print(self.countpopulation(red),'!=',self.countpopulation(green))  # debug
@@ -310,7 +316,7 @@ class CSVsutilization(unittest.TestCase):
         protocite_bar2        : Node = Node('protocite bar', silicon_board, 0, 1, 2)
         thorium_rod           : Node = Node('thorium rod', battery, 0, 1, 5)
         thorium_ore           : Node = Node('thorium ore', thorium_rod, 0, 1, 2)
-        uraniumrod : Node = Node('uranium rod', pixels, 0, 500, 1)  # create a node instance with the name pixels and the parent node battery
+        uraniumrod            : Node = Node('uranium rod', pixels, 0, 500, 1)  # create a node instance with the name pixels and the parent node battery
         #head node of test tree
         testhead : Node = self.test_headnodecreation()  # get the head node of the test tree
         #@note assert that the tree created from the csv file is the same as the tree created from the mock tree
