@@ -98,8 +98,8 @@ class CSVsutilization(unittest.TestCase):
                 int: population of the node's tree
             """
             count +=1
-            if len(node.children) > 0:
-                for child in node.children:
+            if len(node.children.items()) > 0:
+                for child in node.children.items():
                     count = self.countpopulation(child,count)
             return count
     def testsubstringmethod(self):
@@ -178,7 +178,6 @@ class CSVsutilization(unittest.TestCase):
             return foundheadpoints  # return the headnodes
          
     def emplacelink(self,parent : Node, csvrow : list) -> bool:
-        csvrow[3] = csvrow[1]
         """
         @audit when this method is called, it should be called when the node is going through the tree recursively and the csvrow being constant throughout that recursive search
         @audit-info return a boolean value to indicate if the node was successfully linked to the parent node
@@ -214,7 +213,7 @@ class CSVsutilization(unittest.TestCase):
             # 'Ingredient_Alias' must not be 'In' any Node with in the tiems of the parent's children dictionary
             # also an exact copy of this node cannot be already linked to the parent!
         if len(csvrow) != 8:  # if the csvrow is the proper length
-            raise ValueError('csvrow is not the proper length')  # raise a value error
+            raise ValueError('csvrow is not the proper length; the list passes contains the following:',csvrow)  # raise a value error
         #! keep add conditon checks as progress on this test is made
         if parent.treekey == csvrow[0] and csvrow[3] != 'None' and csvrow[3] == parent.ingredient and csvrow[7] > 0:
             #@audit somewhere in the project it needs to be determined if the user will allow the amount on hands from the csv file to be used or if the user will input the amount on hand themselves
@@ -253,20 +252,22 @@ class CSVsutilization(unittest.TestCase):
                     # red's parent ingredient is the same as blue's ingredient
             returnhead : Node = random.choice(list(foundheadnodes.items()))[1]  # get a random head node from the dictionary of head nodes
             # @audit-info assert that the population of the tree is equal to the population of the mock tree
-            returendnodepopulation : int = self.countpopulation(returnhead)
             #! call the function that figures out where to link the node and emplace it into the tree
             # open the file and read the rows to create a list of rows with matching treekeys as the selected node
             sublist : list = []  #? list of rows that match the head node's tree key
+            prevlistval : list = []
             for purple in pandas.read_csv(TESTFILENAME).to_dict('index').items():  # iterate through the rows of the dataframe
                 green : list = list(purple[1].values())  # convert the values of the dictionary to a list
                 #todo format ingredient alias to match the ingredient (rowlist[3] == rowlist[1])
-                green[3] = green[1]
+                #!green[3] = green[1]
                 if green[0] == returnhead.treekey:  # if the tree key of the row matches the head node's tree key
                     sublist.append(green)
                 # for each row, check if the it meets the conditions to be a child node of the head node
-            self.locate_emplace_spot(returnhead,sublist)
+            for row in sublist:
+                self.locate_emplace_spot(returnhead,row)
                 # if it does not, check to see if any of the children meet the condition 
-            self.assertEqual(returendnodepopulation,10)  # assert that the population of the tree is equal to the population of the mock tree 
+            nodecount : int = self.countpopulation(returnhead)
+            self.assertEqual(nodecount,10)  # assert that the population of the tree is equal to the population of the mock tree 
             return returnhead  # return a random head node instance
         
 
