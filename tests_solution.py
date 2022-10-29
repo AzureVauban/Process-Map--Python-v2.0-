@@ -151,7 +151,7 @@ class CSVsutilization(unittest.TestCase):
             self.assertGreaterEqual(len(foundheadpoints), 1, 'No headnodes found')  # assert that the headnodes are found
             return foundheadpoints  # return the headnodes
          
-    def figureoutwheretolink(self,parent : Node, csvrow : dict):
+    def figureoutwheretolink(self,parent : Node, csvrow : list):
         pass
     
     def countpopulation(self,node : Node, count : int = 0) -> int:
