@@ -214,7 +214,7 @@ class CSVsutilization(unittest.TestCase):
         if len(csvrow) != 8:  # if the csvrow is the proper length
             raise ValueError('csvrow is not the proper length; the list passes contains the following:',csvrow)  # raise a value error
         #! keep add conditon checks as progress on this test is made
-        if parent.treekey == csvrow[0] and csvrow[3] != 'None' and csvrow[3] == parent.ingredient and csvrow[7] > 0:
+        if parent.treekey == csvrow[0] and csvrow[3] != 'None' and csvrow[3] == parent.ingredient and csvrow[7] > 0 and parent is not None:
             #@audit somewhere in the project it needs to be determined if the user will allow the amount on hands from the csv file to be used or if the user will input the amount on hand themselves
             child : Node = Node(csvrow[1],parent,csvrow[5],csvrow[6],csvrow[6],False,False,csvrow[0])  # create a node from the list
             return True
