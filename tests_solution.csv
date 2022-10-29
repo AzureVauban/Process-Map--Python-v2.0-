@@ -9,3 +9,9 @@ nRbqj6sWhGODR4BV4YHs,silicon board,silicon_board__Ete0QHsLklM,quantum processor,
 nRbqj6sWhGODR4BV4YHs,protocite bar,protocite_bar__dieLNFvB,quantum processor,6,1,2,2
 nRbqj6sWhGODR4BV4YHs,thorium rod,thorium_rod__ht2eVo2g,industrial battery,15,1,5,1
 nRbqj6sWhGODR4BV4YHs,thorium ore,thorium_ore__pmXy7MPxe,thorium rod,30,1,2,2
+edRVCJcY5T,block of emerald,block of emerald__ZpgMzAwQdfRu,None,1000,1,1,0
+edRVCJcY5T,emerald,emerald__FCSaJ2,block of emerald,9000,1,9,1
+edRVCJcY5T,stick,stick__vJ3i5l,emerald,288000,1,32,2
+fsdf3234ds3rfsd,Carbon,Carbon,None,0,1,1,0
+fsdf3234ds3rfsd,Coal,Coal,Carbon,0,1,10,1
+fsdf3234ds3rfsd,Pixels,Pixels,Coal,0,1,20,2
