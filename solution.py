@@ -129,8 +129,6 @@ class Node(NodeB):
             self.generation = 0
             self.treekey = self.generate_treekey()  # generate a unique tree key
         if not __name__ == '__main__' and parent is None:
-            pass
-        elif __name__ == '__main__' and parent is None:
             self.treekey = treekey
         # set tree key of this instance
       
