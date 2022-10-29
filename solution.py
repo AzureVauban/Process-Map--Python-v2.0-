@@ -131,8 +131,10 @@ class Node(NodeB):
             self.treekey = self.parent.treekey
         elif self.parent is None:
             self.treekey = self.generate_treekey()
+        elif not __name__ == '__main__':
+            
         else:
-            self.treekey = treekey
+            self.treekey = self.generate_treekey()
         
         if not self.checkaliasuniqueness(self.aliasingredient):
             self.aliasingredient = self.aliasingredient + '__' + generatename()
