@@ -312,6 +312,8 @@ class CSVsutilization(unittest.TestCase):
             return (False, 'amount needed to create the parent ingredient once is not the same')
         elif primetree.treekey == derivedtree.treekey:
             return (False, 'the keys of the tree are not the same')
+        elif primetree.parent.ingredient != derivedtree.parent.ingredient and primetree.parent is not None and derivedtree.parent is not None:
+            return (False, 'parent nodes are not the same')
         else:
             for index,node in enumerate(primetree.children.items()):
                 return self.istreesame(list(primetree.children.items())[index][1],list(derivedtree.children.items())[index][1])  # print the name of the node
