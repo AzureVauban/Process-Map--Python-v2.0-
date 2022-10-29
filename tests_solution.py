@@ -245,14 +245,14 @@ class CSVsutilization(unittest.TestCase):
             # @audit-info assert that the population of the tree is equal to the population of the mock tree
             returendnodepopulation : int = self.countpopulation(tentativetest[1])
             #! call the function that figures out where to link the node and emplace it into the tree
+            # open the file 
+            for purple in pandas.read_csv(TESTFILENAME).to_dict('index').items():  # iterate through the rows of the dataframe
+                green : list = list(purple[1].values())  # convert the values of the dictionary to a list
+                #todo format ingredient alias to match the ingredient (rowlist[3] == rowlist[1])
+                green[3] = green[1]
             self.assertEqual(returendnodepopulation,10)  # assert that the population of the tree is equal to the population of the mock tree 
             return tentativetest[1]  # return a random head node instance
         
 
 
-if __name__ == '__main__':
-    blue = CSVsutilization()  # create an instance of the class
-    for red in blue.test_pandacsvparsesearch().items():
-        print(red[0],':',red[1],':',red[1].ingredient)
-    yellow : Node = blue.test_headnodecreation()
-    print('\nNode:',yellow,'('+yellow.treekey+')')  # call the function to test the csv parsing and search method
+if __name__ =
