@@ -4,7 +4,6 @@ Unit Tests for the solution.py module
 import os
 import unittest
 import random
-from numpy import minimum
 import pandas
 from solution import Node, generatename, createclone, reversearithmetic
 from solution import FIELDNAMES
@@ -38,6 +37,20 @@ class exep_msg():
         return "Tree key mismatch"
 
 
+class NodeTree:
+    """
+    auto generated a tree of nodes
+    """
+    headnode: Node
+    population: int = 1
+
+    def generateTree(self, populationlimt: int = 1, head: Node = Node('head', None)) -> Node:
+        if head is None:
+            raise ValueError(exep_msg.headisNone())
+        return head
+
+    def __init__(self, population: int = 1):
+        self.generateTree(population)
 
 
 class NodeCreationTests(unittest.TestCase):
@@ -74,23 +87,6 @@ class CSVsutilization(unittest.TestCase):
     # @audit-info use df.iterrows to iterate through the rows of the dataframe (dataframe referred to as df and the csvfile)
     
     #@note mock ingredient tree for industral battery https://frackinuniverse.miraheze.org/wiki/Industrial_Battery
-    @classmethod
-    def countpopulation(cls,node : Node, count : int = 0) -> int:
-        """
-        count how many subnodes are connected parameter node
-        @audit-info use a recursive function to count the population of the tree, start off with the head node!
-        Args:
-            node (Node): node to count the subnodes of
-            count (int, optional): integer number of counted nodes. Defaults to 0.
-
-        Returns:
-            int: population of the node's tree
-        """
-        count +=1
-        if len(node.children.items()) > 0:
-            for child in node.children.items():
-                count = cls.countpopulation(child[1],count)
-        return count
     industrial_battery    : Node = Node('industrial battery', None,treekey=Node.generate_treekey())
     protocite_bar         : Node = Node('protocite bar', industrial_battery, 0, 1, 5)
     protocite             : Node = Node('protocite', protocite_bar, 0, 1, 2)
@@ -103,66 +99,22 @@ class CSVsutilization(unittest.TestCase):
     thorium_ore           : Node = Node('thorium ore', thorium_rod, 0, 1, 2)
     reversearithmetic(industrial_battery, random.randint(1, 10))
     
-    # todo finish creating this class and utilize it in reading and writing tests (not using a preset tree)
-    class RandomNodeTree:
-        population: int = 0
-        head: Node
+    def countpopulation(self,node : Node, count : int = 0) -> int:
+            """
+            count how many subnodes are connected parameter node
+            @audit-info use a recursive function to count the population of the tree, start off with the head node!
+            Args:
+                node (Node): node to count the subnodes of
+                count (int, optional): integer number of counted nodes. Defaults to 0.
 
-        def generateTree(self, popuation: int = random.randint(1, 10), monokai: Node = Node(generatename())) -> Node:
-            # the population of the tree cannot suprass the population parameter
-            # do not continue the method if the count of the tree from head node is equal to or greater than the population parameter
-            if CSVsutilization.countpopulation(monokai) >= popuation:
-                # generate a random number between 1 and 10 and reverse the arithmetic of the head node
-                return monokai
-            else:
-                return monokai
-
-        def __init__(self, population: int = random.randint(1, 10), head: Node = Node(generatename())) -> None:
-            self.head = head
-
-    class SubMethods(): #todo finish creating methods
-        """a class containing methods for returning a set of instance attributes from a head node
-        """
-        head : Node
-        def __init__(self,head : Node) -> None:
-            self.head = head
-        @classmethod
-        def ingredients(cls,monokai : Node,noctis : list) ->list:
-            for child in monokai.children.items():
-                cls.ingredients(child[1],noctis)  # recurse through the tree
-            return noctis
-        @classmethod
-        def children(cls,monokai : Node,obscuro : list) -> list:
-            for child in monokai.children.items():
-                cls.ingredients(child[1],obscuro)  
-            return obscuro
-        @classmethod
-        def generation(cls,monokai : Node,uva : list) -> list:
-            for child in monokai.children.items():
-                cls.ingredients(child[1],uva)  
-            return uva
-        @classmethod
-        def amountneeded(cls,monokai : Node,viola : list)-> list:
-            for child in monokai.children.items():
-                cls.ingredients(child[1],viola)  
-            return viola
-        @classmethod
-        def amountmadepercraft(cls,monokai : Node,lux : list)-> list:
-            for child in monokai.children.items():
-                cls.ingredients(child[1],lux)  
-            return lux
-        @classmethod
-        def treekeys(cls,monokai : Node,lilac : list)-> list:
-            for child in monokai.children.items():
-                cls.ingredients(child[1],lilac)  
-            return lilac
-        @classmethod
-        def amountonhand(cls,monokai : Node,hibernus : list)-> list: #@note for debugging purposes
-            for child in monokai.children.items():
-                cls.ingredients(child[1],hibernus)  
-            return hibernus
-        
-    
+            Returns:
+                int: population of the node's tree
+            """
+            count +=1
+            if len(node.children.items()) > 0:
+                for child in node.children.items():
+                    count = self.countpopulation(child[1],count)
+            return count
     def testsubstringmethod(self):
         # reformat a string to have all of its whitespace turn into an underscore
         teststring: str = 'this is a test string'  # test string
@@ -267,8 +219,7 @@ class CSVsutilization(unittest.TestCase):
         #! keep add conditon checks as progress on this test is made
         if parent.treekey == csvrow[0] and csvrow[3] != 'None' and csvrow[3] == parent.ingredient and csvrow[7] > 0 and parent is not None:
             #@audit somewhere in the project it needs to be determined if the user will allow the amount on hands from the csv file to be used or if the user will input the amount on hand themselves
-            #!child : Node = Node(csvrow[1],parent,csvrow[5],csvrow[6],csvrow[6],False,False,csvrow[0])  # create a node from the list
-            Node(csvrow[1],parent=parent,amountneeded=csvrow[6],amountofparentmadepercraft=csvrow[5],amountonhand=csvrow[4],treekey=csvrow[0])  # create a node from the list
+            child : Node = Node(csvrow[1],parent,csvrow[5],csvrow[6],csvrow[6],False,False,csvrow[0])  # create a node from the list
             return True
         else:
             return False
@@ -323,13 +274,11 @@ class CSVsutilization(unittest.TestCase):
                 self.locate_emplace_spot(returnhead,row)
                 # if it does not, check to see if any of the children meet the condition 
             nodecount : int = self.countpopulation(returnhead)
-#@note not needed anymore            self.assertEqual(nodecount,10)  # assert that the population of the tree is equal to the population of the mock tree 
-            print('the returned tree is for',returnhead.ingredient)  # print the head node
+            self.assertEqual(nodecount,10)  # assert that the population of the tree is equal to the population of the mock tree 
             return returnhead  # return a random head node instance
-            self.skipTest('not needed anymore')
         
         
-    def istreesame(self,primetree : Node, derivedtree : Node) -> tuple: #todo append a list of attributes that do not match to the fail msg string of the tuple
+    def istreesame(self,presetingredienttree : Node, csvsourcedtree : Node) -> bool:
         """return false if one attribute of the node is not the same value, treekeys do not count
 
         Args:
@@ -345,94 +294,43 @@ class CSVsutilization(unittest.TestCase):
 #           print('population not the same')  # debug
 #           return False
 #           pass
-        # submethod definitions
-        if primetree.ingredient != derivedtree.ingredient:
+        if presetingredienttree.ingredient != csvsourcedtree.ingredient: #@note comparsion fails
             print('ingredients not the same')  # debug
-            return (False,'ingredients not the same')
-        elif len(primetree.children) is not len(derivedtree.children):
+            return False
+        elif len(presetingredienttree.children) is not len(csvsourcedtree.children):
             print('children not the same')
-            return (False,'children not the same')
-        elif primetree.generation != derivedtree.generation:
+            return False
+        elif presetingredienttree.generation != csvsourcedtree.generation:
             print('generations not the same')
-            return (False,'generations not the same')
-        elif primetree.amountofparentmadepercraft != derivedtree.amountofparentmadepercraft:
-#            print('amounts not the same')  # debug
-            pass
-            return (False,'amount of',primetree.ingredient,'made per craft (',primetree.amountofparentmadepercraft,')is not the same as',derivedtree.ingredient,'(',derivedtree.amountofparentmadepercraft,')in the csv file')  # debug
-        elif primetree.amountneeded != derivedtree.amountneeded:
+            return False
+        elif presetingredienttree.amountofparentmadepercraft != csvsourcedtree.amountofparentmadepercraft:
             print('amounts not the same')  # debug
-            return (False, 'amount needed to create the parent ingredient once is not the same')
-        elif primetree.treekey == derivedtree.treekey:
-            return (False, 'the keys of the tree are not the same')
+            return False
+        elif presetingredienttree.amountneeded != csvsourcedtree.amountneeded:
+            print('amounts not the same')  # debug
+            return False
+        elif presetingredienttree.treekey == csvsourcedtree.treekey:
+            print('treekeys are the same')
+            return False
         else:
-            for index,node in enumerate(primetree.children.items()):
-                return self.istreesame(list(primetree.children.items())[index][1],list(derivedtree.children.items())[index][1])  # print the name of the node
-            return (True,'trees are the same')        
+            for index,node in enumerate(presetingredienttree.children.items()):
+                return self.istreesame(list(presetingredienttree.children.items())[index][1],list(csvsourcedtree.children.items())[index][1])  # print the name of the node
+            return True  # if the function has not returned false by now, the trees are the same
+        
     
-    def returnlist(self,noctis : Node, minimus : list)-> list[tuple[int,int]]:
-        """
-        return a list of tuples (int,int):
-            
-        Args:
-            [0] is the amount of parent made per craft of the node
-            
-            [1] is the amount needed to create the parent ingredient once
-            
-            [2] the generation of the Node
-        """
-        minimus.append((noctis.amountofparentmadepercraft,noctis.amountneeded,noctis.generation))
-        for child in noctis.children.items():
-            self.returnlist(child[1],minimus)  # return a list of tuples (int,int): [0] is the amount of parent made per craft of the node [1] is the amount needed to create the parent ingredient once
-        return minimus
-    
+        
     def test_createdtreeissame(self):
-        #uraniumrod            : Node = Node('uranium rod', self.pixels, 0, 500, 1)  # create a node instance with the name pixels and the parent node battery
-        # get the head node of the test tree
-        testhead: Node = self.test_headnodecreation()
+        #! fake node, comment in and out when needed
+        uraniumrod            : Node = Node('uranium rod', self.pixels, 0, 500, 1)  # create a node instance with the name pixels and the parent node battery
+        #head node of test tree
+        testhead : Node = self.test_headnodecreation()  # get the head node of the test tree
         #@note assert that the tree created from the csv file is the same as the tree created from the mock tree
-        assertvalue: tuple = self.istreesame(self.industrial_battery, testhead)
-        # assert that the tree created from the csv file is the same as the tree created from the mock tree
-        self.assertTrue(assertvalue[0], assertvalue[1])
+        self.assertTrue(self.istreesame(self.industrial_battery,testhead),'the ingredent trees are not the same')
 
-    def test_comparelist(self):
-        """
-        compares a list of tuples 3 attributes between two trees, tree A being from the preset one and tree B being from the csv file
-        the tuple contains the following attributes:
-        
-        [0] is the amount of parent made per craft of the node
-        
-        [1] is the amount needed to create the parent ingredient once
-        
-        [2] the generation of the Node
-        """
-        #uraniumrod            : Node = Node('uranium rod', self.pixels, 0, 500, 1)  # create a node instance with the name pixels and the parent node battery
-        bordo: list = self.returnlist(self.industrial_battery, [])
-        # get the head node of the test tree
-        azureus: list = self.returnlist(self.test_headnodecreation(), [])
-        # assert that the tree created from the csv file is the same as the tree created from the mock tree
-        self.assertListEqual(
-            azureus, bordo, '\nthe lists are not the same:\n\tList A: '+str(bordo)+'\n\tList B: '+str(azureus))
-    def test_checkforduplicatetrees(self):
-        """
-        test that there are exact copies of an ingredient tree written into csv file
-        """
-        # check if the file is in the current directory, if is not, skip the test
-        if not os.path.isfile(TESTFILENAME):
-            self.skipTest('test.csv not found')
-        else:
-            pass
-        # if the file exists in the current directory read it and parse for head nodes
-            # if it has only one head node, skip the test
-            # close the file
-        # if more than one head node, run the test
-            # open the file and parse it for head nodes
-            # if head nodes have matching ingredient names, create an ingredient tree and then compare the trees using the istreesame method
-            # assert true if the trees are the same, assert false if the trees are not the same
-            # close the file
-        self.skipTest('test not implemented')  # skip the test
 
 if __name__ == '__main__':
     blue = CSVsutilization()  # create an instance of the class
     for red in blue.test_pandacsvparsesearch().items():
         print(red[0],':',red[1],':',red[1].ingredient)
     yellow : Node = blue.test_headnodecreation()
+    print('\nNode:',yellow,'('+yellow.treekey+')')  # call the function to test the csv parsing and search method
