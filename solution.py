@@ -129,7 +129,7 @@ class Node(NodeB):
         # set tree key of this instance
         if self.parent is not None:
             self.treekey = self.parent.treekey
-        elif self.parent is None and __name__ == '__main__':
+        elif self.parent is None:
             self.treekey = self.generate_treekey()
         else:
             self.treekey = treekey
