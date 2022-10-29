@@ -320,7 +320,6 @@ class CSVsutilization(unittest.TestCase):
         #head node of test tree
         testhead : Node = self.test_headnodecreation()  # get the head node of the test tree
         #@note assert that the tree created from the csv file is the same as the tree created from the mock tree
-        #! self.skipTest('Not implemented yet')  # skip the test if the csv file does not exist
         self.assertTrue(self.istreesame(industrial_battery,testhead),'the ingredent trees are not the same')
 
 
