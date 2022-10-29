@@ -279,12 +279,29 @@ class CSVsutilization(unittest.TestCase):
         Returns:
             bool: returns true if any attribute value of any of the compared nodes are not the same in their respective ingredient trees
         """
+        def subfunction_temp(self,apple : list[Node],pear: list[Node]):
+            for appleseed in apple:
+                if not isinstance(appleseed,Node):
+                    raise TypeError('an item of the list is not an instance if',Node)  # raise a type error
+
+            for pearseed in pear:
+                if not isinstance(pearseed,Node):
+                    raise TypeError('an item of the list is not an instance if',Node)  # raise a type error
+            if len(apple) != len(pear) :
+                raise ValueError('the two lists are not the same length')  # raise a value error
+            for index,node in enumerate(apple):
+                self.istreesame(node,pear[index])  # call the function recursively to check the subnodes of the nodes
         # check if the children dicts have the same amount of keys
         if len(red.children) != len(green.children):
             return False
         else:
             redlist : list = list(red.children.items())  # convert the children dictionary to a list
+            for index,value in enumerate(redlist):  # iterate through the list
+                redlist[index] = value[1]  # convert the tuple to a node instance
             greenlist: list = list(green.children.items())  # convert the children dictionary to a list
+            for index,value in enumerate(greenlist):  # iterate through the list
+                greenlist[index] = value[1]  # convert the tuple to a node instance
+        
             return True
     def test_createdtreeissame(self):
         #mock tree
