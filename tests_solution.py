@@ -295,6 +295,9 @@ class CSVsutilization(unittest.TestCase):
         if presetingredienttree.ingredient != csvsourcedtree.ingredient: #@note comparsion fails
             print('ingredients not the same')  # debug
             return False
+        elif len(presetingredienttree.children) != len(csvsourcedtree.children):
+            print('children not the same')
+            return False
         elif presetingredienttree.generation != csvsourcedtree.generation:
             print('generations not the same')
             return False
@@ -306,9 +309,6 @@ class CSVsutilization(unittest.TestCase):
             return False
         elif presetingredienttree.treekey == csvsourcedtree.treekey:
             print('treekeys are the same')
-            return False
-        elif len(presetingredienttree.children) != len(csvsourcedtree.children):
-            print('children not the same')
             return False
         else:
             
