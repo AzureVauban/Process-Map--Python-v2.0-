@@ -68,6 +68,12 @@ class NodeB:
             yellow (int, optional): amount of item needed to craft the parent item one time.
             Defaults to 1.
         """
+        if not isinstance(amountonhand,int):
+            raise TypeError('amountonhand must be an integer')
+        if not isinstance(amountofparentmadepercraft,int):
+            raise TypeError('amountofparentmadepercraft must be an integer')
+        if not isinstance(amountneeded,int):
+            raise TypeError('amountneeded must be an integer')
         self.amountonhand = amountonhand
         self.amountofparentmadepercraft = amountofparentmadepercraft
         self.amountneeded = amountneeded
