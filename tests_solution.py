@@ -122,7 +122,7 @@ class CSVsutilization(unittest.TestCase):
         # test that the file exists
         self.assertTrue(os.path.exists(TESTFILENAME))
 
-    def test_pandacsvparsesearch(self): # todo turn this into a function in the solution module when this unit test passes 
+    def test_pandacsvparsesearch(self)->dict: # todo turn this into a function in the solution module when this unit test passes 
         """
         test parsing the csv file to find head node instances
         
@@ -133,6 +133,7 @@ class CSVsutilization(unittest.TestCase):
         """
         if not os.path.exists(TESTFILENAME):
             self.skipTest(exep_msg.csvnotexist())  # skip the test
+            return {-1: None}  # return a dict with a key of -1 and a value of None
         else:
             # value is the treekey and the item is the headnode translated from the csv file
             foundheadpoints: dict = {}
@@ -148,6 +149,7 @@ class CSVsutilization(unittest.TestCase):
                     foundheadpoints.update({green[0]: Node(green[1], None, green[4], green[5], green[6])}) 
                 # @note when this is turned into a function, if the returned dictionary is empty, return {-1:None} instead of an empty dictionary
             self.assertGreaterEqual(len(foundheadpoints), 1, 'No headnodes found')  # assert that the headnodes are found
+            return foundheadpoints  # return the headnodes
             
             
     def test_headnodecreation(self):
@@ -160,4 +162,5 @@ class CSVsutilization(unittest.TestCase):
 
 if __name__ == '__main__':
     foo = CSVsutilization()  # create an instance of the class
-    foo.test_pandacsvparsesearch()
+    for index, baz in enumerate(foo.test_pandacsvparsesearch()):
+        print(index,baz)
