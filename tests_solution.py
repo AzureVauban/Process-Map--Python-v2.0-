@@ -152,7 +152,12 @@ class CSVsutilization(unittest.TestCase):
             return foundheadpoints  # return the headnodes
          
     def figureoutwheretolink(self,parent : Node, csvrow : list):
-        pass
+        """
+        # @note conversion syntax: yellow : Node = Node(green[1],None,green[5],green[6],green[6])  # create a node from the list
+        """
+        # treekey  of csvrow MUST match parent for a Node to be created from it
+        
+    
     
     def countpopulation(self,node : Node, count : int = 0) -> int:
         """
