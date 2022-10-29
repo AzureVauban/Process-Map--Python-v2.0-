@@ -1,15 +1,5 @@
 Tree_Key,Ingredient,Ingredient_Alias,Parent_of_Ingredient,Amount_on_Hand,Amount_Of_Parent_Made_Per_Craft,Amount_Needed_Per_Craft,Generation
-qXdcUIo8AGdX,industrial battery,industrial_battery__e9nAmpoyikSxZMRv,None,7,1,1,0
-qXdcUIo8AGdX,protocite bar,protocite_bar__qOpomgmBVu,industrial battery,35,1,5,1
-qXdcUIo8AGdX,protocite,protocite__A59SXVUOR7BzLYxC3,protocite bar,70,1,2,2
-qXdcUIo8AGdX,battery,battery__CAf6Cy7LKM,industrial battery,14,1,2,1
-qXdcUIo8AGdX,pixels,pixels__c1BrtfkAVXqETCJe,battery,35000,1,2500,2
-qXdcUIo8AGdX,quantum processor,quantum_processor__HOpzKLEWTsAfJIqTj7,industrial battery,7,1,1,1
-qXdcUIo8AGdX,silicon board,silicon_board__NvsXW77catBFX0FOSp0,quantum processor,28,1,4,2
-qXdcUIo8AGdX,protocite bar,protocite_bar__0JRUYh,quantum processor,14,1,2,2
-qXdcUIo8AGdX,thorium rod,thorium_rod__4yRwRZo8Eharbunwv,industrial battery,35,1,5,1
-qXdcUIo8AGdX,thorium ore,thorium_ore__gaQBu97CsowbH10jjUc,thorium rod,70,1,2,2UFAapL
-UFAapL,protocite bar,protocite_bar__VPiO10xMdm,industrial battery,5,1,5,1
+UFAapL,industrial battery,industrial_battery__e9nAmpoyikSxZMRv,None,7,1,1,0
 UFAapL,protocite,protocite__aGCGvOf,protocite bar,10,1,2,2
 UFAapL,battery,battery__r2BXas5zau,industrial battery,2,1,2,1
 UFAapL,pixels,pixels__1q2PufK6c,battery,5000,1,2500,2

@@ -336,18 +336,23 @@ class CSVsutilization(unittest.TestCase):
         return minimus
     
     def test_createdtreeissame(self):
-        uraniumrod            : Node = Node('uranium rod', self.pixels, 0, 500, 1)  # create a node instance with the name pixels and the parent node battery
-        testhead : Node = self.test_headnodecreation()  # get the head node of the test tree
+        #uraniumrod            : Node = Node('uranium rod', self.pixels, 0, 500, 1)  # create a node instance with the name pixels and the parent node battery
+        # get the head node of the test tree
+        testhead: Node = self.test_headnodecreation()
         #@note assert that the tree created from the csv file is the same as the tree created from the mock tree
-        assertvalue : tuple = self.istreesame(self.industrial_battery,testhead)
-        self.assertTrue(assertvalue[0],assertvalue[1])  # assert that the tree created from the csv file is the same as the tree created from the mock tree
-    
+        assertvalue: tuple = self.istreesame(self.industrial_battery, testhead)
+        # assert that the tree created from the csv file is the same as the tree created from the mock tree
+        self.assertTrue(assertvalue[0], assertvalue[1])
+
     def test_comparelist(self):
-        uraniumrod            : Node = Node('uranium rod', self.pixels, 0, 500, 1)  # create a node instance with the name pixels and the parent node battery
-        bordo : list = self.returnlist(self.industrial_battery,[]) 
-        azureus :list = self.returnlist(self.test_headnodecreation(),[])  # get the head node of the test tree
-        self.assertListEqual(azureus,bordo,'\nthe lists are not the same:\n\tList A: '+str(bordo)+'\n\tList B: '+str(azureus))  # assert that the tree created from the csv file is the same as the tree created from the mock tree
-        
+        #uraniumrod            : Node = Node('uranium rod', self.pixels, 0, 500, 1)  # create a node instance with the name pixels and the parent node battery
+        bordo: list = self.returnlist(self.industrial_battery, [])
+        # get the head node of the test tree
+        azureus: list = self.returnlist(self.test_headnodecreation(), [])
+        # assert that the tree created from the csv file is the same as the tree created from the mock tree
+        self.assertListEqual(
+            azureus, bordo, '\nthe lists are not the same:\n\tList A: '+str(bordo)+'\n\tList B: '+str(azureus))
+
 
 if __name__ == '__main__':
     blue = CSVsutilization()  # create an instance of the class
