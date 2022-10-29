@@ -140,9 +140,11 @@ class CSVsutilization(unittest.TestCase):
             print(type(rowDict2))  # print the type of the dictionary
             for purple in rowDict2.items():  # iterate through the rows of the dataframe
                 blue = purple[1].values()
+                yellow : 
                 for green in list(blue):
                     yellow : Node = Node(green[1])  
                     print(blue,' => ',green)
+                    print('Node name:',yellow.ingredient)  # print the name of the node
             self.assertGreaterEqual(len(foundheadpoints), 1, 'No headnodes found')  # assert that the headnodes are found
 
             
