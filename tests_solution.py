@@ -293,8 +293,8 @@ class CSVsutilization(unittest.TestCase):
             for index,value in enumerate(greenlist):  # iterate through the list
                 greenlist[index] = value[1]  # convert the tuple to a node instance """
             for index,node in enumerate(red.children.items()):
-                self.istreesame(list(red.children.items())[index][1],list(green.children.items())[index][1])  # print the name of the node
-            return True
+                return self.istreesame(list(red.children.items())[index][1],list(green.children.items())[index][1])  # print the name of the node
+        
     def test_createdtreeissame(self):
         #mock tree
         industrial_battery    : Node = Node('industrial battery', None)
