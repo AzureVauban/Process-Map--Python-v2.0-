@@ -82,7 +82,22 @@ class CSVsutilization(unittest.TestCase):
     # @audit-info use df.iloc to read an entire row of data
     # @audit-info use df.columns to read the column names
     # @audit-info use df.iterrows to iterate through the rows of the dataframe (dataframe referred to as df and the csvfile)
+    def countpopulation(self,node : Node, count : int = 0) -> int:
+            """
+            count how many subnodes are connected parameter node
+            @audit-info use a recursive function to count the population of the tree, start off with the head node!
+            Args:
+                node (Node): node to count the subnodes of
+                count (int, optional): integer number of counted nodes. Defaults to 0.
 
+            Returns:
+                int: population of the node's tree
+            """
+            count +=1
+            if len(node.children) > 0:
+                for child in node.children:
+                    count = self.countpopulation(child,count)
+            return count
     def testsubstringmethod(self):
         # reformat a string to have all of its whitespace turn into an underscore
         teststring: str = 'this is a test string'  # test string
@@ -142,12 +157,15 @@ class CSVsutilization(unittest.TestCase):
             # @audit-info headinstance condition is met if list[index=3] is None, list[index=5] = 1, list[index=6] = 1, adn list[index=7] = 0
             for purple in pandas.read_csv(TESTFILENAME).to_dict('index').items():  # iterate through the rows of the dataframe
                 green : list = list(purple[1].values())  # convert the values of the dictionary to a list
+                #todo format ingredient alias to match the ingredient (rowlist[3] == rowlist[1])
+                green[3] = green[1]
                 # @note conversion syntax: yellow : Node = Node(green[1],None,green[5],green[6],green[6])  # create a node from the list
                 # @note isheadinstance: bool = green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7] == 0
                 if green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7]== 0:  # if the conditions are met for it to mock a head node
                     # create a node from the row's data
                     foundheadpoints.update({green[0]: Node(green[1], None, green[4], green[5], green[6],False,False,green[0])})  # add the node to the dictionary of head nodes
                 # @note when this is turned into a function, if the returned dictionary is empty, return {-1:None} instead of an empty dictionary
+                
             self.assertGreaterEqual(len(foundheadpoints), 1, 'No headnodes found')  # assert that the headnodes are found
             return foundheadpoints  # return the headnodes
          
@@ -168,7 +186,8 @@ class CSVsutilization(unittest.TestCase):
             @note example row for a child instance
             'Tree_Key'                          [0]: 'cE1NXAKBXatn'
             'Ingredient'                        [1]: 'protocite bar'
-            'Ingredient_Alias'                  [2]: 'protocite_bar__RQ1skwPB7PsdymWjQ' #? will have something like '__RQ1skwPB7PsdymWjQ' if there is a repeat of that ingredient name in the tree
+            'Ingredient_Alias'                  [2]: 'protocite_bar__RQ1skwPB7PsdymWjQ' @note __RQ1skwPB7PsdymWjQ could be formatted out of the string
+            #? will have something like '__RQ1skwPB7PsdymWjQ' if there is a repeat of that ingredient name in the tree
             'Parent_of_Ingredient'              [3]: 'industrial battery' #? must not be 'None'
             'Amount_on_Hand'                    [4]: 35 #? can be any integer value
             'Amount_Of_Parent_Made_Per_Craft'   [5]: 1
@@ -185,26 +204,12 @@ class CSVsutilization(unittest.TestCase):
             # also an exact copy of this node cannot be already linked to the parent!
         
         #! keep add conditon checks as progress on this test is made
-        if parent.treekey == csvrow[0] and csvrow[3] != 'None':
-            
+        if parent.treekey == csvrow[0] and csvrow[3] != 'None' and csvrow[3] == parent.ingredient:
+            #@audit somewhere in the project it needs to be determined if the user will allow the amount on hands from the csv file to be used or if the user will input the amount on hand themselves
+            child : Node = Node(csvrow[1],None,csvrow[5],csvrow[6],csvrow[6],False,False,csvrow[0])  # create a node from the list
         self.skipTest(exep_msg.testnotadded())  # skip the test
     
-    def countpopulation(self,node : Node, count : int = 0) -> int:
-        """
-        count how many subnodes are connected parameter node
-        @audit-info use a recursive function to count the population of the tree, start off with the head node!
-        Args:
-            node (Node): node to count the subnodes of
-            count (int, optional): integer number of counted nodes. Defaults to 0.
-
-        Returns:
-            int: population of the node's tree
-        """
-        count +=1
-        if len(node.children) > 0:
-            for child in node.children:
-                count = self.countpopulation(child,count)
-        return count
+   
     
     
     def test_headnodecreation(self):
@@ -218,8 +223,8 @@ class CSVsutilization(unittest.TestCase):
         foundheadnodes : dict = self.test_pandacsvparsesearch()
         if foundheadnodes == {-1:None} or not os.path.exists(path=TESTFILENAME):
             # @audit-info in the solution module the user would input an integer to the function to specify which head node to create and return, for this test return a random one
-            return Node('NaNNodeName',None,-1,-1,-1) 
             self.skipTest(exep_msg.csvnotexist())
+            return Node('NaNNodeName',None,-1,-1,-1) 
         else:
             # open the file in read mode and check for nodes in the csv that match the value of the head node's key in the dictionary,
             # when you need to create a new node from the csv file
@@ -231,10 +236,11 @@ class CSVsutilization(unittest.TestCase):
             tentativetest = random.choice(list(foundheadnodes.items()))  # get a random head node from the dictionary of head nodes
             # @audit-info assert that the population of the tree is equal to the population of the mock tree
             returendnodepopulation : int = self.countpopulation(tentativetest[1])
+            #! call the function that figures out where to link the node and emplace it into the tree
             self.assertEqual(returendnodepopulation,10)  # assert that the population of the tree is equal to the population of the mock tree 
             return tentativetest[1]  # return a random head node instance
         
-        # TODO: implement your test here
+
 
 if __name__ == '__main__':
     blue = CSVsutilization()  # create an instance of the class
