@@ -301,9 +301,9 @@ class CSVsutilization(unittest.TestCase):
         elif presetingredienttree.generation != csvsourcedtree.generation:
             print('generations not the same')
             return False
-#?        elif presetingredienttree.amountofparentmadepercraft != csvsourcedtree.amountofparentmadepercraft:
-#?            print('amounts not the same')  # debug
-#?            return False
+        elif presetingredienttree.amountofparentmadepercraft != csvsourcedtree.amountofparentmadepercraft:
+            print('amounts not the same')  # debug
+            return False
         elif presetingredienttree.amountneeded != csvsourcedtree.amountneeded:
             print('amounts not the same')  # debug
             return False
