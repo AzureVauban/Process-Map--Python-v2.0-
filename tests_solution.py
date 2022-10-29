@@ -183,7 +183,9 @@ class CSVsutilization(unittest.TestCase):
             # 'Parent_of_Ingredient' must not be None and must the ingredient of Parent
             # 'Ingredient_Alias' must not be 'In' any Node with in the tiems of the parent's children dictionary
             # also an exact copy of this node cannot be already linked to the parent!
-        def shouldemplacechild(red : Node = parent, green : Node = Node)
+        if csvrow[0] == parent.treekey and csvrow[3] != 'None' and csvrow[3] == parent.ingredient and csvrow[2] not in parent.children.keys() and csvrow[2] not in parent.children.values():
+            pass
+        self.skipTest(exep_msg.testnotadded())  # skip the test
     
     def countpopulation(self,node : Node, count : int = 0) -> int:
         """
