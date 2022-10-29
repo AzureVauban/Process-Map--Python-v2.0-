@@ -163,7 +163,7 @@ class CSVsutilization(unittest.TestCase):
         foundheadnodes : dict = self.test_pandacsvparsesearch()
         if foundheadnodes == {-1:None} or not os.path.exists(path=TESTFILENAME):
             # @audit-info in the solution module the user would input an integer to the function to specify which head node to create and return, for this test return a random one
-            return None
+            return Node('NaNNodeName',None,-1,-1,-1) 
             self.skipTest(exep_msg.csvnotexist())
         else:
             # open the file in read mode and check for nodes in the csv that match the value of the head node's key in the dictionary,
@@ -175,6 +175,7 @@ class CSVsutilization(unittest.TestCase):
                     # red's parent ingredient is the same as blue's ingredient
             tentativetest = random.choice(list(foundheadnodes.items()))  # get a random head node from the dictionary of head nodes
             return tentativetest[1]  # return a random head node instance
+            # @audit-info assert that the population of the tree is equal to the population of the mock tree
             self.skipTest(exep_msg.testnotadded())
         
         # TODO: implement your test here

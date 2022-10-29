@@ -210,7 +210,6 @@ class Node(NodeB):
                 '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
         return cls.treekey
     # make a method to return a list with all the info needed on a line of the csv file
-
     def create_csv_writerow(self) -> dict:
         """
         FIELDNAMES: list = [  # list of field names for the csv output file
@@ -364,7 +363,6 @@ class NodeTree():
     def __init__(self, population: int = random.randint(1, 10)) -> None:
         self.headnode: Node = self.generateTree(population)
         self.population = self.countleafs(self.headnode)
-
 
 def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:
     """
