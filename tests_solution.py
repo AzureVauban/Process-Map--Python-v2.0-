@@ -295,7 +295,7 @@ class CSVsutilization(unittest.TestCase):
         if presetingredienttree.ingredient != csvsourcedtree.ingredient: #@note comparsion fails
             print('ingredients not the same')  # debug
             return False
-        elif len(presetingredienttree.children) is not len(csvsourcedtree.children):
+        elif len(presetingredienttree.children) != len(csvsourcedtree.children):
             print('children not the same')
             return False
         elif presetingredienttree.generation != csvsourcedtree.generation:
@@ -314,6 +314,8 @@ class CSVsutilization(unittest.TestCase):
             for index,node in enumerate(presetingredienttree.children.items()):
                 return self.istreesame(list(presetingredienttree.children.items())[index][1],list(csvsourcedtree.children.items())[index][1])  # print the name of the node
             return True  # if the function has not returned false by now, the trees are the same
+        
+        
     def checkallinstances(self, nodeobject : Node,bin : list) -> list:
         """ return a list of nodes from two trees for debugging purposes
         Returns:
