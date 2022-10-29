@@ -122,10 +122,12 @@ class CSVsutilization(unittest.TestCase):
         # test that the file exists
         self.assertTrue(os.path.exists(TESTFILENAME))
 
-    def test_pandascsvread(self):
+    def test_pandacsvparsesearch(self): # todo turn this into a function in the solution module when this unit test passes 
         """
         if file does not exist, raise an error
-        if the file already exists, open it in read mode and read the data
+        if the file already exists, open it in read mode
+            parse the csv file to see if there are any rows of data that match the 
+            conditions of a head node instance, if they do create a head node instance and add it into a returnable dict
         """
         if not os.path.exists(TESTFILENAME):
             #!            raise FileNotFoundError(exep_msg.csvnotexist())
@@ -134,8 +136,6 @@ class CSVsutilization(unittest.TestCase):
             # value is the treekey and the item is the headnode translated from the csv file
             foundheadpoints: dict = {}
             # turn a row of the csv data into a dictionary
-            mypyandas = pandas.read_csv(TESTFILENAME)  # read the csv file
-            rowDict2 : dict = pandas.read_csv(TESTFILENAME).to_dict('index')
             # @audit-info convert row into a list, use a boolean to detect if the nesscary values are present in the proper positions of the list to match a head node of the tree, and if it does input it the dictionary of head nodes
             # @audit-info headinstance condition is met if list[index=3] is None, list[index=5] = 1, list[index=6] = 1, adn list[index=7] = 0
             for purple in pandas.read_csv(TESTFILENAME).to_dict('index').items():  # iterate through the rows of the dataframe
@@ -144,9 +144,10 @@ class CSVsutilization(unittest.TestCase):
                 # @note isheadinstance: bool = green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7] == 0
                 if green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7]== 0:  # if the conditions are met for it to mock a head node
                     # create a node from the row's data
-                    foundheadpoints.update({green[0]: Node(green[1], None, green[4], green[5], green[6])})  
+                    foundheadpoints.update({green[0]: Node(green[1], None, green[4], green[5], green[6])}) 
+                # @note when this is turned into a function, if the returned dictionary is empty, return {-1:None} instead of an empty dictionary
             self.assertGreaterEqual(len(foundheadpoints), 1, 'No headnodes found')  # assert that the headnodes are found
-
+            
             
     def test_findheadnodes(self):
         """
@@ -155,6 +156,3 @@ class CSVsutilization(unittest.TestCase):
         # TODO: implement your test here
         self.skipTest(exep_msg.testnotadded())
 
-
-if __name__ == '__main__':
-    unittest.main()
