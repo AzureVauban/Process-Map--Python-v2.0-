@@ -143,14 +143,13 @@ class CSVsutilization(unittest.TestCase):
 #!            rowDict4 = pandas.read_csv(TESTFILENAME).to_dict('record') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
 #!            rowDict5 = pandas.read_csv(TESTFILENAME).to_dict('series') #! this converted the entire csvfile rows except for the headers, into a list of dictionaries
 #!          print(type(rowDict))
-#?            for row in pandas.read_csv(TESTFILENAME).to_dict('row'):
-#?                pass
-            #self.assertGreaterEqual(len(foundheadpoints), 1)
+            for foo in pandas.read_csv(TESTFILENAME).to_dict('row'):
+                bar : dict = foo
+                
+                print(bar)  # print the dictionary
             pass
-    def test_subtest(self):
-        """comparison for pandas dataframe read_csv dataframe dicts
-        """
-        self.assertEqual(pandas.read_csv(TESTFILENAME).to_dict('series'), pandas.read_csv(TESTFILENAME).to_dict('row'))  # assert that the two dicts are equal
+            #self.assertGreaterEqual(len(foundheadpoints), 1)
+            
     def test_findheadnodes(self):
         """
         test parsing the csv file to find head node instances
