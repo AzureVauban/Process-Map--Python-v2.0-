@@ -144,8 +144,8 @@ class CSVsutilization(unittest.TestCase):
                 green : list = list(purple[1].values())  # convert the values of the dictionary to a list
                 # @note conversion syntax: yellow : Node = Node(green[1],None,green[4],green[5],green[6])  # create a node from the list
                 isheadinstance : bool = green[3] is None and green[4] == 0 and green[5] == 1 and green[6] == 1  # check if the node is a head node
-                if isheadinstance:
-                    foundheadpoints.update({green[0]: Node(green[1], None, green[4], green[5], green[6])})  # add the head node to the dictionary of head nodes
+                if isheadinstance:  # add the head node to the dictionary of head nodes
+                    foundheadpoints.update({green[0]: Node(green[1], None, green[4], green[5], green[6])})  
             self.assertGreaterEqual(len(foundheadpoints), 1, 'No headnodes found')  # assert that the headnodes are found
 
             
