@@ -94,7 +94,7 @@ class CSVsutilization(unittest.TestCase):
     pixels                : Node = Node('pixels', battery, 0, 1, 2500)
     quantum_processor     : Node = Node('quantum processor', industrial_battery, 0, 1, 1)
     silicon_board         : Node = Node('silicon board', quantum_processor, 0, 1, 4)
-    protocite_bar2        : Node = Node('protocite bar', silicon_board, 0, 1, 2)
+    protocite_bar2        : Node = Node('protocite bar', quantum_processor, 0, 1, 2)
     thorium_rod           : Node = Node('thorium rod', industrial_battery, 0, 1, 5)
     thorium_ore           : Node = Node('thorium ore', thorium_rod, 0, 1, 2)
     reversearithmetic(industrial_battery, random.randint(1, 10))
