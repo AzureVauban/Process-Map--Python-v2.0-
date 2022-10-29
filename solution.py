@@ -99,7 +99,7 @@ class Node(NodeB):
     treekey: str = ''
     ismain_promptinputbool: bool = True
 
-    def __init__(self, ingredient: str = '', parent=None, amountonhand: int = 0, amountofparentmadepercraft: int = 1, amountneeded: int = 1, green: bool = False, orange: bool = __name__ == '__main__') -> None:  # pylint:disable=C0301
+    def __init__(self, ingredient: str = '', parent=None, amountonhand: int = 0, amountofparentmadepercraft: int = 1, amountneeded: int = 1, green: bool = False, orange: bool = __name__ == '__main__',treekey: str = 'NanKey') -> None:  # pylint:disable=C0301
         """
         default constructor for Node instance, stores identifying features of an item's
         information
@@ -126,6 +126,7 @@ class Node(NodeB):
             self.ismain_promptinputbool = self.parent.ismain_promptinputbool
         else:
             self.generation = 0
+        if self.parent is not None and treekey == 'NanKey':
             self.treekey = self.generate_treekey()
         if not self.checkaliasuniqueness(self.aliasingredient):
             self.aliasingredient = self.aliasingredient + '__' + generatename()
