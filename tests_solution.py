@@ -162,5 +162,5 @@ class CSVsutilization(unittest.TestCase):
 
 if __name__ == '__main__':
     foo = CSVsutilization()  # create an instance of the class
-    for index, baz in enumerate(foo.test_pandacsvparsesearch()):
-        print(index,baz)
+    for baz in foo.test_pandacsvparsesearch().items():
+        print(baz[0],':',baz[1])
