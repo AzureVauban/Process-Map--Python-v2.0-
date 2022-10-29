@@ -33,6 +33,9 @@ class exep_msg():
     @classmethod
     def headisNone(cls):
         return "head of the tree is None"
+    @classmethod
+    def treekeymismatch(cls):
+        return "Tree key mismatch"
 
 
 class NodeTree:
@@ -167,6 +170,10 @@ class CSVsutilization(unittest.TestCase):
                     foundheadpoints.update({green[0]: Node(green[1], None, green[4], green[5], green[6],False,False,green[0])})  # add the node to the dictionary of head nodes
                     print('found a node!')  #!delete this later
                 # @note when this is turned into a function, if the returned dictionary is empty, return {-1:None} instead of an empty dictionary
+            #check that the key of the dictionary and the treekey of the node are the same, if they are not, raise an exception
+            for key, value in foundheadpoints.items():
+                if key != value.treekey:
+                    raise ValueError(exep_msg.treekeymismatch())
             self.assertGreaterEqual(len(foundheadpoints), 1, 'No headnodes found')  # assert that the headnodes are found
             return foundheadpoints  # return the headnodes
          
