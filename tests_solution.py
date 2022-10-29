@@ -100,7 +100,7 @@ class CSVsutilization(unittest.TestCase):
             count +=1
             if len(node.children.items()) > 0:
                 for child in node.children.items():
-                    count = self.countpopulation(child,count)
+                    count = self.countpopulation(child[1],count)
             return count
     def testsubstringmethod(self):
         # reformat a string to have all of its whitespace turn into an underscore
