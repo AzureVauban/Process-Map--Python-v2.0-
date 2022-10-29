@@ -156,7 +156,9 @@ class CSVsutilization(unittest.TestCase):
         """
         test that the head node is created correctly
         """
-        # call csv parse method 
+        # call csv parse method and get a dictionary of head nodes
+        # if it returns {-1:None} or the file is not in the directory, skip the test
+        # if it does not return {-1:None}
         # TODO: implement your test here
         self.skipTest(exep_msg.testnotadded())
 
