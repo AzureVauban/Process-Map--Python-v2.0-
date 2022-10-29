@@ -216,7 +216,9 @@ class CSVsutilization(unittest.TestCase):
             return False
     def locate_emplace_spot(self,parent : Node,row : list):
         spotfound : bool = self.emplacelink(parent,row)  # try to emplace the node into the parent node's children dictionary
-        
+        if not spotfound:
+            for child in parent.children.items():
+                self.locate_emplace_spot(child[1],row)
    
     
     
@@ -233,7 +235,7 @@ class CSVsutilization(unittest.TestCase):
             # @audit-info in the solution module the user would input an integer to the function to specify which head node to create and return, for this test return a random one
             self.skipTest(exep_msg.csvnotexist())
             return Node('NaNNodeName',None,-1,-1,-1) 
-        else:
+        else: #todo create tree rom csv file
             # open the file in read mode and check for nodes in the csv that match the value of the head node's key in the dictionary,
             # when you need to create a new node from the csv file
             # create a function that takes in a dictionary that stores the row of data and the head node instace,
@@ -245,14 +247,22 @@ class CSVsutilization(unittest.TestCase):
             # @audit-info assert that the population of the tree is equal to the population of the mock tree
             returendnodepopulation : int = self.countpopulation(tentativetest[1])
             #! call the function that figures out where to link the node and emplace it into the tree
-            # open the file 
+            # open the file and read the rows
             for purple in pandas.read_csv(TESTFILENAME).to_dict('index').items():  # iterate through the rows of the dataframe
                 green : list = list(purple[1].values())  # convert the values of the dictionary to a list
                 #todo format ingredient alias to match the ingredient (rowlist[3] == rowlist[1])
                 green[3] = green[1]
+                # for each row, check if the it meets the conditions to be a child node of the head node
+                self.locate_emplace_spot(tentativetest[1],green)
+                # if it does not, check to see if any of the children meet the condition 
             self.assertEqual(returendnodepopulation,10)  # assert that the population of the tree is equal to the population of the mock tree 
             return tentativetest[1]  # return a random head node instance
         
 
 
-if __name__ =
+if __name__ == '__main__':
+    blue = CSVsutilization()  # create an instance of the class
+    for red in blue.test_pandacsvparsesearch().items():
+        print(red[0],':',red[1],':',red[1].ingredient)
+    yellow : Node = blue.test_headnodecreation()
+    print('\nNode:',yellow,'('+yellow.treekey+')')  # call the function to test the csv parsing and search method
