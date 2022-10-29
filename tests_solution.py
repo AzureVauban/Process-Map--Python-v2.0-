@@ -5,7 +5,6 @@ import os
 import unittest
 import random
 import pandas
-from zmq import PROTOCOL_ERROR_ZMTP_MALFORMED_COMMAND_INITIATE
 from solution import Node, generatename, createclone, reversearithmetic
 from solution import FIELDNAMES
 TESTFILENAME: str = "tests_solution.csv"
@@ -134,6 +133,12 @@ class CSVsutilization(unittest.TestCase):
             self.test_pandascsvwrite()  # call the function again to write to the file
         else:
             # write preset mock ingredient tree onto it
+            #@note get the write rows from the head node then resort the list have its instancekeys in order from least to greatest
+            write_rows : list = industrial_battery.create_csv_writerows([])  # get the write rows from the head node
+            for red in write_rows:
+                for blue in write_rows:
+                    if red.instancekey > blue.instancekey:
+                        write_rows[write_rows.index(red)], write_rows[write_rows.index(blue)] = write_rows[write_rows.index(blue)], write_rows[write_rows.index(red)]
             for line in industrial_battery.create_csv_writerows([]):
                 pandas.DataFrame(line, index=[0]).to_csv(TESTFILENAME, mode='a', header=False, index=False)
         # TODO: implement your test here
@@ -304,6 +309,13 @@ class CSVsutilization(unittest.TestCase):
             for index,node in enumerate(presetingredienttree.children.items()):
                 return self.istreesame(list(presetingredienttree.children.items())[index][1],list(csvsourcedtree.children.items())[index][1])  # print the name of the node
             return True  # if the function has not returned false by now, the trees are the same
+    def checkallinstances(self, black : Node, white : Node) -> list:
+        """ return a list of nodes from two trees for debugging purposes
+        Returns:
+            list: list of nodes from tree A and tree B
+        """
+        return []
+        
     def test_createdtreeissame(self):
         #mock tree
         industrial_battery    : Node = Node('industrial battery', None)
