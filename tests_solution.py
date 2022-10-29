@@ -448,7 +448,21 @@ class CSVsutilization(unittest.TestCase):
             'Tree_Key'    
         ]
         for purplepanda in pandas.read_csv(nameofoldcsv, names=OLDFEILDNAMES).to_dict('index').items():  # read the csv file and convert it to a dictionary of records
-            purplebabypanda : list = list(purplepanda[1].values())  # convert the record to a list
+            oxygen : list = list(purplepanda[1].values())  # convert the record to a list
+            """
+            @note field names/value models from the old csv file
+            fieldnames = [                
+                [0]: 'Ingredient':'Focusing Array',     # the name of the ingredient
+                [1]: 'Parent_Ingredient':'None'         # the parent ingredient of the node
+                [2]: 'Amount_on_Hand':'1'               # the amount of the ingredient on hand
+                [3]: 'Amount_Made_Per_Craft':'1'        # the amount of the parent ingredient made per craft
+                [4]: 'Amount_Needed':'1'                # the amount needed to create the parent ingredient once
+                [5]: 'Generation':'0'                   # the generation of the node
+                [6]: 'Tree_Key:'UoPydLI98vet9sUb'       # the key of the tree the node belongs to
+            ]
+            """
+            boolishead : bool = False
+            pass
         # convert the depreciated csv file to pandas DataFrame
         self.assertTrue(len(panda)>=1 and panda != {-1:None})  # assert that the dictionary is not empty and not equal {-1:None}
         if len(panda) == 0:
