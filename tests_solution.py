@@ -134,15 +134,14 @@ class CSVsutilization(unittest.TestCase):
             # create the file
             pandas.DataFrame(columns=FIELDNAMES).to_csv(TESTFILENAME, index=False)
             self.test_pandascsvwrite()  # call the function again to write to the file
+            self.skipTest(exep_msg.csvnotexist())  # skip the test
         else:
             # write preset mock ingredient tree onto it
             for line in self.industrial_battery.create_csv_writerows([]):
                 pandas.DataFrame(line, index=[0]).to_csv(TESTFILENAME, mode='a', header=False, index=False)
-        # TODO: implement your test here
-        # self.skipTest(exep_msg.testnotadded())
         # test that the file exists
-        #! skip test self.assertTrue(os.path.exists(TESTFILENAME))
-        self.skipTest('Test is not needed anymore')  # skip the test
+        self.assertTrue(os.path.exists(TESTFILENAME))
+        
 
     def test_pandacsvparsesearch(self)->dict: # todo turn this into a function in the solution module when this unit test passes 
         """
@@ -165,7 +164,7 @@ class CSVsutilization(unittest.TestCase):
             for purple in pandas.read_csv(TESTFILENAME).to_dict('index').items():  # iterate through the rows of the dataframe
                 green : list = list(purple[1].values())  # convert the values of the dictionary to a list
                 #todo format ingredient alias to match the ingredient (rowlist[3] == rowlist[1])
-                #!green[3] = green[1]
+                
                 # @note conversion syntax: yellow : Node = Node(green[1],None,green[5],green[6],green[6])  # create a node from the list
                 # @note isheadinstance: bool = green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7] == 0
                 if green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7]== 0:  # if the conditions are met for it to mock a head node
