@@ -38,20 +38,6 @@ class exep_msg():
         return "Tree key mismatch"
 
 
-class NodeTree:
-    """
-    auto generated a tree of nodes
-    """
-    headnode: Node
-    population: int = 1
-
-    def generateTree(self, populationlimt: int = 1, head: Node = Node('head', None)) -> Node:
-        if head is None:
-            raise ValueError(exep_msg.headisNone())
-        return head
-
-    def __init__(self, population: int = 1):
-        self.generateTree(population)
 
 
 class NodeCreationTests(unittest.TestCase):
@@ -88,6 +74,23 @@ class CSVsutilization(unittest.TestCase):
     # @audit-info use df.iterrows to iterate through the rows of the dataframe (dataframe referred to as df and the csvfile)
     
     #@note mock ingredient tree for industral battery https://frackinuniverse.miraheze.org/wiki/Industrial_Battery
+    @classmethod
+    def countpopulation(cls,node : Node, count : int = 0) -> int:
+        """
+        count how many subnodes are connected parameter node
+        @audit-info use a recursive function to count the population of the tree, start off with the head node!
+        Args:
+            node (Node): node to count the subnodes of
+            count (int, optional): integer number of counted nodes. Defaults to 0.
+
+        Returns:
+            int: population of the node's tree
+        """
+        count +=1
+        if len(node.children.items()) > 0:
+            for child in node.children.items():
+                count = cls.countpopulation(child[1],count)
+        return count
     industrial_battery    : Node = Node('industrial battery', None,treekey=Node.generate_treekey())
     protocite_bar         : Node = Node('protocite bar', industrial_battery, 0, 1, 5)
     protocite             : Node = Node('protocite', protocite_bar, 0, 1, 2)
@@ -100,6 +103,23 @@ class CSVsutilization(unittest.TestCase):
     thorium_ore           : Node = Node('thorium ore', thorium_rod, 0, 1, 2)
     reversearithmetic(industrial_battery, random.randint(1, 10))
     
+    # todo finish creating this class and utilize it in reading and writing tests (not using a preset tree)
+    class RandomNodeTree:
+        population: int = 0
+        head: Node
+
+        def generateTree(self, popuation: int = random.randint(1, 10), monokai: Node = Node(generatename())) -> Node:
+            # the population of the tree cannot suprass the population parameter
+            # do not continue the method if the count of the tree from head node is equal to or greater than the population parameter
+            if CSVsutilization.countpopulation(monokai) >= popuation:
+                # generate a random number between 1 and 10 and reverse the arithmetic of the head node
+                return monokai
+            else:
+                return monokai
+
+        def __init__(self, population: int = random.randint(1, 10), head: Node = Node(generatename())) -> None:
+            self.head = head
+
     class SubMethods(): #todo finish creating methods
         """a class containing methods for returning a set of instance attributes from a head node
         """
@@ -142,22 +162,7 @@ class CSVsutilization(unittest.TestCase):
                 cls.ingredients(child[1],hibernus)  
             return hibernus
         
-    def countpopulation(self,node : Node, count : int = 0) -> int:
-            """
-            count how many subnodes are connected parameter node
-            @audit-info use a recursive function to count the population of the tree, start off with the head node!
-            Args:
-                node (Node): node to count the subnodes of
-                count (int, optional): integer number of counted nodes. Defaults to 0.
-
-            Returns:
-                int: population of the node's tree
-            """
-            count +=1
-            if len(node.children.items()) > 0:
-                for child in node.children.items():
-                    count = self.countpopulation(child[1],count)
-            return count
+    
     def testsubstringmethod(self):
         # reformat a string to have all of its whitespace turn into an underscore
         teststring: str = 'this is a test string'  # test string
@@ -318,9 +323,10 @@ class CSVsutilization(unittest.TestCase):
                 self.locate_emplace_spot(returnhead,row)
                 # if it does not, check to see if any of the children meet the condition 
             nodecount : int = self.countpopulation(returnhead)
-            self.assertEqual(nodecount,10)  # assert that the population of the tree is equal to the population of the mock tree 
+#@note not needed anymore            self.assertEqual(nodecount,10)  # assert that the population of the tree is equal to the population of the mock tree 
             print('the returned tree is for',returnhead.ingredient)  # print the head node
             return returnhead  # return a random head node instance
+            self.skipTest('not needed anymore')
         
         
     def istreesame(self,primetree : Node, derivedtree : Node) -> tuple: #todo append a list of attributes that do not match to the fail msg string of the tuple
