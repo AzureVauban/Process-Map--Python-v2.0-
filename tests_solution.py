@@ -39,20 +39,6 @@ class exep_msg():
 
 
 
-def convertdepreciatedcsv(nameofoldcsv: str) -> dict:
-    """
-    Convert depreciated csv file to pandas DataFrame
-    return a dictionary of ingredient trees from the old csv file
-    """
-    panda : dict = {} # dictionary of new nodes
-    # read the csv file
-    df = pandas.read_csv(nameofoldcsv, names=FIELDNAMES)
-    # convert the depreciated csv file to pandas DataFrame
-    # ignore its treekey and generation
-    if len(panda) == 0:
-       return {-1:None}
-    else:
-        return panda
 class NodeCreationTests(unittest.TestCase):
 
     def testcheckclone(self):
@@ -425,6 +411,7 @@ class CSVsutilization(unittest.TestCase):
         # assert that the tree created from the csv file is the same as the tree created from the mock tree
         self.assertListEqual(
             azureus, bordo, '\nthe lists are not the same:\n\tList A: '+str(bordo)+'\n\tList B: '+str(azureus))
+
     def test_checkforduplicatetrees(self):
         """
         test that there are exact copies of an ingredient tree written into csv file
@@ -443,7 +430,31 @@ class CSVsutilization(unittest.TestCase):
             # assert true if the trees are the same, assert false if the trees are not the same
             # close the file
         self.skipTest('test not implemented')  # skip the test
-
+    
+    def test_convertdepreciatedcsv(self,nameofoldcsv: str = 'convertme.csv') -> dict:
+        """
+        Convert depreciated csv file to pandas DataFrame
+        return a dictionary of ingredient trees from the old csv file
+        """
+        panda : dict = {} # dictionary of new nodes
+        # read the csv file
+        OLDFEILDNAMES = [
+            'Ingredient',
+            'Parent_Ingredient',
+            'Amount_on_Hand',
+            'Amount_Made_Per_Craft',
+            'Amount_Needed',
+            'Generation',
+            'Tree_Key'    
+        ]
+        df = pandas.read_csv(nameofoldcsv, names=OLDFEILDNAMES)
+        # convert the depreciated csv file to pandas DataFrame
+        self.assertTrue(len(panda)>=1 and panda != {-1:None})  # assert that the dictionary is not empty and not equal {-1:None}
+        if len(panda) == 0:
+            return {-1:None}
+        else:
+            return panda #@note use the dictionary to print the tree to the new csv file
+        #self assert that the dictionary is not empty and not equal {-1:None}
 if __name__ == '__main__':
     blue = CSVsutilization()  # create an instance of the class
     for red in blue.test_pandacsvparsesearch().items():
