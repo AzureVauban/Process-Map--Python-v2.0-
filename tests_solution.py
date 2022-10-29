@@ -163,4 +163,4 @@ class CSVsutilization(unittest.TestCase):
 if __name__ == '__main__':
     blue = CSVsutilization()  # create an instance of the class
     for red in blue.test_pandacsvparsesearch().items():
-        print(red[0],':',red[1])
+        print(red[0],':',red[1],':',red[1].ingredient)
