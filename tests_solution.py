@@ -280,6 +280,8 @@ class CSVsutilization(unittest.TestCase):
             bool: returns true if any attribute value of any of the compared nodes are not the same in their respective ingredient trees
         """
         def tentativemethod2(self,apple : list[Node],pear: list[Node]): #todo change the name of the subfunction
+            print('list A',apple)
+            print('list B',pear)
             for appleseed in apple:
                 if not isinstance(appleseed,Node):
                     raise TypeError('an item of the list is not an instance if',Node)  # raise a type error
@@ -301,7 +303,10 @@ class CSVsutilization(unittest.TestCase):
             greenlist: list = list(green.children.items())  # convert the children dictionary to a list
             for index,value in enumerate(greenlist):  # iterate through the list
                 greenlist[index] = value[1]  # convert the tuple to a node instance
-            return self.istreesame.tentativemethod2(redlist,greenlist)  # call the subfunction to check the subnodes of the nodes
+            #!return self.istreesame.tentativemethod2(redlist,greenlist)  # call the subfunction to check the subnodes of the nodes
+            for index,node in enumerate(redlist):
+                self.istreesame(node,greenlist[index])  # call the function recursively to check the subnodes of the nodes
+        
     def test_createdtreeissame(self):
         #mock tree
         industrial_battery    : Node = Node('industrial battery', None)
