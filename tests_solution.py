@@ -249,7 +249,7 @@ class CSVsutilization(unittest.TestCase):
             returendnodepopulation : int = self.countpopulation(returnhead)
             #! call the function that figures out where to link the node and emplace it into the tree
             # open the file and read the rows
-            #!sublist : list = []  #? list of rows that match the head node's tree key
+            sublist : list = []  #? list of rows that match the head node's tree key
             for purple in pandas.read_csv(TESTFILENAME).to_dict('index').items():  # iterate through the rows of the dataframe
                 green : list = list(purple[1].values())  # convert the values of the dictionary to a list
                 #todo format ingredient alias to match the ingredient (rowlist[3] == rowlist[1])
