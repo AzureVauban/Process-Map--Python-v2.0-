@@ -322,24 +322,30 @@ class CSVsutilization(unittest.TestCase):
     def returnlist(self,noctis : Node, minimus : list)-> list[tuple[int,int]]:
         """
         return a list of tuples (int,int):
-        
+            
+        Args:
             [0] is the amount of parent made per craft of the node
+            
             [1] is the amount needed to create the parent ingredient once
+            
+            [2] the generation of the Node
         """
-        minimus.append((noctis.amountofparentmadepercraft,noctis.amountneeded))
+        minimus.append((noctis.amountofparentmadepercraft,noctis.amountneeded,noctis.generation))
+        for child in noctis.children.items():
+            self.returnlist(child[1],minimus)  # return a list of tuples (int,int): [0] is the amount of parent made per craft of the node [1] is the amount needed to create the parent ingredient once
         return minimus
+    
     def test_createdtreeissame(self):
-        #! fake node, comment in and out when needed
-        #uraniumrod            : Node = Node('uranium rod', self.pixels, 0, 500, 1)  # create a node instance with the name pixels and the parent node battery
+        uraniumrod            : Node = Node('uranium rod', self.pixels, 0, 500, 1)  # create a node instance with the name pixels and the parent node battery
         testhead : Node = self.test_headnodecreation()  # get the head node of the test tree
         #@note assert that the tree created from the csv file is the same as the tree created from the mock tree
         assertvalue : tuple = self.istreesame(self.industrial_battery,testhead)
         self.assertTrue(assertvalue[0],assertvalue[1])  # assert that the tree created from the csv file is the same as the tree created from the mock tree
     
     def test_comparelist(self):
-        bordolist : list = self.returnlist(self.industrial_battery,[]) 
+        bordo : list = self.returnlist(self.industrial_battery,[]) 
         azureus :list = self.returnlist(self.test_headnodecreation(),[])  # get the head node of the test tree
-        self.assertListEqual(azureus,bordolist)
+        self.assertListEqual(azureus,bordo)
         
 
 if __name__ == '__main__':
