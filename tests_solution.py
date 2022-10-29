@@ -264,7 +264,7 @@ class CSVsutilization(unittest.TestCase):
                 if green[0] == returnhead.treekey:  # if the tree key of the row matches the head node's tree key
                     sublist.append(green)
                 # for each row, check if the it meets the conditions to be a child node of the head node
-            #!self.locate_emplace_spot(returnhead,green)
+            self.locate_emplace_spot(returnhead,sublist)
                 # if it does not, check to see if any of the children meet the condition 
             self.assertEqual(returendnodepopulation,10)  # assert that the population of the tree is equal to the population of the mock tree 
             return returnhead  # return a random head node instance
