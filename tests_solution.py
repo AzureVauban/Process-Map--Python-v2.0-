@@ -5,6 +5,7 @@ import os
 import unittest
 import random
 import pandas
+from zmq import PROTOCOL_ERROR_ZMTP_MALFORMED_COMMAND_INITIATE
 from solution import Node, generatename, createclone, reversearithmetic
 from solution import FIELDNAMES
 TESTFILENAME: str = "tests_solution.csv"
@@ -169,8 +170,10 @@ class CSVsutilization(unittest.TestCase):
             self.assertGreaterEqual(len(foundheadpoints), 1, 'No headnodes found')  # assert that the headnodes are found
             return foundheadpoints  # return the headnodes
          
-    def figureoutwheretolink(self,parent : Node, csvrow : list):
+    def emplacelink(self,parent : Node, csvrow : list) -> bool:
         """
+        @audit when this method is called, it should be called when the node is going through the tree recursively and the csvrow being constant throughout that recursive search
+        @audit-info return a boolean value to indicate if the node was successfully linked to the parent node
         csvrow : [
             @note example row for a head node instance
             'Tree_Key'                          [0]: 'cE1NXAKBXatn'
@@ -202,13 +205,18 @@ class CSVsutilization(unittest.TestCase):
             # 'Parent_of_Ingredient' must not be None and must the ingredient of Parent
             # 'Ingredient_Alias' must not be 'In' any Node with in the tiems of the parent's children dictionary
             # also an exact copy of this node cannot be already linked to the parent!
-        
+        if len(csvrow) != 8:  # if the csvrow is the proper length
+            raise ValueError('csvrow is not the proper length')  # raise a value error
         #! keep add conditon checks as progress on this test is made
-        if parent.treekey == csvrow[0] and csvrow[3] != 'None' and csvrow[3] == parent.ingredient:
+        if parent.treekey == csvrow[0] and csvrow[3] != 'None' and csvrow[3] == parent.ingredient and csvrow[7] > 0:
             #@audit somewhere in the project it needs to be determined if the user will allow the amount on hands from the csv file to be used or if the user will input the amount on hand themselves
-            child : Node = Node(csvrow[1],None,csvrow[5],csvrow[6],csvrow[6],False,False,csvrow[0])  # create a node from the list
-        self.skipTest(exep_msg.testnotadded())  # skip the test
-    
+            child : Node = Node(csvrow[1],parent,csvrow[5],csvrow[6],csvrow[6],False,False,csvrow[0])  # create a node from the list
+            return True
+        else:
+            return False
+    def locate_emplace_spot(self,parent : Node,row : list):
+        spotfound : bool = self.emplacelink(parent,row)  # try to emplace the node into the parent node's children dictionary
+        
    
     
     
