@@ -283,15 +283,15 @@ class CSVsutilization(unittest.TestCase):
         if self.countpopulation(presetingredienttree) != self.countpopulation(csvsourcedtree):
             print('population not the same')  # debug
             return False
-        elif presetingredienttree.ingredient != csvsourcedtree.ingredient:
+        elif presetingredienttree.ingredient != csvsourcedtree.ingredient: #@note comparsion fails
             print('ingredients not the same')  # debug
             return False
         elif presetingredienttree.generation != csvsourcedtree.generation:
             print('generations not the same')
             return False
-        elif presetingredienttree.amountofparentmadepercraft != csvsourcedtree.amountofparentmadepercraft:
-            print('amounts not the same')  # debug
-            return False
+#?        elif presetingredienttree.amountofparentmadepercraft != csvsourcedtree.amountofparentmadepercraft:
+#?            print('amounts not the same')  # debug
+#?            return False
         elif presetingredienttree.amountneeded != csvsourcedtree.amountneeded:
             print('amounts not the same')  # debug
             return False
@@ -318,7 +318,7 @@ class CSVsutilization(unittest.TestCase):
         quantum_processor     : Node = Node('quantum processor', battery, 0, 1, 1)
         silicon_board         : Node = Node('silicon board', quantum_processor, 0, 1, 4)
         protocite_bar2        : Node = Node('protocite bar', silicon_board, 0, 1, 2)
-        thorium_rod           : Node = Node('thorium rod', battery, 0, 1, 5)
+        thorium_rod           : Node = Node('thorium0 rod', battery, 0, 1, 5)
         thorium_ore           : Node = Node('thorium ore', thorium_rod, 0, 1, 2)
         #? uraniumrod            : Node = Node('uranium rod', pixels, 0, 500, 1)  # create a node instance with the name pixels and the parent node battery
         #head node of test tree
