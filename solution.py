@@ -68,12 +68,16 @@ class NodeB:
             yellow (int, optional): amount of item needed to craft the parent item one time.
             Defaults to 1.
         """
-        if not isinstance(amountonhand,int):
-            raise TypeError('amountonhand must be an integer not a '+str(type(amountonhand)))
-        if not isinstance(amountofparentmadepercraft,int):
-            raise TypeError('amountofparentmadepercraft must be an integer not a ' + str(type(amountofparentmadepercraft)))  #! add a check for float and convert to int if necessary
-        if not isinstance(amountneeded,int):
-            raise TypeError('amountneeded must be an integer not a ' + str(type(amountneeded)))
+        if not isinstance(amountonhand, int):
+            raise TypeError(
+                'amountonhand must be an integer not a '+str(type(amountonhand)))
+        if not isinstance(amountofparentmadepercraft, int):
+            # ! add a check for float and convert to int if necessary
+            raise TypeError('amountofparentmadepercraft must be an integer not a ' +
+                            str(type(amountofparentmadepercraft)))
+        if not isinstance(amountneeded, int):
+            raise TypeError(
+                'amountneeded must be an integer not a ' + str(type(amountneeded)))
         self.amountonhand = amountonhand
         self.amountofparentmadepercraft = amountofparentmadepercraft
         self.amountneeded = amountneeded
@@ -99,7 +103,7 @@ class Node(NodeB):
     treekey: str = ''
     ismain_promptinputbool: bool = True
 
-    def __init__(self, ingredient: str = '', parent=None, amountonhand: int = 0, amountofparentmadepercraft: int = 1, amountneeded: int = 1, green: bool = False, orange: bool = __name__ == '__main__',treekey: str = 'NanKey') -> None:  # pylint:disable=C0301
+    def __init__(self, ingredient: str = '', parent=None, amountonhand: int = 0, amountofparentmadepercraft: int = 1, amountneeded: int = 1, green: bool = False, orange: bool = __name__ == '__main__', treekey: str = 'NanKey') -> None:  # pylint:disable=C0301
         """
         default constructor for Node instance, stores identifying features of an item's
         information
@@ -131,8 +135,7 @@ class Node(NodeB):
         if not __name__ == '__main__' and parent is None:
             self.treekey = treekey
         # set tree key of this instance
-      
-        
+
         if not self.checkaliasuniqueness(self.aliasingredient):
             self.aliasingredient = self.aliasingredient + '__' + generatename()
         self.askmadepercraftquestion = green
@@ -198,7 +201,7 @@ class Node(NodeB):
         return checkstring != self.ingredient and self.ingredient != self.aliasingredient
 
     @classmethod
-    def generate_treekey(cls, length : int = random.randint(5,20)) -> str:
+    def generate_treekey(cls, length: int = random.randint(5, 20)) -> str:
         """
         randomly generates an alpha numeric string to be used as a unique identifier for the tree
         and all nodes linked to this instance
@@ -209,23 +212,24 @@ class Node(NodeB):
                 '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
         return cls.treekey
     # make a method to return a list with all the info needed on a line of the csv file
+
     def create_csv_writerow(self) -> dict:
         """
         FIELDNAMES: list = [  # list of field names for the csv output file
             'Tree_Key': 74nry8keki',
-            
+
             'Ingredient': Copper Wire
-            
+
             'Ingredient_Alias': Copper Wire__ZpgMzAwQdfRu
-            
+
             'Parent_of_Ingredient': Silicon Board
-            
+
             'Amount_on_Hand': 0
-        
+
             'Amount_Made_Per_Craft': 9
-            
+
             'Amount_Needed_Per_Craft': 0
-            
+
             'Generation': 1
         ]
         Returns:
@@ -236,10 +240,11 @@ class Node(NodeB):
         # if the parent is not None, set the parent ingredient to the ingredient of the parent
         if self.parent is not None:
             ghast = self.parent.ingredient
-        # input data into the dictionary 
+        # input data into the dictionary
         azathoth.update({FIELDNAMES[0]: self.treekey})
         azathoth.update({FIELDNAMES[1]: self.ingredient})
-        azathoth.update({FIELDNAMES[2]: self.aliasingredient.replace(' ', '_')})
+        azathoth.update(
+            {FIELDNAMES[2]: self.aliasingredient.replace(' ', '_')})
         azathoth.update({FIELDNAMES[3]: ghast})
         azathoth.update({FIELDNAMES[4]: str(self.amountonhand)})
         azathoth.update({FIELDNAMES[5]: str(self.amountofparentmadepercraft)})
@@ -362,6 +367,7 @@ class NodeTree():
     def __init__(self, population: int = random.randint(1, 10)) -> None:
         self.headnode: Node = self.generateTree(population)
         self.population = self.countleafs(self.headnode)
+
 
 def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:
     """
@@ -907,14 +913,14 @@ if __name__ == '__main__':
                 nodesfromcsv: dict = tentative_method_4_issue3()
                 print("Do you want to chose any of these ingredient trees to modify from the .csv file?\
                       ('Y' or 'N')")
-                if nodesfromcsv != {-1:None}:
-                    for index,item in enumerate(nodesfromcsv.items()):
+                if nodesfromcsv != {-1: None}:
+                    for index, item in enumerate(nodesfromcsv.items()):
                         print(f'{index+1}. {item[1].ingredient}')
                 break
             elif userinput == 'H':
                 printprompt()
             else:
-                PROGRAMMODETYPE=0
+                PROGRAMMODETYPE = 0
                 # todo if the .csv file exists in the current directionary, ask the user if they want to use an of the ingredient trees in the file for the current program mode
 #!                nodesfromcsv : dict = tentative_method_4_issue3()
 #!                print("Do you want to chose any of these ingredient trees to modify from the .csv file?\
@@ -925,14 +931,14 @@ if __name__ == '__main__':
                 break
         # prompt user to type in the name of the item they want to create
         while True:
-            itemname=input(
+            itemname = input(
                 'What is the name of the item you want to create: ')
-            itemname=itemname.strip()
+            itemname = itemname.strip()
             if len(itemname) == 0:
                 print('You must type something in')
             else:
                 break
-        head=Node(itemname, None)
+        head = Node(itemname, None)
         if PROGRAMMODETYPE == 0:  # ? normal program mode
             populate(head)
             for subnode in findlocalendpoints(head, {}).items():
@@ -941,13 +947,13 @@ if __name__ == '__main__':
                   end=str(head.amountresulted)+'\n')
         else:  # ? Mode B
             print('How much', head.ingredient, 'do you want to create:')
-            desirednumber: int=promptint()
+            desirednumber: int = promptint()
             populate(head)
             reversearithmetic(head, desirednumber)
             # output the results
             print('To get', str(str(desirednumber)+'x'),
                   head.ingredient, 'you need the following:')
-            results: dict=findlocalendpoints(head, {})
+            results: dict = findlocalendpoints(head, {})
             # iterate through the dictionary and output the amounts on hand
             reformat_output(results)
         # prompt user if they want to output the results to a .csv file
@@ -958,9 +964,9 @@ if __name__ == '__main__':
              ('Y' or 'N')")
         print("type in 'H' if you need to be reminded of the prompt")
         while True:
-            userinput=(input(''))
-            userinput=userinput.strip()
-            userinput=userinput.upper()
+            userinput = (input(''))
+            userinput = userinput.strip()
+            userinput = userinput.upper()
             if userinput not in ('Y', 'N', 'H'):
                 print("That input is not valid, please type in\
                      ('Y' or 'N')")
@@ -974,7 +980,7 @@ if __name__ == '__main__':
     # terminate the program
     print('terminating process in 10 seconds')
     # close program in 10 seconds
-    NANI=10
+    NANI = 10
     while NANI > 0:
         time.sleep(1)
         NANI -= 1
