@@ -264,7 +264,8 @@ class CSVsutilization(unittest.TestCase):
         if len(csvrow) != 8:  # if the csvrow is the proper length
             raise ValueError('csvrow is not the proper length; the list passes contains the following:',csvrow)  # raise a value error
         #! keep add conditon checks as progress on this test is made
-        if parent.treekey == csvrow[0] and csvrow[3] != 'None' and csvrow[3] == parent.ingredient and csvrow[7] > 0 and parent is not None:
+        foundemplacelocation : bool = parent.treekey == csvrow[0] and csvrow[3] != 'None' and csvrow[3] == parent.ingredient and csvrow[7] > 0 and parent is not None:
+        if foundemplacelocation:
             #@audit somewhere in the project it needs to be determined if the user will allow the amount on hands from the csv file to be used or if the user will input the amount on hand themselves
             #!child : Node = Node(csvrow[1],parent,csvrow[5],csvrow[6],csvrow[6],False,False,csvrow[0])  # create a node from the list
             Node(csvrow[1],parent=parent,amountneeded=csvrow[6],amountofparentmadepercraft=csvrow[5],amountonhand=csvrow[4],treekey=csvrow[0])  # create a node from the list
@@ -476,11 +477,14 @@ class CSVsutilization(unittest.TestCase):
                         pinkpandarows.append(pinkerpanda)
                 for pinkpandarow in pinkpandarows:
                     # insert a fake ingredient_alias attribute into the list 2nd element of the each row
-                    pinkpandarow.insert(2, 'None')  # insert a fake ingredient_alias attribute into the list 2nd element of the each row
+                    pinkpandarow.insert(2, 'Nani')  # insert a fake ingredient_alias attribute into the list 2nd element of the each row
+                # create a tree from the rows
                 for pink in pinkpandarows:
-                    self.locate_emplace_spot(headnode[1], pink)  # locate the spot to place the node and place it
-                pass
+                    self.locate_emplace_spot(headnode[1], pink)  # locate the spot to place the node and place it  
             # sort dictionary of head nodes based on the size of each tree
+            #! for debugging, output the population of each head node in the dictionary
+            for node in panda.items():
+                print(node[0],'-',node[1].ingredient,':',self.countpopulation(node[1]))  # print the head node key and the population of the tree
             return panda #@note use the dictionary to print the tree to the new csv file
         #self assert that the dictionary is not empty and not equal {-1:None}
 if __name__ == '__main__':
