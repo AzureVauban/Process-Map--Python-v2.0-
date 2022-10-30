@@ -303,7 +303,7 @@ class CSVsutilization(unittest.TestCase):
             if parent is not None:
                 pass
                 
-    def test_headnodecreation(self,foundheadnodes = None)->Node:
+    def test_headnodecreation(self,foundheadnodes = None)->Node: #@note reformat this method to take in a dict instead of setting a dict if the parameter is None
         """
         test that the head node is created correctly
         """
@@ -313,6 +313,10 @@ class CSVsutilization(unittest.TestCase):
         # is not a head node instance (avoid duplicating the same nodes as dictionized nodes) and emplace nodes into the head node's tree
         if foundheadnodes is None:
             foundheadnodes = self.test_pandacsvparsesearch()
+        elif isinstance(foundheadnodes,dict):
+            foundheadnodes =self.test_checkforduplicatetrees()
+        else:
+            raise TypeError('foundheadnodes is not a dictionary') # raise a type error if the foundheadnodes is not a dictionary
         if foundheadnodes == {-1: None} or not os.path.exists(path=TESTFILENAME):
             # @audit-info in the solution module the user would input an integer to the function to specify which head node to create and return, for this test return a random one
             self.skipTest('the csv file does not exist')
