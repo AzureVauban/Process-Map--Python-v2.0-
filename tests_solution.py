@@ -53,12 +53,7 @@ class NodeCreationTests(unittest.TestCase):
 class internalsearch(unittest.TestCase):
 
     def test_search(self):
-        """
-        assert that return dict from the search method is {-1:None}
-        """
-        ingredientname: str = generatename()
-        nodetree = Node()   # create a node tree
-        self.skipTest(exep_msg.testnotadded())  # skip the test
+        self.SkipTest('Test not implemented')
 
 
 class CSVsutilization(unittest.TestCase):
