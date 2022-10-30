@@ -82,7 +82,12 @@ class internalsearch(unittest.TestCase):
     
     def test_search(self):
         # assert that the search method does not return {-1:None}
-        assertDict : dict = self.search('thorium ore',self.industrial_battery,{})
+        testsearchstring : str = 'protocite'
+        assertDict : dict = self.search(testsearchstring,self.industrial_battery,{})
+        if len(assertDict) == 1:
+            print('We noticed that you typed in',testsearchstring,len(assertDict),'time already, do you want to copy the contents of that node?')
+        else:
+            print('We noticed that you typed in',testsearchstring,len(assertDict),'times already, do you want to copy the contents of that node?')
         self.assertNotEqual(assertDict,{-1:None},'No nodes found')
 
 
