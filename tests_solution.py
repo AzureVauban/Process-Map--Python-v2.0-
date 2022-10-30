@@ -302,7 +302,7 @@ class CSVsutilization(unittest.TestCase):
         else:
             if parent is not None:
                 pass
-
+                
     def test_headnodecreation(self,foundheadnodes : dict = test_pandacsvparsesearch())->Node:
         """
         test that the head node is created correctly
