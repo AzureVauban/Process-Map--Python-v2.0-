@@ -330,7 +330,8 @@ class CSVsutilization(unittest.TestCase):
             # red and blue's node treekeys are the same
             # red's parent ingredient is the same as blue's ingredient
             # get a random head node from the dictionary of head nodes
-            returnhead: Node = random.choice(list(foundheadnodes.items()))[1]
+            list 
+            returnhead: Node = random.choice(foundheadnodes.items())[1]
             # @audit-info assert that the population of the tree is equal to the population of the mock tree
             #! call the function that figures out where to link the node and emplace it into the tree
             # open the file and read the rows to create a list of rows with matching treekeys as the selected node
