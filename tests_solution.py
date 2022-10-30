@@ -264,6 +264,7 @@ class CSVsutilization(unittest.TestCase):
         if len(csvrow) != 8:  # if the csvrow is the proper length
             raise ValueError('csvrow is not the proper length; the list passes contains the following:',csvrow)  # raise a value error
         #! keep add conditon checks as progress on this test is made
+        print(csvrow)
         foundemplacelocation : bool = parent.treekey == csvrow[0] and csvrow[3] != 'None' and csvrow[3] == parent.ingredient and csvrow[7] > 0 and parent is not None
         if foundemplacelocation:
             #@audit somewhere in the project it needs to be determined if the user will allow the amount on hands from the csv file to be used or if the user will input the amount on hand themselves
