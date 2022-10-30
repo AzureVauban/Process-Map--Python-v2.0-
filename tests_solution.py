@@ -10,36 +10,17 @@ import unittest
 import random
 import pandas
 from solution import Node, generatename, createclone, reversearithmetic
-from solution import FIELDNAMES
+FIELDNAMES: list = [  # list of field names for the csv output file (new csv file)
+    'Tree_Key',  # 74nry8keki',
+    'Ingredient',  # Copper Wire
+    'Ingredient_Alias',  # Copper_Wire__ZpgMzAwQdfRu
+    'Parent_of_Ingredient',  # Silicon Board
+    'Amount_on_Hand',  # 0
+    'Amount_Of_Parent_Made_Per_Craft',  # 9
+    'Amount_Needed_Per_Craft',  # 0
+    'Generation'  # 1
+]
 TESTFILENAME: str = "tests_solution.csv"
-
-
-class exep_msg():
-    """
-    Class to hold the exceptions messages
-    """
-    # all methods return string literals
-    @classmethod
-    def csvnotexist(cls):
-        """test that the csv file does not exist"""
-        # assert that the csv file does not exist
-        return "File does not exist"
-
-    @ classmethod
-    def nodetonodecomparsion(cls):
-        return "Node to Node comparison is not working"
-
-    @classmethod
-    def testnotadded(cls):
-        return "Test not implemented"
-
-    @classmethod
-    def headisNone(cls):
-        return "head of the tree is None"
-    @classmethod
-    def treekeymismatch(cls):
-        return "Tree key mismatch"
-
 
 
 class NodeCreationTests(unittest.TestCase):
@@ -199,7 +180,7 @@ class CSVsutilization(unittest.TestCase):
             # create the file
             pandas.DataFrame(columns=FIELDNAMES).to_csv(TESTFILENAME, index=False)
             self.test_pandascsvwrite()  # call the function again to write to the file
-            self.skipTest(exep_msg.csvnotexist())  # skip the test
+            self.skipTest('csv file does not exist')  # skip the test
         else:
             # write preset mock ingredient tree onto it
             for line in yellowduck.create_csv_writerows([]):
@@ -218,7 +199,7 @@ class CSVsutilization(unittest.TestCase):
             conditions of a head node instance, if they do create a head node instance and add it into a returnable dict
         """
         if not os.path.exists(TESTFILENAME):
-            self.skipTest(exep_msg.csvnotexist())  # skip the test
+            self.skipTest('csv file does nto exist')  # skip the test
             return {-1: None}  # return a dict with a key of -1 and a value of None
         else:
             # value is the treekey and the item is the headnode translated from the csv file
@@ -239,7 +220,7 @@ class CSVsutilization(unittest.TestCase):
             #check that the key of the dictionary and the treekey of the node are the same, if they are not, raise an exception
             for key, value in foundheadpoints.items():
                 if key != value.treekey:
-                    raise ValueError(exep_msg.treekeymismatch())
+                    raise ValueError('the key of the dictionary and the treekey of the node are not the same')  # raise an exception
             self.assertGreaterEqual(len(foundheadpoints), 1, 'No headnodes found')  # assert that the headnodes are found
             return foundheadpoints  # return the headnodes
          
@@ -316,7 +297,7 @@ class CSVsutilization(unittest.TestCase):
         foundheadnodes : dict = self.test_pandacsvparsesearch()
         if foundheadnodes == {-1:None} or not os.path.exists(path=TESTFILENAME):
             # @audit-info in the solution module the user would input an integer to the function to specify which head node to create and return, for this test return a random one
-            self.skipTest(exep_msg.csvnotexist())
+            self.skipTest('the csv file does not exist')
             return Node('NaNNodeName',None,-1,-1,-1) 
         else: #todo create tree rom csv file
             # open the file in read mode and check for nodes in the csv that match the value of the head node's key in the dictionary,
@@ -482,7 +463,7 @@ class CSVsutilization(unittest.TestCase):
         """
         panda : dict = {} # dictionary of new nodes
         # read the csv file
-        OLDFEILDNAMES = [
+        OLDFIELDNAMES = [
             'Ingredient',               
             'Parent_Ingredient',
             'Amount_on_Hand',
@@ -491,7 +472,7 @@ class CSVsutilization(unittest.TestCase):
             'Generation',
             'Tree_Key'    
         ]
-        for purplepanda in pandas.read_csv(nameofoldcsv, names=OLDFEILDNAMES).to_dict('index').items():  # read the csv file and convert it to a dictionary of records
+        for purplepanda in pandas.read_csv(nameofoldcsv, names=OLDFIELDNAMES).to_dict('index').items():  # read the csv file and convert it to a dictionary of records
             oxygen : list = list(purplepanda[1].values())  # convert the record to a list
             """
             @note field names/value models from the old csv file
@@ -514,7 +495,7 @@ class CSVsutilization(unittest.TestCase):
             # parse the csv file and create trees from the nodes
             for headnode in panda.items():
                 pinkpandarows: list = []
-                for pinkpanda in pandas.read_csv(nameofoldcsv, names=OLDFEILDNAMES).to_dict('index').items():  # read the csv file and convert it to a dictionary of records
+                for pinkpanda in pandas.read_csv(nameofoldcsv, names=OLDFIELDNAMES).to_dict('index').items():  # read the csv file and convert it to a dictionary of records
                     pinkerpanda : list = list(pinkpanda[1].values())  # convert the record to a list
                     if pinkerpanda[6] == headnode[0]:
                         pinkpandarows.append(pinkerpanda)
