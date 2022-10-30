@@ -6,6 +6,7 @@ Unit Tests for the solution.py module
 - inputting basic arithmetic symbols when prompted to input numeric data (not added yet)
 """
 import os
+from tkinter.tix import ListNoteBook
 import unittest
 import random
 import pandas
@@ -311,10 +312,8 @@ class CSVsutilization(unittest.TestCase):
         # if it returns {-1:None} or the file is not in the directory, skip the test
         # else, open the file in read mode and check for nodes in the csv that match the value of the head node's key in the dictionary,
         # is not a head node instance (avoid duplicating the same nodes as dictionized nodes) and emplace nodes into the head node's tree
-        if foundheadnodes is None:
+        if foundheadnodes is None or isinstance(foundheadnodes,dict):
             foundheadnodes = self.test_pandacsvparsesearch()
-        elif isinstance(foundheadnodes,dict):
-            foundheadnodes =self.test_checkforduplicatetrees()
         else:
             raise TypeError('foundheadnodes is not a dictionary') # raise a type error if the foundheadnodes is not a dictionary
         if foundheadnodes == {-1: None} or not os.path.exists(path=TESTFILENAME):
@@ -330,8 +329,10 @@ class CSVsutilization(unittest.TestCase):
             # red and blue's node treekeys are the same
             # red's parent ingredient is the same as blue's ingredient
             # get a random head node from the dictionary of head nodes
-            list 
-            returnhead: Node = random.choice(foundheadnodes.items())[1]
+            listofnodes: list = []
+            for node in foundheadnodes.items():
+                listofnodes.append(node[1])
+            returnhead: Node = random.choice(listofnodes)
             # @audit-info assert that the population of the tree is equal to the population of the mock tree
             #! call the function that figures out where to link the node and emplace it into the tree
             # open the file and read the rows to create a list of rows with matching treekeys as the selected node
