@@ -472,7 +472,8 @@ class CSVsutilization(unittest.TestCase):
                 pinkpandanodes: list = []
                 for pinkpanda in pandas.read_csv(nameofoldcsv, names=OLDFEILDNAMES).to_dict('index').items():  # read the csv file and convert it to a dictionary of records
                     pinkerpanda : list = list(pinkpanda[1].values())  # convert the record to a list
-                    if pinkerpanda[1] != 'None' and pinkerpanda
+                    if pinkerpanda[1] != 'None' and pinkerpanda[6] == headnode[0]:
+                        pinkpandanodes.append(Node(parent=headnode[1],ingredient=pinkerpanda[0],amountofparentmadepercraft=pinkerpanda[3],amountneeded=pinkerpanda[4],treekey=pinkerpanda[6]))
                     pass
             # sort dictionary of head nodes based on the size of each tree
             return panda #@note use the dictionary to print the tree to the new csv file
