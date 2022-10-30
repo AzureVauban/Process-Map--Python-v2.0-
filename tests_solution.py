@@ -265,6 +265,9 @@ class CSVsutilization(unittest.TestCase):
             raise ValueError('csvrow is not the proper length; the list passes contains the following:',csvrow)  # raise a value error
         #! keep add conditon checks as progress on this test is made
         print(csvrow)
+        #@note parse out any underscore characters from the ingredient and the parent of the ingredient to match the ingredient and parent of the node
+        csvrow[1] = csvrow[1].replace('_','')  # remove any underscores from the ingredient
+        csvrow[3] = csvrow[3].replace('_','')  # remove any underscores from the parent of the ingredient
         foundemplacelocation : bool = parent.treekey == csvrow[0] and csvrow[3] != 'None' and csvrow[3] == parent.ingredient and csvrow[7] > 0 and parent is not None
         if foundemplacelocation:
             #@audit somewhere in the project it needs to be determined if the user will allow the amount on hands from the csv file to be used or if the user will input the amount on hand themselves
