@@ -81,6 +81,7 @@ class internalsearch(unittest.TestCase):
             return {-1:None}
         else:
             return foundnodes
+    
     def search2(self,ingredient: str, head :Node) -> dict:
         # create a dict of all the nodes that have the same ingredient name
         # the dict should have a key of the instancekey and a value of the node
@@ -100,8 +101,11 @@ class internalsearch(unittest.TestCase):
         for child in head.children.items():
             self.converttreeintodict(child[1],nodes)
         return nodes
+    
+    def test_createclone(self):
+        # assert that the clone node is not the same memory address as the original node
         
-        
+     
     def test_search(self):
         # assert that the search method does not return {-1:None}
         testsearchstring : str = 'protocite'
