@@ -504,27 +504,32 @@ class CSVsutilization(unittest.TestCase):
                 #@note reorganize so that the fields of this csv match the fields of the newer csv positonally
                 for nani in pinkpandarows:
                     #@note swap 1 ingredient and treekey (0,7)
-                    nani[0],nani[7]=nani[7],nani[0]
+                    nani[0], nani[7] = nani[7], nani[0]
                     #@note swap 2 ingredient and parent_ingredient (7,1)
-                    nani[7],nani[1]=nani[7],nani[1]
+                    nani[7], nani[1] = nani[7], nani[1]
                     #@note swap 3 generation and parent_ingredient (7,5)
-                    nani[7],nani[5]=nani[7],nani[5]
+                    nani[7], nani[5] = nani[7], nani[5]
                     #@note swap 4 parent_ingredient and needed (6,5)
-                    nani[6],nani[5]=nani[6],nani[5]
+                    nani[6], nani[5] = nani[6], nani[5]
                     #@note swap 5 parent_ingredient and made (5,4)
-                    nani[5],nani[4]=nani[5],nani[4]
+                    nani[5], nani[4] = nani[5], nani[4]
                     #@note swap 6 parent_ingredient and onhand (4,3)
-                    nani[4],nani[3]=nani[4],nani[3]
+                    nani[4], nani[3] = nani[4], nani[3]
                     #swap 1 and 7
-                    nani[1],nani[7]=nani[7],nani[1]  # swap 1 and 7
-                    nani[7],nani[2] = nani[2],nani[7]  # swap 7 and 2
-                    nani[6],nani[7]=nani[7],nani[6]  # swap 6 and 7
-                    nani[6],nani[5]=nani[5],nani[6]  # swap 6 and 5
-                    nani[5],nani[4]=nani[4],nani[5]  # swap 5 and 4
-                    nani[3],nani[4]=nani[4],nani[3]  # swap 3 and 4`
-                    nani[3],nani[2]=nani[2],nani[3]  # swap 3 and 2
+                    nani[1], nani[7] = nani[7], nani[1]  # swap 1 and 7
+                    nani[7], nani[2] = nani[2], nani[7]  # swap 7 and 2
+                    nani[6], nani[7] = nani[7], nani[6]  # swap 6 and 7
+                    nani[6], nani[5] = nani[5], nani[6]  # swap 6 and 5
+                    nani[5], nani[4] = nani[4], nani[5]  # swap 5 and 4
+                    nani[3], nani[4] = nani[4], nani[3]  # swap 3 and 4`
+                    nani[3], nani[2] = nani[2], nani[3]  # swap 3 and 2
                     #@note convert numberic data into integers
-                    print(nani)
+                    ariana : int = 3
+                    #ariana 3 is less than 7
+                    if not nani[ariana].isdigit():
+                        raise ValueError('not a digit')  # raise a value error if the value is not a digit
+                    else:
+                        nani[ariana] = int(nani[ariana])  # convert the amount on hand to an integer
                 # create a tree from the rows
                 for pink in pinkpandarows:
                     self.locate_emplace_spot(headnode[1], pink)  # locate the spot to place the node and place it  
@@ -532,7 +537,7 @@ class CSVsutilization(unittest.TestCase):
             #! for debugging, output the population of each head node in the dictionary
             for node in panda.items():
                 print(node[0],'-',node[1].ingredient,':',self.countpopulation(node[1]))  # print the head node key and the population of the tree
-            return panda #@note use the dictionary to print the tree to the new csv file
+            return panda # @note use the dictionary to print the tree to the new csv file
         #self assert that the dictionary is not empty and not equal {-1:None}
 if __name__ == '__main__':
     blue = CSVsutilization()  # create an instance of the class
