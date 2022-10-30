@@ -79,6 +79,7 @@ class internalsearch(unittest.TestCase):
             return {-1:None}
         else:
             return foundnodes
+    
     def test_search(self):
         # assert that the search method does not return {-1:None}
         assertDict : dict = self.search('thorium ore',self.industrial_battery,{})
