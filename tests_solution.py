@@ -162,7 +162,7 @@ class CSVsutilization(unittest.TestCase):
             return hibernus
         
     
-    def testsubstringmethod(self):
+    def testsubstringmethod(self,):
         # reformat a string to have all of its whitespace turn into an underscore
         teststring: str = 'this is a test string'  # test string
         teststring = teststring.strip()
@@ -171,7 +171,7 @@ class CSVsutilization(unittest.TestCase):
 #!        self.assertEqual(teststring, 'this_is_a_test_string')  # assert that the string is formatted correctly
         self.skipTest('Test is not needed anymore')  # skip the test
 
-    def test_pandascsvwrite(self):
+    def test_pandascsvwrite(self,yellowduck : Node = industrial_battery):
         """
         if file does not exist in the SAME directory as the solution module, create it and write to it
         if the file already exists, open it in append mode and append written data to it
@@ -185,7 +185,7 @@ class CSVsutilization(unittest.TestCase):
             self.skipTest(exep_msg.csvnotexist())  # skip the test
         else:
             # write preset mock ingredient tree onto it
-            for line in self.industrial_battery.create_csv_writerows([]):
+            for line in yellowduck.create_csv_writerows([]):
                 pandas.DataFrame(line, index=[0]).to_csv(TESTFILENAME, mode='a', header=False, index=False)
         # test that the file exists
         self.assertTrue(os.path.exists(TESTFILENAME))
@@ -536,7 +536,6 @@ class CSVsutilization(unittest.TestCase):
                 # create a tree from the rows
                 for pink in pinkpandarows:
                     self.locate_emplace_spot(headnode[1], pink)  # locate the spot to place the node and place it  
-            # sort dictionary of head nodes based on the size of each tree
             #! for debugging, output the population of each head node in the dictionary
             for node in panda.items():
                 print(node[0],'-',node[1].ingredient,':',self.countpopulation(node[1]))  # print the head node key and the population of the tree
@@ -547,3 +546,5 @@ if __name__ == '__main__':
     for red in blue.test_pandacsvparsesearch().items():
         print(red[0],':',red[1],':',red[1].ingredient)
     yellow : Node = blue.test_headnodecreation()
+    for headnode in blue.test_convertdepreciatedcsv().items():
+        blue.test_pandascsvwrite(headnode[1])  # write the tree to the new csv file
