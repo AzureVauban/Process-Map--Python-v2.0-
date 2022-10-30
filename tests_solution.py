@@ -476,7 +476,7 @@ class CSVsutilization(unittest.TestCase):
                         pinkpandarows.append(pinkerpanda)
                 for pinkpandarow in pinkpandarows:
                     # insert a fake ingredient_alias attribute into the list 2nd element of the each row
-                    pinkpandarow.insert(1, 'None')  # insert a fake ingredient_alias attribute into the list 2nd element of the each row
+                    pinkpandarow.insert(2, 'None')  # insert a fake ingredient_alias attribute into the list 2nd element of the each row
                 for pink in pinkpandarows:
                     self.locate_emplace_spot(headnode[1], pink)  # locate the spot to place the node and place it
                 pass
