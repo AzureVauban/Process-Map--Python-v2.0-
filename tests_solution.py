@@ -348,8 +348,8 @@ class CSVsutilization(unittest.TestCase):
 # @note not needed anymore            self.assertEqual(nodecount,10)  # assert that the population of the tree is equal to the population of the mock tree
             # print the head node
             print('the returned tree is for', returnhead.ingredient)
-            return returnhead  # return a random head node instance
             self.skipTest('not needed anymore')
+            return returnhead  # return a random head node instance
 
     # todo append a list of attributes that do not match to the fail msg string of the tuple
     def istreesame(self, primetree: Node, derivedtree: Node) -> tuple:
@@ -560,7 +560,7 @@ class CSVsutilization(unittest.TestCase):
             return panda  # @note use the dictionary to print the tree to the new csv file
         # self assert that the dictionary is not empty and not equal {-1:None}
 
-    def test_checkforduplicatetrees(self,head : Node)->tuple:
+    def test_checkforduplicatetrees(self,head : Node=thorium_rod)->tuple:
         """
         test that there are exact copies of an ingredient tree written into csv file
         """
@@ -581,8 +581,8 @@ class CSVsutilization(unittest.TestCase):
             #! check for the head nodes in the csv file
             headnodes : dict = self.test_pandacsvparsesearch()
             #check if any of the head nodes match the ingredient name of that the head node of the tree passed into the method
-            return (True,'duplicate tree found')
             self.skipTest('test not implemented')  # skip the test
+            return (True,'duplicate tree found')
 
 
 if __name__ == '__main__':
