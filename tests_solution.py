@@ -104,6 +104,7 @@ class internalsearch(unittest.TestCase):
     
     def test_createclone(self):
         # assert that the clone node is not the same memory address as the original node
+        searchdict : dict = self.search2('protocite',self.industrial_battery)
         
      
     def test_search(self):
