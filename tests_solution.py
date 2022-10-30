@@ -503,16 +503,18 @@ class CSVsutilization(unittest.TestCase):
                     nani.insert(2, 'Nani')  # insert a fake ingredient_alias attribute into the list 2nd element of the each row
                 #@note reorganize so that the fields of this csv match the fields of the newer csv positonally
                 for nani in pinkpandarows:
-                    print('hi nani')
-                    # swap the first and the last element of the list
-                    #@note swap treekey and ingredient 
-                    nani[0],nani[7] = nani[7],nani[0]  # swap the first and the last element of the list
-                    #swap the second and the last element of the list
-                    #@note swap the parent and the ingredient
-                    nani[1],nani[7] = nani[7],nani[1]  # swap the second and the last element of the list
-                    #swap the third and the last element of the list
-                    #@note swap the parent ptr and the ingredient alias
-                    nani[3],nani[7] = nani[7],nani[3]  # swap the third and the last element of the list
+                    #@note swap 1 ingredient and treekey (0,7)
+                    nani[0],nani[7]=nani[7],nani[0]
+                    #@note swap 2 ingredient and parent_ingredient (7,1)
+                    nani[7],nani[1]=nani[7],nani[1]
+                    #@note swap 3 generation and parent_ingredient (7,5)
+                    nani[7],nani[5]=nani[7],nani[5]
+                    #@note swap 4 parent_ingredient and needed (6,5)
+                    nani[6],nani[5]=nani[6],nani[5]
+                    #@note swap 5 parent_ingredient and made (5,4)
+                    nani[5],nani[4]=nani[5],nani[4]
+                    #@note swap 6 parent_ingredient and onhand (4,3)
+                    nani[4],nani[3]=nani[4],nani[3]
                 # create a tree from the rows
                 for pink in pinkpandarows:
                     self.locate_emplace_spot(headnode[1], pink)  # locate the spot to place the node and place it  
