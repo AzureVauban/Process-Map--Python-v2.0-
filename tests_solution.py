@@ -149,48 +149,8 @@ class CSVsutilization(unittest.TestCase):
         def __init__(self, population: int = random.randint(1, 10), head: Node = Node(generatename())) -> None:
             self.head = head
 
-    class SubMethods(): #todo finish creating methods
-        """a class containing methods for returning a set of instance attributes from a head node
-        """
-        head : Node
-        def __init__(self,head : Node) -> None:
-            self.head = head
-        @classmethod
-        def ingredients(cls,monokai : Node,noctis : list) ->list:
-            for child in monokai.children.items():
-                cls.ingredients(child[1],noctis)  # recurse through the tree
-            return noctis
-        @classmethod
-        def children(cls,monokai : Node,obscuro : list) -> list:
-            for child in monokai.children.items():
-                cls.ingredients(child[1],obscuro)  
-            return obscuro
-        @classmethod
-        def generation(cls,monokai : Node,uva : list) -> list:
-            for child in monokai.children.items():
-                cls.ingredients(child[1],uva)  
-            return uva
-        @classmethod
-        def amountneeded(cls,monokai : Node,viola : list)-> list:
-            for child in monokai.children.items():
-                cls.ingredients(child[1],viola)  
-            return viola
-        @classmethod
-        def amountmadepercraft(cls,monokai : Node,lux : list)-> list:
-            for child in monokai.children.items():
-                cls.ingredients(child[1],lux)  
-            return lux
-        @classmethod
-        def treekeys(cls,monokai : Node,lilac : list)-> list:
-            for child in monokai.children.items():
-                cls.ingredients(child[1],lilac)  
-            return lilac
-        @classmethod
-        def amountonhand(cls,monokai : Node,hibernus : list)-> list: #@note for debugging purposes
-            for child in monokai.children.items():
-                cls.ingredients(child[1],hibernus)  
-            return hibernus
-        
+    
+      
     
     def testsubstringmethod(self,):
         # reformat a string to have all of its whitespace turn into an underscore
