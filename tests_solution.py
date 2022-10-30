@@ -503,8 +503,10 @@ class CSVsutilization(unittest.TestCase):
                     nani.insert(2, 'Nani')  # insert a fake ingredient_alias attribute into the list 2nd element of the each row
                 #@note reorganize so that the fields of this csv match the fields of the newer csv positonally
                 for nani in pinkpandarows:
+                    print('hi nani')
                     # swap the first and the last element of the list
-                    nani[0],nani[6] = nani[6],nani[0]  # swap the first and the last element of the list
+                    #@note swap treekey and ingredient 
+                    nani[0],nani[7] = nani[7],nani[0]  # swap the first and the last element of the list
                 # create a tree from the rows
                 for pink in pinkpandarows:
                     self.locate_emplace_spot(headnode[1], pink)  # locate the spot to place the node and place it  
