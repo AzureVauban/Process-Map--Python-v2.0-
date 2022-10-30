@@ -271,7 +271,6 @@ class CSVsutilization(unittest.TestCase):
         foundemplacelocation : bool = parent.treekey == csvrow[0] and csvrow[3] != 'None' and csvrow[3] == parent.ingredient and csvrow[7] > 0 and parent is not None
         if foundemplacelocation:
             #@audit somewhere in the project it needs to be determined if the user will allow the amount on hands from the csv file to be used or if the user will input the amount on hand themselves
-            #!child : Node = Node(csvrow[1],parent,csvrow[5],csvrow[6],csvrow[6],False,False,csvrow[0])  # create a node from the list
             Node(csvrow[1],parent=parent,amountneeded=csvrow[6],amountofparentmadepercraft=csvrow[5],amountonhand=csvrow[4],treekey=csvrow[0])  # create a node from the list
             return True
         else:
