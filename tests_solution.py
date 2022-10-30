@@ -474,8 +474,11 @@ class CSVsutilization(unittest.TestCase):
                     pinkerpanda : list = list(pinkpanda[1].values())  # convert the record to a list
                     if pinkerpanda[6] == headnode[0]:
                         pinkpandarows.append(pinkerpanda)
+                for pinkpandarow in pinkpandarows:
+                    # insert a fake ingredient_alias attribute into the list 2nd element of the each row
+                    pinkpandarow.insert(1, 'None')  # insert a fake ingredient_alias attribute into the list 2nd element of the each row
                 for pink in pinkpandarows:
-                    self.locate_emplace_spot(panda, pink)  # locate the spot to place the node and place it
+                    self.locate_emplace_spot(headnode[1], pink)  # locate the spot to place the node and place it
                 pass
             # sort dictionary of head nodes based on the size of each tree
             return panda #@note use the dictionary to print the tree to the new csv file
