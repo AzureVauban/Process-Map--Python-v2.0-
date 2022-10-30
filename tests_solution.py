@@ -132,14 +132,12 @@ class CSVsutilization(unittest.TestCase):
             for child in node.children.items():
                 count = cls.countpopulation(child[1], count)
         return count
-    industrial_battery: Node = Node(
-        'industrial battery', None, treekey=Node.generate_treekey())
+    industrial_battery: Node = Node('industrial battery', None, treekey=Node.generate_treekey())
     protocite_bar: Node = Node('protocite bar', industrial_battery, 0, 1, 5)
     protocite: Node = Node('protocite', protocite_bar, 0, 1, 2)
     battery: Node = Node('battery', industrial_battery, 0, 1, 2)
     pixels: Node = Node('pixels', battery, 0, 1, 2500)
-    quantum_processor: Node = Node(
-        'quantum processor', industrial_battery, 0, 1, 1)
+    quantum_processor: Node = Node('quantum processor', industrial_battery, 0, 1, 1)
     silicon_board: Node = Node('silicon board', quantum_processor, 0, 1, 4)
     protocite_bar2: Node = Node('protocite bar', quantum_processor, 0, 1, 2)
     thorium_rod: Node = Node('thorium rod', industrial_battery, 0, 1, 5)
@@ -562,24 +560,28 @@ class CSVsutilization(unittest.TestCase):
             return panda  # @note use the dictionary to print the tree to the new csv file
         # self assert that the dictionary is not empty and not equal {-1:None}
 
-    def test_checkforduplicatetrees(self):
+    def test_checkforduplicatetrees(self,head : Node)->tuple:
         """
         test that there are exact copies of an ingredient tree written into csv file
         """
         # check if the file is in the current directory, if is not, skip the test
         if not os.path.isfile(TESTFILENAME):
             self.skipTest('test.csv not found')
+            return (False,'test.csv not found')
+        elif  len(self.test_pandacsvparsesearch()) == 0:
+            self.skipTest('no head nodes found')
+            return (False,'no head nodes found')
+            # if the file exists in the current direct
         else:
+            # check that the node passed into the function is a head node
+            if head.parent is not None:
+                while head.parent is not None:
+                    head = head.parent
+
             #! check for the head nodes in the csv file
-            headnodes : dict = 
-            # if the file exists in the current directory read it and parse for head nodes
-            # if it has only one head node, skip the test
-            # close the file
-            # if more than one head node, run the test
-            # open the file and parse it for head nodes
-            # if head nodes have matching ingredient names, create an ingredient tree and then compare the trees using the istreesame method
-            # assert true if the trees are the same, assert false if the trees are not the same
-            # close the file
+            headnodes : dict = self.test_pandacsvparsesearch()
+            #check if any of the head nodes match the ingredient name of that the head node of the tree passed into the method
+            return (True,'duplicate tree found')
             self.skipTest('test not implemented')  # skip the test
 
 
