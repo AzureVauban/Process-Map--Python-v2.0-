@@ -463,11 +463,14 @@ class CSVsutilization(unittest.TestCase):
             """
             if oxygen[1] == 'None' and oxygen[3] == '1' and oxygen[4] == '1' and oxygen[5] == '0':
                 panda.update({oxygen[6]:Node(parent=None,ingredient=oxygen[0],amountofparentmadepercraft=oxygen[3],amountneeded=oxygen[4],treekey=oxygen[6])})  # create a head node and add it to the dictionary of nodes
-        # convert the depreciated csv file to pandas DataFrame
         self.assertTrue(len(panda)>=1 and panda != {-1:None})  # assert that the dictionary is not empty and not equal {-1:None}
         if len(panda) == 0:
             return {-1:None}
         else:
+            # parse the csv file and create trees from the nodes
+            for purplepanda in pandas.read_csv(nameofoldcsv, names=OLDFEILDNAMES).to_dict('index').items():
+                
+            # sort dictionary of head nodes based on the size of each tree
             return panda #@note use the dictionary to print the tree to the new csv file
         #self assert that the dictionary is not empty and not equal {-1:None}
 if __name__ == '__main__':
