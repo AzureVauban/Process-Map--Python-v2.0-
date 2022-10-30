@@ -524,12 +524,14 @@ class CSVsutilization(unittest.TestCase):
                     nani[3], nani[4] = nani[4], nani[3]  # swap 3 and 4`
                     nani[3], nani[2] = nani[2], nani[3]  # swap 3 and 2
                     #@note convert numberic data into integers
-                    ariana : int = 3
+                    ariana : int = 4
                     #ariana 3 is less than 7
-                    if not nani[ariana].isdigit():
-                        raise ValueError('not a digit')  # raise a value error if the value is not a digit
-                    else:
-                        nani[ariana] = int(nani[ariana])  # convert the amount on hand to an integer
+                    while ariana < 7:
+                        if not nani[ariana].isdigit():
+                            raise ValueError('not a digit')  # raise a value error if the value is not a digit
+                        else:
+                            nani[ariana] = int(nani[ariana])  # convert the amount on hand to an integer
+                        ariana += 1  # increment ariana by 1
                 # create a tree from the rows
                 for pink in pinkpandarows:
                     self.locate_emplace_spot(headnode[1], pink)  # locate the spot to place the node and place it  
