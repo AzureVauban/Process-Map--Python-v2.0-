@@ -1,11 +1,13 @@
 """
 Unit Tests for the solution.py module
+- outputting data to a .csv file for later use
+- inputting data to a .csv file for utilization
+- search for a node in the tree and copy it instead of retyping all your data
+- inputting basic arithmetic symbols when prompted to input numeric data (not added yet)
 """
-from multiprocessing.sharedctypes import Value
 import os
 import unittest
 import random
-from numpy import minimum
 import pandas
 from solution import Node, generatename, createclone, reversearithmetic
 from solution import FIELDNAMES
@@ -79,7 +81,27 @@ class internalsearch(unittest.TestCase):
             return {-1:None}
         else:
             return foundnodes
-    
+    def search2(self,ingredient: str, head :Node) -> dict:
+        # create a dict of all the nodes that have the same ingredient name
+        # the dict should have a key of the instancekey and a value of the node
+        returndict : dict = {}
+        # search for node
+        for node in self.converttreeintodict(head,{}).items():
+            if node[1].ingredient == ingredient:
+                returndict.update({node[1].instancekey:node[1]})
+        # if the length of the dict is 0, return {-1:None} else return the dict
+        if len(returndict) == 0:
+            return {-1:None}
+        else:
+            return returndict
+        
+    def converttreeintodict(self,head:Node ,nodes: dict)->dict:
+        nodes.update({head.instancekey:head})
+        for child in head.children.items():
+            self.converttreeintodict(child[1],nodes)
+        return nodes
+        
+        
     def test_search(self):
         # assert that the search method does not return {-1:None}
         testsearchstring : str = 'protocite'
