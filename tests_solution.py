@@ -573,6 +573,7 @@ class CSVsutilization(unittest.TestCase):
             return (False,'no head nodes found')
             # if the file exists in the current direct
         else:
+            duplicatetree : bool = False
             # check that the node passed into the function is a head node
             if head.parent is not None:
                 while head.parent is not None:
@@ -581,7 +582,8 @@ class CSVsutilization(unittest.TestCase):
             #! check for the head nodes in the csv file
             headnodes : dict = self.test_pandacsvparsesearch()
             #check if any of the head nodes match the ingredient name of that the head node of the tree passed into the method
-            self.skipTest('test not implemented')  # skip the test
+            for node in headnodes.items():
+            self.assertTrue(duplicatetree)
             return (True,'duplicate tree found')
 
 
