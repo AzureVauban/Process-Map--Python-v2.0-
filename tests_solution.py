@@ -469,12 +469,14 @@ class CSVsutilization(unittest.TestCase):
         else:
             # parse the csv file and create trees from the nodes
             for headnode in panda.items():
-                pinkpandanodes: list = []
+                pinkpandarows: list = []
                 for pinkpanda in pandas.read_csv(nameofoldcsv, names=OLDFEILDNAMES).to_dict('index').items():  # read the csv file and convert it to a dictionary of records
                     pinkerpanda : list = list(pinkpanda[1].values())  # convert the record to a list
-                    if pinkerpanda[1] != 'None' and pinkerpanda[6] == headnode[0]:
-                        pinkpandanodes.append(Node(parent=headnode[1],ingredient=pinkerpanda[0],amountofparentmadepercraft=pinkerpanda[3],amountneeded=pinkerpanda[4],treekey=pinkerpanda[6]))
-                    pass
+                    if pinkerpanda[6] == headnode[0]:
+                        pinkpandarows.append(pinkerpanda)
+                for pink in pinkpandarows:
+                    self.locate_emplace_spot(panda, pink)  # locate the spot to place the node and place it
+                pass
             # sort dictionary of head nodes based on the size of each tree
             return panda #@note use the dictionary to print the tree to the new csv file
         #self assert that the dictionary is not empty and not equal {-1:None}
