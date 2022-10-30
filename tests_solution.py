@@ -527,7 +527,7 @@ class CSVsutilization(unittest.TestCase):
                     #@note convert numberic data into integers
                     ariana : int = 4
                     #ariana 3 is less than 7
-                    while ariana < 7:
+                    while ariana < 8:
                         if not nani[ariana].isdigit():
                             raise ValueError('not a digit')  # raise a value error if the value is not a digit
                         else:
