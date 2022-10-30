@@ -266,8 +266,8 @@ class CSVsutilization(unittest.TestCase):
         #! keep add conditon checks as progress on this test is made
         print(csvrow)
         #@note parse out any underscore characters from the ingredient and the parent of the ingredient to match the ingredient and parent of the node
-        csvrow[1] = csvrow[1].replace('_','')  # remove any underscores from the ingredient
-        csvrow[3] = csvrow[3].replace('_','')  # remove any underscores from the parent of the ingredient
+        csvrow[1] = csvrow[1].replace('_',' ')  # remove any underscores from the ingredient
+        csvrow[3] = csvrow[3].replace('_',' ')  # remove any underscores from the parent of the ingredient
         foundemplacelocation : bool = parent.treekey == csvrow[0] and csvrow[3] != 'None' and csvrow[3] == parent.ingredient and csvrow[7] > 0 and parent is not None
         if foundemplacelocation:
             #@audit somewhere in the project it needs to be determined if the user will allow the amount on hands from the csv file to be used or if the user will input the amount on hand themselves
@@ -548,5 +548,6 @@ if __name__ == '__main__':
     for red in blue.test_pandacsvparsesearch().items():
         print(red[0],':',red[1],':',red[1].ingredient)
     yellow : Node = blue.test_headnodecreation()
-    for headnode in blue.test_convertdepreciatedcsv().items():
-        blue.test_pandascsvwrite(headnode[1])  # write the tree to the new csv file
+    print('')
+#!    for headnode in blue.test_convertdepreciatedcsv().items():
+#!        blue.test_pandascsvwrite(headnode[1])  # write the tree to the new csv file
