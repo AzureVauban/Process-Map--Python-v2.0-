@@ -515,6 +515,8 @@ class CSVsutilization(unittest.TestCase):
                     nani[5],nani[4]=nani[5],nani[4]
                     #@note swap 6 parent_ingredient and onhand (4,3)
                     nani[4],nani[3]=nani[4],nani[3]
+                    #swap 1 and 7
+                    nani[1],nani[7]=nani[7],nani[1]  # swap 1 and 7
                 # create a tree from the rows
                 for pink in pinkpandarows:
                     self.locate_emplace_spot(headnode[1], pink)  # locate the spot to place the node and place it  
