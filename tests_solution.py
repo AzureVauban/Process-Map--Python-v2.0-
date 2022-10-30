@@ -1,6 +1,7 @@
 """
 Unit Tests for the solution.py module
 """
+from multiprocessing.sharedctypes import Value
 import os
 import unittest
 import random
@@ -63,16 +64,21 @@ class internalsearch(unittest.TestCase):
     protocite2            : Node = Node('protocite', protocite_bar2, 0, 1, 2)
     thorium_rod           : Node = Node('thorium rod', industrial_battery, 0, 1, 5)
     thorium_ore           : Node = Node('thorium ore', thorium_rod, 0, 1, 2)
-    def search(self,ingredient : str,head : Node,results: dict) -> dict:
-        # return a dictionary of nodes that match the ingredient
-        # use assertDictEqual to test
-        if len(results) == 0 and len(head.children) == 0:
-            results = {-1:None}
+    def search(self,ingredient : str, node : Node,foundnodes : dict)->dict:
+        if node is None:
+            raise ValueError('Node is None')
+        if node.ingredient == ingredient and node.parent is not None:
+            foundnodes.update({node.instancekey:node})
+        for child in node.children.items():
+            self.search(ingredient,child[1],foundnodes)
+        if len(foundnodes) == 0:
+            return {-1:None}
         else:
-            return {}
+            return foundnodes
     def test_search(self):
         # assert that the search method does not return {-1:None}
-        self.skipTest('Test not implemented')
+        assertDict : dict = self.search('protocite',self.industrial_battery,{})
+        self.assertEqual(len(assertDict),2,'Search method is not working')
 
 
 class CSVsutilization(unittest.TestCase):
