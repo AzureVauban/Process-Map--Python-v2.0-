@@ -742,7 +742,6 @@ def tentative_method_2_issue3() -> bool:
     return False
 
 
-# todo find a new name for this method
 
 def tentative_method_3_issue3(csvnode: Node):
     """
@@ -762,8 +761,13 @@ def tentative_method_3_issue3(csvnode: Node):
 # end def
 
 
-# todo find a new name for this method
+
 def tentative_method_4_issue3() -> dict:
+    """returns a dictionary of all the head nodes in the csv file
+
+    Returns:
+        dict: _description_
+    """
     return {-1:None}
 # end def
 
