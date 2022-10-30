@@ -65,7 +65,10 @@ class internalsearch(unittest.TestCase):
     thorium_rod           : Node = Node('thorium rod', industrial_battery, 0, 1, 5)
     thorium_ore           : Node = Node('thorium ore', thorium_rod, 0, 1, 2)
 
-    def search(self,ingredient : str, node : Node,foundnodes : dict)->dict:
+    def search(self,ingredient : str, node : Node,foundnodes: dict)->dict:
+        """
+        return a dictionary of nodes that have the same name as the ingredient
+        """
         if node is None:
             raise ValueError('Node is None')
         if node.ingredient == ingredient and node.parent is not None:
@@ -78,8 +81,8 @@ class internalsearch(unittest.TestCase):
             return foundnodes
     def test_search(self):
         # assert that the search method does not return {-1:None}
-        assertDict : dict = self.search('protocite',self.industrial_battery,{})
-        self.assertEqual(len(assertDict),2,'Search method is not working')
+        assertDict : dict = self.search('thorium ore',self.industrial_battery,{})
+        self.assertNotEqual(assertDict,{-1:None},'No nodes found')
 
 
 class CSVsutilization(unittest.TestCase):
