@@ -731,60 +731,8 @@ def tentative_method_issue3(ghatanothoa: Node):
     Args:
         ghatanothoa (Node): stores information about the an ingredient
     """
-    #!outputcsvlines: dict = ghatanothoa.create_csv_writerow()
-    # open the .csv file in write mode
-    with open(CSVFILENAME, 'a', encoding='UTF-8', newline='') as csvfile:
-        # write the field names onto the file
-        field_names = [
-            'Tree_Key',  # 74nry8keki
-            'Ingredient',  # Coal
-            'Ingredient_Alias',  # Coal_[UNIQUE_ID APPENDED]
-            # ? if the ingredient name is not unique, append a unique string to the end of the
-            # ? ingredient name
-            'Parent_of_Ingredient',  # Carbon
-            'Amount_on_Hand',  # 0
-            'Amount_Made_Per_Craft',  # 1
-            'Amount_Needed_Per_Craft',  # 10
-            'Generation'  # 1
-        ]
-        writer = csv.DictWriter(csvfile, fieldnames=field_names)
-        writer.writeheader()
-        # write the data onto the file
-        writer.writerows(ghatanothoa.create_csv_writerows([]))
-        csvfile.close()
-    print('Successfully wrote to the .csv file called', CSVFILENAME)
 # end def
-# todo find a new name for this method
 
-
-def tentative_method_2_issue3() -> bool:
-    """
-    check if the an exact copy of the ingredient tree already exists in the .csv file
-
-    Args:
-        zvilpogghua (Node): stores information about the an ingredient, head node of the increase tree
-
-    Returns:
-        bool: True if the an exact copy of the ingredient tree already exists in the .csv file, False otherwise
-    """
-    # check if the augment is the head node, if not, traverse upward to the head node
-    # open the .csv file in read mode (mode='r')
-    # parse the tree for the head node instances
-    foundheadnodes: dict = {}  # pylint:disable=unused-variable
-    with open(CSVFILENAME, 'r', encoding='UTF-8', newline='') as csvfile:
-        # create a csv reader object
-        reader = csv.DictReader(csvfile)  # pylint:disable=unused-variable
-        # iterate over each row in the csv file and check if the row is a head node
-    #! call method here
-        csvnode: Node = Node()  # todo remove this line when finishing this method
-        # todo remove this line when finishing this method
-        tentative_method_3_issue3(csvnode)
-        # close the .csv file
-        csvfile.close()
-    # return True if the an exact copy of the ingredient already exists in the .csv file, False otherwise
-    return False
-#! potential unintended behavior, if the user inputs an ingredient name with the same name, the alias name will not be the same and the program will not detect an exact copy of the tree
-# end def
 
 
 # todo find a new name for this method
@@ -809,37 +757,7 @@ def tentative_method_3_issue3(csvnode: Node):
 
 # todo find a new name for this method
 def tentative_method_4_issue3() -> dict:
-    """
-    method that reads the contents of the .csv file
-
-    Args:
-        nightguant (Node): stores information about the an ingredient
-    """
-    # check if the .csv file exists in the current directory
-    csvheadnodes: dict = {}
-    if os.path.exists(CSVFILENAME):
-        #  if it does, read the contents of the file
-        with open(CSVFILENAME, 'r', encoding='UTF-8', newline='') as csvfile:
-            # create a csv reader object
-            reader = csv.DictReader(csvfile)
-            # iterate over each row in the csv file and check if the row is a head node
-            for row in reader:
-                for item in row.items():
-                    iscsvheadnode: bool = item[0] == 'Generation' and item[1] == '0'
-                    if iscsvheadnode:
-                        # if true, update the dictionary with the tree key and a head node instance
-                        csvheadnodes.update(
-                            {row['Tree_Key']: Node(row['Ingredient'], None, 0, 1, 1)})
-                        # int (row['Amount_Made_Per_Craft'])
-                        # int (row['Amount_on_Hand'])
-                        # int (row['Amount_Needed_Per_Craft']),
-                        # int (row['Generation'])
-    # parse through the file and create a dictionary of head nodes
-        csvfile.close()  # close the .csv file
-        return csvheadnodes
-    else:
-        return {-1: None}
-    # prompt the user to select a head node to utilize in the current mode of the program
+    return {-1:None}
 # end def
 
 
