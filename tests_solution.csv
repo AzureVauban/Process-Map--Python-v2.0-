@@ -115,3 +115,13 @@ QCMijcVxyDZseyx6,Currentcorn,Currentcorn__hKt4RMfSJpk,Suplhuric_Acid,0,1,1,3
 6eTrOuww5CfYq1rI,Pixels_B,Pixels_B__oU2Ibn08Pzs,Phase_Matter,1499850,150,1,2
 6eTrOuww5CfYq1rI,Sulphuric_Acid,Sulphuric_Acid__cnxTPgbHCEo,Morphite,19998,2,1,1
 6eTrOuww5CfYq1rI,Whitespine,Whitespine__waZg76fmoL,Sulphuric_Acid,9999,1,2,2
+UHG1qc4FB9u9,industrial battery,industrial_battery__vgtlUmjzWe,None,3,1,1,0
+UHG1qc4FB9u9,protocite bar,protocite_bar__RICWtxxsxU,industrial battery,15,1,5,1
+UHG1qc4FB9u9,protocite,protocite__VCTb0ZcjzqLjNO,protocite bar,30,1,2,2
+UHG1qc4FB9u9,battery,battery__ExEKl3udl7Jw,industrial battery,6,1,2,1
+UHG1qc4FB9u9,pixels,pixels__DpsRNnQOqzlA,battery,15000,1,2500,2
+UHG1qc4FB9u9,quantum processor,quantum_processor__CnSsPFYjdrxw,industrial battery,3,1,1,1
+UHG1qc4FB9u9,silicon board,silicon_board__5X0MhdVP,quantum processor,12,1,4,2
+UHG1qc4FB9u9,protocite bar,protocite_bar__47ZFYvv3,quantum processor,6,1,2,2
+UHG1qc4FB9u9,thorium rod,thorium_rod__trccJQLsEu6Luk4,industrial battery,15,1,5,1
+UHG1qc4FB9u9,thorium ore,thorium_ore__bo7IehA9AoYso7UE,thorium rod,30,1,2,2
