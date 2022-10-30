@@ -582,9 +582,27 @@ class CSVsutilization(unittest.TestCase):
             #! check for the head nodes in the csv file
             headnodes : dict = self.test_pandacsvparsesearch()
             #check if any of the head nodes match the ingredient name of that the head node of the tree passed into the method
+            checkthesenodes : dict = {}
             for node in headnodes.items():
-            self.assertTrue(duplicatetree)
-            return (True,'duplicate tree found')
+                # parse the returned list of head nodes for any head nodes that match the name of the head node of the tree passed into the method
+                if node[1].ingredient == head.ingredient:
+                    checkthesenodes.update({node[0]:node[1]})
+            if len(checkthesenodes) == 0:
+                self.skipTest('No head nodes matching the ingredient of the passed parameter head node were found')
+                return (False,'No head nodes matching the ingredient of the passed parameter head node were found')
+            else:
+                # create trees from each node in the checkthesenodes dictionary
+                for node in checkthesenodes.items():
+                    # create a tree from the head node
+                    self.test_pandacsvparsesearch(node[0])
+                    # check if the tree created from the head node matches the tree passed into the method
+                    if self.comparetrees(node[1],head):
+                        duplicatetree = True
+                        break
+                    else:
+                        duplicatetree = False
+                self.assertTrue(duplicatetree)
+                return (True,'duplicate tree found')
 
 
 if __name__ == '__main__':
