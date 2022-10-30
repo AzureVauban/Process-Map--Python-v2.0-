@@ -436,11 +436,34 @@ class CSVsutilization(unittest.TestCase):
         """
         Convert depreciated csv file to pandas DataFrame
         return a dictionary of ingredient trees from the old csv file
+        @note example of a row of a head node instance in the old csv file
+        OLDFEILDNAMES = [
+            'Ingredient',                   [0]: 'Head Item'
+            'Parent_Ingredient',            [1]: 'None'
+            'FAKE INGREDIENT NICKNAME',     [2]: 'None'  # this is the fake ingredient nickname @note inserted into the fields as a dummy value to match
+            'Amount_on_Hand',               [3]: '0'
+            'Amount_Made_Per_Craft',        [4]: '1'
+            'Amount_Needed',                [5]: '1'
+            'Generation',                   [6]: '0'
+            'Tree_Key'                      [7]: '6eTrOuww5CfYq1rI'
+        ]
+        @note example of a row of a child node instance in the old csv file
+        OLDFEILDNAMES = [
+            'Ingredient',                   [0]: 'Whitespine'
+            'Parent_Ingredient',            [1]: 'Sulphuric_Acid'
+            'FAKE INGREDIENT NICKNAME',     [2]: 'Sulphuric Acid Nickname'  # this is the fake ingredient nickname
+            'Amount_on_Hand',               [3]: '9999'
+            'Amount_Made_Per_Craft',        [4]: '1'
+            'Amount_Needed',                [5]: '2'
+            'Generation',                   [6]: '2'
+            'Tree_Key'                      [7]: '6eTrOuww5CfYq1rI'
+        ]
+        
         """
         panda : dict = {} # dictionary of new nodes
         # read the csv file
         OLDFEILDNAMES = [
-            'Ingredient',
+            'Ingredient',               
             'Parent_Ingredient',
             'Amount_on_Hand',
             'Amount_Made_Per_Craft',
@@ -478,6 +501,10 @@ class CSVsutilization(unittest.TestCase):
                 for pinkpandarow in pinkpandarows:
                     # insert a fake ingredient_alias attribute into the list 2nd element of the each row
                     pinkpandarow.insert(2, 'Nani')  # insert a fake ingredient_alias attribute into the list 2nd element of the each row
+                #@note reorganize so that the fields of this csv match the fields of the newer csv positonally
+                for pinkpandarow in pinkpandarows:
+                    #swap the generation of each treekey and generation
+                    
                 # create a tree from the rows
                 for pink in pinkpandarows:
                     self.locate_emplace_spot(headnode[1], pink)  # locate the spot to place the node and place it  
