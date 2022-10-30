@@ -51,9 +51,28 @@ class NodeCreationTests(unittest.TestCase):
 
 
 class internalsearch(unittest.TestCase):
-
+    # test ingredient tree
+    industrial_battery    : Node = Node('industrial battery', None,treekey=Node.generate_treekey())
+    protocite_bar         : Node = Node('protocite bar', industrial_battery, 0, 1, 5)
+    protocite             : Node = Node('protocite', protocite_bar, 0, 1, 2)
+    battery               : Node = Node('battery', industrial_battery, 0, 1, 2)
+    pixels                : Node = Node('pixels', battery, 0, 1, 2500)
+    quantum_processor     : Node = Node('quantum processor', industrial_battery, 0, 1, 1)
+    silicon_board         : Node = Node('silicon board', quantum_processor, 0, 1, 4)
+    protocite_bar2        : Node = Node('protocite bar', quantum_processor, 0, 1, 2)
+    protocite2            : Node = Node('protocite', protocite_bar2, 0, 1, 2)
+    thorium_rod           : Node = Node('thorium rod', industrial_battery, 0, 1, 5)
+    thorium_ore           : Node = Node('thorium ore', thorium_rod, 0, 1, 2)
+    def search(self,ingredient : str,head : Node,results: dict) -> dict:
+        # return a dictionary of nodes that match the ingredient
+        # use assertDictEqual to test
+        if len(results) == 0 and len(head.children) == 0:
+            results = {-1:None}
+        else:
+            return {}
     def test_search(self):
-        self.SkipTest('Test not implemented')
+        # assert that the search method does not return {-1:None}
+        self.skipTest('Test not implemented')
 
 
 class CSVsutilization(unittest.TestCase):
