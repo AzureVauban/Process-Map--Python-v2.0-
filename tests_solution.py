@@ -498,13 +498,13 @@ class CSVsutilization(unittest.TestCase):
                     pinkerpanda : list = list(pinkpanda[1].values())  # convert the record to a list
                     if pinkerpanda[6] == headnode[0]:
                         pinkpandarows.append(pinkerpanda)
-                for pinkpandarow in pinkpandarows:
+                for nani in pinkpandarows:
                     # insert a fake ingredient_alias attribute into the list 2nd element of the each row
-                    pinkpandarow.insert(2, 'Nani')  # insert a fake ingredient_alias attribute into the list 2nd element of the each row
+                    nani.insert(2, 'Nani')  # insert a fake ingredient_alias attribute into the list 2nd element of the each row
                 #@note reorganize so that the fields of this csv match the fields of the newer csv positonally
-                for pinkpandarow in pinkpandarows:
-                    #swap the generation of each treekey and generation
-                    
+                for nani in pinkpandarows:
+                    # swap the first and the last element of the list
+                    nani[0],nani[6] = nani[6],nani[0]  # swap the first and the last element of the list
                 # create a tree from the rows
                 for pink in pinkpandarows:
                     self.locate_emplace_spot(headnode[1], pink)  # locate the spot to place the node and place it  
