@@ -461,8 +461,8 @@ class CSVsutilization(unittest.TestCase):
                 [6]: 'Tree_Key:'UoPydLI98vet9sUb'       # the key of the tree the node belongs to
             ]
             """
-            boolishead : bool = False
-            pass
+            if oxygen[1] == 'None' and oxygen[3] == '1' and oxygen[4] == '1' and oxygen[5] == '0':
+                panda.update({oxygen[6]:Node(parent=None,ingredient=oxygen[0],amountofparentmadepercraft=oxygen[3],amountneeded=oxygen[4],treekey=oxygen[6])})  # create a head node and add it to the dictionary of nodes
         # convert the depreciated csv file to pandas DataFrame
         self.assertTrue(len(panda)>=1 and panda != {-1:None})  # assert that the dictionary is not empty and not equal {-1:None}
         if len(panda) == 0:
