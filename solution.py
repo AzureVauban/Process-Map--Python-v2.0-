@@ -732,7 +732,14 @@ def tentative_method_issue3(ghatanothoa: Node):
         ghatanothoa (Node): stores information about the an ingredient
     """
 # end def
+def tentative_method_2_issue3() -> bool:
+    """
+    check if the an exact copy of the ingredient tree already exists in the .csv file
 
+    Args:
+        zvilpogghua (Node): stores information about the an ingredient, head node of the increase
+    """
+    return False
 
 
 # todo find a new name for this method
