@@ -6,7 +6,6 @@ Unit Tests for the solution.py module
 - inputting basic arithmetic symbols when prompted to input numeric data (not added yet)
 """
 import os
-from tkinter.tix import ListNoteBook
 import unittest
 import random
 import pandas
