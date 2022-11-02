@@ -2,9 +2,12 @@
 Restructured main.py script
 Changes:
 - inputting and outputting ingredient trees into csv file
-- the ability to search for ingredients for ease of typing out the ingredient tree
-- user can take an ingredient tree from a csv file and use it as a template for a new recipe
-= allow for usage of basic arithmetic operators when prompted to input a number (still in progress)
+- the ability to search for ingredients for ease of typing out the ingredient
+  tree
+- user can take an ingredient tree from a csv file and use it as a template
+   for a new recipe
+= allow for usage of basic arithmetic operators when prompted to input a
+  number (still in progress)
 """
 import sys
 import math
@@ -26,7 +29,8 @@ PROGRAMMODETYPE: int = 0  # ! turn this into an enum
 
 class MonokaiNode:
     """
-    class for storing simple data about an item such as its name and how much is needed to create
+    class for storing simple data about an item such as its name and how much
+    is needed to create
     its parent
     """
     ingredient: str = ''
@@ -38,14 +42,7 @@ class MonokaiNode:
     queueamountresulted: dict = {}
 
     def __init__(self, ingredient: str = '', amountonhand: int = -1, amountofparentmadepercraft: int = -1, amountneeded: int = -1) -> None:
-        """
-        stores information about basic ingredients
-
-        Args:
-            ingredient (str, optional): _description_. Defaults to ''.
-            amountonhand (int, optional): _description_. Defaults to -1.
-            amountofparentmadepercraft (int, optional): _description_. Defaults to -1.
-            amountneeded (int, optional): _description_. Defaults to -1.
+        """change the docstring of this method
         """
         self.amountonhand = amountonhand
         self.amountofparentmadepercraft = amountofparentmadepercraft
@@ -57,14 +54,11 @@ class MonokaiNode:
 
 
 class Node(MonokaiNode):
-    """
-    stores identifiable features of an item, such as the parent and children
-    instances
-    Args:
-        NobeB (class): parent class of item
+    """change the docstring of this method
     """
     parent = None
     children: dict = {}
+    aliasingredient: str = ''
     generation: int = 0
     instances: int = 0
     instancekey: int = 0
@@ -104,7 +98,8 @@ class Node(MonokaiNode):
         # input data into the dictionary
         azathoth.update({FIELDNAMES[0]: self.treekey})
         azathoth.update({FIELDNAMES[1]: self.ingredient})
-        azathoth.update({FIELDNAMES[2]: self.aliasingredient.replace(' ', '_')})
+        azathoth.update(
+            {FIELDNAMES[2]: self.aliasingredient.replace(' ', '_')})
         azathoth.update({FIELDNAMES[3]: ghast})
         azathoth.update({FIELDNAMES[4]: str(self.amountonhand)})
         azathoth.update({FIELDNAMES[5]: str(self.amountofparentmadepercraft)})
