@@ -19,3 +19,12 @@ FIELDNAMES: list = [
 ]
 CSVFILENAME : str = 'solution_ingredient_trees.csv'
 PROGRAMMODETYPE: int = 0 #! turn this into an enum
+
+class NodeB:
+    """
+    class for storing simple data about an item such as its name and how much is needed to create
+    its parent
+    """
+    ingredient: str = ''
+    aliasingredient: str = ''
+    
