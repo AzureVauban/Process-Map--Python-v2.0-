@@ -83,11 +83,7 @@ class internalsearch(unittest.TestCase):
             print('We noticed that you typed in', testsearchstring, len(
                 assert_dict), 'times already, do you want to copy the contents of that node?')
         self.assertNotEqual(assert_dict, {-1: None}, 'No nodes found')
-    def mockinput(self):
-        """test the subpopulate method, must return a node that can be linked back up into the tree
-        """
-        mock_userinput_ingredient : str = 'protocite'
-        testsearch : dict = converttreeintodict(self.industrial_battery, {})
+    
         
 class CSVsutilization(unittest.TestCase):
     """
