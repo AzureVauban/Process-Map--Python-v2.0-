@@ -65,11 +65,15 @@ class Node(MonokaiNode):
     treekey: str = ''
     ismain_promptinputbool: bool = True
     # methods
-        # prompt integer
-        # end def
-        
         #@classmethod
         #generate treekey
         #end def
         
+        #@ private method
+        # prompt integer
+        # end def
         
+        #create pandas csv row
+        #end def
+        #create pandas csv rows
+        #end def
