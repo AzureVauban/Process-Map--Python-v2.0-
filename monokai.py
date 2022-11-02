@@ -104,7 +104,7 @@ class Node(MonokaiNode):
     # of the arithmetic operation
     # end def
 
-    def reverse_arithmetic_method(self) -> int:
+    def recursive_arithmetic(self) -> int:
         """_summary_
 
         Returns:
@@ -128,9 +128,11 @@ class Node(MonokaiNode):
         if self.parent is not None:
             self.parent.queueamountresulted.update(
                 {self.ingredient: self.amountresulted})
-            self.parent.reverse_arithmetic_method()
+            self.parent.recursive_arithmetic()
         return self.amountresulted
         # end def
+    def reverse_recursivea_arithetic(self,desiredamount : int) -> int:
+        
 
 
 def populate(monokai: Node) -> Node:
