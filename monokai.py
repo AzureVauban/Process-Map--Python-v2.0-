@@ -8,6 +8,7 @@ Changes:
 """
 import sys
 import math
+import random
 
 FIELDNAMES: list = [
     'Tree_Key',
@@ -73,10 +74,17 @@ class Node(MonokaiNode):
     treekey: str = ''
     ismain_promptinputbool: bool = True
     # methods
-    
+
     # @ classmethod
-    # generate treekey
-    # @note create a method that will generate a treekey for a node
+    @classmethod
+    def generate_treekey(cls, length: int = random.randint(5, 20)) -> str:
+        # generate treekey
+        # @note create a method that will generate a treekey for a node
+        cls.treekey = ''
+        for _ in range(0, length):
+            cls.treekey += random.choice(
+                '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+        return cls.treekey
     # end def
 
     # @ private method
