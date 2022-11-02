@@ -236,8 +236,14 @@ def populate(monokai: Node) -> Node:
         # prompt if the user wants to copy an existing node if the search query returns a dictionary
         # that deosn't have a key of -1 and a value of None
         # todo have someone test out the code
-        _ = tentative_method_1_issue1(newnodename[1], cur, tempbool)
+        #! node declaration
         tempbool = False
+    # continue method runtime
+    for child in cur.children.items():
+        if isinstance(child[1], Node):
+            populate(child[1])
+        else:
+            raise TypeError('child is not an instance of', Node)
     return monokai
 
 
