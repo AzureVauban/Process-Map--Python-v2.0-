@@ -33,7 +33,8 @@ class MonokaiNode:
     amountresulted: int = 0
     queueamountresulted: dict = {}
     def __init__(self, ingredient: str = '', amountonhand: int = -1, amountofparentmadepercraft: int = -1, amountneeded: int = -1) -> None:
-        """stores information about basic ingredients
+        """
+        stores information about basic ingredients
 
         Args:
             ingredient (str, optional): _description_. Defaults to ''.
