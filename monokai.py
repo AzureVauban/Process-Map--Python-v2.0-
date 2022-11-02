@@ -126,10 +126,6 @@ class Node(MonokaiNode):
         """
         # return head
         # @note return the head of the tree
-        if self.parent is not None:
-            return self.parent.head()
-        else:
-            return self
     # end def
 
     # return tree endpoints
