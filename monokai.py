@@ -128,11 +128,12 @@ class Node(MonokaiNode):
         # @note return the head of the tree
     # end def
 
-    def findendpoints(self, endpoints: dict, head: bool) -> dict:
+    def findendpoints(self, endpoints: dict, startfromhead: bool) -> dict:
         """change the docstring of this method
         """
         # return tree endpoints
         # @note return the endpoints of the tree connected to selfrent node
+        if startfromhead is False and 
         return endpoints
 
     # end def
