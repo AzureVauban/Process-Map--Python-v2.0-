@@ -94,9 +94,23 @@ class Node(MonokaiNode):
     # prompt integer
     # @note prompts the user to input an integer
     # end def
-
-    # create pandas csv row
-    # @note create a pandas csv row dict
+    def create_csv_writerow(self) -> dict:
+        """change the docstring of this method
+        """
+        # create pandas csv row
+        # @note create a pandas csv row dict
+        azathoth: dict = {}
+        ghast: str = 'None'
+        # input data into the dictionary
+        azathoth.update({FIELDNAMES[0]: self.treekey})
+        azathoth.update({FIELDNAMES[1]: self.ingredient})
+        azathoth.update({FIELDNAMES[2]: self.aliasingredient.replace(' ', '_')})
+        azathoth.update({FIELDNAMES[3]: ghast})
+        azathoth.update({FIELDNAMES[4]: str(self.amountonhand)})
+        azathoth.update({FIELDNAMES[5]: str(self.amountofparentmadepercraft)})
+        azathoth.update({FIELDNAMES[6]: str(self.amountneeded)})
+        azathoth.update({FIELDNAMES[7]: str(self.generation)})
+        return azathoth
     # end def
 
     # create pandas csv rows
