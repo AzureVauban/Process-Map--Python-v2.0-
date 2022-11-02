@@ -205,7 +205,8 @@ def populate(monokai: Node) -> Node:
                 break
         checkstring = tempinstance.ingredient
     # prompt user to input ingredients
-    print('What ingredients do you need to create', monokai.ingredient, end=':\n')
+    print('What ingredients do you need to create',
+          monokai.ingredient, end=':\n')
     while True:
         myinput = input('')
         myinput = myinput.strip()
@@ -229,15 +230,18 @@ def populate(monokai: Node) -> Node:
     # create new child instances
     tempbool: bool = True
     for newnodename in inputqueue.items():
-        # if search method doesn't return a dictionary with a key of -1 and a value of None
+        # if search method doesn't return a dictionary with a key of -1 and 
+        # a value of None
         # prompt for copy
         # else
         # create new node
-        # prompt if the user wants to copy an existing node if the search query returns a dictionary
+        # prompt if the user wants to copy an existing node if the search
+        # query returns a dictionary
         # that deosn't have a key of -1 and a value of None
         # todo have someone test out the code
-        #! node declaration
+        # node declaration
         tempbool = False
+    # @audit-info make this update the class dict GLOBALNODEDICT.update({monokai.instancekey: cur})
     # continue method runtime
     for child in monokai.children.items():
         if isinstance(child[1], Node):
