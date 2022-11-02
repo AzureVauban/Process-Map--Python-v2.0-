@@ -133,9 +133,9 @@ class Node(MonokaiNode):
         """
         # return tree endpoints
         # @note return the endpoints of the tree connected to selfrent node
-        if startfromhead is False and 
+        if startfromhead is False and self.parent is not None:
+            pass
         return endpoints
-
     # end def
 
     def recursive_arithmetic(self) -> int:
