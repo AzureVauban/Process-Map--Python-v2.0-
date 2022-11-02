@@ -33,17 +33,21 @@ class NodeCreationTests(unittest.TestCase):
         tomahto = createclone(tomato)
         self.assertIsNot(tomato, tomahto, 'Clone is not at a unique location')
 
-
+def converttreeintodict(self, head: Node, nodes: dict) -> dict:
+    """returns a dictionary of all the nodes in the tree
+    """
+    nodes.update({head.instancekey: head})
+    for child in head.children.items():
+        self.converttreeintodict(child[1], nodes)
+    return nodes
 class internalsearch(unittest.TestCase):
     # test ingredient tree
-    industrial_battery: Node = Node(
-        'industrial battery', None, treekey=Node.generate_treekey())
+    industrial_battery: Node = Node('industrial battery', None, treekey=Node.generate_treekey())
     protocite_bar: Node = Node('protocite bar', industrial_battery, 0, 1, 5)
     protocite: Node = Node('protocite', protocite_bar, 0, 1, 2)
     battery: Node = Node('battery', industrial_battery, 0, 1, 2)
     pixels: Node = Node('pixels', battery, 0, 1, 2500)
-    quantum_processor: Node = Node(
-        'quantum processor', industrial_battery, 0, 1, 1)
+    quantum_processor: Node = Node('quantum processor', industrial_battery, 0, 1, 1)
     silicon_board: Node = Node('silicon board', quantum_processor, 0, 1, 4)
     protocite_bar2: Node = Node('protocite bar', quantum_processor, 0, 1, 2)
     protocite2: Node = Node('protocite', protocite_bar2, 0, 1, 2)
@@ -65,27 +69,9 @@ class internalsearch(unittest.TestCase):
         else:
             return foundnodes
 
-    def search2(self, ingredient: str, head: Node) -> dict:
-        # create a dict of all the nodes that have the same ingredient name
-        # the dict should have a key of the instancekey and a value of the node
-        returndict: dict = {}
-        # search for node
-        for node in self.converttreeintodict(head, {}).items():
-            if node[1].ingredient == ingredient:
-                returndict.update({node[1].instancekey: node[1]})
-        # if the length of the dict is 0, return {-1:None} else return the dict
-        if len(returndict) == 0:
-            return {-1: None}
-        else:
-            return returndict
 
-    def converttreeintodict(self, head: Node, nodes: dict) -> dict:
-        """returns a dictionary of all the nodes in the tree
-        """
-        nodes.update({head.instancekey: head})
-        for child in head.children.items():
-            self.converttreeintodict(child[1], nodes)
-        return nodes
+
+   
 
     def test_createclone(self):
         """create a clone of a node
