@@ -128,8 +128,24 @@ class Node(MonokaiNode):
         # @note return the head of the tree
     # end def
 
-    # return tree endpoints
-    # @note return the endpoints of the tree connected to selfrent node
+    def findlocalendpoints(self, foundendpoints: dict, startedfromhead: bool) -> dict:
+        """change the docstring of this method
+        """
+        # return tree endpoints
+        # @note return the endpoints of the tree connected to selfrent node
+        if foundendpoints is None:
+            myendpoints: dict = {}
+        else:
+            myendpoints: dict = foundendpoints
+        if len(cur.children) > 0:
+            for child in cur.children.items():
+                if isinstance(child[1], Node):
+                    self.findlocalendpoints(child[1], myendpoints)
+        else:
+            myendpoints.update({cur.instancekey: cur})
+        returndict: dict = myendpoints
+        return returndict
+
     # end def
 
     def recursive_arithmetic(self) -> int:
