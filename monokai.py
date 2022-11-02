@@ -124,10 +124,9 @@ class Node(MonokaiNode):
         blue = (red*self.amountonhand) + (red*tentativeinteger)
         blue = round(math.floor(blue))
         self.amountresulted = blue
-        # reselfsively call the method
+        # recursively call the method
         if self.parent is not None:
             self.parent.queueamountresulted.update({self.ingredient: self.amountresulted})
-            #!reselfsivearithmetic(self.parent)
             self.parent.reverse_arithmetic_method()
         return self.amountresulted
         # end def
