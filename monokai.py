@@ -131,10 +131,11 @@ class Node(MonokaiNode):
             self.parent.reselfsive_arithmetic()
         return self.amountresulted
         # end def
-    def reverse_arithmetic_(self,desiredamount : int) -> int:
+
+    def reverse_arithmetic(self, desiredamount: int) -> int:
         self.amountresulted = desiredamount
         red: float = ((self.amountofparentmadepercraft/self.amountneeded)
-                    ** -1)*self.amountresulted
+                      ** -1)*self.amountresulted
         green: float = round(math.ceil(red))
         self.amountonhand = int(max(red, green))
         traceback: bool = green > red
@@ -148,7 +149,7 @@ class Node(MonokaiNode):
             for childnode in self.children.items():
                 if not isinstance(childnode[1], Node):
                     raise TypeError('child is not an instance of', Node)
-                reversearithmetic(childnode[1], self.amountonhand)
+                reverse_arithmetic(childnode[1], self.amountonhand)
         return self.amountonhand
 
 
