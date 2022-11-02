@@ -128,7 +128,7 @@ class Node(MonokaiNode):
         # @note return the head of the tree
     # end def
 
-    def findlocalendpoints(self, endpoints: dict, head: bool) -> dict:
+    def findendpoints(self, endpoints: dict, head: bool) -> dict:
         """change the docstring of this method
         """
         # return tree endpoints
