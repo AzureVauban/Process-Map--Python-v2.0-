@@ -162,6 +162,7 @@ class CSVsutilization(unittest.TestCase):
         else:
             for atom in cobalt.children.items():
                 self.checkingredientuniqueness(atom[1],palladium)
+            return True
     def testnewaliaschecker(self):
         # needs a method that checks if the ingredient is not unique in the tree
         head : Node = self.industrial_battery
