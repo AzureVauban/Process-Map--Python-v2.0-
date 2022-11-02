@@ -113,3 +113,7 @@ class Node(MonokaiNode):
         # result of the arithmetic operation
         # end def
         return 0
+def populate(monokai : Node) -> Node:
+    return monokai
+def subpopulate(noctis : dict) -> Node:
+    return Node()
