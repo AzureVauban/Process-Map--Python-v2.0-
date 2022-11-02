@@ -20,11 +20,31 @@ FIELDNAMES: list = [
 CSVFILENAME : str = 'solution_ingredient_trees.csv'
 PROGRAMMODETYPE: int = 0 #! turn this into an enum
 
-class NodeB:
+class MonokaiNode:
     """
     class for storing simple data about an item such as its name and how much is needed to create
     its parent
     """
     ingredient: str = ''
     aliasingredient: str = ''
-    
+    amountonhand: int = 0
+    amountneeded: int = 0
+    amountofparentmadepercraft: int = 0
+    amountresulted: int = 0
+    queueamountresulted: dict = {}
+    def __init__(self, ingredient: str = '', amountonhand: int = -1, amountofparentmadepercraft: int = -1, amountneeded: int = -1) -> None:
+        """stores information about basic ingredients
+
+        Args:
+            ingredient (str, optional): _description_. Defaults to ''.
+            amountonhand (int, optional): _description_. Defaults to -1.
+            amountofparentmadepercraft (int, optional): _description_. Defaults to -1.
+            amountneeded (int, optional): _description_. Defaults to -1.
+        """
+        self.amountonhand = amountonhand
+        self.amountofparentmadepercraft = amountofparentmadepercraft
+        self.amountneeded = amountneeded
+        self.queueamountresulted = {}
+        self.ingredient = ingredient
+        self.aliasingredient = self.ingredient
+        self.amountresulted = 0
