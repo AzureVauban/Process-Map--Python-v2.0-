@@ -76,6 +76,7 @@ class Node(MonokaiNode):
 
     # @ private method
     # prompt integer
+    #@note prompts the user to input an integer
     # end def
 
     # create pandas csv row
