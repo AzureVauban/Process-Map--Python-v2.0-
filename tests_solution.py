@@ -164,8 +164,8 @@ class CSVsutilization(unittest.TestCase):
                 self.checkingredientuniqueness(atom[1],palladium)
     def testnewaliaschecker(self):
         # needs a method that checks if the ingredient is not unique in the tree
-        head : Node = Node()
-        self.assertFalse
+        head : Node = self.industrial_battery
+        self.assertFalse(self.checkingredientuniqueness(head,'protocite bar'))
     def test_pandascsvwrite(self, yellowduck: Node = industrial_battery):
         """
         if file does not exist in the SAME directory as the solution module, create it and write to it
