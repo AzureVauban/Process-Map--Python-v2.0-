@@ -18,3 +18,13 @@ FIELDNAMES: list = [
     'Generation'
 ]
 CSVFILENAME : str = 'solution_ingredient_trees.csv'
+PROGRAMMODETYPE: int = 0 #! turn this into an enum
+PROGRAMMODETYPE :from enum import Enum
+
+class MyEnum(Enum):
+    """
+    Enum Description: 
+    """
+    RED = "red"
+    GREEN = "green"
+    BLUE = "blue"
