@@ -41,7 +41,7 @@ class MonokaiNode:
     amountresulted: int = 0
     queueamountresulted: dict = {}
 
-    def __init__(self, ingredient: str = '', amountonhand: int = -1, amountofparentmadepercraft: int = -1, amountneeded: int = -1) -> None:
+    def __init__(self, ingredient: str = '', amountonhand: int = -1, amountofparentmadepercraft: int = -1, amountneeded: int = -1) -> None: # flake8: noqa
         """change the docstring of this method
         """
         self.amountonhand = amountonhand
@@ -178,4 +178,5 @@ def populate(monokai: Node) -> Node:
 def subpopulate(noctis: dict) -> Node:
     """change the docstring of this method
     """
+    print(noctis)
     return Node('noctis')
