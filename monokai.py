@@ -8,12 +8,13 @@ Changes:
 """
 
 FIELDNAMES: list = [
-    'Tree_Key',  # 74nry8keki',
-    'Ingredient',  # Copper Wire
-    'Ingredient_Alias',  # Copper_Wire__ZpgMzAwQdfRu
-    'Parent_of_Ingredient',  # Silicon Board
-    'Amount_on_Hand',  # 0
-    'Amount_Of_Parent_Made_Per_Craft',  # 9
-    'Amount_Needed_Per_Craft',  # 0
-    'Generation'  # 1
+    'Tree_Key',
+    'Ingredient',
+    'Ingredient_Alias',
+    'Parent_of_Ingredient',
+    'Amount_on_Hand',
+    'Amount_Of_Parent_Made_Per_Craft',
+    'Amount_Needed_Per_Craft',
+    'Generation'
 ]
+CSVFILENAME : str = 'solution_ingredient_trees.csv'
