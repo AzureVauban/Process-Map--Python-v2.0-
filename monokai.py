@@ -99,15 +99,9 @@ class Node(MonokaiNode):
     # @note return the endpoints of the tree connected to selfrent node
     # end def
 
-    # arithmetic method
-    # @note set the amount resulted of each member of the tree to the result
-    # of the arithmetic operation
-    # end def
-
     def recursive_arithmetic(self) -> int:
-        # reverse artithmetic method
-        # @note set the amount on hand of each member of the tree to the
-        # result of the arithmetic operation
+        # arithmetic method
+        # @note set the amount resulted of each node
         tentativeinteger: int = sys.maxsize
         if len(self.queueamountresulted) == 0:
             tentativeinteger = 0
@@ -125,10 +119,11 @@ class Node(MonokaiNode):
                 {self.ingredient: self.amountresulted})
             self.parent.recursive_arithmetic()
         return self.amountresulted
-        # end def
+    # end def
 
     def recursive_recursive_arithmetic(self, desiredamount: int) -> int:
-        #
+        # reverse artithmetic method
+        # @note set the amount on hand of each node
         self.amountresulted = desiredamount
         red: float = ((self.amountofparentmadepercraft/self.amountneeded)
                       ** -1)*self.amountresulted
