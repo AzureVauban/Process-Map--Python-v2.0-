@@ -71,6 +71,7 @@ class Node(MonokaiNode):
     # methods
     # @ classmethod
     # generate treekey
+    #@note create a method that will generate a treekey for a node
     # end def
 
     # @ private method
@@ -84,4 +85,7 @@ class Node(MonokaiNode):
     # end def
 
     # return head
+    # end def
+
+    # return tree endpoints
     # end def
