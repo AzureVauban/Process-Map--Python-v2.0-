@@ -190,6 +190,21 @@ class Node(MonokaiNode):
 def populate(monokai: Node) -> Node:
     """change the docstring of this method
     """
+    inputqueue: dict = {}
+    checkstring: str = cur.ingredient
+    # output ingredient trail
+    if cur.parent is not None:
+        tempinstance: Node = cur
+        print('TRAIL: ', end='')
+        while True:
+            if tempinstance.parent is not None:
+                print(tempinstance.ingredient, '-> ', end='')
+                tempinstance = tempinstance.parent
+            else:
+                print(tempinstance.ingredient)
+                break
+        checkstring = tempinstance.ingredient
+    # prompt user to input ingredients
     return monokai
 
 
