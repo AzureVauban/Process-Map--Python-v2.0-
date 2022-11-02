@@ -73,6 +73,7 @@ class Node(MonokaiNode):
     treekey: str = ''
     ismain_promptinputbool: bool = True
     # methods
+    
     # @ classmethod
     # generate treekey
     # @note create a method that will generate a treekey for a node
