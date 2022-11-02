@@ -203,7 +203,7 @@ def populate(monokai: Node) -> Node:
             else:
                 print(tempinstance.ingredient)
                 break
-    checkstring = tempinstance.ingredient
+        checkstring = tempinstance.ingredient
     # prompt user to input ingredients
     return monokai
 
