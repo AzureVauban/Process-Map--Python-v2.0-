@@ -135,7 +135,6 @@ class CSVsutilization(unittest.TestCase):
     class RandomNodeTree:
         population: int = 0
         head: Node
-        possiblenamechoices: list = []
 
         def generateTree(self, popuation: int = random.randint(1, 10), monokai: Node = Node(generatename())) -> Node:
             # the population of the tree cannot suprass the population parameter
