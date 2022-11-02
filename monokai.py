@@ -105,26 +105,28 @@ class Node(MonokaiNode):
         return dictrow
     # end def
 
-    def create_pandas_dataframerows(self, kraken: list) -> list:
+    def create_pandas_dataframerows(self, treerows: list) -> list:
         """change the docstring of this method
         """
         # create pandas csv rows
         # @note create a list pandas csv rows dicts
-        kraken.insert(0, self.create_pandas_dataframerow())
+        treerows.insert(0, self.create_pandas_dataframerow())
         for child in self.children.items():
             if not isinstance(child[1], Node):
                 raise TypeError('Child is not an instance of', Node)
-            child[1].create_pandas_dataframerows(kraken)
-
-        if not len(kraken) // 2 == 0:
-
-            return kraken[::-1]
-        else:
-            return kraken
+            child[1].create_pandas_dataframerows(treerows)
+        # make sure that the list is ordered correctly
+        if not len(treerows) // 2 == 0:
+            return treerows[::-1]
+        return treerows
     # end def
 
-    # return head
-    # @note return the head of the tree
+    def head(self) -> None:
+        """change the docstring of this method
+        """
+        # return head
+        # @note return the head of the tree
+        return head
     # end def
 
     # return tree endpoints
