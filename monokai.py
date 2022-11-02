@@ -104,7 +104,7 @@ class Node(MonokaiNode):
     # of the arithmetic operation
     # end def
 
-    def recursive_arithmetic(self) -> int:
+    def reselfsive_arithmetic(self) -> int:
         """_summary_
 
         Returns:
@@ -124,15 +124,32 @@ class Node(MonokaiNode):
         blue = (red*self.amountonhand) + (red*tentativeinteger)
         blue = round(math.floor(blue))
         self.amountresulted = blue
-        # recursively call the method
+        # reselfsively call the method
         if self.parent is not None:
             self.parent.queueamountresulted.update(
                 {self.ingredient: self.amountresulted})
-            self.parent.recursive_arithmetic()
+            self.parent.reselfsive_arithmetic()
         return self.amountresulted
         # end def
-    def reverse_recursivea_arithetic(self,desiredamount : int) -> int:
-        
+    def reverse_arithmetic_(self,desiredamount : int) -> int:
+        self.amountresulted = desiredamount
+        red: float = ((self.amountofparentmadepercraft/self.amountneeded)
+                    ** -1)*self.amountresulted
+        green: float = round(math.ceil(red))
+        self.amountonhand = int(max(red, green))
+        traceback: bool = green > red
+        if traceback:  # go back through the higher up nodes and increase the amount on hand by 1
+            temp: Node = self
+            while temp.parent is not None:
+                temp = temp.parent
+                temp.amountonhand += 1
+        # continue method reselfsively
+        if len(self.children) > 0:
+            for childnode in self.children.items():
+                if not isinstance(childnode[1], Node):
+                    raise TypeError('child is not an instance of', Node)
+                reversearithmetic(childnode[1], self.amountonhand)
+        return self.amountonhand
 
 
 def populate(monokai: Node) -> Node:
