@@ -104,7 +104,7 @@ class Node(MonokaiNode):
     # of the arithmetic operation
     # end def
 
-    def reselfsive_arithmetic(self) -> int:
+    def recursive_arithmetic(self) -> int:
         """_summary_
 
         Returns:
@@ -128,11 +128,11 @@ class Node(MonokaiNode):
         if self.parent is not None:
             self.parent.queueamountresulted.update(
                 {self.ingredient: self.amountresulted})
-            self.parent.reselfsive_arithmetic()
+            self.parent.recursive_arithmetic()
         return self.amountresulted
         # end def
 
-    def reverse_arithmetic(self, desiredamount: int) -> int:
+    def recursive_recursive_arithmetic(self, desiredamount: int) -> int:
         self.amountresulted = desiredamount
         red: float = ((self.amountofparentmadepercraft/self.amountneeded)
                       ** -1)*self.amountresulted
@@ -149,7 +149,7 @@ class Node(MonokaiNode):
             for childnode in self.children.items():
                 if not isinstance(childnode[1], Node):
                     raise TypeError('child is not an instance of', Node)
-                reverse_arithmetic(childnode[1], self.amountonhand)
+                recursive_recursive_arithmetic(childnode[1], self.amountonhand)
         return self.amountonhand
 
 
