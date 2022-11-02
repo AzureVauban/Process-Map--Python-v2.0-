@@ -105,11 +105,6 @@ class Node(MonokaiNode):
     # end def
 
     def recursive_arithmetic(self) -> int:
-        """_summary_
-
-        Returns:
-            int: _description_
-        """
         # reverse artithmetic method
         # @note set the amount on hand of each member of the tree to the
         # result of the arithmetic operation
@@ -139,17 +134,17 @@ class Node(MonokaiNode):
         green: float = round(math.ceil(red))
         self.amountonhand = int(max(red, green))
         traceback: bool = green > red
-        if traceback:  # go back through the higher up nodes and increase the amount on hand by 1
+        if traceback:
             temp: Node = self
             while temp.parent is not None:
                 temp = temp.parent
                 temp.amountonhand += 1
-        # continue method reselfsively
+        # recursively call the method on each child
         if len(self.children) > 0:
             for childnode in self.children.items():
                 if not isinstance(childnode[1], Node):
                     raise TypeError('child is not an instance of', Node)
-                recursive_recursive_arithmetic(childnode[1], self.amountonhand)
+                self.recursive_recursive_arithmetic(self.amountonhand)
         return self.amountonhand
 
 
