@@ -94,7 +94,7 @@ class Node(MonokaiNode):
     # end def
 
     # return tree endpoints
-    # @note return the endpoints of the tree connected to current node
+    # @note return the endpoints of the tree connected to selfrent node
     # end def
 
     # arithmetic method
@@ -111,9 +111,25 @@ class Node(MonokaiNode):
         # reverse artithmetic method
         # @note set the amount on hand of each member of the tree to the
         # result of the arithmetic operation
+        tentativeinteger: int = sys.maxsize
+        if len(self.queueamountresulted) == 0:
+            tentativeinteger = 0
+        else:
+            for myinteger in self.queueamountresulted.items():
+                if myinteger[1] < tentativeinteger:
+                    tentativeinteger = myinteger[1]
+        red = (self.amountofparentmadepercraft / self.amountneeded)
+        blue = (red*self.amountonhand) + (red*tentativeinteger)
+        blue = round(math.floor(blue))
+        self.amountresulted = blue
+        # reselfsively call the method
+        if self.parent is not None:
+            self.parent.queueamountresulted.update(
+                {self.ingredient: self.amountresulted})
+            reselfsivearithmetic(self.parent)
+        return self.amountresulted
         # end def
-        return 0
-
+      
 
 def populate(monokai: Node) -> Node:
     return monokai
