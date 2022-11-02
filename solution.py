@@ -6,9 +6,8 @@ Changes from v1.0:
 - search for a node in the tree and copy it instead of retyping all your data
 - inputting basic arithmetic symbols when prompted to input numeric data (not added yet)
 """
-import csv
+
 import math
-import os
 import random
 import sys
 import time
