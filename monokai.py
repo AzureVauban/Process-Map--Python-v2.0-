@@ -102,4 +102,3 @@ class Node(MonokaiNode):
     # reverse artithmetic method
     # @note set the amount on hand of each member of the tree to the result of the arithmetic operation
     # end def
-
