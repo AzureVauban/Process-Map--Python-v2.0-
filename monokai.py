@@ -6,6 +6,8 @@ Changes:
 - user can take an ingredient tree from a csv file and use it as a template for a new recipe
 = allow for usage of basic arithmetic operators when prompted to input a number (still in progress)
 """
+import sys
+import math
 
 FIELDNAMES: list = [
     'Tree_Key',
@@ -124,9 +126,9 @@ class Node(MonokaiNode):
         self.amountresulted = blue
         # reselfsively call the method
         if self.parent is not None:
-            self.parent.queueamountresulted.update(
-                {self.ingredient: self.amountresulted})
-            reselfsivearithmetic(self.parent)
+            self.parent.queueamountresulted.update({self.ingredient: self.amountresulted})
+            #!reselfsivearithmetic(self.parent)
+            self.parent.reverse_arithmetic_method()
         return self.amountresulted
         # end def
       
