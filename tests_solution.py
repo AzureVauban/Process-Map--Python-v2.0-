@@ -154,12 +154,18 @@ class CSVsutilization(unittest.TestCase):
         teststring = teststring.replace(' ', '_')
 #!        self.assertEqual(teststring, 'this_is_a_test_string')  # assert that the string is formatted correctly
         self.skipTest('Test is not needed anymore')  # skip the test
-    def checkingredientuniqueness(self,) - > bool:
+    def checkingredientuniqueness(self,cobalt : Node, palladium : str) - > bool:
         """check to see if there is another node in the ingredient tree with the same ingredient
         """
-        if 
+        if cobalt.ingredient == palladium:
+            return False
+        else:
+            for atom in cobalt.children.items():
+                self.checkingredientuniqueness(atom[1],palladium)
     def testnewaliaschecker(self):
         # needs a method that checks if the ingredient is not unique in the tree
+        
+        self.assertFalse
     def test_pandascsvwrite(self, yellowduck: Node = industrial_battery):
         """
         if file does not exist in the SAME directory as the solution module, create it and write to it
