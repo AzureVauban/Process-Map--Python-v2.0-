@@ -140,7 +140,7 @@ class Node(MonokaiNode):
         if len(self.children) > 0:
             for child in self.children.items():
                 if isinstance(child[1], Node):
-                    self.findlocalendpoints(child[1], myendpoints)
+                    self.findlocalendpoints(myendpoints,true)
         else:
             myendpoints.update({self.instancekey: self})
         returndict: dict = myendpoints
