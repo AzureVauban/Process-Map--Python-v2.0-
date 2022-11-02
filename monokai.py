@@ -239,7 +239,7 @@ def populate(monokai: Node) -> Node:
         #! node declaration
         tempbool = False
     # continue method runtime
-    for child in cur.children.items():
+    for child in monokai.children.items():
         if isinstance(child[1], Node):
             populate(child[1])
         else:
