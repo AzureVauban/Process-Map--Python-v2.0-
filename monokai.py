@@ -98,11 +98,18 @@ class Node(MonokaiNode):
     # end def
 
     # arithmetic method
-    # @note set the amount resulted of each member of the tree to the result of the arithmetic operation
+    # @note set the amount resulted of each member of the tree to the result
+    # of the arithmetic operation
     # end def
 
     def reverse_arithmetic_method(self) -> int:
+        """_summary_
+
+        Returns:
+            int: _description_
+        """
         # reverse artithmetic method
-        # @note set the amount on hand of each member of the tree to the result of the arithmetic operation
+        # @note set the amount on hand of each member of the tree to the
+        # result of the arithmetic operation
         # end def
         return 0
