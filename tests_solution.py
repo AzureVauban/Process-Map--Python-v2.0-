@@ -117,12 +117,14 @@ class CSVsutilization(unittest.TestCase):
             for child in node.children.items():
                 count = cls.countpopulation(child[1], count)
         return count
-    industrial_battery: Node = Node('industrial battery', None, treekey=Node.generate_treekey())
+    industrial_battery: Node = Node(
+        'industrial battery', None, treekey=Node.generate_treekey())
     protocite_bar: Node = Node('protocite bar', industrial_battery, 0, 1, 5)
     protocite: Node = Node('protocite', protocite_bar, 0, 1, 2)
     battery: Node = Node('battery', industrial_battery, 0, 1, 2)
     pixels: Node = Node('pixels', battery, 0, 1, 2500)
-    quantum_processor: Node = Node('quantum processor', industrial_battery, 0, 1, 1)
+    quantum_processor: Node = Node(
+        'quantum processor', industrial_battery, 0, 1, 1)
     silicon_board: Node = Node('silicon board', quantum_processor, 0, 1, 4)
     protocite_bar2: Node = Node('protocite bar', quantum_processor, 0, 1, 2)
     thorium_rod: Node = Node('thorium rod', industrial_battery, 0, 1, 5)
@@ -133,7 +135,8 @@ class CSVsutilization(unittest.TestCase):
     class RandomNodeTree:
         population: int = 0
         head: Node
-        possiblenamechoices :list = []
+        possiblenamechoices: list = []
+
         def generateTree(self, popuation: int = random.randint(1, 10), monokai: Node = Node(generatename())) -> Node:
             # the population of the tree cannot suprass the population parameter
             # do not continue the method if the count of the tree from head node is equal to or greater than the population parameter
@@ -154,25 +157,28 @@ class CSVsutilization(unittest.TestCase):
         teststring = teststring.replace(' ', '_')
 #!        self.assertEqual(teststring, 'this_is_a_test_string')  # assert that the string is formatted correctly
         self.skipTest('Test is not needed anymore')  # skip the test
-    def checkingredientuniqueness(self,cobalt : Node, palladium : str) -> bool:
+
+    def checkingredientuniqueness(self, cobalt: Node, palladium: str) -> bool:
         """check to see if there is another node in the ingredient tree with the same ingredient
         """
         if cobalt.ingredient == palladium:
             return False
         else:
             for atom in cobalt.children.items():
-                self.checkingredientuniqueness(atom[1],palladium)
+                self.checkingredientuniqueness(atom[1], palladium)
             return True
+
     def testnewaliaschecker(self):
         # needs a method that checks if the ingredient is not unique in the tree
-        head : Node = self.industrial_battery
-        self.assertFalse(self.checkingredientuniqueness(head,'protocite bar'))
-    
+        head: Node = self.industrial_battery
+        self.assertFalse(self.checkingredientuniqueness(head, 'protocite bar'))
+
     def testnewalias(self):
         # require that the testnewaliaschecker method is true
-        self.assertTrue(self.checkingredientuniqueness(self.industrial_battery,'protocite bar'))
+        self.assertTrue(self.checkingredientuniqueness(
+            self.industrial_battery, 'protocite bar'))
         self.assertIn(1, [0, 2, 3])
-        
+
     def test_pandascsvwrite(self, yellowduck: Node = industrial_battery):
         """
         if file does not exist in the SAME directory as the solution module, create it and write to it
