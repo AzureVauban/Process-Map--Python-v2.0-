@@ -167,7 +167,10 @@ class CSVsutilization(unittest.TestCase):
         # needs a method that checks if the ingredient is not unique in the tree
         head : Node = self.industrial_battery
         self.assertFalse(self.checkingredientuniqueness(head,'protocite bar'))
-        
+    
+    def testnewalias(self):
+        # require that the testnewaliaschecker method is true
+        self.
         
     def test_pandascsvwrite(self, yellowduck: Node = industrial_battery):
         """
