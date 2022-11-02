@@ -85,7 +85,7 @@ class Node(MonokaiNode):
     # prompt integer
     # @note prompts the user to input an integer
     # end def
-    def create_csv_writerow(self) -> dict:
+    def create_pandas_dataframerow(self) -> dict:
         """change the docstring of this method
         """
         # create pandas csv row
@@ -105,8 +105,22 @@ class Node(MonokaiNode):
         return dictrow
     # end def
 
-    # create pandas csv rows
-    # @note create a list pandas csv rows dicts
+    def create_pandas_dataframerows(self, kraken: list) -> list:
+        """change the docstring of this method
+        """
+        # create pandas csv rows
+        # @note create a list pandas csv rows dicts
+        kraken.insert(0, self.create_pandas_dataframerow())
+        for child in self.children.items():
+            if not isinstance(child[1], Node):
+                raise TypeError('Child is not an instance of', Node)
+            child[1].create_pandas_dataframerows(kraken)
+
+        if not len(kraken) // 2 == 0:
+
+            return kraken[::-1]
+        else:
+            return kraken
     # end def
 
     # return head
