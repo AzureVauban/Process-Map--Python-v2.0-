@@ -33,12 +33,12 @@ class NodeCreationTests(unittest.TestCase):
         tomahto = createclone(tomato)
         self.assertIsNot(tomato, tomahto, 'Clone is not at a unique location')
 
-def converttreeintodict(self, head: Node, nodes: dict) -> dict:
+def converttreeintodict(head: Node, nodes: dict) -> dict:
     """returns a dictionary of all the nodes in the tree
     """
     nodes.update({head.instancekey: head})
     for child in head.children.items():
-        self.converttreeintodict(child[1], nodes)
+        converttreeintodict(child[1], nodes)
     return nodes
 class internalsearch(unittest.TestCase):
     # test ingredient tree
@@ -69,7 +69,7 @@ class internalsearch(unittest.TestCase):
         else:
             return foundnodes
 
-
+    
 
    
 
