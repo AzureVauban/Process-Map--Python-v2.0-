@@ -126,11 +126,12 @@ class Node(MonokaiNode):
         self.amountresulted = blue
         # recursively call the method
         if self.parent is not None:
-            self.parent.queueamountresulted.update({self.ingredient: self.amountresulted})
+            self.parent.queueamountresulted.update(
+                {self.ingredient: self.amountresulted})
             self.parent.reverse_arithmetic_method()
         return self.amountresulted
         # end def
-      
+
 
 def populate(monokai: Node) -> Node:
     return monokai
