@@ -171,7 +171,7 @@ class CSVsutilization(unittest.TestCase):
     def testnewalias(self):
         # require that the testnewaliaschecker method is true
         self.assertTrue(self.checkingredientuniqueness(self.industrial_battery,'protocite bar'))
-        self.assertIn(1, [1, 2, 3])
+        self.assertIn(1, [0, 2, 3])
         
     def test_pandascsvwrite(self, yellowduck: Node = industrial_battery):
         """
