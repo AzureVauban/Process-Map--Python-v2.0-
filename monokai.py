@@ -64,3 +64,5 @@ class Node(MonokaiNode):
     # this is unique identifer for an ingredient tree when its outputted into a csv file
     treekey: str = ''
     ismain_promptinputbool: bool = True
+    # methods
+    
