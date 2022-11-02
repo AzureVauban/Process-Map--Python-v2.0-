@@ -71,22 +71,33 @@ class Node(MonokaiNode):
     # methods
     # @ classmethod
     # generate treekey
-    #@note create a method that will generate a treekey for a node
+    # @note create a method that will generate a treekey for a node
     # end def
 
     # @ private method
     # prompt integer
-    #@note prompts the user to input an integer
+    # @note prompts the user to input an integer
     # end def
 
     # create pandas csv row
+    # @note create a pandas csv row dict
     # end def
 
     # create pandas csv rows
+    # @note create a list pandas csv rows dicts
     # end def
 
     # return head
+    # @note return the head of the tree
     # end def
 
     # return tree endpoints
+    # @note return the endpoints of the tree connected to current node
+    # end def
+
+    # arithmetic method
+    # @note set the amount resulted of each member of the tree to the result of the arithmetic operation
+    # end def
+    # reverse artithmetic method
+    # @note set the amount on hand of each member of the tree to the result of the arithmetic operation
     # end def
