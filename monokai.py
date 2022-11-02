@@ -205,7 +205,7 @@ def populate(monokai: Node) -> Node:
                 break
         checkstring = tempinstance.ingredient
     # prompt user to input ingredients
-    print('What ingredients do you need to create', cur.ingredient, end=':\n')
+    print('What ingredients do you need to create', monokai.ingredient, end=':\n')
     while True:
         myinput = input('')
         myinput = myinput.strip()
