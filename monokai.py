@@ -241,7 +241,10 @@ def populate(monokai: Node) -> Node:
         # todo have someone test out the code
         # node declaration
         tempbool = False
-    # @audit-info make this update the class dict GLOBALNODEDICT.update({monokai.instancekey: cur})
+    # @audit-info make this update the class dict GLOBALNODEDICT.update
+    # ({monokai.instancekey: cur})
+    # @audit-info dict should keep the treekey as a key and a list of all the
+    # nodes with that treekey as the item 
     # continue method runtime
     for child in monokai.children.items():
         if isinstance(child[1], Node):
