@@ -78,12 +78,15 @@ class Node(MonokaiNode):
     # @ classmethod
     @classmethod
     def generate_treekey(cls, length: int = random.randint(5, 20)) -> str:
+        """change the docstring of this method
+        """
         # generate treekey
         # @note create a method that will generate a treekey for a node
         cls.treekey = ''
         for _ in range(0, length):
             cls.treekey += random.choice(
-                '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+                '0123456789abcdefghijklmnopqrstuvwxyz\
+                    ABCDEFGHIJKLMNOPQRSTUVWXYZ')
         return cls.treekey
     # end def
 
@@ -109,6 +112,8 @@ class Node(MonokaiNode):
     # end def
 
     def recursive_arithmetic(self) -> int:
+        """change the docstring of this method
+        """
         # arithmetic method
         # @note set the amount resulted of each node
         tentativeinteger: int = sys.maxsize
@@ -131,6 +136,8 @@ class Node(MonokaiNode):
     # end def
 
     def recursive_recursive_arithmetic(self, desiredamount: int) -> int:
+        """change the docstring of this method
+        """
         # reverse artithmetic method
         # @note set the amount on hand of each node
         self.amountresulted = desiredamount
@@ -154,8 +161,12 @@ class Node(MonokaiNode):
 
 
 def populate(monokai: Node) -> Node:
+    """change the docstring of this method
+    """
     return monokai
 
 
 def subpopulate(noctis: dict) -> Node:
+    """change the docstring of this method
+    """
     return Node('noctis')
