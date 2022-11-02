@@ -65,4 +65,11 @@ class Node(MonokaiNode):
     treekey: str = ''
     ismain_promptinputbool: bool = True
     # methods
-    
+        # prompt integer
+        # end def
+        
+        #@classmethod
+        #generate treekey
+        #end def
+        
+        
