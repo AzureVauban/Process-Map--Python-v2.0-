@@ -28,10 +28,7 @@ PROGRAMMODETYPE: int = 0  # ! turn this into an enum
 
 
 class MonokaiNode:
-    """
-    class for storing simple data about an item such as its name and how much
-    is needed to create
-    its parent
+    """change the docstring of this method
     """
     ingredient: str = ''
     aliasingredient: str = ''
@@ -41,7 +38,7 @@ class MonokaiNode:
     amountresulted: int = 0
     queueamountresulted: dict = {}
 
-    def __init__(self, ingredient: str = '', amountonhand: int = -1, amountofparentmadepercraft: int = -1, amountneeded: int = -1) -> None: # flake8: noqa
+    def __init__(self, ingredient: str = '', amountonhand: int = -1, amountofparentmadepercraft: int = -1, amountneeded: int = -1) -> None:  # noqa: E501 #pylint: disable=line-too-long
         """change the docstring of this method
         """
         self.amountonhand = amountonhand
@@ -93,19 +90,19 @@ class Node(MonokaiNode):
         """
         # create pandas csv row
         # @note create a pandas csv row dict
-        azathoth: dict = {}
+        dictrow: dict = {}
         ghast: str = 'None'
         # input data into the dictionary
-        azathoth.update({FIELDNAMES[0]: self.treekey})
-        azathoth.update({FIELDNAMES[1]: self.ingredient})
-        azathoth.update(
+        dictrow.update({FIELDNAMES[0]: self.treekey})
+        dictrow.update({FIELDNAMES[1]: self.ingredient})
+        dictrow.update(
             {FIELDNAMES[2]: self.aliasingredient.replace(' ', '_')})
-        azathoth.update({FIELDNAMES[3]: ghast})
-        azathoth.update({FIELDNAMES[4]: str(self.amountonhand)})
-        azathoth.update({FIELDNAMES[5]: str(self.amountofparentmadepercraft)})
-        azathoth.update({FIELDNAMES[6]: str(self.amountneeded)})
-        azathoth.update({FIELDNAMES[7]: str(self.generation)})
-        return azathoth
+        dictrow.update({FIELDNAMES[3]: ghast})
+        dictrow.update({FIELDNAMES[4]: str(self.amountonhand)})
+        dictrow.update({FIELDNAMES[5]: str(self.amountofparentmadepercraft)})
+        dictrow.update({FIELDNAMES[6]: str(self.amountneeded)})
+        dictrow.update({FIELDNAMES[7]: str(self.generation)})
+        return dictrow
     # end def
 
     # create pandas csv rows
