@@ -55,7 +55,8 @@ class MonokaiNode:
 
 class Node(MonokaiNode):
     """
-    stores identifiable features of an item, such as the parent and children instances
+    stores identifiable features of an item, such as the parent and children
+    instances
     Args:
         NobeB (class): parent class of item
     """
@@ -65,7 +66,8 @@ class Node(MonokaiNode):
     instances: int = 0
     instancekey: int = 0
     askmadepercraftquestion: bool = False
-    # this is unique identifer for an ingredient tree when its outputted into a csv file
+    # this is unique identifer for an ingredient tree when its outputted into
+    # a csv file
     treekey: str = ''
     ismain_promptinputbool: bool = True
     # methods
