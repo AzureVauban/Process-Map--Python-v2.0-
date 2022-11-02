@@ -33,6 +33,7 @@ class NodeCreationTests(unittest.TestCase):
         tomahto = createclone(tomato)
         self.assertIsNot(tomato, tomahto, 'Clone is not at a unique location')
 
+
 def converttreeintodict(head: Node, nodes: dict) -> dict:
     """returns a dictionary of all the nodes in the tree
     """
@@ -40,14 +41,18 @@ def converttreeintodict(head: Node, nodes: dict) -> dict:
     for child in head.children.items():
         converttreeintodict(child[1], nodes)
     return nodes
+
+
 class internalsearch(unittest.TestCase):
     # test ingredient tree
-    industrial_battery: Node = Node('industrial battery', None, treekey=Node.generate_treekey())
+    industrial_battery: Node = Node(
+        'industrial battery', None, treekey=Node.generate_treekey())
     protocite_bar: Node = Node('protocite bar', industrial_battery, 0, 1, 5)
     protocite: Node = Node('protocite', protocite_bar, 0, 1, 2)
     battery: Node = Node('battery', industrial_battery, 0, 1, 2)
     pixels: Node = Node('pixels', battery, 0, 1, 2500)
-    quantum_processor: Node = Node('quantum processor', industrial_battery, 0, 1, 1)
+    quantum_processor: Node = Node(
+        'quantum processor', industrial_battery, 0, 1, 1)
     silicon_board: Node = Node('silicon board', quantum_processor, 0, 1, 4)
     protocite_bar2: Node = Node('protocite bar', quantum_processor, 0, 1, 2)
     protocite2: Node = Node('protocite', protocite_bar2, 0, 1, 2)
@@ -69,8 +74,6 @@ class internalsearch(unittest.TestCase):
         else:
             return foundnodes
 
-    
-
     def test_search(self):
         # assert that the search method does not return {-1:None}
         testsearchstring: str = 'protocite'
@@ -83,8 +86,8 @@ class internalsearch(unittest.TestCase):
             print('We noticed that you typed in', testsearchstring, len(
                 assert_dict), 'times already, do you want to copy the contents of that node?')
         self.assertNotEqual(assert_dict, {-1: None}, 'No nodes found')
-    
-        
+
+
 class CSVsutilization(unittest.TestCase):
     """
     @note use pandas instead of built in csv module
@@ -114,12 +117,14 @@ class CSVsutilization(unittest.TestCase):
             for child in node.children.items():
                 count = cls.countpopulation(child[1], count)
         return count
-    industrial_battery: Node = Node('industrial battery', None, treekey=Node.generate_treekey())
+    industrial_battery: Node = Node(
+        'industrial battery', None, treekey=Node.generate_treekey())
     protocite_bar: Node = Node('protocite bar', industrial_battery, 0, 1, 5)
     protocite: Node = Node('protocite', protocite_bar, 0, 1, 2)
     battery: Node = Node('battery', industrial_battery, 0, 1, 2)
     pixels: Node = Node('pixels', battery, 0, 1, 2500)
-    quantum_processor: Node = Node('quantum processor', industrial_battery, 0, 1, 1)
+    quantum_processor: Node = Node(
+        'quantum processor', industrial_battery, 0, 1, 1)
     silicon_board: Node = Node('silicon board', quantum_processor, 0, 1, 4)
     protocite_bar2: Node = Node('protocite bar', quantum_processor, 0, 1, 2)
     thorium_rod: Node = Node('thorium rod', industrial_battery, 0, 1, 5)
@@ -174,7 +179,7 @@ class CSVsutilization(unittest.TestCase):
         self.assertTrue(os.path.exists(TESTFILENAME))
 
     # todo turn this into a function in the solution module when this unit test passes
-    def test_pandacsvparsesearch(self,filename : str = TESTFILENAME) -> dict:
+    def test_pandacsvparsesearch(self, filename: str = TESTFILENAME) -> dict:
         """
         test parsing the csv file to find head node instances
 
@@ -284,8 +289,9 @@ class CSVsutilization(unittest.TestCase):
         else:
             if parent is not None:
                 pass
-                
-    def test_headnodecreation(self,foundheadnodes = None)->Node: #@note reformat this method to take in a dict instead of setting a dict if the parameter is None
+
+    # @note reformat this method to take in a dict instead of setting a dict if the parameter is None
+    def test_headnodecreation(self, foundheadnodes=None) -> Node:
         """
         test that the head node is created correctly
         """
@@ -293,10 +299,11 @@ class CSVsutilization(unittest.TestCase):
         # if it returns {-1:None} or the file is not in the directory, skip the test
         # else, open the file in read mode and check for nodes in the csv that match the value of the head node's key in the dictionary,
         # is not a head node instance (avoid duplicating the same nodes as dictionized nodes) and emplace nodes into the head node's tree
-        if foundheadnodes is None or isinstance(foundheadnodes,dict):
+        if foundheadnodes is None or isinstance(foundheadnodes, dict):
             foundheadnodes = self.test_pandacsvparsesearch()
         else:
-            raise TypeError('foundheadnodes is not a dictionary') # raise a type error if the foundheadnodes is not a dictionary
+            # raise a type error if the foundheadnodes is not a dictionary
+            raise TypeError('foundheadnodes is not a dictionary')
         if foundheadnodes == {-1: None} or not os.path.exists(path=TESTFILENAME):
             # @audit-info in the solution module the user would input an integer to the function to specify which head node to create and return, for this test return a random one
             self.skipTest('the csv file does not exist')
@@ -457,7 +464,7 @@ class CSVsutilization(unittest.TestCase):
         """
         panda: dict = {}  # dictionary of new nodes
         # read the csv file
-        OLDFIELDNAMES = [
+        old_field_names = [
             'Ingredient',
             'Parent_Ingredient',
             'Amount_on_Hand',
@@ -467,12 +474,12 @@ class CSVsutilization(unittest.TestCase):
             'Tree_Key'
         ]
         # read the csv file and convert it to a dictionary of records
-        for purplepanda in pandas.read_csv(nameofoldcsv, names=OLDFIELDNAMES).to_dict('index').items():
+        for purplepanda in pandas.read_csv(nameofoldcsv, names=old_field_names).to_dict('index').items():
             # convert the record to a list
             oxygen: list = list(purplepanda[1].values())
             """
             @note field names/value models from the old csv file
-            fieldnames = [                
+            fieldnames = [
                 [0]: 'Ingredient':'Focusing Array',     # the name of the ingredient
                 [1]: 'Parent_Ingredient':'None'         # the parent ingredient of the node
                 [2]: 'Amount_on_Hand':'1'               # the amount of the ingredient on hand
@@ -494,7 +501,7 @@ class CSVsutilization(unittest.TestCase):
             for headnode in panda.items():
                 pinkpandarows: list = []
                 # read the csv file and convert it to a dictionary of records
-                for pinkpanda in pandas.read_csv(nameofoldcsv, names=OLDFIELDNAMES).to_dict('index').items():
+                for pinkpanda in pandas.read_csv(nameofoldcsv, names=old_field_names).to_dict('index').items():
                     # convert the record to a list
                     pinkerpanda: list = list(pinkpanda[1].values())
                     if pinkerpanda[6] == headnode[0]:
@@ -548,49 +555,50 @@ class CSVsutilization(unittest.TestCase):
             return panda  # @note use the dictionary to print the tree to the new csv file
         # self assert that the dictionary is not empty and not equal {-1:None}
 
-    def test_checkforduplicatetrees(self,head : Node=thorium_rod)->tuple:
+    def test_checkforduplicatetrees(self, head: Node = thorium_rod) -> tuple:
         """
         test that there are exact copies of an ingredient tree written into csv file
         """
         # check if the file is in the current directory, if is not, skip the test
         if not os.path.isfile(TESTFILENAME):
             self.skipTest('test.csv not found')
-            return (False,'test.csv not found')
-        elif  len(self.test_pandacsvparsesearch()) == 0:
+            return (False, 'test.csv not found')
+        elif len(self.test_pandacsvparsesearch()) == 0:
             self.skipTest('no head nodes found')
-            return (False,'no head nodes found')
+            return (False, 'no head nodes found')
             # if the file exists in the current direct
         else:
-            duplicatetree : bool = False
+            duplicatetree: bool = False
             # check that the node passed into the function is a head node
             if head.parent is not None:
                 while head.parent is not None:
                     head = head.parent
 
             #! check for the head nodes in the csv file
-            
-            headnodes : dict = self.test_pandacsvparsesearch()
-            #check if any of the head nodes match the ingredient name of that the head node of the tree passed into the method
-            checkthesenodes : dict = {}
+
+            headnodes: dict = self.test_pandacsvparsesearch()
+            # check if any of the head nodes match the ingredient name of that the head node of the tree passed into the method
+            checkthesenodes: dict = {}
             for node in headnodes.items():
                 # parse the returned list of head nodes for any head nodes that match the name of the head node of the tree passed into the method
                 if node[1].ingredient == head.ingredient:
-                    checkthesenodes.update({node[0]:node[1]})
+                    checkthesenodes.update({node[0]: node[1]})
             if len(checkthesenodes) == 0:
-                self.skipTest('No head nodes matching the ingredient of the passed parameter head node were found')
-                return (False,'No head nodes matching the ingredient of the passed parameter head node were found')
+                self.skipTest(
+                    'No head nodes matching the ingredient of the passed parameter head node were found')
+                return (False, 'No head nodes matching the ingredient of the passed parameter head node were found')
             else:
                 # create trees from each node in the checkthesenodes dictionary
                 for node in checkthesenodes.items():
                     # create a tree from the head node
                     self.test_pandacsvparsesearch(node[0])
                     # check if the tree created from the head node matches the tree passed into the method
-                    tempbool = self.istreesame(head,node[1])
+                    tempbool = self.istreesame(head, node[1])
                     if tempbool[0]:
                         duplicatetree = True
                         break
                 self.skipTest('i really dont feel like adding this')
-                return (True,'duplicate tree found')
+                return (True, 'duplicate tree found')
 
 
 if __name__ == '__main__':
