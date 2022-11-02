@@ -71,14 +71,6 @@ class internalsearch(unittest.TestCase):
 
     
 
-   
-
-    def test_createclone(self):
-        """create a clone of a node
-        """
-        # assert that the clone node is not the same memory address as the original node
-        searchdict: dict = self.search2('protocite', self.industrial_battery)
-
     def test_search(self):
         # assert that the search method does not return {-1:None}
         testsearchstring: str = 'protocite'
@@ -91,8 +83,12 @@ class internalsearch(unittest.TestCase):
             print('We noticed that you typed in', testsearchstring, len(
                 assert_dict), 'times already, do you want to copy the contents of that node?')
         self.assertNotEqual(assert_dict, {-1: None}, 'No nodes found')
-
-
+    def mockinput(self):
+        """test the subpopulate method, must return a node that can be linked back up into the tree
+        """
+        mock_userinput_ingredient : str = 'protocite'
+        testsearch : dict = converttreeintodict(self.industrial_battery, {})
+        
 class CSVsutilization(unittest.TestCase):
     """
     @note use pandas instead of built in csv module
