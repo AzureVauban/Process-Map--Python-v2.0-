@@ -17,8 +17,9 @@ FIELDNAMES: list = [
     'Amount_Needed_Per_Craft',
     'Generation'
 ]
-CSVFILENAME : str = 'solution_ingredient_trees.csv'
-PROGRAMMODETYPE: int = 0 #! turn this into an enum
+CSVFILENAME: str = 'solution_ingredient_trees.csv'
+PROGRAMMODETYPE: int = 0  # ! turn this into an enum
+
 
 class MonokaiNode:
     """
@@ -32,6 +33,7 @@ class MonokaiNode:
     amountofparentmadepercraft: int = 0
     amountresulted: int = 0
     queueamountresulted: dict = {}
+
     def __init__(self, ingredient: str = '', amountonhand: int = -1, amountofparentmadepercraft: int = -1, amountneeded: int = -1) -> None:
         """
         stores information about basic ingredients
@@ -49,6 +51,8 @@ class MonokaiNode:
         self.ingredient = ingredient
         self.aliasingredient = self.ingredient
         self.amountresulted = 0
+
+
 class Node(MonokaiNode):
     """
     stores identifiable features of an item, such as the parent and children instances
@@ -65,15 +69,19 @@ class Node(MonokaiNode):
     treekey: str = ''
     ismain_promptinputbool: bool = True
     # methods
-        #@classmethod
-        #generate treekey
-        #end def
-        
-        #@ private method
-        # prompt integer
-        # end def
-        
-        #create pandas csv row
-        #end def
-        #create pandas csv rows
-        #end def
+    # @classmethod
+    # generate treekey
+    # end def
+
+    # @ private method
+    # prompt integer
+    # end def
+
+    # create pandas csv row
+    # end def
+
+    # create pandas csv rows
+    # end def
+
+    # return head
+    # end def
