@@ -80,27 +80,31 @@ class internalsearch(unittest.TestCase):
             return returndict
 
     def converttreeintodict(self, head: Node, nodes: dict) -> dict:
+        """returns a dictionary of all the nodes in the tree
+        """
         nodes.update({head.instancekey: head})
         for child in head.children.items():
             self.converttreeintodict(child[1], nodes)
         return nodes
 
     def test_createclone(self):
+        """create a clone of a node
+        """
         # assert that the clone node is not the same memory address as the original node
         searchdict: dict = self.search2('protocite', self.industrial_battery)
 
     def test_search(self):
         # assert that the search method does not return {-1:None}
         testsearchstring: str = 'protocite'
-        assertDict: dict = self.search(
+        assert_dict: dict = self.search(
             testsearchstring, self.industrial_battery, {})
-        if len(assertDict) == 1:
+        if len(assert_dict) == 1:
             print('We noticed that you typed in', testsearchstring, len(
-                assertDict), 'time already, do you want to copy the contents of that node?')
+                assert_dict), 'time already, do you want to copy the contents of that node?')
         else:
             print('We noticed that you typed in', testsearchstring, len(
-                assertDict), 'times already, do you want to copy the contents of that node?')
-        self.assertNotEqual(assertDict, {-1: None}, 'No nodes found')
+                assert_dict), 'times already, do you want to copy the contents of that node?')
+        self.assertNotEqual(assert_dict, {-1: None}, 'No nodes found')
 
 
 class CSVsutilization(unittest.TestCase):
