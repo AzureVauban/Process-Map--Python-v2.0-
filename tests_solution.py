@@ -117,14 +117,12 @@ class CSVsutilization(unittest.TestCase):
             for child in node.children.items():
                 count = cls.countpopulation(child[1], count)
         return count
-    industrial_battery: Node = Node(
-        'industrial battery', None, treekey=Node.generate_treekey())
+    industrial_battery: Node = Node('industrial battery', None, treekey=Node.generate_treekey())
     protocite_bar: Node = Node('protocite bar', industrial_battery, 0, 1, 5)
     protocite: Node = Node('protocite', protocite_bar, 0, 1, 2)
     battery: Node = Node('battery', industrial_battery, 0, 1, 2)
     pixels: Node = Node('pixels', battery, 0, 1, 2500)
-    quantum_processor: Node = Node(
-        'quantum processor', industrial_battery, 0, 1, 1)
+    quantum_processor: Node = Node('quantum processor', industrial_battery, 0, 1, 1)
     silicon_board: Node = Node('silicon board', quantum_processor, 0, 1, 4)
     protocite_bar2: Node = Node('protocite bar', quantum_processor, 0, 1, 2)
     thorium_rod: Node = Node('thorium rod', industrial_battery, 0, 1, 5)
