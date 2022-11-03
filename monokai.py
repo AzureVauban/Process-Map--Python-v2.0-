@@ -136,14 +136,15 @@ class Node(MonokaiNode):
         """
         # check if there is are any other nodes in the tree with the same
         # ingredient name as the current node
+        if not isinstance(base, Node):
+            raise TypeError('base is not an instance of', Node)
         if self is not base and self.ingredient == ingredient:
             return False
-        else:
-            for subnode in self.children.items():
-                if not isinstance(subnode[1], Node):
-                    raise TypeError('child is not an instance of', Node)
-                if not subnode[1].checkuniqueness(base, ingredient):
-                    return False
+        for subnode in self.children.items():
+            if not isinstance(subnode[1], Node):
+                raise TypeError('child is not an instance of', Node)
+            if not subnode[1].checkuniqueness(base, ingredient):
+                return False
         return False
     # end def
 # end def
