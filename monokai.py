@@ -241,7 +241,6 @@ def populate(monokai: Node) -> Node:
             inputqueue.update({len(inputqueue): myinput})
     # create new child instances
     tempbool: bool = True
-    searchdict: dict = {}
     for newnodename in inputqueue.items():
         # if search method doesn't return a dictionary with a key of -1 and
         # a value of None
