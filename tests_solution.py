@@ -47,8 +47,9 @@ class NodeCreationTests(unittest.TestCase):
         """test traverse in reorganized solution
         """
         head: MonokaiNode = MonokaiNode('head')
-        testnodes : MonokaiNode = self.binarylink(head, 2, 0, 10)
-        self.assertIs(MonokaiHead(testnodes), head, 'Head is not at the top of the tree')
+        testnodes: MonokaiNode = self.binarylink(head, 2, 0, 10)
+        self.assertIs(MonokaiHead(testnodes), head,
+                      'Head is not at the top of the tree')
 
 def converttreeintodict(head: Node, nodes: dict) -> dict:
     """returns a dictionary of all the nodes in the tree
