@@ -196,13 +196,13 @@ class Node(MonokaiNode):
     # end def
 
 
-def updatesearchdict(darcula: Node):
-    """change the docstring of this method
-    """
-    # create a method to update a dictionary of all created nodes
-    # @note the key is the treekey and the value is a list of all the nodes with
-    # same tree key
-    print(darcula)
+    def updatesearchdict(darcula: Node):
+        """change the docstring of this method
+        """
+        # create a method to update a dictionary of all created nodes
+        # @note the key is the treekey and the value is a list of all the nodes with
+        # same tree key
+        print(darcula)
 # end def
 
 
