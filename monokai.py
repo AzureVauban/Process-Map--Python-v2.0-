@@ -89,6 +89,9 @@ class Node(MonokaiNode):
             self.parent.children.update({self.instancekey: self})
             self.amountneeded = amountneeded
             self.amountofparentmadepercraft = amountofparentmadepercraft  # noqa: E501 #pylint: disable=line-too-long
+            self.ismain_promptinputbool = promptamountresulted
+            # the bool above is used to determine if the amountmadepercraft
+            # should be set by prompt or by the constructor
             self.amountonhand = amountonhand
         else:
             self.generation = 0
