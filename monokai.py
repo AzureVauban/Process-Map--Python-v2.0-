@@ -130,5 +130,15 @@ class Node(MonokaiNode):
 # end def
 
 
+def checkuniqueness(darcula : Node, ingredient: str = '') -> bool:
+    """change the docstring of this method
+    """
+    # check if there is are any other nodes in the tree with the same
+    # ingredient name as the current node
+
+    return False
+# end def
+
+
 if __name__ == '__main__':
     print('hello world')
