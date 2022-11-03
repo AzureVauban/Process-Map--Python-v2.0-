@@ -203,7 +203,7 @@ def updatesearchdict(darcula: Node):
     # same tree key
     print(darcula)
 # end def
-def 
+
 
 def populate(monokai: Node) -> Node:
     """change the docstring of this method
