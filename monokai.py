@@ -131,11 +131,19 @@ class Node(MonokaiNode):
         return self.amountonhand
     # end def
 
-    def checkuniqueness(self, ingredient: str = '') -> bool:
+    def checkuniqueness(self,base : None, ingredient: str = '') -> bool:
         """change the docstring of this method
         """
         # check if there is are any other nodes in the tree with the same
         # ingredient name as the current node
+        if self is not base and self.ingredient == ingredient:
+            return False
+        else:
+            for subnode in self.children.items():
+                if not isinstance(subnode[1], Node):
+                    raise TypeError('child is not an instance of', Node)
+                if not subnode[1].checkuniqueness(base, ingredient):
+                    return False
         return False
     # end def
 # end def
