@@ -225,7 +225,10 @@ def populate(node: Node = Node(input('What is the name of the item you want to c
     """change the docstring of this method
     """
     return head(node)
+# end def
 
+def subpopulate() -> Node:
+    return Node
 
 if __name__ == '__main__':
     print('terminating program')
