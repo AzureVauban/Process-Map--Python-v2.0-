@@ -60,14 +60,11 @@ class Node(MonokaiNode):
     instances: int = 0
     instancekey: int = 0
     askmadepercraftquestion: bool = False
-    searchdict: dict = {}
     # this is unique identifer for an ingredient tree when its outputted into
     # a csv file
     treekey: str = ''
     ismain_promptinputbool: bool = True
-    # methods
 
-    # @ classmethod
     @classmethod
     def generate_treekey(cls, length: int = random.randint(5, 20)) -> str:
         """change the docstring of this method
@@ -80,7 +77,7 @@ class Node(MonokaiNode):
                 '0123456789abcdefghijklmnopqrstuvwxyz\
                     ABCDEFGHIJKLMNOPQRSTUVWXYZ')
         return cls.treekey
-    # end def 
+    # end def
 
     def recursive_arithmetic(self) -> int:
         """change the docstring of this method
@@ -129,7 +126,6 @@ class Node(MonokaiNode):
                     raise TypeError('child is not an instance of', Node)
                 self.recursive_recursive_arithmetic(self.amountonhand)
         return self.amountonhand
-
     # end def
 # end def
 
