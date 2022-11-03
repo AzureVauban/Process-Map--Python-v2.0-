@@ -27,7 +27,6 @@ FIELDNAMES: list = [
     'Generation'
 ]
 CSVFILENAME: str = 'solution_ingredient_trees.csv'
-PROGRAMMODETYPE: int = 0  # ! turn this into an enum
 
 
 class ProgramMode(Enum):
@@ -211,5 +210,5 @@ class Node(MonokaiNode):
 
 
 if __name__ == '__main__':
-    test = Node('apple')
+
     print('terminating program')
