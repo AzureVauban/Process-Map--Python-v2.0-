@@ -70,29 +70,25 @@ class Node(MonokaiNode):
     generation: int = 0
     instances: int = 0
     instancekey: int = 0
-    askmadepercraftquestion: bool = False
+    askmadepercraft: bool = False
     # this is unique identifer for an ingredient tree when its outputted into
     # a csv file
     treekey: str = ''
-    promptamountmadepercraft: bool = True
 
-    def __init__(self, ingredient: str = '', parent=None, amountonhand: int = 0, amountofparentmadepercraft: int = 1, amountneeded: int = 1, promptamountmadepercraft: bool = False) -> None:  # noqa: E501 #pylint: disable=line-too-long
-        super().__init__(ingredient, amountonhand, amountofparentmadepercraft, amountneeded)  # noqa: E501 #pylint: disable=line-too-long
+    def __init__(self, ingredient: str = '', parent=None, amountonhand: int = 0, amountofparentmadepercraft: int = 1, amountneeded: int = 1, askmadepercraft: bool = False) -> None:  # noqa: E501 #pylint: disable=line-too-long
+        super().__init__(ingredient, amountonhand, askmadepercraft, amountneeded)  # noqa: E501 #pylint: disable=line-too-long
         self.children = {}
         if not isinstance(parent, Node) and parent is not None:
             raise TypeError('parent is not an instance of', Node)
+        self.askmadepercraft = askmadepercraft  # noqa: E501 #pylint: disable=line-too-long
         if parent is not None:
             self.parent = parent
             self.parent.children.update({self.instancekey: self})
             self.generation = self.parent.generation + 1
             self.treekey = self.parent.treekey
             self.parent.children.update({self.instancekey: self})
-            self.amountneeded = amountneeded
-            self.amountofparentmadepercraft = amountofparentmadepercraft  # noqa: E501 #pylint: disable=line-too-long
-            self.promptamountmadepercraft = promptamountmadepercraft
             # the bool above is used to determine if the amountmadepercraft
             # should be set by prompt or by the constructor
-            self.amountonhand = amountonhand
         else:
             self.generation = 0
             self.treekey = self.generate_treekey()
@@ -156,12 +152,12 @@ class Node(MonokaiNode):
             print('What is the amount of', self.ingredient,
                   'needed to create', self.parent.ingredient, 'once?')
             self.amountneeded = self.__promptinput_int()
-            if self.amountofparentmadepercraft:
+            if self.askmadepercraft:
                 # if a leading sibiling has  already asked this question, then
                 # skip it
                 print('What is the amount of parent ingredient',
                       self.parent.ingredient, 'made per craft?')
-            self.amountofparentmadepercraft = self.__promptinput_int()
+            self.askmadepercraft = self.__promptinput_int()
     # end def
 
     def recursive_arithmetic(self) -> int:
@@ -176,7 +172,7 @@ class Node(MonokaiNode):
             for myinteger in self.queueamountresulted.items():
                 if myinteger[1] < tentativeinteger:
                     tentativeinteger = myinteger[1]
-        red = (self.amountofparentmadepercraft / self.amountneeded)
+        red = (self.askmadepercraft / self.amountneeded)
         blue = (red*self.amountonhand) + (red*tentativeinteger)
         blue = round(math.floor(blue))
         self.amountresulted = blue
@@ -194,7 +190,7 @@ class Node(MonokaiNode):
         # reverse artithmetic method
         # @note set the amount on hand of each node
         self.amountresulted = desiredamount
-        red: float = ((self.amountofparentmadepercraft/self.amountneeded)
+        red: float = ((self.askmadepercraft/self.amountneeded)
                       ** -1)*self.amountresulted
         green: float = round(math.ceil(red))
         self.amountonhand = int(max(red, green))
