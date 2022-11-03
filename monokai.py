@@ -281,9 +281,19 @@ def populate(monokai: Node) -> Node:
     return monokai
 
 
-def subpopulate(treekey: str, lilac: str) -> dict:
+def subpopulate(treekey: str, lilac: str):
     """change the docstring of this method
+    return type is a dict
     """
     # return {-1:NONE} if there wasnt a node found in the search
-
+    test = Node.searchdict[treekey]
+    print(type(test))
+    if treekey in Node.searchdict:
+        return Node.searchdict[treekey]
     return {-1: None}
+
+if __name__ == '__main__':
+    monokai = Node
+    monokai.treekey = 'test'
+    monokai.updatesearchdict(self)
+    subpopulate('test', 'test')
