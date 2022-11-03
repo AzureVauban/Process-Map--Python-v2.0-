@@ -85,7 +85,9 @@ class Node(MonokaiNode):
             self.parent.children.update({self.instancekey: self})
             self.generation = self.parent.generation + 1
             self.treekey = self.parent.treekey
-            self.
+            self.amountneeded = amountneeded
+            self.amountofparentmadepercraft = amountofparentmadepercraft  # noqa: E501 #pylint: disable=line-too-long
+            self.amountonhand = amountonhand
         else:
             pass
         if __name__ == '__main__':
