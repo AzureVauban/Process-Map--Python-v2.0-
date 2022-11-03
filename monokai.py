@@ -115,6 +115,7 @@ class Node(MonokaiNode):
         userinputint: int = 0
         # private method for prompting the user to input an integer
         # @note used in the __set_amounts method
+        userinput : str = ' '
         return userinputint
     # end def
 
