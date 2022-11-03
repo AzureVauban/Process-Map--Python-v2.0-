@@ -133,8 +133,12 @@ class Node(MonokaiNode):
         """
         # return tree endpoints
         # @note return the endpoints of the tree connected to selfrent node
-        if startfromhead is False and self.parent is not None:
-            pass
+        if not startfromhead and self.parent is not None:
+            self.findendpoints(endpoints, False)
+        elif not startfromhead and self.parent is None:
+            self.findendpoints(endpoints, True)
+        elif startfromhead and len(self.children) == 0:
+            endpoints.update({self.instancekey: self})
         return endpoints
     # end def
 
