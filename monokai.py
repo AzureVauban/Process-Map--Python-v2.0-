@@ -227,8 +227,24 @@ def populate(node: Node = Node(input('What is the name of the item you want to c
     return head(node)
 # end def
 
-def subpopulate() -> Node:
-    return Node
+
+def subpopulate(cur: Node) -> Node:
+    inputqueue: dict = {}
+    checkstring: str = cur.ingredient
+    # output ingredient trail
+    if cur.parent is not None:
+        tempinstance: Node = cur
+        print('TRAIL: ', end='')
+        while True:
+            if tempinstance.parent is not None:
+                print(tempinstance.ingredient, '-> ', end='')
+                tempinstance = tempinstance.parent
+            else:
+                print(tempinstance.ingredient)
+                break
+        checkstring = tempinstance.ingredient
+    return cur
+
 
 if __name__ == '__main__':
     print('terminating program')
