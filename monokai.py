@@ -8,6 +8,9 @@ Changes:
    for a new recipe
 = allow for usage of basic arithmetic operators when prompted to input a
   number (still in progress)
+  
+  # red vs blue, boolean comparison for checking
+  # red vs green, boolean comparison for program flow
 """
 import sys
 import math
@@ -130,13 +133,12 @@ class Node(MonokaiNode):
 # end def
 
 
-def checkuniqueness(darcula: Node, ingredient: str = '') -> bool:
+def checkuniqueness(base: Node, check: Node) -> bool:
     """change the docstring of this method
     """
     # check if there is are any other nodes in the tree with the same
     # ingredient name as the current node
-    
-    return False
+
 # end def
 
 
