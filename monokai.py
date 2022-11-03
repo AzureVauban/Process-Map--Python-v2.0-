@@ -128,7 +128,7 @@ class Node(MonokaiNode):
         # @note return the head of the tree
     # end def
 
-    def findendpoints(self, endpoints: dict, startfromhead: bool) -> dict:
+    def findendpoints(self, endpoints: dict, startfromhead: bool = False) -> dict:
         """change the docstring of this method
         """
         # return tree endpoints
@@ -139,6 +139,7 @@ class Node(MonokaiNode):
             self.findendpoints(endpoints, True)
         elif startfromhead and len(self.children) == 0:
             endpoints.update({self.instancekey: self})
+            
         return endpoints
     # end def
 
