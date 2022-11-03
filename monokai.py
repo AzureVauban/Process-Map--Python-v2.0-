@@ -82,6 +82,26 @@ class Node(MonokaiNode):
         return cls.treekey
     # end def
 
+    
+    def checkuniqueness(self, base: None, ingredient: str = '') -> bool:
+        """change the docstring of this method
+        """
+        # @todo do alot of testing before using this method
+        # check if there is are any other nodes in the tree with the same
+        # ingredient name as the current node
+        if not isinstance(base, Node):
+            raise TypeError('base is not an instance of', Node)
+        if self is not base and self.ingredient == ingredient:
+            return False
+        for subnode in self.children.items():
+            if not isinstance(subnode[1], Node):
+                raise TypeError('child is not an instance of', Node)
+            if not subnode[1].checkuniqueness(base, ingredient):
+                return False
+            return True
+        return True
+    # end def
+    
     def recursive_arithmetic(self) -> int:
         """change the docstring of this method
         """
@@ -129,25 +149,6 @@ class Node(MonokaiNode):
                     raise TypeError('child is not an instance of', Node)
                 self.recursive_recursive_arithmetic(self.amountonhand)
         return self.amountonhand
-    # end def
-
-    def checkuniqueness(self, base: None, ingredient: str = '') -> bool:
-        """change the docstring of this method
-        """
-        # @todo do alot of testing before using this method
-        # check if there is are any other nodes in the tree with the same
-        # ingredient name as the current node
-        if not isinstance(base, Node):
-            raise TypeError('base is not an instance of', Node)
-        if self is not base and self.ingredient == ingredient:
-            return False
-        for subnode in self.children.items():
-            if not isinstance(subnode[1], Node):
-                raise TypeError('child is not an instance of', Node)
-            if not subnode[1].checkuniqueness(base, ingredient):
-                return False
-            return True
-        return True
     # end def
 # end def
 
