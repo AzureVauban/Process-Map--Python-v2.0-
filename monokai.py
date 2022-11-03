@@ -66,7 +66,7 @@ class Node(MonokaiNode):
     treekey: str = ''
     ismain_promptinputbool: bool = True
     # methods
-    
+
     # @ classmethod
     @classmethod
     def generate_treekey(cls, length: int = random.randint(5, 20)) -> str:
