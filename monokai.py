@@ -211,6 +211,18 @@ class Node(MonokaiNode):
 # end def
 
 
+def head(node: Node) -> Node:
+    """change the docstring of this method
+    """
+    # @note get the top node of a tree
+    if not isinstance(node, Node):
+        raise TypeError('node is not an instance of', Node)
+    while node.parent is not None:
+        node = node.parent
+    return node
+# end def
+
+
 def populate(node: Node = Node(input('What is the name of the item you want to create: ').strip())) -> Node:  # noqa: E501 #pylint: disable=line-too-long
     """change the docstring of this method
     """
@@ -219,5 +231,4 @@ def populate(node: Node = Node(input('What is the name of the item you want to c
 
 if __name__ == '__main__':
     head = populate()
-    print('The amount of', head.ingredient, 'you need is', head.amountneeded)
     print('terminating program')
