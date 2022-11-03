@@ -74,9 +74,9 @@ class Node(MonokaiNode):
     # this is unique identifer for an ingredient tree when its outputted into
     # a csv file
     treekey: str = ''
-    ismain_promptinputbool: bool = True
+    promptamountmadepercraft: bool = True
 
-    def __init__(self, ingredient: str = '', parent=None, amountonhand: int = 0, amountofparentmadepercraft: int = 1, amountneeded: int = 1, promptamountresulted: bool = False) -> None:  # noqa: E501 #pylint: disable=line-too-long
+    def __init__(self, ingredient: str = '', parent=None, amountonhand: int = 0, amountofparentmadepercraft: int = 1, amountneeded: int = 1, promptamountmadepercraft: bool = False) -> None:  # noqa: E501 #pylint: disable=line-too-long
         super().__init__(ingredient, amountonhand, amountofparentmadepercraft, amountneeded)  # noqa: E501 #pylint: disable=line-too-long
         self.children = {}
         if not isinstance(parent, Node) and parent is not None:
@@ -89,7 +89,7 @@ class Node(MonokaiNode):
             self.parent.children.update({self.instancekey: self})
             self.amountneeded = amountneeded
             self.amountofparentmadepercraft = amountofparentmadepercraft  # noqa: E501 #pylint: disable=line-too-long
-            self.ismain_promptinputbool = promptamountresulted
+            self.promptamountmadepercraft = promptamountmadepercraft
             # the bool above is used to determine if the amountmadepercraft
             # should be set by prompt or by the constructor
             self.amountonhand = amountonhand
@@ -141,7 +141,6 @@ class Node(MonokaiNode):
             userinput: str = input('').strip()
             if not userinput.isdigit():
                 print('please input an integer')
-                del userinput  # clears the variable
             else:
                 return int(userinput)
     # end def
