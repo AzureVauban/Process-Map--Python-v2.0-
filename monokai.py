@@ -242,20 +242,11 @@ def populate(monokai: Node) -> Node:
     # create new child instances
     tempbool: bool = True
     for newnodename in inputqueue.items():
-        # if search method doesn't return a dictionary with a key of -1 and
-        # a value of None
-        # prompt for copy
-        # else
-        # create new node
-        # prompt if the user wants to copy an existing node if the search
-        # query returns a dictionary
-        # that deosn't have a key of -1 and a value of None
-        # todo have someone test out the code
-        # node declaration
         foundnodes: dict = subpopulate(monokai.treekey, monokai.ingredient)
         if foundnodes != {-1: None}:
-            tempbool = False
             # @todo create a child node from the searchdict nodes
+            
+            tempbool = False
         else:  # if there was no Node found
             # @todo create a new node
             pass
