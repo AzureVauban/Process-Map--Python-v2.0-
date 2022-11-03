@@ -112,7 +112,7 @@ class Node(MonokaiNode):
     def __set_amounts(self):
         """change the docstring of this method
         """
-        # the method for setting the amount variables of each node instance
+        # method for setting the amount variables of each node instance
         # @note this method is called when the node is created
     # end def
 
