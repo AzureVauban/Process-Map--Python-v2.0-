@@ -202,10 +202,6 @@ class Node(MonokaiNode):
         # @note the key is the treekey and the value is a dict{instancekey,
         # self} of all the nodes with
         # same tree key
-        if self.treekey in self.searchdict:
-            self.searchdict[self.treekey].append(self)
-        else:
-            self.searchdict.update({self.treekey: [self]})
 # end def
 
 
