@@ -146,8 +146,9 @@ class Node(MonokaiNode):
             print('What is the amount of', self.ingredient,
                   'needed to create', self.parent.ingredient, 'once?')
             self.amountneeded = self.__promptinput_int()
-            print('What is the amount of parent ingredient',
-                  self.parent.ingredient, 'made per craft?')
+            if self.parent.askmadepercraftquestion:
+                print('What is the amount of parent ingredient',
+                      self.parent.ingredient, 'made per craft?')
             self.amountofparentmadepercraft = self.__promptinput_int()
     # end def
 
