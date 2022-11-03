@@ -76,8 +76,10 @@ class Node(MonokaiNode):
     treekey: str = ''
     ismain_promptinputbool: bool = True
 
-    def __init__(self, ingredient: str = '', amountonhand: int = -1, amountofparentmadepercraft: int = -1, amountneeded: int = -1) -> None:  # noqa: E501 #pylint: disable=line-too-long
+    def __init__(self, ingredient: str = '', amountonhand: int = 0, amountofparentmadepercraft: int = 1, amountneeded: int = 1) -> None:  # noqa: E501 #pylint: disable=line-too-long
         super().__init__(ingredient, amountonhand, amountofparentmadepercraft, amountneeded)  # noqa: E501 #pylint: disable=line-too-long
+        print('test method')
+        self.__promptinput_int()
 
     @classmethod
     def generate_treekey(cls, length: int = random.randint(5, 20)) -> str:
