@@ -155,3 +155,13 @@ F7LwyUzqQRzEKto,silicon board,silicon_board__a3GWquhu,quantum processor,12,1,4,2
 F7LwyUzqQRzEKto,protocite bar,protocite_bar__OPSGwa0,quantum processor,6,1,2,2
 F7LwyUzqQRzEKto,thorium rod,thorium_rod__S402zrK,industrial battery,15,1,5,1
 F7LwyUzqQRzEKto,thorium ore,thorium_ore__BKZjZDf,thorium rod,30,1,2,2
+V8yWT,industrial battery,industrial_battery__dh7wJGtjdDpsrVuwB,None,5,1,1,0
+V8yWT,protocite bar,protocite_bar__qiIC6jO,industrial battery,25,1,5,1
+V8yWT,protocite,protocite__ilp4Ts,protocite bar,50,1,2,2
+V8yWT,battery,battery__VTPlOhCqbC2iPk,industrial battery,10,1,2,1
+V8yWT,pixels,pixels__IQHfNT,battery,25000,1,2500,2
+V8yWT,quantum processor,quantum_processor__EH5O6ZipCW,industrial battery,5,1,1,1
+V8yWT,silicon board,silicon_board__UqXzvVcPOfLLVriE,quantum processor,20,1,4,2
+V8yWT,protocite bar,protocite_bar__C6D00Gk7B,quantum processor,10,1,2,2
+V8yWT,thorium rod,thorium_rod__wAVqmYB9Aa8bPz,industrial battery,25,1,5,1
+V8yWT,thorium ore,thorium_ore__ZyRJPZ0fdbV,thorium rod,50,1,2,2
