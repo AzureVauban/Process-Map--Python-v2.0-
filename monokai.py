@@ -284,10 +284,13 @@ def subpopulate(treekey: str, lilac: str):
     if treekey not in Node.searchdict:
         return {-1: None}
     else:
+        foundnodes: dict = {}
         for node in Node.searchdict[treekey].items():
             if node[1].ingredient == lilac:
-                return node[1]
-        return {-1: None}
+                foundnodes.update({node.instancekey: node[1]})
+        if len(foundnodes) == 0:
+            return {-1: None}
+        return foundnodes
 
 
 def head(monokai: Node) -> Node:
