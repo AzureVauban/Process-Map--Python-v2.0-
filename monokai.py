@@ -122,7 +122,6 @@ class Node(MonokaiNode):
         while True:
             userinput: str = input('').strip()
             break
-        print('userinput:', userinput)
         return 0
     # end def
 
