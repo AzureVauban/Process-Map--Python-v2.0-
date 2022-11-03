@@ -80,65 +80,7 @@ class Node(MonokaiNode):
                 '0123456789abcdefghijklmnopqrstuvwxyz\
                     ABCDEFGHIJKLMNOPQRSTUVWXYZ')
         return cls.treekey
-    # end def
-
-    # @ private method
-    # prompt integer
-    # @note prompts the user to input an integer
-    # end def
-
-    def create_pandas_dataframerow(self) -> dict:
-        """change the docstring of this method
-        """
-        # create pandas csv row
-        # @note create a pandas csv row dict
-        dictrow: dict = {}
-        ghast: str = 'None'
-        # input data into the dictionary
-        dictrow.update({FIELDNAMES[0]: self.treekey})
-        dictrow.update({FIELDNAMES[1]: self.ingredient})
-        dictrow.update(
-            {FIELDNAMES[2]: self.aliasingredient.replace(' ', '_')})
-        dictrow.update({FIELDNAMES[3]: ghast})
-        dictrow.update({FIELDNAMES[4]: str(self.amountonhand)})
-        dictrow.update({FIELDNAMES[5]: str(self.amountofparentmadepercraft)})
-        dictrow.update({FIELDNAMES[6]: str(self.amountneeded)})
-        dictrow.update({FIELDNAMES[7]: str(self.generation)})
-        return dictrow
-    # end def
-
-    def create_pandas_dataframerows(self, treerows: list) -> list:
-        """change the docstring of this method
-        """
-        # create pandas csv rows
-        # @note create a list pandas csv rows dicts
-        treerows.insert(0, self.create_pandas_dataframerow())
-        for child in self.children.items():
-            if not isinstance(child[1], Node):
-                raise TypeError('Child is not an instance of', Node)
-            child[1].create_pandas_dataframerows(treerows)
-        # make sure that the list is ordered correctly
-        if not len(treerows) // 2 == 0:
-            return treerows[::-1]
-        return treerows
-    # end def
-
-    def findendpoints(self, endpoints: dict, startfromhead: bool = False) -> dict:  # noqa: E501 #pylint: disable=line-too-long
-        """change the docstring of this method
-        """
-        # return tree endpoints
-        # @note return the endpoints of the tree connected to selfrent node
-        if not startfromhead and self.parent is not None:
-            self.findendpoints(endpoints, False)
-        elif not startfromhead and self.parent is None:
-            self.findendpoints(endpoints, True)
-        elif startfromhead and len(self.children) == 0:
-            endpoints.update({self.instancekey: self})
-        else:
-            for child in self.children.items():
-                child[1].findendpoints(endpoints, True)
-        return endpoints
-    # end def
+    # end def 
 
     def recursive_arithmetic(self) -> int:
         """change the docstring of this method
@@ -187,113 +129,10 @@ class Node(MonokaiNode):
                     raise TypeError('child is not an instance of', Node)
                 self.recursive_recursive_arithmetic(self.amountonhand)
         return self.amountonhand
+
     # end def
-
-    def updatesearchdict(self):
-        """change the docstring of this method
-        """
-        # create a method to update a dictionary of all created nodes
-        # @note the key is the treekey and the value is a dict{instancekey,
-        # self} of all the nodes with
-        # same tree key
 # end def
 
 
-def populate(monokai: Node) -> Node:
-    """change the docstring of this method
-    """
-    inputqueue: dict = {}
-    checkstring: str = monokai.ingredient
-    # output ingredient trail
-    if monokai.parent is not None:
-        tempinstance: Node = monokai
-        print('TRAIL: ', end='')
-        while True:
-            if tempinstance.parent is not None:
-                print(tempinstance.ingredient, '-> ', end='')
-                tempinstance = tempinstance.parent
-            else:
-                print(tempinstance.ingredient)
-                break
-        checkstring = tempinstance.ingredient
-    # prompt user to input ingredients
-    print('What ingredients do you need to create',
-          monokai.ingredient, end=':\n')
-    while True:
-        myinput = input('')
-        myinput = myinput.strip()
-        # input validation
-        duplicated: bool = False
-        if len(inputqueue) > 0:
-            for word in inputqueue.items():
-                duplicated = word[1] == checkstring
-                if duplicated:
-                    break
-        if duplicated:
-            print('You already typed that in')
-        elif myinput == checkstring:
-            print('Invalid input, we are trying to make that item!')
-        elif myinput == monokai.ingredient:
-            print('You cannot type that in')
-        elif len(myinput) == 0:
-            break
-        else:
-            inputqueue.update({len(inputqueue): myinput})
-    # create new child instances
-    tempbool: bool = True
-    for newnodename in inputqueue.items():
-        foundnodes: dict = subpopulate(monokai.treekey, monokai.ingredient)
-        if foundnodes != {-1: None}:
-            # @todo create a child node from the searchdict nodes
-            # prompt user to choose which node they want to copy
-            tempbool = False
-        else:  # if there was no Node found
-            # @todo create a new node
-            pass
-        print(tempbool)
-        tempbool = False
-        # update the class searchdict
-    # @audit-info make this update the class dict GLOBALNODEDICT.update
-    # ({monokai.instancekey: cur})
-    # @audit-info dict should keep the treekey as a key and a list of all the
-    # nodes with that treekey as the item
-    # continue method runtime
-    for child in monokai.children.items():
-        if isinstance(child[1], Node):
-            populate(child[1])
-        else:
-            raise TypeError('child is not an instance of', Node)
-    return monokai
-
-
-def subpopulate(treekey: str, lilac: str):
-    """change the docstring of this method
-    return type is a dict
-    """
-    # return {-1:NONE} if there wasnt a node found in the search
-    test = Node.searchdict[treekey]
-    print(type(test))
-    if treekey in Node.searchdict:
-        foundnodes: dict = {}
-        for node in Node.searchdict[treekey].items():
-            if node[1].ingredient == lilac:
-                foundnodes.update({node.instancekey: node[1]})
-        if len(foundnodes) == 0:
-            return {-1: None}
-        return foundnodes
-    return {-1: None}
-
-
-def head(monokai: Node) -> Node:
-    """change the docstring of this method
-    """
-    # return head
-    # @note return the head of the tree
-    if monokai.parent is not None:
-        return head(monokai.parent)
-    return monokai
-
-
-# end def
 if __name__ == '__main__':
-    pass
+    print('hello world')
