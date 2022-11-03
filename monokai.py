@@ -123,7 +123,7 @@ class Node(MonokaiNode):
             userinput: str = input('').strip()
             if not userinput.isdigit():
                 print('please input an integer')
-                continue
+                del userinput  # clears the variable
             else:
                 return int(userinput)
     # end def
