@@ -78,7 +78,7 @@ class Node(MonokaiNode):
 
     def __init__(self, ingredient: str = '', amountonhand: int = 0, amountofparentmadepercraft: int = 1, amountneeded: int = 1) -> None:  # noqa: E501 #pylint: disable=line-too-long
         super().__init__(ingredient, amountonhand, amountofparentmadepercraft, amountneeded)  # noqa: E501 #pylint: disable=line-too-long
-        print('test method for', ingredient)
+        if not isinstance(parent, Node):
         self.__promptinput_int()
 
     @classmethod
