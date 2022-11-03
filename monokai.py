@@ -80,12 +80,13 @@ class Node(MonokaiNode):
         super().__init__(ingredient, amountonhand, amountofparentmadepercraft, amountneeded)  # noqa: E501 #pylint: disable=line-too-long
         if not isinstance(parent, Node) and parent is not None:
             raise TypeError('parent is not an instance of', Node)
-        else:
+        elif parent is not None:
             self.parent = parent
             if self.parent is not None:
                 self.parent.children.update({self.instancekey: self})
                 self.generation = self.parent.generation + 1
                 self.treekey = self.parent.treekey
+            else:
                 
         if __name__ == '__main__':
             self.__setamounts()
