@@ -89,7 +89,7 @@ class Node(MonokaiNode):
             self.amountofparentmadepercraft = amountofparentmadepercraft  # noqa: E501 #pylint: disable=line-too-long
             self.amountonhand = amountonhand
         else:
-            pass
+            self.treekey = self.generate_treekey()
         if __name__ == '__main__':
             self.__setamounts()
 
