@@ -8,7 +8,6 @@ Changes:
    for a new recipe
 = allow for usage of basic arithmetic operators when prompted to input a
   number (still in progress)
-  
   # red vs blue, boolean comparison for checking
   # red vs green, boolean comparison for program flow
 """
