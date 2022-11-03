@@ -253,9 +253,9 @@ def populate(monokai: Node) -> Node:
         # that deosn't have a key of -1 and a value of None
         # todo have someone test out the code
         # node declaration
-        if subpopulate(searchdict, monokai, newnodename[1]) != {-1: None}:
+        if subpopulate(newnodename[1], monokai, searchdict):
+            tempbool = False
             # @todo create a child node from the searchdict nodes
-            pass
         else:  # if there was no Node found
             # @todo create a new node
             pass
