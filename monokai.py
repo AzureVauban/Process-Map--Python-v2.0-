@@ -60,7 +60,7 @@ class Node(MonokaiNode):
     instances: int = 0
     instancekey: int = 0
     askmadepercraftquestion: bool = False
-    searchdict : dict = {}
+    searchdict: dict = {}
     # this is unique identifer for an ingredient tree when its outputted into
     # a csv file
     treekey: str = ''
@@ -195,17 +195,17 @@ class Node(MonokaiNode):
         return self.amountonhand
     # end def
 
-
     def updatesearchdict(self):
         """change the docstring of this method
         """
         # create a method to update a dictionary of all created nodes
-        # @note the key is the treekey and the value is a list of all the nodes with
+        # @note the key is the treekey and the value is a list of all the
+        # nodes with
         # same tree key
         if self.treekey in self.searchdict:
             self.searchdict[self.treekey].append(self)
         else:
-            
+            self.searchdict.update({self.treekey: [self]})
 # end def
 
 
