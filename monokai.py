@@ -139,7 +139,9 @@ class Node(MonokaiNode):
             self.findendpoints(endpoints, True)
         elif startfromhead and len(self.children) == 0:
             endpoints.update({self.instancekey: self})
-            
+        else:
+            for child in self.children.items():
+                child[1].findendpoints(endpoints, True)
         return endpoints
     # end def
 
