@@ -34,7 +34,7 @@ class ProgramMode(Enum):
     """
     AMOUNTONHAND = 0
     AMOUNTRESULTED = 1
-
+# end def
 
 class MonokaiNode:
     """change the docstring of this method
@@ -57,7 +57,7 @@ class MonokaiNode:
         self.ingredient = ingredient
         self.aliasingredient = self.ingredient
         self.amountresulted = 0
-
+# end def
 
 class Node(MonokaiNode):
     """change the docstring of this method
@@ -208,7 +208,7 @@ class Node(MonokaiNode):
     # end def
 # end def
 
-
+def populate(node : Node = )
 if __name__ == '__main__':
 
     print('terminating program')
