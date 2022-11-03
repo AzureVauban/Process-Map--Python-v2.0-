@@ -122,13 +122,6 @@ class Node(MonokaiNode):
         return treerows
     # end def
 
-    def head(self) -> None:
-        """change the docstring of this method
-        """
-        # return head
-        # @note return the head of the tree
-    # end def
-
     def findendpoints(self, endpoints: dict, startfromhead: bool = False) -> dict:  # noqa: E501 #pylint: disable=line-too-long
         """change the docstring of this method
         """
@@ -292,8 +285,17 @@ def subpopulate(treekey: str, lilac: str):
         return Node.searchdict[treekey]
     return {-1: None}
 
+
+def head(monokai: Node) -> Node:
+    """change the docstring of this method
+    """
+    # return head
+    # @note return the head of the tree
+    if monokai.parent is not None:
+        return head(monokai.parent)
+    return monokai
+
+
+# end def
 if __name__ == '__main__':
-    monokai = Node
-    monokai.treekey = 'test'
-    monokai.updatesearchdict(self)
-    subpopulate('test', 'test')
+    pass
