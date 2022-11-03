@@ -228,5 +228,4 @@ def populate(node: Node = Node(input('What is the name of the item you want to c
 
 
 if __name__ == '__main__':
-    headnode = populate()
     print('terminating program')

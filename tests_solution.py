@@ -10,6 +10,7 @@ import unittest
 import random
 import pandas
 from solution import Node, generatename, createclone, reversearithmetic
+from monokai import Node as MonokaiNode
 FIELDNAMES: list = [  # list of field names for the csv output file (new csv file)
     'Tree_Key',  # 74nry8keki',
     'Ingredient',  # Copper Wire
@@ -32,7 +33,17 @@ class NodeCreationTests(unittest.TestCase):
         tomato: Node = Node('tomato')
         tomahto = createclone(tomato)
         self.assertIsNot(tomato, tomahto, 'Clone is not at a unique location')
-
+    def binarylink(self,head : Node,limit : int,depth : int = 0, level : int = 0) -> Node:
+        # if depth is less than level
+        if depth < level:
+            # create a node
+            i : int = 0
+            while i < limit:
+                
+        return head
+    def testhead(self):
+        head : Node = Node('head')
+        
 
 def converttreeintodict(head: Node, nodes: dict) -> dict:
     """returns a dictionary of all the nodes in the tree
