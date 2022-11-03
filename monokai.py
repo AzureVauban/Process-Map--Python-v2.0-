@@ -215,8 +215,6 @@ def head(node: Node) -> Node:
     """change the docstring of this method
     """
     # @note get the top node of a tree
-    if not isinstance(node, Node):
-        raise TypeError('node is not an instance of', Node)
     while node.parent is not None:
         node = node.parent
     return node
@@ -226,9 +224,9 @@ def head(node: Node) -> Node:
 def populate(node: Node = Node(input('What is the name of the item you want to create: ').strip())) -> Node:  # noqa: E501 #pylint: disable=line-too-long
     """change the docstring of this method
     """
-    return node
+    return head(node)
 
 
 if __name__ == '__main__':
-    head = populate()
+    headnode = populate()
     print('terminating program')
