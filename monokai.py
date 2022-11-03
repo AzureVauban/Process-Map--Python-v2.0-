@@ -133,6 +133,7 @@ class Node(MonokaiNode):
         """
         # method for setting the amount variables of each node instance
         # @note this method is called when the node is created
+        
     # end def
 
     def recursive_arithmetic(self) -> int:
