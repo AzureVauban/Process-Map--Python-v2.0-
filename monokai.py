@@ -245,7 +245,7 @@ def populate(monokai: Node) -> Node:
         foundnodes: dict = subpopulate(monokai.treekey, monokai.ingredient)
         if foundnodes != {-1: None}:
             # @todo create a child node from the searchdict nodes
-            
+            # prompt user to choose which node they want to copy
             tempbool = False
         else:  # if there was no Node found
             # @todo create a new node
