@@ -36,6 +36,7 @@ class ProgramMode(Enum):
     AMOUNTRESULTED = 1
 # end def
 
+
 class MonokaiNode:
     """change the docstring of this method
     """
@@ -58,6 +59,7 @@ class MonokaiNode:
         self.aliasingredient = self.ingredient
         self.amountresulted = 0
 # end def
+
 
 class Node(MonokaiNode):
     """change the docstring of this method
@@ -208,7 +210,12 @@ class Node(MonokaiNode):
     # end def
 # end def
 
-def populate(node : Node = )
-if __name__ == '__main__':
 
+def populate(node: Node = Node(input('What is the name of the item you want to create: '))) -> Node:
+    return node
+
+
+if __name__ == '__main__':
+    head = populate()
+    print(head.ingredient)
     print('terminating program')
