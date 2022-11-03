@@ -133,7 +133,13 @@ class Node(MonokaiNode):
         """
         # method for setting the amount variables of each node instance
         # @note this method is called when the node is created
-        
+        print('What is the amount of', self.ingredient, 'on hand you have?')
+        self.amountonhand = self.__promptinput_int()
+        if self.parent is not None:
+            print('What is the amount of', self.ingredient,'needed to create', self.parent.ingredient, 'once?')
+            self.amountneeded = self.__promptinput_int()
+            print('What is the amount of parent ingredient',self.parent.ingredient, 'made per craft?')
+            self.amountofparentmadepercraft = self.__promptinput_int()
     # end def
 
     def recursive_arithmetic(self) -> int:
