@@ -76,6 +76,9 @@ class Node(MonokaiNode):
     treekey: str = ''
     ismain_promptinputbool: bool = True
 
+    def __init__(self, ingredient: str = '', amountonhand: int = -1, amountofparentmadepercraft: int = -1, amountneeded: int = -1) -> None:  # noqa: E501 #pylint: disable=line-too-long
+        super().__init__(ingredient, amountonhand, amountofparentmadepercraft, amountneeded)  # noqa: E501 #pylint: disable=line-too-long
+        
     @classmethod
     def generate_treekey(cls, length: int = random.randint(5, 20)) -> str:
         """change the docstring of this method
@@ -112,12 +115,13 @@ class Node(MonokaiNode):
     def __promptinput_int(self) -> int:
         """change the docstring of this method
         """
-        userinputint: int = 0
         # private method for prompting the user to input an integer
         # @note used in the __set_amounts method
         while True:
-            userinput : str = ' '
-        return userinputint
+            userinput: str = input('').strip()
+            break
+        print('userinput:', userinput)
+        return 0
     # end def
 
     def __set_amounts(self):
