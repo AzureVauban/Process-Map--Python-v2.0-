@@ -133,12 +133,12 @@ class Node(MonokaiNode):
 # end def
 
 
-def checkuniqueness(base: Node, check: Node) -> bool:
+def checkuniqueness(base: Node, check: Node, ingredient : str) -> bool:
     """change the docstring of this method
     """
     # check if there is are any other nodes in the tree with the same
     # ingredient name as the current node
-
+    if base is not check
 # end def
 
 
