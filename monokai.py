@@ -60,6 +60,7 @@ class Node(MonokaiNode):
     instances: int = 0
     instancekey: int = 0
     askmadepercraftquestion: bool = False
+    searchdict : dict = {}
     # this is unique identifer for an ingredient tree when its outputted into
     # a csv file
     treekey: str = ''
