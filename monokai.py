@@ -108,11 +108,12 @@ class Node(MonokaiNode):
             return True
         return True
     # end def
-    def __promptinput_int(self):
+    def __promptinput_int(self)->int:
         """change the docstring of this method
         """
         # private method for prompting the user to input an integer
-        # used in the __set_amounts method
+        # @note used in the __set_amounts method
+        
     def __set_amounts(self):
         """change the docstring of this method
         """
