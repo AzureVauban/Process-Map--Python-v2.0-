@@ -156,7 +156,7 @@ class Node(MonokaiNode):
             print('What is the amount of', self.ingredient,
                   'needed to create', self.parent.ingredient, 'once?')
             self.amountneeded = self.__promptinput_int()
-            if self.parent.askmadepercraftquestion:
+            if self.amountofparentmadepercraft:
                 # if a leading sibiling has  already asked this question, then
                 # skip it
                 print('What is the amount of parent ingredient',
