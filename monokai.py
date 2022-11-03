@@ -82,12 +82,12 @@ class Node(MonokaiNode):
             raise TypeError('parent is not an instance of', Node)
         elif parent is not None:
             self.parent = parent
-            if self.parent is not None:
-                self.parent.children.update({self.instancekey: self})
-                self.generation = self.parent.generation + 1
-                self.treekey = self.parent.treekey
-            else:
-                
+            self.parent.children.update({self.instancekey: self})
+            self.generation = self.parent.generation + 1
+            self.treekey = self.parent.treekey
+            self.
+        else:
+            pass
         if __name__ == '__main__':
             self.__setamounts()
 
