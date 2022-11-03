@@ -40,7 +40,8 @@ class NodeCreationTests(unittest.TestCase):
         if depth < level:
             # create a node
             for _ in range(0, limit):
-                self.binarylink(MonokaiNode(generatename()), limit, depth+1, level)
+                self.binarylink(MonokaiNode(generatename()),
+                                limit, depth+1, level)
         return head
 
     def testhead(self):
@@ -48,7 +49,8 @@ class NodeCreationTests(unittest.TestCase):
         """
         headtest: MonokaiNode = MonokaiNode('head')
         testnodes: MonokaiNode = self.binarylink(headtest, 2, 0, 10)
-        self.assertEqual()
+        self.assertEqual(headtest, testnodes.parent)
+
 
 def converttreeintodict(head: Node, nodes: dict) -> dict:
     """returns a dictionary of all the nodes in the tree
