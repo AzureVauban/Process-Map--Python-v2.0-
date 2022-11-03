@@ -121,7 +121,11 @@ class Node(MonokaiNode):
         # @note used in the __setamounts method
         while True:
             userinput: str = input('').strip()
-            break
+            if not isdigit(userinput):
+                print('please input an integer')
+                continue
+            else:
+                
         return 0
     # end def
 
