@@ -86,7 +86,7 @@ class Node(MonokaiNode):
     # prompt integer
     # @note prompts the user to input an integer
     # end def
-    
+
     def create_pandas_dataframerow(self) -> dict:
         """change the docstring of this method
         """
@@ -253,7 +253,8 @@ def populate(monokai: Node) -> Node:
         # that deosn't have a key of -1 and a value of None
         # todo have someone test out the code
         # node declaration
-        if subpopulate(newnodename[1], monokai, searchdict):
+        foundnodes: dict = subpopulate(monokai.treekey, monokai.ingredient)
+        if foundnodes != {-1: None}:
             tempbool = False
             # @todo create a child node from the searchdict nodes
         else:  # if there was no Node found
