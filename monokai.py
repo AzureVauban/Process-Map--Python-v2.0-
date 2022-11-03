@@ -128,7 +128,7 @@ class Node(MonokaiNode):
         # @note return the head of the tree
     # end def
 
-    def findendpoints(self, endpoints: dict, startfromhead: bool = False) -> dict:
+    def findendpoints(self, endpoints: dict, startfromhead: bool = False) -> dict:  # noqa: E501 #pylint: disable=line-too-long
         """change the docstring of this method
         """
         # return tree endpoints
