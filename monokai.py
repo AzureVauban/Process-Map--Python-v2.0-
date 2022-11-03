@@ -75,7 +75,7 @@ class Node(MonokaiNode):
     # a csv file
     treekey: str = ''
 
-    def __init__(self, ingredient: str = '', parent=None, amountonhand: int = 0, amountofparentmadepercraft: int = 1, amountneeded: int = 1, askmadepercraft: bool = False) -> None:  # noqa: E501 #pylint: disable=line-too-long
+    def __init__(self, ingredient: str = '', parent=None, amountonhand: int = 0, amountofparentmadepercraft: int = 1, amountneeded: int = 1, askmadepercraft: bool = True) -> None:  # noqa: E501 #pylint: disable=line-too-long
         super().__init__(ingredient, amountonhand, amountofparentmadepercraft, amountneeded)  # noqa: E501 #pylint: disable=line-too-long
         self.children = {}
         if not isinstance(parent, Node) and parent is not None:
@@ -211,11 +211,13 @@ class Node(MonokaiNode):
 # end def
 
 
-def populate(node: Node = Node(input('What is the name of the item you want to create: '))) -> Node:
+def populate(node: Node = Node(input('What is the name of the item you want to create: ').strip())) -> Node:  # noqa: E501 #pylint: disable=line-too-long
+    """change the docstring of this method
+    """
     return node
 
 
 if __name__ == '__main__':
     head = populate()
-    print(head.ingredient)
+    print('The amount of', head.ingredient, 'you need is', head.amountneeded)
     print('terminating program')
