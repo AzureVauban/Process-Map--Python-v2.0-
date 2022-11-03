@@ -281,9 +281,9 @@ def populate(monokai: Node) -> Node:
     return monokai
 
 
-def subpopulate(treekey:str ,lilac: str) -> dict:
+def subpopulate(treekey: str, lilac: str) -> dict:
     """change the docstring of this method
     """
     # return {-1:NONE} if there wasnt a node found in the search
-    
-    return noctis
+
+    return {-1: None}
