@@ -134,6 +134,7 @@ class Node(MonokaiNode):
     def checkuniqueness(self, base: None, ingredient: str = '') -> bool:
         """change the docstring of this method
         """
+        # @todo do alot of testing before using this method
         # check if there is are any other nodes in the tree with the same
         # ingredient name as the current node
         if not isinstance(base, Node):
@@ -145,6 +146,7 @@ class Node(MonokaiNode):
                 raise TypeError('child is not an instance of', Node)
             if not subnode[1].checkuniqueness(base, ingredient):
                 return False
+            return True
         return True
     # end def
 # end def
