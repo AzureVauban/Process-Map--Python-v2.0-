@@ -83,7 +83,7 @@ class Node(MonokaiNode):
         else:
             self.parent = parent
             if self.parent is not None:
-                self.parent.children.update({self.instancekey:self})
+                self.parent.children.update({self.instancekey: self})
                 self.generation = self.parent.generation + 1
         if __name__ == '__main__':
             self.__setamounts()
