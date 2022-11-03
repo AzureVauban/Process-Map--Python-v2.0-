@@ -102,6 +102,12 @@ class Node(MonokaiNode):
         return True
     # end def
     
+    def __set_amounts(self):
+        """change the docstring of this method
+        """
+        # the method for setting the amount variables of each node instance
+        # @note this method is called when the node is created
+    #end def 
     def recursive_arithmetic(self) -> int:
         """change the docstring of this method
         """
