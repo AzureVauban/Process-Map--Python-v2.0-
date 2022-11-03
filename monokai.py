@@ -76,10 +76,17 @@ class Node(MonokaiNode):
     treekey: str = ''
     ismain_promptinputbool: bool = True
 
-    def __init__(self, ingredient: str = '', amountonhand: int = 0, amountofparentmadepercraft: int = 1, amountneeded: int = 1) -> None:  # noqa: E501 #pylint: disable=line-too-long
+    def __init__(self, ingredient: str = '', parent=None, amountonhand: int = 0, amountofparentmadepercraft: int = 1, amountneeded: int = 1) -> None:  # noqa: E501 #pylint: disable=line-too-long
         super().__init__(ingredient, amountonhand, amountofparentmadepercraft, amountneeded)  # noqa: E501 #pylint: disable=line-too-long
-        if not isinstance(parent, Node):
-        self.__promptinput_int()
+        if not isinstance(parent, Node) and parent is not None:
+            raise TypeError('parent is not an instance of', Node)
+        else:
+            self.parent = parent
+            if self.parent is not None:
+                self.parent.children.update({self.instancekey:self})
+                self.generation = self.parent.generation + 1
+        if __name__ == '__main__':
+            self.__setamounts()
 
     @classmethod
     def generate_treekey(cls, length: int = random.randint(5, 20)) -> str:
@@ -136,9 +143,11 @@ class Node(MonokaiNode):
         print('What is the amount of', self.ingredient, 'on hand you have?')
         self.amountonhand = self.__promptinput_int()
         if self.parent is not None:
-            print('What is the amount of', self.ingredient,'needed to create', self.parent.ingredient, 'once?')
+            print('What is the amount of', self.ingredient,
+                  'needed to create', self.parent.ingredient, 'once?')
             self.amountneeded = self.__promptinput_int()
-            print('What is the amount of parent ingredient',self.parent.ingredient, 'made per craft?')
+            print('What is the amount of parent ingredient',
+                  self.parent.ingredient, 'made per craft?')
             self.amountofparentmadepercraft = self.__promptinput_int()
     # end def
 
