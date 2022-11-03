@@ -15,6 +15,7 @@ Changes:
 import sys
 import math
 import random
+from enum import Enum
 
 FIELDNAMES: list = [
     'Tree_Key',
@@ -29,9 +30,14 @@ FIELDNAMES: list = [
 CSVFILENAME: str = 'solution_ingredient_trees.csv'
 PROGRAMMODETYPE: int = 0  # ! turn this into an enum
 
+
 class ProgramMode(Enum):
+    """change the docstring of this method
+    """
     AMOUNTONHAND = 0
     AMOUNTRESULTED = 1
+
+
 class MonokaiNode:
     """change the docstring of this method
     """
@@ -84,7 +90,6 @@ class Node(MonokaiNode):
         return cls.treekey
     # end def
 
-    
     def checkuniqueness(self, base: None, ingredient: str = '') -> bool:
         """change the docstring of this method
         """
@@ -103,13 +108,14 @@ class Node(MonokaiNode):
             return True
         return True
     # end def
-    
+
     def __set_amounts(self):
         """change the docstring of this method
         """
         # the method for setting the amount variables of each node instance
         # @note this method is called when the node is created
-    #end def 
+    # end def
+
     def recursive_arithmetic(self) -> int:
         """change the docstring of this method
         """
