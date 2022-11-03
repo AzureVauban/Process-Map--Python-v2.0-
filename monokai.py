@@ -130,14 +130,14 @@ class Node(MonokaiNode):
                 self.recursive_recursive_arithmetic(self.amountonhand)
         return self.amountonhand
     # end def
-# end def
 
-
-def checkuniqueness(base: Node) -> bool:
-    """change the docstring of this method
-    """
-    # check if there is are any other nodes in the tree with the same
-    # ingredient name as the current node
+    def checkuniqueness(self, ingredient: str = '') -> bool:
+        """change the docstring of this method
+        """
+        # check if there is are any other nodes in the tree with the same
+        # ingredient name as the current node
+        return False
+    # end def
 # end def
 
 
