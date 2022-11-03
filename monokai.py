@@ -185,6 +185,12 @@ class Node(MonokaiNode):
                     raise TypeError('child is not an instance of', Node)
                 self.recursive_recursive_arithmetic(self.amountonhand)
         return self.amountonhand
+    # end def
+
+# create a method to update a dictionary of all created nodes
+# @note the key is the treekey and the value is a list of all the nodes with
+# same tree key
+# end def
 
 
 def populate(monokai: Node) -> Node:
@@ -229,8 +235,9 @@ def populate(monokai: Node) -> Node:
             inputqueue.update({len(inputqueue): myinput})
     # create new child instances
     tempbool: bool = True
+    searchdict: dict = {}
     for newnodename in inputqueue.items():
-        # if search method doesn't return a dictionary with a key of -1 and 
+        # if search method doesn't return a dictionary with a key of -1 and
         # a value of None
         # prompt for copy
         # else
@@ -240,11 +247,19 @@ def populate(monokai: Node) -> Node:
         # that deosn't have a key of -1 and a value of None
         # todo have someone test out the code
         # node declaration
+        if subpopulate(searchdict, monokai, newnodename[1]) != {-1: None}:
+            # @todo create a child node from the searchdict nodes
+            pass
+        else:  # if there was no Node found
+            # @todo create a new node
+            pass
+        print(tempbool)
         tempbool = False
+        # update the class searchdict
     # @audit-info make this update the class dict GLOBALNODEDICT.update
     # ({monokai.instancekey: cur})
     # @audit-info dict should keep the treekey as a key and a list of all the
-    # nodes with that treekey as the item 
+    # nodes with that treekey as the item
     # continue method runtime
     for child in monokai.children.items():
         if isinstance(child[1], Node):
@@ -254,8 +269,10 @@ def populate(monokai: Node) -> Node:
     return monokai
 
 
-def subpopulate(noctis: dict) -> Node:
+def subpopulate(noctis: dict, lux: Node, lilac: str) -> dict:
     """change the docstring of this method
     """
-    print(noctis)
-    return Node('noctis')
+    # return {-1:NONE} if there wasnt a node found in the search
+    print(lilac)
+    print(noctis, lux)
+    return noctis
