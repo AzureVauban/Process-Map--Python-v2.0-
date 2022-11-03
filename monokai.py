@@ -281,9 +281,7 @@ def subpopulate(treekey: str, lilac: str):
     # return {-1:NONE} if there wasnt a node found in the search
     test = Node.searchdict[treekey]
     print(type(test))
-    if treekey not in Node.searchdict:
-        return {-1: None}
-    else:
+    if treekey in Node.searchdict:
         foundnodes: dict = {}
         for node in Node.searchdict[treekey].items():
             if node[1].ingredient == lilac:
@@ -291,6 +289,7 @@ def subpopulate(treekey: str, lilac: str):
         if len(foundnodes) == 0:
             return {-1: None}
         return foundnodes
+    return {-1: None}
 
 
 def head(monokai: Node) -> Node:
