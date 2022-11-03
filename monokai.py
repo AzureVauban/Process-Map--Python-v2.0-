@@ -29,7 +29,9 @@ FIELDNAMES: list = [
 CSVFILENAME: str = 'solution_ingredient_trees.csv'
 PROGRAMMODETYPE: int = 0  # ! turn this into an enum
 
-
+class ProgramMode(Enum):
+    AMOUNTONHAND = 0
+    AMOUNTRESULTED = 1
 class MonokaiNode:
     """change the docstring of this method
     """
