@@ -44,7 +44,7 @@ class NodeCreationTests(unittest.TestCase):
                                 limit, depth+1, level)
         return head
 
-    def testhead(self):
+    def test_myheadmonokai(self):
         """test traverse in reorganized solution
         """
         headtest: MonokaiNode = MonokaiNode('head')
