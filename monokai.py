@@ -86,6 +86,7 @@ class Node(MonokaiNode):
     # prompt integer
     # @note prompts the user to input an integer
     # end def
+    
     def create_pandas_dataframerow(self) -> dict:
         """change the docstring of this method
         """
