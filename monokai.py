@@ -138,7 +138,9 @@ def checkuniqueness(base: Node, check: Node, ingredient : str) -> bool:
     """
     # check if there is are any other nodes in the tree with the same
     # ingredient name as the current node
-    if base is not check
+    if base is not check:
+        if base.ingredient == ingredient:
+            return False
 # end def
 
 
