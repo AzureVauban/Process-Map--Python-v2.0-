@@ -216,7 +216,7 @@ class Node(MonokaiNode):
     # end def
 
     @classmethod
-    def update_search_dict(cls, treekey: str, node=None):
+    def update_search_dict(cls, treekey: str, node=None) -> dict:
         """change the docstring of this method
         """
         # the stores the treekey as a key, and stores a list of tuples
@@ -230,6 +230,7 @@ class Node(MonokaiNode):
             for key, value in cls.search.items():
                 if key == treekey:
                     value.append((node.instancekey, node))
+        return cls.search
 # end def
 
 
