@@ -24,7 +24,8 @@ FIELDNAMES: list = [  # list of field names for the csv output file
     'Amount_Needed_Per_Craft',  # 0
     'Generation'  # 1
 ]
-#! revert this modification of the filename when finished utilizing it for testing
+#! revert this modification of the filename when finished utilizing it for
+# testing
 GLOBALNODEDICT: dict = {}  # {instancekey: Node}
 
 
@@ -44,8 +45,8 @@ def generatename(lengthlimit: int = random.randint(10, 20)) -> str:
 
 class NodeB:
     """
-    class for storing simple data about an item such as its name and how much is needed to create
-    its parent
+    class for storing simple data about an item such as its name and how much
+    is needed to create its parent
     """
     ingredient: str = ''
     aliasingredient: str = ''
@@ -57,7 +58,7 @@ class NodeB:
     amountresulted: int = 0
     queueamountresulted: dict = {}
 
-    def __init__(self, ingredient: str = '', amountonhand: int = -1, amountofparentmadepercraft: int = -1, amountneeded: int = -1) -> None:
+    def __init__(self, ingredient: str = '', amountonhand: int = -1, amountofparentmadepercraft: int = -1, amountneeded: int = -1) -> None:  # noqa: E501 pylint: disable=line-too-long
         """
         Args:
             name (str, optional): name of the item. Defaults to ''.
