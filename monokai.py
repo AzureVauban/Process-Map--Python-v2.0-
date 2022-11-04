@@ -316,6 +316,6 @@ if __name__ == '__main__':
     # testing search dict updating
     print(spectrum.update_search_dict(spectrum.treekey, spectrum))
     print(ristretto.update_search_dict(ristretto.treekey, ristretto))
-    print(ristretto.update_search_dict(machine.treekey, machine))
+    print(machine.update_search_dict(machine.treekey, machine))
     print(Node.search)
     print('terminating program')
