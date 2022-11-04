@@ -152,7 +152,7 @@ class Node(MonokaiNode):
             print('What is the amount of', self.ingredient,
                   'needed to create', self.parent.ingredient, 'once?')
             self.amountneeded = self.__promptinput_int()
-     
+
         if self.askmadepercraft and self.parent is not None:
             # if a leading sibiling has  already asked this question, then
             # skip it
@@ -229,10 +229,13 @@ def populate(node: Node) -> Node:  # noqa: E501 #pylint: disable=line-too-long
 # end def
 
 
-def subpopulate(ingredient: str) -> Node:
+def subpopulate(ingredient: str, node: Node, promptamountmade: bool, amount_resulted: int = 1) -> Node:  # noqa: E501 #pylint: disable=line-too-long
     """change the docstring of this method
     """
-    return Node(ingredient)
+    # if search method returns {-1:None}, create a new node
+    search: dict = {-1: None}
+    if search == {-1: None}:
+        return Node(ingredient, node, askmadepercraft=promptamountmade, amountofparentmadepercraft=amount_resulted)  # noqa: E501 #pylint: disable=line-too-long
 
 
 if __name__ == '__main__':
