@@ -222,9 +222,46 @@ def head(node: Node) -> Node:
 # end def
 
 
-def populate(node: Node) -> Node:  # noqa: E501 #pylint: disable=line-too-long
+def populate(cur: Node) -> Node:  # noqa: E501 #pylint: disable=line-too-long
     """change the docstring of this method
     """
+    inputqueue: dict = {}
+    checkstring: str = cur.ingredient
+    # output ingredient trail
+    if cur.parent is not None:
+        tempinstance: Node = cur
+        print('TRAIL: ', end='')
+        while True:
+            if tempinstance.parent is not None:
+                print(tempinstance.ingredient, '-> ', end='')
+                tempinstance = tempinstance.parent
+            else:
+                print(tempinstance.ingredient)
+                break
+        checkstring = tempinstance.ingredient
+    # prompt user to input ingredients
+    print('What ingredients do you need to create', cur.ingredient, end=':\n')
+    while True:
+        myinput = input('')
+        myinput = myinput.strip()
+        # input validation
+        duplicated: bool = False
+        if len(inputqueue) > 0:
+            for word in inputqueue.items():
+                duplicated = word[1] == checkstring
+                if duplicated:
+                    break
+        if duplicated:
+            print('You already typed that in')
+        elif myinput == checkstring:
+            print('Invalid input, we are trying to make that item!')
+        elif myinput == cur.ingredient:
+            print('You cannot type that in')
+        elif len(myinput) == 0:
+            break
+        else:
+            inputqueue.update({len(inputqueue): myinput})
+    # create new child instances
     return head(node)
 # end def
 
