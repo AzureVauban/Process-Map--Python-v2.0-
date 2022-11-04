@@ -313,7 +313,7 @@ if __name__ == '__main__':
     Node.search = {}
     spectrum = Node('Block of Emerald', askmadepercraft=False)
     ristretto = Node('Emerald', spectrum, 5, 5, 5, False)
-    machine = Node('Block of Diamond', askmadepercraft=False)
+    machine = Node('Block of Diamond')
     # testing search dict updating
     print(spectrum.update_search_dict('Block of Emerald', spectrum))
     print(ristretto.update_search_dict('Emerald', ristretto))
