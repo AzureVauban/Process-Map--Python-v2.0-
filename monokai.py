@@ -221,7 +221,7 @@ def head(node: Node) -> Node:
 # end def
 
 
-def populate(node: Node = Node(input('What is the name of the item you want to create: ').strip())) -> Node:  # noqa: E501 #pylint: disable=line-too-long
+def populate(node: Node) -> Node:  # noqa: E501 #pylint: disable=line-too-long
     """change the docstring of this method
     """
     return head(node)
@@ -237,4 +237,6 @@ def subpopulate(ingredient: str) -> Node:
 if __name__ == '__main__':
     pruple = Node('test')
     blue = Node('test2', pruple, 5, 5, 5)
+    print(pruple.treekey)
+    print(blue.treekey)
     print('terminating program')
