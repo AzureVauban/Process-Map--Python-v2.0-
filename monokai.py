@@ -152,8 +152,7 @@ class Node(MonokaiNode):
             print('What is the amount of', self.ingredient,
                   'needed to create', self.parent.ingredient, 'once?')
             self.amountneeded = self.__promptinput_int()
-        # only ask if module is __main__, the node has a parent, and the bool
-        # to prompt is set to true, also if the program
+     
         if self.askmadepercraft and self.parent is not None:
             # if a leading sibiling has  already asked this question, then
             # skip it
@@ -237,8 +236,8 @@ def subpopulate(ingredient: str) -> Node:
 
 
 if __name__ == '__main__':
-    pruple = Node('test', askmadepercraft=False)
-    blue = Node('test2', pruple, 5, 5, 5, False)
+    pruple = Node('Block of Emerald', askmadepercraft=False)
+    blue = Node('Emerald', pruple, 5, 5, 5, True)
     print(pruple.treekey)
     print(blue.treekey)
     print('terminating program')
