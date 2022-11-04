@@ -318,4 +318,8 @@ if __name__ == '__main__':
     print(spectrum.update_search_dict('Block of Emerald', spectrum))
     print(ristretto.update_search_dict('Emerald', ristretto))
     print(machine.update_search_dict('Block of Diamond', machine))
+    # testing recursive arithmetic
+    for key, value in spectrum.search.items():
+        for item in value:
+            print(item[1].recursive_arithmetic())
     print('terminating program')
