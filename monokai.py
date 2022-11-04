@@ -223,7 +223,8 @@ class Node(MonokaiNode):
         if not isinstance(node, Node):
             raise TypeError('node is not an instance of', Node)
         # check of the treekey is in the values of the search dict
-        if node.treekey not in cls.search.values():
+        isnanifree: bool = node.treekey not in cls.search.values()
+        if isnanifree:
             # if not, then add it
             cls.search.update({node.treekey: [(node.instancekey, node)]})
         else:
@@ -234,7 +235,9 @@ class Node(MonokaiNode):
         return cls.search
 # end def
 
-#? 9Oz9g0': [(0, <__main__.Node objec...E9555E090>), (1, <__main__.Node objec...E9555E090>)]
+# ? 9Oz9g0': [(0, <__main__.Node objec...E9555E090>), (1, <__main__.Node objec...E9555E090>)]
+
+
 def head(node: Node) -> Node:
     """change the docstring of this method
     """
