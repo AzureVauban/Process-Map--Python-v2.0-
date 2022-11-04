@@ -269,6 +269,7 @@ def populate(cur: Node) -> Node:
         if tempbool:
             tempbool = False
             amountresulted = _.amountresulted
+    # input current argument node in search container
     # continue method runtime
     for child in cur.children.items():
         if isinstance(child[1], Node):
