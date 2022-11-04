@@ -222,7 +222,12 @@ class Node(MonokaiNode):
         # the stores the treekey as a key, and stores a list of tuples
         if not isinstance(node, Node):
             raise TypeError('node is not an instance of', Node)
-        # update the dict with the instancekey and the treekey
+        # update the dict with the treekey as a key, and the node as a value
+        if node.treekey not in cls.search:
+            cls.search.update({node.treekey:[node]})
+        else:
+            #append the node to the list
+            
         # return the modified dict
         return cls.search
 # end def
