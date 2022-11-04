@@ -222,7 +222,7 @@ def head(node: Node) -> Node:
 # end def
 
 
-def populate(cur: Node) -> Node:  # noqa: E501 #pylint: disable=line-too-long
+def populate(cur: Node) -> Node:
     """change the docstring of this method
     """
     inputqueue: dict = {}
@@ -281,8 +281,8 @@ def subpopulate(ingredient: str, node: Node, promptamountmade: bool, amount_resu
 
 
 if __name__ == '__main__':
-    purple = Node('Block of Emerald', askmadepercraft=False)
-    green = Node('Emerald', purple, 5, 5, 5, True)
-    print(purple.treekey)
-    print(green.treekey)
+    spectrum = Node('Block of Emerald', askmadepercraft=False)
+    ristretto = Node('Emerald', spectrum, 5, 5, 5, True)
+    print(spectrum.treekey)
+    print(ristretto.treekey)
     print('terminating program')
