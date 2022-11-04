@@ -233,9 +233,8 @@ def subpopulate(ingredient: str, node: Node, promptamountmade: bool, amount_resu
     """change the docstring of this method
     """
     # if search method returns {-1:None}, create a new node
-    search: dict = {-1: None}
-    if search == {-1: None}:
-        return Node(ingredient, node, askmadepercraft=promptamountmade, amountofparentmadepercraft=amount_resulted)  # noqa: E501 #pylint: disable=line-too-long
+    return Node(ingredient, node, askmadepercraft=promptamountmade,
+                amountofparentmadepercraft=amount_resulted)  # noqa: E501 #pylint: disable=line-too-long
 
 
 if __name__ == '__main__':
