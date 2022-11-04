@@ -228,22 +228,14 @@ def populate(node: Node = Node(input('What is the name of the item you want to c
 # end def
 
 
-def subpopulate(cur: Node) -> Node:
-    inputqueue: dict = {}
-    checkstring: str = cur.ingredient
-    # output ingredient trail
-    if cur.parent is not None:
-        tempinstance: Node = cur
-        print('TRAIL: ', end='')
-        while True:
-            if tempinstance.parent is not None:
-                print(tempinstance.ingredient, '-> ', end='')
-                tempinstance = tempinstance.parent
-            else:
-                print(tempinstance.ingredient)
-                break
-        checkstring = tempinstance.ingredient
-    return cur
+def subpopulate(ingredient : str = '',nodes : list) -> Node:
+    #verify that each node in the list is an instance of Node and has the same ingredient name
+    for node in nodes:
+        if not isinstance(node,Node):
+            raise TypeError('node is not an instance of',Node)
+        if ingredient != node.ingredient:
+            raise ValueError('node.ingredient is not equal to',ingredient)
+    return Node()
 
 
 if __name__ == '__main__':
