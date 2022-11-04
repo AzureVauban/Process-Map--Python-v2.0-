@@ -225,7 +225,7 @@ class Node(MonokaiNode):
         # check of the treekey is in the values of the search dict
         if treekey not in cls.search.values():
             # if not, then add it
-            cls.search.update({treekey, [(node.instancekey, node)]})
+            cls.search.update({treekey, [(node.instancekey:node)]})
         else:
             pass
 
