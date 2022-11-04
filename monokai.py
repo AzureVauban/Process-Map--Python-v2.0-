@@ -262,7 +262,13 @@ def populate(cur: Node) -> Node:  # noqa: E501 #pylint: disable=line-too-long
         else:
             inputqueue.update({len(inputqueue): myinput})
     # create new child instances
-    return head(node)
+    # continue method runtime
+    for child in cur.children.items():
+        if isinstance(child[1], Node):
+            populate(child[1])
+        else:
+            raise TypeError('child is not an instance of', Node)
+    return head(cur)
 # end def
 
 
