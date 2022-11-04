@@ -262,6 +262,10 @@ def populate(cur: Node) -> Node:
         else:
             inputqueue.update({len(inputqueue): myinput})
     # create new child instances
+    tempbool: bool = True
+    amountresulted : int = -1
+    for ingredient in inputqueue.items():
+        _ subpopulate()
     # continue method runtime
     for child in cur.children.items():
         if isinstance(child[1], Node):
