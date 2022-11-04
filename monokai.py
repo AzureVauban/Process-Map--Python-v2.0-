@@ -229,7 +229,7 @@ def populate(node: Node) -> Node:  # noqa: E501 #pylint: disable=line-too-long
 # end def
 
 
-def subpopulate(ingredient: str, node: Node = Node(), promptamountmade: bool, amount_resulted: int = 1) -> Node:  # noqa: E501 #pylint: disable=line-too-long
+def subpopulate(ingredient: str, node: Node, promptamountmade: bool, amount_resulted: int = 1) -> Node:  # noqa: E501 #pylint: disable=line-too-long
     """change the docstring of this method
     """
     # if search method returns {-1:None}, create a new node
