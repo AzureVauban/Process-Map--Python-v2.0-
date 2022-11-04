@@ -224,6 +224,10 @@ class Node(MonokaiNode):
         # check of the treekey is in the values of the search dict
         if treekey not in cls.search.values():
             cls.search.update({treekey: [(node.instancekey, node)]})
+        else:
+            for key, value in cls.search.items():
+                if key == treekey:
+                    value.append((node.instancekey, node))
 # end def
 
 
@@ -306,10 +310,12 @@ def subpopulate(ingredient: str, node: Node, promptamountmade: bool, amount_resu
 if __name__ == '__main__':
     Node.search = {}
     spectrum = Node('Block of Emerald', askmadepercraft=False)
-    ristretto = Node('Emerald', spectrum, 5, 5, 5, True)
+    ristretto = Node('Emerald', spectrum, 5, 5, 5, False)
     spectrum.update_search_dict('Block of Emerald', spectrum)
     ristretto.update_search_dict('Emerald', ristretto)
     print(Node.search)
+    for key,item in Node.search.items():
+        print(key, item)
     print(spectrum.treekey)
     print(ristretto.treekey)
     print('terminating program')
