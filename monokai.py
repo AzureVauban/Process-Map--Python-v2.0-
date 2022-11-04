@@ -104,8 +104,7 @@ class Node(MonokaiNode):
         cls.treekey = ''
         for _ in range(0, length):
             cls.treekey += random.choice(
-                '0123456789abcdefghijklmnopqrstuvwxyz\
-                    ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+                '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
         return cls.treekey
     # end def
 
@@ -235,8 +234,8 @@ def subpopulate(ingredient: str) -> Node:
 
 
 if __name__ == '__main__':
-    pruple = Node('test')
-    blue = Node('test2', pruple, 5, 5, 5)
+    pruple = Node('test',askmadepercraft=False)
+    blue = Node('test2', pruple, 5, 5, 5, False)
     print(pruple.treekey)
     print(blue.treekey)
     print('terminating program')
