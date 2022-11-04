@@ -91,7 +91,6 @@ class Node(MonokaiNode):
             self.parent.children.update({self.instancekey: self})
             self.generation = self.parent.generation + 1
             self.treekey = self.parent.treekey
-            self.parent.children.update({self.instancekey: self})
             # the bool above is used to determine if the amountmadepercraft
             # should be set by prompt or by the constructor
         else:
