@@ -227,8 +227,9 @@ class Node(MonokaiNode):
             # if not, then add it
             cls.search.update({treekey: [(node.instancekey, node)]})
         else:
-            for key, value in emunerate(cls.search.items()):
-                print(key, value)
+            for key, value in cls.search.items():
+                if key == treekey:
+                    value.append((node.instancekey, node))
 # end def
 
 
