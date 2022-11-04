@@ -76,6 +76,8 @@ class Node(MonokaiNode):
     treekey: str = ''
 
     def __init__(self, ingredient: str = '', parent=None, amountonhand: int = 0, amountofparentmadepercraft: int = 1, amountneeded: int = 1, askmadepercraft: bool = True) -> None:  # noqa: E501 #pylint: disable=line-too-long
+        """change the docstring of this method
+        """
         super().__init__(ingredient, amountonhand, amountofparentmadepercraft, amountneeded)  # noqa: E501 #pylint: disable=line-too-long
         self.children = {}
         if not isinstance(parent, Node) and parent is not None:
