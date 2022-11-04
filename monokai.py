@@ -309,6 +309,7 @@ if __name__ == '__main__':
     ristretto = Node('Emerald', spectrum, 5, 5, 5, True)
     spectrum.update_search_dict('Block of Emerald', spectrum)
     ristretto.update_search_dict('Emerald', ristretto)
+    print(Node.search)
     print(spectrum.treekey)
     print(ristretto.treekey)
     print('terminating program')
