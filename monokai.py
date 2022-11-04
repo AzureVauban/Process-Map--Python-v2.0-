@@ -92,7 +92,7 @@ class Node(MonokaiNode):
         else:
             self.generation = 0
             self.treekey = self.generate_treekey()
-        if __name__ == '__main__':
+        if __name__ == '__main__' and self.parent is not None:
             self.__setamounts()
 
     @classmethod
@@ -146,16 +146,19 @@ class Node(MonokaiNode):
         # method for setting the amount variables of each node instance
         # @note this method is called when the node is created
         print('What is the amount of', self.ingredient, 'on hand you have?')
+        # only ask if the 
         self.amountonhand = self.__promptinput_int()
         if self.parent is not None:
             print('What is the amount of', self.ingredient,
                   'needed to create', self.parent.ingredient, 'once?')
             self.amountneeded = self.__promptinput_int()
-            if self.askmadepercraft:
-                # if a leading sibiling has  already asked this question, then
-                # skip it
-                print('What is the amount of parent ingredient',
-                      self.parent.ingredient, 'made per craft?')
+        # only ask if module is __main__, the node has a parent, and the bool
+        # to prompt is set to true, also if the program
+        if self.askmadepercraft and self.parent is not None:
+            # if a leading sibiling has  already asked this question, then
+            # skip it
+            print('What is the amount of parent ingredient',
+                  self.parent.ingredient, 'made per craft?')
             self.amountofparentmadepercraft = self.__promptinput_int()
     # end def
 
