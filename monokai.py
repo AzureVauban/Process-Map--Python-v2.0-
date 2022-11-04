@@ -225,10 +225,10 @@ class Node(MonokaiNode):
         # check of the treekey is in the values of the search dict
         if treekey not in cls.search.values():
             # if not, then add it
-            cls.search.update()
+            cls.search.update({treekey: [(node.instancekey, node)]})
         else:
-            pass
-
+            for key, value in emunerate(cls.search.items()):
+                print(key, value)
 # end def
 
 
