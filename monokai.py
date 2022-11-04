@@ -225,7 +225,10 @@ class Node(MonokaiNode):
         # check of the treekey is in the values of the search dict
         if node.treekey in cls.search.values():
             # if it is, then append the node to the list
-            cls.searchdict[node.treekey].append(node)
+            cls.search[node.treekey].append(node)
+        else:
+            # add the key to the search dict
+            cls.search.update({node.treekey: [node]})
         return cls.search
 # end def
 
