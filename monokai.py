@@ -226,7 +226,8 @@ class Node(MonokaiNode):
         if node.treekey not in cls.search:
             cls.search.update({node.treekey:[node]})
         else:
-            #append the node to the list
+            #append node to the list of nodes in the item
+            
             
         # return the modified dict
         return cls.search
