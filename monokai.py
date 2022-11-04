@@ -104,7 +104,7 @@ class Node(MonokaiNode):
         cls.treekey = ''
         for _ in range(0, length):
             cls.treekey += random.choice(
-                '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+                '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')  # noqa: E501 #pylint: disable=line-too-long
         return cls.treekey
     # end def
 
@@ -234,7 +234,7 @@ def subpopulate(ingredient: str) -> Node:
 
 
 if __name__ == '__main__':
-    pruple = Node('test',askmadepercraft=False)
+    pruple = Node('test', askmadepercraft=False)
     blue = Node('test2', pruple, 5, 5, 5, False)
     print(pruple.treekey)
     print(blue.treekey)
