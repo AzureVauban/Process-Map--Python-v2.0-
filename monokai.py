@@ -320,8 +320,8 @@ if __name__ == '__main__':
     ristretto = Node('Emerald', spectrum, 5, 5, 5, False)
     machine = Node('Block of Diamond')
     # testing search dict updating
-    print(spectrum.update_search_dict(spectrum.treekey, spectrum))
-    print(ristretto.update_search_dict(ristretto.treekey, ristretto))
-    print(machine.update_search_dict(machine.treekey, machine))
+    print(spectrum.update_search_dict(spectrum))
+    print(ristretto.update_search_dict(ristretto))
+    print(machine.update_search_dict(machine))
     # testing recursive arithmetic
     print('terminating program')
