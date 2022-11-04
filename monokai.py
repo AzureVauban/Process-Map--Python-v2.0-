@@ -82,6 +82,7 @@ class Node(MonokaiNode):
         """
         super().__init__(ingredient, amountonhand, amountofparentmadepercraft, amountneeded)  # noqa: E501 #pylint: disable=line-too-long
         self.children = {}
+        self.instancekey = Node.instances
         if not isinstance(parent, Node) and parent is not None:
             raise TypeError('parent is not an instance of', Node)
         self.askmadepercraft = askmadepercraft  # noqa: E501 #pylint: disable=line-too-long
@@ -98,6 +99,7 @@ class Node(MonokaiNode):
             self.treekey = self.generate_treekey()
         if __name__ == '__main__' and self.parent is not None:
             self.__setamounts()
+        Node.instances += 1
 
     @classmethod
     def generate_treekey(cls, length: int = random.randint(5, 20)) -> str:
