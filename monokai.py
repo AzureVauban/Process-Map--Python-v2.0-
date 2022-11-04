@@ -235,4 +235,6 @@ def subpopulate(ingredient: str) -> Node:
 
 
 if __name__ == '__main__':
+    pruple = Node('test')
+    blue = Node('test2', pruple, 5, 5, 5)
     print('terminating program')
