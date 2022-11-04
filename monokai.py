@@ -227,12 +227,12 @@ def populate(node: Node = Node(input('What is the name of the item you want to c
     return head(node)
 # end def
 
-def removeme(nodes : dict) -> dict:
-    return {-1:None}
-def subpopulate(ingredient : str) -> Node:
-    #verify that each node in the list is an instance of Node and has the same ingredient name
-    
-    # call search method with 
+
+def subpopulate(ingredient: str) -> Node:
+    """change the docstring of this method
+    """
+    return Node(ingredient)
+
 
 if __name__ == '__main__':
     print('terminating program')
