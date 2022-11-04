@@ -218,13 +218,12 @@ class Node(MonokaiNode):
     def update_search_dict(cls, treekey: str, node=None):
         """change the docstring of this method
         """
-        # the stores the treekey as a key, and a list of nodes as a value
+        # the stores the treekey as a key, and stores a list of tuples
         if not isinstance(node, Node):
             raise TypeError('node is not an instance of', Node)
         # check of the treekey is in the values of the search dict
-        if treekey is not in cls.search_dict.values():
-            # if it is not, then add it
-            cls.search_dict.update({treekey: [node]})
+        if treekey not in cls.search.values():
+            cls.search.update({treekey: [treekey]})
 # end def
 
 
