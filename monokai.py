@@ -322,6 +322,7 @@ if __name__ == '__main__':
     print(machine.update_search_dict('Block of Diamond', machine))
     # testing recursive arithmetic
     for key, value in spectrum.search.items():
+        print('____')
         for item in value:
-            print(item[1].recursive_arithmetic())
+            print(item[1].ingredient)
     print('terminating program')
