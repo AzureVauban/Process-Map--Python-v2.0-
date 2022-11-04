@@ -223,15 +223,9 @@ class Node(MonokaiNode):
         if not isinstance(node, Node):
             raise TypeError('node is not an instance of', Node)
         # check of the treekey is in the values of the search dict
-        isnanifree: bool = node.treekey not in cls.search.values()
-        if isnanifree:
-            # if not, then add it
-            cls.search.update({node.treekey: [(node.instancekey, node)]})
-        else:
-            for key, value in cls.search.items():
-                if key == node.treekey:
-                    value[1].append((node.instancekey, node))
-                    break
+        if node.treekey in cls.search.values():
+            # if it is, then append the node to the list
+            cls.searchdict[node.treekey].append(node)
         return cls.search
 # end def
 
