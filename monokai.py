@@ -229,7 +229,7 @@ class Node(MonokaiNode):
         else:
             for key, value in cls.search.items():
                 if key == treekey:
-                    value.append((node.instancekey, node))
+                    value[1].append((node.instancekey, node))
         return cls.search
 # end def
 
