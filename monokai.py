@@ -238,8 +238,8 @@ def subpopulate(ingredient: str, node: Node, promptamountmade: bool, amount_resu
 
 
 if __name__ == '__main__':
-    pruple = Node('Block of Emerald', askmadepercraft=False)
-    blue = Node('Emerald', pruple, 5, 5, 5, True)
-    print(pruple.treekey)
-    print(blue.treekey)
+    purple = Node('Block of Emerald', askmadepercraft=False)
+    green = Node('Emerald', purple, 5, 5, 5, True)
+    print(purple.treekey)
+    print(green.treekey)
     print('terminating program')
