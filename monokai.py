@@ -74,6 +74,8 @@ class Node(MonokaiNode):
     # this is unique identifer for an ingredient tree when its outputted into
     # a csv file
     treekey: str = ''
+    # a dictionary of all the nodes declared during runtime
+    search: dict = {}
 
     def __init__(self, ingredient: str = '', parent=None, amountonhand: int = 0, amountofparentmadepercraft: int = 1, amountneeded: int = 1, askmadepercraft: bool = True) -> None:  # noqa: E501 #pylint: disable=line-too-long
         """change the docstring of this method
@@ -211,6 +213,18 @@ class Node(MonokaiNode):
                 self.recursive_recursive_arithmetic(self.amountonhand)
         return self.amountonhand
     # end def
+
+    @classmethod
+    def update_search_dict(cls, treekey: str, node=None):
+        """change the docstring of this method
+        """
+        # the stores the treekey as a key, and a list of nodes as a value
+        if not isinstance(node, Node):
+            raise TypeError('node is not an instance of', Node)
+        # check of the treekey is in the values of the search dict
+        if treekey is not in cls.search_dict.values():
+            # if it is not, then add it
+            cls.search_dict.update({treekey: [node]})
 # end def
 
 
@@ -291,6 +305,7 @@ def subpopulate(ingredient: str, node: Node, promptamountmade: bool, amount_resu
 
 
 if __name__ == '__main__':
+    Node.search = {}
     spectrum = Node('Block of Emerald', askmadepercraft=False)
     ristretto = Node('Emerald', spectrum, 5, 5, 5, True)
     print(spectrum.treekey)
