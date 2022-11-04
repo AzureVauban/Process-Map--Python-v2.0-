@@ -224,14 +224,14 @@ def head(node: Node) -> Node:
 # end def
 
 
-def populate(cur: Node) -> Node:
+def populate(node: Node) -> Node:
     """change the docstring of this method
     """
     inputqueue: dict = {}
-    checkstring: str = cur.ingredient
+    checkstring: str = node.ingredient
     # output ingredient trail
-    if cur.parent is not None:
-        tempinstance: Node = cur
+    if node.parent is not None:
+        tempinstance: Node = node
         print('TRAIL: ', end='')
         while True:
             if tempinstance.parent is not None:
@@ -242,7 +242,7 @@ def populate(cur: Node) -> Node:
                 break
         checkstring = tempinstance.ingredient
     # prompt user to input ingredients
-    print('What ingredients do you need to create', cur.ingredient, end=':\n')
+    print('What ingredients do you need to create', node.ingredient, end=':\n')
     while True:
         myinput = input('')
         myinput = myinput.strip()
@@ -257,7 +257,7 @@ def populate(cur: Node) -> Node:
             print('You already typed that in')
         elif myinput == checkstring:
             print('Invalid input, we are trying to make that item!')
-        elif myinput == cur.ingredient:
+        elif myinput == node.ingredient:
             print('You cannot type that in')
         elif len(myinput) == 0:
             break
@@ -267,18 +267,18 @@ def populate(cur: Node) -> Node:
     tempbool: bool = True
     amountresulted: int = 1
     for ingredient in inputqueue.items():
-        _: Node = subpopulate(ingredient[1], cur, tempbool, amountresulted)
+        _: Node = subpopulate(ingredient[1], node, tempbool, amountresulted)
         if tempbool:
             tempbool = False
             amountresulted = _.amountresulted
     # input current argument node in search container
     # continue method runtime
-    for child in cur.children.items():
+    for child in node.children.items():
         if isinstance(child[1], Node):
             populate(child[1])
         else:
             raise TypeError('child is not an instance of', Node)
-    return head(cur)
+    return head(node)
 # end def
 
 
