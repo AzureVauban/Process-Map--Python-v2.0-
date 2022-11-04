@@ -224,11 +224,11 @@ class Node(MonokaiNode):
             raise TypeError('node is not an instance of', Node)
         # update the dict with the treekey as a key, and the node as a value
         if node.treekey not in cls.search:
-            cls.search.update({node.treekey:[node]})
+            cls.search.update({node.treekey: [node]})
         else:
-            #append node to the list of nodes in the item
-            
-            
+            # append node to the list of nodes in the item
+            cls.search.update({node.treekey: cls.search[node.treekey].append(node)})  # noqa: E501 #pylint: disable=line-too-long
+
         # return the modified dict
         return cls.search
 # end def
