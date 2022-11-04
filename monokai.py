@@ -215,7 +215,7 @@ class Node(MonokaiNode):
     # end def
 
     @classmethod
-    def update_search_dict(cls, treekey: str, node=None):
+    def update_search_dict(cls, treekey: str, node=None) -> dict:
         """change the docstring of this method
         """
         # the stores the treekey as a key, and stores a list of tuples
@@ -228,6 +228,7 @@ class Node(MonokaiNode):
             for key, value in cls.search.items():
                 if key == treekey:
                     value.append((node.instancekey, node))
+        return cls.search
 # end def
 
 
@@ -313,12 +314,7 @@ if __name__ == '__main__':
     ristretto = Node('Emerald', spectrum, 5, 5, 5, False)
     machine = Node('Block of Diamond', askmadepercraft=False)
     # testing search dict updating
-    spectrum.update_search_dict('Block of Emerald', spectrum)
-    ristretto.update_search_dict('Emerald', ristretto)
-    ristretto.update_search_dict('Emerald', machine)
-    print(Node.search)
-    for key,item in Node.search.items():
-        print(key, item)
-    print(spectrum.treekey)
-    print(ristretto.treekey)
+    print(spectrum.update_search_dict('Block of Emerald', spectrum))
+    print(ristretto.update_search_dict('Emerald', ristretto))
+    print(ristretto.update_search_dict('Emerald', machine))
     print('terminating program')
