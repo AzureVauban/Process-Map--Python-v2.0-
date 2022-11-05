@@ -329,8 +329,10 @@ def subpopulate(ingredient: str, node: Node, promptamountmade: bool, amount_resu
         return Node(ingredient, node, askmadepercraft=promptamountmade,
                     amountofparentmadepercraft=amount_resulted)  # noqa: E501 #pylint: disable=line-too-long
     else:
-        
-
+        userchoices : list = []
+        for node in queryresults.items():
+            userchoices.append(node[1])
+        if 
 
 if __name__ == '__main__':
     Node.search = {}
