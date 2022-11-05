@@ -223,7 +223,7 @@ class Node(MonokaiNode):
         if not isinstance(node, Node):
             raise TypeError('node is not an instance of', Node)
         # update the dict with the treekey as a key, and the node as a value
-        
+        cls.search.update({node.instancekey: node})
         # return the modified dict
         return cls.search
 # end def
