@@ -330,9 +330,12 @@ def subpopulate(ingredient: str, node: Node, promptamountmade: bool, amount_resu
                     amountofparentmadepercraft=amount_resulted)  # noqa: E501 #pylint: disable=line-too-long
     else:
         userchoices : list = []
-        for node in queryresults.items():
-            userchoices.append(node[1])
-        if 
+        for itemnode in queryresults.items():
+            userchoices.append(itemnode[1])
+        if len(userchoices) == 0:
+            raise ValueError('userchoices is empty')
+        elif len(userchoices) == 1:
+            print('do you want to use')
 
 if __name__ == '__main__':
     Node.search = {}
