@@ -361,5 +361,5 @@ if __name__ == '__main__':
             print('Invalid input')
         else:
             break
-    headnode: Node = populate(Node(desireditem))
+    headnode: Node = populate(Node(desireditem, 0, 0, 1))
     print('terminating program')
