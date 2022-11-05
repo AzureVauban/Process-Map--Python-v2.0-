@@ -321,6 +321,7 @@ def populate(node: Node) -> Node:
             populate(child[1])
         else:
             raise TypeError('child is not an instance of', Node)
+    if Mode 
     return head(node)
 # end def
 
@@ -355,7 +356,8 @@ def subpopulate(ingredient: str, node: Node, promptamountmade: bool, amount_resu
 
 if __name__ == '__main__':
     Node.search = {}
-    print(ProgramMode)
+    #prompt user what mode do they want to run the program in
+    
     # prompt user to create an ingredient tree
     desireditem: str = ''
     while True:
