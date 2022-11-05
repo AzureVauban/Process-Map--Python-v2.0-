@@ -263,7 +263,6 @@ class Node(MonokaiNode):
         return foundendpoints
 # end def
 
-# ? 9Oz9g0': [(0, <__main__.Node objec...E9555E090>), (1, <__main__.Node objec...E9555E090>)]
 
 
 def head(node: Node) -> Node:
