@@ -250,10 +250,11 @@ class Node(MonokaiNode):
             return {-1: None}
         return results
 
-    def locateendpoints(self, nodes: list) -> list:
+    def locateendpoints(self, foundendpoints: dict) -> dict:
         """change the docstring of this method
         """
-        return nodes
+        if len(self.children.l)
+        return foundendpoints
 # end def
 
 # ? 9Oz9g0': [(0, <__main__.Node objec...E9555E090>), (1, <__main__.Node objec...E9555E090>)]
