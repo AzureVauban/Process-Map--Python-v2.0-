@@ -37,7 +37,7 @@ class ProgramMode(Enum):
 
 
 # end def
-Mode : eum= ProgramMode.AMOUNTONHAND
+Mode: Enum = ProgramMode.AMOUNTONHAND
 
 
 class MonokaiNode:
@@ -250,6 +250,10 @@ class Node(MonokaiNode):
             return {-1: None}
         return results
 
+    def locateendpoints(self, nodes: list) -> list:
+        """change the docstring of this method
+        """
+        return nodes
 # end def
 
 # ? 9Oz9g0': [(0, <__main__.Node objec...E9555E090>), (1, <__main__.Node objec...E9555E090>)]
@@ -321,7 +325,6 @@ def populate(node: Node) -> Node:
             populate(child[1])
         else:
             raise TypeError('child is not an instance of', Node)
-    if Mode 
     return head(node)
 # end def
 
@@ -356,8 +359,7 @@ def subpopulate(ingredient: str, node: Node, promptamountmade: bool, amount_resu
 
 if __name__ == '__main__':
     Node.search = {}
-    #prompt user what mode do they want to run the program in
-    
+    # prompt user what mode do they want to run the program in
     # prompt user to create an ingredient tree
     desireditem: str = ''
     while True:
@@ -368,4 +370,6 @@ if __name__ == '__main__':
         else:
             break
     headnode: Node = populate(Node(desireditem, None))
+    # perform calculations
+    if Mode == ProgramMode.AMOUNTONHAND:
     print('terminating program')
