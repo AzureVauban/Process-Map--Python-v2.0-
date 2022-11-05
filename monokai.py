@@ -379,13 +379,13 @@ if __name__ == '__main__':
     headnode: Node = populate(Node(desireditem, None))
     # perform calculations
     if Mode == ProgramMode.AMOUNTONHAND:
-        desiredamount: int = random.randint(1, 1000)
+        userdesiredamount: int = random.randint(1, 1000)
         print('solving for the amount on hand')  # !remove this later
-        for pynode in headnode.locateendpoints([]):
-            if not isinstance(pynode, Node):
+        for monokainode in headnode.locateendpoints([]):
+            if not isinstance(monokainode, Node):
                 raise TypeError('pynode is not an instance of', Node)
             else:
-                pynode.recursive_recursive_arithmetic(desiredamount)
+                monokainode.recursive_recursive_arithmetic(userdesiredamount)
     else:
         print('solving for the amount on hand')  # !remove this later
     print('terminating program')
