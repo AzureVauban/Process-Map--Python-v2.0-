@@ -226,6 +226,13 @@ class Node(MonokaiNode):
         cls.search.update({node.instancekey: node})
         # return the modified dict
         return cls.search
+    @classmethod
+    def clear_search_dict(cls) -> dict:
+        """change the docstring of this method
+        """
+        # clears the search dict
+        cls.search = {}
+        return cls.search
 # end def
 
 # ? 9Oz9g0': [(0, <__main__.Node objec...E9555E090>), (1, <__main__.Node objec...E9555E090>)]
