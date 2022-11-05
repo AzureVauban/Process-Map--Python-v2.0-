@@ -234,11 +234,19 @@ class Node(MonokaiNode):
         # clears the search dict
         cls.search = {}
         return cls.search
-    
+
     @classmethod
-    def search_for_ingredient(cls,ingredient : str) -> dict:
-        
-        
+    def search_for_ingredient(cls, ingredient: str) -> dict:
+        """change the docstring of this method
+        """
+        results: dict = {}
+        for node in cls.search.items():
+            if node[1].ingredient == ingredient:
+                results.update({node[0]: node[1]})
+        if len(results) == 0:
+            return {-1: None}
+        return results
+
 # end def
 
 # ? 9Oz9g0': [(0, <__main__.Node objec...E9555E090>), (1, <__main__.Node objec...E9555E090>)]
@@ -328,6 +336,6 @@ if __name__ == '__main__':
     # testing search dict updating
     spectrum.update_search_dict(spectrum)
     ristretto.update_search_dict(ristretto)
-    print(machine.update_search_dict(machine))
+    print(Node.search_for_ingredient('test'))
     # testing recursive arithmetic
     print('terminating program')
