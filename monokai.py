@@ -384,8 +384,7 @@ if __name__ == '__main__':
         for monokainode in headnode.locateendpoints([]):
             if not isinstance(monokainode, Node):
                 raise TypeError('pynode is not an instance of', Node)
-            else:
-                monokainode.recursive_recursive_arithmetic(userdesiredamount)
+            monokainode.recursive_recursive_arithmetic(userdesiredamount)
     else:
         print('solving for the amount on hand')  # !remove this later
     print('terminating program')
