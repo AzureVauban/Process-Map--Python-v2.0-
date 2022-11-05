@@ -379,4 +379,6 @@ if __name__ == '__main__':
     headnode: Node = populate(Node(desireditem, None))
     # perform calculations
     if Mode == ProgramMode.AMOUNTONHAND:
+        for node in headnode.locateendpoints([]):
+            node.recursive_arithmetic()
     print('terminating program')
