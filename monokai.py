@@ -347,13 +347,13 @@ def subpopulate(ingredient: str, node: Node, promptamountmade: bool, amount_resu
     userchoices: list = []
     for itemnode in queryresults.items():
         userchoices.append(itemnode[1])
-    if len(userchoices) == 0:
-        raise ValueError('userchoices is empty')
-    elif len(userchoices) == 1:
+    if len(userchoices) == 1:
         print('do you want to use a copy of', userchoices[0].ingredient, 'back in the tree?')  # noqa: E501 #pylint: disable=line-too-long
         # !return userchoices[0]
         return Node(ingredient, node, askmadepercraft=promptamountmade,
                     amountofparentmadepercraft=amount_resulted)
+    elif len(userchoices) == 0:
+        raise ValueError('userchoices is empty')
     else:
         print('Do you want to use any of these nodes back into the tree', end=':\n')  # noqa: E501 #pylint: disable=line-too-long
         for item in userchoices:
