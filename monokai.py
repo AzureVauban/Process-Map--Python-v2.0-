@@ -250,10 +250,16 @@ class Node(MonokaiNode):
             return {-1: None}
         return results
 
-    def locateendpoints(self, foundendpoints: dict) -> dict:
+    def locateendpoints(self, foundendpoints: list) -> list:
         """change the docstring of this method
         """
-        if len(self.children.l)
+        if len(self.children.items()) == 0:
+            foundendpoints.append(self)
+        else:
+            for node in self.children.items():
+                if not isinstance(node[1], Node):
+                    raise TypeError('node is not an instance of', Node)
+                node[1].locateendpoints(foundendpoints)
         return foundendpoints
 # end def
 
