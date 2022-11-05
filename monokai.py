@@ -304,12 +304,14 @@ def populate(node: Node) -> Node:
     # create new child instances
     tempbool: bool = True
     amountresulted: int = 1
-    for ingredient in inputqueue.items():
+    for ingredient in inputqueue.items():  # @todo test this out
         _: Node = subpopulate(ingredient[1], node, tempbool, amountresulted)
         if tempbool:
             tempbool = False
             amountresulted = _.amountresulted
     # input current argument node in search container
+    if node.parent is not None:  # @todo test this out
+        node.update_search_dict(node)
     # continue method runtime
     for child in node.children.items():
         if isinstance(child[1], Node):
@@ -350,12 +352,14 @@ def subpopulate(ingredient: str, node: Node, promptamountmade: bool, amount_resu
 
 if __name__ == '__main__':
     Node.search = {}
-    spectrum = Node('Block of Emerald', askmadepercraft=False)
-    ristretto = Node('Emerald', spectrum, 5, 5, 5, False)
-    machine = Node('Block of Diamond')
-    # testing search dict updating
-    spectrum.update_search_dict(spectrum)
-    ristretto.update_search_dict(ristretto)
-    print(Node.search_for_ingredient('test'))
-    # testing recursive arithmetic
+    # prompt user to create an ingredient tree
+    desireditem: str = ''
+    while True:
+        print('What item do you want to make?')
+        desireditem = input('').strip()
+        if len(desireditem) == 0:
+            print('Invalid input')
+        else:
+            break
+    headnode: Node = populate(Node(desireditem))
     print('terminating program')
