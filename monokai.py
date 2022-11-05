@@ -34,7 +34,10 @@ class ProgramMode(Enum):
     """
     AMOUNTONHAND = 0
     AMOUNTRESULTED = 1
+
+
 # end def
+Mode: ProgramMode = ProgramMode.AMOUNTONHAND
 
 
 class MonokaiNode:
@@ -352,6 +355,7 @@ def subpopulate(ingredient: str, node: Node, promptamountmade: bool, amount_resu
 
 if __name__ == '__main__':
     Node.search = {}
+    print(ProgramMode)
     # prompt user to create an ingredient tree
     desireditem: str = ''
     while True:
