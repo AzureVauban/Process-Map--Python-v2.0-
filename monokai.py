@@ -37,7 +37,7 @@ class ProgramMode(Enum):
 
 
 # end def
-Mode: ProgramMode = ProgramMode.AMOUNTONHAND
+Mode : eum= ProgramMode.AMOUNTONHAND
 
 
 class MonokaiNode:
