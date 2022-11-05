@@ -362,7 +362,7 @@ class NodeTree():
 def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:
     """
     look for endpoints connected to the tree at this node
-    after this method is finished running, please clear its utilized dictionaryy
+    after this method is finished running, please clear its utilized dictionary
     """
     if foundendpoints is None:
         myendpoints: dict = {}
