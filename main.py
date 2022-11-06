@@ -333,10 +333,18 @@ def populate(node: Node) -> Node:
         else:
             inputqueue.update({len(inputqueue): myinput})
     # create new child instances using subpopulate method
-    tempbool: bool = True
+    promptamountmadepercraft: bool = True
+    amountmadepercraft: int = 0
     for newnodename in inputqueue.items():
-        Node(newnodename[1], node, 0, 1, 1, tempbool)
-        tempbool = False
+       #! _ : Node = Node(newnodename[1], node, 0, 1, 1, promptamountmadepercraft)
+        _: Node = subpopulate(node=node,
+                              ingredient=newnodename[1],
+                              amountmadepercraft=amountmadepercraft,
+                              promptamountmadepercraft=promptamountmadepercraft)
+        if promptamountmadepercraft:
+            promptamountmadepercraft = False
+            amountmadepercraft = _.amountparentmadepercraft
+
     # continue method runtime
     for child in node.children.items():
         if not isinstance(child[1], Node):
