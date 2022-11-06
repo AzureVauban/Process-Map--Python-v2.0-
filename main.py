@@ -433,6 +433,16 @@ def subpopulate(node: Node,
 # end def
 
 
+def csvfindtrees() -> dict:
+    """
+    tentative docstring description
+    """
+    # create a dict of head nodes in the ingredient tree
+    # if there are nodes found, return the dict, else return {-1:None}
+    return {-1: None}
+# end def
+
+
 def superpopulate() -> Node:
     """
     tentative docstring description
@@ -446,15 +456,6 @@ def superpopulate() -> Node:
     # tree and return the head node
     # else, create a new ingredient tree from scratch
 # end def
-
-
-def csvfindtrees() -> dict:
-    """
-    tentative docstring description
-    """
-    # create a dict of head nodes in the ingredient tree
-    # if there are nodes found, return the dict, else return {-1:None}
-    return {-1: None}
 
 
 if __name__ == '__main__':
