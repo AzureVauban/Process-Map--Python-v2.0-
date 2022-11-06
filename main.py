@@ -463,15 +463,25 @@ def superpopulate() -> Node:
     """
     # parse the csv file for head nodes, and create a dict
     # if the dict returns {-1:None} or file is not in directory, call populate method  # noqa: E501 #pylint: disable=line-too-long
-    foundheadnodes : dict = csvfindtrees()
+    foundheadnodes: dict = csvfindtrees()
     if not os.path.exists(FILENAME) or foundheadnodes == {-1: None}:
         return populate(Node(itemname, None))
     # else convert dict to list and prompt the user to choose an ingredient
-    userchoices : list = []
-    for node in userchoices.items():
+    userchoices: list = []
+    for node in foundheadnodes.items():
         userchoices.append(node[1])
-    
-    # tree to use
+    print('Which of the following do you want to use (valid choice must be a'
+          ' number between 1 and', len(userchoices), end='):\n')
+    # print out the list of nodes
+    pos: int = 1
+    for subnode in userchoices:
+        if not subnode.parent is None:
+            raise ValueError(
+                'node from csv ',
+                Node)
+        print(pos, '.', subnode.parent.ingredient)
+    pos += 1
+    # prompt the user for a choice of head node
     # if the user chooses a valid index, parse the csv file for the ingredient
     # tree and return the head node
     # else, create a new ingredient tree from scratch
