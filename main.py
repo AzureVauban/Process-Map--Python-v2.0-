@@ -94,7 +94,7 @@ class Node(NodeB):  # pylint: disable=R0902
         tentative docstring description
         """
         # prompt amount on hand
-        while True and PROGRAMSTATE == 0:
+        while PROGRAMSTATE == 0:
             print('How much', self.ingredient, 'do you have on hand: ')
             self.amountonhand = promptint()
             if self.amountonhand < 0:
@@ -103,7 +103,7 @@ class Node(NodeB):  # pylint: disable=R0902
                 break
         if self.parent is not None:
             # prompt amount made per craft
-            while True and promptamountparentmade:
+            while promptamountparentmade:
                 print('How much', self.parent.ingredient,
                       'do you create each time you craft it: ')
                 self.amountparentmadepercraft = promptint()
