@@ -431,7 +431,12 @@ def subpopulate(node: Node,
         return clone(userchoices[chosenindex])
     # code here should be unreachable
 # end def
-
+def superpopulate() -> Node:
+    # parse the csv file for head nodes, and create a dict
+    # if the dict returns {-1:None}, call populate method
+    return populate(Node(itemname, None))
+    # if 
+# end def
 def csvfindtrees() -> dict:
     """
     tentative docstring description
@@ -487,7 +492,7 @@ if __name__ == '__main__':
         # check if there are any ingredient trees in the csv file,
         # if there are prompt the user to choose one
         # populate tree
-        headnode = populate(Node(itemname, None))
+        headnode :Node = superpopulate()
         if PROGRAMSTATE == ProgramState.MODE_A:  # ? normal program mode
             print('# resulted of', headnode.ingredient, '',
                   end=str(headnode.amountresulted)+'\n')
