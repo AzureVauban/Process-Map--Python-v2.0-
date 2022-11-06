@@ -431,19 +431,31 @@ def subpopulate(node: Node,
         return clone(userchoices[chosenindex])
     # code here should be unreachable
 # end def
+
+
 def superpopulate() -> Node:
+    """
+    tentative docstring description
+    """
     # parse the csv file for head nodes, and create a dict
     # if the dict returns {-1:None}, call populate method
     return populate(Node(itemname, None))
-    # if 
+    # else convert dict to list and prompt the user to choose an ingredient
+    # tree to use
+    # if the user chooses a valid index, parse the csv file for the ingredient
+    # tree and return the head node
+    # else, create a new ingredient tree from scratch
 # end def
+
+
 def csvfindtrees() -> dict:
     """
     tentative docstring description
     """
     # create a dict of head nodes in the ingredient tree
     # if there are nodes found, return the dict, else return {-1:None}
-    return {-1:None}
+    return {-1: None}
+
 
 if __name__ == '__main__':
     print('Welcome to Process Map (Python) v1.1!\n')
@@ -492,7 +504,7 @@ if __name__ == '__main__':
         # check if there are any ingredient trees in the csv file,
         # if there are prompt the user to choose one
         # populate tree
-        headnode :Node = superpopulate()
+        headnode: Node = superpopulate()
         if PROGRAMSTATE == ProgramState.MODE_A:  # ? normal program mode
             print('# resulted of', headnode.ingredient, '',
                   end=str(headnode.amountresulted)+'\n')
