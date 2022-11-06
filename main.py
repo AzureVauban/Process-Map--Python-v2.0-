@@ -358,7 +358,7 @@ def subpopulate(node: Node,
 if __name__ == '__main__':
     print('Welcome to Process Map (Python) v1.1!\n')
     while True:
-        # prompt user which mode they want to run the program in
+        # main loop
         print('Which mode do you want to use:')
         print('Mode A - You are trying to figure out how much of your desired'
               ' item you can make with the current supply of materials'
@@ -367,6 +367,7 @@ if __name__ == '__main__':
               ' you need to create a certain amount of your desired item, ('
               'Type in B)')
         print("Type in 'H' if you need a reminder of the prompt\n")
+        # prompt user which mode they want to run the program in
         while True:
             userinput = input('').strip().upper()
             if userinput not in ('A', 'B', 'H'):
