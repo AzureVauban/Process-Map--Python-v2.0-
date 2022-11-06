@@ -362,7 +362,8 @@ if __name__ == '__main__':
         # prompt user which mode they want to run the program in
         print('Which mode do you want to use:')
         print('Mode A - You are trying to figure out how much of your desired'
-              'item you can make with the current supply of materials (Type in A)')  # pylint:disable=C0301
+              ' item you can make with the current supply of materials'
+              ' (Type in A)')
         print('Mode B - You are trying to figure out how much base materials you need to create a certain amount of your desired item, (Type in B)')  # pylint:disable=C0301
         print("Type in 'H' if you need a reminder of the prompt\n")
         while True:
