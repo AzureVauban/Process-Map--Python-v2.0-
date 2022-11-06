@@ -232,7 +232,13 @@ class Node(NodeB):  # pylint: disable=R0902
                 childnode[1].reversearithmetic(self.amountonhand)
         return self.amountonhand
     # end def
-
+    def countpopulation(self, population: int = 0) -> int:
+        """
+        tentative docstring description
+        """
+        population += 1
+        return 
+    #end def
     def reformat_output(self):
         """
         tentative docstring description
