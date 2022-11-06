@@ -41,6 +41,7 @@ class NodeB:  # pylint: disable=R0903
     amountparentmadepercraft: int = 0
     amountresulted: int = 0
     queueamountresulted: dict = {}
+    aliasingredient: str = ''
 
     def __init__(self, ingredient: str = '',
                  amountonhand: int = 0,
@@ -290,10 +291,23 @@ class Node(NodeB):  # pylint: disable=R0902
     # end def
 
     def csv_createrowdict(self) -> dict:
-        pandasrow: dict = {}
-        return pandasrow
+        pandasrowdict: dict = {}
+        parentingredient: str = 'None'
+        if self.parent is not None:
+            parentingredient = self.parent.ingredient
+        pandasrowdict.update({'Tree_Key': self.treekey})
+        pandasrowdict.update({'Ingredient': self.ingredient})
+        pandasrowdict.update({'Ingredient_Alias': self.aliasingredient})
+        pandasrowdict.update({'Parent_of_Ingredient': parentingredient})
+        pandasrowdict.update({'Amount_on_Hand': str(self.amountonhand)})
+        pandasrowdict.update(
+            {'Amount_Made_Per_Craft': str(self.amountparentmadepercraft)})
+        pandasrowdict.update(
+            {'Amount_Needed_Per_Craft': str(self.amountneeded)})
+        pandasrowdict.update({'Generation': str(self.generation)})
+        return pandasrowdict
     # end def
-    
+
     def search(self, ingredient: str, results: dict) -> dict:
         """
         tentative docstring description
