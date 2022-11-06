@@ -127,7 +127,7 @@ class Node(NodeB):  # pylint: disable=R0902
 
     def clearamountresulted(self):
         """
-        clear amount resulted for all subnodes below this instance
+        tentative docstring description
         """
         self.queueamountresulted.clear()
         if len(self.children) > 0:
@@ -137,6 +137,18 @@ class Node(NodeB):  # pylint: disable=R0902
                 child[1].clearamountresulted()
     # end def
 
+    def clearamountonhand(self):
+        """
+        tentative docstring description
+        """
+        self.amountonhand = 0
+        if len(self.children) > 0:
+            for child in self.children.items():
+                if not isinstance(child[1], Node):
+                    raise TypeError('Child is not an instance of', Node)
+                child[1].clearamountonhand()
+
+    # end def
     @classmethod
     def generate_treekey(cls) -> str:
         """
@@ -525,6 +537,7 @@ if __name__ == '__main__':
             headnode.reformat_output()
         # prompt if the user wants to output their tree into a csv file
         headnode.clearamountresulted()
+        headnode.clearamountonhand()
         # prompt the user to see if they want to input another tree
         print('\nDo you want to run the program again with another item tree?'
               '(Y/N)')
