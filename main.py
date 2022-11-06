@@ -16,7 +16,7 @@ class ProgramState(Enum):
     MODE_B = 1
 
 
-PROGRAMMODETYPE: Enum = ProgramState.MODE_A
+PROGRAMSTATE: Enum = ProgramState.MODE_A
 
 
 class NodeB:  # pylint: disable=R0903
@@ -94,7 +94,7 @@ class Node(NodeB):  # pylint: disable=R0902
         replace docstring of this method
         """
         # prompt amount on hand
-        while True and PROGRAMMODETYPE == 0:
+        while True and PROGRAMSTATE == 0:
             print('How much', self.ingredient, 'do you have on hand: ')
             self.amountonhand = promptint()
             if self.amountonhand < 0:
@@ -350,7 +350,7 @@ def populate(node: Node) -> Node:
             raise TypeError('child is not an instance of', Node)
         populate(child[1])
     # return recursive math method of function if in program mode A
-    if PROGRAMMODETYPE == ProgramState.MODE_A:
+    if PROGRAMSTATE == ProgramState.MODE_A:
         # you this this because once it reaches the code, this node will be an
         # endpoint, reducing the need to parse through the tree for endpoint
         # nodes outside of the populate method
@@ -453,7 +453,7 @@ if __name__ == '__main__':
                 print('Your input is too long, please only type in one'
                       'character')
             elif userinput == 'B':
-                PROGRAMMODETYPE = ProgramState.MODE_B
+                PROGRAMSTATE = ProgramState.MODE_B
                 break
             elif userinput == 'H':
                 # print prompt again
@@ -466,7 +466,7 @@ if __name__ == '__main__':
                       ' desired item, (Type in B)')
                 print("Type in 'H' if you need a reminder of the prompt\n")
             else:
-                PROGRAMMODETYPE = ProgramState.MODE_A
+                PROGRAMSTATE = ProgramState.MODE_A
                 break
         # prompt user to type in the name of the item they want to create
         while True:
@@ -478,7 +478,7 @@ if __name__ == '__main__':
                 break
         # populate tree
         headnode = populate(Node(itemname, None))
-        if PROGRAMMODETYPE == ProgramState.MODE_A:  # ? normal program mode
+        if PROGRAMSTATE == ProgramState.MODE_A:  # ? normal program mode
             print('# resulted of', headnode.ingredient, '',
                   end=str(headnode.amountresulted)+'\n')
         else:  # ? Mode B
