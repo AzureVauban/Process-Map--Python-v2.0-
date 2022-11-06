@@ -417,9 +417,8 @@ def subpopulate(node: Node,
         if chosenindex < 0 or chosenindex > len(userchoices):
             # if input is out of range for the list, return a default node
             return Node(ingredient, node, 0, 1, 1, promptamountmadepercraft)
-        else:
-            # return a clone of the node at a chosen index
-            return Node(ingredient, node, 0, 1, 1, promptamountmadepercraft)
+        # return a clone of the node at a chosen index
+        return clone(userchoices[chosenindex])
     # code here should be unreachable
 # end def
 
