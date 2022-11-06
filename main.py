@@ -19,7 +19,7 @@ class ProgramState(Enum):
 PROGRAMMODETYPE: Enum = ProgramState.MOED_A
 
 
-class NodeB:
+class NodeB:  # pylint: disable=R0903
     """
     replace docstring of this method
     """
@@ -47,7 +47,7 @@ class NodeB:
 # end def
 
 
-class Node(NodeB):
+class Node(NodeB):  # pylint: disable=R0902
     """
     replace docstring of this method
     """
@@ -61,7 +61,7 @@ class Node(NodeB):
     # csv file
     treekey: str = ''
 
-    def __init__(self, ingredient: str = '',
+    def __init__(self, ingredient: str = '',  # pylint: disable=R0913
                  parent=None,
                  amountonhand: int = 0,
                  amountparentmadepercraft: int = 1,
