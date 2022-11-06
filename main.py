@@ -289,6 +289,11 @@ class Node(NodeB):  # pylint: disable=R0902
             print(')')
     # end def
 
+    def csv_createrowdict(self) -> dict:
+        pandasrow: dict = {}
+        return pandasrow
+    # end def
+    
     def search(self, ingredient: str, results: dict) -> dict:
         """
         tentative docstring description
