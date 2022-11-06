@@ -524,6 +524,7 @@ if __name__ == '__main__':
             # iterate through the dictionary and output the amounts on hand
             headnode.reformat_output()
         # prompt if the user wants to output their tree into a csv file
+        headnode.clearamountresulted()
         # prompt the user to see if they want to input another tree
         print('\nDo you want to run the program again with another item tree?'
               '(Y/N)')
@@ -537,7 +538,6 @@ if __name__ == '__main__':
                       'character')
             elif userinput not in ('Y', 'N'):
                 break
-        headnode.clearamountresulted()
         if userinput == 'N':
             break
     # terminate the program
