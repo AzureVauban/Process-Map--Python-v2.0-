@@ -374,14 +374,18 @@ def subpopulate(node: Node,
     userchoices: list = []
     for subnode in queryresults.items():
         userchoices.append(subnode[1])
-    print('Which of the following do you want to use?')
+    print('Which of the following do you want to use (valid choice must be a number between'
+          ' 1 and', len(userchoices), end=')\n')
     # print out the list of nodes
 
-    for subnode, index in enumerate(userchoices):
+    pos: int = 1
+    for subnode in userchoices:
         if subnode.parent is None or not isinstance(subnode.parent, Node):
             raise ValueError(
-                'parent of subnode must be a body or endpoint instance of', Node)
-        print(index, '.', subnode.parent.ingredient)
+                'parent of subnode must be a body or endpoint instance of',
+                Node)
+        print(pos, '.', subnode.parent.ingredient)
+    pos += 1
 
     return node
 # end def
