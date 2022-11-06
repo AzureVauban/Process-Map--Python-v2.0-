@@ -19,6 +19,16 @@ class ProgramState(Enum):
 
 PROGRAMSTATE: Enum = ProgramState.MODE_A
 FILENAME: str = 'ingredient_trees_processmap.csv'
+FIELDNAMES: list = [
+    'Tree_Key',  # 74nry8keki',
+    'Ingredient',  # Copper Wire
+    'Ingredient_Alias',  # Copper_Wire2
+    'Parent_of_Ingredient',  # Silicon Board
+    'Amount_on_Hand',  # 0
+    'Amount_Of_Parent_Made_Per_Craft',  # 9
+    'Amount_Needed_Per_Craft',  # 0
+    'Generation'  # 1
+]
 
 
 class NodeB:  # pylint: disable=R0903
