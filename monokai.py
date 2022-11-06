@@ -264,7 +264,6 @@ class Node(MonokaiNode):
 # end def
 
 
-
 def head(node: Node) -> Node:
     """change the docstring of this method
     """
