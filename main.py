@@ -10,7 +10,7 @@ import time
 
 class ProgramState(Enum):
     """
-    replace docstring of this method
+    tentative docstring description
     """
     MODE_A = 0
     MODE_B = 1
@@ -21,7 +21,7 @@ PROGRAMSTATE: Enum = ProgramState.MODE_A
 
 class NodeB:  # pylint: disable=R0903
     """
-    replace docstring of this method
+    tentative docstring description
     """
     ingredient: str = ''
     amountonhand: int = 0
@@ -35,7 +35,7 @@ class NodeB:  # pylint: disable=R0903
                  amountparentmadepercraft: int = 1,
                  amountneeded: int = 1) -> None:
         """
-        replace docstring of this method
+        tentative docstring description
         """
         self.amountonhand = amountonhand
         self.amountparentmadepercraft = amountparentmadepercraft
@@ -49,7 +49,7 @@ class NodeB:  # pylint: disable=R0903
 
 class Node(NodeB):  # pylint: disable=R0902
     """
-    replace docstring of this method
+    tentative docstring description
     """
     parent = None
     children: dict = {}
@@ -68,7 +68,7 @@ class Node(NodeB):  # pylint: disable=R0902
                  amountneeded: int = 1,
                  promptamountparentmade: bool = False) -> None:
         """
-        replace docstring of this method
+        tentative docstring description
         """
         super().__init__(ingredient,
                          amountonhand,
@@ -91,7 +91,7 @@ class Node(NodeB):  # pylint: disable=R0902
 
     def __inputnumerics(self, promptamountparentmade: bool):
         """
-        replace docstring of this method
+        tentative docstring description
         """
         # prompt amount on hand
         while True and PROGRAMSTATE == 0:
@@ -137,7 +137,7 @@ class Node(NodeB):  # pylint: disable=R0902
     @classmethod
     def generate_treekey(cls) -> str:
         """
-        replace docstring of this method
+        tentative docstring description
         """
         cls.treekey = ''
         for _ in range(0, 10):
@@ -148,7 +148,7 @@ class Node(NodeB):  # pylint: disable=R0902
 
     def findlocalendpoints(self, foundendpoints: dict) -> dict:
         """
-        replace docstring of this method
+        tentative docstring description
         """
         if len(self.children) > 0:
             for child in self.children.items():
@@ -162,7 +162,7 @@ class Node(NodeB):  # pylint: disable=R0902
 
     def recursivearithmetic(self) -> int:
         """
-        replace docstring of this method
+        tentative docstring description
         """
         # check and set minimum resulted if queue is not empty
         tentativeinteger: int = sys.maxsize
@@ -186,7 +186,7 @@ class Node(NodeB):  # pylint: disable=R0902
 
     def reversearithmetic(self, desiredamount: int = 0) -> int:
         """
-        replace docstring of this method
+        tentative docstring description
         """
         self.amountresulted = desiredamount
         red: float = ((self.amountparentmadepercraft/self.amountneeded)
@@ -210,7 +210,7 @@ class Node(NodeB):  # pylint: disable=R0902
 
     def reformat_output(self):
         """
-        replace docstring of this method
+        tentative docstring description
         """
         # set the new dictionary to be empty
         red_dict: dict = {}
@@ -256,7 +256,7 @@ class Node(NodeB):  # pylint: disable=R0902
 
     def search(self, ingredient: str, results: dict) -> dict:
         """
-        replace docstring of this method
+        tentative docstring description
         """
         # parse through entire tree and find all instances of the ingredient
         for child in self.children.items():
@@ -273,7 +273,7 @@ class Node(NodeB):  # pylint: disable=R0902
 
 def promptint() -> int:
     """
-    replace docstring of this method
+    tentative docstring description
     """
     while True:
         myinput = input('').strip()
@@ -286,7 +286,7 @@ def promptint() -> int:
 
 def head(node: Node) -> Node:
     """
-    replace docstring of this method
+    tentative docstring description
     """
     while node.parent is not None:
         node = node.parent
@@ -296,7 +296,7 @@ def head(node: Node) -> Node:
 
 def populate(node: Node) -> Node:
     """
-    replace docstring of this method
+    tentative docstring description
     """
     inputqueue: dict = {}
     checkstring: str = head(node).ingredient
@@ -363,7 +363,7 @@ def populate(node: Node) -> Node:
 
 def clone(node: Node) -> Node:
     """
-    replace docstring of this method
+    tentative docstring description
     """
     # create a copy of the parameter node
     clonenode: Node = Node(ingredient=node.ingredient,
@@ -388,7 +388,7 @@ def subpopulate(node: Node,
                 amountmadepercraft: int,
                 promptamountmadepercraft: bool) -> Node:
     """
-    replace docstring of this method
+    tentative docstring description
     """
     # search for nodes in the ingredient tree with the same ingredient name
     queryresults: dict = head(node).search(ingredient, {})
