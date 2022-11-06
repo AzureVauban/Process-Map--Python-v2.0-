@@ -260,9 +260,11 @@ class Node(NodeB):  # pylint: disable=R0902
         """
         if self.ingredient == ingredient:
             results.update({self.instancekey: self})
+        elif len(self.children) == 0 and len(results) == 0:
+            return {-1: None}
         for child in self.children.items():
             child[1].search(ingredient, results)
-        
+
         return results
 # end def
 
