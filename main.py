@@ -368,7 +368,21 @@ def subpopulate(node: Node,
     # search for nodes in the ingredient tree with the same ingredient name
     queryresults: dict = head(node).search(ingredient, {})
     if queryresults == {-1: None}:
+        # if no nodes are found, return a default node
         return Node(ingredient, node, 0, 1, 1, promptamountmadepercraft)
+    # if there are nodes found, dict -> list & prompt user choose a node
+    userchoices: list = []
+    for subnode in queryresults.items():
+        userchoices.append(subnode[1])
+    print('Which of the following do you want to use?')
+    # print out the list of nodes
+
+    for subnode, index in enumerate(userchoices):
+        if subnode.parent is None or not isinstance(subnode.parent, Node):
+            raise ValueError(
+                'parent of subnode must be a body or endpoint instance of', Node)
+        print(index, '.', subnode.parent.ingredient)
+
     return node
 # end def
 
