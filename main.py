@@ -523,6 +523,7 @@ if __name__ == '__main__':
                   headnode.ingredient, 'you need the following:')
             # iterate through the dictionary and output the amounts on hand
             headnode.reformat_output()
+        
         # prompt the user to see if they want to input another tree
         print('\nDo you want to run the program again with another item tree?'
               '(Y/N)')
