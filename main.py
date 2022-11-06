@@ -369,7 +369,8 @@ if __name__ == '__main__':
             if userinput not in ('A', 'B', 'H'):
                 print("That input is not valid, please type in 'A' or 'B'")
             elif len(userinput) > 1:
-                print('Your input is too long, please only type in one character')
+                print('Your input is too long, please only type in one'
+                      'character')
             elif userinput == 'B':
                 PROGRAMMODETYPE = ProgramState.ModeB
                 break
