@@ -6,6 +6,9 @@ Tentative Description: This program is a simple game of rock, paper, scissors. T
 
 tentative description of how to utilize project
 
+## How does it work
+
+tentative description of the spooky inner workings of the project
 ## Changes in this version
 
 ### name of change A
