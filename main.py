@@ -344,6 +344,14 @@ def csvfindtrees() -> dict:
 # end def
 
 
+def findandemplace(node: Node) -> Node:
+    """
+    tentative docstring description
+    """
+    return node
+# end def
+
+
 def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
     """
     tentative docstring description
@@ -490,7 +498,7 @@ def superpopulate() -> Node:
             return populate(Node(itemname, None))
         # return ingredient tree from csv
         # todo finish this, create method to load ingredient tree from csv
-        return populate(Node(itemname, None))
+        return findandemplace(userchoices[chosenindex])
     # code here should be unreachable
 # end def
 
