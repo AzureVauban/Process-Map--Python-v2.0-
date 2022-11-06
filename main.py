@@ -390,16 +390,12 @@ def subpopulate(node: Node,
     """
     replace docstring of this method
     """
-    print(node)
-    print(ingredient)
-    print(amountmadepercraft)
-    print(promptamountmadepercraft)
     # search for nodes in the ingredient tree with the same ingredient name
     queryresults: dict = head(node).search(ingredient, {})
     if queryresults == {-1: None} or node.parent is None:
         # if no nodes are found, return a default node
         # if the node is the head node, return a default node
-        return Node(ingredient, node, 0, 1, 1, promptamountmadepercraft)
+        return Node(ingredient, node, 0, 1, 1, amountmadepercraft)
     # if there are nodes found, dict -> list & prompt user choose a node
     userchoices: list = []
     for subnode in queryresults.items():
@@ -423,7 +419,7 @@ def subpopulate(node: Node,
         # if the input is less than 0 or greater than the length of the list
         if chosenindex < 0 or chosenindex > len(userchoices):
             # if input is out of range for the list, return a default node
-            return Node(ingredient, node, 0, 1, 1, promptamountmadepercraft)
+            return Node(ingredient, node, 0, 1, 1, amountmadepercraft)
         # return a clone of the node at a chosen index
         return clone(userchoices[chosenindex])
     # code here should be unreachable
