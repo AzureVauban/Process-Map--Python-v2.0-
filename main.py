@@ -386,6 +386,11 @@ def subpopulate(node: Node,
         print(pos, '.', subnode.parent.ingredient)
     pos += 1
     print()
+    # check input
+    while True:
+        # if the input is not a number, prompt user to input a number
+        # if input is out of range for the list, return a default node
+        # if the input is 
     return node
 # end def
 
