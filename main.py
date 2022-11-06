@@ -336,11 +336,10 @@ def populate(node: Node) -> Node:
     promptamountmadepercraft: bool = True
     amountmadepercraft: int = 0
     for newnodename in inputqueue.items():
-       #! _ : Node = Node(newnodename[1], node, 0, 1, 1, promptamountmadepercraft)
         _: Node = subpopulate(node=node,
                               ingredient=newnodename[1],
                               amountmadepercraft=amountmadepercraft,
-                              promptamountmadepercraft=promptamountmadepercraft)
+                              promptamountmadepercraft=promptamountmadepercraft)  # noqa: E501 #pylint: disable=line-too-long
         if promptamountmadepercraft:
             promptamountmadepercraft = False
             amountmadepercraft = _.amountparentmadepercraft
