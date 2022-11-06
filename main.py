@@ -484,7 +484,7 @@ def superpopulate() -> Node:
     while True:
         # if the user chooses a valid index, return tree from csv
         chosenindex: int = promptint() - 1
-        # if the input is less than 0 or greater than the length of the list
+        # if the user did not choose a valid index, return tree from csv
         if chosenindex < 0 or chosenindex > len(userchoices):
             # if input is out of range for the list, create the ingredient
             # tree from sctrach
