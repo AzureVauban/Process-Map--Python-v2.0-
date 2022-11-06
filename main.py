@@ -340,12 +340,17 @@ def populate(node: Node) -> Node:
 
 
 def subpopulate(node: Node,
-                ingredient: str,  # pylint: disable=unused-argument
-                amountmadepercraft: int,  # pylint: disable=unused-argument
+                ingredient: str,
+                amountmadepercraft: int,
                 promptamountmadepercraft: bool) -> Node:
     """
     replace docstring of this method
     """
+    print(node)
+    print(ingredient)
+    print(amountmadepercraft)
+    print(promptamountmadepercraft)
+    # search for nodes in the ingredient tree with the same ingredient name
     return node
 # end def
 
