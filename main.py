@@ -258,13 +258,15 @@ class Node(NodeB):  # pylint: disable=R0902
         """
         replace docstring of this method
         """
-        if self.ingredient == ingredient:
-            results.update({self.instancekey: self})
-        elif len(self.children) == 0 and len(results) == 0:
-            return {-1: None}
+        # parse through entire tree and find all instances of the ingredient
         for child in self.children.items():
             child[1].search(ingredient, results)
-
+        # if the ingredient is found, add the instance to the results dict
+        if self.ingredient == ingredient:
+            results.update({self.instancekey: self})
+        # if at endpoint node & there's no nodes in results, return {-1:None}
+        elif len(self.children) == 0 and len(results) == 0:
+            return {-1: None}
         return results
 # end def
 
