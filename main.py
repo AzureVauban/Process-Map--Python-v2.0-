@@ -482,15 +482,14 @@ def superpopulate() -> Node:
     pos += 1
     # prompt the user for a choice of head node
     while True:
-        # if the user chooses a valid index, return tree from csv
         chosenindex: int = promptint() - 1
-        # if the user did not choose a valid index, return tree from csv
+        # if the user did not choose a valid index, create ingredient tree
+        # manually
         if chosenindex < 0 or chosenindex > len(userchoices):
-            # if input is out of range for the list, create the ingredient
-            # tree from sctrach
             return populate(Node(itemname, None))
-        # return a clone of the node at a chosen index
-        return clone(userchoices[chosenindex])
+        # return ingredient tree from csv
+        # @todo finish this
+        return populate(Node(itemname, None))
     # code here should be unreachable
 # end def
 
