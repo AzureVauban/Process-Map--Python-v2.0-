@@ -389,9 +389,12 @@ def subpopulate(node: Node,
     print()
     # check input
     while True:
-        # if the input is not a number, prompt user to input a number
-        # if input is out of range for the list, return a default node
-        # if the input is 
+        # if the input is within range, return the node at the index
+        chosenindex : int = promptint() -1
+        #if the input is less than 0 or greater than the length of the list
+        if chosenindex < 0 or chosenindex > len(userchoices):
+            # if input is out of range for the list, return a default node 
+            return Node(ingredient, node, 0, 1, 1, promptamountmadepercraft)
     return node
 # end def
 
