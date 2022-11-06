@@ -5,8 +5,11 @@ import math
 import random
 import sys
 import time
-
-PROGRAMMODETYPE: int = 0
+from Enum import enum
+class ProgramState(Enum):
+    ModeA = 0
+    ModeB = 1
+#PROGRAMMODETYPE: int = 0
 
 
 class NodeB:
@@ -87,7 +90,7 @@ class Node(NodeB):
 
     def __inputnumerics(self, promptamountparentmade : bool):
         """
-        prompt input of the numeric data for the instance from the user
+        replace docstring of this method
         """
         # prompt amount on hand
         while True and PROGRAMMODETYPE == 0:
@@ -361,7 +364,7 @@ if __name__ == '__main__':
                 break
         headnode = Node(itemname, None)
         if PROGRAMMODETYPE == 0:  # ? normal program mode
-            populate(headnode)
+            headnode = populate(headnode)
             for subnode in findlocalendpoints(headnode, {}).items():
                 recursivearithmetic(subnode[1])
             print('# resulted of', headnode.ingredient, '',
@@ -381,9 +384,7 @@ if __name__ == '__main__':
         print("\nDo you want to run the program again with another item tree? (Y/N)")
         print("type in 'H' if you need to be reminded of the prompt")
         while True:
-            userinput = (input(''))
-            userinput = userinput.strip()
-            userinput = userinput.upper()
+            userinput = input('').strip().upper()
             if userinput not in ('Y', 'N', 'H'):
                 print("That input is not valid, please type in 'Y' or 'N'")
             elif len(userinput) > 1:
