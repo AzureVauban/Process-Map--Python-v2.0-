@@ -1,19 +1,22 @@
 """
 main script for Python Process Map (v2.0)
 """
+from enum import Enum
 import math
 import random
 import sys
 import time
-from Enum import enum
 
 
 class ProgramState(Enum):
+    """
+    replace docstring of this method
+    """
     ModeA = 0
     ModeB = 1
 
 
-PROGRAMMODETYPE: enum = ProgramState.ModeA
+PROGRAMMODETYPE: Enum = ProgramState.ModeA
 
 
 class NodeB:
