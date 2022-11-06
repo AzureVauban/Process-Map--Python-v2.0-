@@ -357,8 +357,8 @@ def subpopulate(node: Node,
 
 if __name__ == '__main__':
     print('Welcome to Process Map (Python) v1.1!\n')
+    # main loop
     while True:
-        # main loop
         print('Which mode do you want to use:')
         print('Mode A - You are trying to figure out how much of your desired'
               ' item you can make with the current supply of materials'
