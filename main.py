@@ -311,6 +311,39 @@ def head(node: Node) -> Node:
 # end def
 
 
+def clone(node: Node) -> Node:
+    """
+    tentative docstring description
+    """
+    # create a copy of the parameter node
+    clonenode: Node = Node(ingredient=node.ingredient,
+                           parent=node.parent,
+                           amountonhand=node.amountonhand,
+                           amountneeded=node.amountneeded,
+                           amountparentmadepercraft=False)
+    # create a copy of all the children of the parameter node
+    for subnode in node.children.items():
+        childsubnode: Node = Node(ingredient=subnode[1].ingredient,
+                                  parent=subnode,
+                                  amountonhand=subnode[1].amountonhand,
+                                  amountneeded=subnode[1].amountneeded,
+                                  amountparentmadepercraft=subnode[1].amountparentmadepercraft,  # noqa: E501 #pylint: disable=line-too-long
+                                  promptamountparentmade=False)
+        print('creating', childsubnode.ingredient, 'data...')
+    return clonenode
+# end def
+
+
+def csvfindtrees() -> dict:
+    """
+    tentative docstring description
+    """
+    # create a dict of head nodes in the ingredient tree
+    # if there are nodes found, return the dict, else return {-1:None}
+    return {-1: None}
+# end def
+
+
 def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
     """
     tentative docstring description
@@ -376,28 +409,6 @@ def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
 # end def
 
 
-def clone(node: Node) -> Node:
-    """
-    tentative docstring description
-    """
-    # create a copy of the parameter node
-    clonenode: Node = Node(ingredient=node.ingredient,
-                           parent=node.parent,
-                           amountonhand=node.amountonhand,
-                           amountneeded=node.amountneeded,
-                           amountparentmadepercraft=False)
-    # create a copy of all the children of the parameter node
-    for subnode in node.children.items():
-        childsubnode: Node = Node(ingredient=subnode[1].ingredient,
-                                  parent=subnode,
-                                  amountonhand=subnode[1].amountonhand,
-                                  amountneeded=subnode[1].amountneeded,
-                                  amountparentmadepercraft=subnode[1].amountparentmadepercraft,  # noqa: E501 #pylint: disable=line-too-long
-                                  promptamountparentmade=False)
-        print('creating', childsubnode.ingredient, 'data...')
-    return clonenode
-
-
 def subpopulate(node: Node,
                 ingredient: str,
                 amountmadepercraft: int,
@@ -444,16 +455,6 @@ def subpopulate(node: Node,
         # return a clone of the node at a chosen index
         return clone(userchoices[chosenindex])
     # code here should be unreachable
-# end def
-
-
-def csvfindtrees() -> dict:
-    """
-    tentative docstring description
-    """
-    # create a dict of head nodes in the ingredient tree
-    # if there are nodes found, return the dict, else return {-1:None}
-    return {-1: None}
 # end def
 
 
