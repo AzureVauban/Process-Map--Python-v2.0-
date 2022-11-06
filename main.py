@@ -438,7 +438,7 @@ def superpopulate() -> Node:
     tentative docstring description
     """
     # parse the csv file for head nodes, and create a dict
-    # if the dict returns {-1:None}, call populate method
+    # if the dict returns {-1:None} or file is not in directory, call populate method  # noqa: E501 #pylint: disable=line-too-long
     return populate(Node(itemname, None))
     # else convert dict to list and prompt the user to choose an ingredient
     # tree to use
