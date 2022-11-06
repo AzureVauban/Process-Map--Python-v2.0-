@@ -297,7 +297,7 @@ def head(node: Node) -> Node:
 # end def
 
 
-def populate(node: Node) -> Node:
+def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
     """
     tentative docstring description
     """
