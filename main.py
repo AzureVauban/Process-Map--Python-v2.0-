@@ -344,7 +344,8 @@ def csvfindtrees() -> dict:
 # end def
 
 
-def locateandemplace(node: Node, pandaslistrow: dict):
+def locateandemplace(node: Node,   # pylint:disable:W0613
+                     pandaslistrow: dict):   # pylint:disable:W0613
     pass
 # end def
 
