@@ -277,7 +277,7 @@ def promptint() -> int:
     """
     while True:
         myinput = input('').strip()
-        if not myinput.isdigit():
+        if not myinput.isdigit() or int(myinput) < 0:  # ? will this work?
             print('you can only type in a positive integer')
         else:
             return int(myinput)
