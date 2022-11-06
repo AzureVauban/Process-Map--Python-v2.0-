@@ -253,6 +253,13 @@ class Node(NodeB):  # pylint: disable=R0902
                     print(string, end=', ')
             print(')')
     # end def
+
+    def search(self, ingredient: str, results: dict) -> dict:
+        """
+        replace docstring of this method
+        """
+        print(ingredient)
+        return results
 # end def
 
 
@@ -351,6 +358,8 @@ def subpopulate(node: Node,
     print(amountmadepercraft)
     print(promptamountmadepercraft)
     # search for nodes in the ingredient tree with the same ingredient name
+    queryresults: dict = head(node).search(ingredient, {})
+    print(queryresults)
     return node
 # end def
 
