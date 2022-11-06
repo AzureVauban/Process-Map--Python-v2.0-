@@ -425,7 +425,7 @@ if __name__ == '__main__':
             elif len(userinput) > 1:
                 print('Your input is too long, please only type in one'
                       'character')
-            elif userinput == 'N' or userinput == 'Y':
+            elif userinput not in ('Y', 'N'):
                 break
         headnode.clearamountresulted()
         if userinput == 'N':
