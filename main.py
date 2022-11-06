@@ -364,7 +364,9 @@ if __name__ == '__main__':
         print('Mode A - You are trying to figure out how much of your desired'
               ' item you can make with the current supply of materials'
               ' (Type in A)')
-        print('Mode B - You are trying to figure out how much base materials you need to create a certain amount of your desired item, (Type in B)')  # pylint:disable=C0301
+        print('Mode B - You are trying to figure out how much base materials'
+              ' you need to create a certain amount of your desired item, ('
+              'Type in B)')
         print("Type in 'H' if you need a reminder of the prompt\n")
         while True:
             userinput = input('').strip().upper()
@@ -379,8 +381,12 @@ if __name__ == '__main__':
             elif userinput == 'H':
                 # print prompt again
                 print('Which mode do you want to use:')
-                print('Mode A - You are trying to figure out how much of your desired item you can make with the current supply of materials (Type in A)')  # pylint:disable=C0301
-                print('Mode B - You are trying to figure out how much base materials you need to create a certain amount of your desired item, (Type in B)')  # pylint:disable=C0301
+                print('Mode A - You are trying to figure out how much of your'
+                      ' desired item you can make with the current supply of'
+                      ' materials (Type in A)')
+                print('Mode B - You are trying to figure out how much base'
+                      ' materials you need to create a certain amount of your'
+                      ' desired item, (Type in B)')
                 print("Type in 'H' if you need a reminder of the prompt\n")
             else:
                 PROGRAMMODETYPE = ProgramState.ModeA
@@ -409,14 +415,16 @@ if __name__ == '__main__':
             # iterate through the dictionary and output the amounts on hand
             headnode.reformat_output()
         # prompt the user to see if they want to input another tree
-        print("\nDo you want to run the program again with another item tree? (Y/N)")
+        print('\nDo you want to run the program again with another item tree?'
+              '(Y/N)')
         print("type in 'H' if you need to be reminded of the prompt")
         while True:
             userinput = input('').strip().upper()
             if userinput not in ('Y', 'N', 'H'):
                 print("That input is not valid, please type in 'Y' or 'N'")
             elif len(userinput) > 1:
-                print('Your input is too long, please only type in one character')
+                print('Your input is too long, please only type in one'
+                      'character')
             elif userinput == 'N' or userinput == 'Y':
                 break
         headnode.clearamountresulted()
