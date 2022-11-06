@@ -237,7 +237,7 @@ class Node(NodeB):  # pylint: disable=R0902
         tentative docstring description
         """
         population += 1
-        return 
+        return population
     #end def
     def reformat_output(self):
         """
