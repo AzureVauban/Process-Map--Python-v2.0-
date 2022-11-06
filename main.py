@@ -477,6 +477,8 @@ if __name__ == '__main__':
                 print('You must type something in')
             else:
                 break
+        # check if there are any ingredient trees in the csv file,
+        # if there are prompt the user to choose one
         # populate tree
         headnode = populate(Node(itemname, None))
         if PROGRAMSTATE == ProgramState.MODE_A:  # ? normal program mode
