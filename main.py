@@ -346,7 +346,6 @@ def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
         if promptamountmadepercraft:
             promptamountmadepercraft = False
             amountmadepercraft = _.amountparentmadepercraft
-
     # continue method runtime
     for child in node.children.items():
         if not isinstance(child[1], Node):
@@ -358,7 +357,6 @@ def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
         # endpoint, reducing the need to parse through the tree for endpoint
         # nodes outside of the populate method
         node.recursivearithmetic()
-
     # return the head node of the tree
     return head(node)
 # end def
