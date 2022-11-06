@@ -354,6 +354,22 @@ def populate(node: Node) -> Node:
 # end def
 
 
+def clone(node: Node) -> Node:
+    """
+    replace docstring of this method
+    """
+    # create a copy of the parameter node
+    clonenode: Node = Node(ingredient=node.ingredient,
+                           parent=node.parent,
+                           amountonhand=node.amountonhand,
+                           amountneeded=node.amountneeded,
+                           amountparentmadepercraft=node.amountparentmadepercraft)  # noqa: E501
+    # create a copy of all the children of the parameter node
+    for subnode in node.children.items():
+        
+    return clonenode
+
+
 def subpopulate(node: Node,
                 ingredient: str,
                 amountmadepercraft: int,
@@ -390,12 +406,15 @@ def subpopulate(node: Node,
     # check input
     while True:
         # if the input is within range, return the node at the index
-        chosenindex : int = promptint() -1
-        #if the input is less than 0 or greater than the length of the list
+        chosenindex: int = promptint() - 1
+        # if the input is less than 0 or greater than the length of the list
         if chosenindex < 0 or chosenindex > len(userchoices):
-            # if input is out of range for the list, return a default node 
+            # if input is out of range for the list, return a default node
             return Node(ingredient, node, 0, 1, 1, promptamountmadepercraft)
-    return node
+        else:
+            # return a clone of the node at a chosen index
+            return Node(ingredient, node, 0, 1, 1, promptamountmadepercraft)
+    # code here should be unreachable
 # end def
 
 
