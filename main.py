@@ -366,7 +366,7 @@ def clone(node: Node) -> Node:
                            amountparentmadepercraft=node.amountparentmadepercraft)  # noqa: E501
     # create a copy of all the children of the parameter node
     for subnode in node.children.items():
-        
+        pass
     return clonenode
 
 
