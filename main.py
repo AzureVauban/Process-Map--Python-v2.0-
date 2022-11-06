@@ -3,6 +3,7 @@ main script for Python Process Map (v2.0)
 """
 from enum import Enum
 import math
+import os
 import random
 import sys
 import time
@@ -17,6 +18,7 @@ class ProgramState(Enum):
 
 
 PROGRAMSTATE: Enum = ProgramState.MODE_A
+FILENAME: str = 'ingredient_trees_processmap.csv'
 
 
 class NodeB:  # pylint: disable=R0903
@@ -449,12 +451,14 @@ def superpopulate() -> Node:
     """
     # parse the csv file for head nodes, and create a dict
     # if the dict returns {-1:None} or file is not in directory, call populate method  # noqa: E501 #pylint: disable=line-too-long
-    return populate(Node(itemname, None))
+    if not os.path.exists(FILENAME):
+        return populate(Node(itemname, None))
     # else convert dict to list and prompt the user to choose an ingredient
     # tree to use
     # if the user chooses a valid index, parse the csv file for the ingredient
     # tree and return the head node
     # else, create a new ingredient tree from scratch
+    return populate(Node(itemname, None))
 # end def
 
 
