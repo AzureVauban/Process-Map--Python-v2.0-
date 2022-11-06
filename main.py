@@ -370,7 +370,7 @@ def clone(node: Node) -> Node:
                            parent=node.parent,
                            amountonhand=node.amountonhand,
                            amountneeded=node.amountneeded,
-                           amountparentmadepercraft=False)  # noqa: E501
+                           amountparentmadepercraft=False)
     # create a copy of all the children of the parameter node
     for subnode in node.children.items():
         childsubnode: Node = Node(ingredient=subnode[1].ingredient,
