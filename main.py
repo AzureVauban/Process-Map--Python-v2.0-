@@ -367,7 +367,8 @@ def subpopulate(node: Node,
     print(promptamountmadepercraft)
     # search for nodes in the ingredient tree with the same ingredient name
     queryresults: dict = head(node).search(ingredient, {})
-    print(queryresults)
+    if queryresults == {-1: None}:
+        return Node(ingredient, node, 0, 1, 1, promptamountmadepercraft)
     return node
 # end def
 
