@@ -432,6 +432,13 @@ def subpopulate(node: Node,
     # code here should be unreachable
 # end def
 
+def csvfindtrees() -> dict:
+    """
+    tentative docstring description
+    """
+    # create a dict of head nodes in the ingredient tree
+    # if there are nodes found, return the dict, else return {-1:None}
+    return {-1:None}
 
 if __name__ == '__main__':
     print('Welcome to Process Map (Python) v1.1!\n')
