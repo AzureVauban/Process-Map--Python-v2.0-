@@ -347,7 +347,8 @@ def subpopulate(node: Node,
     # if the dictionary returns {-1:None}, return a default new node
     # else ask the user if the want to create a copy of the node
     # if the user inputs "N", return default node
-    # else prompt the user for which node they want to copy and return a clone of that
+    # else prompt the user for which node they want to copy and return a clone
+    # of that
     return node
 # end def
 
