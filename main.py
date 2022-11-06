@@ -12,11 +12,11 @@ class ProgramState(Enum):
     """
     replace docstring of this method
     """
-    MOED_A = 0
+    MODE_A = 0
     MODE_B = 1
 
 
-PROGRAMMODETYPE: Enum = ProgramState.MOED_A
+PROGRAMMODETYPE: Enum = ProgramState.MODE_A
 
 
 class NodeB:  # pylint: disable=R0903
@@ -328,7 +328,7 @@ def populate(node: Node) -> Node:
             raise TypeError('child is not an instance of', Node)
         populate(child[1])
     # return recursive math method of function if in program mode A
-    if PROGRAMMODETYPE == ProgramState.MOED_A:
+    if PROGRAMMODETYPE == ProgramState.MODE_A:
         # you this this because once it reaches the code, this node will be an
         # endpoint, reducing the need to parse through the tree for endpoint
         # nodes outside of the populate method
@@ -389,7 +389,7 @@ if __name__ == '__main__':
                       ' desired item, (Type in B)')
                 print("Type in 'H' if you need a reminder of the prompt\n")
             else:
-                PROGRAMMODETYPE = ProgramState.MOED_A
+                PROGRAMMODETYPE = ProgramState.MODE_A
                 break
         # prompt user to type in the name of the item they want to create
         while True:
@@ -401,7 +401,7 @@ if __name__ == '__main__':
                 break
         # populate tree
         headnode = populate(Node(itemname, None))
-        if PROGRAMMODETYPE == ProgramState.MOED_A:  # ? normal program mode
+        if PROGRAMMODETYPE == ProgramState.MODE_A:  # ? normal program mode
             print('# resulted of', headnode.ingredient, '',
                   end=str(headnode.amountresulted)+'\n')
         else:  # ? Mode B
