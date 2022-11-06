@@ -291,6 +291,9 @@ class Node(NodeB):  # pylint: disable=R0902
     # end def
 
     def csv_createrowdict(self) -> dict:
+        """
+        tentative docstring description
+        """
         pandasrowdict: dict = {}
         parentingredient: str = 'None'
         if self.parent is not None:
