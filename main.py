@@ -346,12 +346,6 @@ def subpopulate(node: Node,
     """
     replace docstring of this method
     """
-    # create a dictionary of nodes that have the same ingredient
-    # if the dictionary returns {-1:None}, return a default new node
-    # else ask the user if the want to create a copy of the node
-    # if the user inputs "N", return default node
-    # else prompt the user for which node they want to copy and return a clone
-    # of that
     return node
 # end def
 
