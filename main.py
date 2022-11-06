@@ -475,13 +475,21 @@ def superpopulate() -> Node:
     # print out the list of nodes
     pos: int = 1
     for subnode in userchoices:
-        if not subnode.parent is None:
+        if subnode.parent is not None:
             raise ValueError(
-                'node from csv ',
-                Node)
+                'node from csv must be a head instance of', Node)
         print(pos, '.', subnode.parent.ingredient)
     pos += 1
     # prompt the user for a choice of head node
+    while True:
+        # if the user chooses a valid index, parse the csv file for the ingredient tree
+        chosenindex: int = promptint() - 1
+        # if the input is less than 0 or greater than the length of the list
+        if chosenindex < 0 or chosenindex > len(userchoices):
+            # if input is out of range for the list, return a default node
+            return populate(Node(itemname, None))
+        # return a clone of the node at a chosen index
+        return clone(userchoices[chosenindex])
     # if the user chooses a valid index, parse the csv file for the ingredient
     # tree and return the head node
     # else, create a new ingredient tree from scratch
