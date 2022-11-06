@@ -258,7 +258,11 @@ class Node(NodeB):  # pylint: disable=R0902
         """
         replace docstring of this method
         """
-        print(ingredient)
+        if self.ingredient == ingredient:
+            results.update({self.instancekey: self})
+        for child in self.children.items():
+            child[1].search(ingredient, results)
+        
         return results
 # end def
 
