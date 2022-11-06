@@ -6,9 +6,13 @@ import random
 import sys
 import time
 from Enum import enum
+
+
 class ProgramState(Enum):
     ModeA = 0
     ModeB = 1
+
+
 PROGRAMMODETYPE: enum = ProgramState.ModeA
 
 
@@ -24,9 +28,9 @@ class NodeB:
     queueamountresulted: dict = {}
 
     def __init__(self, ingredient: str = '',
-                       amountonhand: int = 0,
-                       amountparentmadepercraft: int = 1, 
-                       amountneeded: int = 1) -> None:
+                 amountonhand: int = 0,
+                 amountparentmadepercraft: int = 1,
+                 amountneeded: int = 1) -> None:
         """
         replace docstring of this method
         """
@@ -39,6 +43,7 @@ class NodeB:
     # end def
 # end def
 
+
 class Node(NodeB):
     """
     replace docstring of this method
@@ -49,22 +54,23 @@ class Node(NodeB):
     instances: int = 0
     instancekey: int = 0
     promptamountparentmade: bool = False
-    # this is unique identifer for an ingredient tree when its outputted into a csv file
+    # this is unique identifer for an ingredient tree when its outputted to a
+    # csv file
     treekey: str = ''
 
     def __init__(self, ingredient: str = '',
-                       parent=None,
-                       amountonhand: int = 0,
-                       amountparentmadepercraft: int = 1,
-                       amountneeded: int = 1,
-                       promptamountparentmade: bool = False) -> None:  # pylint:disable=C0301
+                 parent=None,
+                 amountonhand: int = 0,
+                 amountparentmadepercraft: int = 1,
+                 amountneeded: int = 1,
+                 promptamountparentmade: bool = False) -> None:
         """
         replace docstring of this method
         """
         super().__init__(ingredient,
-                        amountonhand,
-                        amountparentmadepercraft,
-                        amountneeded)
+                         amountonhand,
+                         amountparentmadepercraft,
+                         amountneeded)
         self.instancekey = Node.instances
         self.children = {}
         self.parent = parent
@@ -79,18 +85,8 @@ class Node(NodeB):
         if __name__ == '__main__':
             self.__inputnumerics(promptamountparentmade)
     # end def
-    def __promptint(self) -> int:
-        """
-        replace docstring of this method
-        """
-        while True:
-            myinput = input('').strip()
-            if not myinput.isdigit():
-                print('you can only type in a positive integer')
-            else:
-                return int(myinput)
-    # end def
-    def __inputnumerics(self, promptamountparentmade : bool):
+
+    def __inputnumerics(self, promptamountparentmade: bool):
         """
         replace docstring of this method
         """
@@ -122,6 +118,7 @@ class Node(NodeB):
                 else:
                     break
     # end def
+
     def clearamountresulted(self):
         """
         clear amount resulted for all subnodes below this instance
@@ -133,29 +130,33 @@ class Node(NodeB):
                     raise TypeError('Child is not an instance of', Node)
                 child[1].clearamountresulted()
     # end def
+
     @classmethod
-    def generate_treekey(cls)->str:
+    def generate_treekey(cls) -> str:
         """
         replace docstring of this method
         """
         cls.treekey = ''
         for _ in range(0, 10):
-            cls.treekey += random.choice('0123456789abcdefghijklmnopqrstuvwxyz')
+            cls.treekey += random.choice(
+                '0123456789abcdefghijklmnopqrstuvwxyz')
         return cls.treekey
     # end def
+
     def findlocalendpoints(self, foundendpoints: dict) -> dict:
         """
         replace docstring of this method
         """
         if len(self.children) > 0:
-            for child in cur.children.items():
+            for child in self.children.items():
                 if not isinstance(child[1], Node):
-                    raise TypeError('child is not an instance of',Node)
+                    raise TypeError('child is not an instance of', Node)
                 child[1].findlocalendpoints(foundendpoints)
         else:
-            foundendpoints.update({cur.instancekey: cur})
+            foundendpoints.update({self.instancekey: self})
         return foundendpoints
     # end def
+
     def recursivearithmetic(self) -> int:
         """
         replace docstring of this method
@@ -179,17 +180,18 @@ class Node(NodeB):
             self.parent.recursivearithmetic()
         return self.amountresulted
     # end def
+
     def reversearithmetic(self, desiredamount: int = 0) -> int:
         """
         replace docstring of this method
         """
         self.amountresulted = desiredamount
         red: float = ((self.amountparentmadepercraft/self.amountneeded)
-                    ** -1)*self.amountresulted
+                      ** -1)*self.amountresulted
         green: float = round(math.ceil(red))
         self.amountonhand = int(max(red, green))
         traceback: bool = green > red
-        if traceback:  # go back through the higher up nodes and increase the amount on hand by 1
+        if traceback:  # traverse upward and increase the amount on hand by 1
             temp: Node = self
             while temp.parent is not None:
                 temp = temp.parent
@@ -202,39 +204,41 @@ class Node(NodeB):
                 childnode[1].reversearithmetic(self.amountonhand)
         return self.amountonhand
     # end def
+
     def reformat_output(self):
         """
         replace docstring of this method
         """
         # set the new dictionary to be empty
         red_dict: dict = {}
-        # set the new dictionary to have unique ingredients as keys and a list of tuples of the parent
-        # of said endpoint instance and the amount on hand as values
+        # set the new dictionary to have unique ingredients as keys
+        # and a list of tuples of the parent of said endpoint instance and the
+        # amount on hand as values
         for node in self.findlocalendpoints({}).items():
             if node[1].ingredient not in red_dict:
                 red_dict.update(
                     {node[1].ingredient: [(node[1].parent.ingredient,
-                    node[1].amountonhand)]})
+                                           node[1].amountonhand)]})
             else:
                 red_dict[node[1].ingredient].append(
                     (node[1].parent.ingredient,
-                    node[1].amountonhand))
+                     node[1].amountonhand))
 
         output_dictionary: dict = {}
         for item in red_dict.items():
-            orangeinteger: int = 0  # sum of the amount on hand of each tuple element
+            orangeinteger: int = 0  # sum of the amount on hand all tuple items
             for orangenumber in item[1]:
                 orangeinteger += orangenumber[1]
             for orangetuple in item[1]:
                 if item[0] not in output_dictionary:
                     output_dictionary.update({item[0]: [str(round(
-                        (orangetuple[1]/orangeinteger)*100, 2))+
-                        '% ('+str(orangetuple[1])+'x) used in '+
+                        (orangetuple[1]/orangeinteger)*100, 2)) +
+                        '% ('+str(orangetuple[1])+'x) used in ' +
                         orangetuple[0]]})
-                else:  # if item is in the outputdictionary, append the string to the list
+                else:  # if item is in the dict, append the string to list
                     output_dictionary[item[0]].append(
-                        str(round((orangetuple[1]/orangeinteger)*100, 2))+
-                        '% ('+str(orangetuple[1])+'x) used in '+
+                        str(round((orangetuple[1]/orangeinteger)*100, 2)) +
+                        '% ('+str(orangetuple[1])+'x) used in ' +
                         orangetuple[0])
         # output the dictionary keys and values
         for item in output_dictionary.items():
@@ -247,7 +251,22 @@ class Node(NodeB):
             print(')')
     # end def
 # end def
-def head(node : Node) -> Node:
+
+
+def promptint() -> int:
+    """
+    replace docstring of this method
+    """
+    while True:
+        myinput = input('').strip()
+        if not myinput.isdigit():
+            print('you can only type in a positive integer')
+        else:
+            return int(myinput)
+# end def
+
+
+def head(node: Node) -> Node:
     """
     replace docstring of this method
     """
@@ -255,6 +274,8 @@ def head(node : Node) -> Node:
         node = node.parent
     return node
 # end def
+
+
 def populate(node: Node) -> Node:
     """
     replace docstring of this method
@@ -305,17 +326,20 @@ def populate(node: Node) -> Node:
         populate(child[1])
     # return recursive math method of function if in program mode A
     if PROGRAMMODETYPE == ProgramState.ModeA:
-        # you this this because once it reaches the code, this node will be an endpoint,
-        # reducing the need to parse through the tree for endpoint nodes outside of the populate method
+        # you this this because once it reaches the code, this node will be an
+        # endpoint, reducing the need to parse through the tree for endpoint
+        # nodes outside of the populate method
         node.recursivearithmetic()
-    
-    #return the head node of the tree
+
+    # return the head node of the tree
     return head(node)
 # end def
-def subpopulate(node : Node,
-                ingredient : str,
-                amountmadepercraft : int,
-                promptamountmadepercraft : bool) -> Node:
+
+
+def subpopulate(node: Node,
+                ingredient: str,
+                amountmadepercraft: int,
+                promptamountmadepercraft: bool) -> Node:
     """
     replace docstring of this method
     """
@@ -326,6 +350,7 @@ def subpopulate(node : Node,
     # else prompt the user for which node they want to copy and return a clone of that
     return node
 # end def
+
 
 if __name__ == '__main__':
     print('Welcome to Process Map (Python) v1.1!\n')
@@ -342,10 +367,10 @@ if __name__ == '__main__':
             elif len(userinput) > 1:
                 print('Your input is too long, please only type in one character')
             elif userinput == 'B':
-                PROGRAMMODETYPE =  ProgramState.ModeB
+                PROGRAMMODETYPE = ProgramState.ModeB
                 break
             elif userinput == 'H':
-                #print prompt again
+                # print prompt again
                 print('Which mode do you want to use:')
                 print('Mode A - You are trying to figure out how much of your desired item you can make with the current supply of materials (Type in A)')  # pylint:disable=C0301
                 print('Mode B - You are trying to figure out how much base materials you need to create a certain amount of your desired item, (Type in B)')  # pylint:disable=C0301
@@ -369,7 +394,7 @@ if __name__ == '__main__':
         else:  # ? Mode B
             print('How much', headnode.ingredient, 'do you want to create:')
             desirednumber: int = promptint()
-            #populate(headnode)
+            # populate(headnode)
             headnode.reversearithmetic(desirednumber)
             # output the results
             print('To get', str(str(desirednumber)+'x'),
