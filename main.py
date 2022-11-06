@@ -344,7 +344,7 @@ def csvfindtrees() -> dict:
 # end def
 
 
-def findandemplace(node: Node) -> Node:
+def createtreefromcsv(node: Node) -> Node:
     """
     tentative docstring description
     """
@@ -498,7 +498,7 @@ def superpopulate() -> Node:
             return populate(Node(itemname, None))
         # return ingredient tree from csv
         # todo finish this, create method to load ingredient tree from csv
-        return findandemplace(userchoices[chosenindex])
+        return createtreefromcsv(userchoices[chosenindex])
     # code here should be unreachable
 # end def
 
