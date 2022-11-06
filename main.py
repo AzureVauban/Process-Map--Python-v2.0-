@@ -101,9 +101,9 @@ class Node(NodeB):  # pylint: disable=R0902
                 print('That number is not valid')
             else:
                 break
-        if self.parent is not None:
+        if self.parent is not None and promptamountparentmade:
             # prompt amount made per craft
-            while promptamountparentmade:
+            while True:
                 print('How much', self.parent.ingredient,
                       'do you create each time you craft it: ')
                 self.amountparentmadepercraft = promptint()
@@ -111,6 +111,7 @@ class Node(NodeB):  # pylint: disable=R0902
                     print('That number is not valid')
                 else:
                     break
+        if self.parent is not None:
             # prompt amount needed
             while True:
                 print('How much', self.ingredient, 'do you need to craft',
