@@ -340,8 +340,8 @@ def populate(node: Node) -> Node:
 
 
 def subpopulate(node: Node,
-                ingredient: str,
-                amountmadepercraft: int,
+                ingredient: str,  # pylint: disable=unused-argument
+                amountmadepercraft: int,  # pylint: disable=unused-argument
                 promptamountmadepercraft: bool) -> Node:
     """
     replace docstring of this method
