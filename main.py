@@ -408,18 +408,35 @@ def csvfindtrees() -> dict:
 # end def
 
 
-def locateandemplace(node: Node,   # pylint:disable:W0613
-                     pandaslistrow: list):   # pylint:disable:W0613
+def locateemplacespot(node: Node,   # pylint:disable:W0613
+                      pandaslistrow: list) -> bool:   # pylint:disable:W0613
     """
     tentative docstring description
     """
-    # check if the csvrow is the proper length
+    # check if the pandaslistrow is the proper length
     if len(pandaslistrow) != len(TESTFILENAME):
         # raise a value error
         raise ValueError(
-            'csvrow is not the proper length;'
+            'pandaslistrow is not the proper length;'
             ' the list passes contains the following:',
             pandaslistrow)
+    # remove any underscores from the ingredient
+    pandaslistrow[1] = pandaslistrow[1].replace('_', ' ')
+    # remove any underscores from the parent of the ingredient
+    pandaslistrow[3] = pandaslistrow[3].replace('_', ' ')
+    foundemplacelocation: bool = parent.treekey == pandaslistrow[0] and pandaslistrow[
+        3] != 'None' and pandaslistrow[3] == parent.ingredient and pandaslistrow[7] > 0 and parent is not None
+    if foundemplacelocation:
+        # @note somewhere in the project it needs to be determined if the user will allow the amount on hands from the csv file to be used or if the user will input the amount on hand themselves
+        Node(pandaslistrow[1],
+             parent=parent,
+             amountneeded=pandaslistrow[6],
+             amountofparentmadepercraft=pandaslistrow[5],
+             amountonhand=pandaslistrow[4],
+             treekey=pandaslistrow[0])
+        return True
+    else:
+        return False
 # end def
 
 
