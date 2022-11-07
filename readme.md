@@ -29,3 +29,4 @@ tentative description of change C
 tentative description of change D
 
 if ingredient tree was cloned from the csv file, when the user populates the ingredient tree and is prompted an amount, 
+if the user leaves their input blank, make sure that the value defaults to the one from the csv file
