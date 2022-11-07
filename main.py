@@ -243,6 +243,17 @@ class Node(NodeB):  # pylint: disable=R0902
         return population
     # end def
 
+    def modifytreekey(self, newtreekey: str):
+        """
+        tentative docstring description
+        """
+        # modify the tree keys in each node in the tree so when its written to
+        # the csv file if will have a differing key from its original tree
+        self.treekey = newtreekey
+        for child in self.children.items():
+            child[1].modifytreekey(newtreekey)
+     # end def
+
     def reformat_output(self):
         """
         tentative docstring description
@@ -715,8 +726,10 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
         # return ingredient tree from csv
         returntree: Node = createtreefromcsv(userchoices[chosenindex])
         # change the tree key of each node
+        returntree.modifytreekey(returntree.generate_treekey())
+        # clear amount on hand and amount resulted
         returntree.clearamounts()
-        return returntree
+        return populate(returntree)
     # code here should be unreachable
 # end def
 
