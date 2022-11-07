@@ -479,6 +479,7 @@ def csvsearch() -> dict:  # @note search for head nodes in csv file
     if len(foundheadpoints) == 0:
         return {-1: None}
     return foundheadpoints
+# @ audit-note, for now, dont use this method since it only has 1 reference
 # end def
 
 
@@ -625,10 +626,9 @@ def superpopulate() -> Node:
     tentative docstring description
     """
     # parse the csv file for head nodes, and create a dict
-    foundheadnodes: dict = csvsearch()
-    print(os.path.exists(TESTFILENAME),
-          ':',
-          foundheadnodes)
+    #!foundheadnodes: dict = csvsearch()
+    foundheadnodes: dict = {}
+
     # if the search returns {-1:None} call populate method
     if foundheadnodes == {-1: None}:
         return populate(Node(itemname, None))
