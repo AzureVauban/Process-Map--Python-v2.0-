@@ -551,6 +551,7 @@ def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
         myinput = input('').strip()
         # input validation
         duplicated: bool = False
+        # if the size(inputqueue) > 0, check for duplicates
         if len(inputqueue) > 0:
             # check if the input is a duplicate
             # input is a duplicate ihas the same ingredient at a different
