@@ -650,7 +650,7 @@ def superpopulate() -> Node:
             raise ValueError(
                 'node from csv must be a head instance of', Node)
         print(pos, '.', subnode.ingredient)
-    pos += 1
+        pos += 1
     # prompt the user for a choice of head node
     while True:
         chosenindex: int = promptint() - 1
