@@ -627,11 +627,7 @@ def superpopulate() -> Node:
     foundheadnodes: dict = csvsearch()
     # foundheadnodes: dict = {}
     # if the search returns {-1:None} call populate method
-    # !remove all of this line on comment later
-    filedoesnotexist: bool = not os.path.isfile(TESTFILENAME)
-    # !remove all of this line on comment later
-    noheadnodsfound: bool = foundheadnodes is {-1: None}
-    if foundheadnodes is {-1: None} or filedoesnotexist:
+    if foundheadnodes is {-1: None} or not os.path.isfile(TESTFILENAME):
         # prompt user to type in the name of the item they want to create
         while True:
             itemname = input(
