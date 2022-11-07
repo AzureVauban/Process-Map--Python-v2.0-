@@ -529,6 +529,9 @@ def createtreefromcsv(node: Node) -> Node:
 
 
 def tempinputdebug(node: Node) -> list:
+    """
+    tentative docstring description
+    """
     userinputlist: list = []
     while True:
         # if the input is empty, break the loop
