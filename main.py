@@ -590,6 +590,8 @@ def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
         # endpoint, reducing the need to parse through the tree for endpoint
         # nodes outside of the populate method
         node.recursivearithmetic()
+    # make each alias in the ingredient tree unique
+    makeallaliasunique(node)
     # return the head node of the tree
     return head(node)
 # end def
