@@ -551,10 +551,7 @@ def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
         # if the input is empty, break the loop
         myinput: str = input('').strip()
         # if the length of the user inputs is greator than or equal to 2
-        # check if there are duplicate inputs
-
         # check to see if the ussr input is valid,
-        # validation conditions
         if myinput in [head(node).ingredient, node.ingredient]:  # noqa: E501 #pylint: disable=line-too-long
             print('Invalid input, we are trying to make that item!')
         # if the length of the user input is 0, break the loop
