@@ -357,7 +357,7 @@ class Node(NodeB):  # pylint: disable=R0902
         tentative docstring description
         """
         if self.aliasingredient == ingredient:
-            results.append({self.instancekey: self})
+            results.append((self.instancekey, self))
         for child in self.children.items():
             child[1].search(ingredient, results)
         return results
