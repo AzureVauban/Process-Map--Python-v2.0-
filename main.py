@@ -416,6 +416,7 @@ def locateemplacespot(node: Node, pandaslistrow: list) -> bool:
     pandaslistrow[1] = pandaslistrow[1].replace('_', ' ')
     # remove any underscores from the parent of the ingredient
     pandaslistrow[3] = pandaslistrow[3].replace('_', ' ')
+    # check if the current node is the parent of the ingredient
     foundemplacelocation: bool = node.treekey == pandaslistrow[
         0] and pandaslistrow[3] != 'None' and pandaslistrow[
         3] == node.ingredient and pandaslistrow[7] > 0 and node is not None
