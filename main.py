@@ -365,17 +365,6 @@ class Node(NodeB):  # pylint: disable=R0902
 # end def
 
 
-def checknameuniquness(blue: Node)->bool:
-    """
-    tentative docstring description
-    """
-    # parse through the tree and check if the ingredient name is unique
-    for ingredient in head(blue).returnlistofsameingredient(blue.ingredient,[]):
-        
-    return True
-# end def
-
-
 def promptint() -> int:
     """
     tentative docstring description
@@ -401,18 +390,13 @@ def head(node: Node) -> Node:
 # end def
 
 
-def secondhead(node: Node) -> Node:
+def makeallaliasunique(node: Node):
     """
     tentative docstring description
     """
-    # check if the node generation is less than 2 or if the population of the
-    # the ingredient tree is less than 2 (meaning there's only one ingredient)
-    if node.generation < 2 or node.countpopulation() < 2:
-        return node
-    # traverse upward until the generation is 2
-    while node.generation != 2 and node.parent is not None:
-        node = node.parent
-    return node
+    # recursively call for all children
+    for child in node.children.items():
+        makeallaliasunique(child[1])
 # end def
 
 
