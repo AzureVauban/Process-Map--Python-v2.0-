@@ -401,7 +401,7 @@ def makeallaliasunique(node: Node):
         # organize nodes based on instancekey (least to greatest)
         for red in aliaslist:
             for blue in aliaslist:
-                if red.instancekey > blue.instancekey:
+                if red[0].instancekey > blue[0].instancekey:
                     # swap the indicies
                     blue, red = red, blue
         # then change the alias of the nodes to be unique
@@ -649,7 +649,7 @@ def subpopulate(node: Node,
 # end def
 
 
-def superpopulate() -> Node:
+def superpopulate() -> Node:  # pylint: disable=too-many-branches
     """
     tentative docstring description
     """
