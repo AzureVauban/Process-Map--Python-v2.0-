@@ -664,7 +664,7 @@ def superpopulate() -> Node:
                                                       parent=None,
                                                       promptamountparentmade=False,
                                                       treekey=green[0])})
-        # if there are no head nodes found, return {-1:None}
+    # if there are no head nodes found, return {-1:None}
     if len(foundheadnodes) == 0:
         foundheadnodes.update({-1: None})
     # if the search returns {-1:None} call populate method
