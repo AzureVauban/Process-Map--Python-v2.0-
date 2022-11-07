@@ -357,7 +357,9 @@ def checknameuniquness(blue : Node, red :Node)-> bool:
     tentative docstring description
     """
     if blue.ingredient == red.ingredient:
-        return False
+        for childnode in blue.children.items():
+            if childnode[1].ingredient == red.ingredient:
+                return checknameuniquness(childnode[1], red)
     return True
 # end def
     
