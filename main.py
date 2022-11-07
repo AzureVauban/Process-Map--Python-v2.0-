@@ -429,13 +429,13 @@ def locateemplacespot(node: Node,   # pylint:disable:W0613
     if foundemplacelocation:
         # @note somewhere in the project it needs to be determined if the user will allow the amount on hands from the csv file to be used or if the user will input the amount on hand themselves
         Node(pandaslistrow[1],
-             parent=parent,
+             parent=node,
              amountneeded=pandaslistrow[6],
-             amountofparentmadepercraft=pandaslistrow[5],
+             amountparentmadepercraft=pandaslistrow[5],
              amountonhand=pandaslistrow[4],
              treekey=pandaslistrow[0])
         return True
-        return False
+    return False
 # end def
 
 
