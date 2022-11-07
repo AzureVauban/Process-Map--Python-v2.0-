@@ -1,12 +1,12 @@
 """
 main script for Python Process Map (v2.0)
 """
-from enum import Enum
 import math
 import os
 import random
 import sys
 import time
+from enum import Enum
 
 import pandas
 
