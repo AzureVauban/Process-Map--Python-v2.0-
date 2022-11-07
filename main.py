@@ -651,19 +651,20 @@ def superpopulate() -> Node:
     # parse the csv file for head nodes, and create a dict
     foundheadnodes: dict = {}
     # iterate through the rows of the dataframe
-    for purple in pandas.read_csv(TESTFILENAME).to_dict('index').items():
-        # convert the values of the dictionary to a list
-        green: list = list(purple[1].values())
-        # if the conditions are met for it to mock a head node
-        if green[3] == 'None' and green[5] == 1 and green[
-                6] == 1 and green[7] == 0:
-            # create a node from the row's data
-            # add the node to the dictionary of head nodes
-            foundheadnodes.update({green[0]: Node(ingredient=green[1],
-                                                  parent=None,
-                                                  promptamountparentmade=False,
-                                                  treekey=green[0])})
-    # if there are no head nodes found, return {-1:None}
+    if os.path.isfile(TESTFILENAME):
+        for purple in pandas.read_csv(TESTFILENAME).to_dict('index').items():
+            # convert the values of the dictionary to a list
+            green: list = list(purple[1].values())
+            # if the conditions are met for it to mock a head node
+            if green[3] == 'None' and green[5] == 1 and green[
+                    6] == 1 and green[7] == 0:
+                # create a node from the row's data
+                # add the node to the dictionary of head nodes
+                foundheadnodes.update({green[0]: Node(ingredient=green[1],
+                                                      parent=None,
+                                                      promptamountparentmade=False,
+                                                      treekey=green[0])})
+        # if there are no head nodes found, return {-1:None}
     if len(foundheadnodes) == 0:
         foundheadnodes.update({-1: None})
     # if the search returns {-1:None} call populate method
