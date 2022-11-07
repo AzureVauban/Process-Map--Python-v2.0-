@@ -471,10 +471,8 @@ def csvsearch() -> dict:  # @note search for head nodes in csv file
             # add the node to the dictionary of head nodes
             foundheadpoints.update({green[0]: Node(ingredient=green[1],
                                                    parent=None,
-                                                   green[4],
-                                                   green[5],
-                                                   green[6], False,
-                                                   green[0])})
+                                                   promptamountparentmade=False,
+                                                   treekey=green[0])})
     # if there are no head nodes found, return {-1:None}
     if len(foundheadpoints) != 0:
         # !remove all of this line on comment later
@@ -631,8 +629,10 @@ def superpopulate() -> Node:
     foundheadnodes: dict = csvsearch()
     # foundheadnodes: dict = {}
     # if the search returns {-1:None} call populate method
-    filedoesnotexist: bool = not os.path.isfile(TESTFILENAME) # !remove all of this line on comment later
-    noheadnodsfound: bool = foundheadnodes is {-1: None} # !remove all of this line on comment later
+    # !remove all of this line on comment later
+    filedoesnotexist: bool = not os.path.isfile(TESTFILENAME)
+    # !remove all of this line on comment later
+    noheadnodsfound: bool = foundheadnodes is {-1: None}
     if foundheadnodes is {-1: None} or filedoesnotexist:
         return populate(Node(itemname, None))
     # else convert dict to list and prompt the user to choose an ingredient
