@@ -20,7 +20,7 @@ class ProgramState(Enum):
 
 
 PROGRAMSTATE: Enum = ProgramState.MODE_A
-FILENAME: str = 'ingredient_trees_processmap.csv'
+TESTFILENAME: str = 'ingredient_trees_processmap.csv'
 FIELDNAMES: list = [
     'Tree_Key',  # 74nry8keki',
     'Ingredient',  # Copper Wire
@@ -332,11 +332,14 @@ class Node(NodeB):  # pylint: disable=R0902
         tentative docstring description
         """
         # if the file is not in the directory, create it
-        if not os.path.exists(FILENAME):
+        if not os.path.exists(TESTFILENAME):
             # create the file
             pandas.DataFrame(columns=FIELDNAMES).to_csv(
-                FILENAME, index=False)
+                TESTFILENAME, index=False)
         # then write to the file but calling the method again recursively
+        for row in self.csv_createrowsdicts([]):
+            pandas.DataFrame(row, index=[0]).to_csv(
+                TESTFILENAME, mode='a', header=False, index=False)
     # end def
 
     def search(self, ingredient: str, results: dict) -> dict:
@@ -552,7 +555,7 @@ def superpopulate() -> Node:
     # parse the csv file for head nodes, and create a dict
     # if the dict returns {-1:None} or file is not in directory, call populate method  # noqa: E501 #pylint: disable=line-too-long
     foundheadnodes: dict = csvfindtrees()
-    if not os.path.exists(FILENAME) or foundheadnodes == {-1: None}:
+    if not os.path.exists(TESTFILENAME) or foundheadnodes == {-1: None}:
         return populate(Node(itemname, None))
     # else convert dict to list and prompt the user to choose an ingredient
     userchoices: list = []
