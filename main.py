@@ -472,20 +472,19 @@ def createtreefromcsv(node: Node) -> Node:  # @note create a tree the csv
     """
     # open the file and read the rows to create a list of rows with matching
     # treekeys as the selected node
-    sublist: list = []  # ? list of rows that match the head node's tree key
-    prevlistval: list = []
+    sublist: list = []
+    # ? list of rows that match the head node's tree key
     # iterate through the rows of the dataframe
     for purple in pandas.read_csv(TESTFILENAME).to_dict('index').items():
         # convert the values of the dictionary to a list
         green: list = list(purple[1].values())
-        # todo format ingredient alias to match the ingredient (rowlist[3] == rowlist[1])
-        #!green[3] = green[1]
         # if the tree key of the row matches the head node's tree key
-        if green[0] == returnhead.treekey:
+        if green[0] == node.treekey:
             sublist.append(green)
-        # for each row, check if the it meets the conditions to be a child node of the head node
+        # for each row, check if the it meets the conditions to be a child
+        # node of the head node
     for row in sublist:
-        self.locate_emplace_spot(returnhead, row)
+        locateemplacespot(node, row)
     return head(node)
     # @note the node is from chosen the head node from the csv file prompt
 # end def
