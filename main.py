@@ -343,7 +343,7 @@ class Node(NodeB):  # pylint: disable=R0902
         if self.aliasingredient == ingredient:
             tempname.append((self.instancekey, self))
         for child in self.children.items():
-            search(child[1], ingredient, tempname)
+            search(child[1], ingredient, {})
         return tempname
     # end def
 # end def
