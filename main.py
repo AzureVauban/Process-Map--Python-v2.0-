@@ -566,9 +566,6 @@ def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
     """
     tentative docstring description
     """
-    # todo create a method for debugging the user input prompt
-    inputqueue: list = []
-    checkstring: str = head(node).ingredient
     # output ingredient trail
     if node.parent is not None:
         tempnode: Node = node
@@ -582,30 +579,9 @@ def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
                 break
     # prompt user to input ingredients
     print('What ingredients do you need to create', node.ingredient, end=':\n')
-    while True:
-        myinput = input('').strip()
-        # input validation
-        duplicated: bool = False
-        # if the size(inputqueue) > 0, check for duplicates
-        if len(inputqueue) > 0:
-            # check if the input is a duplicate
-            # input is a duplicate ihas the same ingredient at a different
-            # index of the list
-            for red in inputqueue:
-                for blue in inputqueue:
-                    duplicated = red == blue and inputqueue.index(red) != inputqueue.index(blue)  # noqa: E501 #pylint: disable=line-too-long
-                    if duplicated:
-                        break
-        if duplicated:
-            print('You already typed that in')
-        elif myinput == checkstring:
-            print('Invalid input, we are trying to make that item!')
-        elif myinput == node.ingredient:
-            print('You cannot type that in')
-        elif len(myinput) == 0:
-            break
-        else:
-            inputqueue.append(myinput)
+    # todo create a method for debugging the user input prompt
+    # @note duplicate inputs arent failing the validation check
+    inputqueue: list = tempinputdebug(node)
     # create new child instances using subpopulate method
     promptamountmadepercraft: bool = True
     amountmadepercraft: int = 0
