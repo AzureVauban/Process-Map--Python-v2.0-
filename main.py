@@ -449,7 +449,8 @@ def csvsearch() -> dict:  # search for trees in csv file
         # convert the values of the dictionary to a list
         green: list = list(purple[1].values())
         # if the conditions are met for it to mock a head node
-        if green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7] == 0:
+        if green[3] == 'None' and green[5] == 1 and green[
+                6] == 1 and green[7] == 0:
             # create a node from the row's data
             # add the node to the dictionary of head nodes
             foundheadpoints.update({green[0]: Node(green[1],
@@ -462,24 +463,6 @@ def csvsearch() -> dict:  # search for trees in csv file
     if len(foundheadpoints) == 0:
         return {-1: None}
     return foundheadpoints
-# end def
-
-
-def createtreefromcsv(parent: Node) -> Node: 
-    # @note parent is the chosen node from subpopulation csv prompt
-    """
-    tentative docstring description
-    """
-    # check if the file exists
-    if not os.path.exists(TESTFILENAME):
-        raise ValueError('the file does not exist')
-    # open the file and read the rows to create a list of rows with matching treekeys as the selected node
-    sublist: list = []  # ? list of rows that match the head node's tree key
-    prevlistval: list = []
-    if not locateemplacespot(parent, row):
-        for child in parent.children.items():
-            createtreefromcsv(child[1], row)
-    return head(parent)
 # end def
 
 
