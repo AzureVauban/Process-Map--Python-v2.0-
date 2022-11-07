@@ -138,30 +138,20 @@ class Node(NodeB):  # pylint: disable=R0902
                     break
     # end def
 
-    def clearamountresulted(self):
+    def clearamounts(self):
         """
         tentative docstring description
         """
         self.queueamountresulted.clear()
-        if len(self.children) > 0:
-            for child in self.children.items():
-                if not isinstance(child[1], Node):
-                    raise TypeError('Child is not an instance of', Node)
-                child[1].clearamountresulted()
-    # end def
-
-    def clearamountonhand(self):
-        """
-        tentative docstring description
-        """
         self.amountonhand = 0
+        self.amountresulted = 0
         if len(self.children) > 0:
             for child in self.children.items():
                 if not isinstance(child[1], Node):
                     raise TypeError('Child is not an instance of', Node)
-                child[1].clearamountonhand()
-
+                child[1].clearamounts()
     # end def
+
     @classmethod
     def generate_treekey(cls) -> str:
         """
@@ -580,12 +570,11 @@ def superpopulate() -> Node:
             return populate(Node(itemname, None))
         # return ingredient tree from csv
         # todo finish this, create method to load ingredient tree from csv
-        return createtreefromcsv(userchoices[chosenindex])
+        returntree: Node = createtreefromcsv(userchoices[chosenindex])
+        returntree.clearamounts()
+        return returntree
     # code here should be unreachable
 # end def
-
-
-
 
 
 if __name__ == '__main__':
@@ -650,8 +639,8 @@ if __name__ == '__main__':
             # iterate through the dictionary and output the amounts on hand
             headnode.reformat_output()
         # prompt if the user wants to output their tree into a csv file
-        headnode.clearamountresulted()
-        headnode.clearamountonhand()
+        # write onto file
+        headnode.clearamounts()
         # prompt the user to see if they want to input another tree
         print('\nDo you want to run the program again with another item tree?'
               '(Y/N)')
