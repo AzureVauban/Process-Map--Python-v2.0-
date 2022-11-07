@@ -476,11 +476,11 @@ def csvsearch() -> dict:  # @note search for head nodes in csv file
                                                    green[6], False,
                                                    green[0])})
     # if there are no head nodes found, return {-1:None}
-    if len(foundheadpoints) == 0:
-        return {-1: None}
-    # !remove all of this line on comment later
-    print('ree')  # !remove all of this line on comment later
-    return foundheadpoints
+    if len(foundheadpoints) != 0:
+        # !remove all of this line on comment later
+        print('ree')  # !remove all of this line on comment later
+        return foundheadpoints
+    return {-1: None}
 # @ audit-note, for now, dont use this method since it only has 1 reference
 # end def
 
