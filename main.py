@@ -475,7 +475,7 @@ def locate_emplace_spot(node: Node, pandaslistrow: list) -> bool:
 # end def
 
 
-def csvsearch() -> dict:  # @note search for head nodes in csv file
+def csvsearch() -> dict:
     """
     tentative docstring description
     """
@@ -506,7 +506,7 @@ def csvsearch() -> dict:  # @note search for head nodes in csv file
 # end def
 
 
-def createtreefromcsv(node: Node) -> Node:  # @note create a tree the csv
+def createtreefromcsv(node: Node) -> Node:
     """
     tentative docstring description
     """
@@ -526,7 +526,6 @@ def createtreefromcsv(node: Node) -> Node:  # @note create a tree the csv
     for row in sublist:
         locate_emplace_spot(node, row)
     return head(node)
-    # @note the node is from chosen the head node from the csv file prompt
 # end def
 
 
@@ -693,7 +692,7 @@ def superpopulate() -> Node:
                     break
             return populate(Node(itemname, None))
         # return ingredient tree from csv
-        # @todo finish this, create method to load ingredient tree from csv
+
         returntree: Node = createtreefromcsv(userchoices[chosenindex])
         returntree.clearamounts()
         return returntree
