@@ -1,3 +1,4 @@
 Tree_Key,Ingredient,Ingredient_Alias,Parent_of_Ingredient,Amount_on_Hand,Amount_Of_Parent_Made_Per_Craft,Amount_Needed_Per_Craft,Generation
-1c0wdchwt8,Emerald,,Block of Emerald,576,1,9,1
-1c0wdchwt8,Block of Emerald,,None,64,1,1,0
+edRVCJcY5T,block of emerald,block of emerald__ZpgMzAwQdfRu,None,1000,1,1,0
+edRVCJcY5T,emerald,emerald__FCSaJ2,block of emerald,9000,1,9,1
+edRVCJcY5T,stick,stick__vJ3i5l,emerald,288000,1,32,2
