@@ -561,6 +561,10 @@ def populate(node: Node, modifyingpreset: bool = False) -> Node:
                 break
     # prompt user to input ingredients
     print('What ingredients do you need to create', node.ingredient, end=':\n')
+    # if modifying a preset, print out subnode ingredients already in
+    if modifyingpreset and len(node.children) > 0:
+        for subnode in node.children.items():
+            
     # @note duplicate inputs arent failing the validation check
     userinputlist: list = []
     while True:
