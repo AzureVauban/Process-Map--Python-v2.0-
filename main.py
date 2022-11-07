@@ -704,6 +704,10 @@ if __name__ == '__main__':
             # iterate through the dictionary and output the amounts on hand
             headnode.reformat_output()
         # prompt if the user wants to output their tree into a csv file
+        print('Do you want to save your tree to create',
+              headnode.ingredient, 'to a csv file? (Y/N)')
+        while True:
+            
         # write onto file
         headnode.clearamounts()
         # prompt the user to see if they want to input another tree
