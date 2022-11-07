@@ -102,8 +102,6 @@ class Node(NodeB):  # pylint: disable=R0902
             self.generation = 0
             if self.treekey == '':
                 self.treekey = self.generate_treekey()
-            else:
-                self.treekey = treekey
         Node.instances += 1
         if __name__ == '__main__':
             self.__inputnumerics(promptamountparentmade)
@@ -432,7 +430,9 @@ def locateemplacespot(node: Node,   # pylint:disable:W0613
     foundemplacelocation: bool = node.treekey == pandaslistrow[0] and pandaslistrow[
         3] != 'None' and pandaslistrow[3] == node.ingredient and pandaslistrow[7] > 0 and node is not None
     if foundemplacelocation:
-        # @note somewhere in the project it needs to be determined if the user will allow the amount on hands from the csv file to be used or if the user will input the amount on hand themselves
+        # @note somewhere in the project it needs to be determined if the user
+        # will allow the amount on hands from the csv file to be used or if
+        # the user will input the amount on hand themselves
         Node(pandaslistrow[1],
              parent=node,
              amountneeded=pandaslistrow[6],
