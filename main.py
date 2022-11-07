@@ -692,7 +692,6 @@ def superpopulate() -> Node:
                     break
             return populate(Node(itemname, None))
         # return ingredient tree from csv
-
         returntree: Node = createtreefromcsv(userchoices[chosenindex])
         returntree.clearamounts()
         return returntree
