@@ -731,13 +731,14 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
                     break
             return populate(Node(itemname, None))
         # return ingredient tree from csv
-        returntree: Node = createtreefromcsv(userchoices[chosenindex])
+        returntree: Node = populate(
+            createtreefromcsv(userchoices[chosenindex]))
         # change the tree key of each node
         returntree.modifytreekey(returntree.generate_treekey())
         # clear amount on hand and amount resulted
         returntree.clearamounts()
         # add bool to check if modify a created tree from the csv file
-        return populate(returntree)
+        return returntree
     # code here should be unreachable
 # end def
 
