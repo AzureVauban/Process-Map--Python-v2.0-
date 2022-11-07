@@ -465,14 +465,17 @@ def csvsearch() -> dict:  # search for trees in csv file
 # end def
 
 
-def createtreefromcsv(parent: Node, row: list) -> Node:
+def createtreefromcsv(parent: Node) -> Node: 
+    # @note parent is the chosen node from subpopulation csv prompt
     """
     tentative docstring description
     """
     # check if the file exists
     if not os.path.exists(TESTFILENAME):
         raise ValueError('the file does not exist')
-
+    # open the file and read the rows to create a list of rows with matching treekeys as the selected node
+    sublist: list = []  # ? list of rows that match the head node's tree key
+    prevlistval: list = []
     if not locateemplacespot(parent, row):
         for child in parent.children.items():
             createtreefromcsv(child[1], row)
