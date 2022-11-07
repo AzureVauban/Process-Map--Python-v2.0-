@@ -353,7 +353,7 @@ class Node(NodeB):  # pylint: disable=R0902
     # end def
 
     def returnlistofsameingredient(self, ingredient: str, results: list) -> list:  # noqa: E501
-        """
+        """m
         tentative docstring description
         """
         if self.ingredient == ingredient:
