@@ -529,19 +529,19 @@ def createtreefromcsv(node: Node) -> Node:
 
 
 def tempinputdebug(node: Node) -> list:
-    userinput: list = []
+    userinputlist: list = []
     while True:
         # if the input is empty, break the loop
         myinput: str = input('').strip()
         # if the length of the user inputs is greator than or equal to 2
         # check if there are duplicate inputs
-        if len(userinput) >= 2:
+        if len(userinputlist) >= 2:
             duplicated: bool = False
             red: int = 0
-            while red != len(userinput):
+            while red != len(userinputlist):
                 blue: int = 0
-                while blue != len(userinput):
-                    duplicated: bool = userinput[red] == userinput[blue] and red != blue  # noqa: E501 #pylint: disable=line-too-long
+                while blue != len(userinputlist):
+                    duplicated: bool = userinputlist[red] == userinputlist[blue] and red != blue  # noqa: E501 #pylint: disable=line-too-long
                     if duplicated:
                         break
                     blue += 1
@@ -553,8 +553,8 @@ def tempinputdebug(node: Node) -> list:
             print('Invalid input, we are trying to make that item!')
         else:
             # if the condition is met, append the input to the list
-            userinput.append(myinput)
-    return userinput
+            userinputlist.append(myinput)
+    return userinputlist
 # end def
 
 
