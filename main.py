@@ -401,19 +401,6 @@ def clone(node: Node) -> Node:
 # end def
 
 
-def csvfindtrees() -> dict:
-    """
-    tentative docstring description
-    """
-    # create a dict of head nodes in the ingredient tree
-    # if the file is not in the directory, return {-1:None}
-    if not os.path.exists(TESTFILENAME):
-        return {-1: None}    
-    # if there are nodes found, return the dict, else return {-1:None}
-    return {-1: None}
-# end def
-
-
 def locateemplacespot(node: Node, pandaslistrow: list) -> bool:
     """
     tentative docstring description
@@ -444,6 +431,24 @@ def locateemplacespot(node: Node, pandaslistrow: list) -> bool:
              treekey=pandaslistrow[0])
         return True
     return False
+# end def
+
+
+def csvsearch() -> dict:  # search for trees in csv file
+    """
+    tentative docstring description
+    """
+    # create a dict of head nodes in the ingredient tree
+    # if the file is not in the directory, return {-1:None}
+    if not os.path.exists(TESTFILENAME):
+        return {-1: None}
+    # if there are nodes found, return the dict, else return {-1:None}
+    foundheadpoints: dict = {}
+    # iterate through the rows of the dataframe
+    for purple in pandas.read_csv(TESTFILENAME).to_dict('index').items():
+        # convert the values of the dictionary to a list
+        green: list = list(purple[1].values())
+    return {-1: None}
 # end def
 
 
@@ -575,7 +580,7 @@ def superpopulate() -> Node:
     """
     # parse the csv file for head nodes, and create a dict
     # if the dict returns {-1:None} or file is not in directory, call populate method  # noqa: E501 #pylint: disable=line-too-long
-    foundheadnodes: dict = csvfindtrees()
+    foundheadnodes: dict = csvsearch()
     if not os.path.exists(TESTFILENAME) or foundheadnodes == {-1: None}:
         return populate(Node(itemname, None))
     # else convert dict to list and prompt the user to choose an ingredient
