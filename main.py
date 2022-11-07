@@ -640,8 +640,7 @@ def superpopulate() -> Node:
                 print('You must type something in')
             else:
                 break
-        purple: Node = populate(Node(itemname, None))
-        return purple
+        return populate(Node(itemname, None))
     # else convert dict to list and prompt the user to choose an ingredient
     userchoices: list = []
     for node in foundheadnodes.items():
