@@ -2,9 +2,41 @@ Tree_Key,Ingredient,Ingredient_Alias,Parent_of_Ingredient,Amount_on_Hand,Amount_
 edRVCJcY5T,block of emerald,block of emerald__ZpgMzAwQdfRu,None,1000,1,1,0
 edRVCJcY5T,emerald,emerald__FCSaJ2,block of emerald,9000,1,9,1
 edRVCJcY5T,stick,stick__vJ3i5l,emerald,288000,1,32,2
-8a3xf5,industrial battery,industrial_battery__ofbUk5zOv,None,9,1,1,0
-8a3xf5,protocite bar,protocite_bar__alc0ET,industrial battery,45,1,5,1
-8a3xf5,protocite,protocite__exjJNnx,protocite bar,90,1,2,2
-8a3xf5,battery,battery__aXTZWxH,industrial battery,18,1,2,1
-8a3xf5,pixels,pixels__dUWBpjC3,battery,45000,1,2500,2
-
+UoPydLI98vet9sUb,Focusing_Array,Focusing_Array__9IYT6l,None,0,1,1,0
+UoPydLI98vet9sUb,Advanced_Alloy,Advanced_Alloy__vnaOD2FjZKaf,Focusing_Array,2,2,1,1
+UoPydLI98vet9sUb,Zerchesium_Bar,Zerchesium_Bar__pDapPruYvS,Advanced_Alloy,2,1,1,2
+UoPydLI98vet9sUb,Zerchesium_Ore,Zerchesium_Ore__RlNesp6DVDq,Zerchesium_Bar,4,2,1,3
+UoPydLI98vet9sUb,Pixels,Pixels__qz82eyVwURY2,Zerchesium_Ore,5600,1400,1,4
+UoPydLI98vet9sUb,Protocite_Bar,Protocite_Bar__EQW9E5MTpTBZ,Advanced_Alloy,2,1,1,2
+UoPydLI98vet9sUb,Protocite,Protocite__dtCNCudzs0BV,Protocite_Bar,4,2,1,3
+UoPydLI98vet9sUb,Pixels_B,Pixels_B__r5Pr6SI97,Protocite,1560,390,1,4
+UoPydLI98vet9sUb,Penumbrite_Shard,Penumbrite_Shard__SX53wLKxZ,Advanced_Alloy,2,1,1,2
+UoPydLI98vet9sUb,Penumbrite_Ore,Penumbrite_Ore__8Jf6AwtPSPZ,Penumbrite_Shard,4,2,1,3
+UoPydLI98vet9sUb,Pixels_C,Pixels_C__DOO8M4yQ4PD,Penumbrite_Ore,1560,390,1,4
+UoPydLI98vet9sUb,Lead,Lead__XyOKQF,Advanced_Alloy,2,1,1,2
+UoPydLI98vet9sUb,Pixels_D,Pixels_D__uqpWutJdIS,Lead,120,60,1,3
+UoPydLI98vet9sUb,Crystal,Crystal__5FH4J5,Focusing_Array,2,2,1,1
+UoPydLI98vet9sUb,Prism_Shard,Prism_Shard__DBPCFW,Crystal,0,1,3,2
+UoPydLI98vet9sUb,Pixels_E,Pixels_E__xqQ7bdm4Mm2fu,Prism_Shard,0,1838,1,3
+UoPydLI98vet9sUb,Plasmic_Crystal,Plasmic_Crystal__8Z6tJ50h,Focusing_Array,2,2,1,1
+UoPydLI98vet9sUb,Bloody_Rock,Bloody_Rock__4imdmQRT,Plasmic_Crystal,100,50,1,2
+UoPydLI98vet9sUb,Blood,Blood__qJt6dJ53Rk6,Bloody_Rock,100,1,1,3
+UoPydLI98vet9sUb,Teratomato,Teratomato__mSc9Jn80,Blood,33,1,3,4
+UoPydLI98vet9sUb,Teratomato_Seed,Teratomato_Seed__Epan6Xdf9,Teratomato,99,3,1,5
+UoPydLI98vet9sUb,Mercury,Mercury__Mu8oN6,Bloody_Rock,100,1,1,3
+UoPydLI98vet9sUb,Cinnabar,Cinnabar__vuDX6T4EhfjgX,Mercury,100,2,2,4
+UoPydLI98vet9sUb,Pixels_F,Pixels_F__r2RNSbBl3r98,Cinnabar,7000,70,1,5
+UoPydLI98vet9sUb,Quantum_Processor,Quantum_Processor__TuNsazcNbyL,Focusing_Array,1,1,1,1
+UoPydLI98vet9sUb,Silicon_Board,Silicon_Board__u6vCfjuW1x,Quantum_Processor,2,4,2,2
+UoPydLI98vet9sUb,Silicon,Silicon__vqyp27KEUWw31,Silicon_Board,2,1,1,3
+UoPydLI98vet9sUb,Sand,Sand__XNladPmcN,Silicon,100,50,1,4
+UoPydLI98vet9sUb,Cobblestone,Cobblestone__Ar5wzlq,Sand,1666,50,3,5
+UoPydLI98vet9sUb,Rockroot,Rockroot__bBv550kRmzWI,Cobblestone,833,1,2,6
+UoPydLI98vet9sUb,Rockroot_Seed,Rockroot_Seed__RMCZ5RjOQIml,Rockroot,2499,3,1,7
+UoPydLI98vet9sUb,Copper_Wire,Copper_Wire__xsd6QaWk,Silicon_Board,2,1,1,3
+UoPydLI98vet9sUb,Copper_Bar,Copper_Bar__Sxti0h,Copper_Wire,0,1,9,4
+UoPydLI98vet9sUb,Copper_Ore,Copper_Ore__AeJ4ZdwbW7J8H,Copper_Bar,0,2,1,5
+UoPydLI98vet9sUb,Pixels_G,Pixels_G__zGAxo5XCAj2,Copper_Ore,0,88,1,6
+UoPydLI98vet9sUb,Protocite_Bar_B,Protocite_Bar_B__fR6Y40AP,Quantum_Processor,1,2,2,2
+UoPydLI98vet9sUb,Protocite_B,Protocite_B__3d221VLvjQxfo,Protocite_Bar_B,2,2,1,3
+UoPydLI98vet9sUb,Pixels_H,Pixels_H__N57Y5VPqPgg,Protocite_B,780,390,1,4
