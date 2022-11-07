@@ -295,7 +295,6 @@ class Node(NodeB):  # pylint: disable=R0902
         tentative docstring description
         """
         pandasrowdict: dict = {}
-
         pandasrowdict.update({'Tree_Key': self.treekey})
         pandasrowdict.update({'Ingredient': self.ingredient})
         pandasrowdict.update({'Ingredient_Alias': self.aliasingredient})
@@ -311,6 +310,16 @@ class Node(NodeB):  # pylint: disable=R0902
             {'Amount_Needed_Per_Craft': str(self.amountneeded)})
         pandasrowdict.update({'Generation': str(self.generation)})
         return pandasrowdict
+    # end def
+
+    def csv_createrowsdicts(self, pandasrows: list) -> list:
+        """
+        tentative docstring description
+        """
+        pandasrows.append(self.csv_createrowdict())
+        for child in self.children.items():
+            child[1].csv_createrowsdicts(pandasrows)
+        return pandasrows
     # end def
 
     def search(self, ingredient: str, results: dict) -> dict:
