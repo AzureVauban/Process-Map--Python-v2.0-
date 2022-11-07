@@ -513,7 +513,8 @@ def csvsearch() -> dict:
                                                    parent=None,
                                                    promptamountparentmade=False,  # noqa: E501 #pylint: disable=line-too-long
                                                    treekey=green[0],
-                                                   isfromcsvfile=True)})
+                                                   isfromcsvfile=True,
+                                                   promptamountsOn=False)})
     # if there are no head nodes found, return {-1:None}
     if len(foundheadpoints) != 0:
         return foundheadpoints
