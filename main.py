@@ -548,7 +548,7 @@ def tempinputdebug(node: Node) -> list:
                 red += 1
         # check to see if the ussr input is valid,
         # validation conditions
-        if myinput == head(node).ingredient:
+        if myinput in [head(node).ingredient, node.ingredient]:  # noqa: E501 #pylint: disable=line-too-long
             print('Invalid input, we are trying to make that item!')
         # if the length of the user input is 0, break the loop
         elif duplicated:
