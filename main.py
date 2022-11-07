@@ -401,7 +401,7 @@ def makeallaliasunique(node: Node):
         # organize nodes based on instancekey (least to greatest)
         for red in aliaslist:
             for blue in aliaslist:
-                if red[0].instancekey > blue[0].instancekey:
+                if red[1].instancekey > blue[1].instancekey:
                     # swap the indicies
                     blue, red = red, blue
         # then change the alias of the nodes to be unique
