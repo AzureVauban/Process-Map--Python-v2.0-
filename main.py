@@ -747,7 +747,7 @@ if __name__ == '__main__':
         # prompt the user to see if they want to input another tree
         while True:
             userinput = input('\nDo you want to run the program again with'
-                              ' another item tree? (Y/N)').strip().upper()
+                              ' another item tree? (Y/N) ').strip().upper()
             if userinput not in ('Y', 'N', 'H'):
                 print("That input is not valid, please type in 'Y' or 'N'")
             elif len(userinput) > 1:
