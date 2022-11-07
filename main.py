@@ -395,6 +395,7 @@ def makeallaliasunique(node: Node):
     tentative docstring description
     """
     # recursively call for all children
+    head(node).returnlistofsameingredient(node.ingredient, [])
     for child in node.children.items():
         makeallaliasunique(child[1])
 # end def
