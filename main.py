@@ -608,7 +608,7 @@ def subpopulate(node: Node,
 
     queryresults: dict = {}
     queryresults = head(node).search(ingredient=ingredient, results=queryresults)  # noqa: E501 #pylint: disable=line-too-long
-    if queryresults == {-1: None} or node.parent is None:
+    if queryresults is {-1: None} or node.parent is None:
         # if no nodes are found, return a default node
         # if the node is the head node, return a default node
         return Node(ingredient, node,
