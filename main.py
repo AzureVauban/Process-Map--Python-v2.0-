@@ -336,25 +336,6 @@ class Node(NodeB):  # pylint: disable=R0902
                 TESTFILENAME, mode='a', header=False, index=False)
     # end def
 
-    def search(self, ingredient: str, results: dict) -> dict:
-        """
-        tentative docstring description
-        """
-        if not isinstance(results, dict):
-            raise TypeError('results is not a dictionary')
-        # parse through entire tree and find all instances of the ingredient
-        for child in self.children.items():
-            child[1].search(ingredient, results)
-        # if the ingredient is found
-        # add the instance to the results dict
-        if self.ingredient == ingredient:
-            results.update({self.instancekey: self})
-        # if at endpoint node & there's no nodes in results, return {-1:None}
-        elif len(self.children) == 0 and len(results) == 0:
-            return {-1: None}
-        return results
-    # end def
-
     def returnlistofalias(self, ingredient: str, results: list) -> list:  # noqa: E501
         """
         tentative docstring description
@@ -372,12 +353,16 @@ def search(node: Node, ingredient: str, results: dict) -> dict:
     """
     tentative docstring description
     """
+    # parse through entire tree and find all instances of the ingredient
     if node.ingredient == ingredient:
+        # if the ingredient is found
+        # add the instance to the results dict
         results.update({node.instancekey: node})
     # keep searching through the ingredient tree
     for subnode in node.children.items():
         search(subnode[1], ingredient, results)
     return results
+# end def
 
 
 def promptint() -> int:
@@ -619,8 +604,7 @@ def subpopulate(node: Node,
     """
     # search for nodes in the ingredient tree with the same ingredient name
 
-    queryresults: dict = {}
-    queryresults = head(node).search(ingredient=ingredient, results=queryresults)  # noqa: E501 #pylint: disable=line-too-long
+    queryresults: dict = search()
     if queryresults is {-1: None} or node.parent is None:
         # if no nodes are found, return a default node
         # if the node is the head node, return a default node
