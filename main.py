@@ -376,17 +376,23 @@ def head(node: Node) -> Node:
         node = node.parent
     return node
 # end def
+
+
 def secondhead(node: Node) -> Node:
     """
     tentative docstring description
     """
-    #check if the node generation is less than 2
-    if node.generation < 2:
+    # check if the node generation is less than 2 or if the population of the
+    # the ingredient tree is less than 2 (meaning there's only one ingredient)
+    if node.generation < 2 or node.countpopulation() < 2:
         return node
-    while node.parent is not None:
+    # traverse upward until the generation is 2
+    while node.generation != 2 and node.parent is not None:
         node = node.parent
     return node
 # end def
+
+
 def clone(node: Node) -> Node:
     """
     tentative docstring description
