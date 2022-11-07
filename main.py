@@ -662,7 +662,7 @@ def superpopulate() -> Node:
                 # add the node to the dictionary of head nodes
                 foundheadnodes.update({green[0]: Node(ingredient=green[1],
                                                       parent=None,
-                                                      promptamountparentmade=False,
+                                                      promptamountparentmade=False,  # noqa: E501
                                                       treekey=green[0])})
     # if there are no head nodes found, return {-1:None}
     if len(foundheadnodes) == 0:
