@@ -376,7 +376,13 @@ def head(node: Node) -> Node:
         node = node.parent
     return node
 # end def
-
+def secondhead(node: Node) -> Node:
+    """
+    tentative docstring description
+    """
+    while node.parent is not None and node.generation <= 2:
+        node = node.parent
+    return node
 
 def clone(node: Node) -> Node:
     """
