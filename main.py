@@ -567,10 +567,11 @@ def populate(node: Node, modifyingpreset: bool = False) -> Node:
     # if modifying a preset, print out subnode ingredients already in
     if modifyingpreset and len(node.children) != 0:
         print('* The following ingredients are already in the preset:\n')
+        pos: int = 1
         for subnode in node.children.items():
-            print(subnode[1].ingredient)
+            print(pos, end='. '+subnode[1].ingredient)
+            pos += 1
         print('\n')
-
     # @note duplicate inputs arent failing the validation check
     userinputlist: list = []
     if modifyingpreset:
