@@ -528,34 +528,6 @@ def createtreefromcsv(node: Node) -> Node:
 # end def
 
 
-def tempinputdebug(node: Node) -> list:
-    """
-    tentative docstring description
-    """
-    userinputlist: list = []
-    while True:
-        # if the input is empty, break the loop
-        myinput: str = input('').strip()
-        # if the length of the user inputs is greator than or equal to 2
-        # check if there are duplicate inputs
-
-        # check to see if the ussr input is valid,
-        # validation conditions
-        if myinput in [head(node).ingredient, node.ingredient]:  # noqa: E501 #pylint: disable=line-too-long
-            print('Invalid input, we are trying to make that item!')
-        # if the length of the user input is 0, break the loop
-        elif myinput in userinputlist:
-            print('Invalid input, duplicate inputs!')
-
-        elif len(myinput) == 0:
-            break
-        else:
-            # if the condition is met, append the input to the list
-            userinputlist.append(myinput)
-    return userinputlist
-# end def
-
-
 def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
     """
     tentative docstring description
@@ -573,9 +545,26 @@ def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
                 break
     # prompt user to input ingredients
     print('What ingredients do you need to create', node.ingredient, end=':\n')
-    # todo create a method for debugging the user input prompt
     # @note duplicate inputs arent failing the validation check
     userinputlist: list = []
+    while True:
+        # if the input is empty, break the loop
+        myinput: str = input('').strip()
+        # if the length of the user inputs is greator than or equal to 2
+        # check if there are duplicate inputs
+
+        # check to see if the ussr input is valid,
+        # validation conditions
+        if myinput in [head(node).ingredient, node.ingredient]:  # noqa: E501 #pylint: disable=line-too-long
+            print('Invalid input, we are trying to make that item!')
+        # if the length of the user input is 0, break the loop
+        elif myinput in userinputlist:
+            print('Invalid input, duplicate inputs!')
+        elif len(myinput) == 0:
+            break
+        else:
+            # if the condition is met, append the input to the list
+            userinputlist.append(myinput)
     # create new child instances using subpopulate method
     promptamountmadepercraft: bool = True
     amountmadepercraft: int = 0
