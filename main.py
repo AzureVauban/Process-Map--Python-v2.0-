@@ -574,9 +574,9 @@ def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
     # create new child instances using subpopulate method
     promptamountmadepercraft: bool = True
     amountmadepercraft: int = 0
-    for newnodename in inputqueue.items():
+    for newnodename in inputqueue:
         _: Node = subpopulate(node=node,
-                              ingredient=newnodename[1],
+                              ingredient=newnodename,
                               amountmadepercraft=amountmadepercraft,
                               promptamountmadepercraft=promptamountmadepercraft)  # noqa: E501 #pylint: disable=line-too-long
         if promptamountmadepercraft:
