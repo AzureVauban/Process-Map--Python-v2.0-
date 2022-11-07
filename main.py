@@ -469,8 +469,8 @@ def csvsearch() -> dict:  # @note search for head nodes in csv file
                 6] == 1 and green[7] == 0:
             # create a node from the row's data
             # add the node to the dictionary of head nodes
-            foundheadpoints.update({green[0]: Node(green[1],
-                                                   None,
+            foundheadpoints.update({green[0]: Node(ingredient=green[1],
+                                                   parent=None,
                                                    green[4],
                                                    green[5],
                                                    green[6], False,
