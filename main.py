@@ -406,6 +406,9 @@ def csvfindtrees() -> dict:
     tentative docstring description
     """
     # create a dict of head nodes in the ingredient tree
+    # if the file is not in the directory, return {-1:None}
+    if not os.path.exists(TESTFILENAME):
+        return {-1: None}    
     # if there are nodes found, return the dict, else return {-1:None}
     return {-1: None}
 # end def
