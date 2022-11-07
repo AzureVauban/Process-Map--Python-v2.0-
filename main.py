@@ -340,6 +340,8 @@ class Node(NodeB):  # pylint: disable=R0902
         """
         tentative docstring description
         """
+        if not isinstance(results, dict):
+            raise TypeError('results is not a dictionary')
         # parse through entire tree and find all instances of the ingredient
         for child in self.children.items():
             child[1].search(ingredient, results)
