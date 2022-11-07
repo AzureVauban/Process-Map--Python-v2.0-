@@ -93,6 +93,7 @@ class Node(NodeB):  # pylint: disable=R0902
                          amountonhand,
                          amountparentmadepercraft,
                          amountneeded)
+        self.isfromcsvfile = isfromcsvfile
         self.treekey = treekey
         self.instancekey = Node.instances
         self.children = {}
