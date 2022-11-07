@@ -532,6 +532,7 @@ def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
     """
     tentative docstring description
     """
+    # todo create a method for debugging the user input prompt
     inputqueue: list = []
     checkstring: str = head(node).ingredient
     # output ingredient trail
