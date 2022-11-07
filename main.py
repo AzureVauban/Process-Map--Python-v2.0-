@@ -535,8 +535,10 @@ def tempinputdebug(node: Node) -> list:
         myinput: str = input('').strip()
         if len(myinput) == 0:
             break
+        # validation conditions
         else:
-            
+            # if the condition is met, append the input to the list
+            userinput.append(myinput)
     return userinput
 # end def
 
