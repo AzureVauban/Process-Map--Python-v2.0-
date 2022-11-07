@@ -82,7 +82,7 @@ class Node(NodeB):  # pylint: disable=R0902
                  amountparentmadepercraft: int = 1,
                  amountneeded: int = 1,
                  promptamountparentmade: bool = False,
-                 promptatall : bool = False,
+                 promptatall: bool = False,
                  treekey: str = '') -> None:
         """
         tentative docstring description
@@ -636,7 +636,15 @@ def superpopulate() -> Node:
     # !remove all of this line on comment later
     noheadnodsfound: bool = foundheadnodes is {-1: None}
     if foundheadnodes is {-1: None} or filedoesnotexist:
-        purple : Node = populate(Node(itemname, None))
+        # prompt user to type in the name of the item they want to create
+        while True:
+            itemname = input(
+                'What is the name of the item you want to create: ').strip()
+            if len(itemname) == 0:
+                print('You must type something in')
+            else:
+                break
+        purple: Node = populate(Node(itemname, None))
         return purple
     # else convert dict to list and prompt the user to choose an ingredient
     userchoices: list = []
@@ -658,6 +666,14 @@ def superpopulate() -> Node:
         # if the user did not choose a valid index, create ingredient tree
         # manually
         if chosenindex < 0 or chosenindex > len(userchoices):
+            # prompt user to type in the name of the item they want to create
+            while True:
+                itemname = input(
+                    'What is the name of the item you want to create: ').strip()
+                if len(itemname) == 0:
+                    print('You must type something in')
+                else:
+                    break
             return populate(Node(itemname, None))
         # return ingredient tree from csv
         # @todo finish this, create method to load ingredient tree from csv
@@ -703,14 +719,6 @@ if __name__ == '__main__':
                 print("Type in 'H' if you need a reminder of the prompt\n")
             else:
                 PROGRAMSTATE = ProgramState.MODE_A
-                break
-        # prompt user to type in the name of the item they want to create
-        while True:
-            itemname = input(
-                'What is the name of the item you want to create: ').strip()
-            if len(itemname) == 0:
-                print('You must type something in')
-            else:
                 break
         # populate tree
         headnode: Node = superpopulate()
