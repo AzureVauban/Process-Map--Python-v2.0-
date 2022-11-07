@@ -324,7 +324,8 @@ class Node(NodeB):  # pylint: disable=R0902
             return pandasrows[::-1]
         return pandasrows
     # end def
-    def 
+    def output_tree_to_csv(self):
+        
     def search(self, ingredient: str, results: dict) -> dict:
         """
         tentative docstring description
