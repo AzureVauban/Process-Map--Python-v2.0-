@@ -533,14 +533,30 @@ def tempinputdebug(node: Node) -> list:
     while True:
         # if the input is empty, break the loop
         myinput: str = input('').strip()
+        # if the length of the user inputs is greator than or equal to 2
+        # check if there are duplicate inputs
+        if len(userinput) >= 2:
+            duplicated: bool = False
+            red: int = 0
+            while red != len(userinput):
+                blue: int = 0
+                while blue != len(userinput):
+                    duplicated: bool = userinput[red] == userinput[blue] and red != blue  # noqa: E501 #pylint: disable=line-too-long
+                    if duplicated:
+                        break
+                    blue += 1
+                red += 1
         if len(myinput) == 0:
             break
         # validation conditions
+        elif myinput == head(node).ingredient:
+            print('Invalid input, we are trying to make that item!')
         else:
             # if the condition is met, append the input to the list
             userinput.append(myinput)
     return userinput
 # end def
+
 
 def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
     """
