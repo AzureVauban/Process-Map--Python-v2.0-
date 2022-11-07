@@ -552,12 +552,14 @@ def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
         # input validation
         duplicated: bool = False
         if len(inputqueue) > 0:
-            #check if the input is a duplicate
-            # input is a duplicate ihas the same ingredient at a different index of the list
+            # check if the input is a duplicate
+            # input is a duplicate ihas the same ingredient at a different
+            # index of the list
             for red in inputqueue:
                 for blue in inputqueue:
-                if duplicated:
-                    break
+                    duplicated = red == blue and inputqueue.index(red) != inputqueue.index(blue)  # noqa: E501 #pylint: disable=line-too-long
+                    if duplicated:
+                        break
         if duplicated:
             print('You already typed that in')
         elif myinput == checkstring:
