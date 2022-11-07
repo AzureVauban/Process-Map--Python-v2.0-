@@ -544,7 +544,7 @@ def createtreefromcsv(node: Node) -> Node:
 # end def
 
 
-def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
+def populate(node: Node, modifyingpreset: bool = False) -> Node:
     """
     tentative docstring description
     """
