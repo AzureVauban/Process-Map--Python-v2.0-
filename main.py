@@ -629,7 +629,7 @@ def superpopulate() -> Node:
     print(os.path.exists(TESTFILENAME),
           ':',
           foundheadnodes)
-    # if the search returns {-1:None}call populate method  # noqa: E501 #pylint: disable=line-too-long
+    # if the search returns {-1:None} call populate method
     if foundheadnodes == {-1: None}:
         return populate(Node(itemname, None))
     # else convert dict to list and prompt the user to choose an ingredient
