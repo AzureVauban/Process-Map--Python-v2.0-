@@ -353,15 +353,12 @@ class Node(NodeB):  # pylint: disable=R0902
 # end def
 
 
-def checknameuniquness(blue: Node, red: Node) -> bool:
+def checknameuniquness(blue: Node, red: Node):
     """
     tentative docstring description
     """
-    if blue.ingredient == red.ingredient:
-        for childnode in blue.children.items():
-            if childnode[1].ingredient == red.ingredient:
-                return checknameuniquness(childnode[1], red)
-    return True
+    # parse through the tree and check if the ingredient name is unique
+    # if blue is the same ingredient as red and not the same instance, change the alias
 # end def
 
 
