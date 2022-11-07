@@ -610,11 +610,11 @@ def superpopulate() -> Node:
     tentative docstring description
     """
     # parse the csv file for head nodes, and create a dict
-    # if the dict returns {-1:None} or file is not in directory, call populate method  # noqa: E501 #pylint: disable=line-too-long
     foundheadnodes: dict = csvsearch()
     print(os.path.exists(TESTFILENAME),
           ':',
           foundheadnodes)
+    # if the search returns {-1:None}call populate method  # noqa: E501 #pylint: disable=line-too-long
     if foundheadnodes == {-1: None}:
         return populate(Node(itemname, None))
     # else convert dict to list and prompt the user to choose an ingredient
