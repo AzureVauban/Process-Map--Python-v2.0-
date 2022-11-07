@@ -478,6 +478,8 @@ def csvsearch() -> dict:  # @note search for head nodes in csv file
     # if there are no head nodes found, return {-1:None}
     if len(foundheadpoints) == 0:
         return {-1: None}
+    # !remove all of this line on comment later
+    print('ree') # !remove all of this line on comment later
     return foundheadpoints
 # @ audit-note, for now, dont use this method since it only has 1 reference
 # end def
@@ -630,7 +632,7 @@ def superpopulate() -> Node:
     # foundheadnodes: dict = {}
     # if the search returns {-1:None} call populate method
     filedoesnotexist: bool = not os.path.isfile(TESTFILENAME)
-    if foundheadnodes == {-1: None} or filedoesnotexist:
+    if foundheadnodes is {-1: None} or filedoesnotexist:
         return populate(Node(itemname, None))
     # else convert dict to list and prompt the user to choose an ingredient
     userchoices: list = []
