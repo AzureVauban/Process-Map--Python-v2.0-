@@ -352,7 +352,7 @@ class Node(NodeB):  # pylint: disable=R0902
         return results
     # end def
 
-    def returnlistofsameingredient(self, ingredient: str, results: list) -> list:  # noqa: E501
+    def returnlistofalias(self, ingredient: str, results: list) -> list:  # noqa: E501
         """
         tentative docstring description
         """
@@ -405,8 +405,12 @@ def makeallaliasunique(node: Node):
                     # swap the indicies
                     blue, red = red, blue
         # then change the alias of the nodes to be unique
-        for ingredient in aliaslist:
-            
+        for index, name in enumerate(aliaslist):
+            # if the index is 0, then it's the original node
+            if index != 0:
+                name.aliasingredient = name.ingredient + \
+                    ' (' + str(index+1) + ')'
+
     for child in node.children.items():
         makeallaliasunique(child[1])
 # end def
