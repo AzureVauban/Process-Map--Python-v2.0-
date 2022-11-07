@@ -713,9 +713,12 @@ if __name__ == '__main__':
             elif len(userinput) > 1:
                 print('Your input is too long, please only type in one'
                       'character')
-            elif userinput not in ('Y', 'N'):
-                print("")
-        # write onto file
+            elif userinput == 'Y':
+                # write onto file
+                headnode.output_tree_to_csv()
+                break
+            else:
+                break
         headnode.clearamounts()
         # prompt the user to see if they want to input another tree
         print('\nDo you want to run the program again with another item tree?'
