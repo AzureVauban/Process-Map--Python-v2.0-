@@ -472,8 +472,7 @@ def csvsearch() -> dict:  # @note search for head nodes in csv file
             # add the node to the dictionary of head nodes
             foundheadpoints.update({green[0]: Node(ingredient=green[1],
                                                    parent=None,
-                                                   promptamountparentmade=False,
-                                                   promptatall=False,
+                                                   promptamountparentmade=False,  # noqa: E501 #pylint: disable=line-too-long
                                                    treekey=green[0])})
     # if there are no head nodes found, return {-1:None}
     if len(foundheadpoints) != 0:
