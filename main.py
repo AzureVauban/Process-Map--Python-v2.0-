@@ -535,8 +535,8 @@ def tempinputdebug(node: Node) -> list:
         myinput: str = input('').strip()
         # if the length of the user inputs is greator than or equal to 2
         # check if there are duplicate inputs
+        duplicated: bool = False
         if len(userinputlist) >= 2:
-            duplicated: bool = False
             red: int = 0
             while red != len(userinputlist):
                 blue: int = 0
@@ -546,11 +546,15 @@ def tempinputdebug(node: Node) -> list:
                         break
                     blue += 1
                 red += 1
-        if len(myinput) == 0:
-            break
+        # check to see if the ussr input is valid,
         # validation conditions
-        elif myinput == head(node).ingredient:
+        if myinput == head(node).ingredient:
             print('Invalid input, we are trying to make that item!')
+        # if the length of the user input is 0, break the loop
+        elif duplicated:
+            print('Invalid input, duplicate inputs!')
+        elif len(myinput) == 0:
+            break
         else:
             # if the condition is met, append the input to the list
             userinputlist.append(myinput)
