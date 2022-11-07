@@ -252,7 +252,7 @@ class Node(NodeB):  # pylint: disable=R0902
         self.treekey = newtreekey
         for child in self.children.items():
             child[1].modifytreekey(newtreekey)
-     # end def
+    # end def
 
     def reformat_output(self):
         """
