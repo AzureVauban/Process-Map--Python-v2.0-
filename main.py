@@ -584,14 +584,14 @@ def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
         if not isinstance(child[1], Node):
             raise TypeError('child is not an instance of', Node)
         populate(child[1])
+    # make each alias in the ingredient tree unique
+    makeallaliasunique(node)
     # return recursive math method of function if in program mode A
     if PROGRAMSTATE == ProgramState.MODE_A:
         # you this this because once it reaches the code, this node will be an
         # endpoint, reducing the need to parse through the tree for endpoint
         # nodes outside of the populate method
         node.recursivearithmetic()
-    # make each alias in the ingredient tree unique
-    makeallaliasunique(node)
     # return the head node of the tree
     return head(node)
 # end def
