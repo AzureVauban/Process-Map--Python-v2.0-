@@ -733,9 +733,10 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
         # return ingredient tree from csv
         # @Note must be the head node of the populated tree of the tree
         # created from the csv node
-        returntree: Node =
-        returntree: Node = populate(
-            head(createtreefromcsv(userchoices[chosenindex])), True)
+        returntree: Node = createtreefromcsv(userchoices[chosenindex])
+        temp: Node = head(returntree)
+        print(temp.ingredient)
+        returntree = populate(returntree, True)
         # change the tree key of each node
         returntree.modifytreekey(returntree.generate_treekey())
         # clear amount on hand and amount resulted
