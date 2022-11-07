@@ -76,6 +76,7 @@ class Node(NodeB):  # pylint: disable=R0902
     # this is unique identifer for an ingredient tree when its outputted to a
     # csv file
     treekey: str = ''
+    isfromcsvfile : bool = False
 
     def __init__(self, ingredient: str = '',  # pylint: disable=R0913
                  parent=None,
@@ -83,7 +84,9 @@ class Node(NodeB):  # pylint: disable=R0902
                  amountparentmadepercraft: int = 1,
                  amountneeded: int = 1,
                  promptamountparentmade: bool = False,
-                 treekey: str = '') -> None:
+                 treekey: str = '',
+                 isfromcsvfile: bool = False
+                 ) -> None:
         """
         tentative docstring description
         """
