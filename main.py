@@ -729,7 +729,8 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
         returntree.modifytreekey(returntree.generate_treekey())
         # clear amount on hand and amount resulted
         returntree.clearamounts()
-        return populate(returntree) # add bool to check if modify a created tree from the csv file
+        # add bool to check if modify a created tree from the csv file
+        return populate(returntree)
     # code here should be unreachable
 # end def
 
