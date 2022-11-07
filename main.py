@@ -416,7 +416,7 @@ def clone(node: Node) -> Node:
 # end def
 
 
-def locateemplacespot(node: Node, pandaslistrow: list) -> bool:
+def locate_emplace_spot(node: Node, pandaslistrow: list) -> bool:
     """
     tentative docstring description
     """
@@ -501,7 +501,7 @@ def createtreefromcsv(node: Node) -> Node:  # @note create a tree the csv
         # for each row, check if the it meets the conditions to be a child
         # node of the head node
     for row in sublist:
-        locateemplacespot(node, row)
+        locate_emplace_spot(node, row)
     return head(node)
     # @note the node is from chosen the head node from the csv file prompt
 # end def
