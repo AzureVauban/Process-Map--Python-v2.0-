@@ -472,7 +472,7 @@ def createtreefromcsv(parent: Node, row: list) -> Node:
     # check if the file exists
     if not os.path.exists(TESTFILENAME):
         raise ValueError('the file does not exist')
-    
+
     if not locateemplacespot(parent, row):
         for child in parent.children.items():
             createtreefromcsv(child[1], row)
