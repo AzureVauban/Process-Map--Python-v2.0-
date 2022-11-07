@@ -609,7 +609,7 @@ def subpopulate(node: Node,
                                 results={})
     if len(queryresults) == 0:
         queryresults = {-1: None}
-    if queryresults is {-1: None} or node.parent is None:
+    if queryresults == {-1: None} or node.parent is None:
         # if no nodes are found, return a default node
         # if the node is the head node, return a default node
         return Node(ingredient, node,
