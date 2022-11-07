@@ -644,7 +644,7 @@ def superpopulate() -> Node:
         if subnode.parent is not None:
             raise ValueError(
                 'node from csv must be a head instance of', Node)
-        print(pos, '.', subnode.parent.ingredient)
+        print(pos, '.', subnode.ingredient)
     pos += 1
     # prompt the user for a choice of head node
     while True:
