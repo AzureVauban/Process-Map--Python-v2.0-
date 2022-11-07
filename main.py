@@ -574,6 +574,7 @@ def populate(node: Node, modifyingpreset: bool = False) -> Node:
         print('\n')
     # @note duplicate inputs arent failing the validation check
     userinputlist: list = []
+    # if modifying a preset tree, add the subnodes ingredients to the list
     if modifyingpreset:
         for subnode in node.children.items():
             userinputlist.append(subnode[1].ingredient)
