@@ -627,7 +627,7 @@ def superpopulate() -> Node:
     """
     # parse the csv file for head nodes, and create a dict
     foundheadnodes: dict = csvsearch()
-    foundheadnodes: dict = {}
+    # foundheadnodes: dict = {}
     # if the search returns {-1:None} call populate method
     filedoesnotexist: bool = os.path.isfile(TESTFILENAME)
     if foundheadnodes == {-1: None} or not filedoesnotexist:
