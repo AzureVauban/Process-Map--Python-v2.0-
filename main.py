@@ -626,11 +626,11 @@ def superpopulate() -> Node:
     tentative docstring description
     """
     # parse the csv file for head nodes, and create a dict
-    #!foundheadnodes: dict = csvsearch()
+    foundheadnodes: dict = csvsearch()
     foundheadnodes: dict = {}
-
     # if the search returns {-1:None} call populate method
-    if foundheadnodes == {-1: None}:
+    doesfileexists: bool = os.path.isfile(TESTFILENAME)
+    if foundheadnodes == {-1: None} or doesfileexists:
         return populate(Node(itemname, None))
     # else convert dict to list and prompt the user to choose an ingredient
     userchoices: list = []
