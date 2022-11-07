@@ -427,7 +427,8 @@ def locateemplacespot(node: Node, pandaslistrow: list) -> bool:
             'pandaslistrow is not the proper length;'
             ' the list passed contains the following:',
             pandaslistrow,
-            'and the length of the list is', len(pandaslistrow))
+            'which has a length of', len(pandaslistrow),
+            'and not the proper length of', len(TESTFILENAME))
     # remove any underscores from the ingredient
     pandaslistrow[1] = pandaslistrow[1].replace('_', ' ')
     # remove any underscores from the parent of the ingredient
