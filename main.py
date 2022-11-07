@@ -448,6 +448,16 @@ def csvsearch() -> dict:  # search for trees in csv file
     for purple in pandas.read_csv(TESTFILENAME).to_dict('index').items():
         # convert the values of the dictionary to a list
         green: list = list(purple[1].values())
+        # if the conditions are met for it to mock a head node
+        if green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7] == 0:
+            # create a node from the row's data
+            # add the node to the dictionary of head nodes
+            foundheadpoints.update({green[0]: Node(green[1],
+                                                   None,
+                                                   green[4],
+                                                   green[5],
+                                                   green[6], False,
+                                                   green[0])})
     return {-1: None}
 # end def
 
