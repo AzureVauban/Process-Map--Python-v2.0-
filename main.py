@@ -380,10 +380,13 @@ def secondhead(node: Node) -> Node:
     """
     tentative docstring description
     """
-    while node.parent is not None and node.generation <= 2:
+    #check if the node generation is less than 2
+    if node.generation < 2:
+        return node
+    while node.parent is not None:
         node = node.parent
     return node
-
+# end def
 def clone(node: Node) -> Node:
     """
     tentative docstring description
