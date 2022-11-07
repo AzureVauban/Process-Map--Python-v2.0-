@@ -629,8 +629,8 @@ def superpopulate() -> Node:
     foundheadnodes: dict = csvsearch()
     # foundheadnodes: dict = {}
     # if the search returns {-1:None} call populate method
-    filedoesnotexist: bool = os.path.isfile(TESTFILENAME)
-    if foundheadnodes == {-1: None} or not filedoesnotexist:
+    filedoesnotexist: bool = not os.path.isfile(TESTFILENAME)
+    if foundheadnodes == {-1: None} or filedoesnotexist:
         return populate(Node(itemname, None))
     # else convert dict to list and prompt the user to choose an ingredient
     userchoices: list = []
