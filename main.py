@@ -324,7 +324,7 @@ class Node(NodeB):  # pylint: disable=R0902
             return pandasrows[::-1]
         return pandasrows
     # end def
-
+    def 
     def search(self, ingredient: str, results: dict) -> dict:
         """
         tentative docstring description
@@ -339,6 +339,7 @@ class Node(NodeB):  # pylint: disable=R0902
         elif len(self.children) == 0 and len(results) == 0:
             return {-1: None}
         return results
+    # end def
 # end def
 
 
