@@ -748,12 +748,12 @@ if __name__ == '__main__':
         while True:
             userinput = input('\nDo you want to run the program again with'
                               ' another item tree? (Y/N) ').strip().upper()
-            if userinput not in ('Y', 'N', 'H'):
+            if userinput not in ('Y', 'N'):
                 print("That input is not valid, please type in 'Y' or 'N'")
             elif len(userinput) > 1:
                 print('Your input is too long, please only type in one'
                       'character')
-            elif userinput not in ('Y', 'N'):
+            else:
                 break
         if userinput == 'N':
             break
