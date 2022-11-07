@@ -295,13 +295,15 @@ class Node(NodeB):  # pylint: disable=R0902
         tentative docstring description
         """
         pandasrowdict: dict = {}
-        parentingredient: str = 'None'
-        if self.parent is not None:
-            parentingredient = self.parent.ingredient
+
         pandasrowdict.update({'Tree_Key': self.treekey})
         pandasrowdict.update({'Ingredient': self.ingredient})
         pandasrowdict.update({'Ingredient_Alias': self.aliasingredient})
-        pandasrowdict.update({'Parent_of_Ingredient': parentingredient})
+        if self.parent is not None:
+            pandasrowdict.update(
+                {'Parent_of_Ingredient': self.parent.ingredient})
+        else:
+            pandasrowdict.update({'Parent_of_Ingredient': 'None'})
         pandasrowdict.update({'Amount_on_Hand': str(self.amountonhand)})
         pandasrowdict.update(
             {'Amount_Made_Per_Craft': str(self.amountparentmadepercraft)})
