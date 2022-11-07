@@ -424,10 +424,8 @@ def locateemplacespot(node: Node,   # pylint:disable:W0613
     pandaslistrow[1] = pandaslistrow[1].replace('_', ' ')
     # remove any underscores from the parent of the ingredient
     pandaslistrow[3] = pandaslistrow[3].replace('_', ' ')
-    foundemplacelocation: bool = parent.treekey == pandaslistrow[0] and pandaslistrow[3] != 'None' and
-    pandaslistrow[3] == parent.ingredient and
-    pandaslistrow[7] > 0 and
-    parent is not None
+    foundemplacelocation: bool = node.treekey == pandaslistrow[0] and pandaslistrow[
+        3] != 'None' and pandaslistrow[3] == node.ingredient and pandaslistrow[7] > 0 and node is not None
     if foundemplacelocation:
         # @note somewhere in the project it needs to be determined if the user will allow the amount on hands from the csv file to be used or if the user will input the amount on hand themselves
         Node(pandaslistrow[1],
@@ -437,7 +435,6 @@ def locateemplacespot(node: Node,   # pylint:disable:W0613
              amountonhand=pandaslistrow[4],
              treekey=pandaslistrow[0])
         return True
-    else:
         return False
 # end def
 
