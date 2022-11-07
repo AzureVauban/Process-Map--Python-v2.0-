@@ -565,7 +565,7 @@ def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
         elif len(myinput) == 0:
             break
         else:
-            inputqueue.update({len(inputqueue): myinput})
+            inputqueue.append(myinput)
     # create new child instances using subpopulate method
     promptamountmadepercraft: bool = True
     amountmadepercraft: int = 0
