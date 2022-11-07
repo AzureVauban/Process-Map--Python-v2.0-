@@ -528,6 +528,18 @@ def createtreefromcsv(node: Node) -> Node:
 # end def
 
 
+def tempinputdebug(node: Node) -> list:
+    userinput: list = []
+    while True:
+        # if the input is empty, break the loop
+        myinput: str = input('').strip()
+        if len(myinput) == 0:
+            break
+        else:
+            
+    return userinput
+# end def
+
 def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
     """
     tentative docstring description
