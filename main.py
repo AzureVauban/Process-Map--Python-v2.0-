@@ -688,7 +688,8 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
                 foundheadnodes.update({green[0]: Node(ingredient=green[1],
                                                       parent=None,
                                                       promptamountparentmade=False,  # noqa: E501
-                                                      treekey=green[0])})
+                                                      treekey=green[0],
+                                                      promptamountsOn=False)})
     # if there are no head nodes found, set to {-1:None}
     if len(foundheadnodes) == 0:
         foundheadnodes.update({-1: None})
