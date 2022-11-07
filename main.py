@@ -58,6 +58,7 @@ class NodeB:  # pylint: disable=R0903
         self.queueamountresulted = {}
         self.ingredient = ingredient
         self.amountresulted = 0
+        self.aliasingredient = ingredient.replace(' ', '_')
     # end def
 # end def
 
