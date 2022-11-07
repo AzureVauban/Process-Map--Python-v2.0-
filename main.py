@@ -620,7 +620,7 @@ def superpopulate() -> Node:
         if chosenindex < 0 or chosenindex > len(userchoices):
             return populate(Node(itemname, None))
         # return ingredient tree from csv
-        # todo finish this, create method to load ingredient tree from csv
+        # @todo finish this, create method to load ingredient tree from csv
         returntree: Node = createtreefromcsv(userchoices[chosenindex])
         returntree.clearamounts()
         return returntree
