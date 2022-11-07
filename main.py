@@ -485,7 +485,8 @@ def locate_emplace_spot(node: Node, pandaslistrow: list) -> bool:
              amountparentmadepercraft=pandaslistrow[5],
              amountonhand=pandaslistrow[4],
              treekey=pandaslistrow[0],
-             isfromcsvfile=True)
+             isfromcsvfile=True,
+             promptamountsOn=False)
         return True
     return False
 # end def
