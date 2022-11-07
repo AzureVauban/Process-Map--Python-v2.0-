@@ -745,8 +745,6 @@ if __name__ == '__main__':
                 break
         headnode.clearamounts()
         # prompt the user to see if they want to input another tree
-        print('\nDo you want to run the program again with another item tree?'
-              '(Y/N)')
         while True:
             userinput = input('\nDo you want to run the program again with'
                               ' another item tree? (Y/N)').strip().upper()
