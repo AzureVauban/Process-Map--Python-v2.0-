@@ -351,15 +351,28 @@ class Node(NodeB):  # pylint: disable=R0902
             return {-1: None}
         return results
     # end def
+
+    def returnlistofsameingredient(self, ingredient: str, results: list) -> list:  # noqa: E501
+        """
+        tentative docstring description
+        """
+        if self.ingredient == ingredient:
+            results.append({self.instancekey: self})
+        for child in self.children.items():
+            child[1].search(ingredient, results)
+        return results
+    # end def
 # end def
 
 
-def checknameuniquness(blue: Node, red: Node):
+def checknameuniquness(blue: Node)->bool:
     """
     tentative docstring description
     """
     # parse through the tree and check if the ingredient name is unique
-    # if blue is the same ingredient as red and not the same instance, change the alias
+    for ingredient in head(blue).returnlistofsameingredient(blue.ingredient,[]):
+        
+    return True
 # end def
 
 
