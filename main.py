@@ -411,8 +411,7 @@ def csvfindtrees() -> dict:
 # end def
 
 
-def locateemplacespot(node: Node,   # pylint:disable:W0613
-                      pandaslistrow: list) -> bool:   # pylint:disable:W0613
+def locateemplacespot(node: Node, pandaslistrow: list) -> bool:
     """
     tentative docstring description
     """
