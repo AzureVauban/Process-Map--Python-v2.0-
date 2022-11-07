@@ -575,11 +575,11 @@ def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
     print('What ingredients do you need to create', node.ingredient, end=':\n')
     # todo create a method for debugging the user input prompt
     # @note duplicate inputs arent failing the validation check
-    inputqueue: list = tempinputdebug(node)
+    userinputlist: list = []
     # create new child instances using subpopulate method
     promptamountmadepercraft: bool = True
     amountmadepercraft: int = 0
-    for newnodename in inputqueue:
+    for newnodename in userinputlist:
         _: Node = subpopulate(node=node,
                               ingredient=newnodename,
                               amountmadepercraft=amountmadepercraft,
