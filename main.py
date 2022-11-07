@@ -82,6 +82,7 @@ class Node(NodeB):  # pylint: disable=R0902
                  amountparentmadepercraft: int = 1,
                  amountneeded: int = 1,
                  promptamountparentmade: bool = False,
+                 promptatall : bool = False,
                  treekey: str = '') -> None:
         """
         tentative docstring description
@@ -103,7 +104,7 @@ class Node(NodeB):  # pylint: disable=R0902
             if self.treekey == '':
                 self.treekey = self.generate_treekey()
         Node.instances += 1
-        if __name__ == '__main__':
+        if __name__ == '__main__' and promptatall:
             self.__inputnumerics(promptamountparentmade)
     # end def
 
@@ -472,6 +473,7 @@ def csvsearch() -> dict:  # @note search for head nodes in csv file
             foundheadpoints.update({green[0]: Node(ingredient=green[1],
                                                    parent=None,
                                                    promptamountparentmade=False,
+                                                   promptatall=False,
                                                    treekey=green[0])})
     # if there are no head nodes found, return {-1:None}
     if len(foundheadpoints) != 0:
