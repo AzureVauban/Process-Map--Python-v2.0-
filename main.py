@@ -345,7 +345,8 @@ class Node(NodeB):  # pylint: disable=R0902
         # parse through entire tree and find all instances of the ingredient
         for child in self.children.items():
             child[1].search(ingredient, results)
-        # if the ingredient is found, add the instance to the results dict
+        # if the ingredient is found
+        # add the instance to the results dict
         if self.ingredient == ingredient:
             results.update({self.instancekey: self})
         # if at endpoint node & there's no nodes in results, return {-1:None}
@@ -365,6 +366,17 @@ class Node(NodeB):  # pylint: disable=R0902
         return results
     # end def
 # end def
+
+
+def search(node: Node, ingredient: str, results: dict) -> dict:
+    """
+    tentative docstring description
+    """
+    if node
+    # keep searching through the ingredient tree
+    for subnode in node.children.items():
+        search(subnode[1], ingredient, results)
+    return results
 
 
 def promptint() -> int:
