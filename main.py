@@ -372,7 +372,8 @@ def search(node: Node, ingredient: str, results: dict) -> dict:
     """
     tentative docstring description
     """
-    if node
+    if node.ingredient == ingredient:
+        results.update({node.instancekey: node})
     # keep searching through the ingredient tree
     for subnode in node.children.items():
         search(subnode[1], ingredient, results)
