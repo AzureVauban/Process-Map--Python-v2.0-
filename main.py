@@ -336,15 +336,15 @@ class Node(NodeB):  # pylint: disable=R0902
                 TESTFILENAME, mode='a', header=False, index=False)
     # end def
 
-    def returnlistofalias(self, ingredient: str, results: list) -> list:  # noqa: E501
+    def returnlistofalias(self, ingredient: str, tempname: list) -> list:  # noqa: E501
         """
         tentative docstring description
         """
         if self.aliasingredient == ingredient:
-            results.append((self.instancekey, self))
+            tempname.append((self.instancekey, self))
         for child in self.children.items():
-            search(self, ingredient, results)
-        return results
+            search(child[1], ingredient, tempname)
+        return tempname
     # end def
 # end def
 
