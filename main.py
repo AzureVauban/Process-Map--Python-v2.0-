@@ -471,7 +471,8 @@ def locate_emplace_spot(node: Node, pandaslistrow: list) -> bool:
              amountneeded=pandaslistrow[6],
              amountparentmadepercraft=pandaslistrow[5],
              amountonhand=pandaslistrow[4],
-             treekey=pandaslistrow[0])
+             treekey=pandaslistrow[0],
+             isfromcsvfile=True)
         return True
     return False
 # end def
@@ -498,7 +499,8 @@ def csvsearch() -> dict:
             foundheadpoints.update({green[0]: Node(ingredient=green[1],
                                                    parent=None,
                                                    promptamountparentmade=False,  # noqa: E501 #pylint: disable=line-too-long
-                                                   treekey=green[0])})
+                                                   treekey=green[0],
+                                                   isfromcsvfile=True)})
     # if there are no head nodes found, return {-1:None}
     if len(foundheadpoints) != 0:
         return foundheadpoints
