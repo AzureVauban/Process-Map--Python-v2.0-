@@ -434,7 +434,7 @@ def locateemplacespot(node: Node, pandaslistrow: list) -> bool:
 # end def
 
 
-def csvsearch() -> dict:  # search for trees in csv file
+def csvsearch() -> dict:  # @note search for head nodes in csv file
     """
     tentative docstring description
     """
