@@ -405,7 +405,7 @@ def promptint() -> int:
         if not myinput.isdigit():
             print('you can only type in a positive integer')
         elif int(myinput) < 0:
-            print('[please type in a postive integer')
+            print('please type in a postive integer')
         else:
             return int(myinput)
 # end def
