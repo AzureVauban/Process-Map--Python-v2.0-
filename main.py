@@ -458,7 +458,10 @@ def csvsearch() -> dict:  # search for trees in csv file
                                                    green[5],
                                                    green[6], False,
                                                    green[0])})
-    return {-1: None}
+    # if there are no head nodes found, return {-1:None}
+    if len(foundheadpoints) == 0:
+        return {-1: None}
+    return foundheadpoints
 # end def
 
 
