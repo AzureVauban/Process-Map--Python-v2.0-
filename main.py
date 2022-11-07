@@ -85,7 +85,8 @@ class Node(NodeB):  # pylint: disable=R0902
                  amountneeded: int = 1,
                  promptamountparentmade: bool = False,
                  treekey: str = '',
-                 isfromcsvfile: bool = False) -> None:
+                 isfromcsvfile: bool = False,
+                 promptamountsOn: bool = True) -> None:
         """
         tentative docstring description
         """
@@ -107,7 +108,7 @@ class Node(NodeB):  # pylint: disable=R0902
             if self.treekey == '':
                 self.treekey = self.generate_treekey()
         Node.instances += 1
-        if __name__ == '__main__':
+        if __name__ == '__main__' and promptamountsOn:
             self.__inputnumerics(promptamountparentmade)
     # end def
 
