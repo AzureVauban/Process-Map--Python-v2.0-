@@ -82,7 +82,7 @@ class Node(NodeB):  # pylint: disable=R0902
                  amountparentmadepercraft: int = 1,
                  amountneeded: int = 1,
                  promptamountparentmade: bool = False,
-                 treekey: str = generate_treekey()) -> None:
+                 treekey: str = '') -> None:
         """
         tentative docstring description
         """
@@ -90,6 +90,7 @@ class Node(NodeB):  # pylint: disable=R0902
                          amountonhand,
                          amountparentmadepercraft,
                          amountneeded)
+        self.treekey = treekey
         self.instancekey = Node.instances
         self.children = {}
         self.parent = parent
@@ -99,7 +100,10 @@ class Node(NodeB):  # pylint: disable=R0902
             self.treekey = self.parent.treekey
         else:
             self.generation = 0
-            self.treekey = self.generate_treekey()
+            if self.treekey == '':
+                self.treekey = self.generate_treekey()
+            else:
+                self.treekey = treekey
         Node.instances += 1
         if __name__ == '__main__':
             self.__inputnumerics(promptamountparentmade)
