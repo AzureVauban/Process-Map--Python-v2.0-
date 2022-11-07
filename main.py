@@ -465,11 +465,15 @@ def csvsearch() -> dict:  # search for trees in csv file
     return foundheadpoints
 # end def
 
-def createtreefromcsv(node : ) -> Node:
+
+def createtreefromcsv(node: Node) -> Node:  # @note create a tree the csv
     """
     tentative docstring description
     """
-    
+    return head(node)
+    # @note the node is from chosen the head node from the csv file prompt
+# end def
+
 
 def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
     """
@@ -583,6 +587,8 @@ def subpopulate(node: Node,
         return clone(userchoices[chosenindex])
     # code here should be unreachable
 # end def
+
+
 def superpopulate() -> Node:
     """
     tentative docstring description
