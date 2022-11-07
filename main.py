@@ -395,7 +395,7 @@ def makeallaliasunique(node: Node):
     tentative docstring description
     """
     # recursively call for all children
-    aliaslist: list = headnode.returnlistofalias(node.ingredient, [])
+    aliaslist: list = head(node).returnlistofalias(node.ingredient, [])
     # if the size of the list returned is greater than 1
     if len(aliaslist) > 1:
         # organize nodes based on instancekey (least to greatest)
