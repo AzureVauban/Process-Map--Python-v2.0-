@@ -364,6 +364,8 @@ class Node(NodeB):  # pylint: disable=R0902
 # end def
 def promptheadname() -> str:
     # prompt user to type in the name of the item they want to create
+    newtreeprompt: str = 'What is the name of the item you want to create: '
+    
 #end def
 
 def search(node: Node, ingredient: str, results: dict) -> dict:
