@@ -362,7 +362,9 @@ class Node(NodeB):  # pylint: disable=R0902
         return tempname
     # end def
 # end def
-
+def promptheadname() -> str:
+    # prompt user to type in the name of the item they want to create
+#end def
 
 def search(node: Node, ingredient: str, results: dict) -> dict:
     """
@@ -569,7 +571,7 @@ def populate(node: Node, modifyingpreset: bool = False) -> Node:
         print('* The following ingredients are already in the preset:\n')
         pos: int = 1
         for subnode in node.children.items():
-            print(pos, end='. '+subnode[1].ingredient)
+            print(pos, end='. '+subnode[1].ingredient+'\n')
             pos += 1
         print('\n')
     # @note duplicate inputs arent failing the validation check
@@ -713,45 +715,66 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
         return populate(Node(itemname, None))
     # else convert dict to list and prompt the user to choose an ingredient
     userchoices: list = []
+    chooseindex: int = len(userchoices)
     for node in foundheadnodes.items():
         userchoices.append(node[1])
-    print('Which of the following do you want to use (valid choice must be a'
-          ' number between 1 and', len(userchoices), end='):\n')
-    # print out the list of nodes
-    pos: int = 1
-    for subnode in userchoices:
-        if subnode.parent is not None:
-            raise ValueError(
-                'node from csv must be a head instance of', Node)
-        print(pos, '.', subnode.ingredient)
-        pos += 1
-    # prompt the user for a choice of head node
-    while True:
-        chosenindex: int = promptint() - 1
-        # if the user did not choose a valid index, create ingredient tree
-        # manually
-        if chosenindex < 0 or chosenindex > len(userchoices):
-            # prompt user to type in the name of the item they want to create
-            while True:
-                itemname = input(newtreeprompt).strip()
-                if len(itemname) == 0:
-                    print('You must type something in')
-                else:
-                    break
-            return populate(Node(itemname, None))
+    if len(userchoices) >= 2:
+        print('Which of the following do you want to use (valid choice must be a'
+            ' number between 1 and', len(userchoices), end='):\n')
+        # print out the list of nodes
+        pos: int = 1
+        for subnode in userchoices:
+            if subnode.parent is not None:
+                raise ValueError(
+                    'node from csv must be a head instance of', Node)
+            print(pos, '.', subnode.ingredient)
+            pos += 1
+        # prompt the user for a choice of head node
+        while True:
+            chosenindex = promptint() - 1
+            # if the user did not choose a valid index, create ingredient tree
+            # manually
+            if chosenindex < 0 or chosenindex > len(userchoices):
+                # prompt user to type in the name of the item they want to create
+                while True:
+                    itemname = input(newtreeprompt).strip()
+                    if len(itemname) == 0:
+                        print('You must type something in')
+                    else:
+                        break
+                return populate(Node(itemname, None))
         # return ingredient tree from csv
         # @Note must be the head node of the populated tree of the tree
         # created from the csv node
-        returntree: Node = createtreefromcsv(userchoices[chosenindex])
-        temp: Node = head(returntree)
-        print(temp.ingredient)
-        returntree = populate(returntree, True)
+        returntree: Node = populate(head(createtreefromcsv(userchoices[chosenindex])), True)
         # change the tree key of each node
         returntree.modifytreekey(returntree.generate_treekey())
         # clear amount on hand and amount resulted
         returntree.clearamounts()
         # add bool to check if modify a created tree from the csv file
         return returntree
+    else:
+        print('Do you want to use the ingredient tree used to create'
+        ,userchoices[0].ingredient,'?')
+        # prompt user to type in Y or N
+        while True:
+            userinput = input('').strip().upper()
+            if userinput not in ('Y', 'N'):
+                print("That input is not valid, please type in 'Y' or 'N'")
+            elif len(userinput) > 1:
+                print('Your input is too long, please only type in one'
+                      'character')
+            elif userinput == 'Y':
+                # return ingredient tree, modified with the populate method
+                returntree: Node = populate(head(createtreefromcsv(userchoices[0])), True)
+                # change the tree key of each node
+                returntree.modifytreekey(returntree.generate_treekey())
+                # clear amount on hand and amount resulted
+                returntree.clearamounts()
+                # add bool to check if modify a created tree from the csv file
+                return returntree
+            else:
+                return populate(Node(itemname, None))
     # code here should be unreachable
 # end def
 
