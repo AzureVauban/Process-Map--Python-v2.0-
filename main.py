@@ -465,11 +465,14 @@ def csvsearch() -> dict:  # search for trees in csv file
 # end def
 
 
-def createtreefromcsv(node: Node, pandaslistrow : list) -> Node:
+def createtreefromcsv(parent: Node, row: list) -> Node:
     """
     tentative docstring description
     """
-    return node
+    if not locateemplacespot(parent, row):
+        for child in parent.children.items():
+            createtreefromcsv(child[1], row)
+    return head(parent)
 # end def
 
 
