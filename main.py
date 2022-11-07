@@ -707,7 +707,16 @@ if __name__ == '__main__':
         print('Do you want to save your tree to create',
               headnode.ingredient, 'to a csv file? (Y/N)')
         while True:
-            
+            userinput = input('').strip().upper()
+            if userinput not in ('Y', 'N', 'H'):
+                print("That input is not valid, please type in 'Y' or 'N'")
+            elif len(userinput) > 1:
+                print('Your input is too long, please only type in one'
+                      'character')
+            elif userinput not in ('Y', 'N'):
+                break
+        if userinput == 'N':
+            break
         # write onto file
         headnode.clearamounts()
         # prompt the user to see if they want to input another tree
