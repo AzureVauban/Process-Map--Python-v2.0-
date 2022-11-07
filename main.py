@@ -627,11 +627,11 @@ def superpopulate() -> Node:
     foundheadnodes: dict = csvsearch()
     # foundheadnodes: dict = {}
     # if the search returns {-1:None} call populate method
+    NEWTREE_PROMPT: str = 'What is the name of the item you want to create: '
     if foundheadnodes is {-1: None} or not os.path.isfile(TESTFILENAME):
         # prompt user to type in the name of the item they want to create
         while True:
-            itemname = input(
-                'What is the name of the item you want to create: ').strip()
+            itemname = input(NEWTREE_PROMPT).strip()
             if len(itemname) == 0:
                 print('You must type something in')
             else:
@@ -659,8 +659,7 @@ def superpopulate() -> Node:
         if chosenindex < 0 or chosenindex > len(userchoices):
             # prompt user to type in the name of the item they want to create
             while True:
-                itemname = input(
-                    'What is the name of the item you want to create: ').strip()
+                itemname = input(NEWTREE_PROMPT).strip()
                 if len(itemname) == 0:
                     print('You must type something in')
                 else:
