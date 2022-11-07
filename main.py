@@ -532,7 +532,7 @@ def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
     """
     tentative docstring description
     """
-    inputqueue: dict = {}
+    inputqueue: list = []
     checkstring: str = head(node).ingredient
     # output ingredient trail
     if node.parent is not None:
