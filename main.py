@@ -605,9 +605,9 @@ def subpopulate(node: Node,
     tentative docstring description
     """
     # search for nodes in the ingredient tree with the same ingredient name
-    
+
     queryresults: dict = {}
-    queryresults = head(node).search(node, ingredient)
+    queryresults = head(node).search(ingredient=ingredient, results=queryresults)  # noqa: E501 #pylint: disable=line-too-long
     if queryresults == {-1: None} or node.parent is None:
         # if no nodes are found, return a default node
         # if the node is the head node, return a default node
