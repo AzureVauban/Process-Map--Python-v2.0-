@@ -352,7 +352,14 @@ class Node(NodeB):  # pylint: disable=R0902
     # end def
 # end def
 
-def checknameuniquness(ingredient: str,blue : node, red :node)-> bool:
+def checknameuniquness(blue : Node, red :Node)-> bool:
+    """
+    tentative docstring description
+    """
+    if blue.ingredient == red.ingredient:
+        return False
+    return True
+# end def
     
 def promptint() -> int:
     """
