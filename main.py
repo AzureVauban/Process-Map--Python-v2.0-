@@ -634,7 +634,8 @@ def superpopulate() -> Node:
     # !remove all of this line on comment later
     noheadnodsfound: bool = foundheadnodes is {-1: None}
     if foundheadnodes is {-1: None} or filedoesnotexist:
-        return populate(Node(itemname, None))
+        purple : Node = populate(Node(itemname, None))
+        return purple
     # else convert dict to list and prompt the user to choose an ingredient
     userchoices: list = []
     for node in foundheadnodes.items():
