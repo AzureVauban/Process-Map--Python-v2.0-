@@ -409,14 +409,17 @@ def csvfindtrees() -> dict:
 
 
 def locateandemplace(node: Node,   # pylint:disable:W0613
-                     pandaslistrow: LIST):   # pylint:disable:W0613
+                     pandaslistrow: list):   # pylint:disable:W0613
     """
     tentative docstring description
     """
-    if len(csvrow) != len(TESTFILENAME):  # if the csvrow is the proper length
-            # raise a value error
-            raise ValueError(
-                'csvrow is not the proper length; the list passes contains the following:', csvrow)
+    # check if the csvrow is the proper length
+    if len(pandaslistrow) != len(TESTFILENAME):
+        # raise a value error
+        raise ValueError(
+            'csvrow is not the proper length;'
+            ' the list passes contains the following:',
+            pandaslistrow)
 # end def
 
 
