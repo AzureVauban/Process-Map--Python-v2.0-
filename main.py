@@ -538,25 +538,15 @@ def tempinputdebug(node: Node) -> list:
         myinput: str = input('').strip()
         # if the length of the user inputs is greator than or equal to 2
         # check if there are duplicate inputs
-        duplicated: bool = False
-        if len(userinputlist) >= 2:
-            red: int = 0
-            while red != len(userinputlist):
-                blue: int = 0
-                while blue != len(userinputlist):
-                    duplicated: bool = userinputlist[red] == userinputlist[blue] and red != blue  # noqa: E501 #pylint: disable=line-too-long
-                    if duplicated:
-                        break
-                    blue += 1
-                red += 1
+
         # check to see if the ussr input is valid,
         # validation conditions
         if myinput in [head(node).ingredient, node.ingredient]:  # noqa: E501 #pylint: disable=line-too-long
             print('Invalid input, we are trying to make that item!')
         # if the length of the user input is 0, break the loop
-        elif duplicated:
+        elif myinput in userinputlist:
             print('Invalid input, duplicate inputs!')
-            duplicated = False
+
         elif len(myinput) == 0:
             break
         else:
