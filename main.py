@@ -8,6 +8,8 @@ import random
 import sys
 import time
 
+import pandas
+
 
 class ProgramState(Enum):
     """
@@ -324,12 +326,19 @@ class Node(NodeB):  # pylint: disable=R0902
             return pandasrows[::-1]
         return pandasrows
     # end def
+
     def output_tree_to_csv(self):
         """
         tentative docstring description
         """
-        
+        # if the file is not in the directory, create it
+        if not os.path.exists(FILENAME):
+            # create the file
+            pandas.DataFrame(columns=FIELDNAMES).to_csv(
+                FILENAME, index=False)
+        # then write to the file but calling the method again recursively
     # end def
+
     def search(self, ingredient: str, results: dict) -> dict:
         """
         tentative docstring description
