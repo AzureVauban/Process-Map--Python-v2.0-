@@ -553,6 +553,7 @@ def tempinputdebug(node: Node) -> list:
         # if the length of the user input is 0, break the loop
         elif duplicated:
             print('Invalid input, duplicate inputs!')
+            duplicated = False
         elif len(myinput) == 0:
             break
         else:
