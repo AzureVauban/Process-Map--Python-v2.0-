@@ -584,12 +584,34 @@ def superpopulate() -> Node:
     # code here should be unreachable
 # end def
 
-deletemelater
+
+class quickanddirtytest:
+    industrial_battery: Node = Node(
+        'industrial battery', None)
+    protocite_bar: Node = Node(
+        'protocite bar', industrial_battery, 0, 1, 5, False)
+    protocite: Node = Node('protocite', protocite_bar, 0, 1, 2, False)
+    battery: Node = Node('battery', industrial_battery, 0, 1, 2, False)
+    pixels: Node = Node('pixels', battery, 0, 1, 2500, False)
+    quantum_processor: Node = Node(
+        'quantum processor', industrial_battery, 0, 1, 1, False)
+    silicon_board: Node = Node(
+        'silicon board', quantum_processor, 0, 1, 4, False)
+    protocite_bar2: Node = Node(
+        'protocite bar', quantum_processor, 0, 1, 2, False)
+    thorium_rod: Node = Node('thorium rod', industrial_battery, 0, 1, 5, False)
+    thorium_ore: Node = Node('thorium ore', thorium_rod, 0, 1, 2, False)
+
+    def __init__(self) -> None:
+        """
+        tentative docstring description
+        """
+        self.industrial_battery.output_tree_to_csv()
+
+
 if __name__ == '__main__':
-    
-    
-    
-    
+    # quickanddirtytest()
+    test = quickanddirtytest()
     print('Welcome to Process Map (Python) v1.1!\n')
     # main loop
     while True:
