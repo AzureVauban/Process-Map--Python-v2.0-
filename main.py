@@ -553,7 +553,7 @@ def populate(node: Node) -> Node:  # pylint: disable=too-many-branches
         duplicated: bool = False
         if len(inputqueue) > 0:
             for word in inputqueue:
-                duplicated = word[1] == checkstring
+                duplicated = word == checkstring
                 if duplicated:
                     break
         if duplicated:
