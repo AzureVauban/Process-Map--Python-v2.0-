@@ -605,7 +605,9 @@ def subpopulate(node: Node,
     tentative docstring description
     """
     # search for nodes in the ingredient tree with the same ingredient name
-    queryresults: dict = head(node).search(ingredient, dict({}))
+    
+    queryresults: dict = {}
+    queryresults = head(node).search(node, ingredient)
     if queryresults == {-1: None} or node.parent is None:
         # if no nodes are found, return a default node
         # if the node is the head node, return a default node
