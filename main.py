@@ -395,8 +395,18 @@ def makeallaliasunique(node: Node):
     tentative docstring description
     """
     # recursively call for all children
-    aliaslist : list = headnode.returnlistofalias([])
-    head(node).returnlistofsameingredient(node.ingredient, [])
+    aliaslist: list = headnode.returnlistofalias(node.ingredient, [])
+    # if the size of the list returned is greater than 1
+    if len(aliaslist) > 1:
+        # organize nodes based on instancekey (least to greatest)
+        for red in aliaslist:
+            for blue in aliaslist:
+                if red.instancekey > blue.instancekey:
+                    # swap the indicies
+                    blue, red = red, blue
+        # then change the alias of the nodes to be unique
+        for ingredient in aliaslist:
+            
     for child in node.children.items():
         makeallaliasunique(child[1])
 # end def
