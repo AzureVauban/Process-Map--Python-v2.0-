@@ -81,7 +81,8 @@ class Node(NodeB):  # pylint: disable=R0902
                  amountonhand: int = 0,
                  amountparentmadepercraft: int = 1,
                  amountneeded: int = 1,
-                 promptamountparentmade: bool = False) -> None:
+                 promptamountparentmade: bool = False,
+                 treekey: str = generate_treekey()) -> None:
         """
         tentative docstring description
         """
