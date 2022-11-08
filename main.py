@@ -1,5 +1,8 @@
 """
 main script for Python Process Map (v2.0)
+- divison by zero error when user types in that they want to
+make 0 of an item
+- reformat output error when there is only one Node in the ingredient tree 
 """
 import math
 import os
@@ -298,7 +301,7 @@ class Node(NodeB):  # pylint: disable=R0902
                     print(string, end='')
                 else:
                     print(string, end=', ')
-            print(')')                             
+            print(')')
     # end def
 
     def csv_createrowdict(self) -> dict:
