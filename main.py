@@ -760,13 +760,13 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
           userchoices[0].ingredient, '?')
     # prompt user to type in Y or N
     while True:
-        userinput = input('').strip().upper()
-        if userinput not in ('Y', 'N'):
+        myinput = input('').strip().upper()
+        if myinput not in ('Y', 'N'):
             print("That input is not valid, please type in 'Y' or 'N'")
-        elif len(userinput) > 1:
+        elif len(myinput) > 1:
             print('Your input is too long, please only type in one'
                   'character')
-        elif userinput == 'Y':
+        elif myinput == 'Y':
             # return ingredient tree, modified with the populate method
             returntree: Node = populate(
                 head(createtreefromcsv(userchoices[0])), True)
