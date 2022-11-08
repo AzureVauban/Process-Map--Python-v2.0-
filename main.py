@@ -298,7 +298,7 @@ class Node(NodeB):  # pylint: disable=R0902
                     print(string, end='')
                 else:
                     print(string, end=', ')
-            print(')')
+            print(')')                             
     # end def
 
     def csv_createrowdict(self) -> dict:
