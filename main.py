@@ -745,17 +745,6 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
                 # prompt user to type in the name of the item they want to
                 # create
                 return populate()
-        # return ingredient tree from csv
-        # @Note must be the head node of the populated tree of the tree
-        # created from the csv node
-        returntree: Node = populate(
-            head(createtreefromcsv(userchoices[chosenindex])), True)
-        # change the tree key of each node
-        returntree.modifytreekey(returntree.generate_treekey())
-        # clear amount on hand and amount resulted
-        returntree.clearamounts()
-        # add bool to check if modify a created tree from the csv file
-        return returntree
     print('Do you want to use the ingredient tree used to create',
           userchoices[0].ingredient, '?')
     # prompt user to type in Y or N
