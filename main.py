@@ -563,7 +563,7 @@ def createtreefromcsv(node: Node) -> Node:
 # end def
 
 
-def populate(node: Node = Node(promptheadname(), None),
+def populate(node: Node,
              modifyingpreset: bool = False) -> Node:
     """
     tentative docstring description
@@ -719,7 +719,7 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
         foundheadnodes.update({-1: None})
     # if the search returns {-1:None} call populate method
     if foundheadnodes == {-1: None} or not os.path.isfile(TESTFILENAME):
-        return populate()
+        return populate(Node(promptheadname(), None))
     # else convert dict to list and prompt the user to choose an ingredient
     userchoices: list = []
     for node in foundheadnodes.items():
@@ -744,7 +744,7 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
             if chosenindex < 0 or chosenindex > len(userchoices):
                 # prompt user to type in the name of the item they want to
                 # create
-                return populate()
+                return populate(Node(promptheadname(), None))
     print('Do you want to use the ingredient tree used to create',
           userchoices[0].ingredient, '?')
     # prompt user to type in Y or N
@@ -766,7 +766,7 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
             # add bool to check if modify a created tree from the csv file
             return returntree
         else:
-            return populate()
+            return populate(Node(promptheadname(), None))
     # code here should be unreachable
 # end def
 
