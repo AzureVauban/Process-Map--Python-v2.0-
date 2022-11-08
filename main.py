@@ -739,11 +739,8 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
         # prompt the user for a choice of head node
         while True:
             chosenindex = promptint() - 1
-            # if the user did not choose a valid index, create ingredient tree
-            # manually
+            # if chosen index is out of range, return a default node
             if chosenindex < 0 or chosenindex > len(userchoices):
-                # prompt user to type in the name of the item they want to
-                # create
                 return populate(Node(promptheadname(), None))
     print('Do you want to use the ingredient tree used to create',
           userchoices[0].ingredient, '?')
