@@ -723,10 +723,10 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
         return populate(Node(promptheadname(), None))
     # else convert dict to list and prompt the user to choose an ingredient
     userchoices: list = []
-    chosenindex: int = len(userchoices)
     for node in foundheadnodes.items():
         userchoices.append(node[1])
     if len(userchoices) >= 2:
+        chosenindex: int = len(userchoices)
         print('Which of the following do you want to use (valid choice must be'
               ' a number between 1 and', len(userchoices), end='):\n')
         # print out the list of nodes
