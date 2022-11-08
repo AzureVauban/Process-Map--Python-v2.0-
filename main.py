@@ -743,14 +743,15 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
             # if the user did not choose a valid index, create ingredient tree
             # manually
             if chosenindex < 0 or chosenindex > len(userchoices):
-                # prompt user to type in the name of the item they want to create
+                # prompt user to type in the name of the item they want to
+                # create
                 while True:
                     itemname = input(newtreeprompt).strip()
                     if len(itemname) == 0:
                         print('You must type something in')
                     else:
                         break
-                return populate(Node(itemname, None))
+                return populate(Node(promptheadname(), None))
         # return ingredient tree from csv
         # @Note must be the head node of the populated tree of the tree
         # created from the csv node
@@ -784,7 +785,7 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
                 # add bool to check if modify a created tree from the csv file
                 return returntree
             else:
-                return populate(Node(itemname, None))
+                return populate(Node(promptheadname(), None))
     # code here should be unreachable
 # end def
 
