@@ -361,6 +361,12 @@ class Node(NodeB):  # pylint: disable=R0902
             child[1].returnlistofalias(ingredient, tempname)
         return tempname
     # end def
+    def parsesort(self):
+        """
+        tentative docstring description
+        """
+        
+    #end def
 # end def
 
 
