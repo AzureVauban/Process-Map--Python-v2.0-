@@ -834,6 +834,8 @@ if __name__ == '__main__':
                 print('Your input is too long, please only type in one'
                       'character')
             elif userinput == 'Y':
+                # change the tree key
+                headnode.modifytreekey(headnode.generate_treekey())
                 # write onto file
                 headnode.output_tree_to_csv()
                 break
