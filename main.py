@@ -719,7 +719,7 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
     # if the search returns {-1:None} call populate method
     newtreeprompt: str = 'What is the name of the item you want to create: '
     if foundheadnodes == {-1: None} or not os.path.isfile(TESTFILENAME):
-        
+
         return populate(Node(promptheadname(), None))
     # else convert dict to list and prompt the user to choose an ingredient
     userchoices: list = []
@@ -763,29 +763,28 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
         returntree.clearamounts()
         # add bool to check if modify a created tree from the csv file
         return returntree
-    else:
-        print('Do you want to use the ingredient tree used to create',
-              userchoices[0].ingredient, '?')
-        # prompt user to type in Y or N
-        while True:
-            userinput = input('').strip().upper()
-            if userinput not in ('Y', 'N'):
-                print("That input is not valid, please type in 'Y' or 'N'")
-            elif len(userinput) > 1:
-                print('Your input is too long, please only type in one'
-                      'character')
-            elif userinput == 'Y':
-                # return ingredient tree, modified with the populate method
-                returntree: Node = populate(
-                    head(createtreefromcsv(userchoices[0])), True)
-                # change the tree key of each node
-                returntree.modifytreekey(returntree.generate_treekey())
-                # clear amount on hand and amount resulted
-                returntree.clearamounts()
-                # add bool to check if modify a created tree from the csv file
-                return returntree
-            else:
-                return populate(Node(promptheadname(), None))
+    print('Do you want to use the ingredient tree used to create',
+          userchoices[0].ingredient, '?')
+    # prompt user to type in Y or N
+    while True:
+        userinput = input('').strip().upper()
+        if userinput not in ('Y', 'N'):
+            print("That input is not valid, please type in 'Y' or 'N'")
+        elif len(userinput) > 1:
+            print('Your input is too long, please only type in one'
+                  'character')
+        elif userinput == 'Y':
+            # return ingredient tree, modified with the populate method
+            returntree: Node = populate(
+                head(createtreefromcsv(userchoices[0])), True)
+            # change the tree key of each node
+            returntree.modifytreekey(returntree.generate_treekey())
+            # clear amount on hand and amount resulted
+            returntree.clearamounts()
+            # add bool to check if modify a created tree from the csv file
+            return returntree
+        else:
+            return populate(Node(promptheadname(), None))
     # code here should be unreachable
 # end def
 
