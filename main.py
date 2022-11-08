@@ -743,7 +743,7 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
             if chosenindex < 0 or chosenindex > len(userchoices):
                 return populate(Node(promptheadname(), None))
             # if chosen index is in range, return the node at the index
-            return 
+            return populate(userchoices[chosenindex], True)
     print('Do you want to use the ingredient tree used to create',
           userchoices[0].ingredient, '?')
     # prompt user to type in Y or N
