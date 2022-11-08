@@ -369,10 +369,10 @@ def promptheadname() -> str:
     tentative docstring description
     """
     # prompt user to type in the name of the item they want to create
-    newtreeprompt: str = 'What is the name of the item you want to create: '
+    prompt: str = 'What is the name of the item you want to create: '
     # prompt user to type in the name of the item they want to create
     while True:
-        itemname = input(newtreeprompt).strip()
+        itemname = input(prompt).strip()
         if len(itemname) == 0:
             print('You must type something in')
         else:
