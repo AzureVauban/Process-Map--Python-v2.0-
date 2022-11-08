@@ -332,7 +332,8 @@ class Node(NodeB):  # pylint: disable=R0902
             child[1].csv_createrowsdicts(pandasrows)
         # if odd amount of nodes, reverse the list
         if not len(pandasrows) // 2 == 0:
-            return pandasrows.reverse()
+            pandasrows.reverse()
+            return pandasrow
         return pandasrows
     # end def
 
