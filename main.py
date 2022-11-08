@@ -361,12 +361,17 @@ class Node(NodeB):  # pylint: disable=R0902
             child[1].returnlistofalias(ingredient, tempname)
         return tempname
     # end def
+
     def parsesort(self):
         """
         tentative docstring description
         """
-        
-    #end def
+        # go through each node in the tree and sort children in alphabetical order
+        if len(self.children) > 0:
+            self.children = OrderedDict(sorted(self.children.items()))
+            for child in self.children.items():
+                child[1].parsesort()
+    # end def
 # end def
 
 
