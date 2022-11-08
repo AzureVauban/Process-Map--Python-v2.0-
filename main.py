@@ -727,8 +727,8 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
     for node in foundheadnodes.items():
         userchoices.append(node[1])
     if len(userchoices) >= 2:
-        print('Which of the following do you want to use (valid choice must be a'
-              ' number between 1 and', len(userchoices), end='):\n')
+        print('Which of the following do you want to use (valid choice must be'
+              ' a number between 1 and', len(userchoices), end='):\n')
         # print out the list of nodes
         pos: int = 1
         for subnode in userchoices:
