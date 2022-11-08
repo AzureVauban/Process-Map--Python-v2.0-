@@ -717,7 +717,6 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
     if len(foundheadnodes) == 0:
         foundheadnodes.update({-1: None})
     # if the search returns {-1:None} call populate method
-    newtreeprompt: str = 'What is the name of the item you want to create: '
     if foundheadnodes == {-1: None} or not os.path.isfile(TESTFILENAME):
         return populate(Node(promptheadname(), None))
     # else convert dict to list and prompt the user to choose an ingredient
