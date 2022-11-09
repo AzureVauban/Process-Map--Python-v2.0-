@@ -85,7 +85,7 @@ def head(node: Node) -> Node:
 # end def
 
 
-def outputtrail(node: Node):
+def trail(node: Node):
     """
     print the ingredient trail leading up to the parent most Node
 
@@ -103,17 +103,43 @@ def outputtrail(node: Node):
 # end def
 
 
+def populate(node: Node) -> Node:
+    """create a tree of Nodes
+
+    Args:
+        node (Node): parent the subnodes will be linked to
+
+    Returns:
+        Node: the head of the ingredient tree
+    """
+    # output the ingredient trail if there is a parent Node
+    if node.parent is not None:
+        trail(node)
+    # prompt the user to ingredient tree
+    userinputs : list = []
+    # append subnode ingredients to the list if there are any
+    for subnode in node.children.items():
+        userinputs.append(subnode[1].ingredient)
+    # recrusively create the tree
+    for subnode in node.children.items():
+        populate(subnode[1])
+    # return the head of the ingredient tree
+    return head(node)
+# end def
+
+
 if __name__ == '__main__':
     industrial_battery: Node = Node('industrial battery', None)
     protocite_bar: Node = Node('protocite bar', industrial_battery, 0, 1, 5)
     protocite: Node = Node('protocite', protocite_bar, 0, 1, 2)
     battery: Node = Node('battery', industrial_battery, 0, 1, 2)
     pixels: Node = Node('pixels', battery, 0, 1, 2500)
-    quantum_processor: Node = Node('quantum processor', industrial_battery, 0, 1, 1)
+    quantum_processor: Node = Node(
+        'quantum processor', industrial_battery, 0, 1, 1)
     silicon_board: Node = Node('silicon board', quantum_processor, 0, 1, 4)
     protocite_bar2: Node = Node('protocite bar', quantum_processor, 0, 1, 2)
     protocite2: Node = Node('protocite', protocite_bar2, 0, 1, 2)
     thorium_rod: Node = Node('thorium rod', industrial_battery, 0, 1, 5)
     thorium_ore: Node = Node('thorium ore', thorium_rod, 0, 1, 2)
-    outputtrail(thorium_ore)
+    trail(thorium_ore)
 # end main
