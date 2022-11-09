@@ -122,9 +122,24 @@ def outputingredients(node: Node):
 
 
 def search(node: Node, ingredient: str, results: list) -> list:
+    """
+    recursively search through the tree to find nodes with the same
+    ingredient
+
+    Args:
+        node (Node): parent node, parse through its children recursively to
+        update the search results
+        ingredient (str): the name of the item you are searching for
+        results (list): nodes that have the same ingredient as the parameter
+
+    Returns:
+        list: a list of nodes that have the same ingredient as the parameter
+    """
+    if node.parent is not None and 
     if len(results) == 0:
         results.append(None)
     return results
+# end def
 
 
 def subpopulate(node: Node, ingredient: str) -> Node:
@@ -139,12 +154,15 @@ def subpopulate(node: Node, ingredient: str) -> Node:
     """
     # create a list of subnodes that have the same ingredient as the parameter
     # if the list is empty return a defaultly created new node Node
-    if len(search) == 0:
+    if len(search(node, ingredient, [])) == 0:
         return Node(ingredient, node)
-    # else, prompt the user to create a linkable clone of the new node
-    # if the user chooses to create a new node, return a clone subnode
-    # if not return the defaultly created new node
-    return Node(ingredient, node)
+    else:
+        # else, prompt the user to create a linkable clone of the new node
+        # output the choices of subnodes:
+        # parent ingredient, amountneeded, amountmadepereachcraft
+        # if the user chooses to create a new node, return a clone subnode
+        # if not return the defaultly created new node
+        return Node(ingredient, node)
 # end def
 
 
