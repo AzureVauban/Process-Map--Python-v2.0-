@@ -127,8 +127,9 @@ def subpopulate(node: Node, ingredient: str) -> Node:
     Returns:
         Node: new subnode to link back to the parent Node
     """
-    # search for ingredients in the tree
-    # if the ingredient is found, return the Node
+    # create a list of subnodes that have the same ingredient as the parameter
+    # if the list is empty return a defaultly created new node Node
+    # else, prompt the user to create a clone of the new node
     return Node(ingredient, node)
 # end def
 
