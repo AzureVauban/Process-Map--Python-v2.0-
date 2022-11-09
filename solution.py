@@ -163,7 +163,7 @@ def populate(node: Node) -> Node:
         if myinput in [head(node).ingredient, node.ingredient]:
             print('Invalid input, we are trying to make that item!')
         # if the length of the user input is 0, break the loop
-        elif myinput in list(userinputs[1]):
+        elif myinput in userinputs[1]:
             print('Invalid input, duplicate inputs!')
         # if the input is empty, break out of the loop
         elif len(myinput) == 0:
