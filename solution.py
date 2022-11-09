@@ -164,11 +164,14 @@ def subpopulate(node: Node, ingredient: str) -> Node:
     else:
         # else, prompt the user to create a linkable clone of the new node
         for index, subnode in enumerate(parseresults):
-            print(index+1,end='. '+ subnode.parent.ingredient,
-                  )
-        # output the choices of subnodes:
-        # parent ingredient, amountneeded, amountmadepereachcraft
+            # output the choices of subnodes:
+            # parent ingredient, amountneeded, amountmadepereachcraft
+            print(index+1, str('. ' + subnode.parent.ingredient
+                  + '|' + str(subnode.amountneeded)
+                  + '|' + str(subnode.amountparentmadepercraft)))
+        userchoice: int = input(int('What subnode do you want to clone: ')) -1
         # if the user chooses to create a new node, return a clone subnode
+        
         # if not return the defaultly created new node
         return Node(ingredient, node)
 # end def
