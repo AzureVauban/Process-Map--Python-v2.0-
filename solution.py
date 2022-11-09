@@ -112,7 +112,9 @@ def subpopulate(node: Node, ingredient: str) -> Node:
     Returns:
         Node: _description_
     """
-    return node
+    # search for ingredients in the tree
+    # if the ingredient is found, return the Node
+    return Node(ingredient, node)
 # end def
 
 
@@ -161,6 +163,8 @@ def populate(node: Node) -> Node:
     # recrusively continue to populate the tree
     for subnode in node.children.items():
         populate(subnode[1])
+    # if the program Mode is A and the length of the children Nodes are 0
+    # @note call recursive arithmetic method here
     # return the head of the ingredient tree
     return head(node)
 # end def
