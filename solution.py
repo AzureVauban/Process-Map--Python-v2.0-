@@ -158,10 +158,14 @@ def subpopulate(node: Node, ingredient: str) -> Node:
     """
     # create a list of subnodes that have the same ingredient as the parameter
     # if the list is empty return a defaultly created new node Node
-    if len(search(node, ingredient, [])) == 0:
+    parseresults: list = search(node, ingredient, [])
+    if len(parseresults) == 0:
         return Node(ingredient, node)
     else:
         # else, prompt the user to create a linkable clone of the new node
+        for index, subnode in enumerate(parseresults):
+            print(index+1,end='. '+ subnode.parent.ingredient,
+                  )
         # output the choices of subnodes:
         # parent ingredient, amountneeded, amountmadepereachcraft
         # if the user chooses to create a new node, return a clone subnode
