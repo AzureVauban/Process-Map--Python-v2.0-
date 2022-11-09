@@ -104,7 +104,11 @@ def trail(node: Node):
 
 
 def outputingredients(node: Node):
-    """print the ingredients in the ingredient tree
+    """
+    print the subingredients of the parameter Node
+
+    Args:
+        node (Node): parent node, the node to print the subingredients of
     """
     subingredients: list = []
     for subnode in node.children.items():
@@ -116,7 +120,7 @@ def outputingredients(node: Node):
     print('')
 # end def
 
-
+def 
 def subpopulate(node: Node, ingredient: str) -> Node:
     """
     create a subnode and link it to the parent node
