@@ -174,6 +174,10 @@ def subpopulate(node: Node, ingredient: str) -> Node:
     # create a list of subnodes that have the same ingredient as the parameter
     # if the list is empty return a defaultly created new node Node
     parseresults: list = search(node, ingredient, [])
+    # !add a breakpoint here to see if the search results have only nodes in it
+    for subnode in parseresults:
+        if not isinstance(subnode, Node):
+            raise TypeError('item in the list is not an instance of', Node)
     if len(parseresults) == 0:
         return Node(ingredient, node)
     # else, prompt the user to create a linkable clone of the new node
