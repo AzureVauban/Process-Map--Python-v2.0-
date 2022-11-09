@@ -104,13 +104,14 @@ def trail(node: Node):
 
 
 def subpopulate(node: Node, ingredient: str) -> Node:
-    """_summary_
+    """
+    create a subnode and link it to the parent node
 
     Args:
-        node (Node): _description_
+        node (Node): parent Node to link back to
 
     Returns:
-        Node: _description_
+        Node: new subnode to link back to the parent Node
     """
     # search for ingredients in the tree
     # if the ingredient is found, return the Node
