@@ -111,8 +111,8 @@ def outputingredients(node: Node):
         subingredients.append(subnode[1].ingredient)
     print('+ These ingredients are already in the tree:\n')
     # output the ingredients
-    for ingredient, index in enumerate(subingredients):
-        print(f'{ingredient+1}. {index}')
+    for index, ingredient in enumerate(subingredients):
+        print(f'{index+1}. {ingredient}')
     print('')
 # end def"""
 
