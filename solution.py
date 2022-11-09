@@ -103,6 +103,19 @@ def trail(node: Node):
 # end def
 
 
+def subpopulate(node: Node, ingredient: str) -> Node:
+    """_summary_
+
+    Args:
+        node (Node): _description_
+
+    Returns:
+        Node: _description_
+    """
+    return node
+# end def
+
+
 def populate(node: Node) -> Node:
     """create a tree of Nodes
 
@@ -123,7 +136,20 @@ def populate(node: Node) -> Node:
         userinputs.append((subnode[1].ingredient, True))
     # prompt the user for ingredients
     while True:
-        
+        # if the input is empty, break the loop
+        myinput: str = input('').strip()
+        # if the length of the user inputs is greator than or equal to 2
+        # check to see if the ussr input is valid,
+        if myinput in [head(node).ingredient, node.ingredient]:
+            print('Invalid input, we are trying to make that item!')
+        # if the length of the user input is 0, break the loop
+        elif myinput in userinputs:
+            print('Invalid input, duplicate inputs!')
+        elif len(myinput) == 0:
+            break
+        else:
+            # if the condition is met, append the input to the list
+            userinputs.append(myinput)
     # create subnodes for each ingredient using the subpopulate method
     for ingredient in userinputs:
         # if ingredient[1] is False, the ingredient is not already in the tree
@@ -136,19 +162,6 @@ def populate(node: Node) -> Node:
         populate(subnode[1])
     # return the head of the ingredient tree
     return head(node)
-# end def
-
-
-def subpopulate(node: Node, ingredient: str) -> Node:
-    """_summary_
-
-    Args:
-        node (Node): _description_
-
-    Returns:
-        Node: _description_
-    """
-    return node
 # end def
 
 
