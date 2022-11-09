@@ -122,12 +122,31 @@ def populate(node: Node) -> Node:
     for subnode in node.children.items():
         userinputs.append((subnode[1].ingredient, True))
     # prompt the user for ingredients
-    
-    # recrusively create the tree
+    # create subnodes for each ingredient using the subpopulate method
+    for ingredient in userinputs:
+        # if ingredient[1] is False, the ingredient is not already in the tree
+        if not ingredient[1]:
+            subpopulate(node, ingredient[0])
+        else:
+            continue
+    # recrusively continue to populate the tree
     for subnode in node.children.items():
         populate(subnode[1])
     # return the head of the ingredient tree
     return head(node)
+# end def
+
+
+def subpopulate(node: Node, ingredient: str) -> Node:
+    """_summary_
+
+    Args:
+        node (Node): _description_
+
+    Returns:
+        Node: _description_
+    """
+    return node
 # end def
 
 
