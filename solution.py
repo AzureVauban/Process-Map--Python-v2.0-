@@ -157,9 +157,9 @@ def populate(node: Node) -> Node:
     if len(node.children) > 0:
         outputingredients(node)
     # create ingredients blacklist
-    checklist: list = []
+    ingredientblacklist: list = []
     for ingredient in userinputs:
-        checklist.append(ingredient[0])
+        ingredientblacklist.append(ingredient[0])
     while True:
         # if the input is empty, break the loop
         myinput: str = input('').strip()
@@ -167,7 +167,7 @@ def populate(node: Node) -> Node:
         if myinput in [head(node).ingredient, node.ingredient]:
             print('Invalid input, we are trying to make that item!')
         # if the length of the user input is 0, break the loop
-        elif myinput in checklist:
+        elif myinput in ingredientblacklist:
             print('Invalid input, duplicate inputs!')
         # if the input is empty, break out of the loop
         elif len(myinput) == 0:
@@ -176,7 +176,6 @@ def populate(node: Node) -> Node:
         else:
             # if the condition is met, append the input to the list
             userinputs.append((myinput, False))
-    #!print(list(userinputs[1]))
     # create subnodes for each ingredient using the subpopulate method
     for ingredient in userinputs:
         # if ingredient[1] is False, the ingredient is not already in the tree
