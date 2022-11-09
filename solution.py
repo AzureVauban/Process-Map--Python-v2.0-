@@ -33,7 +33,7 @@ class NodeB:  # pylint: disable=R0903
 # end def
 
 
-class Node(NodeB):
+class Node(NodeB): # pylint: disable=R0913
     """
     tentative docstring description
     """
