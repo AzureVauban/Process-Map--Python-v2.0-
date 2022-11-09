@@ -172,6 +172,7 @@ def populate(node: Node) -> Node:
         else:
             # if the condition is met, append the input to the list
             userinputs.append((myinput, False))
+    print(list(userinputs[1]))
     # create subnodes for each ingredient using the subpopulate method
     for ingredient in userinputs:
         # if ingredient[1] is False, the ingredient is not already in the tree
