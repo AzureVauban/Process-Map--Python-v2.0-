@@ -2,7 +2,7 @@
 main script for Python Process Map (v2.0)
 - divison by zero error when user types in that they want to
 make 0 of an item
-- reformat output error when there is only one Node in the ingredient tree 
+- reformat output error when there is only one Node in the ingredient tree
 """
 import math
 import os
@@ -349,7 +349,7 @@ class Node(NodeB):  # pylint: disable=R0902
             # create the file
             pandas.DataFrame(columns=FIELDNAMES).to_csv(
                 TESTFILENAME, index=False)
-            #! open file again to append to it
+            # open file again to append to it
             self.output_tree_to_csv()
         else:
             # then write to the file but calling the method again recursively
