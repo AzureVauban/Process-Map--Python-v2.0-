@@ -226,7 +226,6 @@ def populate(node: Node) -> Node:
     for ingredient in userinputs:
         ingredientblacklist.append(ingredient[0])
     while True:
-        # if the input is empty, break the loop
         myinput: str = input('').strip()
         # check to see if the user input is the same as the parent or head Node
         if myinput in [head(node).ingredient, node.ingredient]:
