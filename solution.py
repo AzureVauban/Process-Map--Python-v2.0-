@@ -68,7 +68,27 @@ class Node(NodeB):
     # end def
 # end def
 
-def head(node : Node) -> Node:
+
+def head(node: Node) -> Node:
+    """
+    traverse to the parent most Node
+
+    Args:
+        node (Node): starting Node
+
+    Returns:
+        Node: parent most Node of the starting Node
+    """
     while node.parent is not None:
         node = node.parent
     return node
+# end def
+
+
+def outputtrail(node: Node):
+    """
+    print the ingredient trail leading up to the parent most Node
+
+    Args:
+        node (Node): starting Node
+    """
