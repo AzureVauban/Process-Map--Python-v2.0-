@@ -116,10 +116,12 @@ def populate(node: Node) -> Node:
     if node.parent is not None:
         trail(node)
     # prompt the user to ingredient tree
-    userinputs : list = []
+    userinputs: list = [] # list of tuples (string, bool)
     # append subnode ingredients to the list if there are any
     for subnode in node.children.items():
         userinputs.append(subnode[1].ingredient)
+    # prompt the user for ingredients
+    
     # recrusively create the tree
     for subnode in node.children.items():
         populate(subnode[1])
