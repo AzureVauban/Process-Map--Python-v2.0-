@@ -201,7 +201,5 @@ if __name__ == '__main__':
     thorium_rod: Node = Node('thorium rod', industrial_battery, 0, 1, 5)
     thorium_ore: Node = Node('thorium ore', thorium_rod, 0, 1, 2)
     populate(head(thorium_ore))
-
-
     print('terminating program')
 # end main
