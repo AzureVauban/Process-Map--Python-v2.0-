@@ -138,18 +138,19 @@ def populate(node: Node) -> Node:
     while True:
         # if the input is empty, break the loop
         myinput: str = input('').strip()
-        # if the length of the user inputs is greator than or equal to 2
-        # check to see if the ussr input is valid,
+        # check to see if the user input is the same as the parent or head Node
         if myinput in [head(node).ingredient, node.ingredient]:
             print('Invalid input, we are trying to make that item!')
         # if the length of the user input is 0, break the loop
         elif myinput in userinputs:
             print('Invalid input, duplicate inputs!')
+        # if the input is empty, break out of the loop
         elif len(myinput) == 0:
             break
+        # append to the user inputs list if all the checks pass
         else:
             # if the condition is met, append the input to the list
-            userinputs.append(myinput)
+            userinputs.append((myinput, False))
     # create subnodes for each ingredient using the subpopulate method
     for ingredient in userinputs:
         # if ingredient[1] is False, the ingredient is not already in the tree
