@@ -146,6 +146,21 @@ def search(node: Node, ingredient: str, results: list) -> list:
 # end def
 
 
+def clone(node: Node) -> Node:
+    """
+    return a clone of the node
+
+    Args:
+        node (Node): node to clone from
+
+    Returns:
+        Node: a clone of the node which is a node instance with the same data
+        but on a differing memory address
+    """
+    return node
+# end def
+
+
 def subpopulate(node: Node, ingredient: str) -> Node:
     """
     create a subnode and link it to the parent node
@@ -161,19 +176,21 @@ def subpopulate(node: Node, ingredient: str) -> Node:
     parseresults: list = search(node, ingredient, [])
     if len(parseresults) == 0:
         return Node(ingredient, node)
-    else:
-        # else, prompt the user to create a linkable clone of the new node
-        for index, subnode in enumerate(parseresults):
-            # output the choices of subnodes:
-            # parent ingredient, amountneeded, amountmadepereachcraft
-            print(index+1, str('. ' + subnode.parent.ingredient
-                  + '|' + str(subnode.amountneeded)
-                  + '|' + str(subnode.amountparentmadepercraft)))
-        userchoice: int = input(int('What subnode do you want to clone: ')) -1
-        # if the user chooses to create a new node, return a clone subnode
-        
+    # else, prompt the user to create a linkable clone of the new node
+    for index, subnode in enumerate(parseresults):
+        # output the choices of subnodes:
+        # parent ingredient, amountneeded, amountmadepereachcraft
+        print(index+1, str('. ' + subnode.parent.ingredient
+                           + '|' + str(subnode.amountneeded)
+                           + '|' + str(subnode.amountparentmadepercraft)))
+    userchoice: int = int(input('Choose a subnode to clone: '))
+    userchoice -= 1
+    # if the user chooses to create a new node, return a clone subnode
+    if userchoice < 0 or userchoice > len(parseresults):
+        # if the user did not input a valid index
         # if not return the defaultly created new node
         return Node(ingredient, node)
+    return parseresults[userchoice].clone(node)
 # end def
 
 
