@@ -432,6 +432,8 @@ def makeallaliasunique(node: Node):
     """
     tentative docstring description
     """
+    if node is None:
+        raise TypeError('node cannot be none')
     # recursively call for all children
     aliaslist: list = head(node).returnlistofalias(node.ingredient, [])
     # if the size of the list returned is greater than 1
