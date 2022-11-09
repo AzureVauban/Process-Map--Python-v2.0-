@@ -159,8 +159,6 @@ def populate(node: Node) -> Node:
         # if ingredient[1] is False, the ingredient is not already in the tree
         if not ingredient[1]:
             subpopulate(node, ingredient[0])
-        else:
-            continue
     # recrusively continue to populate the tree
     for subnode in node.children.items():
         populate(subnode[1])
