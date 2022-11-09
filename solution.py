@@ -109,9 +109,11 @@ def outputingredients(node: Node):
     subingredients: list = []
     for subnode in node.children.items():
         subingredients.append(subnode[1].ingredient)
+    print('+ These ingredients are already in the tree:\n')
     # output the ingredients
     for ingredient, index in enumerate(subingredients):
         print(f'{ingredient+1}. {index}')
+    print('')
 # end def"""
 
 
@@ -149,6 +151,11 @@ def populate(node: Node) -> Node:
     for subnode in node.children.items():
         userinputs.append((subnode[1].ingredient, True))
     # prompt the user for ingredients
+    print('What ingredients do you have need to create',
+          node.ingredient, end=':\n')
+    # if there are subnodes, prompt the user to select from the list
+    if len(node.children) > 0:
+        outputingredients(node)
     while True:
         # if the input is empty, break the loop
         myinput: str = input('').strip()
@@ -193,5 +200,8 @@ if __name__ == '__main__':
     protocite2: Node = Node('protocite', protocite_bar2, 0, 1, 2)
     thorium_rod: Node = Node('thorium rod', industrial_battery, 0, 1, 5)
     thorium_ore: Node = Node('thorium ore', thorium_rod, 0, 1, 2)
-    trail(thorium_ore)
+    populate(head(thorium_ore))
+
+
+    print('terminating program')
 # end main
