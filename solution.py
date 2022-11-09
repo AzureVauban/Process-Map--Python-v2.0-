@@ -102,7 +102,13 @@ def trail(node: Node):
             break
 # end def
 
-
+def outputingredients(node: Node):
+    """print the ingredients in the ingredient tree
+    """
+    subingredients : list = []
+    for subnode in node.children.items():
+        
+#end def"""
 def subpopulate(node: Node, ingredient: str) -> Node:
     """
     create a subnode and link it to the parent node
@@ -133,7 +139,6 @@ def populate(node: Node) -> Node:
         trail(node)
     # prompt the user to ingredient tree
     userinputs: list = []  # list of tuples (string, bool)
-    # @note already present inthe tree to avoid creating accidental copies
     # append subnode ingredients to the list if there are any
     for subnode in node.children.items():
         userinputs.append((subnode[1].ingredient, True))
