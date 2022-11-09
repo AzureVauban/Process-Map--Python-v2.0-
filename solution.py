@@ -92,3 +92,15 @@ def outputtrail(node: Node):
     Args:
         node (Node): starting Node
     """
+    print('TRAIL: ', end='')
+    while True:
+        if node.parent is not None:
+            print(node.ingredient, '-> ', end='')
+            node = node.parent
+        else:
+            print(node.ingredient)
+            break
+# end def
+
+if __name__ == '__main__':
+    
