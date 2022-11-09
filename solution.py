@@ -120,7 +120,13 @@ def outputingredients(node: Node):
     print('')
 # end def
 
-def 
+
+def search(node: Node, ingredient: str, results: list) -> list:
+    if len(results) == 0:
+        results.append(None)
+    return results
+
+
 def subpopulate(node: Node, ingredient: str) -> Node:
     """
     create a subnode and link it to the parent node
@@ -133,6 +139,8 @@ def subpopulate(node: Node, ingredient: str) -> Node:
     """
     # create a list of subnodes that have the same ingredient as the parameter
     # if the list is empty return a defaultly created new node Node
+    if len(search) == 0:
+        return Node(ingredient, node)
     # else, prompt the user to create a linkable clone of the new node
     # if the user chooses to create a new node, return a clone subnode
     # if not return the defaultly created new node
