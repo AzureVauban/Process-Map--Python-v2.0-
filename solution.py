@@ -42,14 +42,33 @@ class Node(NodeB):
     generation: int = 0
     instances: int = 0
     instancekey: int = 0
+
     def __init__(self, ingredient: str = '',
-                 parent = None,
-                 amountonhand: int = 0, 
-                 amountparentmadepercraft: int = 1, 
+                 parent=None,
+                 amountonhand: int = 0,
+                 amountparentmadepercraft: int = 1,
                  amountneeded: int = 1) -> None:
         super().__init__(ingredient,
-                         amountonhand, 
-                         amountparentmadepercraft, 
+                         amountonhand,
+                         amountparentmadepercraft,
                          amountneeded)
+        # self.treekey = treekey
+        self.instancekey = Node.instances
+        self.children = {}
         self.parent = parent
-        
+        if self.parent is not None:
+            self.generation = self.parent.generation + 1
+            self.parent.children.update({self.instancekey: self})
+            self.treekey = self.parent.treekey
+        else:
+            self.generation = 0
+#            if self.treekey == '':
+#                self.treekey = self.generate_treekey()
+        Node.instances += 1
+    # end def
+# end def
+
+def head(node : Node) -> Node:
+    while node.parent is not None:
+        node = node.parent
+    return node
