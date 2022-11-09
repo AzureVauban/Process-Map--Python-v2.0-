@@ -190,7 +190,7 @@ def subpopulate(node: Node, ingredient: str) -> Node:
     userchoice: int = int(input('Choose a subnode to clone: '))
     userchoice -= 1
     # if the user chooses to create a new node, return a clone subnode
-    if userchoice < 0 or userchoice > len(parseresults):
+    if userchoice < 0 or userchoice > len(parseresults)-1:
         # if the user did not input a valid index
         # if not return the defaultly created new node
         return Node(ingredient, node)
