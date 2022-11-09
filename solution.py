@@ -129,7 +129,9 @@ def subpopulate(node: Node, ingredient: str) -> Node:
     """
     # create a list of subnodes that have the same ingredient as the parameter
     # if the list is empty return a defaultly created new node Node
-    # else, prompt the user to create a clone of the new node
+    # else, prompt the user to create a linkable clone of the new node
+    # if the user chooses to create a new node, return a clone subnode
+    # if not return the defaultly created new node
     return Node(ingredient, node)
 # end def
 
