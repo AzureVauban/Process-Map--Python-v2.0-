@@ -262,8 +262,7 @@ if __name__ == '__main__':
     protocite: Node = Node('protocite', protocite_bar, 0, 1, 2)
     battery: Node = Node('battery', industrial_battery, 0, 1, 2)
     pixels: Node = Node('pixels', battery, 0, 1, 2500)
-    quantum_processor: Node = Node(
-        'quantum processor', industrial_battery, 0, 1, 1)
+    quantum_processor: Node = Node('quantum processor', industrial_battery)
     silicon_board: Node = Node('silicon board', quantum_processor, 0, 1, 4)
     protocite_bar2: Node = Node('protocite bar', quantum_processor, 0, 1, 2)
     protocite2: Node = Node('protocite', protocite_bar2, 0, 1, 2)
