@@ -135,7 +135,9 @@ def search(node: Node, ingredient: str, results: list) -> list:
     Returns:
         list: a list of nodes that have the same ingredient as the parameter
     """
-    if node.parent is not None and 
+    if node.parent is not None and node.ingredient == ingredient:
+        for subnode in node.children.items():
+            
     if len(results) == 0:
         results.append(None)
     return results
