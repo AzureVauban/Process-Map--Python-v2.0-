@@ -533,13 +533,14 @@ if __name__ == '__main__':
                       ' character')
             elif userinput == 'Y':
                 # change the tree key
-                useringredienttree.changetreekey(useringredienttree.generate_treekey())
+                useringredienttree.changetreekey(
+                    useringredienttree.generate_treekey())
                 # write onto file
                 writetreetocsv(useringredienttree)
                 break
             else:
                 break
-        headnode.clearamounts()
+        #! headnode.clearamounts()
         # prompt the user to see if they want to run the program again
         while True:
             userinput = input('\nDo you want to run the program again with'
