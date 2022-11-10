@@ -347,7 +347,7 @@ def clone(node: Node) -> Node:
 # end def
 
 
-def subpopulate(node: Node, ingredient : str ,parseresults: list) -> Node:
+def subpopulate(node: Node, ingredient: str, parseresults: list) -> Node:
     """
     create a subnode and link it to the parent node
 
@@ -430,7 +430,9 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
     for ingredient in userinputs:
         # if ingredient[1] is False, the ingredient is not already in the tree
         if not ingredient[1]:
-            subpopulate(node, ingredient,search(node, ingredient, []))
+            searchresults : list = search(node, ingredient[0], [])
+            _ = subpopulate(node, ingredient, searchresults)
+            print('created a new node at',_) # @audit remove this later
     # recrusively continue to populate the tree
     for subnode in node.children.items():
         populate(subnode[1])
