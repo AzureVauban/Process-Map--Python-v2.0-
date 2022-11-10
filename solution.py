@@ -245,6 +245,20 @@ def clone(node: Node) -> Node:
 # end def
 
 
+def pandaswritetree(head: Node):
+    """
+    recrusively creates a csv file and writes an ingredient tree onto it
+
+    Args:
+        head (Node): head of the ingredient tree
+    """
+    # if the file does not exist, recursively call the method again and write
+    # the header of the csv
+    
+    pass
+# end def
+
+
 def subpopulate(node: Node, ingredient: str) -> Node:
     """
     create a subnode and link it to the parent node
