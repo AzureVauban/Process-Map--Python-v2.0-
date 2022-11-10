@@ -190,7 +190,7 @@ class Node(NodeB):  # pylint: disable=R0913
         return self.amountonhand
     # end def
 
-    def nodecount(self, count: int = 0) -> int:
+    def nodecount(self, count: int) -> int:
         """
         count how many nodes are in the ingredient tree
 
