@@ -411,7 +411,17 @@ def superpopulate() -> Node:  # todo finish this
     if foundheadnodes == {-1: None}:
         # return new ingredient tree
         return head(populate(Node(promptheadname())))
+    userchoices: list = []
     # convert the dict into a list of node instances
+    for node in foundheadnodes.items():
+        userchoices.append(node[1])
+    # sort the list of nodes by the amount of children
+    for j, bluenode in enumerate(userchoices):
+        for i, rednode in enumerate(userchoices):
+            # if userchoices[i] has more children than userchoices[j]
+            # swap rednode and bluenode
+            if userchoices[i].count(0) > userchoices[j].count(0):
+                userchoices[i], userchoices[j] = userchoices[j], userchoices[i]
     # prompt the user to make select a head node to modify
     # if the user chosesn an index out or range, return a new tree
 
