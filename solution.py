@@ -326,6 +326,22 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
 # end def
 
 
+def promptheadname() -> str:
+    """
+    prompts the user for the head node name
+
+    Returns:
+        str: the name of the head node
+    """
+    while True:
+        myinput: str = input('What is the name of the item you are trying to make: ').strip()  # noqa: E501 #pylint: disable=line-too-long
+        if len(myinput) == 0:
+            print('Your input cannot be empty!')
+        else:
+            return myinput
+# end def
+
+
 def superpopulate() -> Node:
     """
     creates an ingredient tree and returns its head node
@@ -336,9 +352,9 @@ def superpopulate() -> Node:
     # check to see if there is a csv file in the current directory
     if not os.path.exists(FILENAME):
         # if the file exists, parse it for head nodes
-        return head(populate(Node('test')))
+        return head(populate(Node(promptheadname())))
     # if there is no csv file, return new tree
-    return head(populate(Node('test')))
+    return head(populate(Node(promptheadname())))
 
 
 if __name__ == '__main__':
@@ -379,20 +395,7 @@ if __name__ == '__main__':
                 MODE = ProgramState.MODE_A
                 break
         # populate the ingredient tree
-        industrial_battery: Node = Node('industrial battery', None)
-        protocite_bar: Node = Node(
-            'protocite bar', industrial_battery, 0, 1, 5)
-        protocite: Node = Node('protocite', protocite_bar, 0, 1, 2)
-        battery: Node = Node('battery', industrial_battery, 0, 1, 2)
-        pixels: Node = Node('pixels', battery, 0, 1, 2500)
-        quantum_processor: Node = Node('quantum processor', industrial_battery)
-        silicon_board: Node = Node('silicon board', quantum_processor, 0, 1, 4)
-        protocite_bar2: Node = Node(
-            'protocite bar', quantum_processor, 0, 1, 2)
-        protocite2: Node = Node('protocite', protocite_bar2, 0, 1, 2)
-        thorium_rod: Node = Node('thorium rod', industrial_battery, 0, 1, 5)
-        thorium_ore: Node = Node('thorium ore', thorium_rod, 0, 1, 2)
-        populate(head(thorium_ore))
+        useringredienttree: Node = superpopulate()
         # prompt the user to see if they want to run the program again
         while True:
             userinput = input('\nDo you want to run the program again with'
