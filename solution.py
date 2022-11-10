@@ -33,7 +33,19 @@ FIELDNAMES: list = [
     'Generation'  # 1
 ]
 
-
+def promptint() -> int:
+    """
+    tentative docstring description
+    """
+    while True:
+        myinput = input('').strip()
+        if not myinput.isdigit():
+            print('you can only type in a positive integer')
+        elif int(myinput) < 0:
+            print('please type in a postive integer')
+        else:
+            return int(myinput)
+# end def
 class NodeB:  # pylint: disable=R0903
     """
     tentative docstring description
@@ -583,7 +595,7 @@ if __name__ == '__main__':
         # if the programde mode is B
         if MODE == ProgramState.MODE_B:
             # prompt the user for how much an item they want to make
-            useringredienttree.reversearithmetic()
+            useringredienttree.reversearithmetic(promptint())
         # prompt the user if they want to output the ingredient tree onto A csv file
         print('Do you want to save your tree to create',
               useringredienttree.ingredient, 'to a csv file? (Y/N)')
