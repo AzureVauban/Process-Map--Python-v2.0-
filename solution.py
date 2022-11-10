@@ -299,12 +299,41 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
 
 if __name__ == '__main__':
     # prompt program mode
-    print('What mode do you want to run the program in?')
-    print('A. Figure out how much of an item you can create with the'
-          ' ingredients you have')
-    print('B. Figure out how much of an item you need to create a certain'
-          ' amount of an item')
-    
+    print('Welcome to Process Map (Python) v1.1!\n')
+    # main loop
+    while True:
+        print('Which mode do you want to use:')
+        print('Mode A - You are trying to figure out how much of your desired'
+              ' item you can make with the current supply of materials'
+              ' (Type in A)')
+        print('Mode B - You are trying to figure out how much base materials'
+              ' you need to create a certain amount of your desired item, ('
+              'Type in B)')
+        print("Type in 'H' if you need a reminder of the prompt\n")
+        # prompt user which mode they want to run the program in
+        while True:
+            userinput = input('').strip().upper()
+            if userinput not in ('A', 'B', 'H'):
+                print("That input is not valid, please type in 'A' or 'B'")
+            elif len(userinput) > 1:
+                print('Your input is too long, please only type in one'
+                      'character')
+            elif userinput == 'B':
+                MODE = ProgramState.MODE_B
+                break
+            elif userinput == 'H':
+                # print prompt again
+                print('Which mode do you want to use:')
+                print('Mode A - You are trying to figure out how much of your'
+                      ' desired item you can make with the current supply of'
+                      ' materials (Type in A)')
+                print('Mode B - You are trying to figure out how much base'
+                      ' materials you need to create a certain amount of your'
+                      ' desired item, (Type in B)')
+                print("Type in 'H' if you need a reminder of the prompt\n")
+            else:
+                MODE = ProgramState.MODE_A
+                break
     industrial_battery: Node = Node('industrial battery', None)
     protocite_bar: Node = Node('protocite bar', industrial_battery, 0, 1, 5)
     protocite: Node = Node('protocite', protocite_bar, 0, 1, 2)
