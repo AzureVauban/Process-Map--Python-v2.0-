@@ -608,14 +608,18 @@ def superpopulate() -> Node:  # todo finish this
     # check to see if there is a csv file in the current directory
     if not os.path.exists(FILENAME):
         # if the file exists, parse it for head nodes
-        return head(populate(Node(promptheadname())))
+        nodetree : Node = head(populate(Node(promptheadname())))
+        nodetree.changetreekey(nodetree.generate_treekey())
+        return nodetree
     # parse the csv file for head nodes
     # todo create a method to parse the csv file and return a dict of nodes
     foundheadnodes: dict = parsecsv()
     # if there are no head nodes {-1:None}
     if foundheadnodes == {-1: None}:
         # return new ingredient tree
-        return head(populate(Node(promptheadname())))
+        nodetree : Node = head(populate(Node(promptheadname())))
+        nodetree.changetreekey(nodetree.generate_treekey())
+        return nodetree
     userchoices: list = []
     # convert the dict into a list of node instances
     for node in foundheadnodes.items():
@@ -638,9 +642,14 @@ def superpopulate() -> Node:  # todo finish this
     userchoice: int = promptint()-1
     # if the user chosesn an index out or range, return a new tree
     if userchoice < 0 or userchoice > len(userchoices)-1:
-        return head(populate(Node(promptheadname())))
+        nodetree : Node = head(populate(Node(promptheadname())))
+        nodetree.changetreekey(nodetree.generate_treekey())
+        return nodetree
     # return the head node of the chosen tree
     # create ingredient tree out of the csv file
+    nodetree : Node = head(populate(Node(promptheadname())))
+        nodetree.changetreekey(nodetree.generate_treekey())
+        return nodetree
     return head(populate(createtreefromcsv(userchoices[userchoice])))
 
 
