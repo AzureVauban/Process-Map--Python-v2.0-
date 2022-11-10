@@ -430,7 +430,7 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
     for ingredient in userinputs:
         # if ingredient[1] is False, the ingredient is not already in the tree
         if not ingredient[1]:
-            searchresults : list = search(node, ingredient[0], [])
+            searchresults : list = search(head(node), ingredient[0], [])
             _ = subpopulate(node, ingredient[0], searchresults)
             print('created a new node at',_) # @audit remove this later
     # recrusively continue to populate the tree
