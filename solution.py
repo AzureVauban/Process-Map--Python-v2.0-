@@ -126,6 +126,22 @@ class Node(NodeB):  # pylint: disable=R0913
             self.parent.recursivearithmetic()
         return self.amountresulted
     # end def
+
+    def count(self, count: int = 0) -> int:
+        """
+        count how many nodes are in the ingredient tree
+
+        Args:
+            count (int, optional): counted Node instances. Defaults to 0.
+
+        Returns:
+            int: the number of nodes in the ingredient tree
+        """
+        count += 1
+        for subnode in self.children.items():
+            subnode[1].count(count)
+        return count
+    # end def
 # end def
 
 
