@@ -44,3 +44,6 @@ protocite2: Node = Node('protocite', protocite_bar2, 0, 1, 2)
 thorium_rod: Node = Node('thorium rod', industrial_battery, 0, 1, 5)
 thorium_ore: Node = Node('thorium ore', thorium_rod, 0, 1, 2)
 ```
+```
+# ingredient tree for in csv
+```
