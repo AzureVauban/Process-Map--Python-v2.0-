@@ -63,7 +63,8 @@ class Node(NodeB):  # pylint: disable=R0913
                  parent=None,
                  amountonhand: int = 0,
                  amountparentmadepercraft: int = 1,
-                 amountneeded: int = 1) -> None:
+                 amountneeded: int = 1,
+                 promptamountsOn: bool = False) -> None:
         super().__init__(ingredient,
                          amountonhand,
                          amountparentmadepercraft,
@@ -210,6 +211,7 @@ def clone(node: Node) -> Node:
     return clonenode
 # end def
 
+
 def subpopulate(node: Node, ingredient: str) -> Node:
     """
     create a subnode and link it to the parent node
@@ -344,7 +346,7 @@ if __name__ == '__main__':
             else:
                 MODE = ProgramState.MODE_A
                 break
-        #populate the ingredient tree
+        # populate the ingredient tree
         industrial_battery: Node = Node('industrial battery', None)
         protocite_bar: Node = Node(
             'protocite bar', industrial_battery, 0, 1, 5)
