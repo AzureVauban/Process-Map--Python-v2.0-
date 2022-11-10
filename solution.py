@@ -353,6 +353,8 @@ def superpopulate() -> Node:
     if not os.path.exists(FILENAME):
         # if the file exists, parse it for head nodes
         return head(populate(Node(promptheadname())))
+    # parse the csv file for head nodes
+
     # if there is no csv file, return new tree
     return head(populate(Node(promptheadname())))
 
