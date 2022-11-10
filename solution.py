@@ -93,7 +93,7 @@ class Node(NodeB):  # pylint: disable=R0913
     instancekey: int = 0
     treekey: str = ''
     isfromcsvfile: bool = False
-
+    treepopulation: int = 1
     def __init__(self, ingredient: str = '',  # pylint: disable=R0913
                  parent=None,
                  amountonhand: int = 0,
@@ -122,6 +122,7 @@ class Node(NodeB):  # pylint: disable=R0913
                 self.treekey = treekey
             else:
                 self.treekey = self.generate_treekey()
+        treepopulation : int = self.nodecount()
         if promptamountsOn and __name__ == '__main__':
             # only prompt the user to set the amounts if running in main
             # module and the boolean is true
