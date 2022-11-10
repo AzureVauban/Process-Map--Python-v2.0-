@@ -634,7 +634,7 @@ def superpopulate() -> Node:  # todo finish this
         return head(populate(Node(promptheadname())))
     # return the head node of the chosen tree
     # create ingredient tree out of the csv file
-    return head(populate(userchoices[userchoice]))
+    return head(populate(createtreefromcsv(userchoices[userchoice]))
 
 
 if __name__ == '__main__':
