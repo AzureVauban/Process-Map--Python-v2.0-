@@ -99,12 +99,13 @@ class Node(NodeB):  # pylint: disable=R0913
                  amountparentmadepercraft: int = 1,
                  amountneeded: int = 1,
                  promptamountparentmade: bool = False,  # pylint:disable=W0613
-                 promptamountsOn: bool = False) -> None:
+                 promptamountsOn: bool = False,
+                 treekey: str = '') -> None:
         super().__init__(ingredient,
                          amountonhand,
                          amountparentmadepercraft,
                          amountneeded)
-        # self.treekey = treekey
+        self.treekey = treekey
         self.instancekey = Node.instances
         self.children = {}
         self.parent = parent
@@ -353,7 +354,16 @@ def parsecsv() -> dict:
     if not os.path.exists(FILENAME):
         return {-1: None}
     # parse csv for head nodes
-
+    for purple in pandas.read_csv(FILENAME).to_dict('index').items():
+        # convert the values of the dictionary to a list to see if it holds valid values
+        green: list = list(purple[1].values())
+        if green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7] == 0:
+            headnodes.update({green[0]: Node(ingredient=green[1],
+                                                   parent=None,
+                                                   promptamountparentmade=False,  # noqa: E501 #pylint: disable=line-too-long
+                                                   treekey=green[0],
+                                                   # isfromcsvfile=True,
+                                                   promptamountsOn=False)})
     if len(headnodes) == 0:
         return {-1: None}
     return headnodes

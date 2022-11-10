@@ -533,8 +533,7 @@ def csvsearch() -> dict:
         # convert the values of the dictionary to a list
         green: list = list(purple[1].values())
         # if the conditions are met for it to mock a head node
-        if green[3] == 'None' and green[5] == 1 and green[
-                6] == 1 and green[7] == 0:
+        if green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7] == 0:  # noqa: E501 #pylint: disable=line-too-long
             # create a node from the row's data
             # add the node to the dictionary of head nodes
             foundheadpoints.update({green[0]: Node(ingredient=green[1],
