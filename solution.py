@@ -5,6 +5,7 @@
 import math
 import sys
 from enum import Enum
+import time
 
 
 class ProgramState(Enum):
@@ -300,7 +301,7 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
 if __name__ == '__main__':
     # prompt program mode
     print('Welcome to Process Map (Python) v1.1!\n')
-    # main loop
+    # program runtime loop
     while True:
         print('Which mode do you want to use:')
         print('Mode A - You are trying to figure out how much of your desired'
@@ -347,5 +348,11 @@ if __name__ == '__main__':
     thorium_rod: Node = Node('thorium rod', industrial_battery, 0, 1, 5)
     thorium_ore: Node = Node('thorium ore', thorium_rod, 0, 1, 2)
     populate(head(thorium_ore))
+    # close program in 10 seconds
+    print('the program will close in 10 seconds')
+    NANI: int = 10
+    while NANI > 0:
+        time.sleep(1)
+        NANI -= 1
     print('terminating program')
 # end main
