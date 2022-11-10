@@ -94,6 +94,7 @@ class Node(NodeB):  # pylint: disable=R0913
     treekey: str = ''
     isfromcsvfile: bool = False
     treepopulation: int = 1
+
     def __init__(self, ingredient: str = '',  # pylint: disable=R0913
                  parent=None,
                  amountonhand: int = 0,
@@ -122,7 +123,7 @@ class Node(NodeB):  # pylint: disable=R0913
                 self.treekey = treekey
             else:
                 self.treekey = self.generate_treekey()
-        self.treepopulation= head(self).nodecount()
+        self.treepopulation = head(self).nodecount()
         if promptamountsOn and __name__ == '__main__':
             # only prompt the user to set the amounts if running in main
             # module and the boolean is true
@@ -190,6 +191,16 @@ class Node(NodeB):  # pylint: disable=R0913
         return self.amountonhand
     # end def
 
+    def updatenodecount(self, count: int):
+        """
+        change the treepopulation attribute of the each node in the tree
+
+        Args:
+            count (int): _description_
+        """
+        self.treepopulation = count
+        for subnode in self.children.items():
+            subnode[1].updatenodecount(count)
     def nodecount(self, count: int = 0) -> int:
         """
         count how many nodes are in the ingredient tree
@@ -205,9 +216,10 @@ class Node(NodeB):  # pylint: disable=R0913
         for subnode in self.children.items():
             subnode[1].nodecount(count+1)
         # set the population counter attribute of the instance
-        self.treepopulation = count
+        self.updatenodecount(count)
         return count
     # end def
+
 
     def changetreekey(self, newtreekey: str):
         """
