@@ -127,6 +127,22 @@ class Node(NodeB):  # pylint: disable=R0913
 # end def
 
 
+def promptheadname() -> str:
+    """
+    prompts the user for the head node name
+
+    Returns:
+        str: the name of the head node
+    """
+    while True:
+        myinput: str = input('What is the name of the item you are trying to make: ').strip()  # noqa: E501 #pylint: disable=line-too-long
+        if len(myinput) == 0:
+            print('Your input cannot be empty!')
+        else:
+            return myinput
+# end def
+
+
 def head(node: Node) -> Node:
     """
     traverse to the parent most Node
@@ -323,22 +339,6 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
         node.recursivearithmetic()
     # return the head of the ingredient tree
     return head(node)
-# end def
-
-
-def promptheadname() -> str:
-    """
-    prompts the user for the head node name
-
-    Returns:
-        str: the name of the head node
-    """
-    while True:
-        myinput: str = input('What is the name of the item you are trying to make: ').strip()  # noqa: E501 #pylint: disable=line-too-long
-        if len(myinput) == 0:
-            print('Your input cannot be empty!')
-        else:
-            return myinput
 # end def
 
 
