@@ -2,6 +2,19 @@
 - functional programming
 """
 
+from enum import Enum
+
+
+class ProgramState(Enum):
+    """
+    tentative docstring description
+    """
+    MODE_A = 0  # recursive arithmetic (amountresulted)
+    MODE_B = 1  # inverse recursive arithmetic (amountonhand)
+
+
+MODE: ProgramState = ProgramState.MODE_A
+
 
 class NodeB:  # pylint: disable=R0903
     """
