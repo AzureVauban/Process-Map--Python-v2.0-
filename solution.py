@@ -298,7 +298,12 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
 
 
 if __name__ == '__main__':
-    #prompt program mode
+    # prompt program mode
+    print('What mode do you want to run the program in?')
+    print('A. Figure out how much of an item you can create with the'
+          ' ingredients you have')
+    print('B. Figure out how much of an item you need to create a certain'
+          ' amount of an item')
     
     industrial_battery: Node = Node('industrial battery', None)
     protocite_bar: Node = Node('protocite bar', industrial_battery, 0, 1, 5)
