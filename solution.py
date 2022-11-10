@@ -163,6 +163,31 @@ class Node(NodeB):  # pylint: disable=R0913
         self.treekey = newtreekey
         for subnode in self.children.items():
             subnode[1].changetreekey(newtreekey)
+
+    def pandasrow(self) -> dict:
+        """
+        create a row of data of the Node for writing to the csv file
+
+        Returns:
+            dict: a dict of information about the Node
+        """
+        pandas_row: dict = {}
+        pandas_row.update({'Tree_Key': self.treekey})
+        pandas_row.update({'Ingredient': self.ingredient})
+        pandas_row.update({'Ingredient_Alias': self.aliasingredient})
+        if self.parent is not None:
+            pandas_row.update(
+                {'Parent_of_Ingredient': self.parent.ingredient})
+        else:
+            pandas_row.update({'Parent_of_Ingredient': 'None'})
+        pandas_row.update({'Amount_on_Hand': str(self.amountonhand)})
+        pandas_row.update(
+            {'Amount_Made_Per_Craft': str(self.amountparentmadepercraft)})
+        pandas_row.update(
+            {'Amount_Needed_Per_Craft': str(self.amountneeded)})
+        pandas_row.update({'Generation': str(self.generation)})
+        return pandas_row
+    # end def
 # end def
 
 
