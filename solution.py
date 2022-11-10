@@ -2,9 +2,9 @@
 - functional programming
 """
 
-from enum import Enum
 import math
 import sys
+from enum import Enum
 
 
 class ProgramState(Enum):
@@ -236,7 +236,7 @@ def subpopulate(node: Node, ingredient: str) -> Node:
 # end def
 
 
-def populate(node: Node) -> Node:
+def populate(node: Node) -> Node:  # pylint: disable=R0912
     """create a tree of Nodes
 
     Args:
