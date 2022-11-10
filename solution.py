@@ -199,7 +199,7 @@ def writetreetocsv(headnode: Node):
         pandas.DataFrame(columns=FIELDNAMES).to_csv(
             FILENAME, index=False)
         # open file again to append to it
-        headnode.output_tree_to_csv()
+        writetreetocsv(headnode)
     else:
         # then write to the file but calling the method again recursively
         for row in headnode.csv_createrowsdicts([]):
