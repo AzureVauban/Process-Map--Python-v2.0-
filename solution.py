@@ -100,6 +100,7 @@ class Node(NodeB):  # pylint: disable=R0913
                  amountneeded: int = 1,
                  promptamountparentmade: bool = False,  # pylint:disable=W0613
                  promptamountsOn: bool = False,
+                 isfromcsvfile : bool = False,
                  treekey: str = '') -> None:
         super().__init__(ingredient,
                          amountonhand,
@@ -115,7 +116,10 @@ class Node(NodeB):  # pylint: disable=R0913
             self.treekey = self.parent.treekey
         else:
             self.generation = 0
-            self.treekey=treekey
+            if isfromcsvfile:
+                self.treekey = treekey
+            else:
+                self.treekey = self.generate_treekey()
         if promptamountsOn and __name__ == '__main__':
             # only prompt the user to set the amounts if running in main
             # module and the boolean is true
@@ -362,7 +366,7 @@ def parsecsv() -> dict:
                                                    parent=None,
                                                    promptamountparentmade=False,  # noqa: E501 #pylint: disable=line-too-long
                                                    treekey=green[0],
-                                                   # isfromcsvfile=True,
+                                                   isfromcsvfile=True,
                                                    promptamountsOn=False)})
     if len(headnodes) == 0:
         return {-1: None}
