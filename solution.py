@@ -389,7 +389,8 @@ def createtree(node: Node, pandasrow: list) -> bool:
     pandasrow[1] = pandasrow[1].replace('_', ' ')
     # remove any underscores from the parent of the ingredient
     pandasrow[3] = pandasrow[3].replace('_', ' ')
-    foundemplacelocation: bool = node.treekey == pandasrow[0] and pandasrow[3] != 'None' and pandasrow[3] == node.ingredient and pandasrow[7] > 0 and node is not None
+    foundemplacelocation: bool = node.treekey == pandasrow[0] and pandasrow[
+        3] != 'None' and pandasrow[3] == node.ingredient and pandasrow[7] > 0 and node is not None
     if foundemplacelocation:
         # @note somewhere in the project it needs to be determined if the user
         # will allow the amount on hands from the csv file to be used or if
@@ -400,7 +401,7 @@ def createtree(node: Node, pandasrow: list) -> bool:
              amountparentmadepercraft=pandasrow[5],
              amountonhand=pandasrow[4],
              treekey=pandasrow[0],
-             isfromcsvfile=True,
+             # isfromcsvfile=True,
              promptamountsOn=False)
         return True
     return False
@@ -431,9 +432,11 @@ def createtreefromcsv(parent: Node) -> Node:
             # the sublist contains node only from the tree
             sublist.append(green)
     # figure out where to emplace the node
-    for index,row in enumerate(sublist):
+    for index, row in enumerate(sublist):
         if createtree(parent, row):
             sublist.remove(index)
+        else:
+            continue
     return head(parent)
 
 
