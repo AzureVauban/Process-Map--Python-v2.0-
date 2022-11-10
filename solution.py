@@ -458,8 +458,8 @@ def createtreefromcsv(parent: Node) -> Node:
     for index, row in enumerate(sublist):
         if createtree(parent, row):
             # sublist.remove(sublist[index])
-            red: str = str(row[index][1])  # ingredient name
-            blue: str = str(row[index][3])  # parent ingredient name
+            red: str = str(row[index])  # ingredient name
+            blue: str = str(row[index])  # parent ingredient name
             print('emplaced node', index, red+'|' + blue)
         else:
             continue
