@@ -18,7 +18,7 @@ class ProgramState(Enum):
 
 
 MODE: ProgramState = ProgramState.MODE_A
-TESTFILENAME: str = 'ingredient_trees_processmap.csv'
+FILENAME: str = 'ingredient_trees_processmap.csv'
 FIELDNAMES: list = [
     'Tree_Key',  # 74nry8keki',
     'Ingredient',  # Copper Wire
@@ -334,9 +334,9 @@ def superpopulate() -> Node:
         Node: head node of the populated ingredient tree
     """
     # check to see if there is a csv file in the current directory
-    if not os.path.isfile(FILENAME):
+    if not os.path.exists(FILENAME):
         # if there is, load the file and return the head node
-
+        return head(populate(Node('test')))
     # if the file exists, prase the file for head nodes
     # if not return a defaultly created ingredient tree
     return head(populate(Node('test')))
