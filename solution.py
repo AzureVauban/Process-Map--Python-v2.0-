@@ -115,7 +115,7 @@ class Node(NodeB):  # pylint: disable=R0913
             self.treekey = self.parent.treekey
         else:
             self.generation = 0
-            self.treekey = self.generate_treekey()
+            self.treekey=treekey
         if promptamountsOn and __name__ == '__main__':
             # only prompt the user to set the amounts if running in main
             # module and the boolean is true
