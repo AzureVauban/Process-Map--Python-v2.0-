@@ -540,7 +540,6 @@ if __name__ == '__main__':
                 break
             else:
                 break
-        #! headnode.clearamounts()
         # prompt the user to see if they want to run the program again
         while True:
             userinput = input('\nDo you want to run the program again with'
