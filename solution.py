@@ -201,8 +201,11 @@ class Node(NodeB):  # pylint: disable=R0913
             int: the number of nodes in the ingredient tree
         """
         count += 1
+        # recursively count instance subnodes
         for subnode in self.children.items():
             subnode[1].count(count)
+        # set the population counter attribute of the instance
+        self.treepopulation = count
         return count
     # end def
 
