@@ -247,7 +247,7 @@ def clone(node: Node) -> Node:
 # end def
 
 
-def pandaswritetree(head: Node):
+def pandaswritetree(headnode: Node):
     """
     recrusively creates a csv file and writes an ingredient tree onto it
 
@@ -260,7 +260,7 @@ def pandaswritetree(head: Node):
         pandas.DataFrame(columns=FIELDNAMES).to_csv(
             FILENAME, index=False)
         # open file again to append to it
-        pandaswritetree(head)
+        pandaswritetree(headnode)
     else:
         # create a pandas dataframe
         pass
