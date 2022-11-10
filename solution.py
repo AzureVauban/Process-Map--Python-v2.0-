@@ -94,7 +94,6 @@ class Node(NodeB):  # pylint: disable=R0913
     treekey: str = ''
     isfromcsvfile: bool = False
     treepopulation: int = 1
-    parentmost = None
 
     def __init__(self, ingredient: str = '',  # pylint: disable=R0913
                  parent=None,
@@ -118,13 +117,8 @@ class Node(NodeB):  # pylint: disable=R0913
             self.generation = self.parent.generation + 1
             self.parent.children.update({self.instancekey: self})
             self.treekey = self.parent.treekey
-            # set headnode
-            self.headnode = self.parent
-            while self.headnode.parent is not None:
-                self.headnode = headnode.parent
         else:
             self.generation = 0
-            headnode = self
             if isfromcsvfile:
                 self.treekey = treekey
             else:
