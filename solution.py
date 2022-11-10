@@ -368,7 +368,8 @@ def parsecsv() -> dict:
         return {-1: None}
     return headnodes
 
-def createtree(node : Node, pandasrow : list)
+def createtree(node : Node, pandasrow : list) -> bool:
+    
 def createtreefromcsv(parent: Node) -> Node:
     """
     figures out where to create and link a new node from the csv file
