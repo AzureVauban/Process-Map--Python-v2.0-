@@ -1,0 +1,12 @@
+Tree_Key,Ingredient,Ingredient_Alias,Parent_of_Ingredient,Amount_on_Hand,Amount_Of_Parent_Made_Per_Craft,Amount_Needed_Per_Craft,Generation
+u51cnlk7ld,industrial battery,industrial_battery,None,0,1,1,0
+u51cnlk7ld,protocite bar,protocite_bar,industrial battery,0,1,5,1
+u51cnlk7ld,protocite,protocite,protocite bar,0,1,2,2
+u51cnlk7ld,battery,battery,industrial battery,0,1,2,1
+u51cnlk7ld,pixels,pixels,battery,0,1,2500,2
+u51cnlk7ld,quantum processor,quantum_processor,industrial battery,0,1,1,1
+u51cnlk7ld,silicon board,silicon_board,quantum processor,0,1,4,2
+u51cnlk7ld,protocite bar,protocite_bar,quantum processor,0,1,2,2
+u51cnlk7ld,protocite,protocite,protocite bar,0,1,2,3
+u51cnlk7ld,thorium rod,thorium_rod,industrial battery,0,1,5,1
+u51cnlk7ld,thorium ore,thorium_ore,thorium rod,0,1,2,2
