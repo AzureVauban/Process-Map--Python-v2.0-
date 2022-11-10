@@ -376,7 +376,12 @@ def superpopulate() -> Node:  # todo finish this
         # if the file exists, parse it for head nodes
         return head(populate(Node(promptheadname())))
     # parse the csv file for head nodes
-
+    foundheadnodes: dict = {1: None}
+    # if there are no head nodes {-1:None}
+    if foundheadnodes == {-1: None}:
+        # return new ingredient tree
+        return head(populate(Node(promptheadname())))
+    # prompt the user to make select a head node to modify
     # if there is no csv file, return new tree
     return head(populate(Node(promptheadname())))
 
