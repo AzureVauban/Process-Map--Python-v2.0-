@@ -3,6 +3,7 @@
 """
 
 import math
+import os
 import sys
 from enum import Enum
 import time
@@ -333,7 +334,7 @@ def superpopulate() -> Node:
         Node: head node of the populated ingredient tree
     """
     # check to see if there is a csv file in the current directory
-    if not os.path.exists(FILENAME):
+    if not os.path.isfile(FILENAME):
         # if there is, load the file and return the head node
 
     # if the file exists, prase the file for head nodes
