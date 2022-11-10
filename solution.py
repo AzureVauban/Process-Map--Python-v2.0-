@@ -93,6 +93,7 @@ class Node(NodeB):  # pylint: disable=R0913
     instancekey: int = 0
     treekey: str = ''
     isfromcsvfile: bool = False
+
     def __init__(self, ingredient: str = '',  # pylint: disable=R0913
                  parent=None,
                  amountonhand: int = 0,
@@ -100,7 +101,7 @@ class Node(NodeB):  # pylint: disable=R0913
                  amountneeded: int = 1,
                  promptamountparentmade: bool = False,  # pylint:disable=W0613
                  promptamountsOn: bool = False,
-                 isfromcsvfile : bool = False,
+                 isfromcsvfile: bool = False,
                  treekey: str = '') -> None:
         super().__init__(ingredient,
                          amountonhand,
@@ -608,16 +609,15 @@ def superpopulate() -> Node:  # todo finish this
     # check to see if there is a csv file in the current directory
     if not os.path.exists(FILENAME):
         # if the file exists, parse it for head nodes
-        nodetree : Node = head(populate(Node(promptheadname())))
+        nodetree: Node = head(populate(Node(promptheadname())))
         nodetree.changetreekey(nodetree.generate_treekey())
         return nodetree
     # parse the csv file for head nodes
-    # todo create a method to parse the csv file and return a dict of nodes
     foundheadnodes: dict = parsecsv()
     # if there are no head nodes {-1:None}
     if foundheadnodes == {-1: None}:
         # return new ingredient tree
-        nodetree : Node = head(populate(Node(promptheadname())))
+        nodetree: Node = head(populate(Node(promptheadname())))
         nodetree.changetreekey(nodetree.generate_treekey())
         return nodetree
     userchoices: list = []
@@ -642,15 +642,14 @@ def superpopulate() -> Node:  # todo finish this
     userchoice: int = promptint()-1
     # if the user chosesn an index out or range, return a new tree
     if userchoice < 0 or userchoice > len(userchoices)-1:
-        nodetree : Node = head(populate(Node(promptheadname())))
+        nodetree: Node = head(populate(Node(promptheadname())))
         nodetree.changetreekey(nodetree.generate_treekey())
         return nodetree
     # return the head node of the chosen tree
     # create ingredient tree out of the csv file
-    nodetree : Node = head(populate(Node(promptheadname())))
-        nodetree.changetreekey(nodetree.generate_treekey())
-        return nodetree
-    return head(populate(createtreefromcsv(userchoices[userchoice])))
+    nodetree: Node = head(populate(createtreefromcsv(userchoices[userchoice])))
+    nodetree.changetreekey(nodetree.generate_treekey())
+    return nodetree
 
 
 if __name__ == '__main__':
