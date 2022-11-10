@@ -122,7 +122,7 @@ class Node(NodeB):  # pylint: disable=R0913
                 self.treekey = treekey
             else:
                 self.treekey = self.generate_treekey()
-        treepopulation : int = self.nodecount()
+        treepopulation : int = self.nodecount(0)
         if promptamountsOn and __name__ == '__main__':
             # only prompt the user to set the amounts if running in main
             # module and the boolean is true
@@ -203,7 +203,7 @@ class Node(NodeB):  # pylint: disable=R0913
         count += 1
         # recursively count instance subnodes
         for subnode in self.children.items():
-            subnode[1].count(count)
+            subnode[1].nodecount(count)
         # set the population counter attribute of the instance
         self.treepopulation = count
         return count
