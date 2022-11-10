@@ -139,7 +139,29 @@ class Node(NodeB):  # pylint: disable=R0913
             self.parent.recursivearithmetic()
         return self.amountresulted
     # end def
-
+    def reversearithmetic(self, desiredamount: int = 0) -> int:
+        """
+        tentative docstring description
+        """
+        self.amountresulted = desiredamount
+        red: float = ((self.amountparentmadepercraft/self.amountneeded)
+                      ** -1)*self.amountresulted
+        green: float = round(math.ceil(red))
+        self.amountonhand = int(max(red, green))
+        traceback: bool = green > red
+        if traceback:  # traverse upward and increase the amount on hand by 1
+            temp: Node = self
+            while temp.parent is not None:
+                temp = temp.parent
+                temp.amountonhand += 1
+        # continue method recursively
+        if len(self.children) > 0:
+            for childnode in self.children.items():
+                if not isinstance(childnode[1], Node):
+                    raise TypeError('child is not an instance of', Node)
+                childnode[1].reversearithmetic(self.amountonhand)
+        return self.amountonhand
+    # end def
     def nodecount(self, count: int = 0) -> int:
         """
         count how many nodes are in the ingredient tree
