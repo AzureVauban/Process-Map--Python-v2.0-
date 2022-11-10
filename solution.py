@@ -522,7 +522,24 @@ if __name__ == '__main__':
         # populate the ingredient tree
         useringredienttree: Node = superpopulate()
         # prompt the user if they want to output the ingredient tree onto A csv file
-        print('Do you want to output the ingredient tree onto a csv file?')
+        print('Do you want to save your tree to create',
+              useringredienttree.ingredient, 'to a csv file? (Y/N)')
+        while True:
+            userinput = input('').strip().upper()
+            if userinput not in ('Y', 'N'):
+                print("That input is not valid, please type in 'Y' or 'N'")
+            elif len(userinput) > 1:
+                print('Your input is too long, please only type in one'
+                      ' character')
+            elif userinput == 'Y':
+                # change the tree key
+                useringredienttree.changetreekey(useringredienttree.generate_treekey())
+                # write onto file
+                writetreetocsv(useringredienttree)
+                break
+            else:
+                break
+        headnode.clearamounts()
         # prompt the user to see if they want to run the program again
         while True:
             userinput = input('\nDo you want to run the program again with'
