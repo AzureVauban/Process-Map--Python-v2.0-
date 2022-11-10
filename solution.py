@@ -367,7 +367,7 @@ def parsecsv() -> dict:
     if len(headnodes) == 0:
         return {-1: None}
     return headnodes
-
+def createtreefromcsv(node : Node)
 
 def search(node: Node, ingredient: str, results: list) -> list:
     """
@@ -553,12 +553,17 @@ def superpopulate() -> Node:  # todo finish this
                 # swap red and blue
     # output the choices
     print('Do you want to choose from one of the following trees as a preset?')
-    for index, node in enumerate(userchoices,start=1):
-        print(index,end=str('. ' + node.ingredient)+'\n')
+    for index, node in enumerate(userchoices, start=1):
+        print(index, end=str('. ' + node.ingredient)+'\n')
     # prompt the user to make select a head node to modify
+    print('Please choose a head node to modify, select a number out of range to create a new tree')
+    userchoice : int = promptint()-1
     # if the user chosesn an index out or range, return a new tree
-    # if there is no csv file, return new tree
-    return head(populate(Node(promptheadname())))
+    if userchoice < 0 or userchoice > len(userchoices)-1:
+        return head(populate(Node(promptheadname())))
+    # return the head node of the chosen tree
+    # create ingredient tree out of the csv file
+    return head(populate(userchoices[userchoice]))
 
 
 if __name__ == '__main__':
