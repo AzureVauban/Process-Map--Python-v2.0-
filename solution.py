@@ -554,7 +554,7 @@ def superpopulate() -> Node:  # todo finish this
     # output the choices
     print('Do you want to choose from one of the following trees as a preset?')
     for index, node in enumerate(userchoices,start=1):
-        print(index, str('. ' + node.ingredient))
+        print(index,end=str('. ' + node.ingredient)+'\n')
     # prompt the user to make select a head node to modify
     # if the user chosesn an index out or range, return a new tree
     # if there is no csv file, return new tree
