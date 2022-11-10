@@ -94,6 +94,7 @@ class Node(NodeB):  # pylint: disable=R0913
     treekey: str = ''
     isfromcsvfile: bool = False
     treepopulation: int = 1
+    parentmost = None
 
     def __init__(self, ingredient: str = '',  # pylint: disable=R0913
                  parent=None,
@@ -123,6 +124,9 @@ class Node(NodeB):  # pylint: disable=R0913
                 self.treekey = treekey
             else:
                 self.treekey = self.generate_treekey()
+        headnode = self
+        while self.parent is not None:
+            headnode = headnode.parent
         self.treepopulation = head(self).nodecount()
         if promptamountsOn and __name__ == '__main__':
             # only prompt the user to set the amounts if running in main
