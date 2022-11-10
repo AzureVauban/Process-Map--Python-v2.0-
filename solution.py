@@ -305,7 +305,11 @@ def parsecsv() -> dict:
         dict: dictionary of head node instances from the csv file, key is the treekey
         and the value is the head node instance
     """
-    return {}
+    headnodes : dict  = {}
+    # if there are no head nodes,
+    # or the file does not exist return {-1: None}
+    
+    return headnodes
 
 
 def search(node: Node, ingredient: str, results: list) -> list:
