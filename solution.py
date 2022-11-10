@@ -308,7 +308,12 @@ def parsecsv() -> dict:
     headnodes : dict  = {}
     # if there are no head nodes,
     # or the file does not exist return {-1: None}
+    if not os.path.exists(FILENAME):
+        return {-1:None}
+    # parse csv for head nodes
     
+    if len(headnodes) == 0:
+        return {-1:None}
     return headnodes
 
 
