@@ -335,10 +335,9 @@ def superpopulate() -> Node:
     """
     # check to see if there is a csv file in the current directory
     if not os.path.exists(FILENAME):
-        # if there is, load the file and return the head node
+        # if the file exists, parse it for head nodes
         return head(populate(Node('test')))
-    # if the file exists, prase the file for head nodes
-    # if not return a defaultly created ingredient tree
+    # if there is no csv file, return new tree
     return head(populate(Node('test')))
 
 
