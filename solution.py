@@ -281,7 +281,7 @@ def trail(node: Node):
 
 def outputingredients(node: Node):
     """
-    print the subingredients of the parameter Node
+    populate submethod, print the subingredients of the parameter Node
 
     Args:
         node (Node): parent node, the node to print the subingredients of
@@ -295,6 +295,17 @@ def outputingredients(node: Node):
         print(f'{index+1}. {ingredient}')
     print('')
 # end def
+
+
+def parsecsv() -> dict:
+    """
+    parses the csv file to look for head nodes, returns a dictionary of them
+
+    Returns:
+        dict: dictionary of head node instances from the csv file, key is the treekey
+        and the value is the head node instance
+    """
+    return {}
 
 
 def search(node: Node, ingredient: str, results: list) -> list:
@@ -433,7 +444,8 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
             searchresults: list = search(head(node), ingredient[0], [])
             # todo debug interaction with the search method
             _ = subpopulate(node, ingredient[0], searchresults)
-            print('created a new node at', _)  # @audit remove this later (for debugging)
+            # @audit remove this later (for debugging)
+            print('created a new node at', _)
     # recrusively continue to populate the tree
     for subnode in node.children.items():
         populate(subnode[1])
