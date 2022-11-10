@@ -64,7 +64,8 @@ class Node(NodeB):  # pylint: disable=R0913
                  amountonhand: int = 0,
                  amountparentmadepercraft: int = 1,
                  amountneeded: int = 1,
-                 promptamountsOn: bool = False) -> None:
+                 promptamountparentmade: bool = False,  # pylint:disable=W0613
+                 promptamountsOn: bool = False) -> None:  # pylint:disable=W0613
         super().__init__(ingredient,
                          amountonhand,
                          amountparentmadepercraft,
@@ -81,6 +82,8 @@ class Node(NodeB):  # pylint: disable=R0913
             self.generation = 0
 #            if self.treekey == '':
 #                self.treekey = self.generate_treekey()
+        if promptamountsOn and __name__ == '__main__':
+            pass
         Node.instances += 1
     # end def
 
