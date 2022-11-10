@@ -4,6 +4,7 @@
 
 import math
 import os
+import random
 import sys
 import time
 from enum import Enum
@@ -72,6 +73,7 @@ class Node(NodeB):  # pylint: disable=R0913
     generation: int = 0
     instances: int = 0
     instancekey: int = 0
+    treekey: str = ''
 
     def __init__(self, ingredient: str = '',  # pylint: disable=R0913
                  parent=None,
@@ -91,16 +93,27 @@ class Node(NodeB):  # pylint: disable=R0913
         if self.parent is not None:
             self.generation = self.parent.generation + 1
             self.parent.children.update({self.instancekey: self})
-#            self.treekey = self.parent.treekey
+            self.treekey = self.parent.treekey
         else:
             self.generation = 0
-#            if self.treekey == '':
-#                self.treekey = self.generate_treekey()
+            self.treekey = self.generate_treekey()
         if promptamountsOn and __name__ == '__main__':
             # only prompt the user to set the amounts if running in main
             # module and the boolean is true
             pass
         Node.instances += 1
+    # end def
+
+    @classmethod
+    def generate_treekey(cls) -> str:
+        """
+        generate a unique tree key of random alphumeric characters
+        """
+        cls.treekey = ''
+        for _ in range(0, 10):
+            cls.treekey += random.choice(
+                '0123456789abcdefghijklmnopqrstuvwxyz')
+        return cls.treekey
     # end def
 
     def recursivearithmetic(self) -> int:
