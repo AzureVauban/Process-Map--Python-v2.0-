@@ -457,7 +457,8 @@ def createtreefromcsv(parent: Node) -> Node:
     # figure out where to emplace the node
     for index, row in enumerate(sublist):
         if createtree(parent, row):
-            sublist.remove(sublist[index])
+            #sublist.remove(sublist[index])
+            print('emplaced node', index)
         else:
             continue
     return head(parent)
