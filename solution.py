@@ -335,19 +335,33 @@ if __name__ == '__main__':
             else:
                 MODE = ProgramState.MODE_A
                 break
-        break
-    industrial_battery: Node = Node('industrial battery', None)
-    protocite_bar: Node = Node('protocite bar', industrial_battery, 0, 1, 5)
-    protocite: Node = Node('protocite', protocite_bar, 0, 1, 2)
-    battery: Node = Node('battery', industrial_battery, 0, 1, 2)
-    pixels: Node = Node('pixels', battery, 0, 1, 2500)
-    quantum_processor: Node = Node('quantum processor', industrial_battery)
-    silicon_board: Node = Node('silicon board', quantum_processor, 0, 1, 4)
-    protocite_bar2: Node = Node('protocite bar', quantum_processor, 0, 1, 2)
-    protocite2: Node = Node('protocite', protocite_bar2, 0, 1, 2)
-    thorium_rod: Node = Node('thorium rod', industrial_battery, 0, 1, 5)
-    thorium_ore: Node = Node('thorium ore', thorium_rod, 0, 1, 2)
-    populate(head(thorium_ore))
+        industrial_battery: Node = Node('industrial battery', None)
+        protocite_bar: Node = Node(
+            'protocite bar', industrial_battery, 0, 1, 5)
+        protocite: Node = Node('protocite', protocite_bar, 0, 1, 2)
+        battery: Node = Node('battery', industrial_battery, 0, 1, 2)
+        pixels: Node = Node('pixels', battery, 0, 1, 2500)
+        quantum_processor: Node = Node('quantum processor', industrial_battery)
+        silicon_board: Node = Node('silicon board', quantum_processor, 0, 1, 4)
+        protocite_bar2: Node = Node(
+            'protocite bar', quantum_processor, 0, 1, 2)
+        protocite2: Node = Node('protocite', protocite_bar2, 0, 1, 2)
+        thorium_rod: Node = Node('thorium rod', industrial_battery, 0, 1, 5)
+        thorium_ore: Node = Node('thorium ore', thorium_rod, 0, 1, 2)
+        populate(head(thorium_ore))
+        # prompt the user to see if they want to run the program again
+        while True:
+            userinput = input('\nDo you want to run the program again with'
+                              ' another item tree? (Y/N) ').strip().upper()
+            if userinput not in ('Y', 'N'):
+                print("That input is not valid, please type in 'Y' or 'N'")
+            elif len(userinput) > 1:
+                print('Your input is too long, please only type in one'
+                      ' character')
+            else:
+                break
+        if userinput == 'N':
+            break
     # close program in 10 seconds
     print('the program will close in 10 seconds')
     NANI: int = 10
