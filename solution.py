@@ -21,7 +21,7 @@ class ProgramState(Enum):
 
 
 MODE: ProgramState = ProgramState.MODE_A
-FILENAME: str = 'ingredient_trees_processmap.csv'
+FILENAME: str = 'ingredient_trees.csv'
 FIELDNAMES: list = [
     'Tree_Key',  # 74nry8keki',
     'Ingredient',  # Copper Wire
@@ -223,7 +223,7 @@ def writetreetocsv(headnode: Node):
         writetreetocsv(headnode)
     else:
         # then write to the file but calling the method again recursively
-        for row in headnode.csv_createrowsdicts([]):
+        for row in headnode.pandastree_row([]):
             pandas.DataFrame(row, index=[0]).to_csv(
                 FILENAME, mode='a', header=False, index=False)
     # end def
@@ -485,6 +485,7 @@ def superpopulate() -> Node:  # todo finish this
 if __name__ == '__main__':
     # prompt program mode
     print('Welcome to Process Map (Python) v1.1!\n')
+
     # program runtime loop
     while True:
         print('Which mode do you want to use:')
