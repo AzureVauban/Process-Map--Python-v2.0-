@@ -23,7 +23,7 @@ class ProgramState(Enum):
 
 
 PROGRAMSTATE: Enum = ProgramState.MODE_A
-TESTFILENAME: str = 'ingredient_trees_processmap.csv'
+FILENAME: str = 'ingredient_trees_processmap.csv'
 FIELDNAMES: list = [
     'Tree_Key',  # 74nry8keki',
     'Ingredient',  # Copper Wire
@@ -345,17 +345,17 @@ class Node(NodeB):  # pylint: disable=R0902
         tentative docstring description
         """
         # if the file is not in the directory, create it
-        if not os.path.exists(TESTFILENAME):
+        if not os.path.exists(FILENAME):
             # create the file
             pandas.DataFrame(columns=FIELDNAMES).to_csv(
-                TESTFILENAME, index=False)
+                FILENAME, index=False)
             # open file again to append to it
             self.output_tree_to_csv()
         else:
             # then write to the file but calling the method again recursively
             for row in self.csv_createrowsdicts([]):
                 pandas.DataFrame(row, index=[0]).to_csv(
-                    TESTFILENAME, mode='a', header=False, index=False)
+                    FILENAME, mode='a', header=False, index=False)
     # end def
 
     def returnlistofalias(self, ingredient: str, tempname: list) -> list:  # noqa: E501
@@ -529,7 +529,7 @@ def csvsearch() -> dict:
     # if there are nodes found, return the dict, else return {-1:None}
     foundheadpoints: dict = {}
     # iterate through the rows of the dataframe
-    for purple in pandas.read_csv(TESTFILENAME).to_dict('index').items():
+    for purple in pandas.read_csv(FILENAME).to_dict('index').items():
         # convert the values of the dictionary to a list
         green: list = list(purple[1].values())
         # if the conditions are met for it to mock a head node
@@ -560,7 +560,7 @@ def createtreefromcsv(node: Node) -> Node:
     sublist: list = []
     # ? list of rows that match the head node's tree key
     # iterate through the rows of the dataframe
-    for purple in pandas.read_csv(TESTFILENAME).to_dict('index').items():
+    for purple in pandas.read_csv(FILENAME).to_dict('index').items():
         # convert the values of the dictionary to a list
         green: list = list(purple[1].values())
         # if the tree key of the row matches the head node's tree key
@@ -711,8 +711,8 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
     # parse the csv file for head nodes, and create a dict
     foundheadnodes: dict = {}
     # iterate through the rows of the dataframe
-    if os.path.isfile(TESTFILENAME):
-        for purple in pandas.read_csv(TESTFILENAME).to_dict('index').items():
+    if os.path.isfile(FILENAME):
+        for purple in pandas.read_csv(FILENAME).to_dict('index').items():
             # convert the values of the dictionary to a list
             green: list = list(purple[1].values())
             # if the conditions are met for it to mock a head node
@@ -729,7 +729,7 @@ def superpopulate() -> Node:  # pylint: disable=too-many-branches
     if len(foundheadnodes) == 0:
         foundheadnodes.update({-1: None})
     # if the search returns {-1:None} call populate method
-    if foundheadnodes == {-1: None} or not os.path.isfile(TESTFILENAME):
+    if foundheadnodes == {-1: None} or not os.path.isfile(FILENAME):
         return populate(Node(promptheadname(), None))
     # else convert dict to list and prompt the user to choose an ingredient
     userchoices: list = []

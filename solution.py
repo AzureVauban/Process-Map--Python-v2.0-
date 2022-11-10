@@ -255,7 +255,17 @@ def pandaswritetree(head: Node):
     # if the file does not exist, recursively call the method again and write
     # the header of the csv
     if not os.path.exists(FILENAME):
-        
+        pandas.DataFrame(columns=FIELDNAMES).to_csv(
+                FILENAME, index=False)
+            # open file again to append to it
+        pandaswritetree(head)
+    else:
+        # create a pandas dataframe
+        dataframe: pandas.DataFrame = pandas.DataFrame(columns=FIELDNAMES)
+        # recursively add the data to the dataframe
+        adddatatodataframe(head, dataframe)
+        # write the dataframe to the csv file
+        dataframe.to_csv(FILENAME, mode='a', header=False, index=False)
 # end def
 
 
