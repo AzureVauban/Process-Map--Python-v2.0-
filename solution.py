@@ -416,12 +416,14 @@ def superpopulate() -> Node:  # todo finish this
     for node in foundheadnodes.items():
         userchoices.append(node[1])
     # sort the list of nodes by the amount of children
-    for j, bluenode in enumerate(userchoices):
-        for i, rednode in enumerate(userchoices):
-            # if userchoices[i] has more children than userchoices[j]
-            # swap rednode and bluenode
-            if userchoices[i].count(0) > userchoices[j].count(0):
-                userchoices[i], userchoices[j] = userchoices[j], userchoices[i]
+    for blue in range(0, len(userchoices)-1):
+        for red in range(0, len(userchoices)-1):
+            if not isinstance(userchoices[red], Node):
+                raise TypeError('item in the list is not an instance of', Node)
+            if userchoices[blue].nodecount() < userchoices[red].nodecount():
+                # flake8: noqa
+                userchoices[blue], userchoices[red] = userchoices[red], userchoices[blue]
+                # swap red and blue
     # prompt the user to make select a head node to modify
     # if the user chosesn an index out or range, return a new tree
 
