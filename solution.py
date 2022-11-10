@@ -92,7 +92,7 @@ class Node(NodeB):  # pylint: disable=R0913
     instances: int = 0
     instancekey: int = 0
     treekey: str = ''
-
+    isfromcsvfile: bool = False
     def __init__(self, ingredient: str = '',  # pylint: disable=R0913
                  parent=None,
                  amountonhand: int = 0,
@@ -107,6 +107,7 @@ class Node(NodeB):  # pylint: disable=R0913
                          amountparentmadepercraft,
                          amountneeded)
         self.treekey = treekey
+        self.isfromcsvfile = isfromcsvfile
         self.instancekey = Node.instances
         self.children = {}
         self.parent = parent
@@ -489,6 +490,7 @@ def clone(node: Node) -> Node:
                                   amountneeded=subnode[1].amountneeded,
                                   amountparentmadepercraft=subnode[1].amountparentmadepercraft,  # noqa: E501 #pylint: disable=line-too-long
                                   promptamountparentmade=False,
+                                  isfromcsvfile=subnode[1].isfromcsvfile,
                                   promptamountsOn=False)
         print('creating', childsubnode.ingredient, 'data...')
     return clonenode
