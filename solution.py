@@ -193,12 +193,19 @@ class Node(NodeB):  # pylint: disable=R0913
 
 def writetreetocsv(headnode: Node):
     # check if the csv file exists
-    # if it does not, create it and wwrite file headers to it then call method again
-    if not os.path.isfile(FILENAME):
-        with open('ingredienttree.csv', 'w', newline='') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=CSV_FIELDNAMES)
-            writer.writeheader()
-        writetreetocsv(headnode)
+    # if the file is not in the directory, create it
+    if not os.path.exists(FILENAME):
+        # create the file
+        pandas.DataFrame(columns=FIELDNAMES).to_csv(
+            FILENAME, index=False)
+        # open file again to append to it
+        headnode.output_tree_to_csv()
+    else:
+        # then write to the file but calling the method again recursively
+        for row in headnode.csv_createrowsdicts([]):
+            pandas.DataFrame(row, index=[0]).to_csv(
+                FILENAME, mode='a', header=False, index=False)
+    # end def
 
 
 def promptheadname() -> str:
