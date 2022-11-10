@@ -298,6 +298,8 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
 
 
 if __name__ == '__main__':
+    #prompt program mode
+    
     industrial_battery: Node = Node('industrial battery', None)
     protocite_bar: Node = Node('protocite bar', industrial_battery, 0, 1, 5)
     protocite: Node = Node('protocite', protocite_bar, 0, 1, 2)
