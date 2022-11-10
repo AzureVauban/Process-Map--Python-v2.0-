@@ -312,6 +312,8 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
     # return the head of the ingredient tree
     return head(node)
 # end def
+
+
 def superpopulate() -> Node:
     """
     creates an ingredient tree and returns its head node
@@ -320,6 +322,7 @@ def superpopulate() -> Node:
         Node: head node of the populated ingredient tree
     """
     return head(populate(Node('test')))
+
 
 if __name__ == '__main__':
     # prompt program mode
