@@ -190,8 +190,17 @@ class Node(NodeB):  # pylint: disable=R0913
     # end def
 # end def
 
-def writetreetocsv(heheadad: Node):
-    
+
+def writetreetocsv(headnode: Node):
+    # check if the csv file exists
+    # if it does not, create it and wwrite file headers to it then call method again
+    if not os.path.isfile(FILENAME):
+        with open('ingredienttree.csv', 'w', newline='') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=CSV_FIELDNAMES)
+            writer.writeheader()
+        writetreetocsv(headnode)
+
+
 def promptheadname() -> str:
     """
     prompts the user for the head node name
