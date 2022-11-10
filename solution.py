@@ -368,8 +368,44 @@ def parsecsv() -> dict:
         return {-1: None}
     return headnodes
 
-def createtree(node : Node, pandasrow : list) -> bool:
-    
+
+def createtree(node: Node, pandasrow: list) -> bool:
+    """
+    figure out where to emplace the Node in the tree
+
+    Args:
+        node (Node): _description_
+        pandasrow (list): _description_
+
+    Raises:
+        TypeError: _description_
+
+    Returns:
+        bool: _description_
+    """
+    if len(pandasrow) != len(FIELDNAMES):
+        raise TypeError('The row of data is not the correct length')
+    # remove any underscores from the ingredient
+    pandasrow[1] = pandasrow[1].replace('_', ' ')
+    # remove any underscores from the parent of the ingredient
+    pandasrow[3] = pandasrow[3].replace('_', ' ')
+    foundemplacelocation: bool = node.treekey == pandasrow[0] and pandasrow[3] != 'None' and pandasrow[3] == node.ingredient and pandasrow[7] > 0 and node is not None
+    if foundemplacelocation:
+        # @note somewhere in the project it needs to be determined if the user
+        # will allow the amount on hands from the csv file to be used or if
+        # the user will input the amount on hand themselves
+        Node(pandasrow[1],
+             parent=node,
+             amountneeded=pandasrow[6],
+             amountparentmadepercraft=pandasrow[5],
+             amountonhand=pandasrow[4],
+             treekey=pandasrow[0],
+             isfromcsvfile=True,
+             promptamountsOn=False)
+        return True
+    return False
+
+
 def createtreefromcsv(parent: Node) -> Node:
     """
     figures out where to create and link a new node from the csv file
@@ -395,8 +431,9 @@ def createtreefromcsv(parent: Node) -> Node:
             # the sublist contains node only from the tree
             sublist.append(green)
     # figure out where to emplace the node
-    for row in sublist:
-        pass
+    for index,row in enumerate(sublist):
+        if createtree(parent, row):
+            sublist.remove(index)
     return head(parent)
 
 
