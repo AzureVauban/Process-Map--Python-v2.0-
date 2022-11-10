@@ -155,7 +155,8 @@ class Node(NodeB):  # pylint: disable=R0913
             subnode[1].count(count)
         return count
     # end def
-    def changetreekey(self, newtreekey: str) -> None:
+
+    def changetreekey(self, newtreekey: str):
         """
         change the tree key of the node and all of its children
         """
@@ -280,26 +281,6 @@ def clone(node: Node) -> Node:
                                   promptamountsOn=False)
         print('creating', childsubnode.ingredient, 'data...')
     return clonenode
-# end def
-
-
-def pandaswritetree(headnode: Node):
-    """
-    recrusively creates a csv file and writes an ingredient tree onto it
-
-    Args:
-        head (Node): head of the ingredient tree
-    """
-    # if the file does not exist, recursively call the method again and write
-    # the header of the csv
-    if not os.path.exists(FILENAME):
-        pandas.DataFrame(columns=FIELDNAMES).to_csv(
-            FILENAME, index=False)
-        # open file again to append to it
-        pandaswritetree(headnode)
-    else:
-        # create a pandas dataframe
-        pass
 # end def
 
 
