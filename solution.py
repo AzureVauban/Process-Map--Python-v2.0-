@@ -347,7 +347,7 @@ def clone(node: Node) -> Node:
 # end def
 
 
-def subpopulate(node: Node, searchnodes: list) -> Node:
+def subpopulate(node: Node, parseresults: list) -> Node:
     """
     create a subnode and link it to the parent node
 
@@ -359,7 +359,7 @@ def subpopulate(node: Node, searchnodes: list) -> Node:
     """
     # create a list of subnodes that have the same ingredient as the parameter
     # if the list is empty return a defaultly created new node Node
-    parseresults: list = search(node, ingredient, [])
+    # !parseresults: list = search(node, ingredient, [])
     for subnode in parseresults:
         if not isinstance(subnode, Node):
             raise TypeError('item in the list is not an instance of', Node)
