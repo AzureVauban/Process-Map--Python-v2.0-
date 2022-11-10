@@ -533,7 +533,7 @@ def superpopulate() -> Node:  # todo finish this
         return head(populate(Node(promptheadname())))
     # parse the csv file for head nodes
     # todo create a method to parse the csv file and return a dict of nodes
-    foundheadnodes: dict = {1: None}
+    foundheadnodes: dict = parsecsv()
     # if there are no head nodes {-1:None}
     if foundheadnodes == {-1: None}:
         # return new ingredient tree
@@ -559,7 +559,6 @@ def superpopulate() -> Node:  # todo finish this
 
 
 if __name__ == '__main__':
-    tentativedict : dict = parsecsv()
     # ingredient tree for Industrial Battery
     industrial_battery: Node = Node('industrial battery')
     protocite_bar: Node = Node('protocite bar', industrial_battery, 0, 1, 5)
