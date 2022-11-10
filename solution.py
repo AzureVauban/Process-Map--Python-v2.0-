@@ -367,7 +367,20 @@ def parsecsv() -> dict:
     if len(headnodes) == 0:
         return {-1: None}
     return headnodes
-def createtreefromcsv(node : Node)
+def createtreefromcsv(parent: Node,pandasrow : list) -> Node:
+    """
+    figures out where to create and link a new node from the csv file
+
+    Args:
+        parent (Node): potential parent node to link new node to
+        pandasrow (list): data from csv file, creates node from it
+
+    Returns:
+        Node: parent most node of the tree
+    """
+    # check if the r
+    print(parent, pandasrow)
+    return head(parent)
 
 def search(node: Node, ingredient: str, results: list) -> list:
     """
