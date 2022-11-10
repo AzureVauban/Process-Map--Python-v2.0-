@@ -155,7 +155,13 @@ class Node(NodeB):  # pylint: disable=R0913
             subnode[1].count(count)
         return count
     # end def
-    def 
+    def changetreekey(self, newtreekey: str) -> None:
+        """
+        change the tree key of the node and all of its children
+        """
+        self.treekey = newtreekey
+        for subnode in self.children.items():
+            subnode[1].changetreekey(newtreekey)
 # end def
 
 
