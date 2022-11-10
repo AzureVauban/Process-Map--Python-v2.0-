@@ -3,6 +3,8 @@
 """
 
 from enum import Enum
+import math
+import sys
 
 
 class ProgramState(Enum):
@@ -78,6 +80,30 @@ class Node(NodeB):  # pylint: disable=R0913
 #            if self.treekey == '':
 #                self.treekey = self.generate_treekey()
         Node.instances += 1
+    # end def
+
+    def recursivearithmetic(self) -> int:
+        """
+        tentative docstring description
+        """
+        # check and set minimum resulted if queue is not empty
+        tentativeinteger: int = sys.maxsize
+        if len(self.queueamountresulted) == 0:
+            tentativeinteger = 0
+        else:
+            for myinteger in self.queueamountresulted.items():
+                if myinteger[1] < tentativeinteger:
+                    tentativeinteger = myinteger[1]
+        red = (self.amountparentmadepercraft / self.amountneeded)
+        blue = (red*self.amountonhand) + (red*tentativeinteger)
+        blue = round(math.floor(blue))
+        self.amountresulted = blue
+        # recursively call the method
+        if self.parent is not None:
+            self.parent.queueamountresulted.update(
+                {self.ingredient: self.amountresulted})
+            self.parent.recursivearithmetic()
+        return self.amountresulted
     # end def
 # end def
 
