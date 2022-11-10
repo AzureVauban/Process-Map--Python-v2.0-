@@ -190,7 +190,8 @@ class Node(NodeB):  # pylint: disable=R0913
     # end def
 # end def
 
-def writetocsv()
+def writetreetocsv(heheadad: Node):
+    
 def promptheadname() -> str:
     """
     prompts the user for the head node name
