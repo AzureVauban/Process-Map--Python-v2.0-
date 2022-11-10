@@ -254,8 +254,8 @@ def pandaswritetree(head: Node):
     """
     # if the file does not exist, recursively call the method again and write
     # the header of the csv
-    
-    pass
+    if not os.path.exists(FILENAME):
+        
 # end def
 
 
