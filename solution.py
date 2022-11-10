@@ -188,18 +188,27 @@ def search(node: Node, ingredient: str, results: list) -> list:
 
 def clone(node: Node) -> Node:
     """
-    return a clone of the node
-
-    Args:
-        node (Node): node to clone from
-
-    Returns:
-        Node: a clone of the node which is a node instance with the same data
-        but on a differing memory address
+    tentative docstring description
     """
-    return node
+    # create a copy of the parameter node
+    clonenode: Node = Node(ingredient=node.ingredient,
+                           parent=node.parent,
+                           amountonhand=node.amountonhand,
+                           amountneeded=node.amountneeded,
+                           amountparentmadepercraft=False,
+                           promptamountsOn=False)
+    # create a copy of all the children of the parameter node
+    for subnode in node.children.items():
+        childsubnode: Node = Node(ingredient=subnode[1].ingredient,
+                                  parent=subnode,
+                                  amountonhand=subnode[1].amountonhand,
+                                  amountneeded=subnode[1].amountneeded,
+                                  amountparentmadepercraft=subnode[1].amountparentmadepercraft,  # noqa: E501 #pylint: disable=line-too-long
+                                  promptamountparentmade=False,
+                                  promptamountsOn=False)
+        print('creating', childsubnode.ingredient, 'data...')
+    return clonenode
 # end def
-
 
 def subpopulate(node: Node, ingredient: str) -> Node:
     """
