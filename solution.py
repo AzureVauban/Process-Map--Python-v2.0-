@@ -188,10 +188,31 @@ class Node(NodeB):  # pylint: disable=R0913
         pandas_row.update({'Generation': str(self.generation)})
         return pandas_row
     # end def
+
+    def pandastree_row(self, rows: list) -> list:
+        """
+        return a list of all the pandas rows in the tree
+
+        Args:
+            rows (list): a list of pandas rows (dicts of data)
+
+        Returns:
+            list: a list of dicts containing the data for each node to be written onto a csv file
+        """
+        rows.append(self.pandasrow())
+        for child in self.children.items():
+            child[1].pandastree_row(rows)
+        return rows
 # end def
 
 
 def writetreetocsv(headnode: Node):
+    """
+    writes an ingredient tree onto a csv file
+
+    Args:
+        headnode (Node): the head node of the ingredient tree
+    """
     # check if the csv file exists
     # if the file is not in the directory, create it
     if not os.path.exists(FILENAME):
