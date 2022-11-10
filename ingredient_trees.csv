@@ -1,0 +1,22 @@
+Tree_Key,Ingredient,Ingredient_Alias,Parent_of_Ingredient,Amount_on_Hand,Amount_Of_Parent_Made_Per_Craft,Amount_Needed_Per_Craft,Generation
+4xtdymjfuc,industrial battery,industrial_battery,None,0,1,1,0
+4xtdymjfuc,protocite bar,protocite_bar,industrial battery,0,1,5,1
+4xtdymjfuc,protocite,protocite,protocite bar,0,1,2,2
+4xtdymjfuc,battery,battery,industrial battery,0,1,2,1
+4xtdymjfuc,pixels,pixels,battery,0,1,2500,2
+4xtdymjfuc,quantum processor,quantum_processor,industrial battery,0,1,1,1
+4xtdymjfuc,silicon board,silicon_board,quantum processor,0,1,4,2
+4xtdymjfuc,protocite bar,protocite_bar,quantum processor,0,1,2,2
+4xtdymjfuc,protocite,protocite,protocite bar,0,1,2,3
+4xtdymjfuc,thorium rod,thorium_rod,industrial battery,0,1,5,1
+4xtdymjfuc,thorium ore,thorium_ore,thorium rod,0,1,2,2
+f2ow02jl0v,Advanced Alloy,Advanced_Alloy,None,0,1,1,0
+f2ow02jl0v,Protocite Bar,Protocite_Bar,Advanced Alloy,0,1,1,1
+f2ow02jl0v,Zerchesium Bar,Zerchesium_Bar,Advanced Alloy,0,1,1,1
+f2ow02jl0v,Penumbrite Shard,Penumbrite_Shard,Advanced Alloy,0,1,1,1
+f2ow02jl0v,Lead,Lead,Advanced Alloy,0,1,1,1
+jeqyr983f3,Block of Emerald,Block_of_Emerald,None,0,1,1,0
+jeqyr983f3,Emerald,Emerald,Block of Emerald,0,1,1,1
+jeqyr983f3,Wooden Stick,Wooden_Stick,Emerald,0,1,1,2
+jeqyr983f3,Wooden Planks,Wooden_Planks,Wooden Stick,0,1,1,3
+jeqyr983f3,Oak Wood,Oak_Wood,Wooden Planks,0,1,1,4
