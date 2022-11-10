@@ -65,7 +65,7 @@ class Node(NodeB):  # pylint: disable=R0913
                  amountparentmadepercraft: int = 1,
                  amountneeded: int = 1,
                  promptamountparentmade: bool = False,  # pylint:disable=W0613
-                 promptamountsOn: bool = False) -> None:  # pylint:disable=W0613
+                 promptamountsOn: bool = False) -> None:
         super().__init__(ingredient,
                          amountonhand,
                          amountparentmadepercraft,
