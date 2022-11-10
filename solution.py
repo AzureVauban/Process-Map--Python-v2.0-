@@ -397,7 +397,10 @@ def superpopulate() -> Node:  # todo finish this
     if foundheadnodes == {-1: None}:
         # return new ingredient tree
         return head(populate(Node(promptheadname())))
+    # convert the dict into a list of node instances
     # prompt the user to make select a head node to modify
+    # if the user chosesn an index out or range, return a new tree
+
     # if there is no csv file, return new tree
     return head(populate(Node(promptheadname())))
 
