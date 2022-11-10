@@ -559,6 +559,7 @@ def superpopulate() -> Node:  # todo finish this
 
 
 if __name__ == '__main__':
+    tentativedict : dict = parsecsv()
     # ingredient tree for Industrial Battery
     industrial_battery: Node = Node('industrial battery')
     protocite_bar: Node = Node('protocite bar', industrial_battery, 0, 1, 5)
