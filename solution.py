@@ -368,7 +368,7 @@ def parsecsv() -> dict:
         return {-1: None}
     return headnodes
 
-
+def createtree(node : Node, pandasrow : list)
 def createtreefromcsv(parent: Node) -> Node:
     """
     figures out where to create and link a new node from the csv file
@@ -395,7 +395,7 @@ def createtreefromcsv(parent: Node) -> Node:
             sublist.append(green)
     # figure out where to emplace the node
     for row in sublist:
-        
+        pass
     return head(parent)
 
 
