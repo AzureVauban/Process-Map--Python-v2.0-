@@ -479,6 +479,7 @@ def clone(node: Node) -> Node:
                            amountonhand=node.amountonhand,
                            amountneeded=node.amountneeded,
                            amountparentmadepercraft=False,
+                           isfromcsvfile=node.isfromcsvfile,
                            promptamountsOn=False)
     # create a copy of all the children of the parameter node
     for subnode in node.children.items():
