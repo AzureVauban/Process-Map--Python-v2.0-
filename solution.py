@@ -118,15 +118,17 @@ class Node(NodeB):  # pylint: disable=R0913
             self.generation = self.parent.generation + 1
             self.parent.children.update({self.instancekey: self})
             self.treekey = self.parent.treekey
+            # set headnode
+            self.headnode = self.parent
+            while self.parent is not None:
+                self.headnode = headnode.parent
         else:
             self.generation = 0
+            headnode = self
             if isfromcsvfile:
                 self.treekey = treekey
             else:
                 self.treekey = self.generate_treekey()
-        headnode = self
-        while self.parent is not None:
-            headnode = headnode.parent
         self.treepopulation = head(self).nodecount()
         if promptamountsOn and __name__ == '__main__':
             # only prompt the user to set the amounts if running in main
