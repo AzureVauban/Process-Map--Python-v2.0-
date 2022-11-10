@@ -551,6 +551,8 @@ def superpopulate() -> Node:  # todo finish this
                 # flake8: noqa
                 userchoices[blue], userchoices[red] = userchoices[red], userchoices[blue]
                 # swap red and blue
+    # output the choices
+    
     # prompt the user to make select a head node to modify
     # if the user chosesn an index out or range, return a new tree
 
