@@ -33,6 +33,7 @@ FIELDNAMES: list = [
     'Generation'  # 1
 ]
 
+
 def promptint() -> int:
     """
     prompts the user for an postive integer and returns it
@@ -49,6 +50,8 @@ def promptint() -> int:
         else:
             return int(myinput)
 # end def
+
+
 class NodeB:  # pylint: disable=R0903
     """
     tentative docstring description
@@ -154,6 +157,7 @@ class Node(NodeB):  # pylint: disable=R0913
             self.parent.recursivearithmetic()
         return self.amountresulted
     # end def
+
     def reversearithmetic(self, desiredamount: int = 0) -> int:
         """
         tentative docstring description
@@ -177,6 +181,7 @@ class Node(NodeB):  # pylint: disable=R0913
                 childnode[1].reversearithmetic(self.amountonhand)
         return self.amountonhand
     # end def
+
     def nodecount(self, count: int = 0) -> int:
         """
         count how many nodes are in the ingredient tree
@@ -342,15 +347,15 @@ def parsecsv() -> dict:
         dict: dictionary of head node instances from the csv file, key is the treekey
         and the value is the head node instance
     """
-    headnodes : dict  = {}
+    headnodes: dict = {}
     # if there are no head nodes,
     # or the file does not exist return {-1: None}
     if not os.path.exists(FILENAME):
-        return {-1:None}
+        return {-1: None}
     # parse csv for head nodes
-    
+
     if len(headnodes) == 0:
-        return {-1:None}
+        return {-1: None}
     return headnodes
 
 
