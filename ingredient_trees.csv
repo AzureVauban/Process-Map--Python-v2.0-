@@ -11,3 +11,10 @@ u51cnlk7ld,protocite,protocite,protocite bar,0,1,2,3
 u51cnlk7ld,thorium rod,thorium_rod,industrial battery,0,1,5,1
 u51cnlk7ld,thorium ore,thorium_ore,thorium rod,0,1,2,2
 
+ftae9vxcu9,Advanced Alloy,Advanced_Alloy,None,0,1,1,0
+ftae9vxcu9,Protocite Bar,Protocite_Bar,Advanced Alloy,0,1,1,1
+ftae9vxcu9,Protocite,Protocite,Protocite Bar,0,1,1,2
+ftae9vxcu9,Zerchesium Ore,Zerchesium_Ore,Advanced Alloy,0,1,1,1
+ftae9vxcu9,Penumbrite Shard,Penumbrite_Shard,Advanced Alloy,0,1,1,1
+ftae9vxcu9,Penumbrite,Penumbrite,Penumbrite Shard,0,1,1,2
+ftae9vxcu9,Lead,Lead,Advanced Alloy,0,1,1,1

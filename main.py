@@ -354,7 +354,7 @@ class Node(NodeB):  # pylint: disable=R0902
         else:
             # then write to the file but calling the method again recursively
             for row in self.csv_createrowsdicts([]):
-                pandas.DataFrame(row, index=[0]).to_csv(
+                pandas.DataFrame(row, index=[-1]).to_csv(
                     FILENAME, mode='a', header=False, index=False)
     # end def
 
