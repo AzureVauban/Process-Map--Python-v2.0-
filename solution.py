@@ -378,7 +378,11 @@ def createtreefromcsv(parent: Node,pandasrow : list) -> Node:
     Returns:
         Node: parent most node of the tree
     """
-    # check if the r
+    # check if the row has the correct amount of elements
+    # the node must match the following requirements to link:
+    # parent ingredient must be the same as the parent ingredient
+    # treekey must be the same
+    # generation must be greater than 0
     print(parent, pandasrow)
     return head(parent)
 
