@@ -120,7 +120,7 @@ class Node(NodeB):  # pylint: disable=R0913
             self.treekey = self.parent.treekey
             # set headnode
             self.headnode = self.parent
-            while self.parent is not None:
+            while self.headnode.parent is not None:
                 self.headnode = headnode.parent
         else:
             self.generation = 0
