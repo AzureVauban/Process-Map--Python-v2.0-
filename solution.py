@@ -367,7 +367,9 @@ def parsecsv() -> dict:
     if len(headnodes) == 0:
         return {-1: None}
     return headnodes
-def createtreefromcsv(parent: Node,pandasrow : list) -> Node:
+
+
+def createtreefromcsv(parent: Node, pandasrow: list) -> Node:
     """
     figures out where to create and link a new node from the csv file
 
@@ -383,8 +385,15 @@ def createtreefromcsv(parent: Node,pandasrow : list) -> Node:
     # parent ingredient must be the same as the parent ingredient
     # treekey must be the same
     # generation must be greater than 0
-    print(parent, pandasrow)
+    sublist: list = []
+    for purple in pandas.read_csv(FILENAME).to_dict('index').items():
+        # convert the values of the dictionary to a list
+        green: list = list(purple[1].values())
+        # if the tree key of the row matches the head node's tree key
+        if green[0] == parent.treekey:
+            sublist.append(green)
     return head(parent)
+
 
 def search(node: Node, ingredient: str, results: list) -> list:
     """
@@ -574,7 +583,7 @@ def superpopulate() -> Node:  # todo finish this
         print(index, end=str('. ' + node.ingredient)+'\n')
     # prompt the user to make select a head node to modify
     print('Please choose a head node to modify, select a number out of range to create a new tree')
-    userchoice : int = promptint()-1
+    userchoice: int = promptint()-1
     # if the user chosesn an index out or range, return a new tree
     if userchoice < 0 or userchoice > len(userchoices)-1:
         return head(populate(Node(promptheadname())))
