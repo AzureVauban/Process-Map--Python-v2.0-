@@ -191,7 +191,7 @@ class Node(NodeB):  # pylint: disable=R0913
         return self.amountonhand
     # end def
 
-    def updatenodecount(self, count: int):
+    def updatenodecount(self, count: int):  # todo debug this method
         """
         change the treepopulation attribute of the each node in the tree
 
@@ -201,7 +201,9 @@ class Node(NodeB):  # pylint: disable=R0913
         self.treepopulation = count
         for subnode in self.children.items():
             subnode[1].updatenodecount(count)
-    def nodecount(self, count: int = 0) -> int:
+    # end def
+
+    def nodecount(self, count: int = 0) -> int:  # todo debug this method
         """
         count how many nodes are in the ingredient tree
 
@@ -219,7 +221,6 @@ class Node(NodeB):  # pylint: disable=R0913
         self.updatenodecount(count)
         return count
     # end def
-
 
     def changetreekey(self, newtreekey: str):
         """
