@@ -35,7 +35,10 @@ FIELDNAMES: list = [
 
 def promptint() -> int:
     """
-    tentative docstring description
+    prompts the user for an postive integer and returns it
+
+    Returns:
+        int: postive integer from user input
     """
     while True:
         myinput = input('').strip()
