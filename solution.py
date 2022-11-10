@@ -5,8 +5,8 @@
 import math
 import os
 import sys
-from enum import Enum
 import time
+from enum import Enum
 
 import pandas
 
@@ -392,6 +392,7 @@ def superpopulate() -> Node:  # todo finish this
         # if the file exists, parse it for head nodes
         return head(populate(Node(promptheadname())))
     # parse the csv file for head nodes
+    # todo create a method to parse the csv file and return a dict of nodes
     foundheadnodes: dict = {1: None}
     # if there are no head nodes {-1:None}
     if foundheadnodes == {-1: None}:
