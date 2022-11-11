@@ -398,6 +398,24 @@ def createtree(node: Node, pandasrow: list) -> bool:
     return False
 
 
+def treepopulation(node: Node, population: int = 0) -> int:
+    """
+    returns the amount of nodes within an ingredient tree
+
+    Args:
+        node (Node): stores information about an ingredient
+        population (int, optional): amount of nodes counted. Defaults to 0.
+
+    Returns:
+        int: the current population of the ingredient tree
+    """
+    population += 1
+    for subnode in node.children.items():
+        treepopulation(subnode[1], population)
+    return population
+# end def
+
+
 def createtreefromcsv(parent: Node) -> Node:  # todo debug this method
     """
     figures out where to create and link a new node from the csv file
@@ -431,7 +449,8 @@ def createtreefromcsv(parent: Node) -> Node:  # todo debug this method
         blue: str = str(row[1])  # ingredient name
         print('emplaced node', index, red+' | ' + blue)
         # sublist.remove(sublist[index])
-    print('population of tree:', end=str(head(parent).nodecount())+'\n')
+        print('Current population of tree: ', end=str(
+            treepopulation(head(parent), 0))+'\n')
     return head(parent)
 
 
