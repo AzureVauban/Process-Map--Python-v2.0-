@@ -464,6 +464,7 @@ def createtreefromcsv(parent: Node) -> Node:  # todo debug this method
             print('emplaced node', index, red+' | ' + blue)
             sublist.remove(sublist[index])
         createtree(parent, row)
+        print('\n')
     return head(parent)
 
 
