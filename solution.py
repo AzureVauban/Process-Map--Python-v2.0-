@@ -396,7 +396,7 @@ def createtree(node: Node, pandasrow: list) -> bool:
              promptamountsOn=False)
         return False
     else:
-        for submdo
+        for subnode in 
     return False
 
 
