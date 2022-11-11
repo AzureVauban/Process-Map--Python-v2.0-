@@ -673,10 +673,8 @@ def superpopulate() -> Node:  # todo finish this
     return nodetree
 
 
-def mainruntime(): #pylint: disable=R0912
-    """
-    main program runtime, recursively call itself to loop again
-    """
+if __name__ == '__main__':
+    # prompt program mode
     print('Welcome to Process Map (Python) v1.1!\n')
     # program runtime loop
     while True:
@@ -697,7 +695,7 @@ def mainruntime(): #pylint: disable=R0912
                 print('Your input is too long, please only type in one'
                       'character')
             elif userinput == 'B':
-                programmode = ProgramState.MODE_B
+                MODE = ProgramState.MODE_B
                 break
             elif userinput == 'H':
                 # print prompt again
@@ -710,12 +708,12 @@ def mainruntime(): #pylint: disable=R0912
                       ' desired item, (Type in B)')
                 print("Type in 'H' if you need a reminder of the prompt\n")
             else:
-                programmode = ProgramState.MODE_A
+                MODE = ProgramState.MODE_A
                 break
         # populate the ingredient tree
         useringredienttree: Node = superpopulate()
         # if the programde mode is B
-        if programmode == ProgramState.MODE_B:
+        if MODE == ProgramState.MODE_B:
             # prompt the user for how much an item they want to make
             print('How much of the item do you want to make?')
             useringredienttree.reversearithmetic(promptint())
@@ -751,13 +749,6 @@ def mainruntime(): #pylint: disable=R0912
                 break
         if userinput == 'N':
             break
-
-
-if __name__ == '__main__':
-    # prompt program mode
-    print('Welcome to Process Map (Python) v1.1!\n')
-    # program runtime loop
-    mainruntime()
     # close program in 10 seconds
     print('the program will close in 10 seconds')
     NANI: int = 10
