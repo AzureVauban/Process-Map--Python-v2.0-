@@ -672,6 +672,7 @@ def superpopulate() -> Node:  # todo finish this
     nodetree.changetreekey(nodetree.generate_treekey())
     return nodetree
 
+
 def mainruntime():
     """
     main program runtime, recursively call itself to loop again
@@ -750,82 +751,13 @@ def mainruntime():
                 break
         if userinput == 'N':
             break
+
+
 if __name__ == '__main__':
     # prompt program mode
     print('Welcome to Process Map (Python) v1.1!\n')
     # program runtime loop
-    while True:
-        print('Which mode do you want to use:')
-        print('Mode A - You are trying to figure out how much of your desired'
-              ' item you can make with the current supply of materials'
-              ' (Type in A)')
-        print('Mode B - You are trying to figure out how much base materials'
-              ' you need to create a certain amount of your desired item, ('
-              'Type in B)')
-        print("Type in 'H' if you need a reminder of the prompt\n")
-        # prompt user which mode they want to run the program in
-        while True:
-            userinput = input('').strip().upper()
-            if userinput not in ('A', 'B', 'H'):
-                print("That input is not valid, please type in 'A' or 'B'")
-            elif len(userinput) > 1:
-                print('Your input is too long, please only type in one'
-                      'character')
-            elif userinput == 'B':
-                MODE = ProgramState.MODE_B
-                break
-            elif userinput == 'H':
-                # print prompt again
-                print('Which mode do you want to use:')
-                print('Mode A - You are trying to figure out how much of your'
-                      ' desired item you can make with the current supply of'
-                      ' materials (Type in A)')
-                print('Mode B - You are trying to figure out how much base'
-                      ' materials you need to create a certain amount of your'
-                      ' desired item, (Type in B)')
-                print("Type in 'H' if you need a reminder of the prompt\n")
-            else:
-                MODE = ProgramState.MODE_A
-                break
-        # populate the ingredient tree
-        useringredienttree: Node = superpopulate()
-        # if the programde mode is B
-        if MODE == ProgramState.MODE_B:
-            # prompt the user for how much an item they want to make
-            print('How much of the item do you want to make?')
-            useringredienttree.reversearithmetic(promptint())
-        # prompt the user if they want to output the ingredient tree onto A csv file
-        print('Do you want to save your tree to create',
-              useringredienttree.ingredient, 'to a csv file? (Y/N)')
-        while True:
-            userinput = input('').strip().upper()
-            if userinput not in ('Y', 'N'):
-                print("That input is not valid, please type in 'Y' or 'N'")
-            elif len(userinput) > 1:
-                print('Your input is too long, please only type in one'
-                      ' character')
-            elif userinput == 'Y':
-                # change the tree key
-                useringredienttree.changetreekey(
-                    useringredienttree.generate_treekey())
-                # write onto file
-                writetreetocsv(useringredienttree)
-                break
-            else:
-                break
-        # prompt the user to see if they want to run the program again
-        while True:
-            userinput = input('\nDo you want to run the program again with'
-                              ' another item tree? (Y/N) ').strip().upper()
-            if userinput not in ('Y', 'N'):
-                print("That input is not valid, please type in 'Y' or 'N'")
-            elif len(userinput) > 1:
-                print('Your input is too long, please only type in one'
-                      ' character')
-            else:
-                break
-        if userinput == 'N':
-            break
+    mainruntime()
     # close program in 10 seconds
     print('the program will close in 10 seconds')
     NANI: int = 10
