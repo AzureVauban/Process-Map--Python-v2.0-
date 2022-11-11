@@ -442,6 +442,7 @@ def createtreefromcsv(parent: Node) -> Node:  # todo debug this method
             # the sublist contains node only from the tree
             sublist.append(green)
     # figure out where to emplace the node
+    # * correctly finds all nodes with the same treekey from the csv file
     for index, row in enumerate(sublist):
         createtree(parent, row)
         # sublist.remove(sublist[index])
