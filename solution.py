@@ -448,7 +448,7 @@ def createtreefromcsv(parent: Node) -> Node:  # todo debug this method
     # treekey must be the same
     # generation must be greater than 0
     sublist: list = []
-    for purple in pandas.read_csv(FILENAME).to_dict('index').itemPs():
+    for purple in pandas.read_csv(FILENAME).to_dict('index').items():
         # convert the values of the dictionary to a list
         green: list = list(purple[1].values())
         # if the tree key of the row matches the head node's tree key
