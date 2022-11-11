@@ -20,3 +20,14 @@ jeqyr983f3,Emerald,Emerald,Block of Emerald,0,1,1,1
 jeqyr983f3,Wooden Stick,Wooden_Stick,Emerald,0,1,1,2
 jeqyr983f3,Wooden Planks,Wooden_Planks,Wooden Stick,0,1,1,3
 jeqyr983f3,Oak Wood,Oak_Wood,Wooden Planks,0,1,1,4
+dmz2auy124,A,A,None,1,1,1,0
+dmz2auy124,B1,B1,A,1,1,1,1
+dmz2auy124,C2,C2,B1,1,1,1,2
+dmz2auy124,B2,B2,A,1,1,1,1
+dmz2auy124,C1,C1,B2,1,1,1,2
+dmz2auy124,B3,B3,A,1,1,1,1
+dmz2auy124,C3,C3,B3,1,1,1,2
+dmz2auy124,D1,D1,B3,1,1,1,2
+dmz2auy124,D2,D2,D1,1,1,1,3
+dmz2auy124,D3,D3,D2,1,1,1,4
+dmz2auy124,E4,E4,D1,1,1,1,3
