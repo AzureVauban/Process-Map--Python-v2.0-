@@ -462,8 +462,7 @@ def createtreefromcsv(parent: Node) -> Node:  # todo debug this method
             red: str = str(row[3])  # parent ingredient name
             blue: str = str(row[1])  # ingredient name
             print('emplaced node', index, red+' | ' + blue)
-        else:
-            continue
+        createtree(parent, row)
     return head(parent)
 
 
