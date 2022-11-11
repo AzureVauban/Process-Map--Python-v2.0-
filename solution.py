@@ -673,7 +673,7 @@ def superpopulate() -> Node:  # todo finish this
     return nodetree
 
 
-def mainruntime():
+def mainruntime(): #pylint: disable=R0912
     """
     main program runtime, recursively call itself to loop again
     """
@@ -697,7 +697,7 @@ def mainruntime():
                 print('Your input is too long, please only type in one'
                       'character')
             elif userinput == 'B':
-                MODE = ProgramState.MODE_B
+                programmode = ProgramState.MODE_B
                 break
             elif userinput == 'H':
                 # print prompt again
@@ -710,12 +710,12 @@ def mainruntime():
                       ' desired item, (Type in B)')
                 print("Type in 'H' if you need a reminder of the prompt\n")
             else:
-                MODE = ProgramState.MODE_A
+                programmode = ProgramState.MODE_A
                 break
         # populate the ingredient tree
         useringredienttree: Node = superpopulate()
         # if the programde mode is B
-        if MODE == ProgramState.MODE_B:
+        if programmode == ProgramState.MODE_B:
             # prompt the user for how much an item they want to make
             print('How much of the item do you want to make?')
             useringredienttree.reversearithmetic(promptint())
