@@ -132,7 +132,7 @@ class Node(NodeB):  # pylint: disable=R0913
     # end def
 
     @classmethod
-    def generate_treekey(cls,maxlength : int = random.randint(10,20)) -> str:
+    def generate_treekey(cls, maxlength: int = random.randint(10, 20)) -> str:
         """
         generate a unique tree key of random alphumeric characters
         """
@@ -441,7 +441,7 @@ def createtreefromcsv(parent: Node) -> Node:  # todo debug this method
     Returns:
         Node: parent most node of the tree
     """
-    # todo - debug this method (creates tree incorrectly (LACKS GEN>2 NODES)) 
+    # todo - debug this method (creates tree incorrectly (LACKS GEN>2 NODES))
     # check if the row has the correct amount of elements
     # the node must match the following requirements to link:
     # parent ingredient must be the same as the parent ingredient
@@ -462,8 +462,8 @@ def createtreefromcsv(parent: Node) -> Node:  # todo debug this method
         red: str = str(row[3])  # parent ingredient name
         blue: str = str(row[1])  # ingredient name
         print('emplaced node', index, red+' | ' + blue)
-        #sublist.remove(sublist[index])
-    print('population of tree:',end=str(head(parent).nodecount())+'\n')
+        # sublist.remove(sublist[index])
+    print('population of tree:', end=str(head(parent).nodecount())+'\n')
     return head(parent)
 
 
