@@ -394,7 +394,9 @@ def createtree(node: Node, pandasrow: list) -> bool:
              treekey=pandasrow[0],
              # isfromcsvfile=True,
              promptamountsOn=False)
-        return True
+        return False
+    else:
+        for submdo
     return False
 
 
