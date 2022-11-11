@@ -454,7 +454,7 @@ def createtreefromcsv(parent: Node) -> Node:  # todo debug this method
         print('emplaced node', index, red+' | ' + blue)
         # sublist.remove(sublist[index])
         print('Current population of tree: \x1B[33m', end=str(
-            treepop(parent, 0))+'\x1B[0m\n')
+            treepop(parent))+'\x1B[0m\n')
     return head(parent)
 
 
