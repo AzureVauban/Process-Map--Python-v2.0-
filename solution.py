@@ -398,7 +398,7 @@ def createtree(node: Node, pandasrow: list) -> bool:
     return False
 
 
-def population(node: Node, nodecount: int = 0) -> int:
+def treepop(node: Node, population: int = 0) -> int:
     """
     returns the amount of nodes within an ingredient tree
 
@@ -409,10 +409,10 @@ def population(node: Node, nodecount: int = 0) -> int:
     Returns:
         int: the current population of the ingredient tree
     """
-    nodecount += 1
+    population += 1
     for subnode in node.children.items():
-        population(subnode[1], nodecount)
-    return nodecount
+        treepop(subnode[1], population)
+    return population
 # end def
 
 
@@ -450,8 +450,8 @@ def createtreefromcsv(parent: Node) -> Node:  # todo debug this method
         blue: str = str(row[1])  # ingredient name
         print('emplaced node', index, red+' | ' + blue)
         # sublist.remove(sublist[index])
-        print('Current population of tree: ', end=str(
-            population(head(parent), 0))+'\n')
+        print('Current population of tree: \x1B[33m', end=str(
+            treepop(head(parent), 0))+'\x1B[0m\n')
     return head(parent)
 
 
@@ -638,7 +638,7 @@ def superpopulate() -> Node:  # todo finish this
         for red in range(0, len(userchoices)-1):
             if not isinstance(userchoices[red], Node):
                 raise TypeError('item in the list is not an instance of', Node)
-            if population(head(userchoices[blue]), 0) < population(head(userchoices[red]), 0):
+            if treepop(head(userchoices[blue]), 0) < treepop(head(userchoices[red]), 0):
                 # flake8: noqa
                 userchoices[blue], userchoices[red] = userchoices[red], userchoices[blue]
                 # swap red and blue
