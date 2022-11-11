@@ -31,3 +31,12 @@ dmz2auy124,D1,D1,B3,1,1,1,2
 dmz2auy124,D2,D2,D1,1,1,1,3
 dmz2auy124,D3,D3,D2,1,1,1,4
 dmz2auy124,E4,E4,D1,1,1,1,3
+ef162n6fmm,Advanced Alloy2,Advanced_Alloy,None,6789,1,1,0
+ef162n6fmm,Protocite Bar,Protocite_Bar,Advanced Alloy2,6789,1,1,1
+ef162n6fmm,Protocite,Protocite,Protocite Bar,6789,1,1,2
+ef162n6fmm,Zerchesium Bar,Zerchesium_Bar,Advanced Alloy2,6789,1,1,1
+ef162n6fmm,Zerchesium Ore,Zerchesium_Ore,Zerchesium Bar,6789,1,1,2
+ef162n6fmm,Penumbrite Shard,Penumbrite_Shard,Advanced Alloy2,6789,1,1,1
+ef162n6fmm,Penumbrite,Penumbrite,Penumbrite Shard,6789,1,1,2
+ef162n6fmm,Lead,Lead,Advanced Alloy2,6789,1,1,1
+ef162n6fmm,Pixels,Pixels,Lead,6789,1,1,2
