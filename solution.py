@@ -449,8 +449,8 @@ def createtreefromcsv(parent: Node) -> Node:  # todo debug this method
     for index, row in enumerate(sublist):
         createtree(parent, row)
         # sublist.remove(sublist[index])
-        red: str = str('\x',row[3])  # parent ingredient name
-        blue: str = str(row[1])  # ingredient name
+        red: str = str('\x1B[31m'+row[3]+'\x1B[0m')  # parent ingredient name
+        blue: str = str('\x1B[36m'+row[1]+'\x1B[0m')  # ingredient name
         print('emplaced node', index, red+' | ' + blue)
         # sublist.remove(sublist[index])
         print('Current population of tree: \x1B[33m', end=str(
