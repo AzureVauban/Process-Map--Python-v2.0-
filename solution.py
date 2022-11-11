@@ -123,7 +123,6 @@ class Node(NodeB):  # pylint: disable=R0913
                 self.treekey = treekey
             else:
                 self.treekey = self.generate_treekey()
-        self.treepopulation = head(self).nodecount()
         if promptamountsOn and __name__ == '__main__':
             # only prompt the user to set the amounts if running in main
             # module and the boolean is true
@@ -189,37 +188,6 @@ class Node(NodeB):  # pylint: disable=R0913
                     raise TypeError('child is not an instance of', Node)
                 childnode[1].reversearithmetic(self.amountonhand)
         return self.amountonhand
-    # end def
-
-    def updatenodecount(self, count: int):  # todo debug this method
-        """
-        change the treepopulation attribute of the each node in the tree
-
-        Args:
-            count (int): _description_
-        """
-        self.treepopulation = count
-        for subnode in self.children.items():
-            subnode[1].updatenodecount(count)
-    # end def
-
-    def nodecount(self, count: int = 0) -> int:  # todo debug this method
-        """
-        count how many nodes are in the ingredient tree
-
-        Args:
-            count (int, optional): counted Node instances. Defaults to 0.
-
-        Returns:
-            int: the number of nodes in the ingredient tree
-        """
-        count += 1
-        # recursively count instance subnodes
-        for subnode in self.children.items():
-            subnode[1].nodecount(count+1)
-        # set the population counter attribute of the instance
-        self.updatenodecount(count)
-        return count
     # end def
 
     def changetreekey(self, newtreekey: str):
