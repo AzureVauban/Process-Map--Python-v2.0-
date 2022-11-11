@@ -132,12 +132,12 @@ class Node(NodeB):  # pylint: disable=R0913
     # end def
 
     @classmethod
-    def generate_treekey(cls) -> str:
+    def generate_treekey(cls,maxlength : int = random.randint(10,20)) -> str:
         """
         generate a unique tree key of random alphumeric characters
         """
         cls.treekey = ''
-        for _ in range(0, 10):
+        for _ in range(0, maxlength):
             cls.treekey += random.choice(
                 '0123456789abcdefghijklmnopqrstuvwxyz')
         return cls.treekey
