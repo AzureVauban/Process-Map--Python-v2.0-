@@ -430,7 +430,7 @@ def createtree(node: Node, pandasrow: list) -> bool:
     return False
 
 
-def createtreefromcsv(parent: Node) -> Node:
+def createtreefromcsv(parent: Node) -> Node:  # todo debug this method
     """
     figures out where to create and link a new node from the csv file
 
