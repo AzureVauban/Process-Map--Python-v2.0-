@@ -398,7 +398,7 @@ def createtree(node: Node, pandasrow: list) -> bool:
     return False
 
 
-def treepopulation(node: Node, population: int = 0) -> int:
+def population(node: Node, nodecount: int = 0) -> int:
     """
     returns the amount of nodes within an ingredient tree
 
@@ -409,10 +409,10 @@ def treepopulation(node: Node, population: int = 0) -> int:
     Returns:
         int: the current population of the ingredient tree
     """
-    population += 1
+    nodecount += 1
     for subnode in node.children.items():
-        treepopulation(subnode[1], population)
-    return population
+        population(subnode[1], nodecount)
+    return nodecount
 # end def
 
 
@@ -450,7 +450,7 @@ def createtreefromcsv(parent: Node) -> Node:  # todo debug this method
         print('emplaced node', index, red+' | ' + blue)
         # sublist.remove(sublist[index])
         print('Current population of tree: ', end=str(
-            treepopulation(head(parent), 0))+'\n')
+            population(head(parent), 0))+'\n')
     return head(parent)
 
 
@@ -637,7 +637,7 @@ def superpopulate() -> Node:  # todo finish this
         for red in range(0, len(userchoices)-1):
             if not isinstance(userchoices[red], Node):
                 raise TypeError('item in the list is not an instance of', Node)
-            if userchoices[blue].nodecount() < userchoices[red].nodecount():
+            if population(head(userchoices[blue]), 0) < population(head(userchoices[red]), 0):
                 # flake8: noqa
                 userchoices[blue], userchoices[red] = userchoices[red], userchoices[blue]
                 # swap red and blue
