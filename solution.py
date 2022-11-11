@@ -452,7 +452,7 @@ def createtreefromcsv(parent: Node) -> Node:  # todo debug this method
         # convert the values of the dictionary to a list
         green: list = list(purple[1].values())
         # if the tree key of the row matches the head node's tree key
-        if green[0] == parent.treekey:
+        if green[0] == parent.treekey and green[3] != 'None':
             # the sublist contains node only from the tree
             sublist.append(green)
     # figure out where to emplace the node
