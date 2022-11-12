@@ -271,7 +271,18 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
             child[1].pandastree_row(rows)
         return rows
     # end def
+    def population(self)->int:
+        """_summary_
 
+        Returns:
+            int: _description_
+        """
+        green = self
+        while green.parent is not None:
+            green = green.parent
+        return len(green.pandastree_row([]))
+    # end def
+    
     def reformat_output(self, endpoints: dict):
         """
         condenses the output of the tree into a more readable format with percentages
