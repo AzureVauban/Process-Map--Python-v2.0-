@@ -464,19 +464,19 @@ def search(node: Node, ingredient: str, results: list) -> list:
 
 def shouldclonechildren(ingredient: str, subnodes: dict) -> bool:
     """
-    check to see if the ingredient is within the subnodes of all the nodes within the same 
-    generation as its target location
+    check to see if the ingredient is within the subnodes of its siblings nodes of its emplace
+    location
 
     Args:
-        ingredient (str): _description_
-        subnodes (dict): _description_
+        ingredient (str): name of item to check if it is in the subnodes
+        subnodes (dict): a dictionary of subnodes of the parent node (emplace parent location)
 
     Raises:
-        TypeError: _description_
-        TypeError: _description_
+        TypeError: dictionary does not contain int, node pairs
+        TypeError: the parent of the subnodes are not the same
 
     Returns:
-        bool: _description_
+        bool: whether or not the ingredient is in the subnodes, used to help determine if the subnodes should be cloned
     """
     if len(subnodes) == 0:
         return True
