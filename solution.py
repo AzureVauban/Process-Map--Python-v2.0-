@@ -508,9 +508,9 @@ def subpopulate(node: Node, ingredient: str) -> Node:
     if len(parseresults) == 0:
         return Node(ingredient, node)
     # else, prompt the user to create a linkable clone of the new node
-    print('+ # On Hand')
-    print('++ # of the parent made per craft')
-    print('+++ # Needed to craft parent item once\n')
+    print('+ amount of',ingredient,'on Hand')
+    print('++ amount of the parent made per craft')
+    print('+++ amount Needed to craft parent item once\n')
     for index, subnode in enumerate(parseresults):
         # todo implement the prompt numeric input method,
         # come back to this and see if do the math on the tree
