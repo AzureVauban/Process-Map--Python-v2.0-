@@ -532,7 +532,8 @@ def clone(node: Node, clonechildren: bool = True) -> Node:
                                   amountparentmadepercraft=node.amountparentmadepercraft,
                                   isfromcsvfile=node.isfromcsvfile,
                                   promptamountsOn=False)
-        return bluenode
+            return bluenode
+        return clone(node, True)
     rednode: Node = Node(ingredient=node.ingredient,
                          parent=node.parent,
                          amountonhand=node.amountonhand,
