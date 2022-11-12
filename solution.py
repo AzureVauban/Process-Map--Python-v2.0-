@@ -382,9 +382,6 @@ def createtree(node: Node, pandasrow: list) -> bool:
     foundemplacelocation: bool = node.treekey == pandasrow[0] and pandasrow[
         3] != 'None' and pandasrow[3] == node.ingredient and pandasrow[7] > 0 and node is not None and pandasrow[7] == node.generation + 1  # noqa: E501 #pylint: disable=line-too-long
     if foundemplacelocation:
-        # @note somewhere in the project it needs to be determined if the user
-        # will allow the amount on hands from the csv file to be used or if
-        # the user will input the amount on hand themselves
         Node(pandasrow[1],
              parent=node,
              amountneeded=pandasrow[6],
