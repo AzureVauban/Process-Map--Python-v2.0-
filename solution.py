@@ -918,6 +918,8 @@ if __name__ == '__main__':
             print('How much of the item do you want to make?')
             ingredienttree.reversearithmetic(promptint())
         # $ this is where results of the arithmetic methods would be printed
+        if ingredienttree.treepopulation >= 2:
+            ingred
         # prompt the user if they want to output the ingredient tree onto A csv file
         print('Do you want to save your tree to create',
               ingredienttree.ingredient, 'to a csv file? (Y/N)')
