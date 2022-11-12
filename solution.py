@@ -270,8 +270,10 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
 
     def reformat_output(self, endpoints: dict):
         """
-        tentative docstring description
+        condenses the output of the tree into a more readable format with percentages
         """
+        # ! this method can only run when there is are more than one nodes in the ingredient tree,
+        # ! otherwise it will crash
         # set the new dictionary to be empty
         red_dict: dict = {}
         # set the new dictionary to have unique ingredients as keys
