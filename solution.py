@@ -643,13 +643,13 @@ def subpopulation(node: Node, instancecount: int) -> int:
 # end def
 
 
-nodecount: int = 0
-def returnpop(node: Node) -> int:
+
+def returnpop(node: Node,nodecount: int = 0) -> int:
     """
     counts how many nodes are in the ingredient tree
     """
     if node.parent is None:
-        no
+        nodecount = -100
     subpopulation(head(node), nodecount)
     return nodecount
 # end def
