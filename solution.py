@@ -121,7 +121,7 @@ class Node(NodeB):  # pylint: disable=R0913
             if isfromcsvfile:
                 self.treekey = treekey
             else:
-                self.treekey = self.generate_treekey()
+                self.treekey = self.gen_treekey()
         if promptamountsOn and __name__ == '__main__':
             # only prompt the user to set the amounts if running in main
             # module and the boolean is true
@@ -130,7 +130,7 @@ class Node(NodeB):  # pylint: disable=R0913
     # end def
 
     @classmethod
-    def generate_treekey(cls, maxlength: int = random.randint(10, 20)) -> str:
+    def gen_treekey(cls, maxlength: int = random.randint(10, 20)) -> str:
         """
         generate a unique tree key of random alphumeric characters
         """
@@ -189,7 +189,7 @@ class Node(NodeB):  # pylint: disable=R0913
         return self.amountonhand
     # end def
 
-    def changetreekey(self, newtreekey: str):
+    def modifytreekey(self, newtreekey: str):
         """
         change the tree key of the node and all of its children
         """
@@ -589,7 +589,15 @@ def shouldclonechildren(ingredient: str, subnodes: dict) -> bool:
     if ingredient in subingredientnames:
         return False
     return True
-
+# end def
+def population(node: Node,instancecount: int) -> int:
+    """
+    counts how many nodes are in the ingredient tree
+    """
+    instancecount +=1 
+    for node in node.children.items():
+        population(node[1],instancecount)
+    return instancecount
 
 def clone(node: Node, clonechildren: bool = True) -> Node:
     """
@@ -677,7 +685,7 @@ def subpopulate(node: Node, ingredient: str) -> Node:
                                + ' | ++ ' + str(subnode.amountneeded)
                                + ' | +++ ' + str(subnode.amountparentmadepercraft)+'\n'))
     # todo make sure program doesn't crash when user's input is blank
-    print('Choose a which verison of', ingredient, 'to clone:')
+    print('Choose which verison of', ingredient, 'to clone:')
     userchoice: int = promptint() - 1
     # if the user chooses to create a new node, return a clone subnode
     if userchoice < 0 or userchoice > len(parseresults)-1:
@@ -766,7 +774,7 @@ def superpopulate() -> Node:
     if not os.path.exists(FILENAME):
         # if the file exists, parse it for head nodes
         nodetree: Node = head(populate(Node(promptheadname())))
-        nodetree.changetreekey(nodetree.generate_treekey())
+        nodetree.modifytreekey(nodetree.gen_treekey())
         return nodetree
     # parse the csv file for head nodes
     foundheadnodes: dict = parsecsv()
@@ -774,7 +782,7 @@ def superpopulate() -> Node:
     if foundheadnodes == {-1: None}:
         # return new ingredient tree
         nodetree: Node = head(populate(Node(promptheadname())))
-        nodetree.changetreekey(nodetree.generate_treekey())
+        nodetree.modifytreekey(nodetree.gen_treekey())
         return nodetree
     userchoices: list = []
     # convert the dict into a list of node instances
@@ -799,12 +807,12 @@ def superpopulate() -> Node:
     # if the user chosesn an index out or range, return a new tree
     if userchoice < 0 or userchoice > len(userchoices)-1:
         nodetree: Node = head(populate(Node(promptheadname())))
-        nodetree.changetreekey(nodetree.generate_treekey())
+        nodetree.modifytreekey(nodetree.gen_treekey())
         return nodetree
     # return the head node of the chosen tree
     # create ingredient tree out of the csv file
     nodetree: Node = head(populate(createtreefromcsv(userchoices[userchoice])))
-    nodetree.changetreekey(nodetree.generate_treekey())
+    nodetree.modifytreekey(nodetree.gen_treekey())
     return nodetree
 
 
@@ -847,15 +855,15 @@ if __name__ == '__main__':
                 MODE = ProgramState.MODE_A
                 break
         # populate the ingredient tree
-        useringredienttree: Node = superpopulate()
+        nanitree: Node = superpopulate()
         # if the programde mode is B
         if MODE == ProgramState.MODE_B:
             # prompt the user for how much an item they want to make
             print('How much of the item do you want to make?')
-            useringredienttree.reversearithmetic(promptint())
+            nanitree.reversearithmetic(promptint())
         # prompt the user if they want to output the ingredient tree onto A csv file
         print('Do you want to save your tree to create',
-              useringredienttree.ingredient, 'to a csv file? (Y/N)')
+              nanitree.ingredient, 'to a csv file? (Y/N)')
         while True:
             userinput = input('').strip().upper()
             if userinput not in ('Y', 'N'):
@@ -865,16 +873,17 @@ if __name__ == '__main__':
                       ' character')
             elif userinput == 'Y':
                 # change the tree key
-                useringredienttree.changetreekey(
-                    useringredienttree.generate_treekey())
+                nanitree.modifytreekey(
+                    nanitree.gen_treekey())
                 # make sure each ingredient alias is unique
-                makealiasunique(useringredienttree)
+                makealiasunique(nanitree)
                 # write onto file
-                writetreetocsv(useringredienttree)
+                writetreetocsv(nanitree)
                 break
             else:
                 break
         # prompt the user to see if they want to run the program again
+        print('the current population of the ingredient tree is',population(nanitree))
         while True:
             userinput = input('\nDo you want to run the program again with'
                               ' another item tree? (Y/N) ').strip().upper()
