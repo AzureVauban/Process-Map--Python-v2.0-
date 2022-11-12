@@ -20,7 +20,7 @@ class ProgramState(Enum):
     MODE_B = 1  # inverse recursive arithmetic (amountonhand)
 
 
-MODE: ProgramState = ProgramState.MODE_A
+#! MODE: ProgramState = ProgramState.MODE_A
 FILENAME: str = 'ingredient_trees.csv'
 FIELDNAMES: list = [
     'Tree_Key',  # 74nry8keki',
@@ -571,9 +571,9 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
         if not ingredient[1]:
             searchresults: list = search(head(node), ingredient[0], [])
             # todo debug interaction with the search method
-            monokai : Node = subpopulate(node, ingredient[0], searchresults)
+            monokai: Node = subpopulate(node, ingredient[0], searchresults)
             # @audit remove this later (for debugging)
-            print('created a new node at',monokai)
+            print('created a new node at', monokai)
     # recrusively continue to populate the tree
     for subnode in node.children.items():
         populate(subnode[1])
@@ -587,7 +587,7 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
 # end def
 
 
-def superpopulate() -> Node:  # todo finish this
+def superpopulate() -> Node:
     """
     creates an ingredient tree and returns its head node
 
@@ -641,6 +641,7 @@ def superpopulate() -> Node:  # todo finish this
 
 
 if __name__ == '__main__':
+    MODE: ProgramState = ProgramState.MODE_A
     # prompt program mode
     print('Welcome to Process Map (Python) v2.0!\n')
     # program runtime loop
