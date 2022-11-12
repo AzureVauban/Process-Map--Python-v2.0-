@@ -955,7 +955,7 @@ if __name__ == '__main__':
                       item[1].amountresulted, 'of', item[1].ingredient)
         #? population == 1
         else:
-            pass
+            print('You would need', ingredienttree.amountresulted, 'to create',ingredienttree)
         # prompt the user if they want to output the ingredient tree onto A csv file
         print('Do you want to save your tree to create',
               ingredienttree.ingredient, 'to a csv file? (Y/N)')
