@@ -776,6 +776,8 @@ if __name__ == '__main__':
                 # change the tree key
                 useringredienttree.changetreekey(
                     useringredienttree.generate_treekey())
+                # make sure each ingredient alias is unique
+                #todo finish this method
                 # write onto file
                 writetreetocsv(useringredienttree)
                 break
