@@ -520,6 +520,7 @@ def subpopulate(node: Node, ingredient: str) -> Node:
         # if the user did not input a valid index
         # if not return the defaultly created new node
         return Node(ingredient, node)
+    print('creating node')
     return clone(parseresults[userchoice])
 # end def
 
