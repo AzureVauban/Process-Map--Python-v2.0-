@@ -427,7 +427,7 @@ def createtreefromcsv(parent: Node) -> Node:
     # figure out where to emplace the node
     # * correctly finds all nodes with the same treekey from the csv file
     for index, row in enumerate(sublist):
-        createtree(parent, row)
+        ristretto : bool = createtree(parent, row)
         # sublist.remove(sublist[index])
         red: str = '\x1B[31m'+row[3]+'\x1B[0m'  # parent ingredient name
         blue: str = '\x1B[36m'+row[1]+'\x1B[0m'  # ingredient name
