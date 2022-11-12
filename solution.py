@@ -273,7 +273,8 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
     # end def
 
     def population(self) -> int:
-        """_summary_
+        """
+        _summary_
 
         Returns:
             int: _description_
@@ -638,15 +639,6 @@ def shouldclonechildren(ingredient: str, subnodes: dict) -> bool:
     if ingredient in subingredientnames:
         return False
     return True
-# end def
-
-
-def nodecount_tentative(node: Node) -> int:
-    """
-    counts how many nodes are in the ingredient tree
-    """
-    # $ return the length of the rows (creates a row for every node in the tree)
-    return len(head(node).pandastree_row([]))
 # end def
 
 
