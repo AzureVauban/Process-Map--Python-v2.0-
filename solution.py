@@ -453,7 +453,7 @@ def search(node: Node, ingredient: str, results: list) -> list:
     # if node is a subnode and the ingredient matches, update the listprint(condition)
     conditionA : bool = node.parent is not None
     conditionB: bool = node.ingredient == ingredient
-    if conditionA not None and conditionB
+    if conditionA and conditionB:
         for subnode in node.children.items():
             results.append(subnode[1])
     # recrusively keep searching for nodes
