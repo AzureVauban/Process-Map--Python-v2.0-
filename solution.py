@@ -529,7 +529,8 @@ def subpopulate(node: Node, ingredient: str) -> Node:
                                + ' | ++ ' + str(subnode.amountneeded)
                                + ' | +++ ' + str(subnode.amountparentmadepercraft)+'\n'))
     # todo make sure program doesn't crash when user's input is blank
-    userchoice: int = int(input('Choose a subnode to clone: '))
+    userchoice: int = int(
+        input('Choose a which verison of ' + ingredient + ' to clone: '))
     userchoice -= 1
     # if the user chooses to create a new node, return a clone subnode
     if userchoice < 0 or userchoice > len(parseresults)-1:
