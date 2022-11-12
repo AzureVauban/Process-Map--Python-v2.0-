@@ -425,7 +425,7 @@ def createtreefromcsv(parent: Node) -> Node:
             # the sublist contains node only from the tree
             if green in sublist:
                 raise ValueError('The csv file contains duplicate rows')
-        sublist.append(green)
+            sublist.append(green)
     # figure out where to emplace the node
     # * correctly finds all nodes with the same treekey from the csv file
     for index, row in enumerate(sublist):
