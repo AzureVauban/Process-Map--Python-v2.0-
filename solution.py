@@ -488,7 +488,7 @@ def clone(node: Node) -> Node:
 # end def
 
 
-def subpopulate(node: Node, ingredient: str, parseresults: list) -> Node:
+def subpopulate(node: Node, ingredient: str) -> Node:
     """
     create a subnode and link it to the parent node
 
@@ -499,6 +499,7 @@ def subpopulate(node: Node, ingredient: str, parseresults: list) -> Node:
         Node: new subnode to link back to the parent Node
     """
     # create a list of subnodes that have the same ingredient as the parameter
+    parseresults: list = search(head(node), ingredient, [])
     # if the list is empty return a defaultly created new node Node
     for subnode in parseresults:
         if not isinstance(subnode, Node):
@@ -570,9 +571,9 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
     for ingredient in userinputs:
         # if ingredient[1] is False, the ingredient is not already in the tree (from csv)
         if not ingredient[1]:
-            searchresults: list = search(head(node), ingredient[0], [])
+            #searchresults: list = search(head(node), ingredient[0], [])
             # todo debug interaction with the search method
-            monokai: Node = subpopulate(node, ingredient[0], searchresults)
+            monokai: Node = subpopulate(node, ingredient[0])
             # @audit remove this later (for debugging)
             print('created a new node at', monokai)
     # recrusively continue to populate the tree
