@@ -634,13 +634,7 @@ def subpopulation(node: Node, instancecount: int = 0) -> int:
     """
     counts how many nodes are in the ingredient tree
     """
-#!    qwerty : int = len(head(node).pandastree_row([]))
-    #! for some reason this method always returns 1
-#!    i: int = 0
-#!    while i < len(node.children.items()):
-#!        i += 1
-#!    for subnode in node.children.items():
-#!        subpopulation(subnode[1], instancecount+i)
+    #$ return the length of the rows (creates a row for every node in the tree)
     return len(head(node).pandastree_row([]))
 # end def
 
