@@ -398,7 +398,6 @@ def createtree(node: Node, pandasrow: list) -> bool:
             '\x1B[0m'  # parent ingredient name
         blue: str = '\x1B[36m'+pandasrow[1]+'\x1B[0m'  # ingredient name
         print('emplaced node', red+' | ' + blue)
-        del pandasrow
         return True
     for subnode in node.children.items():
         createtree(subnode[1], pandasrow)
