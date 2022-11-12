@@ -461,7 +461,9 @@ def search(node: Node, ingredient: str, results: list) -> list:
     return results
 # end def
 
-def 
+def shouldclonechildren(subnodes : dict) -> bool:
+    # create a list of ingredient names that are within all the nodes in the dict
+    return True
 def clone(node: Node, clonechildren: bool = True) -> Node:
     """
     creates a returnable copy of the node
