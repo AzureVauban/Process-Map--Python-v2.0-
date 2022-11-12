@@ -618,7 +618,7 @@ def superpopulate() -> Node:  # todo finish this
         for red in range(0, len(userchoices)-1):
             if not isinstance(userchoices[red], Node):
                 raise TypeError('item in the list is not an instance of', Node)
-            if treepop(head(userchoices[blue]), 0) < treepop(head(userchoices[red]), 0):
+            if head(userchoices[blue]).instancekey > head(userchoices[red]).instancekey:
                 # flake8: noqa
                 userchoices[blue], userchoices[red] = userchoices[red], userchoices[blue]
                 # swap red and blue
