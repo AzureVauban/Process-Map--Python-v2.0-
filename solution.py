@@ -20,7 +20,6 @@ class ProgramState(Enum):
     MODE_B = 1  # inverse recursive arithmetic (amountonhand)
 
 
-#! MODE: ProgramState = ProgramState.MODE_A
 FILENAME: str = 'ingredient_trees.csv'
 FIELDNAMES: list = [
     'Tree_Key',  # 74nry8keki',
