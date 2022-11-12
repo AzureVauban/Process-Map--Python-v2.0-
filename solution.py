@@ -423,8 +423,6 @@ def createtreefromcsv(parent: Node) -> Node:
         # if the tree key of the row matches the head node's tree key
         if green[0] == parent.treekey and green[3] != 'None':
             # the sublist contains node only from the tree
-            if green in sublist:
-                raise ValueError('The csv file contains duplicate rows')
             sublist.append(green)
     # figure out where to emplace the node
     # * correctly finds all nodes with the same treekey from the csv file
