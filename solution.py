@@ -6,9 +6,8 @@ Changes from v1.0:
 - search for a node in the tree and copy it instead of retyping all your data
 - inputting basic arithmetic symbols when prompted to input numeric data (not added yet)
 """
-import csv
+
 import math
-import os
 import random
 import sys
 import time
@@ -25,7 +24,8 @@ FIELDNAMES: list = [  # list of field names for the csv output file
     'Amount_Needed_Per_Craft',  # 0
     'Generation'  # 1
 ]
-#! revert this modification of the filename when finished utilizing it for testing
+#! revert this modification of the filename when finished utilizing it for
+# testing
 GLOBALNODEDICT: dict = {}  # {instancekey: Node}
 
 
@@ -45,8 +45,8 @@ def generatename(lengthlimit: int = random.randint(10, 20)) -> str:
 
 class NodeB:
     """
-    class for storing simple data about an item such as its name and how much is needed to create
-    its parent
+    class for storing simple data about an item such as its name and how much
+    is needed to create its parent
     """
     ingredient: str = ''
     aliasingredient: str = ''
@@ -58,7 +58,7 @@ class NodeB:
     amountresulted: int = 0
     queueamountresulted: dict = {}
 
-    def __init__(self, ingredient: str = '', amountonhand: int = -1, amountofparentmadepercraft: int = -1, amountneeded: int = -1) -> None:
+    def __init__(self, ingredient: str = '', amountonhand: int = -1, amountofparentmadepercraft: int = -1, amountneeded: int = -1) -> None:  # noqa: E501 pylint: disable=line-too-long
         """
         Args:
             name (str, optional): name of the item. Defaults to ''.
@@ -93,7 +93,7 @@ class Node(NodeB):
     treekey: str = ''
     ismain_promptinputbool: bool = True
 
-    def __init__(self, ingredient: str = '', parent=None, amountonhand: int = 0, amountofparentmadepercraft: int = 1, amountneeded: int = 1, green: bool = False, orange: bool = __name__ == '__main__',treekey: str = 'NanKey') -> None:  # pylint:disable=C0301
+    def __init__(self, ingredient: str = '', parent=None, amountonhand: int = 0, amountofparentmadepercraft: int = 1, amountneeded: int = 1, green: bool = False, orange: bool = __name__ == '__main__', treekey: str = 'NanKey') -> None:  # pylint:disable=C0301
         """
         default constructor for Node instance, stores identifying features of an item's
         information
@@ -125,8 +125,7 @@ class Node(NodeB):
         if not __name__ == '__main__' and parent is None:
             self.treekey = treekey
         # set tree key of this instance
-      
-        
+
         if not self.checkaliasuniqueness(self.aliasingredient):
             self.aliasingredient = self.aliasingredient + '__' + generatename()
         self.askmadepercraftquestion = green
@@ -192,7 +191,7 @@ class Node(NodeB):
         return checkstring != self.ingredient and self.ingredient != self.aliasingredient
 
     @classmethod
-    def generate_treekey(cls, length : int = random.randint(5,20)) -> str:
+    def generate_treekey(cls, length: int = random.randint(5, 20)) -> str:
         """
         randomly generates an alpha numeric string to be used as a unique identifier for the tree
         and all nodes linked to this instance
@@ -203,23 +202,24 @@ class Node(NodeB):
                 '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
         return cls.treekey
     # make a method to return a list with all the info needed on a line of the csv file
+
     def create_csv_writerow(self) -> dict:
         """
         FIELDNAMES: list = [  # list of field names for the csv output file
             'Tree_Key': 74nry8keki',
-            
+
             'Ingredient': Copper Wire
-            
+
             'Ingredient_Alias': Copper Wire__ZpgMzAwQdfRu
-            
+
             'Parent_of_Ingredient': Silicon Board
-            
+
             'Amount_on_Hand': 0
-        
+
             'Amount_Made_Per_Craft': 9
-            
+
             'Amount_Needed_Per_Craft': 0
-            
+
             'Generation': 1
         ]
         Returns:
@@ -230,10 +230,11 @@ class Node(NodeB):
         # if the parent is not None, set the parent ingredient to the ingredient of the parent
         if self.parent is not None:
             ghast = self.parent.ingredient
-        # input data into the dictionary 
+        # input data into the dictionary
         azathoth.update({FIELDNAMES[0]: self.treekey})
         azathoth.update({FIELDNAMES[1]: self.ingredient})
-        azathoth.update({FIELDNAMES[2]: self.aliasingredient.replace(' ', '_')})
+        azathoth.update(
+            {FIELDNAMES[2]: self.aliasingredient.replace(' ', '_')})
         azathoth.update({FIELDNAMES[3]: ghast})
         azathoth.update({FIELDNAMES[4]: str(self.amountonhand)})
         azathoth.update({FIELDNAMES[5]: str(self.amountofparentmadepercraft)})
@@ -357,10 +358,11 @@ class NodeTree():
         self.headnode: Node = self.generateTree(population)
         self.population = self.countleafs(self.headnode)
 
+
 def findlocalendpoints(cur: Node, foundendpoints: dict) -> dict:
     """
     look for endpoints connected to the tree at this node
-    after this method is finished running, please clear its utilized dictionaryy
+    after this method is finished running, please clear its utilized dictionary
     """
     if foundendpoints is None:
         myendpoints: dict = {}
@@ -732,30 +734,7 @@ def tentative_method_issue3(ghatanothoa: Node):
     Args:
         ghatanothoa (Node): stores information about the an ingredient
     """
-    #!outputcsvlines: dict = ghatanothoa.create_csv_writerow()
-    # open the .csv file in write mode
-    with open(CSVFILENAME, 'a', encoding='UTF-8', newline='') as csvfile:
-        # write the field names onto the file
-        field_names = [
-            'Tree_Key',  # 74nry8keki
-            'Ingredient',  # Coal
-            'Ingredient_Alias',  # Coal_[UNIQUE_ID APPENDED]
-            # ? if the ingredient name is not unique, append a unique string to the end of the
-            # ? ingredient name
-            'Parent_of_Ingredient',  # Carbon
-            'Amount_on_Hand',  # 0
-            'Amount_Made_Per_Craft',  # 1
-            'Amount_Needed_Per_Craft',  # 10
-            'Generation'  # 1
-        ]
-        writer = csv.DictWriter(csvfile, fieldnames=field_names)
-        writer.writeheader()
-        # write the data onto the file
-        writer.writerows(ghatanothoa.create_csv_writerows([]))
-        csvfile.close()
-    print('Successfully wrote to the .csv file called', CSVFILENAME)
 # end def
-# todo find a new name for this method
 
 
 def tentative_method_2_issue3() -> bool:
@@ -763,32 +742,10 @@ def tentative_method_2_issue3() -> bool:
     check if the an exact copy of the ingredient tree already exists in the .csv file
 
     Args:
-        zvilpogghua (Node): stores information about the an ingredient, head node of the increase tree
-
-    Returns:
-        bool: True if the an exact copy of the ingredient tree already exists in the .csv file, False otherwise
+        zvilpogghua (Node): stores information about the an ingredient, head node of the increase
     """
-    # check if the augment is the head node, if not, traverse upward to the head node
-    # open the .csv file in read mode (mode='r')
-    # parse the tree for the head node instances
-    foundheadnodes: dict = {}  # pylint:disable=unused-variable
-    with open(CSVFILENAME, 'r', encoding='UTF-8', newline='') as csvfile:
-        # create a csv reader object
-        reader = csv.DictReader(csvfile)  # pylint:disable=unused-variable
-        # iterate over each row in the csv file and check if the row is a head node
-    #! call method here
-        csvnode: Node = Node()  # todo remove this line when finishing this method
-        # todo remove this line when finishing this method
-        tentative_method_3_issue3(csvnode)
-        # close the .csv file
-        csvfile.close()
-    # return True if the an exact copy of the ingredient already exists in the .csv file, False otherwise
     return False
-#! potential unintended behavior, if the user inputs an ingredient name with the same name, the alias name will not be the same and the program will not detect an exact copy of the tree
-# end def
 
-
-# todo find a new name for this method
 
 def tentative_method_3_issue3(csvnode: Node):
     """
@@ -808,39 +765,13 @@ def tentative_method_3_issue3(csvnode: Node):
 # end def
 
 
-# todo find a new name for this method
 def tentative_method_4_issue3() -> dict:
-    """
-    method that reads the contents of the .csv file
+    """returns a dictionary of all the head nodes in the csv file
 
-    Args:
-        nightguant (Node): stores information about the an ingredient
+    Returns:
+        dict: _description_
     """
-    # check if the .csv file exists in the current directory
-    csvheadnodes: dict = {}
-    if os.path.exists(CSVFILENAME):
-        #  if it does, read the contents of the file
-        with open(CSVFILENAME, 'r', encoding='UTF-8', newline='') as csvfile:
-            # create a csv reader object
-            reader = csv.DictReader(csvfile)
-            # iterate over each row in the csv file and check if the row is a head node
-            for row in reader:
-                for item in row.items():
-                    iscsvheadnode: bool = item[0] == 'Generation' and item[1] == '0'
-                    if iscsvheadnode:
-                        # if true, update the dictionary with the tree key and a head node instance
-                        csvheadnodes.update(
-                            {row['Tree_Key']: Node(row['Ingredient'], None, 0, 1, 1)})
-                        # int (row['Amount_Made_Per_Craft'])
-                        # int (row['Amount_on_Hand'])
-                        # int (row['Amount_Needed_Per_Craft']),
-                        # int (row['Generation'])
-    # parse through the file and create a dictionary of head nodes
-        csvfile.close()  # close the .csv file
-        return csvheadnodes
-    else:
-        return {-1: None}
-    # prompt the user to select a head node to utilize in the current mode of the program
+    return {-1: None}
 # end def
 
 
@@ -901,14 +832,14 @@ if __name__ == '__main__':
                 nodesfromcsv: dict = tentative_method_4_issue3()
                 print("Do you want to chose any of these ingredient trees to modify from the .csv file?\
                       ('Y' or 'N')")
-                if nodesfromcsv != {-1:None}:
-                    for index,item in enumerate(nodesfromcsv.items()):
+                if nodesfromcsv != {-1: None}:
+                    for index, item in enumerate(nodesfromcsv.items()):
                         print(f'{index+1}. {item[1].ingredient}')
                 break
             elif userinput == 'H':
                 printprompt()
             else:
-                PROGRAMMODETYPE=0
+                PROGRAMMODETYPE = 0
                 # todo if the .csv file exists in the current directionary, ask the user if they want to use an of the ingredient trees in the file for the current program mode
 #!                nodesfromcsv : dict = tentative_method_4_issue3()
 #!                print("Do you want to chose any of these ingredient trees to modify from the .csv file?\
@@ -919,14 +850,14 @@ if __name__ == '__main__':
                 break
         # prompt user to type in the name of the item they want to create
         while True:
-            itemname=input(
+            itemname = input(
                 'What is the name of the item you want to create: ')
-            itemname=itemname.strip()
+            itemname = itemname.strip()
             if len(itemname) == 0:
                 print('You must type something in')
             else:
                 break
-        head=Node(itemname, None)
+        head = Node(itemname, None)
         if PROGRAMMODETYPE == 0:  # ? normal program mode
             populate(head)
             for subnode in findlocalendpoints(head, {}).items():
@@ -935,13 +866,13 @@ if __name__ == '__main__':
                   end=str(head.amountresulted)+'\n')
         else:  # ? Mode B
             print('How much', head.ingredient, 'do you want to create:')
-            desirednumber: int=promptint()
+            desirednumber: int = promptint()
             populate(head)
             reversearithmetic(head, desirednumber)
             # output the results
             print('To get', str(str(desirednumber)+'x'),
                   head.ingredient, 'you need the following:')
-            results: dict=findlocalendpoints(head, {})
+            results: dict = findlocalendpoints(head, {})
             # iterate through the dictionary and output the amounts on hand
             reformat_output(results)
         # prompt user if they want to output the results to a .csv file
@@ -952,9 +883,9 @@ if __name__ == '__main__':
              ('Y' or 'N')")
         print("type in 'H' if you need to be reminded of the prompt")
         while True:
-            userinput=(input(''))
-            userinput=userinput.strip()
-            userinput=userinput.upper()
+            userinput = (input(''))
+            userinput = userinput.strip()
+            userinput = userinput.upper()
             if userinput not in ('Y', 'N', 'H'):
                 print("That input is not valid, please type in\
                      ('Y' or 'N')")
@@ -968,7 +899,7 @@ if __name__ == '__main__':
     # terminate the program
     print('terminating process in 10 seconds')
     # close program in 10 seconds
-    NANI=10
+    NANI = 10
     while NANI > 0:
         time.sleep(1)
         NANI -= 1
