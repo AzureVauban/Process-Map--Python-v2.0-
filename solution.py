@@ -524,20 +524,21 @@ def clone(node: Node, clonechildren: bool = True) -> Node:
 
     # create a copy of the parameter node
     if not clonechildren:
-        return clonenode: Node = Node(ingredient=node.ingredient,
-                                      parent=node.parent.parent,
-                                      amountonhand=node.amountonhand,
-                                      amountneeded=node.amountneeded,
-                                      amountparentmadepercraft=node.amountparentmadepercraft,
-                                      isfromcsvfile=node.isfromcsvfile,
-                                      promptamountsOn=False)
-    clonenode: Node = Node(ingredient=node.ingredient,
-                           parent=node.parent,
-                           amountonhand=node.amountonhand,
-                           amountneeded=node.amountneeded,
-                           amountparentmadepercraft=node.amountparentmadepercraft,
-                           isfromcsvfile=node.isfromcsvfile,
-                           promptamountsOn=False)
+        bluenode: Node = Node(ingredient=node.ingredient,
+                              parent=node.parent.parent,
+                              amountonhand=node.amountonhand,
+                              amountneeded=node.amountneeded,
+                              amountparentmadepercraft=node.amountparentmadepercraft,
+                              isfromcsvfile=node.isfromcsvfile,
+                              promptamountsOn=False)
+        return bluenode
+    rednode: Node = Node(ingredient=node.ingredient,
+                         parent=node.parent,
+                         amountonhand=node.amountonhand,
+                         amountneeded=node.amountneeded,
+                         amountparentmadepercraft=node.amountparentmadepercraft,
+                         isfromcsvfile=node.isfromcsvfile,
+                         promptamountsOn=False)
     # create a copy of all the children of the parameter node
     for subnode in node.children.items():
         Node(ingredient=subnode[1].ingredient,
@@ -548,7 +549,7 @@ def clone(node: Node, clonechildren: bool = True) -> Node:
                 promptamountparentmade=False,
                 isfromcsvfile=subnode[1].isfromcsvfile,
                 promptamountsOn=False)
-    return clonenode
+    return rednode
 # end def
 
 
