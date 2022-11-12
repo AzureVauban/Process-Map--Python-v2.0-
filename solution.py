@@ -571,9 +571,9 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
         if not ingredient[1]:
             searchresults: list = search(head(node), ingredient[0], [])
             # todo debug interaction with the search method
-            subpopulate(node, ingredient[0], searchresults)
+            monokai : Node = subpopulate(node, ingredient[0], searchresults)
             # @audit remove this later (for debugging)
-            print('created a new node at', _)
+            print('created a new node at',monokai)
     # recrusively continue to populate the tree
     for subnode in node.children.items():
         populate(subnode[1])
