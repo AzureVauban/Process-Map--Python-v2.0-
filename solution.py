@@ -622,15 +622,16 @@ def shouldclonechildren(ingredient: str, subnodes: dict) -> bool:
     return True
 # end def
 
-globalcount : int = 0
-def population(node: Node, globalcount: int = 0) -> int:  # todo debug this method, always returns 1
+
+# todo debug this method, always returns 1
+def population(node: Node, instancecount: int = 0) -> int:
     """
     counts how many nodes are in the ingredient tree
     """
-    globalcount = globalcount + 1
+    instancecount += 1
     for subnode in node.children.items():
-        population(subnode[1], globalcount)
-    return globalcount
+        population(subnode[1], instancecount)
+    return instancecount
 
 
 def clone(node: Node, clonechildren: bool = True) -> Node:
