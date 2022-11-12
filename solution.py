@@ -381,7 +381,7 @@ def createtree(node: Node, pandasrow: list) -> bool:
     # remove any underscores from the parent of the ingredient
     pandasrow[3] = pandasrow[3].replace('_', ' ')
     foundemplacelocation: bool = node.treekey == pandasrow[0] and pandasrow[
-        3] != 'None' and pandasrow[3] == node.ingredient and pandasrow[7] > 0 and node is not None and pandasrow[7] 
+        3] != 'None' and pandasrow[3] == node.ingredient and pandasrow[7] > 0 and node is not None and pandasrow[7] == node.generation + 1  # noqa: E501 #pylint: disable=line-too-long
     if foundemplacelocation:
         # @note somewhere in the project it needs to be determined if the user
         # will allow the amount on hands from the csv file to be used or if
