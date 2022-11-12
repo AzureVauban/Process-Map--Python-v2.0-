@@ -463,9 +463,9 @@ def search(node: Node, ingredient: str, results: list) -> list:
 
 def shouldclonechildren(subnodes : dict) -> bool:
     # convert subnodes dict to a list of nodes
-    
+    subnodeslist: list = []
     for subnode in subnodes.items():
-        # dict must be 
+        # dict must be have a key integer and a Node instance as the value
         if not isinstance(subnode[1], Node) and not isinstance(subnode[0],int):
             raise TypeError('subnodes is not a dictionary',Node,'subnodes')
 
