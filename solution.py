@@ -401,25 +401,7 @@ def createtree(node: Node, pandasrow: list) -> bool:
     return False
 
 
-def treepop(node: Node, population: int = 0) -> int:
-    """
-    returns the amount of nodes within an ingredient tree
-
-    Args:
-        node (Node): stores information about an ingredient
-        population (int, optional): amount of nodes counted. Defaults to 0.
-
-    Returns:
-        int: the current population of the ingredient tree
-    """
-    population += 1
-    for subnode in node.children.items():
-        treepop(subnode[1], population)
-    return population
-# end def
-
-
-def createtreefromcsv(parent: Node) -> Node:  # todo debug this method
+def createtreefromcsv(parent: Node) -> Node:
     """
     figures out where to create and link a new node from the csv file
 
@@ -430,7 +412,6 @@ def createtreefromcsv(parent: Node) -> Node:  # todo debug this method
     Returns:
         Node: parent most node of the tree
     """
-    # todo - debug this method (creates tree incorrectly (LACKS GEN>2 NODES))
     # check if the row has the correct amount of elements
     # the node must match the following requirements to link:
     # parent ingredient must be the same as the parent ingredient
@@ -452,9 +433,6 @@ def createtreefromcsv(parent: Node) -> Node:  # todo debug this method
         red: str = str('\x1B[31m'+row[3]+'\x1B[0m')  # parent ingredient name
         blue: str = str('\x1B[36m'+row[1]+'\x1B[0m')  # ingredient name
         print('emplaced node', index, red+' | ' + blue)
-        # sublist.remove(sublist[index])
-        print('Current population of tree: \x1B[33m', end=str(
-            treepop(parent))+'\x1B[0m\n')
     return head(parent)
 
 
@@ -522,7 +500,6 @@ def subpopulate(node: Node, ingredient: str, parseresults: list) -> Node:
     """
     # create a list of subnodes that have the same ingredient as the parameter
     # if the list is empty return a defaultly created new node Node
-    # !parseresults: list = search(node, ingredient, [])
     for subnode in parseresults:
         if not isinstance(subnode, Node):
             raise TypeError('item in the list is not an instance of', Node)
