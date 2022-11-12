@@ -282,7 +282,7 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
             subnode[1].updatepopulation(population)
     # end def
 
-    def findendpoints(self,endpoints: dict) -> dict:
+    def findendpoints(self, endpoints: dict) -> dict:
         """
         returns a dictionary of nodes with no children
 
@@ -299,7 +299,7 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
                 subnode[1].findendpoints(endpoints)
         return endpoints
     # end def
-    
+
     def reformat_output(self):
         """
         condenses the output of the tree into a more readable format with percentages
@@ -312,11 +312,11 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
             raise TypeError('temp is not an instance of', Node)
         while temp.parent is not None:
             temp = temp.parent
-        endpoints: dict = {}
+        red_dict: dict = {}
         # set the new dictionary to have unique ingredients as keys
         # and a list of tuples of the parent of said endpoint instance and the
         # amount on hand as values
-        for node in endpoints.items():
+        for node in temp.findendpoints({}).items():
             if node[1].ingredient not in red_dict:
                 red_dict.update(
                     {node[1].ingredient: [(node[1].parent.ingredient,
