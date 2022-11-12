@@ -514,6 +514,8 @@ def subpopulate(node: Node, ingredient: str) -> Node:
     print('+ amount of', ingredient, 'on Hand')
     print('++ amount of the parent made per craft')
     print('+++ amount Needed to craft parent item once\n')
+    if MODE == ProgramState.MODE_B:
+        head(node).reversearithmetic(1)
     for index, subnode in enumerate(parseresults):
         # todo implement the prompt numeric input method,
         # come back to this and see if do the math on the tree
