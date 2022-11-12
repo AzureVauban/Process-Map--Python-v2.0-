@@ -394,10 +394,10 @@ def createtree(node: Node, pandasrow: list) -> bool:
              treekey=pandasrow[0],
              # isfromcsvfile=True,
              promptamountsOn=False)
-        red: str = '\x1B[31m'+node.ingredient + \
+        red: str = '\x1B[31m' + node.ingredient + \
             '\x1B[0m'  # parent ingredient name
-        blue: str = '\x1B[36m'+pandasrow[1]+'\x1B[0m'  # ingredient name
-        print('emplaced node', red+' | ' + blue)
+        blue: str = '\x1B[36m' + pandasrow[1] + '\x1B[0m'  # ingredient name
+        print('emplaced node', red + ' | ' + blue)
         return True
     for subnode in node.children.items():
         createtree(subnode[1], pandasrow)
