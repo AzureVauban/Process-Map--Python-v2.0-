@@ -262,7 +262,25 @@ def makealiasunique(node: Node):
         makealiasunique(subnode[1])
 # end def
 
-def allaliases()
+def allaliases(node: Node, alias : str, aliases : list) -> list:
+    """
+    returns a list of all the nodes with the same alias
+
+    Args:
+        node (Node): node to check if it has the same ingredient alias value
+        alias (str): nickname of Node instance
+        aliases (list): list of nodes with the same alias to search for
+
+    Returns:
+        list: a list of Nodes containining the same ingredient alias
+    """
+    if node.aliasingredient == alias:
+        aliases.append(node)
+    # recrusively search for nodes that have the same ingreident alias as the passed alias
+    for subnode in node.children.items():
+        allaliases(subnode[1], alias, aliases)
+    return aliases
+# end def
 def writetreetocsv(headnode: Node):
     """
     writes an ingredient tree onto a csv file
