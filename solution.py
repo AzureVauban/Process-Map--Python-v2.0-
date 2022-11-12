@@ -903,6 +903,7 @@ if __name__ == '__main__':
             # prompt the user for how much an item they want to make
             print('How much of the item do you want to make?')
             nanitree.reversearithmetic(promptint())
+        # $ this is where results of the arithmetic methods would be printed
         # prompt the user if they want to output the ingredient tree onto A csv file
         print('Do you want to save your tree to create',
               nanitree.ingredient, 'to a csv file? (Y/N)')
