@@ -462,7 +462,7 @@ def search(node: Node, ingredient: str, results: list) -> list:
 # end def
 
 
-def clone(node: Node) -> Node:
+def clone(node: Node,clonechildren : bool = True) -> Node:
     """
     creates a returnable copy of the node
     """
