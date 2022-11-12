@@ -533,6 +533,7 @@ def clone(node: Node, clonechildren: bool = True) -> Node:
                                   isfromcsvfile=node.isfromcsvfile,
                                   promptamountsOn=False)
             return bluenode
+        # fallback incase grandparent is not valid
         return clone(node, True)
     rednode: Node = Node(ingredient=node.ingredient,
                          parent=node.parent,
