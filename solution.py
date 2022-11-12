@@ -476,7 +476,8 @@ def shouldclonechildren(ingredient: str, subnodes: dict) -> bool:
         TypeError: the parent of the subnodes are not the same
 
     Returns:
-        bool: whether or not the ingredient is in the subnodes, used to help determine if the subnodes should be cloned
+        bool: whether or not the ingredient is in the subnodes, used to help determine if the
+        subnodes should be cloned
     """
     if len(subnodes) == 0:
         return True
