@@ -569,8 +569,8 @@ def subpopulate(node: Node, ingredient: str) -> Node:
         return Node(ingredient, node)
     # check if the ingredient is in any of the subnodes of its sibilings
     # todo make a method for above comment ^^^
-    shouldclonechildrennodes : bool = shouldclonechildren(ingredient, node.children)
-    clonenode: Node = clone(parseresults[userchoice],shouldclonechildrennodes)
+    clonesubnodes_true: bool = shouldclonechildren(ingredient, node.children)
+    clonenode: Node = clone(parseresults[userchoice], clonesubnodes_true)
     return clonenode
 # end def
 
