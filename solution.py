@@ -470,7 +470,12 @@ def shouldclonechildren(subnodes : dict) -> bool:
         # dict must be have a key integer and a Node instance as the value
         if not isinstance(subnode[1], Node) and not isinstance(subnode[0],int):
             raise TypeError('subnodes is not a dictionary',Node,'subnodes')
-
+        # check of any node instance in the convert list does not have a the same parent
+        # raise an error if the parent is not the same in all nodes
+        subnodeslist.append(subnode[1])
+        for childnode in subnodeslist:
+            if childnode.parent != subnodeslist[0].parent:
+                raise ValueError('subnodes is not a dictionary of nodes with the same parent')
     # create a list of ingredient names that are within all the nodes in the dict
     return True
 def clone(node: Node, clonechildren: bool = True) -> Node:
