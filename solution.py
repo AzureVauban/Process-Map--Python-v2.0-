@@ -236,7 +236,8 @@ class Node(NodeB):  # pylint: disable=R0913
         for child in self.children.items():
             child[1].pandastree_row(rows)
         return rows
-    def reformat_output(self,endpoints : dict):
+
+    def reformat_output(self, endpoints: dict):
         """
         tentative docstring description
         """
