@@ -451,8 +451,8 @@ def search(node: Node, ingredient: str, results: list) -> list:
         list: a list of nodes that have the same ingredient as the parameter
     """
     # if node is a subnode and the ingredient matches, update the listprint(condition)
-    conditionA: bool = node.parent is not None # !remove when done debugging
-    conditionB: bool = node.ingredient == ingredient # !remove when done debugging
+    conditionA: bool = node.parent is not None  # !remove when done debugging
+    conditionB: bool = node.ingredient == ingredient  # !remove when done debugging
     if conditionA and conditionB:
         results.append(node)
     # recrusively keep searching for nodes
@@ -461,23 +461,28 @@ def search(node: Node, ingredient: str, results: list) -> list:
     return results
 # end def
 
-def shouldclonechildren(subnodes : dict) -> bool:
+
+def shouldclonechildren(subnodes: dict) -> bool:
     if len(subnodes) == 0:
         return True
     # convert subnodes dict to a list of nodes
     subnodeslist: list = []
     for subnode in subnodes.items():
         # dict must be have a key integer and a Node instance as the value
-        if not isinstance(subnode[1], Node) and not isinstance(subnode[0],int):
-            raise TypeError('subnodes is not a dictionary',Node,'subnodes')
+        if not isinstance(subnode[1], Node) and not isinstance(subnode[0], int):
+            raise TypeError('subnodes is not a dictionary', Node, 'subnodes')
         # check of any node instance in the convert list does not have a the same parent
         # raise an error if the parent is not the same in all nodes
         subnodeslist.append(subnode[1])
-        for childnode in subnodeslist:
-            if childnode.parent != subnodeslist[0].parent:
-                raise ValueError('subnodes is not a dictionary of nodes with the same parent')
+        for redindex, rednode in enumerate(subnodeslist):
+            for blueindex, bluenode in enumerate(subnodeslist):
+                if redindex != blueindex and rednode.parent is not bluenode.parent:
+                    raise TypeError('subnodes is not a dictionary',
+                                    Node, 'subnodes with the same parent')
     # create a list of ingredient names that are within all the nodes in the dict
     return True
+
+
 def clone(node: Node, clonechildren: bool = True) -> Node:
     """
     creates a returnable copy of the node
