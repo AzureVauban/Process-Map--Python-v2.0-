@@ -432,10 +432,7 @@ def createtreefromcsv(parent: Node) -> Node:
     # * correctly finds all nodes with the same treekey from the csv file
     for index, row in enumerate(sublist):
         createtree(parent, row)
-        # sublist.remove(sublist[index])
-        red: str = '\x1B[32m'+row[3]+'\x1B[0m'  # parent ingredient name
-        blue: str = '\x1B[35m'+row[1]+'\x1B[0m'  # ingredient name
-        print('emplaced node', index, red+' | ' + blue)
+        print('row', index, 'of', len(sublist), 'rows')
     return head(parent)
 
 
