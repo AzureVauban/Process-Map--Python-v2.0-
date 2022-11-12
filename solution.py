@@ -160,6 +160,7 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
             # only prompt the user to set the amounts if running in main
             # module and the boolean is true
             pass
+        self.updatepopulation()
         Node.instances += 1
     # end def
 
@@ -284,7 +285,14 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
             green = green.parent
         return len(green.pandastree_row([]))
     # end def
-
+    def updatepopulation(self):
+        """
+        _summary_
+        """
+        self.treepopulation = self.population()
+        for subnode in self.children.items():
+            subnode[1].updatepopulation()
+    # end def
     def reformat_output(self, endpoints: dict):
         """
         condenses the output of the tree into a more readable format with percentages
