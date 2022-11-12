@@ -462,7 +462,7 @@ def search(node: Node, ingredient: str, results: list) -> list:
 # end def
 
 
-def shouldclonechildren(ingredient : str,subnodes: dict) -> bool:
+def clonechildren(ingredient: str, subnodes: dict) -> bool:
     if len(subnodes) == 0:
         return True
     # convert subnodes dict to a list of nodes
