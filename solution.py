@@ -943,6 +943,7 @@ if __name__ == '__main__':
         # $ this is where results of the arithmetic methods would be printed
         if ingredienttree.population >= 2:
             ingredienttree.reformat_output()
+            print('\n')
         # prompt the user if they want to output the ingredient tree onto A csv file
         print('Do you want to save your tree to create',
               ingredienttree.ingredient, 'to a csv file? (Y/N)')
