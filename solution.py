@@ -623,7 +623,7 @@ def shouldclonechildren(ingredient: str, subnodes: dict) -> bool:
 # end def
 
 
-def population(node: Node, instancecount: int = 0) -> int:  # todo stuff debug this method
+def population(node: Node, instancecount: int = 0) -> int:  # todo debug this method, always returns 1
     """
     counts how many nodes are in the ingredient tree
     """
