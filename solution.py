@@ -936,6 +936,7 @@ if __name__ == '__main__':
         # populate the ingredient tree
         ingredienttree: Node = superpopulate()
         # if the programde mode is B
+
         if MODE == ProgramState.MODE_B:
             # prompt the user for how much an item they want to make
             print('How much of the item do you want to make?')
