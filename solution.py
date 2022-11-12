@@ -552,7 +552,7 @@ def createtreefromcsv(parent: Node) -> Node:
             # the sublist contains node only from the tree
             sublist.append(green)
     # figure out where to emplace the node
-    #$ correctly finds all nodes with the same treekey from the csv file
+    # $ correctly finds all nodes with the same treekey from the csv file
     for row in sublist:
         createtree(parent, row)
         # print('row', index, 'of', len(sublist), 'rows')
@@ -633,6 +633,7 @@ def population(node: Node, instancecount: int = 0) -> int:
     """
     counts how many nodes are in the ingredient tree
     """
+    #! for some reason this method always returns 1
     instancecount += 1
     for subnode in node.children.items():
         population(subnode[1], instancecount)
@@ -667,6 +668,7 @@ def clone(node: Node, clonechildren: bool = True) -> Node:
                                   promptamountsOn=False)
             return bluenode
         # fallback incase grandparent is not valid
+        # $ go back and examine this return branch more
         return clone(node, True)
     rednode: Node = Node(ingredient=node.ingredient,
                          parent=node.parent,
