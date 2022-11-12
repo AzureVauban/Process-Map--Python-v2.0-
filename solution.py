@@ -646,7 +646,7 @@ def returnpop(node: Node) -> int:
     counts how many nodes are in the ingredient tree
     """
     nodecount: int = 0
-    subpopulation(node, nodecount)
+    subpopulation(head(node), nodecount)
     return nodecount
 # end def
 
