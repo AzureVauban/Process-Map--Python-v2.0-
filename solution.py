@@ -243,6 +243,8 @@ def makealiasunique(node : Node):
     # get a list of all the nodes in the ingredient tree with the same ingredient alias as the passed node
     nodesaliases : list = []
     # if the list is greater than 1, then parse through the list to make each alias unique
+    if len(nodesaliases) > 1:
+        
     # recrusively call the function on each child node
     for subnode in node.children.items():
         makealiasunique(subnode[1])
