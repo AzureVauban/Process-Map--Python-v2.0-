@@ -1,4 +1,5 @@
-"""Reformat of main.py
+"""
+Reformat of main.py
 - functional programming
 """
 
