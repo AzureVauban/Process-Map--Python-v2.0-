@@ -54,7 +54,7 @@ def promptint() -> int:
 
 class NodeB:  # pylint: disable=R0903
     """
-    tentative docstring description
+    a superclass of the Node class used to contain basic information about an ingredient
     """
     ingredient: str = ''
     amountonhand: int = 0
@@ -69,7 +69,16 @@ class NodeB:  # pylint: disable=R0903
                  amountparentmadepercraft: int = 1,
                  amountneeded: int = 1) -> None:
         """
-        tentative docstring description
+        a superclass of the Node class used to contain basic information about an ingredient
+
+        Args:
+            ingredient (str, optional): name of the item stored. Defaults to ''.
+            amountonhand (int, optional): how much of the ingredient you have to craft the direct
+            parent item above it. Defaults to 0.
+            amountparentmadepercraft (int, optional): how much of the parent ingredient is made with
+            this ingredient. Defaults to 1.
+            amountneeded (int, optional): amount of ingredient needed to craft the parent igredient
+            once. Defaults to 1.
         """
         self.amountonhand = amountonhand
         self.amountparentmadepercraft = amountparentmadepercraft
@@ -82,9 +91,10 @@ class NodeB:  # pylint: disable=R0903
 # end def
 
 
-class Node(NodeB):  # pylint: disable=R0913
+class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
     """
-    tentative docstring description
+    primary class of the Node, used to stored information about an ingredient as well as
+    information to identify the ingredient and its parent
     """
     parent = None
     children: dict = {}
@@ -104,6 +114,26 @@ class Node(NodeB):  # pylint: disable=R0913
                  promptamountsOn: bool = False,
                  isfromcsvfile: bool = False,
                  treekey: str = '') -> None:
+        """
+        primary class of the Node, used to stored information about an ingredient as well as
+        information to identify the ingredient and its parent
+
+        Args:
+            ingredient (str, optional): name of the item stored. Defaults to ''.
+            amountonhand (int, optional): how much of the ingredient you have to craft the direct
+            parent item above it. Defaults to 0.
+            amountparentmadepercraft (int, optional): how much of the parent ingredient is made with
+            this ingredient. Defaults to 1.
+            amountneeded (int, optional): amount of ingredient needed to craft the parent igredient
+            once. Defaults to 1.
+            promptamountparentmade (bool, optional): determines if the program should prompt user to
+            type in a number for the amount of the parent ingredient made per craft.
+            Defaults to False.
+            isfromcsvfile (bool, optional): a boolean to track if the created Node instance is from
+            the CSV file. Defaults to False.
+            treekey (str, optional): a string of about 10 to 20 alphanumeric characters to help make
+            each ingredient tree unique when written to a CSV file. Defaults to ''.
+        """
         super().__init__(ingredient,
                          amountonhand,
                          amountparentmadepercraft,
