@@ -279,7 +279,7 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
         """
         self.treepopulation = population
         for subnode in self.children.items():
-            subnode[1].updatepopulation()
+            subnode[1].updatepopulation(population)
     # end def
 
     def reformat_output(self, endpoints: dict):
@@ -332,7 +332,7 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
 # end def
 
 
-def population(node: Node) -> int:
+def nodecount(node: Node) -> int:
     """
     _summary_
 
