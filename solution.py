@@ -539,13 +539,14 @@ def subpopulate(node: Node, ingredient: str) -> Node:
         # if the user did not input a valid index
         # if not return the defaultly created new node
         return Node(ingredient, node)
-    clonenode : Node =clone(parseresults[userchoice])
+    clonenode: Node = clone(parseresults[userchoice])
     return clonenode
 # end def
 
 
 def populate(node: Node) -> Node:  # pylint: disable=R0912
-    """create a tree of Nodes
+    """
+    create a tree of Nodes
 
     Args:
         node (Node): parent the subnodes will be linked to
