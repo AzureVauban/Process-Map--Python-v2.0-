@@ -508,7 +508,14 @@ def shouldclonechildren(ingredient: str, subnodes: dict) -> bool:
 
 def clone(node: Node, clonechildren: bool = True) -> Node:
     """
-    creates a returnable copy of the node
+    creates a returnable clone of the node passed into the method
+
+    Args:
+        node (Node): current node instance to copy and clone
+        clonechildren (bool, optional): should the have its subnodes cloned aswell. Defaults to True.
+
+    Returns:
+        Node: a clone of a node
     """
     # todo debug weird interaction. double question output
     # (industrial battery GEN==1, input protocite)
@@ -516,6 +523,14 @@ def clone(node: Node, clonechildren: bool = True) -> Node:
     # do not clone the children, set the parent as its grandparent node
 
     # create a copy of the parameter node
+    if not clonechildren:
+        return clonenode: Node = Node(ingredient=node.ingredient,
+                                      parent=node.parent.parent,
+                                      amountonhand=node.amountonhand,
+                                      amountneeded=node.amountneeded,
+                                      amountparentmadepercraft=node.amountparentmadepercraft,
+                                      isfromcsvfile=node.isfromcsvfile,
+                                      promptamountsOn=False)
     clonenode: Node = Node(ingredient=node.ingredient,
                            parent=node.parent,
                            amountonhand=node.amountonhand,
@@ -524,9 +539,8 @@ def clone(node: Node, clonechildren: bool = True) -> Node:
                            isfromcsvfile=node.isfromcsvfile,
                            promptamountsOn=False)
     # create a copy of all the children of the parameter node
-    if clonechildren:
-        for subnode in node.children.items():
-            Node(ingredient=subnode[1].ingredient,
+    for subnode in node.children.items():
+        Node(ingredient=subnode[1].ingredient,
                 parent=subnode,
                 amountonhand=subnode[1].amountonhand,
                 amountneeded=subnode[1].amountneeded,
@@ -639,7 +653,7 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
     for ingredient in userinputs:
         # if ingredient[1] is False, the ingredient is not already in the tree (from csv)
         if not ingredient[1]:
-            #searchresults: list = search(head(node), ingredient[0], [])
+            # searchresults: list = search(head(node), ingredient[0], [])
             # todo debug interaction with the search method
             monokai: Node = subpopulate(node, ingredient[0])
             # @audit remove this later (for debugging)
