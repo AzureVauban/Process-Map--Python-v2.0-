@@ -508,7 +508,7 @@ def subpopulate(node: Node, ingredient: str) -> Node:
     if len(parseresults) == 0:
         return Node(ingredient, node)
     # else, prompt the user to create a linkable clone of the new node
-    print('+ amount of',ingredient,'on Hand')
+    print('+ amount of', ingredient, 'on Hand')
     print('++ amount of the parent made per craft')
     print('+++ amount Needed to craft parent item once\n')
     for index, subnode in enumerate(parseresults):
@@ -529,7 +529,6 @@ def subpopulate(node: Node, ingredient: str) -> Node:
         # if the user did not input a valid index
         # if not return the defaultly created new node
         return Node(ingredient, node)
-    print('creating node')
     return clone(parseresults[userchoice])
 # end def
 
