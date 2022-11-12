@@ -259,7 +259,7 @@ def writetreetocsv(headnode: Node):
         for row in headnode.pandastree_row([]):
             pandas.DataFrame(row, index=[0]).to_csv(
                 FILENAME, mode='a', header=False, index=False)
-    # end def
+# end def
 
 
 def promptheadname() -> str:
@@ -450,9 +450,7 @@ def search(node: Node, ingredient: str, results: list) -> list:
         list: a list of nodes that have the same ingredient as the parameter
     """
     # if node is a subnode and the ingredient matches, update the listprint(condition)
-    conditionA: bool = node.parent is not None  # !remove when done debugging
-    conditionB: bool = node.ingredient == ingredient  # !remove when done debugging
-    if conditionA and conditionB:
+    if node.parent is not None and node.ingredient == ingredient:
         results.append(node)
     # recrusively keep searching for nodes
     for subnode in node.children.items():
