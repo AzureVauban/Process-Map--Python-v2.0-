@@ -627,7 +627,7 @@ def population(node: Node, instancecount: int = 0) -> int:  # todo debug this me
     """
     counts how many nodes are in the ingredient tree
     """
-    instancecount += 1
+    instancecount = instancecount + 1
     for subnode in node.children.items():
         population(subnode[1], instancecount)
     return instancecount
