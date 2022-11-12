@@ -476,11 +476,11 @@ def parsecsv() -> dict:
         green: list = list(purple[1].values())
         if green[3] == 'None' and green[5] == 1 and green[6] == 1 and green[7] == 0:
             headnodes.update({green[0]: Node(ingredient=green[1],
-                                                   parent=None,
-                                                   promptamountparentmade=False,  # noqa: E501 #pylint: disable=line-too-long
-                                                   treekey=green[0],
-                                                   isfromcsvfile=True,
-                                                   promptamountsOn=False)})
+                                            parent=None,
+                                            promptamountparentmade=False,  # noqa: E501 #pylint: disable=line-too-long
+                                            treekey=green[0],
+                                            isfromcsvfile=True,
+                                            promptamountsOn=False)})
     if len(headnodes) == 0:
         return {-1: None}
     return headnodes
