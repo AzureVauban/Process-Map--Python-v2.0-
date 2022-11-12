@@ -938,6 +938,7 @@ if __name__ == '__main__':
                 break
             else:
                 break
+        print('\x1B[35m' + str(rret) + '\x1B[0m')
         # prompt the user to see if they want to run the program again
         while True:
             userinput = input('\nDo you want to run the program again with'
