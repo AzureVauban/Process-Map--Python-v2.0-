@@ -593,7 +593,7 @@ def shouldclonechildren(ingredient: str, subnodes: dict) -> bool:
 # end def
 
 
-def population(node: Node, instancecount: int) -> int:
+def population(node: Node, instancecount: int = 0) -> int:  # todo stuff debug this method
     """
     counts how many nodes are in the ingredient tree
     """
@@ -888,7 +888,7 @@ if __name__ == '__main__':
                 break
         # prompt the user to see if they want to run the program again
         print('the current population of the ingredient tree is',
-              population(nanitree,0))
+              population(nanitree, 0))
         while True:
             userinput = input('\nDo you want to run the program again with'
                               ' another item tree? (Y/N) ').strip().upper()
