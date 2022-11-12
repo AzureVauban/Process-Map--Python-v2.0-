@@ -236,6 +236,51 @@ class Node(NodeB):  # pylint: disable=R0913
         for child in self.children.items():
             child[1].pandastree_row(rows)
         return rows
+    def reformat_output(self,endpoints : dict):
+        """
+        tentative docstring description
+        """
+        # set the new dictionary to be empty
+        red_dict: dict = {}
+        # set the new dictionary to have unique ingredients as keys
+        # and a list of tuples of the parent of said endpoint instance and the
+        # amount on hand as values
+        for node in endpoints.items():
+            if node[1].ingredient not in red_dict:
+                red_dict.update(
+                    {node[1].ingredient: [(node[1].parent.ingredient,
+                                           node[1].amountonhand)]})
+            else:
+                red_dict[node[1].ingredient].append(
+                    (node[1].parent.ingredient,
+                     node[1].amountonhand))
+
+        output_dictionary: dict = {}
+        for item in red_dict.items():
+            orangeinteger: int = 0  # sum of the amount on hand all tuple items
+            for orangenumber in item[1]:
+                orangeinteger += orangenumber[1]
+            for orangetuple in item[1]:
+                if item[0] not in output_dictionary:
+                    output_dictionary.update({item[0]: [str(round(
+                        (orangetuple[1]/orangeinteger)*100, 2)) +
+                        '% ('+str(orangetuple[1])+'x) used in ' +
+                        orangetuple[0]]})
+                else:  # if item is in the dict, append the string to list
+                    output_dictionary[item[0]].append(
+                        str(round((orangetuple[1]/orangeinteger)*100, 2)) +
+                        '% ('+str(orangetuple[1])+'x) used in ' +
+                        orangetuple[0])
+        # output the dictionary keys and values
+        for item in output_dictionary.items():
+            print(item[0], end=' (')
+            for index, string in enumerate(item[1]):
+                if index == len(item[1])-1:
+                    print(string, end='')
+                else:
+                    print(string, end=', ')
+            print(')')
+    # end def
 # end def
 
 
