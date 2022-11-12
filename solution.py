@@ -518,14 +518,13 @@ def clone(node: Node, clonechildren: bool = True) -> Node:
     Returns:
         Node: a clone of a node
     """
-    # todo debug weird interaction. double question output
     # (industrial battery GEN==1, input protocite)
     # @note if the parent ingredient is in the same generation as the clone,
     # do not clone the children, set the parent as its grandparent node
 
     # create a copy of the parameter node
     if not clonechildren:
-        if node.parent is not None and node.parent.parent is not None and isinstance(node.parent.parent, Node): #pylint:disable = line-too-long
+        if node.parent is not None and node.parent.parent is not None and isinstance(node.parent.parent, Node):  # pylint:disable = line-too-long
             bluenode: Node = Node(ingredient=node.ingredient,
                                   parent=node.parent.parent,
                                   amountonhand=node.amountonhand,
@@ -659,10 +658,8 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
         # if ingredient[1] is False, the ingredient is not already in the tree (from csv)
         if not ingredient[1]:
             # searchresults: list = search(head(node), ingredient[0], [])
-            # todo debug interaction with the search method
-            monokai: Node = subpopulate(node, ingredient[0])
-            # @audit remove this later (for debugging)
-            print('created a new node at', monokai)
+            # todo check if this code works as intended
+            subpopulate(node, ingredient[0])
     # recrusively continue to populate the tree
     for subnode in node.children.items():
         populate(subnode[1])
