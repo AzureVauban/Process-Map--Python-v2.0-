@@ -944,6 +944,8 @@ if __name__ == '__main__':
         if ingredienttree.population >= 2 and MODE == ProgramState.MODE_B:
             ingredienttree.reformat_output()
             print('\n')
+        elif ingredienttree.pop:
+            print('You can make')
         # prompt the user if they want to output the ingredient tree onto A csv file
         print('Do you want to save your tree to create',
               ingredienttree.ingredient, 'to a csv file? (Y/N)')
