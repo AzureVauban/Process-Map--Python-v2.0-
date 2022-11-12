@@ -464,8 +464,11 @@ def search(node: Node, ingredient: str, results: list) -> list:
 
 def clone(node: Node) -> Node:
     """
-    tentative docstring description
+    creates a returnable copy of the node
     """
+    # todo debug weird interaction. double question output
+    # (industrial battery GEN==1, input protocite)
+
     # create a copy of the parameter node
     clonenode: Node = Node(ingredient=node.ingredient,
                            parent=node.parent,
