@@ -480,6 +480,8 @@ def shouldclonechildren(subnodes: dict) -> bool:
                     raise TypeError('subnodes is not a dictionary',
                                     Node, 'subnodes with the same parent')
     # create a list of ingredient names that are within all the nodes in the dict
+    subingredientnames: list = []
+    for subnode
     return True
 
 
