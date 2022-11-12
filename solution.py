@@ -300,7 +300,7 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
         return endpoints
     # end def
 
-    def reformat_output(self):  # pylint:disable=R9012
+    def reformat_output(self):  # pylint:disable=R0912
         """
         condenses the output of the tree into a more readable format with percentages
         """
