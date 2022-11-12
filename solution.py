@@ -638,16 +638,19 @@ def subpopulation(node: Node, instancecount: int) -> int:
         instancecount += 1
         subpopulation(subnode[1], instancecount)
     return instancecount
-# end def 
+# end def
 
-def population(node: Node) -> int:
+
+def returnpop(node: Node) -> int:
     """
     counts how many nodes are in the ingredient tree
     """
-    nodecount : int = 0
+    nodecount: int = 0
     subpopulation(node, nodecount)
     return nodecount
 # end def
+
+
 def clone(node: Node, clonechildren: bool = True) -> Node:
     """
     creates a returnable clone of the node passed into the method
