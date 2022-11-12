@@ -803,6 +803,8 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
             # searchresults: list = search(head(node), ingredient[0], [])
             # todo check if this code works as intended
             subpopulate(node, ingredient[0])
+    # update population attribute of Node
+    node.updatepopulation(nodecount(node))
     # recrusively continue to populate the tree
     for subnode in node.children.items():
         populate(subnode[1])
