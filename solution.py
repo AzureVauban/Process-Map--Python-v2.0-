@@ -485,7 +485,8 @@ def shouldclonechildren(ingredient : str,subnodes: dict) -> bool:
         for childnode in subnode.children.items():
             subingredientnames.append(childnode[1].ingredient)
     # check if the ingredient is in the list of subingredient names
-    if i
+    if ingredient in subingredientnames:
+        return False
     return True
 
 
