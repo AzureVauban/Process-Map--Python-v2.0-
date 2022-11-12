@@ -941,15 +941,19 @@ if __name__ == '__main__':
             print('How much of the item do you want to make?')
             ingredienttree.reversearithmetic(promptint())
         # $ this is where results of the arithmetic methods would be printed
+        #? if MODE B and population > 1
         if ingredienttree.population >= 2 and MODE == ProgramState.MODE_B:
             ingredienttree.reformat_output()
             print('\n')
+        #? if MODE A and population > 1
         elif ingredienttree.population >= 2 and MODE == ProgramState.MODE_A:
             print('You can make', ingredienttree.amountresulted, 'of',
                   ingredienttree.ingredient, 'with the materials you have')
             # ? output the endpoint ingredient names and amounts resulted
             for item in ingredienttree.findendpoints({}).items():
-                print('You would use',item[1].amountresulted, 'of', item[1].ingredient)
+                print('You would use',
+                      item[1].amountresulted, 'of', item[1].ingredient)
+        #? population == 1
         else:
             pass
         # prompt the user if they want to output the ingredient tree onto A csv file
