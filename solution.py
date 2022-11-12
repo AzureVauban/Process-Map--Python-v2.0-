@@ -666,7 +666,7 @@ def superpopulate() -> Node:  # todo finish this
 
 if __name__ == '__main__':
     # prompt program mode
-    print('Welcome to Process Map (Python) v1.1!\n')
+    print('Welcome to Process Map (Python) v2.0!\n')
     # program runtime loop
     while True:
         print('Which mode do you want to use:')
