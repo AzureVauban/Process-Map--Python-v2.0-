@@ -240,13 +240,15 @@ class Node(NodeB):  # pylint: disable=R0913
 
 
 def makealiasunique(node: Node):
-    """_summary_
+    """
+    makes all the ingredient aliases in the ingredient tree unique
 
     Args:
-        node (Node): _description_
+        node (Node): current node
     """
     # make all nodes in the tree have unique ingredient aliases
-    # get a list of all the nodes in the ingredient tree with the same ingredient alias as the passed node
+    # get a list of all the nodes in the ingredient tree with the same ingredient alias
+    # as the passed node instance 
     nodesaliases: list = []
     # if the list is greater than 1, then parse through the list to make each alias unique
     if len(nodesaliases) > 1:
