@@ -70,3 +70,41 @@ UoPydLI98vet9sUb,Protocite Bar B,Protocite Bar B fR6Y40AP,Quantum Processor,1,2,
 UoPydLI98vet9sUb,Protocite B,Protocite B 3d221VLvjQxfo,Protocite Bar B,2,2,1,3
 UoPydLI98vet9sUb,Pixels H,Pixels H N57Y5VPqPgg,Protocite B,780,390,1,4
 
+zo0k3pv71o7,Focusing Array,Focusing_Array,None,10015,1,1,0
+zo0k3pv71o7,Advanced Alloy,Advanced_Alloy,Focusing Array,5006,2,1,1
+zo0k3pv71o7,Zerchesium Bar,Zerchesium_Bar,Advanced Alloy,5001,1,1,2
+zo0k3pv71o7,Zerchesium Ore,Zerchesium_Ore,Zerchesium Bar,2501,2,1,3
+zo0k3pv71o7,Pixels,Pixels,Zerchesium Ore,2,1400,1,4
+zo0k3pv71o7,Protocite Bar,Protocite_Bar,Advanced Alloy,5003,1,1,2
+zo0k3pv71o7,Protocite,Protocite,Protocite Bar,2502,2,1,3
+zo0k3pv71o7,Pixels B,Pixels_B,Protocite,7,390,1,4
+zo0k3pv71o7,Penumbrite Shard,Penumbrite_Shard,Advanced Alloy,5005,1,1,2
+zo0k3pv71o7,Penumbrite Ore,Penumbrite_Ore,Penumbrite Shard,2503,2,1,3
+zo0k3pv71o7,Pixels C,Pixels_C,Penumbrite Ore,7,390,1,4
+zo0k3pv71o7,Lead,Lead,Advanced Alloy,5006,1,1,2
+zo0k3pv71o7,Pixels D,Pixels_D,Lead,84,60,1,3
+zo0k3pv71o7,Crystal,Crystal,Focusing Array,5004,2,1,1
+zo0k3pv71o7,Prism Shard,Prism_Shard,Crystal,15010,1,3,2
+zo0k3pv71o7,Pixels E,Pixels_E,Prism Shard,9,1838,1,3
+zo0k3pv71o7,Plasmic Crystal,Plasmic_Crystal,Focusing Array,5006,2,1,1
+zo0k3pv71o7,Bloody Rock,Bloody_Rock,Plasmic Crystal,102,50,1,2
+zo0k3pv71o7,Blood,Blood,Bloody Rock,101,1,1,3
+zo0k3pv71o7,Teratomato,Teratomato,Blood,303,1,3,4
+zo0k3pv71o7,Teratomato Seed,Teratomato_Seed,Teratomato,101,3,1,5
+zo0k3pv71o7,Mercury,Mercury,Bloody Rock,102,1,1,3
+zo0k3pv71o7,Cinnabar,Cinnabar,Mercury,102,2,2,4
+zo0k3pv71o7,Pixels F,Pixels_F,Cinnabar,2,70,1,5
+zo0k3pv71o7,Quantum Processor,Quantum_Processor,Focusing Array,10015,1,1,1
+zo0k3pv71o7,Silicon Board,Silicon_Board,Quantum Processor,5009,4,2,2
+zo0k3pv71o7,Silicon,Silicon,Silicon Board,5008,1,1,3
+zo0k3pv71o7,Sand,Sand,Silicon,103,50,1,4
+zo0k3pv71o7,Cobblestone,Cobblestone,Sand,8,50,3,5
+zo0k3pv71o7,Rockroot,Rockroot,Cobblestone,15,1,2,6
+zo0k3pv71o7,Rockroot Seed,Rockroot_Seed,Rockroot,5,3,1,7
+zo0k3pv71o7,Copper Wire,Copper_Wire,Silicon Board,5009,1,1,3
+zo0k3pv71o7,Copper Bar,Copper_Bar,Copper Wire,45073,1,9,4
+zo0k3pv71o7,Copper Ore,Copper_Ore,Copper Bar,22537,2,1,5
+zo0k3pv71o7,Pixels G,Pixels_G,Copper Ore,257,88,1,6
+zo0k3pv71o7,Protocite Bar B,Protocite_Bar_B,Quantum Processor,10015,2,2,2
+zo0k3pv71o7,Protocite B,Protocite_B,Protocite Bar B,5008,2,1,3
+zo0k3pv71o7,Pixels H,Pixels_H,Protocite B,13,390,1,4
