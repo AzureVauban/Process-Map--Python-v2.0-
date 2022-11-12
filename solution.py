@@ -327,26 +327,26 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
                      node[1].amountonhand))
 
         output_dictionary: dict = {}
-        for item in red_dict.items():
+        for item_a in red_dict.items():
             orangeinteger: int = 0  # sum of the amount on hand all tuple items
-            for orangenumber in item[1]:
+            for orangenumber in item_a[1]:
                 orangeinteger += orangenumber[1]
-            for orangetuple in item[1]:
-                if item[0] not in output_dictionary:
-                    output_dictionary.update({item[0]: [str(round(
+            for orangetuple in item_a[1]:
+                if item_a[0] not in output_dictionary:
+                    output_dictionary.update({item_a[0]: [str(round(
                         (orangetuple[1]/orangeinteger)*100, 2)) +
                         '% ('+str(orangetuple[1])+'x) used in ' +
                         orangetuple[0]]})
                 else:  # if item is in the dict, append the string to list
-                    output_dictionary[item[0]].append(
+                    output_dictionary[item_a[0]].append(
                         str(round((orangetuple[1]/orangeinteger)*100, 2)) +
                         '% ('+str(orangetuple[1])+'x) used in ' +
                         orangetuple[0])
         # output the dictionary keys and values
-        for item in output_dictionary.items():
-            print(item[0], end=' (')
-            for index, string in enumerate(item[1]):
-                if index == len(item[1])-1:
+        for item_a in output_dictionary.items():
+            print(item_a[0], end=' (')
+            for index, string in enumerate(item_a[1]):
+                if index == len(item_a[1])-1:
                     print(string, end='')
                 else:
                     print(string, end=', ')
