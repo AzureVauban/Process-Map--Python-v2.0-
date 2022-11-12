@@ -948,6 +948,7 @@ if __name__ == '__main__':
             print('You can make', ingredienttree.amountresulted, 'of',
                   ingredienttree.ingredient, 'with the materials you have')
             # ? output the endpoint ingredient names and amounts resulted
+            for item in ingredienttree.findendpoints({}).items():
         # prompt the user if they want to output the ingredient tree onto A csv file
         print('Do you want to save your tree to create',
               ingredienttree.ingredient, 'to a csv file? (Y/N)')
