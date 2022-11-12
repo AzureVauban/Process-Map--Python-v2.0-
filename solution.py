@@ -529,6 +529,7 @@ def parsecsv() -> dict:
     if len(headnodes) == 0:
         return {-1: None}
     return headnodes
+# end def
 
 
 def createtree(node: Node, pandasrow: list) -> bool:
@@ -570,6 +571,7 @@ def createtree(node: Node, pandasrow: list) -> bool:
     for subnode in node.children.items():
         createtree(subnode[1], pandasrow)
     return False
+# end def
 
 
 def createtreefromcsv(parent: Node) -> Node:
@@ -586,8 +588,7 @@ def createtreefromcsv(parent: Node) -> Node:
     # check if the row has the correct amount of elements
     # the node must match the following requirements to link:
     # parent ingredient must be the same as the parent ingredient
-    # treekey must be the same
-    # generation must be greater than 0
+    # treekey must be the same & generation > 0
     sublist: list = []
     for purple in pandas.read_csv(FILENAME).to_dict('index').items():
         # convert the values of the dictionary to a list
@@ -826,7 +827,6 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
         # if ingredient[1] is False, the ingredient is not already in the tree (from csv)
         if not ingredient[1]:
             # searchresults: list = search(head(node), ingredient[0], [])
-            # todo check if this code works as intended
             subpopulate(node, ingredient[0])
     # update population attribute of Node
     node.updatepopulation(nodecount(node))
@@ -936,7 +936,6 @@ if __name__ == '__main__':
         # populate the ingredient tree
         ingredienttree: Node = superpopulate()
         # if the programde mode is B
-
         if MODE == ProgramState.MODE_B:
             # prompt the user for how much an item they want to make
             print('How much of the item do you want to make?')
