@@ -462,7 +462,7 @@ def search(node: Node, ingredient: str, results: list) -> list:
 # end def
 
 
-def clonechildren(ingredient: str, subnodes: dict) -> bool:
+def shouldclonechildren(ingredient: str, subnodes: dict) -> bool:
     if len(subnodes) == 0:
         return True
     # convert subnodes dict to a list of nodes
@@ -569,7 +569,8 @@ def subpopulate(node: Node, ingredient: str) -> Node:
         return Node(ingredient, node)
     # check if the ingredient is in any of the subnodes of its sibilings
     # todo make a method for above comment ^^^
-    clonenode: Node = clone(parseresults[userchoice])
+    shouldclonechildrennodes : bool = shouldclonechildren(ingredient, node.children)
+    clonenode: Node = clone(parseresults[userchoice],shouldclonechildrennodes)
     return clonenode
 # end def
 
