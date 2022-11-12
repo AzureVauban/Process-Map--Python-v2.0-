@@ -907,6 +907,7 @@ if __name__ == '__main__':
                 break
         # populate the ingredient tree
         nanitree: Node = superpopulate()
+        print('The tree has been populated, here is the tree:',end=str(nanitree.nodecount())+'\n')
         # if the programde mode is B
         if MODE == ProgramState.MODE_B:
             # prompt the user for how much an item they want to make
