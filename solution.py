@@ -312,22 +312,22 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
             raise TypeError('temp is not an instance of', Node)
         while temp.parent is not None:
             temp = temp.parent
-        red_dict: dict = {}
+        compressedendpoints: dict = {}
         # set the new dictionary to have unique ingredients as keys
         # and a list of tuples of the parent of said endpoint instance and the
         # amount on hand as values
         for node in temp.findendpoints({}).items():
-            if node[1].ingredient not in red_dict:
-                red_dict.update(
+            if node[1].ingredient not in compressedendpoints:
+                compressedendpoints.update(
                     {node[1].ingredient: [(node[1].parent.ingredient,
                                            node[1].amountonhand)]})
             else:
-                red_dict[node[1].ingredient].append(
+                compressedendpoints[node[1].ingredient].append(
                     (node[1].parent.ingredient,
                      node[1].amountonhand))
 
         output_dictionary: dict = {}
-        for item_a in red_dict.items():
+        for item_a in compressedendpoints.items():
             orangeinteger: int = 0  # sum of the amount on hand all tuple items
             for orangenumber in item_a[1]:
                 orangeinteger += orangenumber[1]
