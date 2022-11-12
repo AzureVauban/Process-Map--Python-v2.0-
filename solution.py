@@ -271,7 +271,8 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
             child[1].pandastree_row(rows)
         return rows
     # end def
-    def population(self)->int:
+
+    def population(self) -> int:
         """_summary_
 
         Returns:
@@ -282,7 +283,7 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
             green = green.parent
         return len(green.pandastree_row([]))
     # end def
-    
+
     def reformat_output(self, endpoints: dict):
         """
         condenses the output of the tree into a more readable format with percentages
@@ -644,7 +645,7 @@ def nodecount_tentative(node: Node) -> int:
     """
     counts how many nodes are in the ingredient tree
     """
-    #$ return the length of the rows (creates a row for every node in the tree)
+    # $ return the length of the rows (creates a row for every node in the tree)
     return len(head(node).pandastree_row([]))
 # end def
 
@@ -907,7 +908,8 @@ if __name__ == '__main__':
                 break
         # populate the ingredient tree
         nanitree: Node = superpopulate()
-        print('The tree has been populated, here is the tree:',end=str(nanitree.nodecount())+'\n')
+        print('\x1B[32mThe tree has been populated, here is the tree:',
+              end=str(nanitree.population()) + '\x1B[0m\n')
         # if the programde mode is B
         if MODE == ProgramState.MODE_B:
             # prompt the user for how much an item they want to make
