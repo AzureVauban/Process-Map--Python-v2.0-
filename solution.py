@@ -262,7 +262,7 @@ def makealiasunique(node: Node):
         makealiasunique(subnode[1])
 # end def
 
-
+def allaliases()
 def writetreetocsv(headnode: Node):
     """
     writes an ingredient tree onto a csv file
