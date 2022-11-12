@@ -539,6 +539,8 @@ def subpopulate(node: Node, ingredient: str) -> Node:
         # if the user did not input a valid index
         # if not return the defaultly created new node
         return Node(ingredient, node)
+    # check if the ingredient is in any of the subnodes of its sibilings
+    
     clonenode: Node = clone(parseresults[userchoice])
     return clonenode
 # end def
