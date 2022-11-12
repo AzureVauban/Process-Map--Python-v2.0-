@@ -394,6 +394,9 @@ def createtree(node: Node, pandasrow: list) -> bool:
              treekey=pandasrow[0],
              # isfromcsvfile=True,
              promptamountsOn=False)
+        red: str = '\x1B[31m'+node.ingredient+'\x1B[0m'  # parent ingredient name
+        blue: str = '\x1B[36m'+pandasrow[1]+'\x1B[0m'  # ingredient name
+        print('emplaced node', red+' | ' + blue) 
         return True
     for subnode in node.children.items():
         createtree(subnode[1], pandasrow)
@@ -427,12 +430,11 @@ def createtreefromcsv(parent: Node) -> Node:
     # figure out where to emplace the node
     # * correctly finds all nodes with the same treekey from the csv file
     for index, row in enumerate(sublist):
-        ristretto : bool = createtree(parent, row)
+        createtree(parent, row)
         # sublist.remove(sublist[index])
         red: str = '\x1B[31m'+row[3]+'\x1B[0m'  # parent ingredient name
         blue: str = '\x1B[36m'+row[1]+'\x1B[0m'  # ingredient name
-        if ristretto:
-            print('emplaced node', index, red+' | ' + blue) 
+        print('emplaced node', index, red+' | ' + blue) 
     return head(parent)
 
 
