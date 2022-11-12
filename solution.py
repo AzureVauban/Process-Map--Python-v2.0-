@@ -643,7 +643,6 @@ def subpopulation(node: Node, instancecount: int = 0) -> int:
 # end def
 
 
-
 def clone(node: Node, clonechildren: bool = True) -> Node:
     """
     creates a returnable clone of the node passed into the method
