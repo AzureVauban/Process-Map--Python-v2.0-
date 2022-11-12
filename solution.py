@@ -463,6 +463,21 @@ def search(node: Node, ingredient: str, results: list) -> list:
 
 
 def shouldclonechildren(ingredient: str, subnodes: dict) -> bool:
+    """
+    check to see if the ingredient is within the subnodes of all the nodes within the same 
+    generation as its target location
+
+    Args:
+        ingredient (str): _description_
+        subnodes (dict): _description_
+
+    Raises:
+        TypeError: _description_
+        TypeError: _description_
+
+    Returns:
+        bool: _description_
+    """
     if len(subnodes) == 0:
         return True
     # convert subnodes dict to a list of nodes
