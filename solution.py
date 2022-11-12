@@ -248,8 +248,8 @@ def makealiasunique(node: Node):
     """
     # make all nodes in the tree have unique ingredient aliases
     # get a list of all the nodes in the ingredient tree with the same ingredient alias
-    # as the passed node instance 
-    nodesaliases: list = []
+    # as the passed node instance
+    nodesaliases: list = allaliases(node, node.aliasingredient, [])
     # if the list is greater than 1, then parse through the list to make each alias unique
     if len(nodesaliases) > 1:
         # make uniue by appending the index to the alias
@@ -262,7 +262,8 @@ def makealiasunique(node: Node):
         makealiasunique(subnode[1])
 # end def
 
-def allaliases(node: Node, alias : str, aliases : list) -> list:
+
+def allaliases(node: Node, alias: str, aliases: list) -> list:
     """
     returns a list of all the nodes with the same alias
 
@@ -281,6 +282,8 @@ def allaliases(node: Node, alias : str, aliases : list) -> list:
         allaliases(subnode[1], alias, aliases)
     return aliases
 # end def
+
+
 def writetreetocsv(headnode: Node):
     """
     writes an ingredient tree onto a csv file
