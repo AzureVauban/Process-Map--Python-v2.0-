@@ -454,8 +454,7 @@ def search(node: Node, ingredient: str, results: list) -> list:
     conditionA : bool = node.parent is not None
     conditionB: bool = node.ingredient == ingredient
     if conditionA and conditionB:
-        for subnode in node.children.items():
-            results.append(subnode[1])
+        results.append(node)
     # recrusively keep searching for nodes
     for subnode in node.children.items():
         search(subnode[1], ingredient, results)
