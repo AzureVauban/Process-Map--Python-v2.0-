@@ -451,7 +451,7 @@ def search(node: Node, ingredient: str, results: list) -> list:
         list: a list of nodes that have the same ingredient as the parameter
     """
     # if node is a subnode and the ingredient matches, update the listprint(condition)
-    conditionA : bool = node.parent is not None
+    conditionA: bool = node.parent is not None
     conditionB: bool = node.ingredient == ingredient
     if conditionA and conditionB:
         results.append(node)
