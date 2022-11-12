@@ -433,8 +433,6 @@ def createtreefromcsv(parent: Node) -> Node:
     # * correctly finds all nodes with the same treekey from the csv file
     for index, row in enumerate(sublist):
         ristretto : bool = createtree(parent, row)
-        if ristretto:
-            del sublist[index]
         print('row', index, 'of', len(sublist), 'rows')
     return head(parent)
 
