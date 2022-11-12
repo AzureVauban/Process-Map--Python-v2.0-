@@ -510,7 +510,7 @@ def subpopulate(node: Node, ingredient: str) -> Node:
     # else, prompt the user to create a linkable clone of the new node
     print('+ Amount On Hand')
     print('++ Amount of the parent made per craft')
-    print('+++ Amount Needed to craft parent item once')
+    print('+++ Amount Needed to craft parent item once\n')
     for index, subnode in enumerate(parseresults):
         # output the choices of subnodes:
         # parent ingredient, amountneeded, amountmadepereachcraft
