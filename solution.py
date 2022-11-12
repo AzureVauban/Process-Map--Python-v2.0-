@@ -762,6 +762,8 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
     Returns:
         Node: the head of the ingredient tree
     """
+    # update population attribute of Node
+    node.updatepopulation(nodecount(node))
     # output the ingredient trail if there is a parent Node
     if node.parent is not None:
         trail(node)
