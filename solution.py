@@ -462,7 +462,7 @@ def search(node: Node, ingredient: str, results: list) -> list:
 # end def
 
 
-def clone(node: Node,clonechildren : bool = True) -> Node:
+def clone(node: Node, clonechildren: bool = True) -> Node:
     """
     creates a returnable copy of the node
     """
@@ -478,16 +478,16 @@ def clone(node: Node,clonechildren : bool = True) -> Node:
                            isfromcsvfile=node.isfromcsvfile,
                            promptamountsOn=False)
     # create a copy of all the children of the parameter node
-    for subnode in node.children.items():
-        childsubnode: Node = Node(ingredient=subnode[1].ingredient,
-                                  parent=subnode,
-                                  amountonhand=subnode[1].amountonhand,
-                                  amountneeded=subnode[1].amountneeded,
-                                  amountparentmadepercraft=subnode[1].amountparentmadepercraft,  # noqa: E501 #pylint: disable=line-too-long
-                                  promptamountparentmade=False,
-                                  isfromcsvfile=subnode[1].isfromcsvfile,
-                                  promptamountsOn=False)
-        print('creating', childsubnode.ingredient, 'data...')
+    if clonechildren:
+        for subnode in node.children.items():
+            Node(ingredient=subnode[1].ingredient,
+                parent=subnode,
+                amountonhand=subnode[1].amountonhand,
+                amountneeded=subnode[1].amountneeded,
+                amountparentmadepercraft=subnode[1].amountparentmadepercraft,  # noqa: E501 #pylint: disable=line-too-long
+                promptamountparentmade=False,
+                isfromcsvfile=subnode[1].isfromcsvfile,
+                promptamountsOn=False)
     return clonenode
 # end def
 
@@ -528,6 +528,7 @@ def subpopulate(node: Node, ingredient: str) -> Node:
                                + ' | + ' + str(subnode.amountonhand)
                                + ' | ++ ' + str(subnode.amountneeded)
                                + ' | +++ ' + str(subnode.amountparentmadepercraft)+'\n'))
+    # todo make sure program doesn't crash when user's input is blank
     userchoice: int = int(input('Choose a subnode to clone: '))
     userchoice -= 1
     # if the user chooses to create a new node, return a clone subnode
