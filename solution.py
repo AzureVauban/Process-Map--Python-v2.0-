@@ -1,6 +1,9 @@
 """
 Reformat of main.py
-- functional programming
+#! mean warnings
+#? mean questions
+#todo means todos
+#$ means notes to self or tester
 """
 
 import math
