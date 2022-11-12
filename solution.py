@@ -629,7 +629,7 @@ def shouldclonechildren(ingredient: str, subnodes: dict) -> bool:
 
 
 # todo debug this method, always returns 1
-def subpopulation(node: Node, instancecount: int) -> int:
+def subpopulation(node: Node, instancecount: int = 0) -> int:
     """
     counts how many nodes are in the ingredient tree
     """
@@ -642,16 +642,6 @@ def subpopulation(node: Node, instancecount: int) -> int:
     return instancecount
 # end def
 
-
-def returnpop(node: Node, nodecount: int = 0) -> int:
-    """
-    counts how many nodes are in the ingredient tree
-    """
-    if node.parent is None:
-        nodecount = -100
-    subpopulation(head(node), nodecount)
-    return nodecount
-# end def
 
 
 def clone(node: Node, clonechildren: bool = True) -> Node:
@@ -919,7 +909,7 @@ if __name__ == '__main__':
             nanitree.reversearithmetic(promptint())
         # $ this is where results of the arithmetic methods would be printed
         # prompt the user if they want to output the ingredient tree onto A csv file
-        print('\x1B[35m' + str(returnpop(nanitree)) + '\x1B[0m')
+        print('\x1B[35m' + str(subpopulation(nanitree)) + '\x1B[0m')
         print('Do you want to save your tree to create',
               nanitree.ingredient, 'to a csv file? (Y/N)')
         while True:
