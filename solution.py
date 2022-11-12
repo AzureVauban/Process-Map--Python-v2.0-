@@ -941,7 +941,7 @@ if __name__ == '__main__':
             print('How much of the item do you want to make?')
             ingredienttree.reversearithmetic(promptint())
         # $ this is where results of the arithmetic methods would be printed
-        if ingredienttree.population >= 2:
+        if ingredienttree.population >= 2 and MODE == ProgramState.MODE_B:
             ingredienttree.reformat_output()
             print('\n')
         # prompt the user if they want to output the ingredient tree onto A csv file
