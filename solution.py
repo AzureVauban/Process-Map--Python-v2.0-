@@ -238,17 +238,29 @@ class Node(NodeB):  # pylint: disable=R0913
         return rows
 # end def
 
-def makealiasunique(node : Node):
+
+def makealiasunique(node: Node):
+    """_summary_
+
+    Args:
+        node (Node): _description_
+    """
     # make all nodes in the tree have unique ingredient aliases
     # get a list of all the nodes in the ingredient tree with the same ingredient alias as the passed node
-    nodesaliases : list = []
+    nodesaliases: list = []
     # if the list is greater than 1, then parse through the list to make each alias unique
     if len(nodesaliases) > 1:
-        
+        # make uniue by appending the index to the alias
+        for redindex, reditem in enumerate(nodesaliases):
+            for blueindex, blueitem in enumerate(nodesaliases):
+                if redindex != blueindex and reditem.aliasingredient == blueitem.aliasingredient:
+                    blueitem.aliasingredient += str(blueindex)
     # recrusively call the function on each child node
     for subnode in node.children.items():
         makealiasunique(subnode[1])
 # end def
+
+
 def writetreetocsv(headnode: Node):
     """
     writes an ingredient tree onto a csv file
@@ -787,7 +799,7 @@ if __name__ == '__main__':
                 useringredienttree.changetreekey(
                     useringredienttree.generate_treekey())
                 # make sure each ingredient alias is unique
-                #todo finish this method
+                # todo finish this method
                 # write onto file
                 writetreetocsv(useringredienttree)
                 break
