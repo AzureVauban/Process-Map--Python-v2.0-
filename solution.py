@@ -451,8 +451,8 @@ def search(node: Node, ingredient: str, results: list) -> list:
         list: a list of nodes that have the same ingredient as the parameter
     """
     # if node is a subnode and the ingredient matches, update the listprint(condition)
-    conditionA: bool = node.parent is not None
-    conditionB: bool = node.ingredient == ingredient
+    conditionA: bool = node.parent is not None # !remove when done debugging
+    conditionB: bool = node.ingredient == ingredient # !remove when done debugging
     if conditionA and conditionB:
         results.append(node)
     # recrusively keep searching for nodes
@@ -461,7 +461,7 @@ def search(node: Node, ingredient: str, results: list) -> list:
     return results
 # end def
 
-
+def 
 def clone(node: Node, clonechildren: bool = True) -> Node:
     """
     creates a returnable copy of the node
@@ -540,7 +540,7 @@ def subpopulate(node: Node, ingredient: str) -> Node:
         # if not return the defaultly created new node
         return Node(ingredient, node)
     # check if the ingredient is in any of the subnodes of its sibilings
-    
+    # todo make a method for above comment ^^^
     clonenode: Node = clone(parseresults[userchoice])
     return clonenode
 # end def
