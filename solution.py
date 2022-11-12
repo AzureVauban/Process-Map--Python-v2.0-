@@ -634,7 +634,7 @@ def subpopulation(node: Node, instancecount: int) -> int:
     counts how many nodes are in the ingredient tree
     """
     #! for some reason this method always returns 1
-    i : int = 0
+    i: int = 0
     while i < len(node.children.items()):
         i += 1
     for subnode in node.children.items():
@@ -643,8 +643,7 @@ def subpopulation(node: Node, instancecount: int) -> int:
 # end def
 
 
-
-def returnpop(node: Node,nodecount: int = 0) -> int:
+def returnpop(node: Node, nodecount: int = 0) -> int:
     """
     counts how many nodes are in the ingredient tree
     """
