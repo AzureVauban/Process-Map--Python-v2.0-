@@ -468,7 +468,9 @@ def clone(node: Node, clonechildren: bool = True) -> Node:
     """
     # todo debug weird interaction. double question output
     # (industrial battery GEN==1, input protocite)
-    # @note if the parent ingredient is in the same 
+    # @note if the parent ingredient is in the same generation as the clone,
+    # do not clone the children, set the parent as its grandparent node
+
     # create a copy of the parameter node
     clonenode: Node = Node(ingredient=node.ingredient,
                            parent=node.parent,
