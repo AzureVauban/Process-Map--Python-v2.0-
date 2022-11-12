@@ -630,7 +630,7 @@ def shouldclonechildren(ingredient: str, subnodes: dict) -> bool:
 
 
 # todo debug this method, always returns 1
-def subpopulation(node: Node, instancecount: int = 0) -> int:
+def subpopulation(node: Node) -> int:
     """
     counts how many nodes are in the ingredient tree
     """
