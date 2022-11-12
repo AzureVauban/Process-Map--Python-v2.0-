@@ -196,7 +196,7 @@ class Node(NodeB):  # pylint: disable=R0913
         """
         self.treekey = newtreekey
         for subnode in self.children.items():
-            subnode[1].changetreekey(newtreekey)
+            subnode[1].modifytreekey(newtreekey)
 
     def pandasrow(self) -> dict:
         """
