@@ -949,7 +949,7 @@ if __name__ == '__main__':
                   ingredienttree.ingredient, 'with the materials you have')
             # ? output the endpoint ingredient names and amounts resulted
             for item in ingredienttree.findendpoints({}).items():
-                print('You would use ',item[1].amountresulted, 'of', item[1].ingredient)
+                print('You would use',item[1].amountresulted, 'of', item[1].ingredient)
         else:
             pass
         # prompt the user if they want to output the ingredient tree onto A csv file
