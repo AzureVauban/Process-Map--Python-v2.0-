@@ -481,7 +481,7 @@ def shouldclonechildren(subnodes: dict) -> bool:
                                     Node, 'subnodes with the same parent')
     # create a list of ingredient names that are within all the nodes in the dict
     subingredientnames: list = []
-    for subnode
+    for subnode in subnodeslist:
     return True
 
 
