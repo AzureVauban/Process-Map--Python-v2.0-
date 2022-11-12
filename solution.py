@@ -512,7 +512,8 @@ def clone(node: Node, clonechildren: bool = True) -> Node:
 
     Args:
         node (Node): current node instance to copy and clone
-        clonechildren (bool, optional): should the have its subnodes cloned aswell. Defaults to True.
+        clonechildren (bool, optional): should the have its subnodes cloned aswell.
+        Defaults to True.
 
     Returns:
         Node: a clone of a node
@@ -524,7 +525,7 @@ def clone(node: Node, clonechildren: bool = True) -> Node:
 
     # create a copy of the parameter node
     if not clonechildren:
-        if node.parent is not None and node.parent.parent is not None and isinstance(node.parent.parent, Node):
+        if node.parent is not None and node.parent.parent is not None and isinstance(node.parent.parent, Node): #pylint:disable = line-too-long
             bluenode: Node = Node(ingredient=node.ingredient,
                                   parent=node.parent.parent,
                                   amountonhand=node.amountonhand,
