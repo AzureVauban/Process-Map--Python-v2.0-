@@ -918,6 +918,7 @@ if __name__ == '__main__':
             nanitree.reversearithmetic(promptint())
         # $ this is where results of the arithmetic methods would be printed
         # prompt the user if they want to output the ingredient tree onto A csv file
+        print('\x1B[35m' + str(returnpop(nanitree)) + '\x1B[0m')
         print('Do you want to save your tree to create',
               nanitree.ingredient, 'to a csv file? (Y/N)')
         while True:
@@ -938,7 +939,6 @@ if __name__ == '__main__':
                 break
             else:
                 break
-        print('\x1B[35m' + str(returnpop(nanitree)) + '\x1B[0m')
         # prompt the user to see if they want to run the program again
         while True:
             userinput = input('\nDo you want to run the program again with'
