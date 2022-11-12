@@ -106,7 +106,7 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
     instancekey: int = 0
     treekey: str = ''
     isfromcsvfile: bool = False
-    treepopulation: int = 1
+    population: int = 1
 
     def __init__(self, ingredient: str = '',  # pylint: disable=R0913
                  parent=None,
@@ -277,19 +277,42 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
         """
         _summary_
         """
-        self.treepopulation = population
+        self.population = population
         for subnode in self.children.items():
             subnode[1].updatepopulation(population)
     # end def
 
-    def reformat_output(self, endpoints: dict):
+    def findendpoints(self,endpoints: dict) -> dict:
+        """
+        returns a dictionary of nodes with no children
+
+        Args:
+            endpoints (dict): _description_
+
+        Returns:
+            _type_: _description_
+        """
+        for subnode in self.children.items():
+            if len(subnode[1].children) == 0:
+                endpoints.update({subnode[1].instancekey: subnode[1]})
+            else:
+                subnode[1].findendpoints(endpoints)
+        return endpoints
+    # end def
+    
+    def reformat_output(self):
         """
         condenses the output of the tree into a more readable format with percentages
         """
         # ! this method can only run when there is are more than one nodes in the ingredient tree,
         # ! otherwise it will crash
         # set the new dictionary to be empty
-        red_dict: dict = {}
+        temp = self
+        if not isinstance(temp, Node):
+            raise TypeError('temp is not an instance of', Node)
+        while temp.parent is not None:
+            temp = temp.parent
+        endpoints: dict = {}
         # set the new dictionary to have unique ingredients as keys
         # and a list of tuples of the parent of said endpoint instance and the
         # amount on hand as values
@@ -918,7 +941,7 @@ if __name__ == '__main__':
             print('How much of the item do you want to make?')
             ingredienttree.reversearithmetic(promptint())
         # $ this is where results of the arithmetic methods would be printed
-        if ingredienttree.treepopulation >= 2:
+        if ingredienttree.population >= 2:
             ingred
         # prompt the user if they want to output the ingredient tree onto A csv file
         print('Do you want to save your tree to create',
