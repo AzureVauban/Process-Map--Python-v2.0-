@@ -518,10 +518,10 @@ def subpopulate(node: Node, ingredient: str) -> Node:
 
         # output the choices of subnodes:
         # parent ingredient, amountneeded, amountmadepereachcraft
-        print(index+1, str('. ' + subnode.parent.ingredient
-                           + ' | + ' + str(subnode.amountonhand)
-                           + ' | ++ ' + str(subnode.amountneeded)
-                           + ' | +++ ' + str(subnode.amountparentmadepercraft)))
+        print(index+1, end=str('. ' + subnode.parent.ingredient
+                               + ' | + ' + str(subnode.amountonhand)
+                               + ' | ++ ' + str(subnode.amountneeded)
+                               + ' | +++ ' + str(subnode.amountparentmadepercraft)+'\n'))
     userchoice: int = int(input('Choose a subnode to clone: '))
     userchoice -= 1
     # if the user chooses to create a new node, return a clone subnode
