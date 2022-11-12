@@ -629,7 +629,7 @@ def shouldclonechildren(ingredient: str, subnodes: dict) -> bool:
 # end def
 
 
-def subpopulation(node: Node) -> int:
+def nodecount_tentative(node: Node) -> int:
     """
     counts how many nodes are in the ingredient tree
     """
