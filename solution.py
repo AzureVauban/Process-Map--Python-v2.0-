@@ -524,13 +524,14 @@ def clone(node: Node, clonechildren: bool = True) -> Node:
 
     # create a copy of the parameter node
     if not clonechildren:
-        bluenode: Node = Node(ingredient=node.ingredient,
-                              parent=node.parent.parent,
-                              amountonhand=node.amountonhand,
-                              amountneeded=node.amountneeded,
-                              amountparentmadepercraft=node.amountparentmadepercraft,
-                              isfromcsvfile=node.isfromcsvfile,
-                              promptamountsOn=False)
+        if node.parent is not None and node.parent.parent is not None and isinstance(node.parent.parent, Node):
+            bluenode: Node = Node(ingredient=node.ingredient,
+                                  parent=node.parent.parent,
+                                  amountonhand=node.amountonhand,
+                                  amountneeded=node.amountneeded,
+                                  amountparentmadepercraft=node.amountparentmadepercraft,
+                                  isfromcsvfile=node.isfromcsvfile,
+                                  promptamountsOn=False)
         return bluenode
     rednode: Node = Node(ingredient=node.ingredient,
                          parent=node.parent,
