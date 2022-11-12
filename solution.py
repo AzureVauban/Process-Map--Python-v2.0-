@@ -911,16 +911,16 @@ if __name__ == '__main__':
                 MODE = ProgramState.MODE_A
                 break
         # populate the ingredient tree
-        nanitree: Node = superpopulate()
+        ingredienttree: Node = superpopulate()
         # if the programde mode is B
         if MODE == ProgramState.MODE_B:
             # prompt the user for how much an item they want to make
             print('How much of the item do you want to make?')
-            nanitree.reversearithmetic(promptint())
+            ingredienttree.reversearithmetic(promptint())
         # $ this is where results of the arithmetic methods would be printed
         # prompt the user if they want to output the ingredient tree onto A csv file
         print('Do you want to save your tree to create',
-              nanitree.ingredient, 'to a csv file? (Y/N)')
+              ingredienttree.ingredient, 'to a csv file? (Y/N)')
         while True:
             userinput = input('').strip().upper()
             if userinput not in ('Y', 'N'):
@@ -930,12 +930,12 @@ if __name__ == '__main__':
                       ' character')
             elif userinput == 'Y':
                 # change the tree key
-                nanitree.modifytreekey(
-                    nanitree.gen_treekey())
+                ingredienttree.modifytreekey(
+                    ingredienttree.gen_treekey())
                 # make sure each ingredient alias is unique
-                makealiasunique(nanitree)
+                makealiasunique(ingredienttree)
                 # write onto file
-                writetreetocsv(nanitree)
+                writetreetocsv(ingredienttree)
                 break
             else:
                 break
