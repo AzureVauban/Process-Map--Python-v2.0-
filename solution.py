@@ -513,7 +513,7 @@ def clone(node: Node, clonechildren: bool = True) -> Node:
         Node: a clone of a node
     """
     # (industrial battery GEN==1, input protocite)
-    # @note if the parent ingredient is in the same generation as the clone,
+    # if the parent ingredient is in the same generation as the clone,
     # do not clone the children, set the parent as its grandparent node
 
     # create a copy of the parameter node
