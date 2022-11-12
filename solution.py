@@ -567,7 +567,7 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
             userinputs.append((myinput, False))
     # create subnodes for each ingredient using the subpopulate method
     for ingredient in userinputs:
-        # if ingredient[1] is False, the ingredient is not already in the tree
+        # if ingredient[1] is False, the ingredient is not already in the tree the csv file
         if not ingredient[1]:
             searchresults: list = search(head(node), ingredient[0], [])
             # todo debug interaction with the search method
