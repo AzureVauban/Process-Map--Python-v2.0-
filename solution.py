@@ -659,7 +659,6 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
     for subnode in node.children.items():
         populate(subnode[1])
     # if the program Mode is A and the length of the children Nodes are 0
-    # @note call recursive arithmetic method here
     if MODE == ProgramState.MODE_A and len(node.children) == 0:
         # call the arithmetic method
         node.recursivearithmetic()
