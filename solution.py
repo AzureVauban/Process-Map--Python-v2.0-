@@ -512,6 +512,10 @@ def subpopulate(node: Node, ingredient: str) -> Node:
     print('++ Amount of the parent made per craft')
     print('+++ Amount Needed to craft parent item once\n')
     for index, subnode in enumerate(parseresults):
+        # todo implement the prompt numeric input method,
+        # come back to this and see if do the math on the tree
+        # will help differiate the values (industral battery)
+
         # output the choices of subnodes:
         # parent ingredient, amountneeded, amountmadepereachcraft
         print(index+1, str('. ' + subnode.parent.ingredient
