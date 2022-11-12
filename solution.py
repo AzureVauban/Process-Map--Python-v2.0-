@@ -582,7 +582,6 @@ def subpopulate(node: Node, ingredient: str) -> Node:
     if MODE == ProgramState.MODE_B:
         head(node).reversearithmetic(1)
     for index, subnode in enumerate(parseresults):
-        # todo implement the prompt numeric input method,
         # come back to this and see if do the math on the tree
         # will help differiate the values (industral battery)
 
@@ -602,9 +601,9 @@ def subpopulate(node: Node, ingredient: str) -> Node:
         # if not return the defaultly created new node
         return Node(ingredient, node)
     # check if the ingredient is in any of the subnodes of its sibilings
-    # todo make a method for above comment ^^^
-    clonesubnodes_true: bool = shouldclonechildren(ingredient, node.children)
-    clonenode: Node = clone(parseresults[userchoice], clonesubnodes_true)
+    clonenode: Node = clone(
+        parseresults[userchoice],  # node that will be cloned
+        shouldclonechildren(ingredient, node.children))  # bool to determine to clone subnodes
     return clonenode
 # end def
 
