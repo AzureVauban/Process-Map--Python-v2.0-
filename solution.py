@@ -270,6 +270,7 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
         for child in self.children.items():
             child[1].pandastree_row(rows)
         return rows
+    # end def
 
     def reformat_output(self, endpoints: dict):
         """
@@ -633,6 +634,7 @@ def subpopulation(node: Node, instancecount: int = 0) -> int:
     """
     counts how many nodes are in the ingredient tree
     """
+    qwerty : int = len(head(node).pandastree_row)
     #! for some reason this method always returns 1
     i: int = 0
     while i < len(node.children.items()):
