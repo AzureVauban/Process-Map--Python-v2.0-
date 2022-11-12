@@ -463,8 +463,12 @@ def search(node: Node, ingredient: str, results: list) -> list:
 
 def shouldclonechildren(subnodes : dict) -> bool:
     # convert subnodes dict to a list of nodes
+    
     for subnode in subnodes.items():
-        
+        # dict must be 
+        if not isinstance(subnode[1], Node) and not isinstance(subnode[0],int):
+            raise TypeError('subnodes is not a dictionary',Node,'subnodes')
+
     # create a list of ingredient names that are within all the nodes in the dict
     return True
 def clone(node: Node, clonechildren: bool = True) -> Node:
