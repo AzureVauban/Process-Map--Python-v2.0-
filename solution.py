@@ -365,14 +365,14 @@ def createtree(node: Node, pandasrow: list) -> bool:
     figure out where to emplace the Node in the tree
 
     Args:
-        node (Node): _description_
-        pandasrow (list): _description_
+        node (Node): parent of Node to be emplaced
+        pandasrow (list): row of data from the CSV file
 
     Raises:
-        TypeError: _description_
+        TypeError: the row of data contains an invalid amount of values
 
     Returns:
-        bool: _description_
+        bool: was the node actually emplaced
     """
     if len(pandasrow) != len(FIELDNAMES):
         raise TypeError('The row of data is not the correct length')
