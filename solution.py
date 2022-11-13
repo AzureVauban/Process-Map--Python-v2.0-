@@ -174,7 +174,7 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
                 break
         if self.parent is not None:
             # $ only if older sibiling has not been prompted, prompt amountmadepercraft
-            while promptamountparentmade:
+            while promptamountparentmade:  # ? should this be prompted depending on if it was cloned
                 print('How much', self.parent.ingredient,
                       'do you create each time you craft it: ')
                 self.amountparentmadepercraft = promptint()
