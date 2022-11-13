@@ -160,6 +160,39 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
         self.updatepopulation()
         Node.instances += 1
 
+    def __inputnumerics(self):
+        """
+        prompt input of the numeric data for the instance from the user
+        """
+        # prompt amount on hand
+        while True and MODE == ProgramState.MODE_A:
+            print('How much', self.ingredient, 'do you have on hand: ')
+            self.amountonhand = promptint()
+            if self.amountonhand < 0:
+                print('That number is not valid')
+            else:
+                break
+            # prompt amount needed
+        if self.parent is not None:
+            # prompt amount made per craft
+            while True and self.askmadepercraftquestion:
+                print('How much', self.parent.ingredient,
+                      'do you create each time you craft it: ')
+                self.amountofparentmadepercraft = promptint()
+                if self.amountofparentmadepercraft < 1:
+                    print('That number is not valid')
+                else:
+                    self.askmadepercraftquestion = False
+                    break
+            while True:
+                print('How much', self.ingredient, 'do you need to craft',
+                      self.parent.ingredient, '1 time: ')
+                self.amountneeded = promptint()
+                if self.amountneeded < 1:
+                    print('That number is not valid')
+                else:
+                    break
+
     @classmethod
     def gen_treekey(cls, maxlength: int = random.randint(10, 20)) -> str:
         """
