@@ -110,7 +110,7 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
                  amountonhand: int = 0,
                  amountparentmadepercraft: int = 1,
                  amountneeded: int = 1,
-                 promptamountparentmade: bool = False,  # pylint:disable=W0613
+                 promptamountparentmade: bool = False,
                  promptamountsOn: bool = False,
                  isfromcsvfile: bool = False,
                  treekey: str = '') -> None:
@@ -156,15 +156,15 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
         if promptamountsOn and __name__ == '__main__':
             # only prompt the user to set the amounts if running in main
             # module and the boolean is true
-            self.__inputnumerics()
+            self.__inputnumerics(promptamountparentmade)
         self.updatepopulation()
         Node.instances += 1
 
-    def __inputnumerics(self,promptamountparentmade: bool):
+    def __inputnumerics(self, promptamountparentmade: bool):
         """
         prompt input of the numeric data for the instance from the user
         """
-        #$ only in MODE A - prompt amountonhand
+        # $ only in MODE A - prompt amountonhand
         while MODE == ProgramState.MODE_A:
             print('How much', self.ingredient, 'do you have on hand: ')
             self.amountonhand = promptint()
@@ -173,17 +173,17 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
             else:
                 break
         if self.parent is not None:
-            #$ only if older sibiling hasnt been prompted, prompt amountmadepercraft
+            # $ only if older sibiling has not been prompted, prompt amountmadepercraft
             while promptamountparentmade:
                 print('How much', self.parent.ingredient,
                       'do you create each time you craft it: ')
                 self.amountparentmadepercraft = promptint()
-                if self.amountparentmadepercraft  < 1:
+                if self.amountparentmadepercraft < 1:
                     print('That number is not valid')
                 else:
                     promptamountparentmade = False
                     break
-            #$ prompt amountneeded
+            # $ prompt amountneeded
             while True:
                 print('How much', self.ingredient, 'do you need to craft',
                       self.parent.ingredient, '1 time: ')
