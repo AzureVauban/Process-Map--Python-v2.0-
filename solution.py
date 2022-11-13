@@ -1,3 +1,4 @@
+# pylint:disable=C0302
 """
 Reformat of main.py
 """
