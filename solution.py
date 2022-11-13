@@ -52,7 +52,6 @@ def promptint() -> int:
             print('please type in a postive integer')
         else:
             return int(myinput)
-# end def
 
 
 class NodeB:  # pylint: disable=R0903
@@ -90,8 +89,6 @@ class NodeB:  # pylint: disable=R0903
         self.ingredient = ingredient
         self.amountresulted = 0
         self.aliasingredient = ingredient.replace(' ', '_')
-    # end def
-# end def
 
 
 class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
@@ -162,7 +159,6 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
             pass
         self.updatepopulation()
         Node.instances += 1
-    # end def
 
     @classmethod
     def gen_treekey(cls, maxlength: int = random.randint(10, 20)) -> str:
@@ -174,7 +170,6 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
             cls.treekey += random.choice(
                 '0123456789abcdefghijklmnopqrstuvwxyz')
         return cls.treekey
-    # end def
 
     def recursivearithmetic(self) -> int:
         """
@@ -198,7 +193,6 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
                 {self.ingredient: self.amountresulted})
             self.parent.recursivearithmetic()
         return self.amountresulted
-    # end def
 
     def reversearithmetic(self, desiredamount: int = 0) -> int:
         """
@@ -222,7 +216,6 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
                     raise TypeError('child is not an instance of', Node)
                 childnode[1].reversearithmetic(self.amountonhand)
         return self.amountonhand
-    # end def
 
     def modifytreekey(self, newtreekey: str):
         """
@@ -255,7 +248,6 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
             {'Amount_Needed_Per_Craft': str(self.amountneeded)})
         pandas_row.update({'Generation': str(self.generation)})
         return pandas_row
-    # end def
 
     def pandastree_row(self, rows: list) -> list:
         """
@@ -271,16 +263,14 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
         for child in self.children.items():
             child[1].pandastree_row(rows)
         return rows
-    # end def
 
     def updatepopulation(self, population: int = 0):
         """
-        _summary_
+        sets and updates the population attribute of the Node accordingly
         """
         self.population = population
         for subnode in self.children.items():
             subnode[1].updatepopulation(population)
-    # end def
 
     def findendpoints(self, endpoints: dict) -> dict:
         """
@@ -298,7 +288,6 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
             else:
                 subnode[1].findendpoints(endpoints)
         return endpoints
-    # end def
 
     def reformat_output(self):  # pylint:disable=R0912
         """
@@ -325,7 +314,6 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
                 compressedendpoints[node[1].ingredient].append(
                     (node[1].parent.ingredient,
                      node[1].amountonhand))
-
         output_dictionary: dict = {}
         for item_a in compressedendpoints.items():
             orangeinteger: int = 0  # sum of the amount on hand all tuple items
@@ -351,19 +339,16 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
                 else:
                     print(string, end=', ')
             print(')')
-    # end def
-# end def
 
 
 def nodecount(node: Node) -> int:
     """
-    _summary_
+    counts how many nodes are in the connected ingredient tree
 
     Returns:
-        int: _description_
+        int: the number of nodes in the tree (based on the size of list of nodes)
     """
     return len(head(node).pandastree_row([]))
-    # end def
 
 
 def makealiasunique(node: Node):
@@ -387,7 +372,6 @@ def makealiasunique(node: Node):
     # recrusively call the function on each child node
     for subnode in node.children.items():
         makealiasunique(subnode[1])
-# end def
 
 
 def allaliases(node: Node, alias: str, aliases: list) -> list:
@@ -408,7 +392,6 @@ def allaliases(node: Node, alias: str, aliases: list) -> list:
     for subnode in node.children.items():
         allaliases(subnode[1], alias, aliases)
     return aliases
-# end def
 
 
 def writetreetocsv(headnode: Node):
@@ -431,7 +414,6 @@ def writetreetocsv(headnode: Node):
         for row in headnode.pandastree_row([]):
             pandas.DataFrame(row, index=[0]).to_csv(
                 FILENAME, mode='a', header=False, index=False)
-# end def
 
 
 def promptheadname() -> str:
@@ -447,7 +429,6 @@ def promptheadname() -> str:
             print('Your input cannot be empty!')
         else:
             return myinput
-# end def
 
 
 def head(node: Node) -> Node:
@@ -463,7 +444,6 @@ def head(node: Node) -> Node:
     while node.parent is not None:
         node = node.parent
     return node
-# end def
 
 
 def trail(node: Node):
@@ -481,7 +461,6 @@ def trail(node: Node):
         else:
             print(node.ingredient)
             break
-# end def
 
 
 def outputingredients(node: Node):
@@ -499,7 +478,6 @@ def outputingredients(node: Node):
     for index, ingredient in enumerate(subingredients):
         print(f'{index+1}. {ingredient}')
     print('')
-# end def
 
 
 def parsecsv() -> dict:
@@ -529,7 +507,6 @@ def parsecsv() -> dict:
     if len(headnodes) == 0:
         return {-1: None}
     return headnodes
-# end def
 
 
 def createtree(node: Node, pandasrow: list) -> bool:
@@ -571,7 +548,6 @@ def createtree(node: Node, pandasrow: list) -> bool:
     for subnode in node.children.items():
         createtree(subnode[1], pandasrow)
     return False
-# end def
 
 
 def createtreefromcsv(parent: Node) -> Node:
@@ -626,7 +602,6 @@ def search(node: Node, ingredient: str, results: list) -> list:
     for subnode in node.children.items():
         search(subnode[1], ingredient, results)
     return results
-# end def
 
 
 def shouldclonechildren(ingredient: str, subnodes: dict) -> bool:
@@ -671,7 +646,6 @@ def shouldclonechildren(ingredient: str, subnodes: dict) -> bool:
     if ingredient in subingredientnames:
         return False
     return True
-# end def
 
 
 def clone(node: Node, clonechildren: bool = True) -> Node:
@@ -722,7 +696,6 @@ def clone(node: Node, clonechildren: bool = True) -> Node:
                 isfromcsvfile=subnode[1].isfromcsvfile,
                 promptamountsOn=False)
     return rednode
-# end def
 
 
 def subpopulate(node: Node, ingredient: str) -> Node:
@@ -773,7 +746,6 @@ def subpopulate(node: Node, ingredient: str) -> Node:
         parseresults[userchoice],  # node that will be cloned
         shouldclonechildren(ingredient, node.children))  # bool to determine to clone subnodes
     return clonenode
-# end def
 
 
 def populate(node: Node) -> Node:  # pylint: disable=R0912
@@ -839,7 +811,6 @@ def populate(node: Node) -> Node:  # pylint: disable=R0912
         node.recursivearithmetic()
     # return the head of the ingredient tree
     return head(node)
-# end def
 
 
 def superpopulate() -> Node:
