@@ -160,7 +160,7 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
         self.updatepopulation()
         Node.instances += 1
 
-    def __inputnumerics(self):
+    def __inputnumerics(self,promptamountparentmade: bool) -> None:
         """
         prompt input of the numeric data for the instance from the user
         """
@@ -175,7 +175,7 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
             # prompt amount needed
         if self.parent is not None:
             # prompt amount made per craft
-            while True and self.askmadepercraftquestion:
+            while True askmadepercraftquestion:
                 print('How much', self.parent.ingredient,
                       'do you create each time you craft it: ')
                 self.amountofparentmadepercraft = promptint()
