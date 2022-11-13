@@ -113,7 +113,7 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
                  amountparentmadepercraft: int = 1,
                  amountneeded: int = 1,
                  promptamountparentmade: bool = False,
-                 promptamountsOn: bool = False,
+                 promptamountsOn: bool = True,
                  isfromcsvfile: bool = False,
                  treekey: str = '') -> None:
         """
