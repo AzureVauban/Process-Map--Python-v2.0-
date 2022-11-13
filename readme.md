@@ -8,7 +8,7 @@ tentative description of how to utilize project
 
 ## How does it work
 
-tentative description of the spooky inner workings of the project
+The program will prompt the user to type in the name of an item they want to create, or if there is a CSV file with valid ingredient trees, will prompt the user to choose one of those or create a new tree entirely. 
 
 ## Changes in this version
 
