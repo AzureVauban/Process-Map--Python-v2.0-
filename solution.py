@@ -156,34 +156,34 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
         if promptamountsOn and __name__ == '__main__':
             # only prompt the user to set the amounts if running in main
             # module and the boolean is true
-            pass
+            self.__inputnumerics()
         self.updatepopulation()
         Node.instances += 1
 
-    def __inputnumerics(self,promptamountparentmade: bool) -> None:
+    def __inputnumerics(self,promptamountparentmade: bool):
         """
         prompt input of the numeric data for the instance from the user
         """
-        # prompt amount on hand
-        while True and MODE == ProgramState.MODE_A:
+        #$ only in MODE A - prompt amountonhand
+        while MODE == ProgramState.MODE_A:
             print('How much', self.ingredient, 'do you have on hand: ')
             self.amountonhand = promptint()
             if self.amountonhand < 0:
                 print('That number is not valid')
             else:
                 break
-            # prompt amount needed
         if self.parent is not None:
-            # prompt amount made per craft
-            while True askmadepercraftquestion:
+            #$ only if older sibiling hasnt been prompted, prompt amountmadepercraft
+            while promptamountparentmade:
                 print('How much', self.parent.ingredient,
                       'do you create each time you craft it: ')
-                self.amountofparentmadepercraft = promptint()
-                if self.amountofparentmadepercraft < 1:
+                self.amountparentmadepercraft = promptint()
+                if self.amountparentmadepercraft  < 1:
                     print('That number is not valid')
                 else:
-                    self.askmadepercraftquestion = False
+                    promptamountparentmade = False
                     break
+            #$ prompt amountneeded
             while True:
                 print('How much', self.ingredient, 'do you need to craft',
                       self.parent.ingredient, '1 time: ')
