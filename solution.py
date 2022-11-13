@@ -1,9 +1,5 @@
 """
 Reformat of main.py
-#! mean warnings
-#? mean questions
-#todo means todos
-#$ means notes to self or tester
 """
 
 import math
@@ -154,8 +150,6 @@ class Node(NodeB):  # pylint: disable=R0913 #pylint: disable=R0902
             else:
                 self.treekey = self.gen_treekey()
         if promptamountsOn and __name__ == '__main__':
-            # only prompt the user to set the amounts if running in main
-            # module and the boolean is true
             self.__inputnumerics(promptamountparentmade)
         self.updatepopulation()
         Node.instances += 1
