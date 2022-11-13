@@ -3,7 +3,9 @@
 Reformat of main.py
 Changes:
 - Added Enum for program Modes
-- 
+- Added and fixed Search/Copy Node functionality
+- Added ability to write ingredient trees to a CSV
+- Added ability to read ingredient trees from a CSV
 """
 
 import math
