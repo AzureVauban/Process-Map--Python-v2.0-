@@ -1,6 +1,9 @@
 # pylint:disable=C0302
 """
 Reformat of main.py
+Changes:
+- Added Enum for program Modes
+- 
 """
 
 import math
@@ -15,7 +18,7 @@ import pandas
 
 class ProgramState(Enum):
     """
-    tentative docstring description
+    Enum for which mode the user selected during runtime
     """
     MODE_A = 0  # recursive arithmetic (amountresulted)
     MODE_B = 1  # inverse recursive arithmetic (amountonhand)
