@@ -928,7 +928,18 @@ def subpopulate(ingredient: Ingredient, ingredient_name: str) -> Ingredient:
                             ingredient.children_ingredients))  # bool to determine to clone subnodes
     return clonenode
 
-#? functions for rendering the ingredient tree
+# ? functions for rendering the ingredient tree
+
+
+def print_bubble_tab(ingredient_name: str) -> str:
+    return '[' + ingredient_name + ']'
+
+
+def render_ingredient_tree(ingredient_object: Ingredient):
+    print(print_bubble_tab(ingredient_object.ingredient_name))
+    for sub_ingredient in ingredient_object.children_ingredients.items():
+        render_ingredient_tree(sub_ingredient[1])
+# ? end def of functions for rendering the ingredient tree
 
 
 def populate(ingredient: Ingredient) -> Ingredient:  # pylint: disable=R0912
@@ -968,7 +979,9 @@ def populate(ingredient: Ingredient) -> Ingredient:  # pylint: disable=R0912
         elif myinput in ingredient_blacklist:
             print('Invalid input, duplicate inputs!')
         elif myinput == '--render_tree':
-            print('\x1B[31mINGREDIENT TREE RENDERING CODE IS NOT IMPLEMENTED YET\x1B[0m')
+            render_ingredient_tree(head(ingredient))
+            print(
+                '\x1B[31mINGREDIENT TREE RENDERING CODE IS NOT IMPLEMENTED YET\x1B[0m')
             # todo add code to print the entire ingredient tree to the console
         # if the input is empty, break out of the loop
         elif len(myinput) == 0:
