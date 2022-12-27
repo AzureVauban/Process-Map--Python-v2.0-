@@ -939,15 +939,15 @@ def recursively_get_bubbletabed_names(object_ingredient: Ingredient, names_deque
     return names_deque
 
 
-def get_max_depth(object_ingredient: Ingredient, max_depth: int) -> int:
+def get_max_depth(object_ingredient: Ingredient) -> int:
     ingredient_ends: dict = object_ingredient.findendpoints({})
     greatest_depth : int = -1
     for endpoint_ingredient in ingredient_ends.items():
         if not isinstance(endpoint_ingredient[1],Ingredient):
             raise TypeError('endpoint is not an instance of',Ingredient)
-        if endpoint_ingredient[1].generation < greatest_depth:
-            greatest_depth = endpoint_ingredient[1]
-    return max_depth
+        if endpoint_ingredient[1].generation > greatest_depth:
+            greatest_depth = endpoint_ingredient[1].generation
+    return greatest_depth
 
 
 def render_ingredient_tree(ingredient_object: Ingredient):
@@ -956,7 +956,7 @@ def render_ingredient_tree(ingredient_object: Ingredient):
     ingredient_head: Ingredient = head(ingredient_object)
     data_deque = recursively_get_bubbletabed_names(ingredient_head, data_deque)
     #! make length of the render_list's 1st demenisio the value of the maximum depth of the ingredient tree
-    list_size : int = get_max_depth(head(ingredient_object), 0)
+    list_size : int = get_max_depth(head(ingredient_object))
     for _ in range(list_size):
         render_list.append([])
     while not data_deque.is_empty():  # ! render_list should be a list of a list of strings (ingredient names)
