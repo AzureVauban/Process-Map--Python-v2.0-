@@ -978,7 +978,7 @@ def render_ingredient_tree(ingredient_object: Ingredient):
         # ? ingredient name, ingredient generation
         render_list_data[ingredient_node[1]-1].append(ingredient_node[0])
     # ? render the ingredient tree to the console
-    render_list(initalize_ws_in_lists(render_list))
+    print("\nG (Generation/Depth)")
     print()
 # ? end def of functions for rendering the ingredient tree
 
