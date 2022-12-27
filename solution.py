@@ -959,6 +959,7 @@ def render_ingredient_tree(ingredient_object: Ingredient):
     list_size : int = get_max_depth(head(ingredient_object))
     for _ in range(0,list_size+1):
         render_list.append([])
+    render_list.reverse()
     while not data_deque.is_empty():  # ! render_list should be a list of a list of strings (ingredient names)
         ingredient_node: tuple = data_deque.dequeue_front()
         # ? ingredient name, ingredient generation
