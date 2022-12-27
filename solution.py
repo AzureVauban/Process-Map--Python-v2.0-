@@ -970,7 +970,7 @@ def render_ingredient_tree(ingredient_object: Ingredient):
     ingredient_head: Ingredient = ingredient_object
     data_deque = recursively_get_bubbletabed_names(ingredient_head, data_deque)
     #! make length of the render_list's 1st demenisio the value of the maximum depth of the ingredient tree
-    list_size: int = get_max_depth(head(ingredient_object))
+    list_size: int = get_max_depth(ingredient_object)
     for _ in range(0, list_size+1):
         render_list_data.append([])
     while not data_deque.is_empty():  # ! render_list should be a list of a list of strings (ingredient names)
