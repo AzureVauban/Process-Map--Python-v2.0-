@@ -958,7 +958,7 @@ def render_list(argument: list[list[str]]):
     # blue[red[string]]
     for blue in argument:
         for red in blue:
-            print(red,end='')
+            print(red, end='')
         print()
 
 
