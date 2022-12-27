@@ -935,10 +935,36 @@ def print_bubble_tab(ingredient_name: str) -> str:
     return '[' + ingredient_name + ']'
 
 
+def recursively_get_bubbletabed_names(object_ingredient: Ingredient, names_deque: Deque) -> Deque:
+    data_tuple: tuple = (print_bubble_tab(
+        object_ingredient.ingredient_name), object_ingredient.generation)
+    names_deque.enqueue_front(data_tuple)
+    for sub_ingredient in object_ingredient.children_ingredients.items():
+        recursively_get_bubbletabed_names(sub_ingredient[1], names_deque())
+
+
+def get_max_depth(object_ingredient: Ingredient, max_depth: int) -> int:
+    if object_ingredient.generation > max_depth:
+        max_depth = object_ingredient.generation
+    for sub_ingredient in object_ingredient.children_ingredients.items():
+        get_max_depth(sub_ingredient[1], max_depth)
+    return max_depth
+
+
 def render_ingredient_tree(ingredient_object: Ingredient):
-    print(print_bubble_tab(ingredient_object.ingredient_name))
-    for sub_ingredient in ingredient_object.children_ingredients.items():
-        render_ingredient_tree(sub_ingredient[1])
+    render_list: list = []
+    data_deque: Deque = recursively_get_bubbletabed_names(
+        head(ingredient_object), Deque())
+    #! make length of the render_list's 1st demenisio the value of the maximum depth of the ingredient tree
+    for _ in range(get_max_depth(head(ingredient_object), 0)):
+        render_list.append([])
+    while not data_deque.is_empty():  # ! render_list should be a list of a list of strings (ingredient names)
+        ingredient_node: tuple = data_deque.front()
+        # ? ingredient name, ingredient generation
+        render_list[ingredient_node[1]].append(ingredient_node[0])
+    # ? render the ingredient tree to the console
+    for _ in range(len(render_list)):
+        print(render_list)
 # ? end def of functions for rendering the ingredient tree
 
 
@@ -978,7 +1004,7 @@ def populate(ingredient: Ingredient) -> Ingredient:  # pylint: disable=R0912
         # if the length of the user input is 0, break the loop
         elif myinput in ingredient_blacklist:
             print('Invalid input, duplicate inputs!')
-        elif myinput == '--render_tree':
+        elif myinput == '--render':
             render_ingredient_tree(head(ingredient))
             print(
                 '\x1B[31mINGREDIENT TREE RENDERING CODE IS NOT IMPLEMENTED YET\x1B[0m')
