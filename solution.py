@@ -951,10 +951,10 @@ def get_max_depth(object_ingredient: Ingredient) -> int:
 
 
 def initalize_ws_in_lists(argument: list[list[str]]) -> list[list[str]]:
-    pos_of_vertical_split : int = math.floor(len(argument[0][0])/2)
+    pos_of_vertical_split : int = len(argument[0][0])
     insert_string = ''
     for _ in range(pos_of_vertical_split):
-        insert_string += ' '
+        insert_string += 'A'
     insert_string += '|'
     argument.insert(1,[insert_string])
     insert_string = ''
