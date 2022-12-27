@@ -954,6 +954,7 @@ def initalize_ws_in_lists(argument: list[list[str]]) -> list[list[str]]:
     return argument
 
 def calculate_whitespace_margin_(top_level_string: str,bottom_level_string:str)->int:
+    pass
     
 def render_list(argument: list[list[str]]):
     # blue[red[string]]
