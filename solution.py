@@ -952,7 +952,7 @@ def get_max_depth(object_ingredient: Ingredient) -> int:
 def unifystring(argument : list[str])-> list[str]:
     new_string : str =''
     for _ in argument:
-        new_string+= _
+        new_string+= str(_)
         new_string+= ' '
     argument.clear()
     argument.append(new_string)
