@@ -976,11 +976,12 @@ def render_ingredient_tree(ingredient_object: Ingredient):
     while not data_deque.is_empty():  # ! render_list should be a list of a list of strings (ingredient names)
         ingredient_node: tuple = data_deque.dequeue_front()
         # ? ingredient name, ingredient generation
-        if len(render_list_data) <= ingredient_node[1]:
+        if len(render_list_data) >= ingredient_node[1]:
             render_list_data.append([])
         render_list_data[ingredient_node[1]-1].append(ingredient_node[0])
     # ? render the ingredient tree to the console
     print("\nG (Generation/Depth)")
+    render_list(initalize_ws_in_lists(render_list_data))
     print()
 # ? end def of functions for rendering the ingredient tree
 
