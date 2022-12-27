@@ -963,7 +963,7 @@ def render_list(argument: list[list[str]]):
 
 
 def render_ingredient_tree(ingredient_object: Ingredient):
-    render_list: list = []
+    render_list_data: list = []
     data_deque: Deque = Deque()
     if ingredient_object.parent_ingredient is not None:
         raise ValueError('must be a head node')
@@ -972,13 +972,13 @@ def render_ingredient_tree(ingredient_object: Ingredient):
     #! make length of the render_list's 1st demenisio the value of the maximum depth of the ingredient tree
     list_size: int = get_max_depth(head(ingredient_object))
     for _ in range(0, list_size+1):
-        render_list.append([])
+        render_list_data.append([])
     while not data_deque.is_empty():  # ! render_list should be a list of a list of strings (ingredient names)
         ingredient_node: tuple = data_deque.dequeue_front()
         # ? ingredient name, ingredient generation
-        render_list[ingredient_node[1]-1].append(ingredient_node[0])
+        render_list_data[ingredient_node[1]-1].append(ingredient_node[0])
     # ? render the ingredient tree to the console
-    render_list(initalize_ws_in_lists(render_list)) # pylint: disable=E1102
+    render_list(initalize_ws_in_lists(render_list))
     print()
 # ? end def of functions for rendering the ingredient tree
 
