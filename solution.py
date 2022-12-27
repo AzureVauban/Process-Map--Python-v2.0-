@@ -936,13 +936,9 @@ def print_bubble_tab(ingredient_name: str) -> str:
 
 
 def recursively_get_bubbletabed_names(object_ingredient: Ingredient, names_deque: Deque) -> Deque:
-
-    data_tuple: tuple = (
-        str('[' + object_ingredient.ingredient_name + ']'),
-        object_ingredient.generation)
-    names_deque.enqueue_front(data_tuple)
-    for sub_ingredient in object_ingredient.children_ingredients.items():
-        recursively_get_bubbletabed_names(sub_ingredient[1], names_deque())
+    names_deque.enqueue_front(('[' + object_ingredient.ingredient_name + ']',object_ingredient.generation))
+    for subingredient in object_ingredient.children_ingredients.items():
+        recursively_get_bubbletabed_names(subingredient[1],names_deque)
     return names_deque
 
 
@@ -963,7 +959,7 @@ def render_ingredient_tree(ingredient_object: Ingredient):
     for _ in range(get_max_depth(head(ingredient_object), 0)):
         render_list.append([])
     while not data_deque.is_empty():  # ! render_list should be a list of a list of strings (ingredient names)
-        ingredient_node: tuple = data_deque.front()
+        ingredient_node: tuple = data_deque.dequeue_front()
         # ? ingredient name, ingredient generation
         render_list[ingredient_node[1]].append(ingredient_node[0])
     # ? render the ingredient tree to the console
