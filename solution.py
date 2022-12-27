@@ -931,44 +931,54 @@ def subpopulate(ingredient: Ingredient, ingredient_name: str) -> Ingredient:
 # ? functions for rendering the ingredient tree
 
 
-
 def recursively_get_bubbletabed_names(object_ingredient: Ingredient, names_deque: Deque) -> Deque:
-    names_deque.enqueue_front(('[' + object_ingredient.ingredient_name + ']',object_ingredient.generation))
+    names_deque.enqueue_front(
+        ('[' + object_ingredient.ingredient_name + ']', object_ingredient.generation))
     for subingredient in object_ingredient.children_ingredients.items():
-        recursively_get_bubbletabed_names(subingredient[1],names_deque)
+        recursively_get_bubbletabed_names(subingredient[1], names_deque)
     return names_deque
 
 
 def get_max_depth(object_ingredient: Ingredient) -> int:
     ingredient_ends: dict = object_ingredient.findendpoints({})
-    greatest_depth : int = -1
+    greatest_depth: int = -1
     for endpoint_ingredient in ingredient_ends.items():
-        if not isinstance(endpoint_ingredient[1],Ingredient):
-            raise TypeError('endpoint is not an instance of',Ingredient)
+        if not isinstance(endpoint_ingredient[1], Ingredient):
+            raise TypeError('endpoint is not an instance of', Ingredient)
         if endpoint_ingredient[1].generation > greatest_depth:
             greatest_depth = endpoint_ingredient[1].generation
     return greatest_depth
 
 
+def initalize_ws_in_lists(argument: list[list[str]]) -> list[list[str]]:
+    return argument
+
+
+def render_list(argument: list[list[str]]):
+    # blue[red[string]]
+    for blue in argument:
+        for red in blue:
+            print(red,end='')
+        print()
+
+
 def render_ingredient_tree(ingredient_object: Ingredient):
     render_list: list = []
     data_deque: Deque = Deque()
-    ingredient_head: Ingredient = head(ingredient_object)
+    if ingredient_object.parent_ingredient is not None:
+        raise ValueError('must be a head node')
+    ingredient_head: Ingredient = ingredient_object
     data_deque = recursively_get_bubbletabed_names(ingredient_head, data_deque)
     #! make length of the render_list's 1st demenisio the value of the maximum depth of the ingredient tree
-    list_size : int = get_max_depth(head(ingredient_object))
-    for _ in range(0,list_size+1):
+    list_size: int = get_max_depth(head(ingredient_object))
+    for _ in range(0, list_size+1):
         render_list.append([])
-    render_list.reverse()
     while not data_deque.is_empty():  # ! render_list should be a list of a list of strings (ingredient names)
         ingredient_node: tuple = data_deque.dequeue_front()
         # ? ingredient name, ingredient generation
         render_list[ingredient_node[1]-1].append(ingredient_node[0])
     # ? render the ingredient tree to the console
-    for blue in render_list:
-        for red in blue:
-            print(red,end='')
-        print()
+    render_list(initalize_ws_in_lists(render_list)) # pylint: disable=E1102
     print()
 # ? end def of functions for rendering the ingredient tree
 
@@ -994,6 +1004,8 @@ def populate(ingredient: Ingredient) -> Ingredient:  # pylint: disable=R0912
         #! user_inputs.enqueue_back((subnode[1].ingredient_name, True))
         # ? ingredient_name, already created boolean (which is true)
         ingredient_blacklist.append(subnode[1].ingredient_name)
+    #! remove later and re-add as a command
+    render_ingredient_tree(head(ingredient))
     # prompt the user for ingredients
     print('What ingredients do you have need to create',
           ingredient.ingredient_name, end=':\n')
@@ -1009,10 +1021,10 @@ def populate(ingredient: Ingredient) -> Ingredient:  # pylint: disable=R0912
         # if the length of the user input is 0, break the loop
         elif myinput in ingredient_blacklist:
             print('Invalid input, duplicate inputs!')
-        elif myinput == '--render':
-            render_ingredient_tree(head(ingredient))
-            print(
-                '\x1B[31mINGREDIENT TREE RENDERING CODE IS NOT IMPLEMENTED YET\x1B[0m')
+#!        elif myinput == '--render':
+#!            render_ingredient_tree(head(ingredient))
+#!            print(
+#!                '\x1B[31mINGREDIENT TREE RENDERING CODE IS NOT IMPLEMENTED YET\x1B[0m')
             # todo add code to print the entire ingredient tree to the console
         # if the input is empty, break out of the loop
         elif len(myinput) == 0:
